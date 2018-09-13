@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="note,ML," />
+  <meta name="keywords" content="【note, summary, Machine-Learning】," />
 
 
 
@@ -80,16 +80,16 @@
 
 
 <meta name="description" content="Week1Linear regression and VectorizationFirst the basic linear function, n is the dimension of the features.  h_\theta(x) = \sum_{i=0}^n \theta_ix_iThe cost function, m is the numebr of samples:  J(\t">
-<meta name="keywords" content="note,ML">
+<meta name="keywords" content="【note, summary, Machine-Learning】">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Machine Learning Notes">
-<meta property="og:url" content="https://octopusman.top/2018/09/09/Machine-Learning-Notes/index.html">
+<meta property="og:title" content="Machine-Learning-Notes_StrandfordCourse">
+<meta property="og:url" content="https://octopusman.top/2018/09/13/Machine-Learning-Notes-StrandfordCourse/index.html">
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Week1Linear regression and VectorizationFirst the basic linear function, n is the dimension of the features.  h_\theta(x) = \sum_{i=0}^n \theta_ix_iThe cost function, m is the numebr of samples:  J(\t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-09T07:09:37.460Z">
+<meta property="og:updated_time" content="2018-09-13T11:48:16.408Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Machine Learning Notes">
+<meta name="twitter:title" content="Machine-Learning-Notes_StrandfordCourse">
 <meta name="twitter:description" content="Week1Linear regression and VectorizationFirst the basic linear function, n is the dimension of the features.  h_\theta(x) = \sum_{i=0}^n \theta_ix_iThe cost function, m is the numebr of samples:  J(\t">
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://octopusman.top/2018/09/09/Machine-Learning-Notes/"/>
+  <link rel="canonical" href="https://octopusman.top/2018/09/13/Machine-Learning-Notes-StrandfordCourse/"/>
 
 
 
 
 
-  <title>Machine Learning Notes | Recap</title>
+  <title>Machine-Learning-Notes_StrandfordCourse | Recap</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/09/Machine-Learning-Notes/">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhejian">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Machine Learning Notes</h1>
+          <h1 class="post-title" itemprop="name headline">Machine-Learning-Notes_StrandfordCourse</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-09T11:11:55+08:00">
-                2018-09-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-13T12:36:23+08:00">
+                2018-09-13
               </time>
             
 
@@ -308,7 +308,7 @@ J(\theta) = \cfrac{1}{2m}\sum_{i=1}^m(h_\theta(x^i)-y^i)^2</script><script type=
 \cfrac{\mathrm{d}}{\mathrm{d\theta}}J(\theta) = \cfrac{1}{m}\sum_{i=0}^m(h_\theta(x^i)-y^i)*\cfrac{\mathrm{d}}{\mathrm{d\theta}}h_\theta(x)</script><p>so </p>
 <script type="math/tex; mode=display">
 \theta = \theta - \alpha\cfrac{\mathrm{d}}{\mathrm{d\theta}}J(\theta)</script><script type="math/tex; mode=display">
-\theta_j = \theta_j- \alpha\cfrac{1}{m}\sum_{i=1}^m(h_\theta(x^i)-y^i)x^i_j \quad(1)</script><h3 id="Vectorization"><a href="#Vectorization" class="headerlink" title="Vectorization"></a><strong>Vectorization</strong></h3><p>the sample matrix X, n rows and m colms.</p>
+\theta_j = \theta_j- \alpha\cfrac{1}{m}\sum_{i=1}^m(h_\theta(x^i)-y^i)x^i_j \quad(1)</script><h4 id="Vectorization-of-Linear-Regression"><a href="#Vectorization-of-Linear-Regression" class="headerlink" title="Vectorization of Linear Regression"></a><strong>Vectorization of Linear Regression</strong></h4><p>the sample matrix X, n rows and m colms.</p>
 <p>n is the dimention of the features and m is the number of samples</p>
 <script type="math/tex; mode=display">
 X(m\times n) = \begin{bmatrix}
@@ -341,7 +341,8 @@ h_\theta(x^m)
 <script type="math/tex; mode=display">
 J(\theta) = \cfrac{1}{2m}\sum_{i=1}^m(h_\theta(x^i)-y^i)^2</script><p>so in the vectorization, the h(x) can be present in a different way</p>
 <script type="math/tex; mode=display">
-h_\theta(x) =X^i*\theta</script><p>where</p>
+h_\theta(x) =X^i*\theta\\
+h_\theta(X) = X\theta</script><p>where</p>
 <script type="math/tex; mode=display">
 x = [x_0, x_1, x_2....x_{n-1}]^T</script><script type="math/tex; mode=display">
 \theta = [\theta_0, \theta_1, \theta_2...\theta_{n-1}]^T</script><p>and also we want to change equation (1) into the vectorization form to reduce the loop</p>
@@ -357,11 +358,11 @@ x = [x_0, x_1, x_2....x_{n-1}]^T</script><script type="math/tex; mode=display">
  x_j^m
 \end{bmatrix}
 (m \times 1)</script><script type="math/tex; mode=display">
-\delta = \cfrac{1}{m} \times tem^T \times X</script><script type="math/tex; mode=display">
+\delta = \cfrac{1}{m} \times X^T \times (X\theta-y)</script><script type="math/tex; mode=display">
 \theta' = \theta - \cfrac{\alpha}{m} \times X^T \times(X \times \theta - y)</script><p>so the new function after gradient descent becomes</p>
 <script type="math/tex; mode=display">
 h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the code can be presented by only one code:</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theta = theta - alpha / m * X' * (X * theta - y);</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">h = X*theta</span><br><span class="line">J = <span class="number">1</span> / <span class="number">2</span>m * (X * theta-y)'*(X * theta-y)</span><br><span class="line">theta = theta - alpha / m * X' * (X * theta - y);</span><br></pre></td></tr></table></figure>
 <p>In python3:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theta -= alpha / m * X.T @ (X @ theta - y)</span><br></pre></td></tr></table></figure>
 <h2 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a>Week 2</h2><h3 id="Normal-Equation"><a href="#Normal-Equation" class="headerlink" title="Normal Equation"></a>Normal Equation</h3><p>REF: <a href="https://blog.csdn.net/huruzun/article/details/41493063" target="_blank" rel="noopener">Normal Equations 的由来与推导</a></p>
@@ -388,7 +389,7 @@ h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the
 <td>No need to iterate</td>
 </tr>
 <tr>
-<td>O (kn^2kn2)</td>
+<td>O (kn^2kn2)$\theta(k_n^2 )$</td>
 <td>O (n^3n3), need to calculate inverse of X^TXXTX</td>
 </tr>
 <tr>
@@ -400,91 +401,13 @@ h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the
 </div>
 <ol>
 <li><p>some problems when using Normal Equation</p>
-<p>a) if XTX noninvertable</p>
+<p>a) if XTX$X^TX$ noninvertable</p>
 <ul>
 <li>Redundant features, where two features are very closely related (i.e. they are linearly dependent)</li>
 <li>Too many features (e.g. m ≤ n). In this case, delete some features or use “regularization” (to be explained in a later lesson).</li>
 </ul>
 </li>
 </ol>
-<h2 id="Week-3"><a href="#Week-3" class="headerlink" title="Week 3"></a>Week 3</h2><h3 id="Octave-COMMONDS"><a href="#Octave-COMMONDS" class="headerlink" title="Octave COMMONDS"></a>Octave COMMONDS</h3><p>REF: <a href="https://blog.csdn.net/u011415481/article/details/49969447" target="_blank" rel="noopener">OCTAVE COMMONDS</a></p>
-<ol>
-<li>hist()** : </li>
-<li><strong>length</strong>(): show the max length of matrix</li>
-<li><strong>randn</strong>(): create normal random numbers between -1- +1</li>
-<li><strong>rand</strong>: create random number between 0-1</li>
-<li><strong>load</strong>: load the data in the file</li>
-<li><strong>who</strong>: show all variables</li>
-<li><strong>whos</strong>: show the detail of all the variables</li>
-<li><strong>size()</strong>: show the size of matrix</li>
-<li><strong>clear</strong>: clear all the variables</li>
-<li><strong>save filename dataname /-ascii/</strong> save the data into files</li>
-<li><strong>A(x,y)</strong>: x col and y row of matrix A</li>
-<li><strong>A(:,2)</strong>: all the elements in col 2</li>
-<li><strong>A([1 3],:)</strong>show all the elements from col 1 to 3</li>
-<li><strong>A(:)  Put all elements of A into a single vector</strong></li>
-<li><strong>C = [A B]</strong>: combine two matrix right and left</li>
-<li><strong>C = [A ; B]</strong>: combine two matrix up and down</li>
-<li><strong>PS1(‘’)</strong>: determine the theme</li>
-<li><strong>A .* B</strong>: element-wise multiplication</li>
-<li><strong>A .^2</strong>: element-wise power</li>
-<li><strong>1 ./ A</strong>: element-wise reciprocal</li>
-<li><strong>exp(A), abs(A), log(A)</strong></li>
-<li><strong>ones(x,y), eye(x,y)</strong></li>
-<li><strong>A’: transpose of A</strong></li>
-<li>find(condition)</li>
-<li>sum()</li>
-<li><strong>floor()</strong>: round down</li>
-<li>ceil()</li>
-<li>pinv(A): inverse of matrix A</li>
-<li>plot()</li>
-<li>print -dpng ‘<em>*</em>.png’</li>
-<li>subplot()</li>
-<li>axis([])</li>
-<li>clf</li>
-<li>imagesc(A)</li>
-<li>addpath()</li>
-</ol>
-<h2 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h2><h3 id="Classification-and-Representation"><a href="#Classification-and-Representation" class="headerlink" title="Classification and Representation"></a>Classification and Representation</h3><h4 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h4><script type="math/tex; mode=display">
-h_\theta(x) = g(\theta^Tx)</script><p>g(x) is called <strong>Sigmoid function </strong>or <strong>Logistic function</strong></p>
-<script type="math/tex; mode=display">
-g(x) = \frac{1}{1+e^{-x}}\\
-h_\theta(x) = \frac{1}{1+e^{-\theta^Tx}}</script><p><strong>Cost Function</strong></p>
-<script type="math/tex; mode=display">
-J(\theta) = \frac{1}{m}\sum_{i=1}^m Cost(h_\theta(x^i), y^i)\\
-Cost(h_\theta(x^i), y^i) = -log(h_\theta(x)) \quad if \; y=1;\\
-Cost(h_\theta(x^i), y^i) = -log(1- h_\theta(x)) \quad if \; y=0;</script><p>the cost function can be written in a simpler way when y must equals 1 or 0:</p>
-<script type="math/tex; mode=display">
-Cost(h_\theta(x), y)=-y\log(h_\theta(x)) - (1-y)\log(1-h_\theta(x))</script><p><strong>Simplified Cost Function</strong></p>
-<script type="math/tex; mode=display">
-J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\theta(x^i))]\\
-\theta_j = \theta_j - \alpha \frac{d}{d\theta_j}J_\theta(x)\\
-\theta_j = \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^i)-y^i)x^i_j</script><p>The Gradient descent seems the same as linear regression, however it is not the same. Because the h(x) is no longer the linear one.</p>
-<p>Proof:</p>
-<script type="math/tex; mode=display">
-\frac{d}{d\theta_j} J(\theta) = -\frac{1}{m} \sum_{i=1}^m [y^i. h_\theta(x^i)^{-1}.\frac{d}{d\theta_j}h_\theta(x^i)+(1-y^i).(1-h_\theta(x^i))^{-1}.\frac{d}{d\theta_j}h_\theta(x^i)]\\
-\frac{d}{d\theta_j} J(\theta) = \frac{1}{m} \sum_{i=1}^m \frac{h_\theta(x^i) - y^i}{(1-h_\theta(x^i))h_\theta(x^i)} . \frac{d}{d\theta_j}h_\theta(x^i)\\
-hint: \log(x)' = 1/x\\
-(a^x)' = a^x . \ln(a)\\
-\frac{d}{d\theta_j}h_\theta(x^i) = -(1+e^{-\theta^Tx})^{-2}. e^{-\theta^Tx}. x_j^i\\
-\frac{d}{d\theta_j}h_\theta(x^i) =(1-h_\theta(x^i)).h_\theta(x^i)x_j^i\\
-\frac{d}{d\theta_j} J(\theta) = \frac{1}{m}\sum_{i=1}^m(h_\theta(x^i)-y^i)x^i_j\\
-\frac{d}{dx}g(x) = g(x)(1-g(x))</script><p><strong>vectorization</strong></p>
-<script type="math/tex; mode=display">
-h_\theta(x) = sigmoid(\theta^Tx)\\
-\theta = \theta - \alpha\frac{1}{m} \sum_{i=1}^m(h_\theta(x^i)-y^i)x^i_j\\
-\frac{d}{d\theta_j} J(\theta) = X^T\times (sigmoid(\theta^TX)-y)</script><p>so in OCTAVE or MATLAB, the <strong>Gradient descent</strong> can be represented:</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theta = theta - alpha/m * X'*(sigmoid(theta'*X)-y)</span><br></pre></td></tr></table></figure>
-<p><a href="http://ufldl.stanford.edu/wiki/index.php/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E5%90%91%E9%87%8F%E5%8C%96%E5%AE%9E%E7%8E%B0%E6%A0%B7%E4%BE%8B" target="_blank" rel="noopener">REF</a></p>
-<h3 id="Multiclass-Classfication"><a href="#Multiclass-Classfication" class="headerlink" title="Multiclass Classfication"></a>Multiclass Classfication</h3><h4 id="One-vs-all"><a href="#One-vs-all" class="headerlink" title="One-vs-all"></a>One-vs-all</h4><h3 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h3><h4 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h4><script type="math/tex; mode=display">
-J(\theta) = \frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^i)-y^i)^2+\lambda\sum_{j=1}^n(\theta_j)^2]</script><p>The λ, or lambda, is the <strong>regularization parameter</strong>. It determines how much the costs of our theta parameters are inflated.</p>
-<p>If lambda is very large, it will cause the underfitting of the model. All the theta will close to 0.</p>
-<h4 id="Regularized-Linear-Regression"><a href="#Regularized-Linear-Regression" class="headerlink" title="Regularized Linear Regression"></a>Regularized Linear Regression</h4><p><strong>Gradient Descent</strong></p>
-<script type="math/tex; mode=display">
-\theta_0 = \theta_0 - \alpha\frac{1}{m}\sum_{i=1}^m (h_\theta(x^i) - y^i)x^i_0\\
-\theta_j = \theta_j - \alpha \frac{1}{m}[ \sum_{i = 1}^m(h_\theta(x^i)-y^i)x_j^i + \frac{\lambda}{m}\theta_j]\\
-\theta_j = \theta_j(1-\alpha\frac{\lambda}{m}) - \frac{\alpha}{m}\sum_{i = 1}^m(h_\theta(x^i)-y^i)x_j^i\\
-1-\alpha\frac{\lambda}{m} \rightarrow 1\\</script><p>It is simmilar to the linear regression</p>
 
       
     </div>
@@ -502,9 +425,7 @@ J(\theta) = \frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^i)-y^i)^2+\lambda\sum_{j=1}^n(\
       
         <div class="post-tags">
           
-            <a href="/tags/note/" rel="tag"># note</a>
-          
-            <a href="/tags/ML/" rel="tag"># ML</a>
+            <a href="/tags/【note-summary-Machine-Learning】/" rel="tag"># 【note, summary, Machine-Learning】</a>
           
         </div>
       
@@ -517,8 +438,8 @@ J(\theta) = \frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^i)-y^i)^2+\lambda\sum_{j=1}^n(\
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/12/Final-Project-Revision/" rel="next" title="Final Project Revision">
-                <i class="fa fa-chevron-left"></i> Final Project Revision
+              <a href="/2018/09/09/Machine-Learning-Notes/" rel="next" title="Machine Learning Notes">
+                <i class="fa fa-chevron-left"></i> Machine Learning Notes
               </a>
             
           </div>
@@ -526,10 +447,6 @@ J(\theta) = \frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^i)-y^i)^2+\lambda\sum_{j=1}^n(\
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/13/Machine-Learning-Notes-StrandfordCourse/" rel="prev" title="Machine-Learning-Notes_StrandfordCourse">
-                Machine-Learning-Notes_StrandfordCourse <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -652,7 +569,7 @@ J(\theta) = \frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^i)-y^i)^2+\lambda\sum_{j=1}^n(\
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week1"><span class="nav-number">1.</span> <span class="nav-text">Week1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-regression-and-Vectorization"><span class="nav-number">1.1.</span> <span class="nav-text">Linear regression and Vectorization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vectorization"><span class="nav-number">1.2.</span> <span class="nav-text">Vectorization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-Equation"><span class="nav-number">2.1.</span> <span class="nav-text">Normal Equation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-3"><span class="nav-number">3.</span> <span class="nav-text">Week 3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Octave-COMMONDS"><span class="nav-number">3.1.</span> <span class="nav-text">Octave COMMONDS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-4"><span class="nav-number">4.</span> <span class="nav-text">Week 4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Classification-and-Representation"><span class="nav-number">4.1.</span> <span class="nav-text">Classification and Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logistic-Regression-Model"><span class="nav-number">4.1.1.</span> <span class="nav-text">Logistic Regression Model</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiclass-Classfication"><span class="nav-number">4.2.</span> <span class="nav-text">Multiclass Classfication</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#One-vs-all"><span class="nav-number">4.2.1.</span> <span class="nav-text">One-vs-all</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Overfitting"><span class="nav-number">4.3.</span> <span class="nav-text">Overfitting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cost-Function"><span class="nav-number">4.3.1.</span> <span class="nav-text">Cost Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularized-Linear-Regression"><span class="nav-number">4.3.2.</span> <span class="nav-text">Regularized Linear Regression</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week1"><span class="nav-number">1.</span> <span class="nav-text">Week1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-regression-and-Vectorization"><span class="nav-number">1.1.</span> <span class="nav-text">Linear regression and Vectorization</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vectorization-of-Linear-Regression"><span class="nav-number">1.1.1.</span> <span class="nav-text">Vectorization of Linear Regression</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-Equation"><span class="nav-number">2.1.</span> <span class="nav-text">Normal Equation</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -852,26 +769,6 @@ J(\theta) = \frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^i)-y^i)^2+\lambda\sum_{j=1}^n(\
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
