@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Week1Linear regression and VectorizationFirst the basic linear function, n is the dimension of the features.  h_\theta(x) = \sum_{i=0}^n \theta_ix_iThe cost function, m is the numebr of samples:  J(\t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-13T11:48:16.408Z">
+<meta property="og:updated_time" content="2018-09-13T13:55:50.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Machine-Learning-Notes_StrandfordCourse">
 <meta name="twitter:description" content="Week1Linear regression and VectorizationFirst the basic linear function, n is the dimension of the features.  h_\theta(x) = \sum_{i=0}^n \theta_ix_iThe cost function, m is the numebr of samples:  J(\t">
@@ -389,8 +389,8 @@ h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the
 <td>No need to iterate</td>
 </tr>
 <tr>
-<td>O (kn^2kn2)$\theta(k_n^2 )$</td>
-<td>O (n^3n3), need to calculate inverse of X^TXXTX</td>
+<td>$\theta(k_n^2 )$</td>
+<td>$\theta(n^3)$, need to calculate inverse of $X^TX$</td>
 </tr>
 <tr>
 <td>Works well when n is large</td>
@@ -401,13 +401,109 @@ h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the
 </div>
 <ol>
 <li><p>some problems when using Normal Equation</p>
-<p>a) if XTX$X^TX$ noninvertable</p>
+<p>a) if $X^TX$ noninvertable</p>
 <ul>
 <li>Redundant features, where two features are very closely related (i.e. they are linearly dependent)</li>
 <li>Too many features (e.g. m ≤ n). In this case, delete some features or use “regularization” (to be explained in a later lesson).</li>
 </ul>
 </li>
 </ol>
+<h2 id="Week-3"><a href="#Week-3" class="headerlink" title="Week 3"></a>Week 3</h2><h3 id="Octave-COMMONDS"><a href="#Octave-COMMONDS" class="headerlink" title="Octave COMMONDS"></a>Octave COMMONDS</h3><p>REF: <a href="https://blog.csdn.net/u011415481/article/details/49969447" target="_blank" rel="noopener">OCTAVE COMMONDS</a></p>
+<ol>
+<li>hist()** : </li>
+<li><strong>length</strong>(): show the max length of matrix</li>
+<li><strong>randn</strong>(): create normal random numbers between -1- +1</li>
+<li><strong>rand</strong>: create random number between 0-1</li>
+<li><strong>load</strong>: load the data in the file</li>
+<li><strong>who</strong>: show all variables</li>
+<li><strong>whos</strong>: show the detail of all the variables</li>
+<li><strong>size()</strong>: show the size of matrix</li>
+<li><strong>clear</strong>: clear all the variables</li>
+<li><strong>save filename dataname /-ascii/</strong> save the data into files</li>
+<li><strong>A(x,y)</strong>: x col and y row of matrix A</li>
+<li><strong>A(:,2)</strong>: all the elements in col 2</li>
+<li><strong>A([1 3],:)</strong>show all the elements from col 1 to 3</li>
+<li><strong>A(:)  Put all elements of A into a single vector</strong></li>
+<li><strong>C = [A B]</strong>: combine two matrix right and left</li>
+<li><strong>C = [A ; B]</strong>: combine two matrix up and down</li>
+<li><strong>PS1(‘’)</strong>: determine the theme</li>
+<li><strong>A .* B</strong>: element-wise multiplication</li>
+<li><strong>A .^2</strong>: element-wise power</li>
+<li><strong>1 ./ A</strong>: element-wise reciprocal</li>
+<li><strong>exp(A), abs(A), log(A)</strong></li>
+<li><strong>ones(x,y), eye(x,y)</strong></li>
+<li><strong>A’: transpose of A</strong></li>
+<li>find(condition)</li>
+<li>sum()</li>
+<li><strong>floor()</strong>: round down</li>
+<li>ceil()</li>
+<li>pinv(A): inverse of matrix A</li>
+<li>plot()</li>
+<li>print -dpng ‘<em>*</em>.png’</li>
+<li>subplot()</li>
+<li>axis([])</li>
+<li>clf</li>
+<li>imagesc(A)</li>
+<li>addpath()</li>
+</ol>
+<h2 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h2><h3 id="Classification-and-Representation"><a href="#Classification-and-Representation" class="headerlink" title="Classification and Representation"></a><strong>Classification and Representation</strong></h3><h4 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h4><script type="math/tex; mode=display">
+h_\theta(x) = g(x\theta)</script><p>g(x) is called <strong>Sigmoid function </strong>or <strong>Logistic function</strong></p>
+<script type="math/tex; mode=display">
+g(x) = \frac{1}{1+e^{-x}}\\
+h_\theta(x) = \frac{1}{1+e^{-x\theta}}</script><p><strong>Cost Function</strong></p>
+<script type="math/tex; mode=display">
+J(\theta) = \frac{1}{m}\sum_{i=1}^m Cost(h_\theta(x^i), y^i)\\
+Cost(h_\theta(x^i), y^i) = -log(h_\theta(x)) \quad if \; y=1;\\
+Cost(h_\theta(x^i), y^i) = -log(1- h_\theta(x)) \quad if \; y=0;</script><p>the cost function can be written in a simpler way when y must equals 1 or 0:</p>
+<script type="math/tex; mode=display">
+Cost(h_\theta(x), y)=-y\log(h_\theta(x)) - (1-y)\log(1-h_\theta(x))</script><p><strong>Simplified Cost Function</strong></p>
+<script type="math/tex; mode=display">
+J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\theta(x^i))]\\
+\theta_j = \theta_j - \alpha \frac{d}{d\theta_j}J_\theta(x)\\
+\theta_j = \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^i)-y^i)x^i_j</script><p>The Gradient descent seems the same as linear regression, however it is not the same. Because the h(x) is no longer the linear one.</p>
+<p><strong>Proof</strong></p>
+<script type="math/tex; mode=display">
+\frac{d}{d\theta_j} J(\theta) = -\frac{1}{m} \sum_{i=1}^m [y^i. h_\theta(x^i)^{-1}.\frac{d}{d\theta_j}h_\theta(x^i)+(1-y^i).(1-h_\theta(x^i))^{-1}.\frac{d}{d\theta_j}h_\theta(x^i)]\\
+\frac{d}{d\theta_j} J(\theta) = \frac{1}{m} \sum_{i=1}^m \frac{h_\theta(x^i) - y^i}{(1-h_\theta(x^i))h_\theta(x^i)} . \frac{d}{d\theta_j}h_\theta(x^i)\\
+hint: \log(x)' = 1/x\\
+(a^x)' = a^x . \ln(a)\\
+\frac{d}{d\theta_j}h_\theta(x^i) = -(1+e^{-\theta^Tx})^{-2}. e^{-\theta^Tx}. x_j^i\\
+\frac{d}{d\theta_j}h_\theta(x^i) =(1-h_\theta(x^i)).h_\theta(x^i)x_j^i\\
+\frac{d}{d\theta_j} J(\theta) = \frac{1}{m}\sum_{i=1}^m(h_\theta(x^i)-y^i)x^i_j\\
+\frac{d}{dx}g(x) = g(x)(1-g(x))</script><p><strong>vectorization</strong></p>
+<script type="math/tex; mode=display">
+h_\theta(x) = sigmoid(\theta^Tx)\\
+\theta = \theta - \alpha\frac{1}{m} \sum_{i=1}^m(h_\theta(x^i)-y^i)x^i_j\\
+\frac{d}{d\theta} J(\theta) = X^T\times (sigmoid(X\theta)-y)</script><p>so in OCTAVE or MATLAB, the <strong>Gradient descent</strong> can be represented:</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">g = <span class="number">1</span>/(<span class="number">1</span>+<span class="built_in">exp</span>(-z))</span><br><span class="line">J = <span class="number">-1</span>/m*(y'*<span class="built_in">log</span>(sigmoid(X*theta))+(<span class="number">1</span>-y)'*<span class="built_in">log</span>(<span class="number">1</span>-sigmoid(X*theta)))</span><br><span class="line">grad =  <span class="number">1</span>/m*X'*(sigmoid(theta'*X)-y)</span><br><span class="line">grad(<span class="built_in">i</span>) = <span class="number">1</span>/m*(X:,<span class="built_in">i</span>)'*(sigmoid(X*theta)-y)</span><br><span class="line">theta = theta - alpha/m * X'*(sigmoid(theta'*X)-y)</span><br></pre></td></tr></table></figure>
+<p><a href="http://ufldl.stanford.edu/wiki/index.php/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E5%90%91%E9%87%8F%E5%8C%96%E5%AE%9E%E7%8E%B0%E6%A0%B7%E4%BE%8B" target="_blank" rel="noopener">REF</a></p>
+<h3 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h3><p>In order to solve the overfitting problem, we introduced regularization to avoid the model from being too complicated.</p>
+<h4 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h4><script type="math/tex; mode=display">
+J(\theta) = \frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^i)-y^i)^2+\lambda\sum_{j=1}^n(\theta_j)^2]</script><p>The λ, or lambda, is the <strong>regularization parameter</strong>. It determines how much the costs of our theta parameters are inflated.</p>
+<p>If lambda is very large, it will cause the underfitting of the model. All the theta will close to 0.</p>
+<h4 id="Regularized-Linear-Regression"><a href="#Regularized-Linear-Regression" class="headerlink" title="Regularized Linear Regression"></a>Regularized Linear Regression</h4><p><strong>Gradient Descent</strong></p>
+<script type="math/tex; mode=display">
+\theta_0 = \theta_0 - \alpha\frac{1}{m}\sum_{i=1}^m (h_\theta(x^i) - y^i)x^i_0\\
+\theta_j = \theta_j - \alpha \frac{1}{m}[ \sum_{i = 1}^m(h_\theta(x^i)-y^i)x_j^i + \frac{\lambda}{m}\theta_j]\\
+\theta_j = \theta_j(1-\alpha\frac{\lambda}{m}) - \frac{\alpha}{m}\sum_{i = 1}^m(h_\theta(x^i)-y^i)x_j^i\\
+1-\alpha\frac{\lambda}{m} \rightarrow 1\\</script><p>It is simmilar to the linear regression</p>
+<p>In OCTAVE:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">J = 1 / 2m * ((X * theta-y)&apos;*(X * theta-y) + lambda*theta&apos;*theta)</span><br><span class="line">theta = theta*(1-lambda*alpha/m) - alpha/m * X&apos;*(sigmoid(theta&apos;*X)-y)</span><br><span class="line">grad = </span><br><span class="line">grad(i) =</span><br></pre></td></tr></table></figure>
+<p><strong>Normal Equation</strong></p>
+<script type="math/tex; mode=display">
+\theta = (X^TX+\lambda L)^{-1}X^Ty\\
+where \; L=\begin{bmatrix}
+0\\
+0& 1\\
+0& 0&1\\
+\vdots & \vdots & \vdots & \ddots\\
+0&0&0&0&1
+
+\end{bmatrix}</script><h4 id="Regularized-logistic-regression"><a href="#Regularized-logistic-regression" class="headerlink" title="Regularized logistic regression"></a>Regularized logistic regression</h4><script type="math/tex; mode=display">
+J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\theta(x^i))] + \frac{\lambda}{2m}\sum_{j=1}^{n}\theta_j^2\\
+\theta_0 = \theta_0 - \alpha\frac{1}{m}\sum_{i=1}^m (h_\theta(x^i) - y^i)x^i_0\\
+\theta_j = \theta_j  - \alpha[ \frac{1}{m}\sum_{i = 1}^m(h_\theta(x^i)-y^i)x_j^i + \frac{\lambda}{m}\theta_j]\\</script><p>in OCTAVE:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">J = -1/m*(y&apos;*log(sigmoid(X*theta))+(1-y)&apos;*log(1-sigmoid(X*theta)))+lambda/(m*2)*(theta&apos;*theta)</span><br><span class="line">grad = 1/m *( X&apos;*(sigmoid(X*theta)-y)+lambda*theta)</span><br><span class="line">theta = theta*(1-lambda*alpha/m) - alpha/m * X&apos;*(sigmoid(theta&apos;*X)-y)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -438,8 +534,8 @@ h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/09/Machine-Learning-Notes/" rel="next" title="Machine Learning Notes">
-                <i class="fa fa-chevron-left"></i> Machine Learning Notes
+              <a href="/2018/05/12/Final-Project-Revision/" rel="next" title="Final Project Revision">
+                <i class="fa fa-chevron-left"></i> Final Project Revision
               </a>
             
           </div>
@@ -523,7 +619,7 @@ h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -569,7 +665,7 @@ h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week1"><span class="nav-number">1.</span> <span class="nav-text">Week1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-regression-and-Vectorization"><span class="nav-number">1.1.</span> <span class="nav-text">Linear regression and Vectorization</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vectorization-of-Linear-Regression"><span class="nav-number">1.1.1.</span> <span class="nav-text">Vectorization of Linear Regression</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-Equation"><span class="nav-number">2.1.</span> <span class="nav-text">Normal Equation</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week1"><span class="nav-number">1.</span> <span class="nav-text">Week1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-regression-and-Vectorization"><span class="nav-number">1.1.</span> <span class="nav-text">Linear regression and Vectorization</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Vectorization-of-Linear-Regression"><span class="nav-number">1.1.1.</span> <span class="nav-text">Vectorization of Linear Regression</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-2"><span class="nav-number">2.</span> <span class="nav-text">Week 2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-Equation"><span class="nav-number">2.1.</span> <span class="nav-text">Normal Equation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-3"><span class="nav-number">3.</span> <span class="nav-text">Week 3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Octave-COMMONDS"><span class="nav-number">3.1.</span> <span class="nav-text">Octave COMMONDS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-4"><span class="nav-number">4.</span> <span class="nav-text">Week 4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Classification-and-Representation"><span class="nav-number">4.1.</span> <span class="nav-text">Classification and Representation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Logistic-Regression-Model"><span class="nav-number">4.1.1.</span> <span class="nav-text">Logistic Regression Model</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Overfitting"><span class="nav-number">4.2.</span> <span class="nav-text">Overfitting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Cost-Function"><span class="nav-number">4.2.1.</span> <span class="nav-text">Cost Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularized-Linear-Regression"><span class="nav-number">4.2.2.</span> <span class="nav-text">Regularized Linear Regression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Regularized-logistic-regression"><span class="nav-number">4.2.3.</span> <span class="nav-text">Regularized logistic regression</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

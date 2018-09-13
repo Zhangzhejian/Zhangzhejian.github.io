@@ -389,8 +389,8 @@ h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the
 <td>No need to iterate</td>
 </tr>
 <tr>
-<td>O (kn^2kn2)$\theta(k_n^2 )$</td>
-<td>O (n^3n3), need to calculate inverse of X^TXXTX</td>
+<td>$\theta(k_n^2 )$</td>
+<td>$\theta(n^3)$, need to calculate inverse of $X^TX$</td>
 </tr>
 <tr>
 <td>Works well when n is large</td>
@@ -401,233 +401,7 @@ h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the
 </div>
 <ol>
 <li><p>some problems when using Normal Equation</p>
-<p>a) if XTX$X^TX$ noninvertable</p>
-<ul>
-<li>Redundant features, where two features are very closely related (i.e. they are linearly dependent)</li>
-<li>Too many features (e.g. m ≤ n). In this case, delete some features or use “regularization” (to be explained in a later lesson).</li>
-</ul>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/09/Machine-Learning-Notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/09/Machine-Learning-Notes/" itemprop="url">Machine Learning Notes</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-09T11:11:55+08:00">
-                2018-09-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Week1"><a href="#Week1" class="headerlink" title="Week1"></a>Week1</h2><h3 id="Linear-regression-and-Vectorization"><a href="#Linear-regression-and-Vectorization" class="headerlink" title="Linear regression and Vectorization"></a>Linear regression and Vectorization</h3><p>First the basic linear function, n is the dimension of the features.</p>
-<script type="math/tex; mode=display">
-h_\theta(x) = \sum_{i=0}^n \theta_ix_i</script><p>The cost function, m is the numebr of samples:</p>
-<script type="math/tex; mode=display">
-J(\theta) = \cfrac{1}{2m}\sum_{i=1}^m(h_\theta(x^i)-y^i)^2</script><script type="math/tex; mode=display">
-\cfrac{\mathrm{d}}{\mathrm{d\theta}}J(\theta) = \cfrac{1}{m}\sum_{i=0}^m(h_\theta(x^i)-y^i)*\cfrac{\mathrm{d}}{\mathrm{d\theta}}h_\theta(x)</script><p>so </p>
-<script type="math/tex; mode=display">
-\theta = \theta - \alpha\cfrac{\mathrm{d}}{\mathrm{d\theta}}J(\theta)</script><script type="math/tex; mode=display">
-\theta_j = \theta_j- \alpha\cfrac{1}{m}\sum_{i=1}^m(h_\theta(x^i)-y^i)x^i_j \quad(1)</script><h3 id="Vectorization"><a href="#Vectorization" class="headerlink" title="Vectorization"></a><strong>Vectorization</strong></h3><p>the sample matrix X, n rows and m colms.</p>
-<p>n is the dimention of the features and m is the number of samples</p>
-<script type="math/tex; mode=display">
-X(m\times n) = \begin{bmatrix}
-x_0^1 & x_1^1 & x_2^1&....&x^1_n\\
-x_0^2 & x_1^2 & x_2^2&....&x^2_n\\
-x_0^3 & x_1^3 & x_2^3&....&x^3_n\\
-.&.&.&...&.\\
-.&.&.&...&.\\
-.&.&.&...&.\\
-x_0^m & x_1^m & x_2^m&....&x^m_n\\
-\end{bmatrix}</script><p>Y is the Matrix of sample results with m columns</p>
-<script type="math/tex; mode=display">
-Y(m \times 1)= 
-\begin{bmatrix}
-y^1\\
-y^2\\
-y^3\\
-.\\.\\.\\
-y^m
-\end{bmatrix}</script><p>thus</p>
-<script type="math/tex; mode=display">
-h_\theta(x^i)  = X^i\times\theta^T = 
-\begin{bmatrix}
-h_\theta(x^1)\\
-h_\theta(x^2)\\
-h_\theta(x^3)\\
-.\\ .\\ .\\ 
-h_\theta(x^m)
-\end{bmatrix}</script><p>so the cost function can be transform into</p>
-<script type="math/tex; mode=display">
-J(\theta) = \cfrac{1}{2m}\sum_{i=1}^m(h_\theta(x^i)-y^i)^2</script><p>so in the vectorization, the h(x) can be present in a different way</p>
-<script type="math/tex; mode=display">
-h_\theta(x) =X^i*\theta</script><p>where</p>
-<script type="math/tex; mode=display">
-x = [x_0, x_1, x_2....x_{n-1}]^T</script><script type="math/tex; mode=display">
-\theta = [\theta_0, \theta_1, \theta_2...\theta_{n-1}]^T</script><p>and also we want to change equation (1) into the vectorization form to reduce the loop</p>
-<script type="math/tex; mode=display">
-\theta = \theta - \alpha\delta</script><script type="math/tex; mode=display">
-\delta = [\delta_0,\delta_1, \delta_2 ...\delta_n]^T</script><script type="math/tex; mode=display">
-\delta_j =\cfrac{1}{m}\sum_{i=1}^m(h_\theta(x^i)-y^i)x^i_j = \cfrac{1}{m}(X\theta - y ) \times \overrightarrow{X_j}</script><script type="math/tex; mode=display">
-\overrightarrow{X_j} = 
-\begin{bmatrix}
- x_j^1\\
- x_j^2\\
- \vdots \\
- x_j^m
-\end{bmatrix}
-(m \times 1)</script><script type="math/tex; mode=display">
-\delta = \cfrac{1}{m} \times tem^T \times X</script><script type="math/tex; mode=display">
-\theta' = \theta - \cfrac{\alpha}{m} \times X^T \times(X \times \theta - y)</script><p>so the new function after gradient descent becomes</p>
-<script type="math/tex; mode=display">
-h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the code can be presented by only one code:</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theta = theta - alpha / m * X' * (X * theta - y);</span><br></pre></td></tr></table></figure>
-<p>In python3:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theta -= alpha / m * X.T @ (X @ theta - y)</span><br></pre></td></tr></table></figure>
-<h2 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a>Week 2</h2><h3 id="Normal-Equation"><a href="#Normal-Equation" class="headerlink" title="Normal Equation"></a>Normal Equation</h3><p>REF: <a href="https://blog.csdn.net/huruzun/article/details/41493063" target="_blank" rel="noopener">Normal Equations 的由来与推导</a></p>
-<script type="math/tex; mode=display">
-θ=(X^TX)^{-1} X^Ty</script><p><strong>NOTIFICATION:</strong></p>
-<ol>
-<li>WHEN to use Normal Equation or Gradient Descent</li>
-</ol>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Gradient Descent</th>
-<th>Normal Equation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Need to choose alpha</td>
-<td>No need to choose alpha</td>
-</tr>
-<tr>
-<td>Needs many iterations</td>
-<td>No need to iterate</td>
-</tr>
-<tr>
-<td>O (kn^2kn2)</td>
-<td>O (n^3n3), need to calculate inverse of X^TXXTX</td>
-</tr>
-<tr>
-<td>Works well when n is large</td>
-<td>Slow if n is very large</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ol>
-<li><p>some problems when using Normal Equation</p>
-<p>a) if XTX noninvertable</p>
+<p>a) if $X^TX$ noninvertable</p>
 <ul>
 <li>Redundant features, where two features are very closely related (i.e. they are linearly dependent)</li>
 <li>Too many features (e.g. m ≤ n). In this case, delete some features or use “regularization” (to be explained in a later lesson).</li>
@@ -672,11 +446,11 @@ h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the
 <li>imagesc(A)</li>
 <li>addpath()</li>
 </ol>
-<h2 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h2><h3 id="Classification-and-Representation"><a href="#Classification-and-Representation" class="headerlink" title="Classification and Representation"></a>Classification and Representation</h3><h4 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h4><script type="math/tex; mode=display">
-h_\theta(x) = g(\theta^Tx)</script><p>g(x) is called <strong>Sigmoid function </strong>or <strong>Logistic function</strong></p>
+<h2 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h2><h3 id="Classification-and-Representation"><a href="#Classification-and-Representation" class="headerlink" title="Classification and Representation"></a><strong>Classification and Representation</strong></h3><h4 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h4><script type="math/tex; mode=display">
+h_\theta(x) = g(x\theta)</script><p>g(x) is called <strong>Sigmoid function </strong>or <strong>Logistic function</strong></p>
 <script type="math/tex; mode=display">
 g(x) = \frac{1}{1+e^{-x}}\\
-h_\theta(x) = \frac{1}{1+e^{-\theta^Tx}}</script><p><strong>Cost Function</strong></p>
+h_\theta(x) = \frac{1}{1+e^{-x\theta}}</script><p><strong>Cost Function</strong></p>
 <script type="math/tex; mode=display">
 J(\theta) = \frac{1}{m}\sum_{i=1}^m Cost(h_\theta(x^i), y^i)\\
 Cost(h_\theta(x^i), y^i) = -log(h_\theta(x)) \quad if \; y=1;\\
@@ -687,7 +461,7 @@ Cost(h_\theta(x), y)=-y\log(h_\theta(x)) - (1-y)\log(1-h_\theta(x))</script><p><
 J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\theta(x^i))]\\
 \theta_j = \theta_j - \alpha \frac{d}{d\theta_j}J_\theta(x)\\
 \theta_j = \theta_j - \alpha \frac{1}{m}\sum_{i=1}^m(h_\theta(x^i)-y^i)x^i_j</script><p>The Gradient descent seems the same as linear regression, however it is not the same. Because the h(x) is no longer the linear one.</p>
-<p>Proof:</p>
+<p><strong>Proof</strong></p>
 <script type="math/tex; mode=display">
 \frac{d}{d\theta_j} J(\theta) = -\frac{1}{m} \sum_{i=1}^m [y^i. h_\theta(x^i)^{-1}.\frac{d}{d\theta_j}h_\theta(x^i)+(1-y^i).(1-h_\theta(x^i))^{-1}.\frac{d}{d\theta_j}h_\theta(x^i)]\\
 \frac{d}{d\theta_j} J(\theta) = \frac{1}{m} \sum_{i=1}^m \frac{h_\theta(x^i) - y^i}{(1-h_\theta(x^i))h_\theta(x^i)} . \frac{d}{d\theta_j}h_\theta(x^i)\\
@@ -700,10 +474,11 @@ hint: \log(x)' = 1/x\\
 <script type="math/tex; mode=display">
 h_\theta(x) = sigmoid(\theta^Tx)\\
 \theta = \theta - \alpha\frac{1}{m} \sum_{i=1}^m(h_\theta(x^i)-y^i)x^i_j\\
-\frac{d}{d\theta_j} J(\theta) = X^T\times (sigmoid(\theta^TX)-y)</script><p>so in OCTAVE or MATLAB, the <strong>Gradient descent</strong> can be represented:</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theta = theta - alpha/m * X'*(sigmoid(theta'*X)-y)</span><br></pre></td></tr></table></figure>
+\frac{d}{d\theta} J(\theta) = X^T\times (sigmoid(X\theta)-y)</script><p>so in OCTAVE or MATLAB, the <strong>Gradient descent</strong> can be represented:</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">g = <span class="number">1</span>/(<span class="number">1</span>+<span class="built_in">exp</span>(-z))</span><br><span class="line">J = <span class="number">-1</span>/m*(y'*<span class="built_in">log</span>(sigmoid(X*theta))+(<span class="number">1</span>-y)'*<span class="built_in">log</span>(<span class="number">1</span>-sigmoid(X*theta)))</span><br><span class="line">grad =  <span class="number">1</span>/m*X'*(sigmoid(theta'*X)-y)</span><br><span class="line">grad(<span class="built_in">i</span>) = <span class="number">1</span>/m*(X:,<span class="built_in">i</span>)'*(sigmoid(X*theta)-y)</span><br><span class="line">theta = theta - alpha/m * X'*(sigmoid(theta'*X)-y)</span><br></pre></td></tr></table></figure>
 <p><a href="http://ufldl.stanford.edu/wiki/index.php/%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E7%9A%84%E5%90%91%E9%87%8F%E5%8C%96%E5%AE%9E%E7%8E%B0%E6%A0%B7%E4%BE%8B" target="_blank" rel="noopener">REF</a></p>
-<h3 id="Multiclass-Classfication"><a href="#Multiclass-Classfication" class="headerlink" title="Multiclass Classfication"></a>Multiclass Classfication</h3><h4 id="One-vs-all"><a href="#One-vs-all" class="headerlink" title="One-vs-all"></a>One-vs-all</h4><h3 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h3><h4 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h4><script type="math/tex; mode=display">
+<h3 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h3><p>In order to solve the overfitting problem, we introduced regularization to avoid the model from being too complicated.</p>
+<h4 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h4><script type="math/tex; mode=display">
 J(\theta) = \frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^i)-y^i)^2+\lambda\sum_{j=1}^n(\theta_j)^2]</script><p>The λ, or lambda, is the <strong>regularization parameter</strong>. It determines how much the costs of our theta parameters are inflated.</p>
 <p>If lambda is very large, it will cause the underfitting of the model. All the theta will close to 0.</p>
 <h4 id="Regularized-Linear-Regression"><a href="#Regularized-Linear-Regression" class="headerlink" title="Regularized Linear Regression"></a>Regularized Linear Regression</h4><p><strong>Gradient Descent</strong></p>
@@ -712,6 +487,23 @@ J(\theta) = \frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^i)-y^i)^2+\lambda\sum_{j=1}^n(\
 \theta_j = \theta_j - \alpha \frac{1}{m}[ \sum_{i = 1}^m(h_\theta(x^i)-y^i)x_j^i + \frac{\lambda}{m}\theta_j]\\
 \theta_j = \theta_j(1-\alpha\frac{\lambda}{m}) - \frac{\alpha}{m}\sum_{i = 1}^m(h_\theta(x^i)-y^i)x_j^i\\
 1-\alpha\frac{\lambda}{m} \rightarrow 1\\</script><p>It is simmilar to the linear regression</p>
+<p>In OCTAVE:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">J = 1 / 2m * ((X * theta-y)&apos;*(X * theta-y) + lambda*theta&apos;*theta)</span><br><span class="line">theta = theta*(1-lambda*alpha/m) - alpha/m * X&apos;*(sigmoid(theta&apos;*X)-y)</span><br><span class="line">grad = </span><br><span class="line">grad(i) =</span><br></pre></td></tr></table></figure>
+<p><strong>Normal Equation</strong></p>
+<script type="math/tex; mode=display">
+\theta = (X^TX+\lambda L)^{-1}X^Ty\\
+where \; L=\begin{bmatrix}
+0\\
+0& 1\\
+0& 0&1\\
+\vdots & \vdots & \vdots & \ddots\\
+0&0&0&0&1
+
+\end{bmatrix}</script><h4 id="Regularized-logistic-regression"><a href="#Regularized-logistic-regression" class="headerlink" title="Regularized logistic regression"></a>Regularized logistic regression</h4><script type="math/tex; mode=display">
+J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\theta(x^i))] + \frac{\lambda}{2m}\sum_{j=1}^{n}\theta_j^2\\
+\theta_0 = \theta_0 - \alpha\frac{1}{m}\sum_{i=1}^m (h_\theta(x^i) - y^i)x^i_0\\
+\theta_j = \theta_j  - \alpha[ \frac{1}{m}\sum_{i = 1}^m(h_\theta(x^i)-y^i)x_j^i + \frac{\lambda}{m}\theta_j]\\</script><p>in OCTAVE:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">J = -1/m*(y&apos;*log(sigmoid(X*theta))+(1-y)&apos;*log(1-sigmoid(X*theta)))+lambda/(m*2)*(theta&apos;*theta)</span><br><span class="line">grad = 1/m *( X&apos;*(sigmoid(X*theta)-y)+lambda*theta)</span><br><span class="line">theta = theta*(1-lambda*alpha/m) - alpha/m * X&apos;*(sigmoid(theta&apos;*X)-y)</span><br></pre></td></tr></table></figure>
 
           
         
@@ -1640,7 +1432,7 @@ J(\theta) = \frac{1}{2m}[\sum_{i=1}^m(h_\theta(x^i)-y^i)^2+\lambda\sum_{j=1}^n(\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
