@@ -229,6 +229,137 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/" itemprop="url">Machine Learning Notes StrandfordCourse 2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-23T21:46:54+01:00">
+                2018-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h2><h3 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h3><h4 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h4><p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/0rgjYLDeEeajLxLfjQiSjg_0c07c56839f8d6e8d7b0d09acedc88fd_Screenshot-2016-11-22-10.08.51.png?expiry=1537833600000&amp;hmac=FRBeg-NN4oEZPKrlnOGAfcfpNXkgb9Z1SQ17aQB417Q" alt=""></p>
+<p>a_i^j =  activation of unit i in layer j</p>
+<p>$\theta^j =$ matrix of weights controlling function mapping from layer j to layer j+1</p>
+<script type="math/tex; mode=display">
+a_i^j = g(\theta^{j-1} \times X^{j-1})\\
+h_\theta(x) = a_1^j = g(\theta^{j-1}\times X^{j-1})\\
+\theta^j \times \begin{bmatrix}
+a_0^j\\a_1^j\\a_2^j\\a_3^j\\\vdots\\a^j_{s_j}
+\end{bmatrix} = \begin{bmatrix}
+a_1^{j+1}\\a_2^{j+1}\\a_3^{j+1}\\\vdots\\a^{j+1}_{s_{j+1}}
+\end{bmatrix}</script><p>so $\theta^j$ needs to be a $s_{j+1}\times (s_j+1)$ matrix</p>
+<p><strong>note</strong> : there will be a bias unit called $a_0^j$ be added every layer after computed</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -260,7 +391,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-13T12:36:23+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-13T12:36:23+01:00">
                 2018-09-13
               </time>
             
@@ -446,7 +577,7 @@ h'_\theta(x) = \sum_{i=0}^n \theta'_ix_i</script><p>In the MATLAB or Octave, the
 <li>imagesc(A)</li>
 <li>addpath()</li>
 </ol>
-<h2 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h2><h3 id="Classification-and-Representation"><a href="#Classification-and-Representation" class="headerlink" title="Classification and Representation"></a><strong>Classification and Representation</strong></h3><h4 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h4><script type="math/tex; mode=display">
+<h3 id="Classification-and-Representation"><a href="#Classification-and-Representation" class="headerlink" title="Classification and Representation"></a><strong>Classification and Representation</strong></h3><h4 id="Logistic-Regression-Model"><a href="#Logistic-Regression-Model" class="headerlink" title="Logistic Regression Model"></a>Logistic Regression Model</h4><script type="math/tex; mode=display">
 h_\theta(x) = g(x\theta)</script><p>g(x) is called <strong>Sigmoid function </strong>or <strong>Logistic function</strong></p>
 <script type="math/tex; mode=display">
 g(x) = \frac{1}{1+e^{-x}}\\
@@ -583,7 +714,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T14:10:58+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T14:10:58+01:00">
                 2018-05-12
               </time>
             
@@ -732,7 +863,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T13:49:25+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T13:49:25+01:00">
                 2018-05-12
               </time>
             
@@ -894,7 +1025,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-26T11:55:39+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-26T11:55:39+00:00">
                 2018-01-26
               </time>
             
@@ -1062,7 +1193,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-29T13:45:31+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-29T13:45:31+00:00">
                 2017-12-29
               </time>
             
@@ -1282,7 +1413,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T12:48:08+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T12:48:08+00:00">
                 2017-12-18
               </time>
             
@@ -1432,7 +1563,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1445,7 +1576,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
