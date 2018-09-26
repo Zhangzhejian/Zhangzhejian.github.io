@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="note,summary,Machine-Learning," />
+  <meta name="keywords" content="【note】," />
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="Week 4Neural NetworksModel Representation a_i^j =  activation of unit i in layer j $\theta^j =$ matrix of weights controlling function mapping from layer j to layer j+1  a_i^j = g(\theta^{j-1} \times">
-<meta name="keywords" content="note,summary,Machine-Learning">
+<meta name="description" content="Agents and Multi-Agent System智能体与多智能体系统Key pointsLecture 1 Introduction What’s an agent Reactive—Proactive(goal-oriented) proactive(goal-oriented)  What’s an agentTwo essential  features:  Antonomous">
+<meta name="keywords" content="【note】">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Machine Learning Notes StrandfordCourse 2">
-<meta property="og:url" content="https://octopusman.top/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/index.html">
+<meta property="og:title" content="NOTE_Agents and Multi-Agent System">
+<meta property="og:url" content="https://octopusman.top/2018/09/26/NOTE-Agents-and-Multi-Agent-System/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Week 4Neural NetworksModel Representation a_i^j =  activation of unit i in layer j $\theta^j =$ matrix of weights controlling function mapping from layer j to layer j+1  a_i^j = g(\theta^{j-1} \times">
+<meta property="og:description" content="Agents and Multi-Agent System智能体与多智能体系统Key pointsLecture 1 Introduction What’s an agent Reactive—Proactive(goal-oriented) proactive(goal-oriented)  What’s an agentTwo essential  features:  Antonomous">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/0rgjYLDeEeajLxLfjQiSjg_0c07c56839f8d6e8d7b0d09acedc88fd_Screenshot-2016-11-22-10.08.51.png?expiry=1537833600000&hmac=FRBeg-NN4oEZPKrlnOGAfcfpNXkgb9Z1SQ17aQB417Q">
-<meta property="og:updated_time" content="2018-09-23T21:22:46.485Z">
+<meta property="og:updated_time" content="2018-09-26T11:41:20.210Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Machine Learning Notes StrandfordCourse 2">
-<meta name="twitter:description" content="Week 4Neural NetworksModel Representation a_i^j =  activation of unit i in layer j $\theta^j =$ matrix of weights controlling function mapping from layer j to layer j+1  a_i^j = g(\theta^{j-1} \times">
-<meta name="twitter:image" content="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/0rgjYLDeEeajLxLfjQiSjg_0c07c56839f8d6e8d7b0d09acedc88fd_Screenshot-2016-11-22-10.08.51.png?expiry=1537833600000&hmac=FRBeg-NN4oEZPKrlnOGAfcfpNXkgb9Z1SQ17aQB417Q">
+<meta name="twitter:title" content="NOTE_Agents and Multi-Agent System">
+<meta name="twitter:description" content="Agents and Multi-Agent System智能体与多智能体系统Key pointsLecture 1 Introduction What’s an agent Reactive—Proactive(goal-oriented) proactive(goal-oriented)  What’s an agentTwo essential  features:  Antonomous">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://octopusman.top/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/"/>
+  <link rel="canonical" href="https://octopusman.top/2018/09/26/NOTE-Agents-and-Multi-Agent-System/"/>
 
 
 
 
 
-  <title>Machine Learning Notes StrandfordCourse 2 | Recap</title>
+  <title>NOTE_Agents and Multi-Agent System | Recap</title>
   
 
 
@@ -235,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/26/NOTE-Agents-and-Multi-Agent-System/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhejian">
@@ -252,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Machine Learning Notes StrandfordCourse 2</h1>
+          <h1 class="post-title" itemprop="name headline">NOTE_Agents and Multi-Agent System</h1>
         
 
         <div class="post-meta">
@@ -264,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-23T21:46:54+01:00">
-                2018-09-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-26T12:40:15+01:00">
+                2018-09-26
               </time>
             
 
@@ -302,19 +300,33 @@
       
 
       
-        <h2 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h2><h3 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h3><h4 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h4><p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/0rgjYLDeEeajLxLfjQiSjg_0c07c56839f8d6e8d7b0d09acedc88fd_Screenshot-2016-11-22-10.08.51.png?expiry=1537833600000&amp;hmac=FRBeg-NN4oEZPKrlnOGAfcfpNXkgb9Z1SQ17aQB417Q" alt=""></p>
-<p>a_i^j =  activation of unit i in layer j</p>
-<p>$\theta^j =$ matrix of weights controlling function mapping from layer j to layer j+1</p>
-<script type="math/tex; mode=display">
-a_i^j = g(\theta^{j-1} \times X^{j-1})\\
-h_\theta(x) = a_1^j = g(\theta^{j-1}\times X^{j-1})\\
-\theta^j \times \begin{bmatrix}
-a_0^j\\a_1^j\\a_2^j\\a_3^j\\\vdots\\a^j_{s_j}
-\end{bmatrix} = \begin{bmatrix}
-a_1^{j+1}\\a_2^{j+1}\\a_3^{j+1}\\\vdots\\a^{j+1}_{s_{j+1}}
-\end{bmatrix}</script><p>so $\theta^j$ needs to be a $s_{j+1}\times (s_j+1)$ matrix</p>
-<p><strong>note</strong> : there will be a bias unit called $a_0^j$ be added every layer after computed</p>
-
+        <h2 id="Agents-and-Multi-Agent-System"><a href="#Agents-and-Multi-Agent-System" class="headerlink" title="Agents and Multi-Agent System"></a>Agents and Multi-Agent System</h2><h2 id="智能体与多智能体系统"><a href="#智能体与多智能体系统" class="headerlink" title="智能体与多智能体系统"></a>智能体与多智能体系统</h2><h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h3><h3 id="Lecture-1-Introduction"><a href="#Lecture-1-Introduction" class="headerlink" title="Lecture 1 Introduction"></a>Lecture 1 Introduction</h3><ol>
+<li>What’s an agent</li>
+<li>Reactive—Proactive(goal-oriented)</li>
+<li>proactive(goal-oriented)</li>
+</ol>
+<h4 id="What’s-an-agent"><a href="#What’s-an-agent" class="headerlink" title="What’s an agent"></a>What’s an agent</h4><p>Two essential  features:</p>
+<ol>
+<li><strong>Antonomous</strong> (<strong>decide</strong> for themselves what to do) Control over internal state and over own behaviour.</li>
+<li><strong>Self-interested</strong> (act so as to try to <strong>achieve their goals</strong>)</li>
+</ol>
+<p>Intelligent agent: can work out best way to act in <strong>complex, unpredictable </strong> environment</p>
+<p>Want to delegate goals to the agent <u>without having to specify exactly how those goals should be achieved</u>. Agent <u>works out for itself</u> what to do to try to achieve its goals.</p>
+<h5 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a><strong>Definition</strong></h5><p><strong>A computer system capable of <u>flexible, autonomous (problem-solving) action</u>, situated in <u>dynamic, open, unpredictable and typically multi-agent domains.</u></strong></p>
+<p><strong>An agent </strong>is a computer system that is capable of <strong>independent</strong> action on behalf of its user or owner (figuring out what needs to be done <u>to satisfy design objectives</u>, rather than constantly being told).</p>
+<p><strong>A multi-agent </strong>system is one that consists of a number of agents, which <u>interact with one-another</u>. In the most general case, agents will be acting on behalf of users with different goals and motivations.</p>
+<p>To successfully interact, they will require the ability to <u>cooperate, coordinate, and negotiate</u> with each other, much as people do.</p>
+<h4 id="Compared-with"><a href="#Compared-with" class="headerlink" title="Compared with"></a>Compared with</h4><h5 id="AI"><a href="#AI" class="headerlink" title="AI:"></a>AI:</h5><p>Classical AI ignored social aspects of agency, which are important parts of intelligent activity in real-world setting.</p>
+<h5 id="Concurrent-Distributed-Systems"><a href="#Concurrent-Distributed-Systems" class="headerlink" title="Concurrent/Distributed Systems"></a>Concurrent/Distributed Systems</h5><ol>
+<li>Agents are autonomous, capable of making independent decisions</li>
+<li>Agents are self-interested</li>
+</ol>
+<h4 id="Flexable-Reactive-and-Proactive"><a href="#Flexable-Reactive-and-Proactive" class="headerlink" title="Flexable: Reactive and Proactive"></a><em>Flexable</em>: Reactive and Proactive</h4><h5 id="Reactivity-interact-with-environment-changes"><a href="#Reactivity-interact-with-environment-changes" class="headerlink" title="Reactivity (interact with environment changes)"></a>Reactivity (interact with environment changes)</h5><p>A reactive system is one that maintains an ongoing interaction with its environment, and responds to changes that occur in it (in time for the response to be useful).</p>
+<h5 id="Proactiveness-goal-oriented"><a href="#Proactiveness-goal-oriented" class="headerlink" title="Proactiveness (goal-oriented)"></a>Proactiveness (goal-oriented)</h5><p>Generating and attempting to <u>achieve goals</u>; not driven solely by events; taking the <strong>initiative</strong>(主动性).</p>
+<h4 id="Balancing-reactive-and-goal-oriented-behaviour"><a href="#Balancing-reactive-and-goal-oriented-behaviour" class="headerlink" title="Balancing reactive and goal-oriented behaviour"></a><u>Balancing reactive and goal-oriented behaviour</u></h4><h5 id="Reason"><a href="#Reason" class="headerlink" title="Reason:"></a>Reason:</h5><p>Reactivity means that the system needs to be passive while proactiveness requires the system to be proactive.</p>
+<h5 id="Multi-agent"><a href="#Multi-agent" class="headerlink" title="Multi-agent"></a>Multi-agent</h5><p>Agents need to be able to interact(communicates, coordinates, cooperates, competes, negotiates, delegates, persuades, incentivises …) with each other.</p>
+<p><strong>Social ability</strong> in agents is the ability to interact with other agents (and possibly humans) via some kind of agent-communication language, and perhaps cooperate with others.</p>
+<h2 id="Lecture-2"><a href="#Lecture-2" class="headerlink" title="Lecture 2"></a>Lecture 2</h2>
       
     </div>
     
@@ -331,11 +343,7 @@ a_1^{j+1}\\a_2^{j+1}\\a_3^{j+1}\\\vdots\\a^{j+1}_{s_{j+1}}
       
         <div class="post-tags">
           
-            <a href="/tags/note/" rel="tag"># note</a>
-          
-            <a href="/tags/summary/" rel="tag"># summary</a>
-          
-            <a href="/tags/Machine-Learning/" rel="tag"># Machine-Learning</a>
+            <a href="/tags/【note】/" rel="tag"># 【note】</a>
           
         </div>
       
@@ -348,8 +356,8 @@ a_1^{j+1}\\a_2^{j+1}\\a_3^{j+1}\\\vdots\\a^{j+1}_{s_{j+1}}
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/13/Machine-Learning-Notes-StrandfordCourse/" rel="next" title="Machine-Learning-Notes_StrandfordCourse">
-                <i class="fa fa-chevron-left"></i> Machine-Learning-Notes_StrandfordCourse
+              <a href="/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/" rel="next" title="Machine Learning Notes StrandfordCourse 2">
+                <i class="fa fa-chevron-left"></i> Machine Learning Notes StrandfordCourse 2
               </a>
             
           </div>
@@ -357,10 +365,6 @@ a_1^{j+1}\\a_2^{j+1}\\a_3^{j+1}\\\vdots\\a^{j+1}_{s_{j+1}}
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/26/NOTE-Agents-and-Multi-Agent-System/" rel="prev" title="NOTE_Agents and Multi-Agent System">
-                NOTE_Agents and Multi-Agent System <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -483,7 +487,7 @@ a_1^{j+1}\\a_2^{j+1}\\a_3^{j+1}\\\vdots\\a^{j+1}_{s_{j+1}}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Week-4"><span class="nav-number">1.</span> <span class="nav-text">Week 4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Neural-Networks"><span class="nav-number">1.1.</span> <span class="nav-text">Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Model-Representation"><span class="nav-number">1.1.1.</span> <span class="nav-text">Model Representation</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Agents-and-Multi-Agent-System"><span class="nav-number">1.</span> <span class="nav-text">Agents and Multi-Agent System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#智能体与多智能体系统"><span class="nav-number">2.</span> <span class="nav-text">智能体与多智能体系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Key-points"><span class="nav-number">2.1.</span> <span class="nav-text">Key points</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-1-Introduction"><span class="nav-number">2.2.</span> <span class="nav-text">Lecture 1 Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#What’s-an-agent"><span class="nav-number">2.2.1.</span> <span class="nav-text">What’s an agent</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Definition"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">Definition</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Compared-with"><span class="nav-number">2.2.2.</span> <span class="nav-text">Compared with</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#AI"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">AI:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Concurrent-Distributed-Systems"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">Concurrent/Distributed Systems</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flexable-Reactive-and-Proactive"><span class="nav-number">2.2.3.</span> <span class="nav-text">Flexable: Reactive and Proactive</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Reactivity-interact-with-environment-changes"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">Reactivity (interact with environment changes)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Proactiveness-goal-oriented"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">Proactiveness (goal-oriented)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Balancing-reactive-and-goal-oriented-behaviour"><span class="nav-number">2.2.4.</span> <span class="nav-text">Balancing reactive and goal-oriented behaviour</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Reason"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">Reason:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Multi-agent"><span class="nav-number">2.2.4.2.</span> <span class="nav-text">Multi-agent</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-2"><span class="nav-number">3.</span> <span class="nav-text">Lecture 2</span></a></li></ol></div>
             
 
           </div>
