@@ -229,6 +229,226 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2017/12/29/Data-types-of-JavaScript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/29/Data-types-of-JavaScript/" itemprop="url">Data types of JavaScript</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-29T13:45:31+00:00">
+                2017-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Six-basic-types-of-data-in-JavaScript"><a href="#Six-basic-types-of-data-in-JavaScript" class="headerlink" title="Six basic types of data in JavaScript"></a>Six basic types of data in JavaScript</h4><p><strong>1. NULL</strong></p>
+<p>The value of the type is <strong>null</strong> which points to an empty object, thus when use <em>typeof</em> to detect the type of a null value, an object will be returned.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> m = <span class="literal">null</span>;</span><br><span class="line">alert(<span class="keyword">typeof</span>(m));</span><br></pre></td></tr></table></figure>
+<p><strong>2. Boolean</strong></p>
+<p>Boolean is also a special type in JS. There are only two values for boolean type, <em>true</em> or <em>false</em>. In addition, boolean is case sensitive, which means True and False are different from true and false.</p>
+<p>When trying to convert other types to Boolean using <strong>Boolean()</strong>:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Equals true</th>
+<th>Equals false</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>String</td>
+<td>any other non-null value</td>
+<td>“”(null String)</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>any non-zero value</td>
+<td>0 or NaN(not a number)</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>any object</td>
+<td>null(as mentioned above, null is an object)</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>not applicable(always false)</td>
+<td>undefined</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>3. Number</strong></p>
+<p>Including <strong>int</strong> and <strong>float</strong>, </p>
+<p><strong>NaN</strong> means <strong>not a Number</strong>. It happens when a Number type is expected but not be returned. For Example:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> y=<span class="string">'a'</span>;</span><br><span class="line">alert(x/y);</span><br></pre></td></tr></table></figure>
+<p>NaN has two special features:</p>
+<ol>
+<li><p>Any operation involves in NaN will return NaN</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x= NaN;</span><br><span class="line">alert(10/x);</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>NaN equals no other values</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="literal">NaN</span>==<span class="literal">NaN</span>);              <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+<p><strong>4. Undefined</strong></p>
+<p>Undefined means a variable doesn’t refers to any value</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line">alert(x);</span><br></pre></td></tr></table></figure>
+<p><strong>5. String</strong></p>
+<p>“asd” and ‘asd’ are both String</p>
+<p><em>some basic operations of String</em></p>
+<ol>
+<li><p>String.substr(start,length)   <em>start</em> can be a char or an index</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello world"</span>;</span><br><span class="line">str.substr(<span class="string">"h"</span>,<span class="number">3</span>);   <span class="comment">//hel</span></span><br><span class="line">str.substr(<span class="number">1</span>,<span class="number">3</span>);     <span class="comment">//ell</span></span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>Strring.concat()</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">"abc"</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="string">"def"</span>;</span><br><span class="line">alert(x.concat(y));  <span class="comment">//abcdef</span></span><br><span class="line">alert(<span class="string">""</span>.concat(x,y)); <span class="comment">//abcdef</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>6. Object</strong></p>
+<p> a little complicated, discuss latter.</p>
+<h4 id="Some-operation-between-String-and-other-types"><a href="#Some-operation-between-String-and-other-types" class="headerlink" title="Some operation between String and other types"></a>Some operation between String and other types</h4><ol>
+<li><p>String + (Number. Boolean…..) = String</p>
+<blockquote>
+<p>“12.34”+123 = “12.34123”<br>“12.34’+ true = “12.34true”</p>
+<p>“12.34”+ null = “12.34null”</p>
+</blockquote>
+</li>
+<li><p>String - (Number,Boollean….) = Number</p>
+<blockquote>
+<p>“12.34” - true = 11.34</p>
+<p>“12.34” - 1 =11.34</p>
+<p>“12.34 “ - null = 12.34</p>
+<p>“asd” - 1 = NaN</p>
+</blockquote>
+</li>
+<li><p>String == ?</p>
+<blockquote>
+<p>‘5’==5  // true</p>
+<p>‘5’===5 // false</p>
+<p>‘null’ == null //false</p>
+<p>‘false’ == false // false</p>
+</blockquote>
+<p>​</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://octopusman.top/2017/12/18/The-basic-use-of-Raspberry-pi/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -414,7 +634,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
