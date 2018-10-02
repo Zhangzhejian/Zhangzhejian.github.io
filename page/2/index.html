@@ -81,7 +81,7 @@
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Recap">
-<meta property="og:url" content="https://octopusman.top/archives/index.html">
+<meta property="og:url" content="https://octopusman.top/page/2/index.html">
 <meta property="og:site_name" content="Recap">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -115,13 +115,13 @@
 
 
 
-  <link rel="canonical" href="https://octopusman.top/archives/"/>
+  <link rel="canonical" href="https://octopusman.top/page/2/"/>
 
 
 
 
 
-  <title>Archive | Recap</title>
+  <title>Recap</title>
   
 
 
@@ -140,7 +140,8 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,416 +214,162 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
 
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2017/12/18/The-basic-use-of-Raspberry-pi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/18/The-basic-use-of-Raspberry-pi/" itemprop="url">The basic use of Raspberry pi</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T12:48:08+00:00">
+                2017-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
         
           
-        
-        Um..! 11 posts in total. Keep on posting.
-      </span>
+            <p>Because of my final year project which involves using Raspberry Pi (RPI for short) to establish a mini cloud server cluster for an e-commerce platform, I purchased one, the detail information: Raspberry Pi 3 model B.It is the newest one that support WLAN, so it can also be user as a mini linux server.</p>
+<p>In this article, I will recap some problems occurred in my work</p>
+<h2 id="Installing-the-OS—Raspbian"><a href="#Installing-the-OS—Raspbian" class="headerlink" title="Installing the OS—Raspbian"></a>Installing the OS—Raspbian</h2><p>Basic material: RPI, sd card(16G)</p>
+<p>Operating system I choosed to use is <em>2017-4-vga-raspbian-jessie</em></p>
+<p>Tools: <em>SDFormatter</em> and <em>Win32DiskImager</em></p>
+<h3 id="1-Format-the-sd-card"><a href="#1-Format-the-sd-card" class="headerlink" title="1. Format the sd card"></a>1. Format the sd card</h3><p>use the SDFormatter</p>
+<h3 id="2-Burn-the-OS"><a href="#2-Burn-the-OS" class="headerlink" title="2. Burn the OS"></a>2. Burn the OS</h3><p>use the Win32DiskImager to burn </p>
+<h3 id="3-Boot-the-RPI-and-connect-it-to-a-monitor-with-HDMI"><a href="#3-Boot-the-RPI-and-connect-it-to-a-monitor-with-HDMI" class="headerlink" title="3. Boot the RPI and connect it to a monitor with HDMI"></a>3. Boot the RPI and connect it to a monitor with <em>HDMI</em></h3><p>check whether it work</p>
+<h2 id="Installing-some-softerware-for-further-use"><a href="#Installing-some-softerware-for-further-use" class="headerlink" title="Installing some softerware for further use"></a>Installing some softerware for further use</h2><h3 id="1-SSH"><a href="#1-SSH" class="headerlink" title="1. SSH"></a>1. SSH</h3><p>The default Raspbian doesn’t have the SSH so we need to install one</p>
+<h4 id="install-and-start"><a href="#install-and-start" class="headerlink" title="install and start"></a>install and start</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br><span class="line"></span><br><span class="line">sudo /etc/init.d/ssh start</span><br></pre></td></tr></table></figure>
+<h4 id="make-ssh-start-when-boot"><a href="#make-ssh-start-when-boot" class="headerlink" title="make ssh start when boot"></a>make ssh start when boot</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/rc.local</span><br></pre></td></tr></table></figure>
+<p><em>add the following before ‘exit 0’</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ssh start</span><br></pre></td></tr></table></figure>
+<p>Then have a test</p>
+<p>Now U can connect the RPI remotely</p>
+<h3 id="2-VSFTP"><a href="#2-VSFTP" class="headerlink" title="2. VSFTP"></a>2. VSFTP</h3><p>If you want to transmit some files by FTP, we need to install VSFTP first</p>
+<p><em>1. install</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vsftpd</span><br><span class="line"></span><br><span class="line">sudo service vsftpd start</span><br></pre></td></tr></table></figure>
+<p><em>2. configgure</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
+<h5 id="find-the-following"><a href="#find-the-following" class="headerlink" title="find the following"></a><em>find the following</em></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO</span><br><span class="line"></span><br><span class="line">local_enable=YES</span><br><span class="line"></span><br><span class="line">write_enable=YES	</span><br><span class="line"></span><br><span class="line">local_umask=022</span><br></pre></td></tr></table></figure>
+<p><em>3. save and restart the service</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service vsftpd restart</span><br></pre></td></tr></table></figure>
+<p>then have a test</p>
+<p>one problem occurred:</p>
+<p><em>500 OOPS: vsftpd: refusing to run with writable root inside chroot()</em></p>
+<p>to solves this, we need to add one statement in the /etc/vsftpd.conf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allow_writeable_chroot=YES</span><br></pre></td></tr></table></figure>
+<p>then restart the vsftp service</p>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
         
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/" itemprop="url">
-              
-                <span itemprop="name">NOTE_WEEK-2_Agents and Multi-Agent System</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-01T09:04:31+01:00"
-              content="2018-10-01" >
-          10-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/28/NOTE-Agents-and-Multi-Agent-System/" itemprop="url">
-              
-                <span itemprop="name">NOTE_WEEK-1_Agents and Multi-Agent System</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-28T12:40:15+01:00"
-              content="2018-09-28" >
-          09-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/28/NOTE-Artificial-Intelligence/" itemprop="url">
-              
-                <span itemprop="name">NOTE_WEEK-1_Artificial Intelligence</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-28T09:58:25+01:00"
-              content="2018-09-28" >
-          09-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/27/NOTE-Web-Infrastructure/" itemprop="url">
-              
-                <span itemprop="name">NOTE_WEEK-1_Web Infrastructure</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-27T12:04:18+01:00"
-              content="2018-09-27" >
-          09-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/" itemprop="url">
-              
-                <span itemprop="name">Machine Learning Notes StrandfordCourse 2</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-23T21:46:54+01:00"
-              content="2018-09-23" >
-          09-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/13/Machine-Learning-Notes-StrandfordCourse/" itemprop="url">
-              
-                <span itemprop="name">Machine-Learning-Notes_StrandfordCourse</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-13T12:36:23+01:00"
-              content="2018-09-13" >
-          09-13
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/12/Final-Project-Revision/" itemprop="url">
-              
-                <span itemprop="name">Final Project Revision</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-12T14:10:58+01:00"
-              content="2018-05-12" >
-          05-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/" itemprop="url">
-              
-                <span itemprop="name">MySQL master-slave warm standby and read-write separation</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-12T13:49:25+01:00"
-              content="2018-05-12" >
-          05-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/01/26/Use-Nginx-keepalived-to-Establish-Load-Balancers-with-High-Availability/" itemprop="url">
-              
-                <span itemprop="name">Use Nginx+keepalived to Establish Load Balancers with High Availability</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-26T11:55:39+00:00"
-              content="2018-01-26" >
-          01-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/12/29/Data-types-of-JavaScript/" itemprop="url">
-              
-                <span itemprop="name">Data types of JavaScript</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-29T13:45:31+00:00"
-              content="2017-12-29" >
-          12-29
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </div>
   
   
   
+  </article>
+
+
+    
+  </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
-
 
 
 

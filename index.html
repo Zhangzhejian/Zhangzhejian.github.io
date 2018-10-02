@@ -229,6 +229,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/" itemprop="url">NOTE_WEEK-2_Agents and Multi-Agent System</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-01T09:04:31+01:00">
+                2018-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><ol>
+<li>Object and agents difference</li>
+<li>Environment (see in Artificial Intelligence note week 1)</li>
+<li>agent behaviour: state transformer</li>
+<li>agent utility</li>
+</ol>
+<h3 id="Objects-and-Agents"><a href="#Objects-and-Agents" class="headerlink" title="Objects and Agents"></a>Objects and Agents</h3><h4 id="Main-differences"><a href="#Main-differences" class="headerlink" title="Main differences"></a>Main differences</h4><ul>
+<li>agents are autonomous</li>
+</ul>
+<p>They decide for themselves whether or not to perform an action</p>
+<ul>
+<li>agents are smart</li>
+</ul>
+<p>capable of flexible(reactive, pro-active, social) behaviours</p>
+<ul>
+<li>agents are active</li>
+</ul>
+<p>continuous sense-decide-act loop, not passive service providers</p>
+<h3 id="Agent-behaviour"><a href="#Agent-behaviour" class="headerlink" title="Agent behaviour"></a>Agent behaviour</h3><h4 id="State-action-and-run"><a href="#State-action-and-run" class="headerlink" title="State, action and run"></a>State, action and run</h4><p>Assume the environment may be in any of a finite set E of discrete, instantaneous states:</p>
+<script type="math/tex; mode=display">
+E = \{e_0,e_1,...\}</script><p>Agents are assumed to have a repertoire of possible actions available to them, which transform the state of the environment:</p>
+<script type="math/tex; mode=display">
+Ac = \{\alpha_0, \alpha_1,...\}</script><p>A run, r, of an agent in an environment is a sequence of interleaved environment states and actions:</p>
+<script type="math/tex; mode=display">
+r: e_0 \longrightarrow^{\alpha_0} e_1 \\
+r \subset \mathcal{R}</script><p>Let \mathcal{R} be the set of all such possible finite <strong>sequences</strong> (over E and Ac)</p>
+<p>\mathcal{R}^{AC} be the subset of these that end with an <strong>action</strong></p>
+<p>\mathcal{R}^{E} be the subset of these that end with an <strong>environment state</strong></p>
+<p><strong>State transformer function:</strong></p>
+<script type="math/tex; mode=display">
+\tau:\mathcal{R}^{Ac}\to 2^E\</script><p>Hint: $2^A$ means all the subsets of A</p>
+<p>This function takes a run that ends with an action and returns a subset of E (so a set of environment states). </p>
+<p>$\tau$可以理解为是一个以action为结尾的run，到一个状态$2^E$</p>
+<h5 id="EXAMPLE"><a href="#EXAMPLE" class="headerlink" title="EXAMPLE"></a>EXAMPLE</h5><p>Environment: ENV_1 = <e,e_0,\tau>, e_0 is the initial state of the environment.</e,e_0,\tau></p>
+<script type="math/tex; mode=display">
+E = {e_0,e_1,e_3,e_4,e_5}\\
+\tau(e_0\longrightarrow^{a_0}) = \{e_1,e_2\}\\
+\tau(e_0 \longrightarrow^{a_1}) = \{e_3, e_4, e_5\}\\</script><h4 id="Agent-behaviour-1"><a href="#Agent-behaviour-1" class="headerlink" title="Agent behaviour"></a>Agent behaviour</h4><p>Agent is a function which maps <strong>runs</strong> to <strong>actions</strong></p>
+<script type="math/tex; mode=display">
+Ag: \mathcal{R}^E \longrightarrow Ac</script><p>An agent makes a decision about what action to perform based on the history of the system that it has witnessed to date. Let \mathcal{AG} be the set of all agents. (Agent做的就是根据输入的环境状态，给出决定的动作)</p>
+<p>A system is a pair (Ag, Env) containing an agent and an environment</p>
+<script type="math/tex; mode=display">
+\mathcal{R}
+\mathfrak{R}</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/28/NOTE-Agents-and-Multi-Agent-System/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -483,6 +645,37 @@
 </ol>
 <h4 id="Ideal-rational-理性的-agent"><a href="#Ideal-rational-理性的-agent" class="headerlink" title="Ideal rational(理性的) agent"></a>Ideal rational(理性的) agent</h4><p>For each <strong>percept sequence(感知序列)</strong>, an ideal rational agent will act to maximise its expected performance measure, <strong>on the basis of information provided</strong> by the percept sequence plus any information built into the agent.</p>
 <p>Rational agent <u>doesn’t</u> mean omniscient(全知的) or clairvoyant(先知) agent.</p>
+<h4 id="Percept-sequence"><a href="#Percept-sequence" class="headerlink" title="Percept sequence"></a>Percept sequence</h4><p><u>According to the sensors, the agent can percept from the environment and get the information.</u></p>
+<p>A simple agent maps each percept directly to an action. All static.</p>
+<p>When facing a complex environment, and even dynamic, it become hard for agents to do the right thing.</p>
+<h4 id="Problems"><a href="#Problems" class="headerlink" title="Problems:"></a>Problems:</h4><ol>
+<li>what to represent</li>
+<li>How to represent</li>
+<li>interpreting the percepts</li>
+</ol>
+<h5 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h5><ol>
+<li>Accessible&amp;Inaccessible</li>
+</ol>
+<p>An environment is <strong>accessible</strong> if the agent can obtain <strong>complete</strong> <strong>accurate and up-to-date</strong> information about <strong>all the relevant aspects</strong>.ic</p>
+<ol>
+<li>Deterministic&amp;Non-determinist</li>
+</ol>
+<p>A <strong>deterministic(确定性的)</strong> environment is one in which any action has <strong><u>a single guaranteed effect</u></strong> – there’s <u>no uncertainty</u> about the state that will result from performing an action.</p>
+<p>An environment where we can <u>quantify the non-determinism with probability</u> is called <strong>stochastic(随机的)</strong>.</p>
+<ol>
+<li>Episodic&amp;non-episodic</li>
+</ol>
+<p>In an <strong>episodic(情节的)</strong> environment, performance of an agent is dependent on a number of discrete episodes, with no link between the performance of an agent in different episodes.</p>
+<p>In a non-episodic(非偶发性) or sequential environment, the current decision affects future decisions.</p>
+<ol>
+<li>Static &amp; dynamic</li>
+</ol>
+<p>A <strong>static</strong> environment is one that can be assumed to <u>remain unchanged except</u> by the performance of actions by the agent.</p>
+<p>A <strong>dynamic</strong> environment is one that has <u>other processes operating</u> on it, and which hence changes in ways beyond the agent’s control.</p>
+<ol>
+<li>Discrete &amp; continuous</li>
+</ol>
+<p>An environment is <strong>discrete</strong> if there are a <u><strong>fixed, finite number of actions and percepts</strong></u> in it. Discrete environments could in principle be handled by a kind of “lookup table”.</p>
 
           
         
@@ -1794,157 +1987,13 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2017/12/18/The-basic-use-of-Raspberry-pi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/18/The-basic-use-of-Raspberry-pi/" itemprop="url">The basic use of Raspberry pi</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T12:48:08+00:00">
-                2017-12-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Because of my final year project which involves using Raspberry Pi (RPI for short) to establish a mini cloud server cluster for an e-commerce platform, I purchased one, the detail information: Raspberry Pi 3 model B.It is the newest one that support WLAN, so it can also be user as a mini linux server.</p>
-<p>In this article, I will recap some problems occurred in my work</p>
-<h2 id="Installing-the-OS—Raspbian"><a href="#Installing-the-OS—Raspbian" class="headerlink" title="Installing the OS—Raspbian"></a>Installing the OS—Raspbian</h2><p>Basic material: RPI, sd card(16G)</p>
-<p>Operating system I choosed to use is <em>2017-4-vga-raspbian-jessie</em></p>
-<p>Tools: <em>SDFormatter</em> and <em>Win32DiskImager</em></p>
-<h3 id="1-Format-the-sd-card"><a href="#1-Format-the-sd-card" class="headerlink" title="1. Format the sd card"></a>1. Format the sd card</h3><p>use the SDFormatter</p>
-<h3 id="2-Burn-the-OS"><a href="#2-Burn-the-OS" class="headerlink" title="2. Burn the OS"></a>2. Burn the OS</h3><p>use the Win32DiskImager to burn </p>
-<h3 id="3-Boot-the-RPI-and-connect-it-to-a-monitor-with-HDMI"><a href="#3-Boot-the-RPI-and-connect-it-to-a-monitor-with-HDMI" class="headerlink" title="3. Boot the RPI and connect it to a monitor with HDMI"></a>3. Boot the RPI and connect it to a monitor with <em>HDMI</em></h3><p>check whether it work</p>
-<h2 id="Installing-some-softerware-for-further-use"><a href="#Installing-some-softerware-for-further-use" class="headerlink" title="Installing some softerware for further use"></a>Installing some softerware for further use</h2><h3 id="1-SSH"><a href="#1-SSH" class="headerlink" title="1. SSH"></a>1. SSH</h3><p>The default Raspbian doesn’t have the SSH so we need to install one</p>
-<h4 id="install-and-start"><a href="#install-and-start" class="headerlink" title="install and start"></a>install and start</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br><span class="line"></span><br><span class="line">sudo /etc/init.d/ssh start</span><br></pre></td></tr></table></figure>
-<h4 id="make-ssh-start-when-boot"><a href="#make-ssh-start-when-boot" class="headerlink" title="make ssh start when boot"></a>make ssh start when boot</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/rc.local</span><br></pre></td></tr></table></figure>
-<p><em>add the following before ‘exit 0’</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ssh start</span><br></pre></td></tr></table></figure>
-<p>Then have a test</p>
-<p>Now U can connect the RPI remotely</p>
-<h3 id="2-VSFTP"><a href="#2-VSFTP" class="headerlink" title="2. VSFTP"></a>2. VSFTP</h3><p>If you want to transmit some files by FTP, we need to install VSFTP first</p>
-<p><em>1. install</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vsftpd</span><br><span class="line"></span><br><span class="line">sudo service vsftpd start</span><br></pre></td></tr></table></figure>
-<p><em>2. configgure</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
-<h5 id="find-the-following"><a href="#find-the-following" class="headerlink" title="find the following"></a><em>find the following</em></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO</span><br><span class="line"></span><br><span class="line">local_enable=YES</span><br><span class="line"></span><br><span class="line">write_enable=YES	</span><br><span class="line"></span><br><span class="line">local_umask=022</span><br></pre></td></tr></table></figure>
-<p><em>3. save and restart the service</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service vsftpd restart</span><br></pre></td></tr></table></figure>
-<p>then have a test</p>
-<p>one problem occurred:</p>
-<p><em>500 OOPS: vsftpd: refusing to run with writable root inside chroot()</em></p>
-<p>to solves this, we need to add one statement in the /etc/vsftpd.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allow_writeable_chroot=YES</span><br></pre></td></tr></table></figure>
-<p>then restart the vsftp service</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1988,7 +2037,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="note," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Six basic types of data in JavaScript1. NULL The value of the type is null which points to an empty object, thus when use typeof to detect the type of a null value, an object will be returned. 12var m">
-<meta name="keywords" content="JavaScript">
+<meta name="description" content="Key points: Object and agents difference Environment (see in Artificial Intelligence note week 1) agent behaviour: state transformer agent utility  Objects and AgentsMain differences agents are autono">
+<meta name="keywords" content="note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Data types of JavaScript">
-<meta property="og:url" content="https://octopusman.top/2017/12/29/Data-types-of-JavaScript/index.html">
+<meta property="og:title" content="NOTE_WEEK-2_Agents and Multi-Agent System">
+<meta property="og:url" content="https://octopusman.top/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Six basic types of data in JavaScript1. NULL The value of the type is null which points to an empty object, thus when use typeof to detect the type of a null value, an object will be returned. 12var m">
+<meta property="og:description" content="Key points: Object and agents difference Environment (see in Artificial Intelligence note week 1) agent behaviour: state transformer agent utility  Objects and AgentsMain differences agents are autono">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-04T11:56:10.317Z">
+<meta property="og:updated_time" content="2018-10-02T10:56:46.640Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data types of JavaScript">
-<meta name="twitter:description" content="Six basic types of data in JavaScript1. NULL The value of the type is null which points to an empty object, thus when use typeof to detect the type of a null value, an object will be returned. 12var m">
+<meta name="twitter:title" content="NOTE_WEEK-2_Agents and Multi-Agent System">
+<meta name="twitter:description" content="Key points: Object and agents difference Environment (see in Artificial Intelligence note week 1) agent behaviour: state transformer agent utility  Objects and AgentsMain differences agents are autono">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://octopusman.top/2017/12/29/Data-types-of-JavaScript/"/>
+  <link rel="canonical" href="https://octopusman.top/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/"/>
 
 
 
 
 
-  <title>Data types of JavaScript | Recap</title>
+  <title>NOTE_WEEK-2_Agents and Multi-Agent System | Recap</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2017/12/29/Data-types-of-JavaScript/">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhejian">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Data types of JavaScript</h1>
+          <h1 class="post-title" itemprop="name headline">NOTE_WEEK-2_Agents and Multi-Agent System</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-29T13:45:31+00:00">
-                2017-12-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-01T09:04:31+01:00">
+                2018-10-01
               </time>
             
 
@@ -300,108 +300,50 @@
       
 
       
-        <h4 id="Six-basic-types-of-data-in-JavaScript"><a href="#Six-basic-types-of-data-in-JavaScript" class="headerlink" title="Six basic types of data in JavaScript"></a>Six basic types of data in JavaScript</h4><p><strong>1. NULL</strong></p>
-<p>The value of the type is <strong>null</strong> which points to an empty object, thus when use <em>typeof</em> to detect the type of a null value, an object will be returned.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> m = <span class="literal">null</span>;</span><br><span class="line">alert(<span class="keyword">typeof</span>(m));</span><br></pre></td></tr></table></figure>
-<p><strong>2. Boolean</strong></p>
-<p>Boolean is also a special type in JS. There are only two values for boolean type, <em>true</em> or <em>false</em>. In addition, boolean is case sensitive, which means True and False are different from true and false.</p>
-<p>When trying to convert other types to Boolean using <strong>Boolean()</strong>:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Equals true</th>
-<th>Equals false</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Boolean</td>
-<td>true</td>
-<td>false</td>
-</tr>
-<tr>
-<td>String</td>
-<td>any other non-null value</td>
-<td>“”(null String)</td>
-</tr>
-<tr>
-<td>Number</td>
-<td>any non-zero value</td>
-<td>0 or NaN(not a number)</td>
-</tr>
-<tr>
-<td>Object</td>
-<td>any object</td>
-<td>null(as mentioned above, null is an object)</td>
-</tr>
-<tr>
-<td>Undefined</td>
-<td>not applicable(always false)</td>
-<td>undefined</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>3. Number</strong></p>
-<p>Including <strong>int</strong> and <strong>float</strong>, </p>
-<p><strong>NaN</strong> means <strong>not a Number</strong>. It happens when a Number type is expected but not be returned. For Example:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> y=<span class="string">'a'</span>;</span><br><span class="line">alert(x/y);</span><br></pre></td></tr></table></figure>
-<p>NaN has two special features:</p>
-<ol>
-<li><p>Any operation involves in NaN will return NaN</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x= NaN;</span><br><span class="line">alert(10/x);</span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-<li><p>NaN equals no other values</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="literal">NaN</span>==<span class="literal">NaN</span>);              <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
+        <h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><ol>
+<li>Object and agents difference</li>
+<li>Environment (see in Artificial Intelligence note week 1)</li>
+<li>agent behaviour: state transformer</li>
+<li>agent utility</li>
 </ol>
-<p><strong>4. Undefined</strong></p>
-<p>Undefined means a variable doesn’t refers to any value</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line">alert(x);</span><br></pre></td></tr></table></figure>
-<p><strong>5. String</strong></p>
-<p>“asd” and ‘asd’ are both String</p>
-<p><em>some basic operations of String</em></p>
-<ol>
-<li><p>String.substr(start,length)   <em>start</em> can be a char or an index</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello world"</span>;</span><br><span class="line">str.substr(<span class="string">"h"</span>,<span class="number">3</span>);   <span class="comment">//hel</span></span><br><span class="line">str.substr(<span class="number">1</span>,<span class="number">3</span>);     <span class="comment">//ell</span></span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-<li><p>Strring.concat()</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">"abc"</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="string">"def"</span>;</span><br><span class="line">alert(x.concat(y));  <span class="comment">//abcdef</span></span><br><span class="line">alert(<span class="string">""</span>.concat(x,y)); <span class="comment">//abcdef</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong>6. Object</strong></p>
-<p> a little complicated, discuss latter.</p>
-<h4 id="Some-operation-between-String-and-other-types"><a href="#Some-operation-between-String-and-other-types" class="headerlink" title="Some operation between String and other types"></a>Some operation between String and other types</h4><ol>
-<li><p>String + (Number. Boolean…..) = String</p>
-<blockquote>
-<p>“12.34”+123 = “12.34123”<br>“12.34’+ true = “12.34true”</p>
-<p>“12.34”+ null = “12.34null”</p>
-</blockquote>
-</li>
-<li><p>String - (Number,Boollean….) = Number</p>
-<blockquote>
-<p>“12.34” - true = 11.34</p>
-<p>“12.34” - 1 =11.34</p>
-<p>“12.34 “ - null = 12.34</p>
-<p>“asd” - 1 = NaN</p>
-</blockquote>
-</li>
-<li><p>String == ?</p>
-<blockquote>
-<p>‘5’==5  // true</p>
-<p>‘5’===5 // false</p>
-<p>‘null’ == null //false</p>
-<p>‘false’ == false // false</p>
-</blockquote>
-<p>​</p>
-</li>
-</ol>
-
+<h3 id="Objects-and-Agents"><a href="#Objects-and-Agents" class="headerlink" title="Objects and Agents"></a>Objects and Agents</h3><h4 id="Main-differences"><a href="#Main-differences" class="headerlink" title="Main differences"></a>Main differences</h4><ul>
+<li>agents are autonomous</li>
+</ul>
+<p>They decide for themselves whether or not to perform an action</p>
+<ul>
+<li>agents are smart</li>
+</ul>
+<p>capable of flexible(reactive, pro-active, social) behaviours</p>
+<ul>
+<li>agents are active</li>
+</ul>
+<p>continuous sense-decide-act loop, not passive service providers</p>
+<h3 id="Agent-behaviour"><a href="#Agent-behaviour" class="headerlink" title="Agent behaviour"></a>Agent behaviour</h3><h4 id="State-action-and-run"><a href="#State-action-and-run" class="headerlink" title="State, action and run"></a>State, action and run</h4><p>Assume the environment may be in any of a finite set E of discrete, instantaneous states:</p>
+<script type="math/tex; mode=display">
+E = \{e_0,e_1,...\}</script><p>Agents are assumed to have a repertoire of possible actions available to them, which transform the state of the environment:</p>
+<script type="math/tex; mode=display">
+Ac = \{\alpha_0, \alpha_1,...\}</script><p>A run, r, of an agent in an environment is a sequence of interleaved environment states and actions:</p>
+<script type="math/tex; mode=display">
+r: e_0 \longrightarrow^{\alpha_0} e_1 \\
+r \subset \mathcal{R}</script><p>Let \mathcal{R} be the set of all such possible finite <strong>sequences</strong> (over E and Ac)</p>
+<p>\mathcal{R}^{AC} be the subset of these that end with an <strong>action</strong></p>
+<p>\mathcal{R}^{E} be the subset of these that end with an <strong>environment state</strong></p>
+<p><strong>State transformer function:</strong></p>
+<script type="math/tex; mode=display">
+\tau:\mathcal{R}^{Ac}\to 2^E\</script><p>Hint: $2^A$ means all the subsets of A</p>
+<p>This function takes a run that ends with an action and returns a subset of E (so a set of environment states). </p>
+<p>$\tau$可以理解为是一个以action为结尾的run，到一个状态$2^E$</p>
+<h5 id="EXAMPLE"><a href="#EXAMPLE" class="headerlink" title="EXAMPLE"></a>EXAMPLE</h5><p>Environment: ENV_1 = <e,e_0,\tau>, e_0 is the initial state of the environment.</e,e_0,\tau></p>
+<script type="math/tex; mode=display">
+E = {e_0,e_1,e_3,e_4,e_5}\\
+\tau(e_0\longrightarrow^{a_0}) = \{e_1,e_2\}\\
+\tau(e_0 \longrightarrow^{a_1}) = \{e_3, e_4, e_5\}\\</script><h4 id="Agent-behaviour-1"><a href="#Agent-behaviour-1" class="headerlink" title="Agent behaviour"></a>Agent behaviour</h4><p>Agent is a function which maps <strong>runs</strong> to <strong>actions</strong></p>
+<script type="math/tex; mode=display">
+Ag: \mathcal{R}^E \longrightarrow Ac</script><p>An agent makes a decision about what action to perform based on the history of the system that it has witnessed to date. Let \mathcal{AG} be the set of all agents. (Agent做的就是根据输入的环境状态，给出决定的动作)</p>
+<p>A system is a pair (Ag, Env) containing an agent and an environment</p>
+<script type="math/tex; mode=display">
+\mathcal{R}
+\mathfrak{R}</script>
       
     </div>
     
@@ -418,7 +360,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/note/" rel="tag"># note</a>
           
         </div>
       
@@ -431,8 +373,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/18/The-basic-use-of-Raspberry-pi/" rel="next" title="The basic use of Raspberry pi">
-                <i class="fa fa-chevron-left"></i> The basic use of Raspberry pi
+              <a href="/2018/09/28/NOTE-Agents-and-Multi-Agent-System/" rel="next" title="NOTE_WEEK-1_Agents and Multi-Agent System">
+                <i class="fa fa-chevron-left"></i> NOTE_WEEK-1_Agents and Multi-Agent System
               </a>
             
           </div>
@@ -440,10 +382,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/26/Use-Nginx-keepalived-to-Establish-Load-Balancers-with-High-Availability/" rel="prev" title="Use Nginx+keepalived to Establish Load Balancers with High Availability">
-                Use Nginx+keepalived to Establish Load Balancers with High Availability <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -566,7 +504,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Six-basic-types-of-data-in-JavaScript"><span class="nav-number">1.</span> <span class="nav-text">Six basic types of data in JavaScript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Some-operation-between-String-and-other-types"><span class="nav-number">2.</span> <span class="nav-text">Some operation between String and other types</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Key-points"><span class="nav-number">1.</span> <span class="nav-text">Key points:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Objects-and-Agents"><span class="nav-number">2.</span> <span class="nav-text">Objects and Agents</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Main-differences"><span class="nav-number">2.1.</span> <span class="nav-text">Main differences</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Agent-behaviour"><span class="nav-number">3.</span> <span class="nav-text">Agent behaviour</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#State-action-and-run"><span class="nav-number">3.1.</span> <span class="nav-text">State, action and run</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#EXAMPLE"><span class="nav-number">3.1.1.</span> <span class="nav-text">EXAMPLE</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Agent-behaviour-1"><span class="nav-number">3.2.</span> <span class="nav-text">Agent behaviour</span></a></li></ol></li></ol></div>
             
 
           </div>
