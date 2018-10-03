@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Key points: Object and agents difference Environment (see in Artificial Intelligence note week 1) agent behaviour: state transformer agent utility  Objects and AgentsMain differences agents are autono">
+<meta name="description" content="Agents and Multi-Agent System智能体与多智能体系统Lecture 2 More on intelligent agentsKey points: Object and agents difference Environment (see in Artificial Intelligence note week 1) agent behaviour: state tran">
 <meta name="keywords" content="note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NOTE_WEEK-2_Agents and Multi-Agent System">
 <meta property="og:url" content="https://octopusman.top/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Key points: Object and agents difference Environment (see in Artificial Intelligence note week 1) agent behaviour: state transformer agent utility  Objects and AgentsMain differences agents are autono">
+<meta property="og:description" content="Agents and Multi-Agent System智能体与多智能体系统Lecture 2 More on intelligent agentsKey points: Object and agents difference Environment (see in Artificial Intelligence note week 1) agent behaviour: state tran">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-02T11:01:28.075Z">
+<meta property="og:updated_time" content="2018-10-03T19:44:25.852Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NOTE_WEEK-2_Agents and Multi-Agent System">
-<meta name="twitter:description" content="Key points: Object and agents difference Environment (see in Artificial Intelligence note week 1) agent behaviour: state transformer agent utility  Objects and AgentsMain differences agents are autono">
+<meta name="twitter:description" content="Agents and Multi-Agent System智能体与多智能体系统Lecture 2 More on intelligent agentsKey points: Object and agents difference Environment (see in Artificial Intelligence note week 1) agent behaviour: state tran">
 
 
 
@@ -300,9 +300,9 @@
       
 
       
-        <h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><ol>
+        <h2 id="Agents-and-Multi-Agent-System"><a href="#Agents-and-Multi-Agent-System" class="headerlink" title="Agents and Multi-Agent System"></a>Agents and Multi-Agent System</h2><h2 id="智能体与多智能体系统"><a href="#智能体与多智能体系统" class="headerlink" title="智能体与多智能体系统"></a>智能体与多智能体系统</h2><h3 id="Lecture-2-More-on-intelligent-agents"><a href="#Lecture-2-More-on-intelligent-agents" class="headerlink" title="Lecture 2 More on intelligent agents"></a>Lecture 2 More on intelligent agents</h3><h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><ol>
 <li>Object and agents difference</li>
-<li>Environment (see in Artificial Intelligence note week 1)</li>
+<li>Environment (see in <a href="http://octopusman.top/2018/09/28/NOTE-Artificial-Intelligence/#Environment">Artificial Intelligence note week 1</a>)</li>
 <li>agent behaviour: state transformer</li>
 <li>agent utility</li>
 </ol>
@@ -340,10 +340,62 @@ E = {e_0,e_1,e_3,e_4,e_5}\\
 \tau(e_0 \longrightarrow^{a_1}) = \{e_3, e_4, e_5\}\\</script><h4 id="Agent-behaviour-1"><a href="#Agent-behaviour-1" class="headerlink" title="Agent behaviour"></a>Agent behaviour</h4><p>Agent is a function which maps <strong>runs</strong> to <strong>actions</strong></p>
 <script type="math/tex; mode=display">
 Ag: \mathcal{R}^E \longrightarrow Ac</script><p>An agent makes a decision about what action to perform based on the history of the system that it has witnessed to date. Let \mathcal{AG} be the set of all agents. (Agent做的就是根据输入的环境状态，给出决定的动作)</p>
-<p>A system is a pair (Ag, Env) containing an agent and an environment</p>
+<p>A system is a pair (Ag, Env) containing an agent and an environment. Any system will have associated with it a set of possible runs; we denote the <strong>set of runs</strong> of agent Ag in environment Env by \mathcal{R}(Ag, Env) (We assume \mathcal{R}(Ag, Env) contains only <strong>terminated</strong> runs) (\mathcal{R}(Ag, Env)是在Env环境下，Ag做出的所有run的集合，假设只包含所有完整的run)</p>
+<h5 id="EXAMPLE-1"><a href="#EXAMPLE-1" class="headerlink" title="EXAMPLE"></a>EXAMPLE</h5><p>The same example as above</p>
 <script type="math/tex; mode=display">
-\mathcal{R}
-\mathfrak{R}</script>
+E = {e_0,e_1,e_3,e_4,e_5}\\\tau(e_0\longrightarrow^{a_0}) = \{e_1,e_2\}\\\tau(e_0 \longrightarrow^{a_1}) = \{e_3, e_4, e_5\}\\</script><p>First to determine the Ag() function.</p>
+<p>If $Ag(e_0) = \alpha_0$</p>
+<p>Then $\mathcal{R}(Ag,Env_1) = \{(e_0,\alpha_0,e_1), (e_0,\alpha+0, e_2)\}$</p>
+<h4 id="Behaviourally-equivalent-with-respect-to-environment-Env"><a href="#Behaviourally-equivalent-with-respect-to-environment-Env" class="headerlink" title="Behaviourally equivalent with respect to environment Env"></a>Behaviourally equivalent with respect to environment Env</h4><p>iff</p>
+<script type="math/tex; mode=display">
+\mathcal{R}(Ag_1, Env) = \mathcal{R}(Ag_2,Env)</script><h4 id="Purely-Reactive-Agents"><a href="#Purely-Reactive-Agents" class="headerlink" title="Purely Reactive Agents"></a>Purely Reactive Agents</h4><p>Some agents decide what to do <strong>without reference to their history</strong> — they base their decision making entirely on the present, with no reference at all to the past</p>
+<script type="math/tex; mode=display">
+action: E\longrightarrow Ac</script><h4 id="Agents-with-state"><a href="#Agents-with-state" class="headerlink" title="Agents with state"></a>Agents with state</h4><h5 id="Perception"><a href="#Perception" class="headerlink" title="Perception"></a>Perception</h5><p>The perception function <em>see</em> maps an environment state to a percept:</p>
+<script type="math/tex; mode=display">
+see: E \longrightarrow Per</script><p>The action-selection function action maps an internal state to an action:</p>
+<script type="math/tex; mode=display">
+action: Per \longrightarrow Ac</script><h5 id="Agents-with-state-1"><a href="#Agents-with-state-1" class="headerlink" title="Agents with state"></a>Agents with state</h5><p>Internal data structure state typically used to record information about the environment state and history. $\mathcal{I}$ be the set of all internal states of the agent</p>
+<script type="math/tex; mode=display">
+see: E\longrightarrow Per\\
+next: I \times Per \longrightarrow I\\
+action: I \longrightarrow Ac</script><p>The function next is introduced, which maps an internal state and a percept to an internal state, and then the action-selection function action maps an internal state to an action.</p>
+<h5 id="Control-Loop"><a href="#Control-Loop" class="headerlink" title="Control Loop"></a>Control Loop</h5><ol>
+<li>Agent starts in some initial internal state $i_0$</li>
+<li>Observes its environment state e, and generates a percept $see(e)$</li>
+<li>Internal state of the agent is then updated via next function, becoming $next(i_0 , see(e))$</li>
+<li>The action selected by the agent is $action (next(i_0 , see(e)))$</li>
+<li>Goto 2</li>
+</ol>
+<h3 id="Tasks-for-Agents"><a href="#Tasks-for-Agents" class="headerlink" title="Tasks for Agents"></a>Tasks for Agents</h3><p>How to specify the tasks for agents is a problem</p>
+<h5 id="Maxmise-utility"><a href="#Maxmise-utility" class="headerlink" title="Maxmise utility"></a>Maxmise utility</h5><h5 id="Associate-utilities-with-individual-states"><a href="#Associate-utilities-with-individual-states" class="headerlink" title="Associate utilities with individual states"></a>Associate utilities with individual states</h5><p>the task specification is a function which asscociates a real number with every environments state</p>
+<script type="math/tex; mode=display">
+u: E\longrightarrow \reals</script><p><strong>Disadvantage</strong>: difficult to specify a <strong>long term</strong> view when assigning utilities to individual states</p>
+<h5 id="Associate-utilities-with-runs"><a href="#Associate-utilities-with-runs" class="headerlink" title="Associate utilities with runs"></a>Associate utilities with runs</h5><script type="math/tex; mode=display">
+u: \mathcal{R} \longrightarrow \reals</script><p>Example: trading agent might use $u(r) = (p(r) l(r)) x fp(r)$ where $fp(r)$ is profit in the final state of r, $p(r)$ is the number of states agent is in profit and $l(r)$ is the number of states agent is not in profit.</p>
+<h4 id="Expected-utility-amp-optimal-agents"><a href="#Expected-utility-amp-optimal-agents" class="headerlink" title="Expected utility &amp; optimal agents"></a>Expected utility &amp; optimal agents</h4><h5 id="Expected-utility"><a href="#Expected-utility" class="headerlink" title="Expected utility"></a>Expected utility</h5><p>P(r|Ag,Env) to be denoted as probability that run r occurs when agent Ag is placed in environment Env.</p>
+<script type="math/tex; mode=display">
+\sum_{r \subset\mathcal{R}(Ag,Env)}P(r|Ag,Env) =1</script><p>Expected utility: $u(r)P(r|Ag,Env)$</p>
+<p>Optimal agent $Ag_{opt}$ is the one that maximizes expected utility over all possible runs in the environment</p>
+<script type="math/tex; mode=display">
+Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Difficulties-with-utility-based-approaches"><a href="#Difficulties-with-utility-based-approaches" class="headerlink" title="Difficulties with utility-based approaches"></a>Difficulties with utility-based approaches</h4><ol>
+<li>Not obvious how to generate the numbers</li>
+<li>People don’t think in terms of utilities</li>
+<li>Hard to formulate tasks in these terms</li>
+</ol>
+<h4 id="Predicate-断言-task-specifications"><a href="#Predicate-断言-task-specifications" class="headerlink" title="Predicate(断言) task specifications"></a>Predicate(断言) task specifications</h4><p>A special case of assigning utilities to runs is to assign 0 (false) or 1 (true).  Denote predicate task specification by Ψ.</p>
+<script type="math/tex; mode=display">
+\Psi: \mathcal{R} \longrightarrow \{0,1\}\\
+\mathcal{R}_\Psi(Ag,Env) = \{r|r\in \mathcal{R}(Ag,Env)\; \& \; \Psi(r) = 1\}</script><h4 id="Types-of-tasks"><a href="#Types-of-tasks" class="headerlink" title="Types of tasks"></a>Types of tasks</h4><h5 id="Achievement-tasks"><a href="#Achievement-tasks" class="headerlink" title="Achievement tasks"></a>Achievement tasks</h5><p>Are those of the form achieve state of affairs $\psi$</p>
+<p>An achievement task is specified by a set G of “good” or “goal” states: G ⊆ E. The agent succeeds if it is guaranteed to bring about at least one of these states (we do not care which one — they are all considered equally good)</p>
+<p>Let G ⊆ E be the set of states in which the achievement goal is realised. An agent Ag succeeds if and only if</p>
+<script type="math/tex; mode=display">
+\forall r \in \mathcal{R}(Ag,Env):\\
+\exist e_i \in \{e_x|e_x \; is \;a\;state\;that\;appears\; in\;r \;such\;that\; e_i\in G\}</script><h5 id="Maintenance-tasks"><a href="#Maintenance-tasks" class="headerlink" title="Maintenance tasks"></a>Maintenance tasks</h5><p>Are those of the form maintain state of affairs $\psi$</p>
+<p>A maintenance task is specified by a set B of “bad” states: B ⊆ E. The agent succeeds if it is guaranteed never to bring about one of these states, i.e. it manages to avoid all states in B, it never performs actions which result in any state in B occurring</p>
+<p>Let B ⊆ E be the set of bad states that we wish to avoid. An agent Ag succeeds if and only if</p>
+<script type="math/tex; mode=display">
+\forall r \in \mathcal{R}(Ag,Env):\\
+\not\exist e_i \in \{e_x|e_x \; is \;a\;state\;that\;appears\; in\;r \;such\;that\; e_i\in B\}</script>
       
     </div>
     
@@ -508,7 +560,7 @@ Ag: \mathcal{R}^E \longrightarrow Ac</script><p>An agent makes a decision about 
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Key-points"><span class="nav-number">1.</span> <span class="nav-text">Key points:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Objects-and-Agents"><span class="nav-number">2.</span> <span class="nav-text">Objects and Agents</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Main-differences"><span class="nav-number">2.1.</span> <span class="nav-text">Main differences</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Agent-behaviour"><span class="nav-number">3.</span> <span class="nav-text">Agent behaviour</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#State-action-and-run"><span class="nav-number">3.1.</span> <span class="nav-text">State, action and run</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#EXAMPLE"><span class="nav-number">3.1.1.</span> <span class="nav-text">EXAMPLE</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Agent-behaviour-1"><span class="nav-number">3.2.</span> <span class="nav-text">Agent behaviour</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Agents-and-Multi-Agent-System"><span class="nav-number">1.</span> <span class="nav-text">Agents and Multi-Agent System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#智能体与多智能体系统"><span class="nav-number">2.</span> <span class="nav-text">智能体与多智能体系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-2-More-on-intelligent-agents"><span class="nav-number">2.1.</span> <span class="nav-text">Lecture 2 More on intelligent agents</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Key-points"><span class="nav-number">2.2.</span> <span class="nav-text">Key points:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Objects-and-Agents"><span class="nav-number">2.3.</span> <span class="nav-text">Objects and Agents</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Main-differences"><span class="nav-number">2.3.1.</span> <span class="nav-text">Main differences</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Agent-behaviour"><span class="nav-number">2.4.</span> <span class="nav-text">Agent behaviour</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#State-action-and-run"><span class="nav-number">2.4.1.</span> <span class="nav-text">State, action and run</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#EXAMPLE"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">EXAMPLE</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Agent-behaviour-1"><span class="nav-number">2.4.2.</span> <span class="nav-text">Agent behaviour</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#EXAMPLE-1"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">EXAMPLE</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Behaviourally-equivalent-with-respect-to-environment-Env"><span class="nav-number">2.4.3.</span> <span class="nav-text">Behaviourally equivalent with respect to environment Env</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Purely-Reactive-Agents"><span class="nav-number">2.4.4.</span> <span class="nav-text">Purely Reactive Agents</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Agents-with-state"><span class="nav-number">2.4.5.</span> <span class="nav-text">Agents with state</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Perception"><span class="nav-number">2.4.5.1.</span> <span class="nav-text">Perception</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Agents-with-state-1"><span class="nav-number">2.4.5.2.</span> <span class="nav-text">Agents with state</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Control-Loop"><span class="nav-number">2.4.5.3.</span> <span class="nav-text">Control Loop</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tasks-for-Agents"><span class="nav-number">2.5.</span> <span class="nav-text">Tasks for Agents</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Maxmise-utility"><span class="nav-number">2.5.0.1.</span> <span class="nav-text">Maxmise utility</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Associate-utilities-with-individual-states"><span class="nav-number">2.5.0.2.</span> <span class="nav-text">Associate utilities with individual states</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Associate-utilities-with-runs"><span class="nav-number">2.5.0.3.</span> <span class="nav-text">Associate utilities with runs</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Expected-utility-amp-optimal-agents"><span class="nav-number">2.5.1.</span> <span class="nav-text">Expected utility &amp; optimal agents</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Expected-utility"><span class="nav-number">2.5.1.1.</span> <span class="nav-text">Expected utility</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Difficulties-with-utility-based-approaches"><span class="nav-number">2.5.2.</span> <span class="nav-text">Difficulties with utility-based approaches</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Predicate-断言-task-specifications"><span class="nav-number">2.5.3.</span> <span class="nav-text">Predicate(断言) task specifications</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Types-of-tasks"><span class="nav-number">2.5.4.</span> <span class="nav-text">Types of tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Achievement-tasks"><span class="nav-number">2.5.4.1.</span> <span class="nav-text">Achievement tasks</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Maintenance-tasks"><span class="nav-number">2.5.4.2.</span> <span class="nav-text">Maintenance tasks</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
