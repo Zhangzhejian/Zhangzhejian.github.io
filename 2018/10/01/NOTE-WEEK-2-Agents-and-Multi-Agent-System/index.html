@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Agents and Multi-Agent System智能体与多智能体系统Lecture 2 More on intelligent agentsKey points: Object and agents difference Environment (see in Artificial Intelligence note week 1) agent behaviour: state tran">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-03T19:45:52.099Z">
+<meta property="og:updated_time" content="2018-10-03T19:51:23.410Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NOTE_WEEK-2_Agents and Multi-Agent System">
 <meta name="twitter:description" content="Agents and Multi-Agent System智能体与多智能体系统Lecture 2 More on intelligent agentsKey points: Object and agents difference Environment (see in Artificial Intelligence note week 1) agent behaviour: state tran">
@@ -369,9 +369,9 @@ action: I \longrightarrow Ac</script><p>The function next is introduced, which m
 <h3 id="Tasks-for-Agents"><a href="#Tasks-for-Agents" class="headerlink" title="Tasks for Agents"></a>Tasks for Agents</h3><p>How to specify the tasks for agents is a problem</p>
 <h5 id="Maxmise-utility"><a href="#Maxmise-utility" class="headerlink" title="Maxmise utility"></a>Maxmise utility</h5><h5 id="Associate-utilities-with-individual-states"><a href="#Associate-utilities-with-individual-states" class="headerlink" title="Associate utilities with individual states"></a>Associate utilities with individual states</h5><p>the task specification is a function which asscociates a real number with every environments state</p>
 <script type="math/tex; mode=display">
-u: E\longrightarrow \reals</script><p><strong>Disadvantage</strong>: difficult to specify a <strong>long term</strong> view when assigning utilities to individual states</p>
+u: E\longrightarrow \mathbb{R}</script><p><strong>Disadvantage</strong>: difficult to specify a <strong>long term</strong> view when assigning utilities to individual states</p>
 <h5 id="Associate-utilities-with-runs"><a href="#Associate-utilities-with-runs" class="headerlink" title="Associate utilities with runs"></a>Associate utilities with runs</h5><script type="math/tex; mode=display">
-u: \mathcal{R} \longrightarrow \reals</script><p>Example: trading agent might use $u(r) = (p(r) l(r)) x fp(r)$ where $fp(r)$ is profit in the final state of r, $p(r)$ is the number of states agent is in profit and $l(r)$ is the number of states agent is not in profit.</p>
+u: \mathcal{R} \longrightarrow \mathbb{R}</script><p>Example: trading agent might use $u(r) = (p(r) l(r)) x fp(r)$ where $fp(r)$ is profit in the final state of r, $p(r)$ is the number of states agent is in profit and $l(r)$ is the number of states agent is not in profit.</p>
 <h4 id="Expected-utility-amp-optimal-agents"><a href="#Expected-utility-amp-optimal-agents" class="headerlink" title="Expected utility &amp; optimal agents"></a>Expected utility &amp; optimal agents</h4><h5 id="Expected-utility"><a href="#Expected-utility" class="headerlink" title="Expected utility"></a>Expected utility</h5><p>P(r|Ag,Env) to be denoted as probability that run r occurs when agent Ag is placed in environment Env.</p>
 <script type="math/tex; mode=display">
 \sum_{r \subset\mathcal{R}(Ag,Env)}P(r|Ag,Env) =1</script><p>Expected utility: $u(r)P(r|Ag,Env)$</p>
@@ -426,8 +426,8 @@ Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Diffi
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/28/NOTE-Agents-and-Multi-Agent-System/" rel="next" title="NOTE_WEEK-1_Agents and Multi-Agent System">
-                <i class="fa fa-chevron-left"></i> NOTE_WEEK-1_Agents and Multi-Agent System
+              <a href="/2018/09/28/Advanced Research Topic/" rel="next" title="Advanced Research Topic">
+                <i class="fa fa-chevron-left"></i> Advanced Research Topic
               </a>
             
           </div>
@@ -435,10 +435,6 @@ Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Diffi
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/02/Advanced Research Topic/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
