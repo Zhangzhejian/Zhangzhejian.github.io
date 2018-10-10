@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="note," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Six basic types of data in JavaScript1. NULL The value of the type is null which points to an empty object, thus when use typeof to detect the type of a null value, an object will be returned. 12var m">
-<meta name="keywords" content="JavaScript">
+<meta name="description" content="Artificial IntelligenceLecture 2: Probailistic Reasoning(概率推理) |Key points Uncertainty and methods for handling Introduce to probability Basic probability Bayes rules  Bayes rules P(A , B) = P(A \mid">
+<meta name="keywords" content="note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Data types of JavaScript">
-<meta property="og:url" content="https://octopusman.top/2017/12/29/Data-types-of-JavaScript/index.html">
+<meta property="og:title" content="NOTE_WEEK-2_Artificial Intelligence">
+<meta property="og:url" content="https://octopusman.top/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Six basic types of data in JavaScript1. NULL The value of the type is null which points to an empty object, thus when use typeof to detect the type of a null value, an object will be returned. 12var m">
+<meta property="og:description" content="Artificial IntelligenceLecture 2: Probailistic Reasoning(概率推理) |Key points Uncertainty and methods for handling Introduce to probability Basic probability Bayes rules  Bayes rules P(A , B) = P(A \mid">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-04T11:56:10.317Z">
+<meta property="og:updated_time" content="2018-10-10T15:03:04.260Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Data types of JavaScript">
-<meta name="twitter:description" content="Six basic types of data in JavaScript1. NULL The value of the type is null which points to an empty object, thus when use typeof to detect the type of a null value, an object will be returned. 12var m">
+<meta name="twitter:title" content="NOTE_WEEK-2_Artificial Intelligence">
+<meta name="twitter:description" content="Artificial IntelligenceLecture 2: Probailistic Reasoning(概率推理) |Key points Uncertainty and methods for handling Introduce to probability Basic probability Bayes rules  Bayes rules P(A , B) = P(A \mid">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://octopusman.top/2017/12/29/Data-types-of-JavaScript/"/>
+  <link rel="canonical" href="https://octopusman.top/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/"/>
 
 
 
 
 
-  <title>Data types of JavaScript | Recap</title>
+  <title>NOTE_WEEK-2_Artificial Intelligence | Recap</title>
   
 
 
@@ -233,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2017/12/29/Data-types-of-JavaScript/">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhejian">
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Data types of JavaScript</h1>
+          <h1 class="post-title" itemprop="name headline">NOTE_WEEK-2_Artificial Intelligence</h1>
         
 
         <div class="post-meta">
@@ -262,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-29T13:45:31+00:00">
-                2017-12-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-05T09:04:15+01:00">
+                2018-10-05
               </time>
             
 
@@ -300,107 +300,37 @@
       
 
       
-        <h4 id="Six-basic-types-of-data-in-JavaScript"><a href="#Six-basic-types-of-data-in-JavaScript" class="headerlink" title="Six basic types of data in JavaScript"></a>Six basic types of data in JavaScript</h4><p><strong>1. NULL</strong></p>
-<p>The value of the type is <strong>null</strong> which points to an empty object, thus when use <em>typeof</em> to detect the type of a null value, an object will be returned.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> m = <span class="literal">null</span>;</span><br><span class="line">alert(<span class="keyword">typeof</span>(m));</span><br></pre></td></tr></table></figure>
-<p><strong>2. Boolean</strong></p>
-<p>Boolean is also a special type in JS. There are only two values for boolean type, <em>true</em> or <em>false</em>. In addition, boolean is case sensitive, which means True and False are different from true and false.</p>
-<p>When trying to convert other types to Boolean using <strong>Boolean()</strong>:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Equals true</th>
-<th>Equals false</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Boolean</td>
-<td>true</td>
-<td>false</td>
-</tr>
-<tr>
-<td>String</td>
-<td>any other non-null value</td>
-<td>“”(null String)</td>
-</tr>
-<tr>
-<td>Number</td>
-<td>any non-zero value</td>
-<td>0 or NaN(not a number)</td>
-</tr>
-<tr>
-<td>Object</td>
-<td>any object</td>
-<td>null(as mentioned above, null is an object)</td>
-</tr>
-<tr>
-<td>Undefined</td>
-<td>not applicable(always false)</td>
-<td>undefined</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>3. Number</strong></p>
-<p>Including <strong>int</strong> and <strong>float</strong>, </p>
-<p><strong>NaN</strong> means <strong>not a Number</strong>. It happens when a Number type is expected but not be returned. For Example:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> y=<span class="string">'a'</span>;</span><br><span class="line">alert(x/y);</span><br></pre></td></tr></table></figure>
-<p>NaN has two special features:</p>
-<ol>
-<li><p>Any operation involves in NaN will return NaN</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x= NaN;</span><br><span class="line">alert(10/x);</span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-<li><p>NaN equals no other values</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="literal">NaN</span>==<span class="literal">NaN</span>);              <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
+        <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-2-Probailistic-Reasoning-概率推理"><a href="#Lecture-2-Probailistic-Reasoning-概率推理" class="headerlink" title="Lecture 2: Probailistic Reasoning(概率推理) |"></a>Lecture 2: Probailistic Reasoning(概率推理) |</h3><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h4><ol>
+<li>Uncertainty and methods for handling</li>
+<li>Introduce to probability</li>
+<li>Basic probability</li>
+<li>Bayes rules</li>
 </ol>
-<p><strong>4. Undefined</strong></p>
-<p>Undefined means a variable doesn’t refers to any value</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line">alert(x);</span><br></pre></td></tr></table></figure>
-<p><strong>5. String</strong></p>
-<p>“asd” and ‘asd’ are both String</p>
-<p><em>some basic operations of String</em></p>
-<ol>
-<li><p>String.substr(start,length)   <em>start</em> can be a char or an index</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello world"</span>;</span><br><span class="line">str.substr(<span class="string">"h"</span>,<span class="number">3</span>);   <span class="comment">//hel</span></span><br><span class="line">str.substr(<span class="number">1</span>,<span class="number">3</span>);     <span class="comment">//ell</span></span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-<li><p>Strring.concat()</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">"abc"</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="string">"def"</span>;</span><br><span class="line">alert(x.concat(y));  <span class="comment">//abcdef</span></span><br><span class="line">alert(<span class="string">""</span>.concat(x,y)); <span class="comment">//abcdef</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong>6. Object</strong></p>
-<p> a little complicated, discuss latter.</p>
-<h4 id="Some-operation-between-String-and-other-types"><a href="#Some-operation-between-String-and-other-types" class="headerlink" title="Some operation between String and other types"></a>Some operation between String and other types</h4><ol>
-<li><p>String + (Number. Boolean…..) = String</p>
-<blockquote>
-<p>“12.34”+123 = “12.34123”<br>“12.34’+ true = “12.34true”</p>
-<p>“12.34”+ null = “12.34null”</p>
-</blockquote>
-</li>
-<li><p>String - (Number,Boollean….) = Number</p>
-<blockquote>
-<p>“12.34” - true = 11.34</p>
-<p>“12.34” - 1 =11.34</p>
-<p>“12.34 “ - null = 12.34</p>
-<p>“asd” - 1 = NaN</p>
-</blockquote>
-</li>
-<li><p>String == ?</p>
-<blockquote>
-<p>‘5’==5  // true</p>
-<p>‘5’===5 // false</p>
-<p>‘null’ == null //false</p>
-<p>‘false’ == false // false</p>
-</blockquote>
-<p>​</p>
-</li>
-</ol>
+<h4 id="Bayes-rules"><a href="#Bayes-rules" class="headerlink" title="Bayes rules"></a>Bayes rules</h4><script type="math/tex; mode=display">
+P(A , B) = P(A \mid B)P(B)\\
+P(A|B )= \frac{P(A ,B)}{P(B)}</script><h4 id="Chain-rule"><a href="#Chain-rule" class="headerlink" title="Chain rule"></a>Chain rule</h4><script type="math/tex; mode=display">
+\begin{align}
+P(X_1,...,X_n) & = P(X_1,...X_{n-1})P(X_n|X_1,...,X_{n-1})\\
+&= P(X_1,...,X_{n-2})P(X_{n-1}|X_1,...,X_{n-2})P(X_n)|X_1,...X_{n-1})\\
+&= \prod_{i=1}^{n}P(X_i|X_1,...,X_{i-1})
+\end{align}</script><p>For</p>
+<h4 id="Indenpendent"><a href="#Indenpendent" class="headerlink" title="Indenpendent"></a>Indenpendent</h4><p>A and B are independent iff</p>
+<script type="math/tex; mode=display">
+P(A|B) = P(A),or\\
+P(B|A) = P(B),or\\
+P(A,B)= P(A)P(B)</script><h4 id="Conditional-Independence"><a href="#Conditional-Independence" class="headerlink" title="Conditional Independence"></a>Conditional Independence</h4><script type="math/tex; mode=display">
+P(A|B,C) = P(A|C)</script><p>we say A is conditionally independent of B given C.</p>
+<h5 id="Equivalent-statements"><a href="#Equivalent-statements" class="headerlink" title="Equivalent statements:"></a>Equivalent statements:</h5><script type="math/tex; mode=display">
+P(A|B,C) = P(A|C)\\
+\iff P(A,B|C) = P(A|C) \times P(B|C)</script><h4 id="According-to-Bayes’-Rule"><a href="#According-to-Bayes’-Rule" class="headerlink" title="According to Bayes’ Rule"></a>According to Bayes’ Rule</h4><script type="math/tex; mode=display">
+P(A,B) = P(A|B)P(B) = P(B|A)P(A)\\
+\implies P(B|A) = \frac{P(A|B)P(B)}{P(A)}\\
+P(e) = P(e,h)+P(e,\not h)  \\
+\implies P(e) = P(e|h)P(h)+P(e|\not h)P(\not h)（全概率公式）\\
+\begin{align}
+P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
+&= \frac{P(e|h)P(h)}{P(e|h)P(h)+P(e|\not h)(1-P(h))}
+\end{align}</script><p><strong>Finished</strong> </p>
 
       
     </div>
@@ -418,7 +348,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+            <a href="/tags/note/" rel="tag"># note</a>
           
         </div>
       
@@ -431,8 +361,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/18/The-basic-use-of-Raspberry-pi/" rel="next" title="The basic use of Raspberry pi">
-                <i class="fa fa-chevron-left"></i> The basic use of Raspberry pi
+              <a href="/2018/10/04/NOTE-WEEK-2-Web-Infrastructure-md/" rel="next" title="NOTE-WEEK-2--Web-Infrastructure.md">
+                <i class="fa fa-chevron-left"></i> NOTE-WEEK-2--Web-Infrastructure.md
               </a>
             
           </div>
@@ -441,8 +371,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/26/Use-Nginx-keepalived-to-Establish-Load-Balancers-with-High-Availability/" rel="prev" title="Use Nginx+keepalived to Establish Load Balancers with High Availability">
-                Use Nginx+keepalived to Establish Load Balancers with High Availability <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/09/NOTE-WEEK-3-Agents-and-Multi-Agent-System/" rel="prev" title="NOTE_WEEK-3_Agents and Multi-Agent System">
+                NOTE_WEEK-3_Agents and Multi-Agent System <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -566,7 +496,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Six-basic-types-of-data-in-JavaScript"><span class="nav-number">1.</span> <span class="nav-text">Six basic types of data in JavaScript</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Some-operation-between-String-and-other-types"><span class="nav-number">2.</span> <span class="nav-text">Some operation between String and other types</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Artificial-Intelligence"><span class="nav-number">1.</span> <span class="nav-text">Artificial Intelligence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-2-Probailistic-Reasoning-概率推理"><span class="nav-number">1.1.</span> <span class="nav-text">Lecture 2: Probailistic Reasoning(概率推理) |</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Key-points"><span class="nav-number">1.1.1.</span> <span class="nav-text">Key points</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bayes-rules"><span class="nav-number">1.1.2.</span> <span class="nav-text">Bayes rules</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Chain-rule"><span class="nav-number">1.1.3.</span> <span class="nav-text">Chain rule</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Indenpendent"><span class="nav-number">1.1.4.</span> <span class="nav-text">Indenpendent</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Conditional-Independence"><span class="nav-number">1.1.5.</span> <span class="nav-text">Conditional Independence</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Equivalent-statements"><span class="nav-number">1.1.5.1.</span> <span class="nav-text">Equivalent statements:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#According-to-Bayes’-Rule"><span class="nav-number">1.1.6.</span> <span class="nav-text">According to Bayes’ Rule</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -766,6 +696,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

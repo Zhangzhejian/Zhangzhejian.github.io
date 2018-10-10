@@ -229,6 +229,485 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/05/12/Final-Project-Revision/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/12/Final-Project-Revision/" itemprop="url">Final Project Revision</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T14:10:58+01:00">
+                2018-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Final-project-revision"><a href="#Final-project-revision" class="headerlink" title="Final project revision"></a>Final project revision</h1><p>This is a blog where I will have a brief introduction to my final year project which cost me a half year. I will complete this blog in three weeks to illustrate ever step to build the mini-cloud infrastructure and the problems I met which might be helpful.</p>
+<p>And at the final part, I will try to write some experience I got from the project.</p>
+<h2 id="Basic-introduction"><a href="#Basic-introduction" class="headerlink" title="Basic introduction"></a>Basic introduction</h2><p>Project name: A mini-cloud based e-commerce platform for small business</p>
+<p>Illustration: use one tower server and 7 Raspberry Pis to establish a mini-cloud infrastructure and then develop an e-commerce platforom for small businee which used to deployed on the infrastructure.</p>
+<p>PS: This project focuses more on the hardware part: how to establish a distributed system with high availability and reliability</p>
+<p><strong>Specific to Raspberry Pi:</strong></p>
+<p>Operation system: 2017-4-vga-raspbian-jessie </p>
+<p>CPU: QUAD Core ARMCortex-A7 </p>
+<p>RAM: 1GB </p>
+<p>Micro SD: 64G</p>
+<p><strong>Specific of Dell PowerEdge™ T110II Server:</strong></p>
+<p>Operating system:Ubuntu Trusty 14.04 (LTS) </p>
+<p>CPU: Intel Xeon processE3-1200 product family </p>
+<p>RAM:32GB </p>
+<h2 id="Mini-cloud-Infrastructure"><a href="#Mini-cloud-Infrastructure" class="headerlink" title="Mini-cloud Infrastructure"></a>Mini-cloud Infrastructure</h2><h3 id="Web-Frame-Work"><a href="#Web-Frame-Work" class="headerlink" title="Web Frame Work:"></a>Web Frame Work:</h3><p><img src="http://p8ltilmb1.bkt.clouddn.com/web_framework.png" alt="web framework"></p>
+<h3 id="Load-Balancer"><a href="#Load-Balancer" class="headerlink" title="Load Balancer:"></a>Load Balancer:</h3><p>Two Raspberry Pis to establish a load balacer cluster with failover function.</p>
+<p>Software: keepalived, NGINX</p>
+<p>The configuration process: <a href="http://octopusman.top/2018/01/26/Use-Nginx-keepalived-to-Establish-Load-Balancers-with-High-Availability/">Nginx and keepalived configuration</a></p>
+<h3 id="Business-layer"><a href="#Business-layer" class="headerlink" title="Business layer:"></a>Business layer:</h3><p>Two Raspberry Pis to make up a process system</p>
+<p>Software: tomcat7</p>
+<p>The configuration process: <a href="http://www.octopusman.top" target="_blank" rel="noopener">not complete yet</a></p>
+<h3 id="Database-Layer"><a href="#Database-Layer" class="headerlink" title="Database Layer:"></a>Database Layer:</h3><p>Three Raspberry Pis to establish a data centre with high availability and reliability by using read-write separation and master-slave warm standby</p>
+<p>Software: MySQL 5.5.60</p>
+<p>The configuration process: <a href="http://octopusman.top/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/">Use MySQL to establish master-slave warm standby and read-write separation</a></p>
+<h3 id="Static-server-layer"><a href="#Static-server-layer" class="headerlink" title="Static server layer"></a>Static server layer</h3><p>One tower server to store all static files like css,js,html.</p>
+<p>configuration: wait for completing…</p>
+<h2 id="Web-Application-Layer"><a href="#Web-Application-Layer" class="headerlink" title="Web Application Layer"></a>Web Application Layer</h2><p>Software part is the worst part in my project. Before design and implementation, requirements are not clear enough and the basic knowledge about the distributed system is not well learnt. After finishing the project when do this revision, I found the web application is just a piece of rubbish that has no single sepcific design for a distributed system. Thus the website is just for proving the whole infrastructure can work well.</p>
+<p>URL : <a href="www.finalproject.top/finalProject/index.jsp">Website URL</a></p>
+<p>Frontend: retrieved from <a href="http://w3layouts.com" target="_blank" rel="noopener">W3layouts</a></p>
+<p>Backend: JSP+Servlet+MySQL</p>
+<h3 id="not-fully-complete-yet…"><a href="#not-fully-complete-yet…" class="headerlink" title="not fully complete yet…"></a>not fully complete yet…</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/" itemprop="url">MySQL master-slave warm standby and read-write separation</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T13:49:25+01:00">
+                2018-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="MySQL-master-slave-warm-standby-and-read-write-separation"><a href="#MySQL-master-slave-warm-standby-and-read-write-separation" class="headerlink" title="MySQL master-slave warm standby and read-write separation"></a>MySQL master-slave warm standby and read-write separation</h1><h2 id="Technical-Context"><a href="#Technical-Context" class="headerlink" title="Technical Context"></a>Technical Context</h2><p>Hardware: Raspberry Pi</p>
+<p>OS:  <em>2017-4-vga-raspbian-jessie</em></p>
+<p>Software: MySQL 5.5.60</p>
+<h2 id="Illustration"><a href="#Illustration" class="headerlink" title="Illustration"></a>Illustration</h2><p>This configuration is Linux based. MySQL provides users with master-slave warm standby only requiring a simple configuration. However, </p>
+<h2 id="Configuration-process"><a href="#Configuration-process" class="headerlink" title="Configuration process"></a>Configuration process</h2><h3 id="1-Installing-MySQL"><a href="#1-Installing-MySQL" class="headerlink" title="1. Installing MySQL"></a>1. Installing MySQL</h3><p>Tutor: <a href="https://www.stewright.me/2014/06/tutorial-install-mysql-server-on-raspberry-pi/" target="_blank" rel="noopener">Install MySQL on Raspberry pi</a></p>
+<h3 id="2-Check-Basic-Information"><a href="#2-Check-Basic-Information" class="headerlink" title="2. Check Basic Information"></a>2. Check Basic Information</h3><p>Master host IP: 10.205.10.215</p>
+<p>Slave host IP: 10.205.10.216</p>
+<p><em>Guarantee the internel-availability between two hosts</em></p>
+<p><code>ping 10.205.10.215</code></p>
+<h3 id="3-Configuration"><a href="#3-Configuration" class="headerlink" title="3. Configuration"></a>3. Configuration</h3><p><em>File name: /etc/mysql/my.cnf</em></p>
+<p>In Master host: </p>
+<p>Add the following</p>
+<p><code>server-id = 215</code> the server-id just needs to be identical</p>
+<p><code>binlog-do-db=database_name</code>  here is the database need to be replicated</p>
+<p>In Slave host:</p>
+<p>Add the following</p>
+<p><code>server-id = 216</code> also identical</p>
+<p><code>replicate-do-db = database_name</code> here is the database need to be replicated</p>
+<h3 id="4-Restart-MySQL-net-service"><a href="#4-Restart-MySQL-net-service" class="headerlink" title="4. Restart MySQL net service"></a>4. Restart MySQL net service</h3><ol>
+<li>net stop mysql</li>
+<li>net start mysql</li>
+</ol>
+<h3 id="5-Grant-authority-to-slave-hosts-to-visit"><a href="#5-Grant-authority-to-slave-hosts-to-visit" class="headerlink" title="5. Grant authority to slave hosts to visit"></a>5. Grant authority to slave hosts to visit</h3><p><code>GRANT REPLICATION SLAVE ON *.* to &#39;slave&#39;@&#39;%&#39; identified by &#39;password&#39;</code></p>
+<p>Illustration: </p>
+<p>‘slave’ is the account name of the slave hosts</p>
+<p>‘%’ is the IP address of slave hosts. % means all the IPs are allowed</p>
+<h3 id="6-Check-master-state"><a href="#6-Check-master-state" class="headerlink" title="6. Check master state"></a>6. Check master state</h3><p><code>show master status;</code></p>
+<p><img src="http://p8ltilmb1.bkt.clouddn.com/image/master-slave-warm-standby/master.png" alt=""></p>
+<p>Remember the <strong>Position</strong> and <strong>File</strong></p>
+<h3 id="7-Grant-Authority-to-Master-host"><a href="#7-Grant-Authority-to-Master-host" class="headerlink" title="7.Grant Authority to Master host"></a>7.Grant Authority to Master host</h3><p>In the Slave hosts, it needs authority to allow master to send sql or data to the slave hosts.</p>
+<p><code>change master to master_host=&#39;Master_IP&#39;,master_user=&#39;master&#39;,master_password=&#39;password&#39;,master_log_file=&#39;mysql-bin.000011&#39;,master_log_pos=107;</code></p>
+<p>master_log_pos and master_log_file are all gotten above.</p>
+<p>Then start the slave host</p>
+<p><code>start slave;</code></p>
+<h3 id="8-Check-slave-status"><a href="#8-Check-slave-status" class="headerlink" title="8.  Check slave status"></a>8.  Check slave status</h3><p><code>show slave status\G</code></p>
+<p>Slave_IO_Running: Yes    //YES<br>Slave_SQL_Running: Yes     //YES</p>
+<p>Possible error:</p>
+<h4 id="error-1-error-connecting-to-master-‘root-10-205-10-198-3306’-retry-time-60-retries-86400"><a href="#error-1-error-connecting-to-master-‘root-10-205-10-198-3306’-retry-time-60-retries-86400" class="headerlink" title="error 1:  error connecting to master ‘root@10.205.10.198:3306’ - retry-time: 60  retries: 86400"></a>error 1:  error connecting to master ‘root@10.205.10.198:3306’ - retry-time: 60  retries: 86400</h4><h4 id="error2：jdbc4-CommunicationsException-Communications-link-failure"><a href="#error2：jdbc4-CommunicationsException-Communications-link-failure" class="headerlink" title="error2：jdbc4.CommunicationsException: Communications link failure"></a>error2：jdbc4.CommunicationsException: Communications link failure</h4><p>Solution:  sudo vim /etc/mysql/my.cnf   bind-address = 127.0.0.1  【delete】</p>
+<p>ref: <a href="https://blog.csdn.net/u010578251/article/details/52217419" target="_blank" rel="noopener">https://blog.csdn.net/u010578251/article/details/52217419</a></p>
+<h2 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h2><ol>
+<li><a href="https://www.cnblogs.com/kissdodog/p/5422195.html" target="_blank" rel="noopener">https://www.cnblogs.com/kissdodog/p/5422195.html</a></li>
+<li><a href="https://lanjingling.github.io/2015/10/29/mysql-ha/" target="_blank" rel="noopener">https://lanjingling.github.io/2015/10/29/mysql-ha/</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/01/26/Use-Nginx-keepalived-to-Establish-Load-Balancers-with-High-Availability/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/26/Use-Nginx-keepalived-to-Establish-Load-Balancers-with-High-Availability/" itemprop="url">Use Nginx+keepalived to Establish Load Balancers with High Availability</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-26T11:55:39+00:00">
+                2018-01-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>There some examples and tutorials on the Internet, however I didn’t find a compeletely perfect solution for Raspberry Pis. So here I try to make one that might be helpful.</p>
+<h4 id="The-basic-structure"><a href="#The-basic-structure" class="headerlink" title="The basic structure"></a>The basic structure</h4><p><strong>host 1</strong>: static ip address 10.206.10.200</p>
+<p><strong>host 2:</strong> static ip address  10.206.10.199</p>
+<p><strong>virtual ip add:</strong> 10.206.10. 211</p>
+<p><strong>Note:</strong> the selection of the virtual ip address is very important. The VIP is the entrance of your web, so please make sure the availability of the VIP. </p>
+<h4 id="Set-static-ip-address"><a href="#Set-static-ip-address" class="headerlink" title="Set static ip address"></a>Set static ip address</h4><p>Tutorial for Raspbian jessie:<a href="https://www.modmypi.com/blog/how-to-give-your-raspberry-pi-a-static-ip-address-update" target="_blank" rel="noopener">tutorial</a></p>
+<p><strong>Note:</strong> When setting the ip, you are requied basic knowledge about the TCP/IP </p>
+<h4 id="Install-and-configure-Nginx"><a href="#Install-and-configure-Nginx" class="headerlink" title="Install and configure Nginx"></a>Install and configure Nginx</h4><p>The OS is raspbian jessie. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br><span class="line">sudo vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<p>The content of nginx.conf:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">user www-data;</span><br><span class="line">worker_processes 4;</span><br><span class="line">pid /run/nginx.pid;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">        worker_connections 768;</span><br><span class="line">        # multi_accept on;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen 8000; #the port can be changed</span><br><span class="line">        server_name test;</span><br><span class="line">        charset utf-8;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">        root html;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">        proxy_set_header X-Real_IP $remote_addr;</span><br><span class="line">        client_max_body_size 100m;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong> Install Nginx in both hosts, and the configuration needs to be the same.</p>
+<p>Now do some changes to make the index.html differernt, which can be used for test.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/share/nginx/html/index.html</span><br></pre></td></tr></table></figure>
+<p>Then make some changes! For example, in host1, the index.html can be inserted into some values.</p>
+<p><strong>commonds that used to control Nginx</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service nginx start</span><br><span class="line">sudo service nginx stop</span><br><span class="line">sudo service nginx restart</span><br></pre></td></tr></table></figure>
+<p>Start the nginx, then use the web browser to visit.</p>
+<p>10.206.10.200:8000</p>
+<p>10.206.10.199:8000</p>
+<p>If you can see this, then Nginx is successfully running.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Welcome to nginx on Debian!123</span><br><span class="line">If you see this page, the nginx web server is successfully installed and working on Debian. Further configuration is required.pis4</span><br><span class="line"></span><br><span class="line">For online documentation and support please refer to nginx.org</span><br><span class="line"></span><br><span class="line">Please use the reportbug tool to report bugs in the nginx package with Debian. However, check existing bug reports before reporting a new bug.</span><br><span class="line"></span><br><span class="line">Thank you for using debian and nginx.</span><br></pre></td></tr></table></figure>
+<h4 id="Install-and-Configure-KEEPALIVED"><a href="#Install-and-Configure-KEEPALIVED" class="headerlink" title="Install and Configure KEEPALIVED"></a>Install and Configure KEEPALIVED</h4><p>keepalived here is used to provide a virtual connection between the two hosts.</p>
+<p>In raspbian, installing is simple than centOS and other tutorials in the Internet.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install keepalived</span><br></pre></td></tr></table></figure>
+<p>Then configuration</p>
+<p><strong>here is the configuration for MASTER host</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/keepalived/keepalived.conf</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;</span><br><span class="line">            notification_email &#123;</span><br><span class="line">                tiddy@example.com</span><br><span class="line">            &#125;</span><br><span class="line">            notification_email_from keepalived@example.com</span><br><span class="line">            smtp_server 192.168.1.5</span><br><span class="line">            smtp_connect_timeout 30</span><br><span class="line">            router_id  LVS_DEVEL_11  #与backup配置不相同的任意合法字符串</span><br><span class="line">        &#125;</span><br><span class="line">        vrrp_instance VI_1 &#123;</span><br><span class="line">            state MASTER             #backup机器配置为BACKUP</span><br><span class="line">            interface eth0       #绑定的网卡名称</span><br><span class="line">            virtual_router_id 250    #need to be the same as backup</span><br><span class="line">            use_vmac #名字可为任意合法字符串(默认字符串vrrp.$&#123;virtual_router_id&#125; 此处默认使用vrrp.250) </span><br><span class="line">            priority 250  #优先级，50 higher thanbackup</span><br><span class="line">            advert_int 1   </span><br><span class="line">mcast_src_ip 10.206.10.199 #according to the host&apos;s ip</span><br><span class="line">            authentication &#123;</span><br><span class="line">               auth_type PASS       #need to be the same as backup</span><br><span class="line">               auth_pass 1111       #need to be the same as backup</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">            virtual_ipaddress &#123;</span><br><span class="line">                10.206.10.211/27 #virual ip, need to be the same as backup, according to the real situation</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>NOTE:</strong> After testing, here  I found two strange problems that may occur when you use others toturials</p>
+<ol>
+<li>The priority. The first time I configured, I set the master’s priority to 400, and slave’s to 200(it’s obviously correct according to the rules that others stated, should be higher at least 50). However, when testing, the MASTER host became the SLAVE host. By checking the log(<strong>/var/log/messages</strong>), I found that  the SLAVE’s priority was higher than the MASTER. This situation is quite ridiculous right? Then I tried to set the priority of MASTER to 250(just higher 50), then it works. 250 is a really amazing number, what else can I say?</li>
+<li>The virtual_ipaddress. the VIP is important. You must make sure the ip address is usable. A random one may not work.</li>
+</ol>
+<p>Then Restart the KEEPALIVED</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service keepalived restart</span><br></pre></td></tr></table></figure>
+<p>use <strong>ifconfig</strong> to check the situation of network</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vrrp.250  Link encap:Ethernet  HWaddr 00:00:5e:00:01:fa  </span><br><span class="line">          inet addr:10.206.10.211  Bcast:0.0.0.0  Mask:255.255.255.224</span><br><span class="line">          inet6 addr: fe80::2479:6bf0:af3:7ba5/64 Scope:Link</span><br><span class="line">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:79294 errors:0 dropped:15 overruns:0 frame:0</span><br><span class="line">          TX packets:45157 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:1 </span><br><span class="line">          RX bytes:8424394 (8.0 MiB)  TX bytes:2555646 (2.4 MiB)</span><br></pre></td></tr></table></figure>
+<p>you will find an extra vrrp.250 interface, which means the keepalived working</p>
+<p>start both hosts and keepalived.</p>
+<p><strong>Test</strong></p>
+<p>In the browser, visit the VIP:8000 to see whether the index page can be seen.</p>
+<p>And then shut MASTER’s keepalived down to see whether SLAVE host gets the VIP and the index page changed.</p>
+<p>REFERENCE:</p>
+<ol>
+<li><a href="http://www.cnblogs.com/kaituorensheng/p/4889268.html" target="_blank" rel="noopener">http://www.cnblogs.com/kaituorensheng/p/4889268.html</a></li>
+<li><a href="http://blog.csdn.net/wanglei_storage/article/details/51175418" target="_blank" rel="noopener">http://blog.csdn.net/wanglei_storage/article/details/51175418</a></li>
+<li><a href="http://blog.csdn.net/zzban1111/article/details/15504783" target="_blank" rel="noopener">http://blog.csdn.net/zzban1111/article/details/15504783</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://octopusman.top/2017/12/29/Data-types-of-JavaScript/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -634,7 +1113,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
