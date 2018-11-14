@@ -229,6 +229,928 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/" itemprop="url">NOTE_WEEK-2_Agents and Multi-Agent System</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-01T09:04:31+01:00">
+                2018-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Agents-and-Multi-Agent-System"><a href="#Agents-and-Multi-Agent-System" class="headerlink" title="Agents and Multi-Agent System"></a>Agents and Multi-Agent System</h2><h2 id="智能体与多智能体系统"><a href="#智能体与多智能体系统" class="headerlink" title="智能体与多智能体系统"></a>智能体与多智能体系统</h2><h3 id="Lecture-2-More-on-intelligent-agents"><a href="#Lecture-2-More-on-intelligent-agents" class="headerlink" title="Lecture 2 More on intelligent agents"></a>Lecture 2 More on intelligent agents</h3><h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><ol>
+<li>Object and agents difference</li>
+<li>Environment (see in <a href="http://octopusman.top/2018/09/28/NOTE-Artificial-Intelligence/#Environment">Artificial Intelligence note week 1</a>)</li>
+<li>agent behaviour: state transformer</li>
+<li>agent utility</li>
+</ol>
+<h3 id="Objects-and-Agents"><a href="#Objects-and-Agents" class="headerlink" title="Objects and Agents"></a>Objects and Agents</h3><h4 id="Main-differences"><a href="#Main-differences" class="headerlink" title="Main differences"></a>Main differences</h4><ul>
+<li>agents are autonomous</li>
+</ul>
+<p>They decide for themselves whether or not to perform an action</p>
+<ul>
+<li>agents are smart</li>
+</ul>
+<p>capable of flexible(reactive, pro-active, social) behaviours</p>
+<ul>
+<li>agents are active</li>
+</ul>
+<p>continuous sense-decide-act loop, not passive service providers</p>
+<h3 id="Agent-behaviour"><a href="#Agent-behaviour" class="headerlink" title="Agent behaviour"></a>Agent behaviour</h3><h4 id="State-action-and-run"><a href="#State-action-and-run" class="headerlink" title="State, action and run"></a>State, action and run</h4><p>Assume the environment may be in any of a finite set E of discrete, instantaneous states:</p>
+<script type="math/tex; mode=display">
+E = \{e_0,e_1,...\}</script><p>Agents are assumed to have a repertoire of possible actions available to them, which transform the state of the environment:</p>
+<script type="math/tex; mode=display">
+Ac = \{\alpha_0, \alpha_1,...\}</script><p>A run, r, of an agent in an environment is a sequence of interleaved environment states and actions:</p>
+<script type="math/tex; mode=display">
+r: e_0 \longrightarrow^{\alpha_0} e_1 \\
+r \subset \mathcal{R}</script><p>Let $\mathcal{R}$ be the set of all such possible finite <strong>sequences</strong> (over E and Ac)</p>
+<p>$\mathcal{R}^{AC}$ be the subset of these that end with an <strong>action</strong></p>
+<p>$\mathcal{R}^{E}$ be the subset of these that end with an <strong>environment state</strong></p>
+<p><strong>State transformer function:</strong></p>
+<script type="math/tex; mode=display">
+\tau:\mathcal{R}^{Ac}\to 2^E\</script><p>Hint: $2^A$ means all the subsets of A</p>
+<p>This function takes a run that ends with an action and returns a subset of E (so a set of environment states). </p>
+<p>$\tau$可以理解为是一个以action为结尾的run，到一个状态$2^E$</p>
+<h5 id="EXAMPLE"><a href="#EXAMPLE" class="headerlink" title="EXAMPLE"></a>EXAMPLE</h5><p>Environment: ENV_1 = <e,e_0,\tau>, e_0 is the initial state of the environment.</e,e_0,\tau></p>
+<script type="math/tex; mode=display">
+E = {e_0,e_1,e_3,e_4,e_5}\\
+\tau(e_0\longrightarrow^{a_0}) = \{e_1,e_2\}\\
+\tau(e_0 \longrightarrow^{a_1}) = \{e_3, e_4, e_5\}\\</script><h4 id="Agent-behaviour-1"><a href="#Agent-behaviour-1" class="headerlink" title="Agent behaviour"></a>Agent behaviour</h4><p>Agent is a function which maps <strong>runs</strong> to <strong>actions</strong></p>
+<script type="math/tex; mode=display">
+Ag: \mathcal{R}^E \longrightarrow Ac</script><p>An agent makes a decision about what action to perform based on the history of the system that it has witnessed to date. Let \mathcal{AG} be the set of all agents. (Agent做的就是根据输入的环境状态，给出决定的动作)</p>
+<p>A system is a pair (Ag, Env) containing an agent and an environment. Any system will have associated with it a set of possible runs; we denote the <strong>set of runs</strong> of agent Ag in environment Env by \mathcal{R}(Ag, Env) (We assume \mathcal{R}(Ag, Env) contains only <strong>terminated</strong> runs) (\mathcal{R}(Ag, Env)是在Env环境下，Ag做出的所有run的集合，假设只包含所有完整的run)</p>
+<h5 id="EXAMPLE-1"><a href="#EXAMPLE-1" class="headerlink" title="EXAMPLE"></a>EXAMPLE</h5><p>The same example as above</p>
+<script type="math/tex; mode=display">
+E = {e_0,e_1,e_3,e_4,e_5}\\\tau(e_0\longrightarrow^{a_0}) = \{e_1,e_2\}\\\tau(e_0 \longrightarrow^{a_1}) = \{e_3, e_4, e_5\}\\</script><p>First to determine the Ag() function.</p>
+<p>If $Ag(e_0) = \alpha_0$</p>
+<p>Then $\mathcal{R}(Ag,Env_1) = \{(e_0,\alpha_0,e_1), (e_0,\alpha+0, e_2)\}$</p>
+<h4 id="Behaviourally-equivalent-with-respect-to-environment-Env"><a href="#Behaviourally-equivalent-with-respect-to-environment-Env" class="headerlink" title="Behaviourally equivalent with respect to environment Env"></a>Behaviourally equivalent with respect to environment Env</h4><p>iff</p>
+<script type="math/tex; mode=display">
+\mathcal{R}(Ag_1, Env) = \mathcal{R}(Ag_2,Env)</script><h4 id="Purely-Reactive-Agents"><a href="#Purely-Reactive-Agents" class="headerlink" title="Purely Reactive Agents"></a>Purely Reactive Agents</h4><p>Some agents decide what to do <strong>without reference to their history</strong> — they base their decision making entirely on the present, with no reference at all to the past</p>
+<script type="math/tex; mode=display">
+action: E\longrightarrow Ac</script><h4 id="Agents-with-state"><a href="#Agents-with-state" class="headerlink" title="Agents with state"></a>Agents with state</h4><h5 id="Perception"><a href="#Perception" class="headerlink" title="Perception"></a>Perception</h5><p>The perception function <em>see</em> maps an environment state to a percept:</p>
+<script type="math/tex; mode=display">
+see: E \longrightarrow Per</script><p>The action-selection function action maps an internal state to an action:</p>
+<script type="math/tex; mode=display">
+action: Per \longrightarrow Ac</script><h5 id="Agents-with-state-1"><a href="#Agents-with-state-1" class="headerlink" title="Agents with state"></a>Agents with state</h5><p>Internal data structure state typically used to record information about the environment state and history. $\mathcal{I}$ be the set of all internal states of the agent</p>
+<script type="math/tex; mode=display">
+see: E\longrightarrow Per\\
+next: I \times Per \longrightarrow I\\
+action: I \longrightarrow Ac</script><p>The function next is introduced, which maps an internal state and a percept to an internal state, and then the action-selection function action maps an internal state to an action.</p>
+<h5 id="Control-Loop"><a href="#Control-Loop" class="headerlink" title="Control Loop"></a>Control Loop</h5><ol>
+<li>Agent starts in some initial internal state $i_0$</li>
+<li>Observes its environment state e, and generates a percept $see(e)$</li>
+<li>Internal state of the agent is then updated via next function, becoming $next(i_0 , see(e))$</li>
+<li>The action selected by the agent is $action (next(i_0 , see(e)))$</li>
+<li>Goto 2</li>
+</ol>
+<h3 id="Tasks-for-Agents"><a href="#Tasks-for-Agents" class="headerlink" title="Tasks for Agents"></a>Tasks for Agents</h3><p>How to specify the tasks for agents is a problem</p>
+<h5 id="Maxmise-utility"><a href="#Maxmise-utility" class="headerlink" title="Maxmise utility"></a>Maxmise utility</h5><h5 id="Associate-utilities-with-individual-states"><a href="#Associate-utilities-with-individual-states" class="headerlink" title="Associate utilities with individual states"></a>Associate utilities with individual states</h5><p>the task specification is a function which asscociates a real number with every environments state</p>
+<script type="math/tex; mode=display">
+u: E\longrightarrow \mathbb{R}</script><p><strong>Disadvantage</strong>: difficult to specify a <strong>long term</strong> view when assigning utilities to individual states</p>
+<h5 id="Associate-utilities-with-runs"><a href="#Associate-utilities-with-runs" class="headerlink" title="Associate utilities with runs"></a>Associate utilities with runs</h5><script type="math/tex; mode=display">
+u: \mathcal{R} \longrightarrow \mathbb{R}</script><p>Example: trading agent might use $u(r) = (p(r) l(r)) x fp(r)$ where $fp(r)$ is profit in the final state of r, $p(r)$ is the number of states agent is in profit and $l(r)$ is the number of states agent is not in profit.</p>
+<h4 id="Expected-utility-amp-optimal-agents"><a href="#Expected-utility-amp-optimal-agents" class="headerlink" title="Expected utility &amp; optimal agents"></a>Expected utility &amp; optimal agents</h4><h5 id="Expected-utility"><a href="#Expected-utility" class="headerlink" title="Expected utility"></a>Expected utility</h5><p>P(r|Ag,Env) to be denoted as probability that run r occurs when agent Ag is placed in environment Env.</p>
+<script type="math/tex; mode=display">
+\sum_{r \subset\mathcal{R}(Ag,Env)}P(r|Ag,Env) =1</script><p>Expected utility: $u(r)P(r|Ag,Env)$</p>
+<p>Optimal agent $Ag_{opt}$ is the one that maximizes expected utility over all possible runs in the environment</p>
+<script type="math/tex; mode=display">
+Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Difficulties-with-utility-based-approaches"><a href="#Difficulties-with-utility-based-approaches" class="headerlink" title="Difficulties with utility-based approaches"></a>Difficulties with utility-based approaches</h4><ol>
+<li>Not obvious how to generate the numbers</li>
+<li>People don’t think in terms of utilities</li>
+<li>Hard to formulate tasks in these terms</li>
+</ol>
+<h4 id="Predicate-断言-task-specifications"><a href="#Predicate-断言-task-specifications" class="headerlink" title="Predicate(断言) task specifications"></a>Predicate(断言) task specifications</h4><p>A special case of assigning utilities to runs is to assign 0 (false) or 1 (true).  Denote predicate task specification by Ψ.</p>
+<script type="math/tex; mode=display">
+\Psi: \mathcal{R} \longrightarrow \{0,1\}\\
+\mathcal{R}_\Psi(Ag,Env) = \{r|r\in \mathcal{R}(Ag,Env)\; \& \; \Psi(r) = 1\}</script><h4 id="Types-of-tasks"><a href="#Types-of-tasks" class="headerlink" title="Types of tasks"></a>Types of tasks</h4><h5 id="Achievement-tasks"><a href="#Achievement-tasks" class="headerlink" title="Achievement tasks"></a>Achievement tasks</h5><p>Are those of the form achieve state of affairs $\psi$</p>
+<p>An achievement task is specified by a set G of “good” or “goal” states: G ⊆ E. The agent succeeds if it is guaranteed to bring about at least one of these states (we do not care which one — they are all considered equally good)</p>
+<p>Let G ⊆ E be the set of states in which the achievement goal is realised. An agent Ag succeeds if and only if</p>
+<script type="math/tex; mode=display">
+\forall r \in \mathcal{R}(Ag,Env):\\
+\exists e_i \in \{e_x|e_x \; is \;a\;state\;that\;appears\; in\;r \;such\;that\; e_i\in G\}</script><h5 id="Maintenance-tasks"><a href="#Maintenance-tasks" class="headerlink" title="Maintenance tasks"></a>Maintenance tasks</h5><p>Are those of the form maintain state of affairs $\psi$</p>
+<p>A maintenance task is specified by a set B of “bad” states: B ⊆ E. The agent succeeds if it is guaranteed never to bring about one of these states, i.e. it manages to avoid all states in B, it never performs actions which result in any state in B occurring</p>
+<p>Let B ⊆ E be the set of bad states that we wish to avoid. An agent Ag succeeds if and only if</p>
+<script type="math/tex; mode=display">
+\forall r \in \mathcal{R}(Ag,Env):\\
+\not\exists e_i \in \{e_x|e_x \; is \;a\;state\;that\;appears\; in\;r \;such\;that\; e_i\in B\}</script><p><strong>Finished</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/28/Advanced Research Topic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/28/Advanced Research Topic/" itemprop="url">Advanced Research Topic</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-28T12:40:15+01:00">
+                2018-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Advanced-Research-Topic"><a href="#Advanced-Research-Topic" class="headerlink" title="Advanced Research Topic"></a>Advanced Research Topic</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/28/NOTE-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/28/NOTE-Artificial-Intelligence/" itemprop="url">NOTE_WEEK-1_Artificial Intelligence</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-28T09:58:25+01:00">
+                2018-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><ol>
+<li><p>Introduction to Artiﬁcial Intelligence </p>
+</li>
+<li><p>Probabilistic Reasoning I </p>
+</li>
+<li><p>Probabilistic Reasoning II </p>
+</li>
+<li><p>Sequential Decision Making </p>
+</li>
+<li><p>Temporal Probabilistic Reasoning</p>
+</li>
+<li><p>Game Theory</p>
+</li>
+<li><p>Argumentation I </p>
+</li>
+<li><p>Argumentation II </p>
+</li>
+<li><p>(A peek at) Machine Learning </p>
+</li>
+<li><p>AI &amp; Ethics </p>
+</li>
+</ol>
+<h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h4><ol>
+<li>Introduction of how to make right decision</li>
+</ol>
+<h4 id="How-to-do-the-right-thing"><a href="#How-to-do-the-right-thing" class="headerlink" title="How to do the right thing"></a>How to do the right thing</h4><p>Need to be able to </p>
+<ol>
+<li><strong>identify the alternatives</strong></li>
+<li><strong>decide</strong> which alternative will lead to the best outcome</li>
+<li>and do so <strong>quickly enough</strong> for the decision to be useful</li>
+</ol>
+<h4 id="Ideal-rational-理性的-agent"><a href="#Ideal-rational-理性的-agent" class="headerlink" title="Ideal rational(理性的) agent"></a>Ideal rational(理性的) agent</h4><p>For each <strong>percept sequence(感知序列)</strong>, an ideal rational agent will act to maximise its expected performance measure, <strong>on the basis of information provided</strong> by the percept sequence plus any information built into the agent.</p>
+<p>Rational agent <u>doesn’t</u> mean omniscient(全知的) or clairvoyant(先知) agent.</p>
+<h4 id="Percept-sequence"><a href="#Percept-sequence" class="headerlink" title="Percept sequence"></a>Percept sequence</h4><p><u>According to the sensors, the agent can percept from the environment and get the information.</u></p>
+<p>A simple agent maps each percept directly to an action. All static.</p>
+<p>When facing a complex environment, and even dynamic, it become hard for agents to do the right thing.</p>
+<h4 id="Problems"><a href="#Problems" class="headerlink" title="Problems:"></a>Problems:</h4><ol>
+<li>what to represent</li>
+<li>How to represent</li>
+<li>interpreting the percepts</li>
+</ol>
+<h5 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h5><ol>
+<li>Accessible&amp;Inaccessible</li>
+</ol>
+<p>An environment is <strong>accessible</strong> if the agent can obtain <strong>complete</strong> <strong>accurate and up-to-date</strong> information about <strong>all the relevant aspects</strong>.ic</p>
+<ol>
+<li>Deterministic&amp;Non-determinist</li>
+</ol>
+<p>A <strong>deterministic(确定性的)</strong> environment is one in which any action has <strong><u>a single guaranteed effect</u></strong> – there’s <u>no uncertainty</u> about the state that will result from performing an action.</p>
+<p>An environment where we can <u>quantify the non-determinism with probability</u> is called <strong>stochastic(随机的)</strong>.</p>
+<ol>
+<li>Episodic&amp;non-episodic</li>
+</ol>
+<p>In an <strong>episodic(情节的)</strong> environment, performance of an agent is dependent on a number of discrete episodes, with no link between the performance of an agent in different episodes.</p>
+<p>In a non-episodic(非偶发性) or sequential environment, the current decision affects future decisions.</p>
+<ol>
+<li>Static &amp; dynamic</li>
+</ol>
+<p>A <strong>static</strong> environment is one that can be assumed to <u>remain unchanged except</u> by the performance of actions by the agent.</p>
+<p>A <strong>dynamic</strong> environment is one that has <u>other processes operating</u> on it, and which hence changes in ways beyond the agent’s control.</p>
+<ol>
+<li>Discrete &amp; continuous</li>
+</ol>
+<p>An environment is <strong>discrete</strong> if there are a <u><strong>fixed, finite number of actions and percepts</strong></u> in it. Discrete environments could in principle be handled by a kind of “lookup table”.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/27/NOTE-Web-Infrastructure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/27/NOTE-Web-Infrastructure/" itemprop="url">NOTE_WEEK-1_Web Infrastructure</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-27T12:04:18+01:00">
+                2018-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Web-Infrastructure"><a href="#Web-Infrastructure" class="headerlink" title="Web Infrastructure"></a>Web Infrastructure</h2><h4 id="key-points"><a href="#key-points" class="headerlink" title="key points:"></a>key points:</h4><ol>
+<li>system architectures LODE</li>
+<li></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/24/NOTE-Agents-and-Multi-Agent-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/24/NOTE-Agents-and-Multi-Agent-System/" itemprop="url">NOTE_WEEK-1_Agents and Multi-Agent System</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T12:40:15+01:00">
+                2018-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Agents-and-Multi-Agent-System"><a href="#Agents-and-Multi-Agent-System" class="headerlink" title="Agents and Multi-Agent System"></a>Agents and Multi-Agent System</h2><h2 id="智能体与多智能体系统"><a href="#智能体与多智能体系统" class="headerlink" title="智能体与多智能体系统"></a>智能体与多智能体系统</h2><h3 id="Lecture-1-Introduction"><a href="#Lecture-1-Introduction" class="headerlink" title="Lecture 1 Introduction"></a>Lecture 1 Introduction</h3><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h4><ol>
+<li>What’s an agent</li>
+<li>Reactive—Proactive(goal-oriented)</li>
+<li>proactive(goal-oriented)</li>
+</ol>
+<h4 id="What’s-an-agent"><a href="#What’s-an-agent" class="headerlink" title="What’s an agent"></a>What’s an agent</h4><p>An agent is a system that:</p>
+<p>• is <strong>situated</strong> in an environment,</p>
+<p>• is capable of <strong>perceiving(察觉)</strong> its environment, and</p>
+<p>• is capable of <strong>acting</strong> in its environment</p>
+<p>with the <strong>goal</strong> of satisfying its design objectives.</p>
+<p>Two essential  features:</p>
+<ol>
+<li><strong>Antonomous</strong> (<strong>decide</strong> for themselves what to do) Control over internal state and over own behaviour.</li>
+<li><strong>Self-interested</strong> (act so as to try to <strong>achieve their goals</strong>)</li>
+</ol>
+<p>Intelligent agent: can work out best way to act in <strong>complex, unpredictable </strong> environment</p>
+<p>Want to delegate goals to the agent <u>without having to specify exactly how those goals should be achieved</u>. Agent <u>works out for itself</u> what to do to try to achieve its goals.</p>
+<h5 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a><strong>Definition</strong></h5><p><strong>A computer system capable of <u>flexible, autonomous (problem-solving) action</u>, situated in <u>dynamic, open, unpredictable and typically multi-agent domains.</u></strong></p>
+<p><strong>An agent </strong>is a computer system that is capable of <strong>independent</strong> action on behalf of its user or owner (figuring out what needs to be done <u>to satisfy design objectives</u>, rather than constantly being told).</p>
+<p><strong>A multi-agent </strong>system is one that consists of a number of agents, which <u>interact with one-another</u>. In the most general case, agents will be acting on behalf of users with different goals and motivations.</p>
+<p>To successfully interact, they will require the ability to <u>cooperate, coordinate, and negotiate</u> with each other, much as people do.</p>
+<h4 id="Compared-with"><a href="#Compared-with" class="headerlink" title="Compared with"></a>Compared with</h4><h5 id="AI"><a href="#AI" class="headerlink" title="AI:"></a>AI:</h5><p>Classical AI ignored social aspects of agency, which are important parts of intelligent activity in real-world setting.</p>
+<h5 id="Concurrent-Distributed-Systems"><a href="#Concurrent-Distributed-Systems" class="headerlink" title="Concurrent/Distributed Systems"></a>Concurrent/Distributed Systems</h5><ol>
+<li>Agents are autonomous, capable of making independent decisions</li>
+<li>Agents are self-interested</li>
+</ol>
+<h4 id="Flexable-Reactive-and-Proactive"><a href="#Flexable-Reactive-and-Proactive" class="headerlink" title="Flexable: Reactive and Proactive"></a><em>Flexable</em>: Reactive and Proactive</h4><h5 id="Reactivity-interact-with-environment-changes"><a href="#Reactivity-interact-with-environment-changes" class="headerlink" title="Reactivity (interact with environment changes)"></a>Reactivity (interact with environment changes)</h5><p>A reactive system is one that maintains an ongoing interaction with its environment, and responds to changes that occur in it (in time for the response to be useful).</p>
+<h5 id="Proactiveness-goal-oriented"><a href="#Proactiveness-goal-oriented" class="headerlink" title="Proactiveness (goal-oriented)"></a>Proactiveness (goal-oriented)</h5><p>Generating and attempting to <u>achieve goals</u>; not driven solely by events; taking the <strong>initiative</strong>(主动性).</p>
+<h4 id="Balancing-reactive-and-goal-oriented-behaviour"><a href="#Balancing-reactive-and-goal-oriented-behaviour" class="headerlink" title="Balancing reactive and goal-oriented behaviour"></a><u>Balancing reactive and goal-oriented behaviour</u></h4><h5 id="Reason"><a href="#Reason" class="headerlink" title="Reason:"></a>Reason:</h5><p>Reactivity means that the system needs to be passive while proactiveness requires the system to be proactive.</p>
+<h5 id="Multi-agent"><a href="#Multi-agent" class="headerlink" title="Multi-agent"></a>Multi-agent</h5><p>Agents need to be able to interact(communicates, coordinates, cooperates, competes, negotiates, delegates, persuades, incentivises …) with each other.</p>
+<p><strong>Social ability</strong> in agents is the ability to interact with other agents (and possibly humans) via some kind of agent-communication language, and perhaps cooperate with others.</p>
+<p>Finished</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/" itemprop="url">Machine Learning Notes StrandfordCourse 2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-23T21:46:54+01:00">
+                2018-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h2><h3 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h3><h4 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h4><p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/0rgjYLDeEeajLxLfjQiSjg_0c07c56839f8d6e8d7b0d09acedc88fd_Screenshot-2016-11-22-10.08.51.png?expiry=1537833600000&amp;hmac=FRBeg-NN4oEZPKrlnOGAfcfpNXkgb9Z1SQ17aQB417Q" alt=""></p>
+<p>a_i^j =  activation of unit i in layer j</p>
+<p>$\theta^j =$ matrix of weights controlling function mapping from layer j to layer j+1</p>
+<script type="math/tex; mode=display">
+a_i^j = g(\theta^{j-1} \times X^{j-1})\\
+h_\theta(x) = a_1^j = g(\theta^{j-1}\times X^{j-1})\\
+\theta^j \times \begin{bmatrix}
+a_0^j\\a_1^j\\a_2^j\\a_3^j\\\vdots\\a^j_{s_j}
+\end{bmatrix} = \begin{bmatrix}
+a_1^{j+1}\\a_2^{j+1}\\a_3^{j+1}\\\vdots\\a^{j+1}_{s_{j+1}}
+\end{bmatrix}</script><p>so $\theta^j$ needs to be a $s_{j+1}\times (s_j+1)$ matrix</p>
+<p><strong>note</strong> : there will be a bias unit called $a_0^j$ be added every layer after computed</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1018,379 +1940,11 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2017/12/29/Data-types-of-JavaScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/29/Data-types-of-JavaScript/" itemprop="url">Data types of JavaScript</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-29T13:45:31+00:00">
-                2017-12-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="Six-basic-types-of-data-in-JavaScript"><a href="#Six-basic-types-of-data-in-JavaScript" class="headerlink" title="Six basic types of data in JavaScript"></a>Six basic types of data in JavaScript</h4><p><strong>1. NULL</strong></p>
-<p>The value of the type is <strong>null</strong> which points to an empty object, thus when use <em>typeof</em> to detect the type of a null value, an object will be returned.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> m = <span class="literal">null</span>;</span><br><span class="line">alert(<span class="keyword">typeof</span>(m));</span><br></pre></td></tr></table></figure>
-<p><strong>2. Boolean</strong></p>
-<p>Boolean is also a special type in JS. There are only two values for boolean type, <em>true</em> or <em>false</em>. In addition, boolean is case sensitive, which means True and False are different from true and false.</p>
-<p>When trying to convert other types to Boolean using <strong>Boolean()</strong>:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Equals true</th>
-<th>Equals false</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Boolean</td>
-<td>true</td>
-<td>false</td>
-</tr>
-<tr>
-<td>String</td>
-<td>any other non-null value</td>
-<td>“”(null String)</td>
-</tr>
-<tr>
-<td>Number</td>
-<td>any non-zero value</td>
-<td>0 or NaN(not a number)</td>
-</tr>
-<tr>
-<td>Object</td>
-<td>any object</td>
-<td>null(as mentioned above, null is an object)</td>
-</tr>
-<tr>
-<td>Undefined</td>
-<td>not applicable(always false)</td>
-<td>undefined</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>3. Number</strong></p>
-<p>Including <strong>int</strong> and <strong>float</strong>, </p>
-<p><strong>NaN</strong> means <strong>not a Number</strong>. It happens when a Number type is expected but not be returned. For Example:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> y=<span class="string">'a'</span>;</span><br><span class="line">alert(x/y);</span><br></pre></td></tr></table></figure>
-<p>NaN has two special features:</p>
-<ol>
-<li><p>Any operation involves in NaN will return NaN</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x= NaN;</span><br><span class="line">alert(10/x);</span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-<li><p>NaN equals no other values</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="literal">NaN</span>==<span class="literal">NaN</span>);              <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ol>
-<p><strong>4. Undefined</strong></p>
-<p>Undefined means a variable doesn’t refers to any value</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line">alert(x);</span><br></pre></td></tr></table></figure>
-<p><strong>5. String</strong></p>
-<p>“asd” and ‘asd’ are both String</p>
-<p><em>some basic operations of String</em></p>
-<ol>
-<li><p>String.substr(start,length)   <em>start</em> can be a char or an index</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello world"</span>;</span><br><span class="line">str.substr(<span class="string">"h"</span>,<span class="number">3</span>);   <span class="comment">//hel</span></span><br><span class="line">str.substr(<span class="number">1</span>,<span class="number">3</span>);     <span class="comment">//ell</span></span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-<li><p>Strring.concat()</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">"abc"</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="string">"def"</span>;</span><br><span class="line">alert(x.concat(y));  <span class="comment">//abcdef</span></span><br><span class="line">alert(<span class="string">""</span>.concat(x,y)); <span class="comment">//abcdef</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong>6. Object</strong></p>
-<p> a little complicated, discuss latter.</p>
-<h4 id="Some-operation-between-String-and-other-types"><a href="#Some-operation-between-String-and-other-types" class="headerlink" title="Some operation between String and other types"></a>Some operation between String and other types</h4><ol>
-<li><p>String + (Number. Boolean…..) = String</p>
-<blockquote>
-<p>“12.34”+123 = “12.34123”<br>“12.34’+ true = “12.34true”</p>
-<p>“12.34”+ null = “12.34null”</p>
-</blockquote>
-</li>
-<li><p>String - (Number,Boollean….) = Number</p>
-<blockquote>
-<p>“12.34” - true = 11.34</p>
-<p>“12.34” - 1 =11.34</p>
-<p>“12.34 “ - null = 12.34</p>
-<p>“asd” - 1 = NaN</p>
-</blockquote>
-</li>
-<li><p>String == ?</p>
-<blockquote>
-<p>‘5’==5  // true</p>
-<p>‘5’===5 // false</p>
-<p>‘null’ == null //false</p>
-<p>‘false’ == false // false</p>
-</blockquote>
-<p>​</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2017/12/18/The-basic-use-of-Raspberry-pi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/18/The-basic-use-of-Raspberry-pi/" itemprop="url">The basic use of Raspberry pi</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T12:48:08+00:00">
-                2017-12-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Because of my final year project which involves using Raspberry Pi (RPI for short) to establish a mini cloud server cluster for an e-commerce platform, I purchased one, the detail information: Raspberry Pi 3 model B.It is the newest one that support WLAN, so it can also be user as a mini linux server.</p>
-<p>In this article, I will recap some problems occurred in my work</p>
-<h2 id="Installing-the-OS—Raspbian"><a href="#Installing-the-OS—Raspbian" class="headerlink" title="Installing the OS—Raspbian"></a>Installing the OS—Raspbian</h2><p>Basic material: RPI, sd card(16G)</p>
-<p>Operating system I choosed to use is <em>2017-4-vga-raspbian-jessie</em></p>
-<p>Tools: <em>SDFormatter</em> and <em>Win32DiskImager</em></p>
-<h3 id="1-Format-the-sd-card"><a href="#1-Format-the-sd-card" class="headerlink" title="1. Format the sd card"></a>1. Format the sd card</h3><p>use the SDFormatter</p>
-<h3 id="2-Burn-the-OS"><a href="#2-Burn-the-OS" class="headerlink" title="2. Burn the OS"></a>2. Burn the OS</h3><p>use the Win32DiskImager to burn </p>
-<h3 id="3-Boot-the-RPI-and-connect-it-to-a-monitor-with-HDMI"><a href="#3-Boot-the-RPI-and-connect-it-to-a-monitor-with-HDMI" class="headerlink" title="3. Boot the RPI and connect it to a monitor with HDMI"></a>3. Boot the RPI and connect it to a monitor with <em>HDMI</em></h3><p>check whether it work</p>
-<h2 id="Installing-some-softerware-for-further-use"><a href="#Installing-some-softerware-for-further-use" class="headerlink" title="Installing some softerware for further use"></a>Installing some softerware for further use</h2><h3 id="1-SSH"><a href="#1-SSH" class="headerlink" title="1. SSH"></a>1. SSH</h3><p>The default Raspbian doesn’t have the SSH so we need to install one</p>
-<h4 id="install-and-start"><a href="#install-and-start" class="headerlink" title="install and start"></a>install and start</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br><span class="line"></span><br><span class="line">sudo /etc/init.d/ssh start</span><br></pre></td></tr></table></figure>
-<h4 id="make-ssh-start-when-boot"><a href="#make-ssh-start-when-boot" class="headerlink" title="make ssh start when boot"></a>make ssh start when boot</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/rc.local</span><br></pre></td></tr></table></figure>
-<p><em>add the following before ‘exit 0’</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ssh start</span><br></pre></td></tr></table></figure>
-<p>Then have a test</p>
-<p>Now U can connect the RPI remotely</p>
-<h3 id="2-VSFTP"><a href="#2-VSFTP" class="headerlink" title="2. VSFTP"></a>2. VSFTP</h3><p>If you want to transmit some files by FTP, we need to install VSFTP first</p>
-<p><em>1. install</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vsftpd</span><br><span class="line"></span><br><span class="line">sudo service vsftpd start</span><br></pre></td></tr></table></figure>
-<p><em>2. configgure</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
-<h5 id="find-the-following"><a href="#find-the-following" class="headerlink" title="find the following"></a><em>find the following</em></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO</span><br><span class="line"></span><br><span class="line">local_enable=YES</span><br><span class="line"></span><br><span class="line">write_enable=YES	</span><br><span class="line"></span><br><span class="line">local_umask=022</span><br></pre></td></tr></table></figure>
-<p><em>3. save and restart the service</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service vsftpd restart</span><br></pre></td></tr></table></figure>
-<p>then have a test</p>
-<p>one problem occurred:</p>
-<p><em>500 OOPS: vsftpd: refusing to run with writable root inside chroot()</em></p>
-<p>to solves this, we need to add one statement in the /etc/vsftpd.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allow_writeable_chroot=YES</span><br></pre></td></tr></table></figure>
-<p>then restart the vsftp service</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1436,7 +1990,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

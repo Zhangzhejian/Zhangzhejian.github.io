@@ -79,15 +79,21 @@
 
 
 
+<meta name="description" content="Artificial IntelligenceLecture 3: Probailistic Reasoning(概率推理) IIBayesian NetworkNaive Bayes model:If $Effect_n are$ conditional independent of given Cause, then:   P(Cause|Effect_1, Effect_2,...,Effe">
 <meta name="keywords" content="note">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NOTE_WEEK-3_Artificial Intelligence">
 <meta property="og:url" content="https://octopusman.top/2018/10/12/NOTE-WEEK-3-Artificial-Intelligence/index.html">
 <meta property="og:site_name" content="Recap">
+<meta property="og:description" content="Artificial IntelligenceLecture 3: Probailistic Reasoning(概率推理) IIBayesian NetworkNaive Bayes model:If $Effect_n are$ conditional independent of given Cause, then:   P(Cause|Effect_1, Effect_2,...,Effe">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-12T09:13:42.139Z">
+<meta property="og:image" content="http://p8ltilmb1.bkt.clouddn.com/bayesianvis">
+<meta property="og:image" content="http://p8ltilmb1.bkt.clouddn.com/examplenetwork.png">
+<meta property="og:updated_time" content="2018-11-09T01:38:21.272Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NOTE_WEEK-3_Artificial Intelligence">
+<meta name="twitter:description" content="Artificial IntelligenceLecture 3: Probailistic Reasoning(概率推理) IIBayesian NetworkNaive Bayes model:If $Effect_n are$ conditional independent of given Cause, then:   P(Cause|Effect_1, Effect_2,...,Effe">
+<meta name="twitter:image" content="http://p8ltilmb1.bkt.clouddn.com/bayesianvis">
 
 
 
@@ -297,7 +303,38 @@
       
 
       
-        
+        <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-3-Probailistic-Reasoning-概率推理-II"><a href="#Lecture-3-Probailistic-Reasoning-概率推理-II" class="headerlink" title="Lecture 3: Probailistic Reasoning(概率推理) II"></a>Lecture 3: Probailistic Reasoning(概率推理) II</h3><h3 id="Bayesian-Network"><a href="#Bayesian-Network" class="headerlink" title="Bayesian Network"></a>Bayesian Network</h3><h4 id="Naive-Bayes-model"><a href="#Naive-Bayes-model" class="headerlink" title="Naive Bayes model:"></a>Naive Bayes model:</h4><p>If $Effect_n are$ conditional independent of given Cause, then: </p>
+<script type="math/tex; mode=display">
+P(Cause|Effect_1, Effect_2,...,Effect_n) = P(Cause)\prod_iP(Effect_i|Cause)\\</script><p>To prove:</p>
+<script type="math/tex; mode=display">
+P(C,e_1,e_2) = p(C)P(e_1|C)P(e_2|C)</script><p> $Effect_n$ are conditional independent of given Cause:</p>
+<script type="math/tex; mode=display">
+P(e_1|C,e_2) = P(e_1|C)\\
+\implies \frac{P(C,e_2|e_1)P(e_1)}{P(C,e_2)} = P(e_1|C)\\
+\implies P(C,e_1,e_2) = P(e_1|C)P(C,e_2)=P(e_1|C)P(e_2|C)P(C)</script><p>Visualises as:</p>
+<p><img src="http://p8ltilmb1.bkt.clouddn.com/bayesianvis" alt=""></p>
+<p>Exmaple network:</p>
+<p><img src="http://p8ltilmb1.bkt.clouddn.com/examplenetwork.png" alt=""></p>
+<h5 id="Global-Semantics"><a href="#Global-Semantics" class="headerlink" title="Global Semantics:"></a><strong>Global Semantics:</strong></h5><p>deﬁnes the full joint distribution as the product of the local conditional distributions</p>
+<script type="math/tex; mode=display">
+P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))\\</script><p>So </p>
+<script type="math/tex; mode=display">
+\begin{align}
+P(j,m,a,\not b,\not e) &= P(j|a)P(m|a)P(a|\not b,\not e)P(\not b)P(\not e)\\
+& = 0.00063
+
+\end{align}</script><h5 id="Local-semantics"><a href="#Local-semantics" class="headerlink" title="Local semantics:"></a>Local semantics:</h5><p>each node is conditionally independent of its nondescendants given its parents</p>
+<p>Each node is conditionally independent of all others given its <strong>Markov blanket</strong>: parents + children + children’s parents</p>
+<h4 id="Constructing-Bayesian-network"><a href="#Constructing-Bayesian-network" class="headerlink" title="Constructing Bayesian network"></a>Constructing Bayesian network</h4><p>The bayesian network can be considered as a form of <strong>knowledge representation</strong></p>
+<ol>
+<li>Figure out the variables that describe the world</li>
+<li>decide how they are connected(conditional independence)</li>
+<li>Work out the values in the CPTs(conditional probality table)</li>
+</ol>
+<h5 id="Noisy-OR-model"><a href="#Noisy-OR-model" class="headerlink" title="Noisy-OR model"></a>Noisy-OR model</h5><p>Parents $U_1,…U_k$ include all causes (can add leak node) (leak node is like $U_0$ that similiar to a bias)</p>
+<script type="math/tex; mode=display">
+P(X |U_1 . . . U_j , \not U_{j +1} . . . \not U_k ) = 1 -\prod_{i=1}^j  q_i\\
+q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script>
       
     </div>
     
@@ -336,6 +373,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/31/NOTE-WEEK-4-Agents-and-Multi-Agent-System/" rel="prev" title="NOTE_WEEK-4_Agents and Multi-Agent System">
+                NOTE_WEEK-4_Agents and Multi-Agent System <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -387,8 +428,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -403,7 +453,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -439,6 +489,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Artificial-Intelligence"><span class="nav-number">1.</span> <span class="nav-text">Artificial Intelligence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-3-Probailistic-Reasoning-概率推理-II"><span class="nav-number">1.1.</span> <span class="nav-text">Lecture 3: Probailistic Reasoning(概率推理) II</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bayesian-Network"><span class="nav-number">1.2.</span> <span class="nav-text">Bayesian Network</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Naive-Bayes-model"><span class="nav-number">1.2.1.</span> <span class="nav-text">Naive Bayes model:</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Global-Semantics"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Global Semantics:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Local-semantics"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Local semantics:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Constructing-Bayesian-network"><span class="nav-number">1.2.2.</span> <span class="nav-text">Constructing Bayesian network</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Noisy-OR-model"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">Noisy-OR model</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
