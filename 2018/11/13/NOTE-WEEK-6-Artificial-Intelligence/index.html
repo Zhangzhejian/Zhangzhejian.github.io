@@ -82,15 +82,16 @@
 <meta name="description" content="Artificial IntelligenceLecture 6: Probabilistic reasoning over timeDynamic Bayesian Network(DBN)to handle dynamic situation Consider the world to be a series of time slices. Each slice contains some v">
 <meta name="keywords" content="note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NOTE_WEEK-6_Artificial Intelligence">
+<meta property="og:title" content="Lec 6:Probabilistic reasoning over time(AI)">
 <meta property="og:url" content="https://octopusman.top/2018/11/13/NOTE-WEEK-6-Artificial-Intelligence/index.html">
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Artificial IntelligenceLecture 6: Probabilistic reasoning over timeDynamic Bayesian Network(DBN)to handle dynamic situation Consider the world to be a series of time slices. Each slice contains some v">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://p8ltilmb1.bkt.clouddn.com/Screen%20Shot%202018-11-14%20at%202.50.43%20PM.png">
-<meta property="og:updated_time" content="2018-11-14T14:55:43.640Z">
+<meta property="og:image" content="http://p8ltilmb1.bkt.clouddn.com/Screen%20Shot%202018-11-14%20at%203.09.09%20PM.png">
+<meta property="og:updated_time" content="2018-11-15T12:23:52.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NOTE_WEEK-6_Artificial Intelligence">
+<meta name="twitter:title" content="Lec 6:Probabilistic reasoning over time(AI)">
 <meta name="twitter:description" content="Artificial IntelligenceLecture 6: Probabilistic reasoning over timeDynamic Bayesian Network(DBN)to handle dynamic situation Consider the world to be a series of time slices. Each slice contains some v">
 <meta name="twitter:image" content="http://p8ltilmb1.bkt.clouddn.com/Screen%20Shot%202018-11-14%20at%202.50.43%20PM.png">
 
@@ -128,7 +129,7 @@
 
 
 
-  <title>NOTE_WEEK-6_Artificial Intelligence | Recap</title>
+  <title>Lec 6:Probabilistic reasoning over time(AI) | Recap</title>
   
 
 
@@ -252,7 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NOTE_WEEK-6_Artificial Intelligence</h1>
+          <h1 class="post-title" itemprop="name headline">Lec 6:Probabilistic reasoning over time(AI)</h1>
         
 
         <div class="post-meta">
@@ -316,7 +317,22 @@ P(X_t|X_{0:t-1})</script><p>Problem: when t is large, the data and computation c
 <script type="math/tex; mode=display">
 P(X_t|X_{0:t-1}) = P(X_t|X_{t-1})</script><p>Second-order:</p>
 <script type="math/tex; mode=display">
-P(X_t|X_{0:t-1}) = P(X_t|X_{t-2},X_{t-1})</script><h5 id="Sensor-model"><a href="#Sensor-model" class="headerlink" title="Sensor model"></a>Sensor model</h5>
+P(X_t|X_{0:t-1}) = P(X_t|X_{t-2},X_{t-1})</script><h5 id="Sensor-model"><a href="#Sensor-model" class="headerlink" title="Sensor model"></a>Sensor model</h5><p>The evidence variables $E_t$ could depend on lots of previous variables.</p>
+<p>But we will assume the state is constructed in such a way that evidence <strong>only depends on the current state</strong>.</p>
+<p>A Markov assumption for the sensor model:</p>
+<script type="math/tex; mode=display">
+P(E_t|X_{0:t-1},E_{0:t-1}) = P(E_t|X_{t})</script><p><img src="http://p8ltilmb1.bkt.clouddn.com/Screen%20Shot%202018-11-14%20at%203.09.09%20PM.png" alt=""></p>
+<p>in this bayesian network, arrows run from effect to causes.</p>
+<script type="math/tex; mode=display">
+P(X_{0:t},E_{1:t}) = P(X_0)\prod_{i=1}^t [P(X_i|X_{i-1})P(E_i|X_i)]\\
+because:\quad P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))</script><p>and in this network, the parent of $E_t$ is $X_t$</p>
+<h4 id="Inference-tasks"><a href="#Inference-tasks" class="headerlink" title="Inference tasks"></a>Inference tasks</h4><ul>
+<li>Filtering</li>
+<li>prediction</li>
+<li>smoothing</li>
+<li>Most likely explanation</li>
+</ul>
+<h5 id="Filtering"><a href="#Filtering" class="headerlink" title="Filtering"></a>Filtering</h5>
       
     </div>
     
@@ -477,7 +493,7 @@ P(X_t|X_{0:t-1}) = P(X_t|X_{t-2},X_{t-1})</script><h5 id="Sensor-model"><a href=
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Artificial-Intelligence"><span class="nav-number">1.</span> <span class="nav-text">Artificial Intelligence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-6-Probabilistic-reasoning-over-time"><span class="nav-number">1.1.</span> <span class="nav-text">Lecture 6: Probabilistic reasoning over time</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dynamic-Bayesian-Network-DBN"><span class="nav-number">1.1.1.</span> <span class="nav-text">Dynamic Bayesian Network(DBN)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Transition-model-过渡模型"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Transition model(过渡模型)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sensor-model"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Sensor model</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Artificial-Intelligence"><span class="nav-number">1.</span> <span class="nav-text">Artificial Intelligence</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-6-Probabilistic-reasoning-over-time"><span class="nav-number">1.1.</span> <span class="nav-text">Lecture 6: Probabilistic reasoning over time</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dynamic-Bayesian-Network-DBN"><span class="nav-number">1.1.1.</span> <span class="nav-text">Dynamic Bayesian Network(DBN)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Transition-model-过渡模型"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Transition model(过渡模型)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sensor-model"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">Sensor model</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inference-tasks"><span class="nav-number">1.1.2.</span> <span class="nav-text">Inference tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Filtering"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Filtering</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

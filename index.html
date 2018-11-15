@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/13/NOTE-WEEK-6-Artificial-Intelligence/" itemprop="url">NOTE_WEEK-6_Artificial Intelligence</a></h1>
+                <a class="post-title-link" href="/2018/11/13/NOTE-WEEK-6-Artificial-Intelligence/" itemprop="url">Lec 6:Probabilistic reasoning over time(AI)</a></h1>
         
 
         <div class="post-meta">
@@ -314,7 +314,22 @@ P(X_t|X_{0:t-1})</script><p>Problem: when t is large, the data and computation c
 <script type="math/tex; mode=display">
 P(X_t|X_{0:t-1}) = P(X_t|X_{t-1})</script><p>Second-order:</p>
 <script type="math/tex; mode=display">
-P(X_t|X_{0:t-1}) = P(X_t|X_{t-2},X_{t-1})</script><h5 id="Sensor-model"><a href="#Sensor-model" class="headerlink" title="Sensor model"></a>Sensor model</h5>
+P(X_t|X_{0:t-1}) = P(X_t|X_{t-2},X_{t-1})</script><h5 id="Sensor-model"><a href="#Sensor-model" class="headerlink" title="Sensor model"></a>Sensor model</h5><p>The evidence variables $E_t$ could depend on lots of previous variables.</p>
+<p>But we will assume the state is constructed in such a way that evidence <strong>only depends on the current state</strong>.</p>
+<p>A Markov assumption for the sensor model:</p>
+<script type="math/tex; mode=display">
+P(E_t|X_{0:t-1},E_{0:t-1}) = P(E_t|X_{t})</script><p><img src="http://p8ltilmb1.bkt.clouddn.com/Screen%20Shot%202018-11-14%20at%203.09.09%20PM.png" alt=""></p>
+<p>in this bayesian network, arrows run from effect to causes.</p>
+<script type="math/tex; mode=display">
+P(X_{0:t},E_{1:t}) = P(X_0)\prod_{i=1}^t [P(X_i|X_{i-1})P(E_i|X_i)]\\
+because:\quad P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))</script><p>and in this network, the parent of $E_t$ is $X_t$</p>
+<h4 id="Inference-tasks"><a href="#Inference-tasks" class="headerlink" title="Inference tasks"></a>Inference tasks</h4><ul>
+<li>Filtering</li>
+<li>prediction</li>
+<li>smoothing</li>
+<li>Most likely explanation</li>
+</ul>
+<h5 id="Filtering"><a href="#Filtering" class="headerlink" title="Filtering"></a>Filtering</h5>
           
         
       
