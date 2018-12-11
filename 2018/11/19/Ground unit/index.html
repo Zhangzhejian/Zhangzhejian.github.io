@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="Actions:to put-out-fire to avoid-obstacle to move-towards-base to move-towards-dest [dest] to patrol scouter specificto scouter-random-move Ground unit: Reactive part: to-report reactive-behaviour-uni">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Recap">
-<meta property="og:url" content="https://octopusman.top/tags/note/page/2/index.html">
+<meta property="og:url" content="https://octopusman.top/2018/11/19/Ground unit/index.html">
 <meta property="og:site_name" content="Recap">
+<meta property="og:description" content="Actions:to put-out-fire to avoid-obstacle to move-towards-base to move-towards-dest [dest] to patrol scouter specificto scouter-random-move Ground unit: Reactive part: to-report reactive-behaviour-uni">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-19T20:02:58.947Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Recap">
+<meta name="twitter:description" content="Actions:to put-out-fire to avoid-obstacle to move-towards-base to move-towards-dest [dest] to patrol scouter specificto scouter-random-move Ground unit: Reactive part: to-report reactive-behaviour-uni">
 
 
 
@@ -115,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://octopusman.top/tags/note/page/2/"/>
+  <link rel="canonical" href="https://octopusman.top/2018/11/19/Ground unit/"/>
 
 
 
 
 
-  <title>Tag: note | Recap</title>
+  <title> | Recap</title>
   
 
 
@@ -140,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,58 +218,164 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>note<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/11/19/Ground unit/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/" itemprop="url">
-              
-                <span itemprop="name">Machine Learning Notes StrandfordCourse 2</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-23T21:46:54+01:00"
-              content="2018-09-23" >
-          09-23
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-19T09:03:05+00:00">
+                2018-11-19
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Actions"><a href="#Actions" class="headerlink" title="Actions:"></a>Actions:</h3><p>to put-out-fire</p>
+<p>to avoid-obstacle</p>
+<p>to move-towards-base</p>
+<p>to move-towards-dest [dest]</p>
+<p>to patrol</p>
+<p><strong>scouter specific</strong><br>to scouter-random-move</p>
+<p>Ground unit:</p>
+<p>Reactive part:</p>
+<p>to-report reactive-behaviour-unit<br>  if detect-fire and have-water [put-out-fire report true]<br>  if need-water and at-base [service-unit report true]<br>  if need-water and detect-obstacle [avoid-obstacle report true]<br>  if need-water and not at-base and not detect-obstacle [move-towards-base report true]<br>  report false<br>end</p>
+<p>Scouts:</p>
+<p>Reactive part:</p>
+<p>to search-fire<br>   if detect-obstacle-scouter [avoid-obstacle stop]<br>   if true [scouter-random-move stop]<br>end</p>
+<h4 id="Program-logic"><a href="#Program-logic" class="headerlink" title="Program logic:"></a>Program logic:</h4><p>Scouts move randomly detect fire</p>
+<p>Broadcast inform msg</p>
+<p>Units received and check whether their intention is empty</p>
+<p>if empty [Units broadcast their distance to the location]</p>
+<p>the scouter receives all the feedback, choose the closet one and send back confirm msg</p>
+<p>the unit receives the confirm msg and updates its belief and intention</p>
+<p>Scouter logic:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while true:</span><br><span class="line">	move randomly;</span><br><span class="line">	if dect-fire[wait and report]</span><br><span class="line">	if received-feedback[choose-the-closest-unit and send-confirm-msg]</span><br><span class="line">	if detect-obstacle[avoid-obstacle]</span><br></pre></td></tr></table></figure>
+<p>Unit logic:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while empty? intention:</span><br><span class="line">	if receive-inform [choose-the-closet-firelocation and send-request]</span><br><span class="line">	if receive-confirm-msg [update-intention]</span><br><span class="line">	stop;</span><br></pre></td></tr></table></figure>
+<p>needs to decide which unit to move to the fire location**</p>
+<p>Units report their distance to the location </p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/NOTE-WEEK-6-Artificial-Intelligence/" rel="next" title="(AI)Lec 6:Probabilistic reasoning over time">
+                <i class="fa fa-chevron-left"></i> (AI)Lec 6:Probabilistic reasoning over time
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/tags/note/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/tags/note/">1</a><span class="page-number current">2</span>
-  </nav>
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -273,6 +383,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -293,8 +407,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -345,6 +468,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Actions"><span class="nav-number">1.</span> <span class="nav-text">Actions:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Program-logic"><span class="nav-number">1.1.</span> <span class="nav-text">Program logic:</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -478,6 +617,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -535,26 +678,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
