@@ -1005,14 +1005,14 @@ U_r([s_0,s_1,...,s_n]) = R(s_0)+R(s_1)+...+R(s_n)</script><p>Problem: when it’
 <script type="math/tex; mode=display">
 U_r([s_0,s_1,...,s_n]) = R(s_0)+\gamma R(s_1)+...+\gamma ^ nR(s_n)</script><script type="math/tex; mode=display">
 \begin{align}
-U_r([s_0,s_1,...,s_n]) & = \sum_{t=0}^\infin \gamma ^t R(s_t)\\
-&\leq \sum_{t=0}^\infin \gamma ^t R_{max}\\
+U_r([s_0,s_1,...,s_n]) & = \sum_{t=0}^\infty \gamma ^t R(s_t)\\
+&\leq \sum_{t=0}^\infty \gamma ^t R_{max}\\
 &\leq \frac{R_{max}}{1-\gamma}
 \end{align}</script><p>so the utility is bounded by the R_{max}</p>
 <h5 id="Optimal-policy"><a href="#Optimal-policy" class="headerlink" title="Optimal policy"></a>Optimal policy</h5><p>We compare policies by computing their expected utilities</p>
 <p>The expected utility of executing π starting in s is given by:</p>
 <script type="math/tex; mode=display">
-U^\pi(s) = E[\sum_{t=0}^\infin \gamma ^t R(s_t)]</script><p>$S_t $is the state the agent gets to at time t</p>
+U^\pi(s) = E[\sum_{t=0}^\infty \gamma ^t R(s_t)]</script><p>$S_t $is the state the agent gets to at time t</p>
 <p>Then the optimal policy is selected by MEU</p>
 <script type="math/tex; mode=display">
 \pi ^* = arg max_\pi U^\pi (s)</script><h4 id="Value-iteration"><a href="#Value-iteration" class="headerlink" title="Value iteration"></a>Value iteration</h4><h5 id="Bellman-Equation"><a href="#Bellman-Equation" class="headerlink" title="Bellman Equation"></a>Bellman Equation</h5><p>to caculate the utility of each state</p>
