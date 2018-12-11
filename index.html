@@ -229,149 +229,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/11/19/Ground unit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/19/Ground unit/" itemprop="url">Untitled</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-19T09:03:05+00:00">
-                2018-11-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Actions"><a href="#Actions" class="headerlink" title="Actions:"></a>Actions:</h3><p>to put-out-fire</p>
-<p>to avoid-obstacle</p>
-<p>to move-towards-base</p>
-<p>to move-towards-dest [dest]</p>
-<p>to patrol</p>
-<p><strong>scouter specific</strong><br>to scouter-random-move</p>
-<p>Ground unit:</p>
-<p>Reactive part:</p>
-<p>to-report reactive-behaviour-unit<br>  if detect-fire and have-water [put-out-fire report true]<br>  if need-water and at-base [service-unit report true]<br>  if need-water and detect-obstacle [avoid-obstacle report true]<br>  if need-water and not at-base and not detect-obstacle [move-towards-base report true]<br>  report false<br>end</p>
-<p>Scouts:</p>
-<p>Reactive part:</p>
-<p>to search-fire<br>   if detect-obstacle-scouter [avoid-obstacle stop]<br>   if true [scouter-random-move stop]<br>end</p>
-<h4 id="Program-logic"><a href="#Program-logic" class="headerlink" title="Program logic:"></a>Program logic:</h4><p>Scouts move randomly detect fire</p>
-<p>Broadcast inform msg</p>
-<p>Units received and check whether their intention is empty</p>
-<p>if empty [Units broadcast their distance to the location]</p>
-<p>the scouter receives all the feedback, choose the closet one and send back confirm msg</p>
-<p>the unit receives the confirm msg and updates its belief and intention</p>
-<p>Scouter logic:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while true:</span><br><span class="line">	move randomly;</span><br><span class="line">	if dect-fire[wait and report]</span><br><span class="line">	if received-feedback[choose-the-closest-unit and send-confirm-msg]</span><br><span class="line">	if detect-obstacle[avoid-obstacle]</span><br></pre></td></tr></table></figure>
-<p>Unit logic:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while empty? intention:</span><br><span class="line">	if receive-inform [choose-the-closet-firelocation and send-request]</span><br><span class="line">	if receive-confirm-msg [update-intention]</span><br><span class="line">	stop;</span><br></pre></td></tr></table></figure>
-<p>needs to decide which unit to move to the fire location**</p>
-<p>Units report their distance to the location </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/11/13/NOTE-WEEK-6-Artificial-Intelligence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -452,7 +309,7 @@
 <h5 id="Transition-model-过渡模型"><a href="#Transition-model-过渡模型" class="headerlink" title="Transition model(过渡模型)"></a>Transition model(过渡模型)</h5><script type="math/tex; mode=display">
 P(X_t|X_{0:t-1})</script><p>Problem: when t is large, the data and computation cost too many resource</p>
 <p>Solution: make a <strong>Markov Assumption</strong> that the value of the current state depends only on a ﬁnite ﬁxed number of previous states</p>
-<p><img src="http://p8ltilmb1.bkt.clouddn.com/Screen%20Shot%202018-11-14%20at%202.50.43%20PM.png" alt=""></p>
+<p><img src="https://i.postimg.cc/sX9QM0YX/transitionmodel.png" alt=""></p>
 <p>First-order:</p>
 <script type="math/tex; mode=display">
 P(X_t|X_{0:t-1}) = P(X_t|X_{t-1})</script><p>Second-order:</p>
@@ -461,7 +318,7 @@ P(X_t|X_{0:t-1}) = P(X_t|X_{t-2},X_{t-1})</script><h5 id="Sensor-model"><a href=
 <p>But we will assume the state is constructed in such a way that evidence <strong>only depends on the current state</strong>.</p>
 <p>A Markov assumption for the sensor model:</p>
 <script type="math/tex; mode=display">
-P(E_t|X_{0:t-1},E_{0:t-1}) = P(E_t|X_{t})</script><p><img src="http://p8ltilmb1.bkt.clouddn.com/Screen%20Shot%202018-11-14%20at%203.09.09%20PM.png" alt=""></p>
+P(E_t|X_{0:t-1},E_{0:t-1}) = P(E_t|X_{t})</script><p><img src="https://i.postimg.cc/kMsR9zMY/sensormodel.png" alt=""></p>
 <p>in this bayesian network, arrows run from effect to causes.</p>
 <script type="math/tex; mode=display">
 P(X_{0:t},E_{1:t}) = P(X_0)\prod_{i=1}^t [P(X_i|X_{i-1})P(E_i|X_i)]\\
@@ -472,7 +329,8 @@ because:\quad P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))</script><p
 <li>smoothing</li>
 <li>Most likely explanation</li>
 </ul>
-<h5 id="Filtering"><a href="#Filtering" class="headerlink" title="Filtering"></a>Filtering</h5>
+<h5 id="Filtering"><a href="#Filtering" class="headerlink" title="Filtering"></a>Filtering</h5><p>Not finished yet</p>
+
           
         
       
@@ -1052,7 +910,7 @@ because:\quad P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))</script><p
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/" itemprop="url">(AI)Lec 4:Sequential Decision Making</a></h1>
+                <a class="post-title-link" href="/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/" itemprop="url">(AI)Lec 4:Sequential Decision Making(马尔可夫决策过程MDP)</a></h1>
         
 
         <div class="post-meta">
@@ -1104,15 +962,15 @@ because:\quad P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))</script><p
       
         
           
-            <h2 id="Lecture-4-Sequential-Decision-Making"><a href="#Lecture-4-Sequential-Decision-Making" class="headerlink" title="Lecture 4: Sequential Decision Making"></a>Lecture 4: Sequential Decision Making</h2><h4 id="How-to-make-the-decision"><a href="#How-to-make-the-decision" class="headerlink" title="How to make the decision"></a>How to make the decision</h4><ul>
+            <h2 id="Lecture-4-Sequential-Decision-Making-马尔可夫决策过程MDP"><a href="#Lecture-4-Sequential-Decision-Making-马尔可夫决策过程MDP" class="headerlink" title="Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)"></a>Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)</h2><h4 id="How-to-make-the-decision"><a href="#How-to-make-the-decision" class="headerlink" title="How to make the decision"></a>How to make the decision</h4><ul>
 <li>a set of possible states S</li>
 <li>a set of possible actions A</li>
-<li>each $a \in A$ has a set of possible outcomes $s_a$</li>
+<li>each a \in A has a set of possible outcomes s_a</li>
 </ul>
 <h5 id="Maximising-the-expected-utility-MEU"><a href="#Maximising-the-expected-utility-MEU" class="headerlink" title="Maximising the expected utility(MEU)"></a>Maximising the expected utility(MEU)</h5><p>dealing with non-deterministic actions</p>
 <script type="math/tex; mode=display">
 a^* = arg \; max_{a \in A}E(u(a))\\
-E(u(a)) = \sum_{s'\in s_a} u(s')Pr(s_a =s')</script><p><img src="http://p8ltilmb1.bkt.clouddn.com/AI-lec4.png" alt=""></p>
+E(u(a)) = \sum_{s'\in s_a} u(s')Pr(s_a =s')</script><p><img src="https://i.postimg.cc/rwCkXCgc/AI-lec4.png" alt=""></p>
 <h5 id="find-the-Least-bad-worst-outcome"><a href="#find-the-Least-bad-worst-outcome" class="headerlink" title="find the Least-bad worst outcome"></a>find the Least-bad worst outcome</h5><script type="math/tex; mode=display">
 a^* = arg \; max_{a \in A}\{min_{s' \in s_a}u(s')\}</script><p>ignore the probability of outcomes and concentrate on <u>optimising the worst case outcome</u></p>
 <h5 id="find-the-maximax-outcome"><a href="#find-the-maximax-outcome" class="headerlink" title="find the maximax outcome"></a>find the maximax outcome</h5><script type="math/tex; mode=display">
@@ -1127,7 +985,7 @@ a^* = arg \; max_{a \in A}\{max_{s' \in s_a}u(s')\}</script><p>Just focus on the
 <p>This is a choice of <strong>action</strong> for every state. In any state s, $\pi(s)$ identifies what action to take</p>
 <p>The optimum policy $\pi^*$ is the policy with the highest expected value.</p>
 <h5 id="Reward"><a href="#Reward" class="headerlink" title="Reward"></a>Reward</h5><p>The reward function can change the optimal policy</p>
-<p><img src="http://p8ltilmb1.bkt.clouddn.com/AI-week4.png" alt=""></p>
+<p><img src="https://i.postimg.cc/BvSGqLwF/AI-week4.png" alt=""></p>
 <h4 id="Utilities-calculation"><a href="#Utilities-calculation" class="headerlink" title="Utilities calculation"></a>Utilities calculation</h4><p>utilities are summed along a run(not the only way)</p>
 <script type="math/tex; mode=display">
 U_r([s_0,s_1,...,s_n])</script><ul>
@@ -1157,10 +1015,11 @@ U_r([s_0,s_1,...,s_n]) & = \sum_{t=0}^\infin \gamma ^t R(s_t)\\
 U^\pi(s) = E[\sum_{t=0}^\infin \gamma ^t R(s_t)]</script><p>$S_t $is the state the agent gets to at time t</p>
 <p>Then the optimal policy is selected by MEU</p>
 <script type="math/tex; mode=display">
-\pi ^* = arg max_\pi U^\pi (s)</script><h4 id="policy-iteration"><a href="#policy-iteration" class="headerlink" title="policy iteration"></a>policy iteration</h4><h5 id="Bellman-Equation"><a href="#Bellman-Equation" class="headerlink" title="Bellman Equation"></a>Bellman Equation</h5><p>to caculate the utility of each state</p>
+\pi ^* = arg max_\pi U^\pi (s)</script><h4 id="Value-iteration"><a href="#Value-iteration" class="headerlink" title="Value iteration"></a>Value iteration</h4><h5 id="Bellman-Equation"><a href="#Bellman-Equation" class="headerlink" title="Bellman Equation"></a>Bellman Equation</h5><p>to caculate the utility of each state</p>
 <script type="math/tex; mode=display">
-U(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U(s')</script><p>not finished yet</p>
-<p>Reference:</p>
+U(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U(s')</script><p>And use the value iteration to ensure the convergence of the utility</p>
+<script type="math/tex; mode=display">
+U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Reference:</p>
 <ol>
 <li><a href="https://blog.csdn.net/jxl_1207/article/details/61414332" target="_blank" rel="noopener">https://blog.csdn.net/jxl_1207/article/details/61414332</a></li>
 </ol>
@@ -1843,6 +1702,128 @@ P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/10/04/NOTE-WEEK-2-Web-Infrastructure-md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/04/NOTE-WEEK-2-Web-Infrastructure-md/" itemprop="url">NOTE-WEEK-2--Web-Infrastructure.md</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-04T12:08:41+01:00">
+                2018-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="key-points"><a href="#key-points" class="headerlink" title="#####key points"></a>#####key points</h5><ol>
+<li>ip datagram header</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1893,7 +1874,7 @@ P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="Lecture 4: Sequential Decision MakingHow to make the decision a set of possible states S a set of possible actions A each $a \in A$ has a set of possible outcomes $s_a$  Maximising the expected utilit">
+<meta name="description" content="Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)How to make the decision a set of possible states S a set of possible actions A each a \in A has a set of possible outcomes s_a  Maximising the expect">
 <meta name="keywords" content="【note】">
 <meta property="og:type" content="article">
-<meta property="og:title" content="(AI)Lec 4:Sequential Decision Making">
+<meta property="og:title" content="(AI)Lec 4:Sequential Decision Making(马尔可夫决策过程MDP)">
 <meta property="og:url" content="https://octopusman.top/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Lecture 4: Sequential Decision MakingHow to make the decision a set of possible states S a set of possible actions A each $a \in A$ has a set of possible outcomes $s_a$  Maximising the expected utilit">
+<meta property="og:description" content="Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)How to make the decision a set of possible states S a set of possible actions A each a \in A has a set of possible outcomes s_a  Maximising the expect">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://p8ltilmb1.bkt.clouddn.com/AI-lec4.png">
-<meta property="og:image" content="http://p8ltilmb1.bkt.clouddn.com/AI-week4.png">
-<meta property="og:updated_time" content="2018-11-24T14:43:11.582Z">
+<meta property="og:image" content="https://i.postimg.cc/rwCkXCgc/AI-lec4.png">
+<meta property="og:image" content="https://i.postimg.cc/BvSGqLwF/AI-week4.png">
+<meta property="og:updated_time" content="2018-12-11T14:52:29.197Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="(AI)Lec 4:Sequential Decision Making">
-<meta name="twitter:description" content="Lecture 4: Sequential Decision MakingHow to make the decision a set of possible states S a set of possible actions A each $a \in A$ has a set of possible outcomes $s_a$  Maximising the expected utilit">
-<meta name="twitter:image" content="http://p8ltilmb1.bkt.clouddn.com/AI-lec4.png">
+<meta name="twitter:title" content="(AI)Lec 4:Sequential Decision Making(马尔可夫决策过程MDP)">
+<meta name="twitter:description" content="Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)How to make the decision a set of possible states S a set of possible actions A each a \in A has a set of possible outcomes s_a  Maximising the expect">
+<meta name="twitter:image" content="https://i.postimg.cc/rwCkXCgc/AI-lec4.png">
 
 
 
@@ -129,7 +129,7 @@
 
 
 
-  <title>(AI)Lec 4:Sequential Decision Making | Recap</title>
+  <title>(AI)Lec 4:Sequential Decision Making(马尔可夫决策过程MDP) | Recap</title>
   
 
 
@@ -253,7 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">(AI)Lec 4:Sequential Decision Making</h1>
+          <h1 class="post-title" itemprop="name headline">(AI)Lec 4:Sequential Decision Making(马尔可夫决策过程MDP)</h1>
         
 
         <div class="post-meta">
@@ -303,15 +303,15 @@
       
 
       
-        <h2 id="Lecture-4-Sequential-Decision-Making"><a href="#Lecture-4-Sequential-Decision-Making" class="headerlink" title="Lecture 4: Sequential Decision Making"></a>Lecture 4: Sequential Decision Making</h2><h4 id="How-to-make-the-decision"><a href="#How-to-make-the-decision" class="headerlink" title="How to make the decision"></a>How to make the decision</h4><ul>
+        <h2 id="Lecture-4-Sequential-Decision-Making-马尔可夫决策过程MDP"><a href="#Lecture-4-Sequential-Decision-Making-马尔可夫决策过程MDP" class="headerlink" title="Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)"></a>Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)</h2><h4 id="How-to-make-the-decision"><a href="#How-to-make-the-decision" class="headerlink" title="How to make the decision"></a>How to make the decision</h4><ul>
 <li>a set of possible states S</li>
 <li>a set of possible actions A</li>
-<li>each $a \in A$ has a set of possible outcomes $s_a$</li>
+<li>each a \in A has a set of possible outcomes s_a</li>
 </ul>
 <h5 id="Maximising-the-expected-utility-MEU"><a href="#Maximising-the-expected-utility-MEU" class="headerlink" title="Maximising the expected utility(MEU)"></a>Maximising the expected utility(MEU)</h5><p>dealing with non-deterministic actions</p>
 <script type="math/tex; mode=display">
 a^* = arg \; max_{a \in A}E(u(a))\\
-E(u(a)) = \sum_{s'\in s_a} u(s')Pr(s_a =s')</script><p><img src="http://p8ltilmb1.bkt.clouddn.com/AI-lec4.png" alt=""></p>
+E(u(a)) = \sum_{s'\in s_a} u(s')Pr(s_a =s')</script><p><img src="https://i.postimg.cc/rwCkXCgc/AI-lec4.png" alt=""></p>
 <h5 id="find-the-Least-bad-worst-outcome"><a href="#find-the-Least-bad-worst-outcome" class="headerlink" title="find the Least-bad worst outcome"></a>find the Least-bad worst outcome</h5><script type="math/tex; mode=display">
 a^* = arg \; max_{a \in A}\{min_{s' \in s_a}u(s')\}</script><p>ignore the probability of outcomes and concentrate on <u>optimising the worst case outcome</u></p>
 <h5 id="find-the-maximax-outcome"><a href="#find-the-maximax-outcome" class="headerlink" title="find the maximax outcome"></a>find the maximax outcome</h5><script type="math/tex; mode=display">
@@ -326,7 +326,7 @@ a^* = arg \; max_{a \in A}\{max_{s' \in s_a}u(s')\}</script><p>Just focus on the
 <p>This is a choice of <strong>action</strong> for every state. In any state s, $\pi(s)$ identifies what action to take</p>
 <p>The optimum policy $\pi^*$ is the policy with the highest expected value.</p>
 <h5 id="Reward"><a href="#Reward" class="headerlink" title="Reward"></a>Reward</h5><p>The reward function can change the optimal policy</p>
-<p><img src="http://p8ltilmb1.bkt.clouddn.com/AI-week4.png" alt=""></p>
+<p><img src="https://i.postimg.cc/BvSGqLwF/AI-week4.png" alt=""></p>
 <h4 id="Utilities-calculation"><a href="#Utilities-calculation" class="headerlink" title="Utilities calculation"></a>Utilities calculation</h4><p>utilities are summed along a run(not the only way)</p>
 <script type="math/tex; mode=display">
 U_r([s_0,s_1,...,s_n])</script><ul>
@@ -356,10 +356,11 @@ U_r([s_0,s_1,...,s_n]) & = \sum_{t=0}^\infin \gamma ^t R(s_t)\\
 U^\pi(s) = E[\sum_{t=0}^\infin \gamma ^t R(s_t)]</script><p>$S_t $is the state the agent gets to at time t</p>
 <p>Then the optimal policy is selected by MEU</p>
 <script type="math/tex; mode=display">
-\pi ^* = arg max_\pi U^\pi (s)</script><h4 id="policy-iteration"><a href="#policy-iteration" class="headerlink" title="policy iteration"></a>policy iteration</h4><h5 id="Bellman-Equation"><a href="#Bellman-Equation" class="headerlink" title="Bellman Equation"></a>Bellman Equation</h5><p>to caculate the utility of each state</p>
+\pi ^* = arg max_\pi U^\pi (s)</script><h4 id="Value-iteration"><a href="#Value-iteration" class="headerlink" title="Value iteration"></a>Value iteration</h4><h5 id="Bellman-Equation"><a href="#Bellman-Equation" class="headerlink" title="Bellman Equation"></a>Bellman Equation</h5><p>to caculate the utility of each state</p>
 <script type="math/tex; mode=display">
-U(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U(s')</script><p>not finished yet</p>
-<p>Reference:</p>
+U(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U(s')</script><p>And use the value iteration to ensure the convergence of the utility</p>
+<script type="math/tex; mode=display">
+U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Reference:</p>
 <ol>
 <li><a href="https://blog.csdn.net/jxl_1207/article/details/61414332" target="_blank" rel="noopener">https://blog.csdn.net/jxl_1207/article/details/61414332</a></li>
 </ol>
@@ -482,7 +483,7 @@ U(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U(s')</script><p>not finish
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -528,7 +529,7 @@ U(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U(s')</script><p>not finish
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-4-Sequential-Decision-Making"><span class="nav-number">1.</span> <span class="nav-text">Lecture 4: Sequential Decision Making</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#How-to-make-the-decision"><span class="nav-number">1.0.1.</span> <span class="nav-text">How to make the decision</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Maximising-the-expected-utility-MEU"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">Maximising the expected utility(MEU)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#find-the-Least-bad-worst-outcome"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">find the Least-bad worst outcome</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#find-the-maximax-outcome"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">find the maximax outcome</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Markov-decision-process-MDP-马尔可夫决策过程"><span class="nav-number">1.0.2.</span> <span class="nav-text">Markov decision process (MDP 马尔可夫决策过程)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Policy"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">Policy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Reward"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">Reward</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Utilities-calculation"><span class="nav-number">1.0.3.</span> <span class="nav-text">Utilities calculation</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Addntive-rewards"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">Addntive rewards:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Discounted-rewards"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">Discounted rewards:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Optimal-policy"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">Optimal policy</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#policy-iteration"><span class="nav-number">1.0.4.</span> <span class="nav-text">policy iteration</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Bellman-Equation"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">Bellman Equation</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-4-Sequential-Decision-Making-马尔可夫决策过程MDP"><span class="nav-number">1.</span> <span class="nav-text">Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#How-to-make-the-decision"><span class="nav-number">1.0.1.</span> <span class="nav-text">How to make the decision</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Maximising-the-expected-utility-MEU"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">Maximising the expected utility(MEU)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#find-the-Least-bad-worst-outcome"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">find the Least-bad worst outcome</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#find-the-maximax-outcome"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">find the maximax outcome</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Markov-decision-process-MDP-马尔可夫决策过程"><span class="nav-number">1.0.2.</span> <span class="nav-text">Markov decision process (MDP 马尔可夫决策过程)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Policy"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">Policy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Reward"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">Reward</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Utilities-calculation"><span class="nav-number">1.0.3.</span> <span class="nav-text">Utilities calculation</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Addntive-rewards"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">Addntive rewards:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Discounted-rewards"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">Discounted rewards:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Optimal-policy"><span class="nav-number">1.0.3.3.</span> <span class="nav-text">Optimal policy</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Value-iteration"><span class="nav-number">1.0.4.</span> <span class="nav-text">Value iteration</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Bellman-Equation"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">Bellman Equation</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
