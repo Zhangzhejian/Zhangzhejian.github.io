@@ -83,13 +83,13 @@
 <meta name="keywords" content="【note】">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(AI)Lec 4:Sequential Decision Making(马尔可夫决策过程MDP)">
-<meta property="og:url" content="https://octopusman.top/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/index.html">
+<meta property="og:url" content="https://zhangzhejian.com/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/index.html">
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)How to make the decision a set of possible states S a set of possible actions A each a \in A has a set of possible outcomes s_a  Maximising the expect">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.postimg.cc/rwCkXCgc/AI-lec4.png">
 <meta property="og:image" content="https://i.postimg.cc/BvSGqLwF/AI-week4.png">
-<meta property="og:updated_time" content="2018-12-11T15:55:02.465Z">
+<meta property="og:updated_time" content="2018-12-19T14:01:23.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(AI)Lec 4:Sequential Decision Making(马尔可夫决策过程MDP)">
 <meta name="twitter:description" content="Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)How to make the decision a set of possible states S a set of possible actions A each a \in A has a set of possible outcomes s_a  Maximising the expect">
@@ -123,7 +123,7 @@
 
 
 
-  <link rel="canonical" href="https://octopusman.top/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/"/>
+  <link rel="canonical" href="https://zhangzhejian.com/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/"/>
 
 
 
@@ -236,7 +236,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://octopusman.top/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhejian">
@@ -341,8 +341,10 @@ U_r([s_0,s_1,...,s_n]) = R(s_0)+R(s_1)+...+R(s_n)</script><p>Problem: when it’
 <li>Average reward: average reward per time step.</li>
 <li>Discounted rewards</li>
 </ul>
-<h5 id="Discounted-rewards"><a href="#Discounted-rewards" class="headerlink" title="Discounted rewards:"></a>Discounted rewards:</h5><p>$\gamma$ is the discount factor between 0 and 1.</p>
+<h5 id="Discounted-rewards"><a href="#Discounted-rewards" class="headerlink" title="Discounted rewards:"></a>Discounted rewards:</h5><p>\gamma is the discount factor between 0 and 1.</p>
 <p>It shows the preference of the agent for current over future rewards(先到手的最好)</p>
+<p>Uncertainty about the future may not be fully presented.</p>
+<p>Human behaviours shows preference for immediate rewards.</p>
 <script type="math/tex; mode=display">
 U_r([s_0,s_1,...,s_n]) = R(s_0)+\gamma R(s_1)+...+\gamma ^ nR(s_n)</script><script type="math/tex; mode=display">
 \begin{align}
@@ -363,6 +365,8 @@ U(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U(s')</script><p>And use th
 U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Reference:</p>
 <ol>
 <li><a href="https://blog.csdn.net/jxl_1207/article/details/61414332" target="_blank" rel="noopener">https://blog.csdn.net/jxl_1207/article/details/61414332</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/35231424" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35231424</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/28084942" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28084942</a></li>
 </ol>
 
       
