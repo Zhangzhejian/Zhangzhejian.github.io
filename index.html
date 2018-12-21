@@ -1241,7 +1241,7 @@ U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Re
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/12/NOTE-WEEK-3-Artificial-Intelligence/" itemprop="url">NOTE_WEEK-3_Artificial Intelligence</a></h1>
+                <a class="post-title-link" href="/2018/10/12/NOTE-WEEK-3-Artificial-Intelligence/" itemprop="url">(AI)Lec 3:Probailistic Reasonning II</a></h1>
         
 
         <div class="post-meta">
@@ -1293,7 +1293,7 @@ U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Re
       
         
           
-            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-3-Probailistic-Reasoning-概率推理-II"><a href="#Lecture-3-Probailistic-Reasoning-概率推理-II" class="headerlink" title="Lecture 3: Probailistic Reasoning(概率推理) II"></a>Lecture 3: Probailistic Reasoning(概率推理) II</h3><h3 id="Bayesian-Network"><a href="#Bayesian-Network" class="headerlink" title="Bayesian Network"></a>Bayesian Network</h3><h4 id="Naive-Bayes-model"><a href="#Naive-Bayes-model" class="headerlink" title="Naive Bayes model:"></a>Naive Bayes model:</h4><p>If $Effect_n are$ conditional independent of given Cause, then: </p>
+            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-3-Probailistic-Reasoning-概率推理-II"><a href="#Lecture-3-Probailistic-Reasoning-概率推理-II" class="headerlink" title="Lecture 3: Probailistic Reasoning(概率推理) II"></a>Lecture 3: Probailistic Reasoning(概率推理) II</h3><h3 id="Bayesian-Network"><a href="#Bayesian-Network" class="headerlink" title="Bayesian Network"></a>Bayesian Network</h3><h4 id="Naive-Bayes-model"><a href="#Naive-Bayes-model" class="headerlink" title="Naive Bayes model:"></a>Naive Bayes model:</h4><p>If  $Effect_n$  are conditional independent of given Cause, then: </p>
 <script type="math/tex; mode=display">
 P(Cause|Effect_1, Effect_2,...,Effect_n) = P(Cause)\prod_iP(Effect_i|Cause)\\</script><p>To prove:</p>
 <script type="math/tex; mode=display">
@@ -1584,7 +1584,7 @@ q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/" itemprop="url">NOTE_WEEK-2_Artificial Intelligence</a></h1>
+                <a class="post-title-link" href="/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/" itemprop="url">(AI)Lec 2:Probailistic Reasonning I</a></h1>
         
 
         <div class="post-meta">
@@ -1642,6 +1642,16 @@ q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script>
 <li>Basic probability</li>
 <li>Bayes rules</li>
 </ol>
+<h2 id="Why-Uncertainty"><a href="#Why-Uncertainty" class="headerlink" title="Why Uncertainty"></a>Why Uncertainty</h2><p><strong>Partial observability equals uncertainty</strong></p>
+<p>Full ovservability not true of the real world</p>
+<p>Partial observability can arise for many reasons</p>
+<ul>
+<li>Sensor noise</li>
+<li>Computational complexity</li>
+<li>World structure and sensor ability</li>
+</ul>
+<h4 id="Utility-theory"><a href="#Utility-theory" class="headerlink" title="Utility theory"></a>Utility theory</h4><p>used to represent and infer preference</p>
+<p><strong>Decision theory = utility theory + probability theory</strong></p>
 <h4 id="Bayes-rules"><a href="#Bayes-rules" class="headerlink" title="Bayes rules"></a>Bayes rules</h4><script type="math/tex; mode=display">
 P(A , B) = P(A \mid B)P(B)\\
 P(A|B )= \frac{P(A ,B)}{P(B)}</script><h4 id="Chain-rule"><a href="#Chain-rule" class="headerlink" title="Chain rule"></a>Chain rule</h4><script type="math/tex; mode=display">
