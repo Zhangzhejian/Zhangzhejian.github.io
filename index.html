@@ -1293,7 +1293,7 @@ U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Re
       
         
           
-            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-3-Probailistic-Reasoning-概率推理-II"><a href="#Lecture-3-Probailistic-Reasoning-概率推理-II" class="headerlink" title="Lecture 3: Probailistic Reasoning(概率推理) II"></a>Lecture 3: Probailistic Reasoning(概率推理) II</h3><h3 id="Bayesian-Network"><a href="#Bayesian-Network" class="headerlink" title="Bayesian Network"></a>Bayesian Network</h3><h4 id="Naive-Bayes-model"><a href="#Naive-Bayes-model" class="headerlink" title="Naive Bayes model:"></a>Naive Bayes model:</h4><p>If  $Effect_n$  are conditional independent of given Cause, then: </p>
+            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-3-Probailistic-Reasoning-概率推理-II"><a href="#Lecture-3-Probailistic-Reasoning-概率推理-II" class="headerlink" title="Lecture 3: Probailistic Reasoning(概率推理) II"></a>Lecture 3: Probailistic Reasoning(概率推理) II</h3><h3 id="Bayesian-Network"><a href="#Bayesian-Network" class="headerlink" title="Bayesian Network"></a>Bayesian Network</h3><h4 id="Naive-Bayes-model"><a href="#Naive-Bayes-model" class="headerlink" title="Naive Bayes model:"></a>Naive Bayes model:</h4><p>If  $Effect_n$   are conditional independent of given Cause, then: </p>
 <script type="math/tex; mode=display">
 P(Cause|Effect_1, Effect_2,...,Effect_n) = P(Cause)\prod_iP(Effect_i|Cause)\\</script><p>To prove:</p>
 <script type="math/tex; mode=display">
@@ -1302,9 +1302,9 @@ P(C,e_1,e_2) = p(C)P(e_1|C)P(e_2|C)</script><p> $Effect_n$ are conditional indep
 P(e_1|C,e_2) = P(e_1|C)\\
 \implies \frac{P(C,e_2|e_1)P(e_1)}{P(C,e_2)} = P(e_1|C)\\
 \implies P(C,e_1,e_2) = P(e_1|C)P(C,e_2)=P(e_1|C)P(e_2|C)P(C)</script><p>Visualises as:</p>
-<p><img src="http://p8ltilmb1.bkt.clouddn.com/bayesianvis" alt=""></p>
+<p><img src="https://i.postimg.cc/2y7w8KFf/vis.png" alt=""></p>
 <p>Exmaple network:</p>
-<p><img src="http://p8ltilmb1.bkt.clouddn.com/examplenetwork.png" alt=""></p>
+<p><img src="https://i.postimg.cc/xjvgRXrF/bayexm.png" alt=""></p>
 <h5 id="Global-Semantics"><a href="#Global-Semantics" class="headerlink" title="Global Semantics:"></a><strong>Global Semantics:</strong></h5><p>deﬁnes the full joint distribution as the product of the local conditional distributions</p>
 <script type="math/tex; mode=display">
 P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))\\</script><p>So </p>
@@ -1324,7 +1324,7 @@ P(j,m,a,\not b,\not e) &= P(j|a)P(m|a)P(a|\not b,\not e)P(\not b)P(\not e)\\
 <h5 id="Noisy-OR-model"><a href="#Noisy-OR-model" class="headerlink" title="Noisy-OR model"></a>Noisy-OR model</h5><p>Parents $U_1,…U_k$ include all causes (can add leak node) (leak node is like $U_0$ that similiar to a bias)</p>
 <script type="math/tex; mode=display">
 P(X |U_1 . . . U_j , \not U_{j +1} . . . \not U_k ) = 1 -\prod_{i=1}^j  q_i\\
-q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script>
+q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sampling"><a href="#Sampling" class="headerlink" title="Sampling"></a>Sampling</h3><h4 id="Prior-Sampling"><a href="#Prior-Sampling" class="headerlink" title="Prior Sampling"></a>Prior Sampling</h4><h4 id="Rejection-Sampling"><a href="#Rejection-Sampling" class="headerlink" title="Rejection Sampling"></a>Rejection Sampling</h4>
           
         
       
