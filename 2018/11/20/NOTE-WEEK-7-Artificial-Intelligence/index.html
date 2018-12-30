@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="note," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Lecture 7: Argumentation IAbstract argumentation frameworkAn abstract argumentation framework is a tuple &amp;lt;𝑆, 𝑅&amp;gt; where 𝑆 is a set of arguments and 𝑅 ⊆ 𝑆 × 𝑆 is an attack relation. For 𝑎, �">
+<meta name="keywords" content="note">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(AI)Lec 7:Argumentation I(论证)">
+<meta property="og:url" content="https://zhangzhejian.com/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/index.html">
+<meta property="og:site_name" content="Recap">
+<meta property="og:description" content="Lecture 7: Argumentation IAbstract argumentation frameworkAn abstract argumentation framework is a tuple &amp;lt;𝑆, 𝑅&amp;gt; where 𝑆 is a set of arguments and 𝑅 ⊆ 𝑆 × 𝑆 is an attack relation. For 𝑎, �">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.postimg.cc/XvqS9WhJ/arg-ex1.png">
+<meta property="og:image" content="https://i.postimg.cc/Jz79WmRq/argex2.png">
+<meta property="og:image" content="https://i.postimg.cc/Jz79WmRq/argex2.png">
+<meta property="og:image" content="https://i.postimg.cc/vTbpHxJ4/argex3.png">
+<meta property="og:image" content="https://i.postimg.cc/X78yJMCq/argex4.png">
+<meta property="og:image" content="https://i.postimg.cc/fRRSSHcK/argex5.png">
+<meta property="og:image" content="https://i.postimg.cc/dQnqZJ4b/argex6.png">
+<meta property="og:image" content="https://i.postimg.cc/RVNz3K3t/argex7.png">
+<meta property="og:image" content="https://i.postimg.cc/MGx6jXJ8/argex-8.png">
+<meta property="og:image" content="https://i.postimg.cc/Bvgq5sJP/argex9.png">
+<meta property="og:updated_time" content="2018-12-30T17:03:40.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(AI)Lec 7:Argumentation I(论证)">
+<meta name="twitter:description" content="Lecture 7: Argumentation IAbstract argumentation frameworkAn abstract argumentation framework is a tuple &amp;lt;𝑆, 𝑅&amp;gt; where 𝑆 is a set of arguments and 𝑅 ⊆ 𝑆 × 𝑆 is an attack relation. For 𝑎, �">
+<meta name="twitter:image" content="https://i.postimg.cc/XvqS9WhJ/arg-ex1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhangzhejian.com/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/"/>
+
+
+
+
+
+  <title>(AI)Lec 7:Argumentation I(论证) | Recap</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Recap</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">zhejian</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">(AI)Lec 7:Argumentation I(论证)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-20T12:16:35+00:00">
+                2018-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Lecture-7-Argumentation-I"><a href="#Lecture-7-Argumentation-I" class="headerlink" title="Lecture 7: Argumentation I"></a>Lecture 7: Argumentation I</h2><h4 id="Abstract-argumentation-framework"><a href="#Abstract-argumentation-framework" class="headerlink" title="Abstract argumentation framework"></a>Abstract argumentation framework</h4><p>An abstract argumentation framework is a tuple &lt;𝑆, 𝑅&gt; where 𝑆 is a set of arguments and 𝑅 ⊆ 𝑆 × 𝑆 is an attack relation.</p>
+<p>For 𝑎, 𝑏 ∈ 𝑆, (𝑎, 𝑏) ∈ 𝑅 means that argument 𝑎 attacks argument 𝑏.</p>
+<h5 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h5><p>The abstract argumentation framework 𝑆, 𝑅 where 𝑆 = {𝑎1, 𝑎2, 𝑎3} and 𝑅 = { (𝑎1, 𝑎2) , (𝑎2, 𝑎1) , (𝑎3, 𝑎2) }can be represented as:</p>
+<p><img src="https://i.postimg.cc/XvqS9WhJ/arg-ex1.png" alt=""></p>
+<h5 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h5><p>𝑆 = {𝑎1, 𝑎2, 𝑎3, 𝑎4, 𝑎5}</p>
+<p>𝑅 ={(𝑎1, 𝑎2) , (𝑎2, 𝑎5) , (𝑎2, 𝑎3), (𝑎3, 𝑎2) , (𝑎4, 𝑎3 ), (𝑎4, 𝑎4)}</p>
+<p><img src="https://i.postimg.cc/Jz79WmRq/argex2.png" alt=""></p>
+<h3 id="Conflict-free-sets"><a href="#Conflict-free-sets" class="headerlink" title="Conflict-free sets"></a>Conflict-free sets</h3><p>A set 𝑇 ⊆ 𝑆 is conflict-free <strong>if and only if</strong> there are no arguments in 𝑇 that attack each other. Formally:</p>
+<p>For all (𝑎, 𝑏) ∈ 𝑇, (𝑎, 𝑏) ∉ 𝑅.</p>
+<h5 id="As-for-Example-1"><a href="#As-for-Example-1" class="headerlink" title="As for Example 1:"></a>As for Example 1:</h5><p>The conflict-free subsets are:</p>
+<p><strong>{}</strong>,{𝑎1,},{𝑎2},{𝑎3},{𝑎1, 𝑎3}</p>
+<p>The <strong>empty set</strong> is always in the conflict-free subset.</p>
+<h5 id="As-for-Example-2"><a href="#As-for-Example-2" class="headerlink" title="As for Example 2:"></a>As for Example 2:</h5><p><strong>{}</strong>,{𝑎1,},{𝑎2},{𝑎3},{a5},{a1,a5},{a1,a3},{a3,a5}</p>
+<h4 id="Argument-defence"><a href="#Argument-defence" class="headerlink" title="Argument defence"></a>Argument defence</h4><p>A set 𝑇 ⊆ 𝑆 defends an argument 𝑥 ∈ 𝑆 if and only if for every 𝑦 ∈ 𝑆 such that 𝑦 attacks 𝑥 there is an element 𝑧 ∈ 𝑇 such that 𝑧 attacks 𝑦.</p>
+<h5 id="As-for-example-2"><a href="#As-for-example-2" class="headerlink" title="As for example 2:"></a>As for example 2:</h5><p><img src="https://i.postimg.cc/Jz79WmRq/argex2.png" alt=""></p>
+<p>{a1} defends a5</p>
+<p>{a4} defends a4</p>
+<p>{a1,a4},{a3,a4} defends a3</p>
+<p>{} defends a1</p>
+<h4 id="Admissible-可采纳的）"><a href="#Admissible-可采纳的）" class="headerlink" title="Admissible(可采纳的）"></a>Admissible(可采纳的）</h4><p>A set 𝐴 ⊆ 𝑆 is admissible if and only if 𝐴 is conflict-free and 𝐴 defends each argument that is a member of 𝐴.</p>
+<p>First it should be a subset of conflict-free.</p>
+<p>Then find the defence relationship between them.</p>
+<h5 id="As-for-Example-3"><a href="#As-for-Example-3" class="headerlink" title="As for Example 3:"></a>As for Example 3:</h5><p>{},{a1},{a3},{a1,a3}</p>
+<h5 id="As-for-Example-2-1"><a href="#As-for-Example-2-1" class="headerlink" title="As for Example 2:"></a>As for Example 2:</h5><p>{},{a1}, {a1,a5}</p>
+<h4 id="Complete-Extention-subset-of-admissible"><a href="#Complete-Extention-subset-of-admissible" class="headerlink" title="Complete Extention(subset of admissible)"></a>Complete Extention(subset of admissible)</h4><p>A complete extension is an admissible set that includes all arguments it defends.</p>
+<h5 id="Example-2-1"><a href="#Example-2-1" class="headerlink" title="Example 2:"></a>Example 2:</h5><p><img src="https://i.postimg.cc/vTbpHxJ4/argex3.png" alt=""></p>
+<h4 id="Maximal-and-minimal-subsets"><a href="#Maximal-and-minimal-subsets" class="headerlink" title="Maximal and minimal subsets"></a>Maximal and minimal subsets</h4><h5 id="Maximal-subsets"><a href="#Maximal-subsets" class="headerlink" title="Maximal subsets"></a>Maximal subsets</h5><p>Take 𝐶 ⊆ 2 𝑆 , a maximal subset of 𝑆 in 𝐶 is a set 𝑇 ∈ 𝐶 such that no other set in 𝐶 strictly <strong>includes</strong> 𝑇.</p>
+<p>Formally, 𝑇 is a maximal subset of 𝑆 in 𝐶 if and only if ∄𝑇′ ∈ 𝐶 such that 𝑇 ⊊ 𝑇 ′ .</p>
+<p><img src="https://i.postimg.cc/X78yJMCq/argex4.png" alt=""></p>
+<h5 id="Minimal-subsets"><a href="#Minimal-subsets" class="headerlink" title="Minimal subsets"></a>Minimal subsets</h5><p>Take 𝐶 ⊆ 2 𝑆 , a minimal subset of 𝑆 in 𝐶 is a set 𝑇 ∈ 𝐶 such that no other set in 𝐶 is <strong>strictly included in</strong> 𝑇.</p>
+<p>Formally, 𝑇 is a minimal subset of 𝑆 in 𝐶 if and only if ∄𝑇′ ∈ 𝐶 such that 𝑇 ′ ⊊ 𝑇.</p>
+<p><img src="https://i.postimg.cc/fRRSSHcK/argex5.png" alt=""></p>
+<h4 id="Grounded-extention-min"><a href="#Grounded-extention-min" class="headerlink" title="Grounded extention(min)"></a>Grounded extention(min)</h4><p>The grounded extension is the minimal complete extension with respect to set inclusion (ie, the minimal subset of the set of complete extensions).</p>
+<p><img src="https://i.postimg.cc/dQnqZJ4b/argex6.png" alt=""></p>
+<p>The grounded extension always exists and it is unique.</p>
+<p>The grounded extension can be empty.</p>
+<p><img src="https://i.postimg.cc/RVNz3K3t/argex7.png" alt=""></p>
+<h4 id="Prefered-extention-max"><a href="#Prefered-extention-max" class="headerlink" title="Prefered extention(max)"></a>Prefered extention(max)</h4><p>A preferred extension is a complete extension that is maximal with respect to set inclusion (ie, a maximal subset of the set of all complete extensions).</p>
+<h4 id="Stable-extention"><a href="#Stable-extention" class="headerlink" title="Stable extention"></a>Stable extention</h4><p>A stable extension of an argumentation framework 𝑆, 𝑅 is a <strong>preferred extension</strong> 𝐸 such that for all 𝑦 ∈ 𝑆 ∖ 𝐸 there exists 𝑥 ∈ 𝐸 such that 𝑥, 𝑦 ∈ 𝑅 (<strong>in other words, for every argument 𝑦 that isn’t part of 𝐸, there is an argument in 𝐸 that attacks 𝑦</strong>).</p>
+<h5 id="Example-1-1"><a href="#Example-1-1" class="headerlink" title="Example 1:"></a>Example 1:</h5><p><img src="https://i.postimg.cc/MGx6jXJ8/argex-8.png" alt=""></p>
+<h5 id="Example-2-2"><a href="#Example-2-2" class="headerlink" title="Example 2:"></a>Example 2:</h5><p><img src="https://i.postimg.cc/Bvgq5sJP/argex9.png" alt=""></p>
+<p>Credulous acceptance</p>
+<p>Skeptical acceptance</p>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><h5 id="Relationships-between-those-sets"><a href="#Relationships-between-those-sets" class="headerlink" title="Relationships between those sets"></a>Relationships between those sets</h5><p><strong>Min/max subset ⊆ Complete-extention⊆ adimissible ⊆ conflict-free</strong></p>
+<p><strong>stable extention ⊆ prefered/max extention</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/note/" rel="tag"># note</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/13/NOTE-WEEK-6-Artificial-Intelligence/" rel="next" title="(AI)Lec 6:Probabilistic reasoning over time">
+                <i class="fa fa-chevron-left"></i> (AI)Lec 6:Probabilistic reasoning over time
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zhejian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-7-Argumentation-I"><span class="nav-number">1.</span> <span class="nav-text">Lecture 7: Argumentation I</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Abstract-argumentation-framework"><span class="nav-number">1.0.1.</span> <span class="nav-text">Abstract argumentation framework</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-1"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">Example 1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-2"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">Example 2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conflict-free-sets"><span class="nav-number">1.1.</span> <span class="nav-text">Conflict-free sets</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-Example-1"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">As for Example 1:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-Example-2"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">As for Example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Argument-defence"><span class="nav-number">1.1.1.</span> <span class="nav-text">Argument defence</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-example-2"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">As for example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Admissible-可采纳的）"><span class="nav-number">1.1.2.</span> <span class="nav-text">Admissible(可采纳的）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-Example-3"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">As for Example 3:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-Example-2-1"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">As for Example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Complete-Extention-subset-of-admissible"><span class="nav-number">1.1.3.</span> <span class="nav-text">Complete Extention(subset of admissible)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-2-1"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Maximal-and-minimal-subsets"><span class="nav-number">1.1.4.</span> <span class="nav-text">Maximal and minimal subsets</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Maximal-subsets"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Maximal subsets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Minimal-subsets"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Minimal subsets</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Grounded-extention-min"><span class="nav-number">1.1.5.</span> <span class="nav-text">Grounded extention(min)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prefered-extention-max"><span class="nav-number">1.1.6.</span> <span class="nav-text">Prefered extention(max)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stable-extention"><span class="nav-number">1.1.7.</span> <span class="nav-text">Stable extention</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-1-1"><span class="nav-number">1.1.7.1.</span> <span class="nav-text">Example 1:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-2-2"><span class="nav-number">1.1.7.2.</span> <span class="nav-text">Example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Summary"><span class="nav-number">1.1.8.</span> <span class="nav-text">Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Relationships-between-those-sets"><span class="nav-number">1.1.8.1.</span> <span class="nav-text">Relationships between those sets</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhejian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -89,7 +89,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.postimg.cc/sX9QM0YX/transitionmodel.png">
 <meta property="og:image" content="https://i.postimg.cc/kMsR9zMY/sensormodel.png">
-<meta property="og:updated_time" content="2018-12-23T14:58:37.349Z">
+<meta property="og:updated_time" content="2018-12-30T12:16:43.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(AI)Lec 6:Probabilistic reasoning over time">
 <meta name="twitter:description" content="Lecture 6: Probabilistic reasoning over timeDynamic Bayesian Network(DBN)to handle dynamic situation Consider the world to be a series of time slices. Each slice contains some variables:  the set $X_t">
@@ -327,12 +327,56 @@ P(E_t|X_{0:t-1},E_{0:t-1}) = P(E_t|X_{t})</script><p><img src="https://i.postimg
 P(X_{0:t},E_{1:t}) = P(X_0)\prod_{i=1}^t [P(X_i|X_{i-1})P(E_i|X_i)]\\
 because:\quad P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))</script><p>and in this network, the parent of $E_t$ is $X_t$</p>
 <h4 id="Inference-tasks"><a href="#Inference-tasks" class="headerlink" title="Inference tasks"></a>Inference tasks</h4><ul>
-<li>Filtering</li>
-<li>prediction</li>
-<li>smoothing</li>
-<li>Most likely explanation</li>
+<li>Filtering: $P(X_t|e_{1:t})$  determine belief state— input to the decision process of a rational agent </li>
+<li>Prediction:$P(X_{t+k}|e_{1:t})$ for k &gt; 0  evaluate future states</li>
+<li>smoothing: P(X_k|e_{1:t}) for 0&lt;=k&lt;t better estimate past states</li>
+<li>Most likely explanation: $arg_max_{x_{1:t}}P(x_{1:t}|e_{1:t})$ </li>
 </ul>
-<h5 id="Filtering"><a href="#Filtering" class="headerlink" title="Filtering"></a>Filtering</h5><p>Not finished yet</p>
+<h5 id="Filtering"><a href="#Filtering" class="headerlink" title="Filtering"></a>Filtering</h5><p>determine the belief state (current state) $x_t$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{P}(X_t | e_{1:t}) &= \mathcal{P}(X_t | e_{1:t-1},e_{t})\\
+&=\alpha \mathcal{P}(e_{t}|X_t , e_{1:t-1})\mathcal{P}(X_t|e_{1:t-1}) \; \;Bayes \; rule\\
+&=\alpha \color{maroon}{\mathcal{P}(e_{t}|X_t)} \mathcal{P}(X_t|e_{1:t-1}) \;\;\; Markov \; assumption\\
+&=\alpha \color{maroon}{\mathcal{P}(e_{t}|X_t)} \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1},\color{red}{e_{1:t}})\mathcal{P}(X_{t-1}|e_{1:t-1}) \;\;\;\\
+&=\alpha \color{maroon}{\mathcal{P}(e_{t}|X_t)} \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1})\mathcal{P}(X_{t-1}|e_{1:t-1}) \;\;\; Markov \; assumption\\
+\end{align}</script><p>so we can make the filtering to a iteration function:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+f_{1:t} &= \mathcal{P}(X_t|e_{1:t}) \\
+&=  \alpha \mathcal{P}(e_{t}|X_t) \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1})\mathcal{P}(X_{t-1}|e_{1:t-1})\\
+& = \alpha \mathcal{P}(e_{t}|X_t) \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1}) f_{1:t-1}
+\end{align}</script><h5 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h5><p>Prediction is filtering without new evidence</p>
+<p>used to predict future state $x_{t+k}$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{P}(X_{t+1}|e_{1:t}) &= \sum_{x_t} \mathcal{P}(X_{t+1}|x_t,e_{1:t})\mathcal{P}(x_t|e_{1:t})\\
+& =  \sum_{x_t} \mathcal{P}(X_{t+1}|x_t)\mathcal{P}(x_t|e_{1:t})\\
+
+\end{align}</script><p>Above is predict one step forward</p>
+<p>K steps forward:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{P}(X_{t+k}|e_{1:t}) &= \sum_{x_{t+k-1}} \mathcal{P}(X_{t+k}|x_{t+k-1},e_{1:t})\mathcal{P}(x_t|e_{1:t})\\
+& =  \sum_{x_{t+k-1}} \mathcal{P}(X_{t+k}|x_{t+k-1})\mathcal{P}(x_{t+k-1}|e_{1:t})\\
+\end{align}</script><h5 id="Smoothing"><a href="#Smoothing" class="headerlink" title="Smoothing"></a>Smoothing</h5><p>1&lt; k &lt; t</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{P}(X_k|e_{1:t}) &= \mathcal{P}(X_k|e_{1:k},e_{k+1:t})\\
+&= \alpha \mathcal{P}(X_k|e_{1:k})\mathcal{P}(e_{k+1:t}|X_k,e_{1:k}) \;\;\; Bayes\; rule\\
+&= \alpha \mathcal{P}(X_k|e_{1:k})\mathcal{P}(e_{k+1:t}|X_k) \;\;\; conditional\; independence \\
+& = \alpha f_{1:k} b_{k+1:t}
+\end{align}</script><p>“f” is a forward message computed as filtering</p>
+<p>“b” is a backward message</p>
+<script type="math/tex; mode=display">
+\begin{align}
+b_{k+1:t} &= \mathcal{P}(e_{k+1:t}|X_k)\\
+&= \sum_{x_{k+1}}\mathcal{P}(e_{k+1:t}|x_{k+1},X_k) \mathcal{P}(x_{k+1}|X_k)\\
+&= \sum_{x_{k+1}}\mathcal{P}(e_{k+1:t}|x_{k+1}) \mathcal{P}(x_{k+1}|X_k) \;\;\; conditional\; independence\\
+&= \sum_{x_{k+1}}\mathcal{P}(e_{k+2:t},e_{k+1}|x_{k+1}) \mathcal{P}(x_{k+1}|X_k)\\
+&= \color{red}{P(e_{k+1}|x_{k+1})}P(e_{k+2}|x_{k+1}) \color{red}{\mathcal{P}(x_{k+1}|X_k)}\\
+\end{align}</script><p>The two red terms can get from the model. We only need to compute the second part</p>
+<h5 id="most-likely"><a href="#most-likely" class="headerlink" title="most likely"></a>most likely</h5><h4 id="Hidden-Markov-Model-HMM-隐式马尔可夫链"><a href="#Hidden-Markov-Model-HMM-隐式马尔可夫链" class="headerlink" title="Hidden Markov Model (HMM) 隐式马尔可夫链"></a>Hidden Markov Model (HMM) 隐式马尔可夫链</h4><p>Not finished yet</p>
 
       
     </div>
@@ -372,6 +416,10 @@ because:\quad P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))</script><p
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/" rel="prev" title="(AI)Lec 7:Argumentation I(论证)">
+                (AI)Lec 7:Argumentation I(论证) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -448,7 +496,7 @@ because:\quad P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))</script><p
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -494,7 +542,7 @@ because:\quad P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))</script><p
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-6-Probabilistic-reasoning-over-time"><span class="nav-number">1.</span> <span class="nav-text">Lecture 6: Probabilistic reasoning over time</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dynamic-Bayesian-Network-DBN"><span class="nav-number">1.0.1.</span> <span class="nav-text">Dynamic Bayesian Network(DBN)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Transition-model-过渡模型"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">Transition model(过渡模型)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sensor-model"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">Sensor model</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inference-tasks"><span class="nav-number">1.0.2.</span> <span class="nav-text">Inference tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Filtering"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">Filtering</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-6-Probabilistic-reasoning-over-time"><span class="nav-number">1.</span> <span class="nav-text">Lecture 6: Probabilistic reasoning over time</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Dynamic-Bayesian-Network-DBN"><span class="nav-number">1.0.1.</span> <span class="nav-text">Dynamic Bayesian Network(DBN)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Transition-model-过渡模型"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">Transition model(过渡模型)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Sensor-model"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">Sensor model</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Inference-tasks"><span class="nav-number">1.0.2.</span> <span class="nav-text">Inference tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Filtering"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">Filtering</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Prediction"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">Prediction</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Smoothing"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">Smoothing</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#most-likely"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">most likely</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hidden-Markov-Model-HMM-隐式马尔可夫链"><span class="nav-number">1.0.3.</span> <span class="nav-text">Hidden Markov Model (HMM) 隐式马尔可夫链</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

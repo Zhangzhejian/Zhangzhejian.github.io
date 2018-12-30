@@ -229,6 +229,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/" itemprop="url">(AI)Lec 7:Argumentation I(论证)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-20T12:16:35+00:00">
+                2018-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lecture-7-Argumentation-I"><a href="#Lecture-7-Argumentation-I" class="headerlink" title="Lecture 7: Argumentation I"></a>Lecture 7: Argumentation I</h2><h4 id="Abstract-argumentation-framework"><a href="#Abstract-argumentation-framework" class="headerlink" title="Abstract argumentation framework"></a>Abstract argumentation framework</h4><p>An abstract argumentation framework is a tuple &lt;𝑆, 𝑅&gt; where 𝑆 is a set of arguments and 𝑅 ⊆ 𝑆 × 𝑆 is an attack relation.</p>
+<p>For 𝑎, 𝑏 ∈ 𝑆, (𝑎, 𝑏) ∈ 𝑅 means that argument 𝑎 attacks argument 𝑏.</p>
+<h5 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h5><p>The abstract argumentation framework 𝑆, 𝑅 where 𝑆 = {𝑎1, 𝑎2, 𝑎3} and 𝑅 = { (𝑎1, 𝑎2) , (𝑎2, 𝑎1) , (𝑎3, 𝑎2) }can be represented as:</p>
+<p><img src="https://i.postimg.cc/XvqS9WhJ/arg-ex1.png" alt=""></p>
+<h5 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h5><p>𝑆 = {𝑎1, 𝑎2, 𝑎3, 𝑎4, 𝑎5}</p>
+<p>𝑅 ={(𝑎1, 𝑎2) , (𝑎2, 𝑎5) , (𝑎2, 𝑎3), (𝑎3, 𝑎2) , (𝑎4, 𝑎3 ), (𝑎4, 𝑎4)}</p>
+<p><img src="https://i.postimg.cc/Jz79WmRq/argex2.png" alt=""></p>
+<h3 id="Conflict-free-sets"><a href="#Conflict-free-sets" class="headerlink" title="Conflict-free sets"></a>Conflict-free sets</h3><p>A set 𝑇 ⊆ 𝑆 is conflict-free <strong>if and only if</strong> there are no arguments in 𝑇 that attack each other. Formally:</p>
+<p>For all (𝑎, 𝑏) ∈ 𝑇, (𝑎, 𝑏) ∉ 𝑅.</p>
+<h5 id="As-for-Example-1"><a href="#As-for-Example-1" class="headerlink" title="As for Example 1:"></a>As for Example 1:</h5><p>The conflict-free subsets are:</p>
+<p><strong>{}</strong>,{𝑎1,},{𝑎2},{𝑎3},{𝑎1, 𝑎3}</p>
+<p>The <strong>empty set</strong> is always in the conflict-free subset.</p>
+<h5 id="As-for-Example-2"><a href="#As-for-Example-2" class="headerlink" title="As for Example 2:"></a>As for Example 2:</h5><p><strong>{}</strong>,{𝑎1,},{𝑎2},{𝑎3},{a5},{a1,a5},{a1,a3},{a3,a5}</p>
+<h4 id="Argument-defence"><a href="#Argument-defence" class="headerlink" title="Argument defence"></a>Argument defence</h4><p>A set 𝑇 ⊆ 𝑆 defends an argument 𝑥 ∈ 𝑆 if and only if for every 𝑦 ∈ 𝑆 such that 𝑦 attacks 𝑥 there is an element 𝑧 ∈ 𝑇 such that 𝑧 attacks 𝑦.</p>
+<h5 id="As-for-example-2"><a href="#As-for-example-2" class="headerlink" title="As for example 2:"></a>As for example 2:</h5><p><img src="https://i.postimg.cc/Jz79WmRq/argex2.png" alt=""></p>
+<p>{a1} defends a5</p>
+<p>{a4} defends a4</p>
+<p>{a1,a4},{a3,a4} defends a3</p>
+<p>{} defends a1</p>
+<h4 id="Admissible-可采纳的）"><a href="#Admissible-可采纳的）" class="headerlink" title="Admissible(可采纳的）"></a>Admissible(可采纳的）</h4><p>A set 𝐴 ⊆ 𝑆 is admissible if and only if 𝐴 is conflict-free and 𝐴 defends each argument that is a member of 𝐴.</p>
+<p>First it should be a subset of conflict-free.</p>
+<p>Then find the defence relationship between them.</p>
+<h5 id="As-for-Example-3"><a href="#As-for-Example-3" class="headerlink" title="As for Example 3:"></a>As for Example 3:</h5><p>{},{a1},{a3},{a1,a3}</p>
+<h5 id="As-for-Example-2-1"><a href="#As-for-Example-2-1" class="headerlink" title="As for Example 2:"></a>As for Example 2:</h5><p>{},{a1}, {a1,a5}</p>
+<h4 id="Complete-Extention-subset-of-admissible"><a href="#Complete-Extention-subset-of-admissible" class="headerlink" title="Complete Extention(subset of admissible)"></a>Complete Extention(subset of admissible)</h4><p>A complete extension is an admissible set that includes all arguments it defends.</p>
+<h5 id="Example-2-1"><a href="#Example-2-1" class="headerlink" title="Example 2:"></a>Example 2:</h5><p><img src="https://i.postimg.cc/vTbpHxJ4/argex3.png" alt=""></p>
+<h4 id="Maximal-and-minimal-subsets"><a href="#Maximal-and-minimal-subsets" class="headerlink" title="Maximal and minimal subsets"></a>Maximal and minimal subsets</h4><h5 id="Maximal-subsets"><a href="#Maximal-subsets" class="headerlink" title="Maximal subsets"></a>Maximal subsets</h5><p>Take 𝐶 ⊆ 2 𝑆 , a maximal subset of 𝑆 in 𝐶 is a set 𝑇 ∈ 𝐶 such that no other set in 𝐶 strictly <strong>includes</strong> 𝑇.</p>
+<p>Formally, 𝑇 is a maximal subset of 𝑆 in 𝐶 if and only if ∄𝑇′ ∈ 𝐶 such that 𝑇 ⊊ 𝑇 ′ .</p>
+<p><img src="https://i.postimg.cc/X78yJMCq/argex4.png" alt=""></p>
+<h5 id="Minimal-subsets"><a href="#Minimal-subsets" class="headerlink" title="Minimal subsets"></a>Minimal subsets</h5><p>Take 𝐶 ⊆ 2 𝑆 , a minimal subset of 𝑆 in 𝐶 is a set 𝑇 ∈ 𝐶 such that no other set in 𝐶 is <strong>strictly included in</strong> 𝑇.</p>
+<p>Formally, 𝑇 is a minimal subset of 𝑆 in 𝐶 if and only if ∄𝑇′ ∈ 𝐶 such that 𝑇 ′ ⊊ 𝑇.</p>
+<p><img src="https://i.postimg.cc/fRRSSHcK/argex5.png" alt=""></p>
+<h4 id="Grounded-extention-min"><a href="#Grounded-extention-min" class="headerlink" title="Grounded extention(min)"></a>Grounded extention(min)</h4><p>The grounded extension is the minimal complete extension with respect to set inclusion (ie, the minimal subset of the set of complete extensions).</p>
+<p><img src="https://i.postimg.cc/dQnqZJ4b/argex6.png" alt=""></p>
+<p>The grounded extension always exists and it is unique.</p>
+<p>The grounded extension can be empty.</p>
+<p><img src="https://i.postimg.cc/RVNz3K3t/argex7.png" alt=""></p>
+<h4 id="Prefered-extention-max"><a href="#Prefered-extention-max" class="headerlink" title="Prefered extention(max)"></a>Prefered extention(max)</h4><p>A preferred extension is a complete extension that is maximal with respect to set inclusion (ie, a maximal subset of the set of all complete extensions).</p>
+<h4 id="Stable-extention"><a href="#Stable-extention" class="headerlink" title="Stable extention"></a>Stable extention</h4><p>A stable extension of an argumentation framework 𝑆, 𝑅 is a <strong>preferred extension</strong> 𝐸 such that for all 𝑦 ∈ 𝑆 ∖ 𝐸 there exists 𝑥 ∈ 𝐸 such that 𝑥, 𝑦 ∈ 𝑅 (<strong>in other words, for every argument 𝑦 that isn’t part of 𝐸, there is an argument in 𝐸 that attacks 𝑦</strong>).</p>
+<h5 id="Example-1-1"><a href="#Example-1-1" class="headerlink" title="Example 1:"></a>Example 1:</h5><p><img src="https://i.postimg.cc/MGx6jXJ8/argex-8.png" alt=""></p>
+<h5 id="Example-2-2"><a href="#Example-2-2" class="headerlink" title="Example 2:"></a>Example 2:</h5><p><img src="https://i.postimg.cc/Bvgq5sJP/argex9.png" alt=""></p>
+<p>Credulous acceptance</p>
+<p>Skeptical acceptance</p>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><h5 id="Relationships-between-those-sets"><a href="#Relationships-between-those-sets" class="headerlink" title="Relationships between those sets"></a>Relationships between those sets</h5><p><strong>Min/max subset ⊆ Complete-extention⊆ adimissible ⊆ conflict-free</strong></p>
+<p><strong>stable extention ⊆ prefered/max extention</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/13/NOTE-WEEK-6-Artificial-Intelligence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -324,12 +488,56 @@ P(E_t|X_{0:t-1},E_{0:t-1}) = P(E_t|X_{t})</script><p><img src="https://i.postimg
 P(X_{0:t},E_{1:t}) = P(X_0)\prod_{i=1}^t [P(X_i|X_{i-1})P(E_i|X_i)]\\
 because:\quad P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))</script><p>and in this network, the parent of $E_t$ is $X_t$</p>
 <h4 id="Inference-tasks"><a href="#Inference-tasks" class="headerlink" title="Inference tasks"></a>Inference tasks</h4><ul>
-<li>Filtering</li>
-<li>prediction</li>
-<li>smoothing</li>
-<li>Most likely explanation</li>
+<li>Filtering: $P(X_t|e_{1:t})$  determine belief state— input to the decision process of a rational agent </li>
+<li>Prediction:$P(X_{t+k}|e_{1:t})$ for k &gt; 0  evaluate future states</li>
+<li>smoothing: P(X_k|e_{1:t}) for 0&lt;=k&lt;t better estimate past states</li>
+<li>Most likely explanation: $arg_max_{x_{1:t}}P(x_{1:t}|e_{1:t})$ </li>
 </ul>
-<h5 id="Filtering"><a href="#Filtering" class="headerlink" title="Filtering"></a>Filtering</h5><p>Not finished yet</p>
+<h5 id="Filtering"><a href="#Filtering" class="headerlink" title="Filtering"></a>Filtering</h5><p>determine the belief state (current state) $x_t$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{P}(X_t | e_{1:t}) &= \mathcal{P}(X_t | e_{1:t-1},e_{t})\\
+&=\alpha \mathcal{P}(e_{t}|X_t , e_{1:t-1})\mathcal{P}(X_t|e_{1:t-1}) \; \;Bayes \; rule\\
+&=\alpha \color{maroon}{\mathcal{P}(e_{t}|X_t)} \mathcal{P}(X_t|e_{1:t-1}) \;\;\; Markov \; assumption\\
+&=\alpha \color{maroon}{\mathcal{P}(e_{t}|X_t)} \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1},\color{red}{e_{1:t}})\mathcal{P}(X_{t-1}|e_{1:t-1}) \;\;\;\\
+&=\alpha \color{maroon}{\mathcal{P}(e_{t}|X_t)} \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1})\mathcal{P}(X_{t-1}|e_{1:t-1}) \;\;\; Markov \; assumption\\
+\end{align}</script><p>so we can make the filtering to a iteration function:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+f_{1:t} &= \mathcal{P}(X_t|e_{1:t}) \\
+&=  \alpha \mathcal{P}(e_{t}|X_t) \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1})\mathcal{P}(X_{t-1}|e_{1:t-1})\\
+& = \alpha \mathcal{P}(e_{t}|X_t) \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1}) f_{1:t-1}
+\end{align}</script><h5 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h5><p>Prediction is filtering without new evidence</p>
+<p>used to predict future state $x_{t+k}$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{P}(X_{t+1}|e_{1:t}) &= \sum_{x_t} \mathcal{P}(X_{t+1}|x_t,e_{1:t})\mathcal{P}(x_t|e_{1:t})\\
+& =  \sum_{x_t} \mathcal{P}(X_{t+1}|x_t)\mathcal{P}(x_t|e_{1:t})\\
+
+\end{align}</script><p>Above is predict one step forward</p>
+<p>K steps forward:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{P}(X_{t+k}|e_{1:t}) &= \sum_{x_{t+k-1}} \mathcal{P}(X_{t+k}|x_{t+k-1},e_{1:t})\mathcal{P}(x_t|e_{1:t})\\
+& =  \sum_{x_{t+k-1}} \mathcal{P}(X_{t+k}|x_{t+k-1})\mathcal{P}(x_{t+k-1}|e_{1:t})\\
+\end{align}</script><h5 id="Smoothing"><a href="#Smoothing" class="headerlink" title="Smoothing"></a>Smoothing</h5><p>1&lt; k &lt; t</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{P}(X_k|e_{1:t}) &= \mathcal{P}(X_k|e_{1:k},e_{k+1:t})\\
+&= \alpha \mathcal{P}(X_k|e_{1:k})\mathcal{P}(e_{k+1:t}|X_k,e_{1:k}) \;\;\; Bayes\; rule\\
+&= \alpha \mathcal{P}(X_k|e_{1:k})\mathcal{P}(e_{k+1:t}|X_k) \;\;\; conditional\; independence \\
+& = \alpha f_{1:k} b_{k+1:t}
+\end{align}</script><p>“f” is a forward message computed as filtering</p>
+<p>“b” is a backward message</p>
+<script type="math/tex; mode=display">
+\begin{align}
+b_{k+1:t} &= \mathcal{P}(e_{k+1:t}|X_k)\\
+&= \sum_{x_{k+1}}\mathcal{P}(e_{k+1:t}|x_{k+1},X_k) \mathcal{P}(x_{k+1}|X_k)\\
+&= \sum_{x_{k+1}}\mathcal{P}(e_{k+1:t}|x_{k+1}) \mathcal{P}(x_{k+1}|X_k) \;\;\; conditional\; independence\\
+&= \sum_{x_{k+1}}\mathcal{P}(e_{k+2:t},e_{k+1}|x_{k+1}) \mathcal{P}(x_{k+1}|X_k)\\
+&= \color{red}{P(e_{k+1}|x_{k+1})}P(e_{k+2}|x_{k+1}) \color{red}{\mathcal{P}(x_{k+1}|X_k)}\\
+\end{align}</script><p>The two red terms can get from the model. We only need to compute the second part</p>
+<h5 id="most-likely"><a href="#most-likely" class="headerlink" title="most likely"></a>most likely</h5><h4 id="Hidden-Markov-Model-HMM-隐式马尔可夫链"><a href="#Hidden-Markov-Model-HMM-隐式马尔可夫链" class="headerlink" title="Hidden Markov Model (HMM) 隐式马尔可夫链"></a>Hidden Markov Model (HMM) 隐式马尔可夫链</h4><p>Not finished yet</p>
 
           
         
@@ -1716,128 +1924,6 @@ P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/04/NOTE-WEEK-2-Web-Infrastructure-md/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/04/NOTE-WEEK-2-Web-Infrastructure-md/" itemprop="url">NOTE-WEEK-2--Web-Infrastructure.md</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-04T12:08:41+01:00">
-                2018-10-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="key-points"><a href="#key-points" class="headerlink" title="#####key points"></a>#####key points</h5><ol>
-<li>ip datagram header</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1888,7 +1974,7 @@ P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
