@@ -82,7 +82,7 @@
 <meta name="description" content="Lecture 7: Argumentation IAbstract argumentation frameworkAn abstract argumentation framework is a tuple &amp;lt;𝑆, 𝑅&amp;gt; where 𝑆 is a set of arguments and 𝑅 ⊆ 𝑆 × 𝑆 is an attack relation. For 𝑎, �">
 <meta name="keywords" content="note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="(AI)Lec 7:Argumentation I(论证)">
+<meta property="og:title" content="(AI)Lec 7:Argumentation(论证) I">
 <meta property="og:url" content="https://zhangzhejian.com/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/index.html">
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Lecture 7: Argumentation IAbstract argumentation frameworkAn abstract argumentation framework is a tuple &amp;lt;𝑆, 𝑅&amp;gt; where 𝑆 is a set of arguments and 𝑅 ⊆ 𝑆 × 𝑆 is an attack relation. For 𝑎, �">
@@ -97,9 +97,11 @@
 <meta property="og:image" content="https://i.postimg.cc/RVNz3K3t/argex7.png">
 <meta property="og:image" content="https://i.postimg.cc/MGx6jXJ8/argex-8.png">
 <meta property="og:image" content="https://i.postimg.cc/Bvgq5sJP/argex9.png">
-<meta property="og:updated_time" content="2018-12-30T17:03:40.325Z">
+<meta property="og:image" content="https://i.postimg.cc/ht39MFMv/argex10.png">
+<meta property="og:image" content="https://i.postimg.cc/P5qWmfW0/argex11.png">
+<meta property="og:updated_time" content="2018-12-31T16:15:35.385Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="(AI)Lec 7:Argumentation I(论证)">
+<meta name="twitter:title" content="(AI)Lec 7:Argumentation(论证) I">
 <meta name="twitter:description" content="Lecture 7: Argumentation IAbstract argumentation frameworkAn abstract argumentation framework is a tuple &amp;lt;𝑆, 𝑅&amp;gt; where 𝑆 is a set of arguments and 𝑅 ⊆ 𝑆 × 𝑆 is an attack relation. For 𝑎, �">
 <meta name="twitter:image" content="https://i.postimg.cc/XvqS9WhJ/arg-ex1.png">
 
@@ -137,7 +139,7 @@
 
 
 
-  <title>(AI)Lec 7:Argumentation I(论证) | Recap</title>
+  <title>(AI)Lec 7:Argumentation(论证) I | Recap</title>
   
 
 
@@ -261,7 +263,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">(AI)Lec 7:Argumentation I(论证)</h1>
+          <h1 class="post-title" itemprop="name headline">(AI)Lec 7:Argumentation(论证) I</h1>
         
 
         <div class="post-meta">
@@ -318,7 +320,7 @@
 <h5 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h5><p>𝑆 = {𝑎1, 𝑎2, 𝑎3, 𝑎4, 𝑎5}</p>
 <p>𝑅 ={(𝑎1, 𝑎2) , (𝑎2, 𝑎5) , (𝑎2, 𝑎3), (𝑎3, 𝑎2) , (𝑎4, 𝑎3 ), (𝑎4, 𝑎4)}</p>
 <p><img src="https://i.postimg.cc/Jz79WmRq/argex2.png" alt=""></p>
-<h3 id="Conflict-free-sets"><a href="#Conflict-free-sets" class="headerlink" title="Conflict-free sets"></a>Conflict-free sets</h3><p>A set 𝑇 ⊆ 𝑆 is conflict-free <strong>if and only if</strong> there are no arguments in 𝑇 that attack each other. Formally:</p>
+<h4 id="Conflict-free-sets"><a href="#Conflict-free-sets" class="headerlink" title="Conflict-free sets"></a>Conflict-free sets</h4><p>A set 𝑇 ⊆ 𝑆 is conflict-free <strong>if and only if</strong> there are no arguments in 𝑇 that attack each other. Formally:</p>
 <p>For all (𝑎, 𝑏) ∈ 𝑇, (𝑎, 𝑏) ∉ 𝑅.</p>
 <h5 id="As-for-Example-1"><a href="#As-for-Example-1" class="headerlink" title="As for Example 1:"></a>As for Example 1:</h5><p>The conflict-free subsets are:</p>
 <p><strong>{}</strong>,{𝑎1,},{𝑎2},{𝑎3},{𝑎1, 𝑎3}</p>
@@ -335,7 +337,7 @@
 <p>Then find the defence relationship between them.</p>
 <h5 id="As-for-Example-3"><a href="#As-for-Example-3" class="headerlink" title="As for Example 3:"></a>As for Example 3:</h5><p>{},{a1},{a3},{a1,a3}</p>
 <h5 id="As-for-Example-2-1"><a href="#As-for-Example-2-1" class="headerlink" title="As for Example 2:"></a>As for Example 2:</h5><p>{},{a1}, {a1,a5}</p>
-<h4 id="Complete-Extention-subset-of-admissible"><a href="#Complete-Extention-subset-of-admissible" class="headerlink" title="Complete Extention(subset of admissible)"></a>Complete Extention(subset of admissible)</h4><p>A complete extension is an admissible set that includes all arguments it defends.</p>
+<h4 id="Complete-Extention-subset-of-admissible"><a href="#Complete-Extention-subset-of-admissible" class="headerlink" title="Complete Extention(subset of admissible)"></a>Complete Extention(subset of admissible)</h4><p>A complete extension is an admissible set that <u>includes all arguments it defends</u>.</p>
 <h5 id="Example-2-1"><a href="#Example-2-1" class="headerlink" title="Example 2:"></a>Example 2:</h5><p><img src="https://i.postimg.cc/vTbpHxJ4/argex3.png" alt=""></p>
 <h4 id="Maximal-and-minimal-subsets"><a href="#Maximal-and-minimal-subsets" class="headerlink" title="Maximal and minimal subsets"></a>Maximal and minimal subsets</h4><h5 id="Maximal-subsets"><a href="#Maximal-subsets" class="headerlink" title="Maximal subsets"></a>Maximal subsets</h5><p>Take 𝐶 ⊆ 2 𝑆 , a maximal subset of 𝑆 in 𝐶 is a set 𝑇 ∈ 𝐶 such that no other set in 𝐶 strictly <strong>includes</strong> 𝑇.</p>
 <p>Formally, 𝑇 is a maximal subset of 𝑆 in 𝐶 if and only if ∄𝑇′ ∈ 𝐶 such that 𝑇 ⊊ 𝑇 ′ .</p>
@@ -345,15 +347,17 @@
 <p><img src="https://i.postimg.cc/fRRSSHcK/argex5.png" alt=""></p>
 <h4 id="Grounded-extention-min"><a href="#Grounded-extention-min" class="headerlink" title="Grounded extention(min)"></a>Grounded extention(min)</h4><p>The grounded extension is the minimal complete extension with respect to set inclusion (ie, the minimal subset of the set of complete extensions).</p>
 <p><img src="https://i.postimg.cc/dQnqZJ4b/argex6.png" alt=""></p>
-<p>The grounded extension always exists and it is unique.</p>
-<p>The grounded extension can be empty.</p>
+<p><u><strong>The grounded extension always exists and it is unique.</strong></u></p>
+<p><strong><u>The grounded extension can be empty.</u></strong></p>
 <p><img src="https://i.postimg.cc/RVNz3K3t/argex7.png" alt=""></p>
 <h4 id="Prefered-extention-max"><a href="#Prefered-extention-max" class="headerlink" title="Prefered extention(max)"></a>Prefered extention(max)</h4><p>A preferred extension is a complete extension that is maximal with respect to set inclusion (ie, a maximal subset of the set of all complete extensions).</p>
 <h4 id="Stable-extention"><a href="#Stable-extention" class="headerlink" title="Stable extention"></a>Stable extention</h4><p>A stable extension of an argumentation framework 𝑆, 𝑅 is a <strong>preferred extension</strong> 𝐸 such that for all 𝑦 ∈ 𝑆 ∖ 𝐸 there exists 𝑥 ∈ 𝐸 such that 𝑥, 𝑦 ∈ 𝑅 (<strong>in other words, for every argument 𝑦 that isn’t part of 𝐸, there is an argument in 𝐸 that attacks 𝑦</strong>).</p>
 <h5 id="Example-1-1"><a href="#Example-1-1" class="headerlink" title="Example 1:"></a>Example 1:</h5><p><img src="https://i.postimg.cc/MGx6jXJ8/argex-8.png" alt=""></p>
 <h5 id="Example-2-2"><a href="#Example-2-2" class="headerlink" title="Example 2:"></a>Example 2:</h5><p><img src="https://i.postimg.cc/Bvgq5sJP/argex9.png" alt=""></p>
-<p>Credulous acceptance</p>
-<p>Skeptical acceptance</p>
+<h5 id="Credulous-acceptance（信得过的接受）"><a href="#Credulous-acceptance（信得过的接受）" class="headerlink" title="Credulous acceptance（信得过的接受）"></a>Credulous acceptance（信得过的接受）</h5><p>An argument is credulously accepted by an argumentation framework under a particular semantics if and only if it is part of at least one of the extensions generated by those semantics.</p>
+<h5 id="Skeptical-acceptance（持有怀疑的接受）"><a href="#Skeptical-acceptance（持有怀疑的接受）" class="headerlink" title="Skeptical acceptance（持有怀疑的接受）"></a>Skeptical acceptance（持有怀疑的接受）</h5><p>An argument is skeptically accepted by an argumentation framework under a particular semantics if and only if it is part of all of the extensions generated by those semantics.</p>
+<h5 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h5><p><img src="https://i.postimg.cc/ht39MFMv/argex10.png" alt=""></p>
+<p><img src="https://i.postimg.cc/P5qWmfW0/argex11.png" alt=""></p>
 <h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><h5 id="Relationships-between-those-sets"><a href="#Relationships-between-those-sets" class="headerlink" title="Relationships between those sets"></a>Relationships between those sets</h5><p><strong>Min/max subset ⊆ Complete-extention⊆ adimissible ⊆ conflict-free</strong></p>
 <p><strong>stable extention ⊆ prefered/max extention</strong></p>
 
@@ -395,6 +399,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/12/30/NOTE-WEEK-8-Artificial-Intelligence/" rel="prev" title="(AI)Lec 7:Argumentation(论证) II">
+                (AI)Lec 7:Argumentation(论证) II <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -471,7 +479,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -484,7 +492,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -517,7 +525,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-7-Argumentation-I"><span class="nav-number">1.</span> <span class="nav-text">Lecture 7: Argumentation I</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Abstract-argumentation-framework"><span class="nav-number">1.0.1.</span> <span class="nav-text">Abstract argumentation framework</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-1"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">Example 1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-2"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">Example 2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Conflict-free-sets"><span class="nav-number">1.1.</span> <span class="nav-text">Conflict-free sets</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-Example-1"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">As for Example 1:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-Example-2"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">As for Example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Argument-defence"><span class="nav-number">1.1.1.</span> <span class="nav-text">Argument defence</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-example-2"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">As for example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Admissible-可采纳的）"><span class="nav-number">1.1.2.</span> <span class="nav-text">Admissible(可采纳的）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-Example-3"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">As for Example 3:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-Example-2-1"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">As for Example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Complete-Extention-subset-of-admissible"><span class="nav-number">1.1.3.</span> <span class="nav-text">Complete Extention(subset of admissible)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-2-1"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Maximal-and-minimal-subsets"><span class="nav-number">1.1.4.</span> <span class="nav-text">Maximal and minimal subsets</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Maximal-subsets"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Maximal subsets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Minimal-subsets"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Minimal subsets</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Grounded-extention-min"><span class="nav-number">1.1.5.</span> <span class="nav-text">Grounded extention(min)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prefered-extention-max"><span class="nav-number">1.1.6.</span> <span class="nav-text">Prefered extention(max)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stable-extention"><span class="nav-number">1.1.7.</span> <span class="nav-text">Stable extention</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-1-1"><span class="nav-number">1.1.7.1.</span> <span class="nav-text">Example 1:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-2-2"><span class="nav-number">1.1.7.2.</span> <span class="nav-text">Example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Summary"><span class="nav-number">1.1.8.</span> <span class="nav-text">Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Relationships-between-those-sets"><span class="nav-number">1.1.8.1.</span> <span class="nav-text">Relationships between those sets</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-7-Argumentation-I"><span class="nav-number">1.</span> <span class="nav-text">Lecture 7: Argumentation I</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Abstract-argumentation-framework"><span class="nav-number">1.0.1.</span> <span class="nav-text">Abstract argumentation framework</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-1"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">Example 1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-2"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">Example 2</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Conflict-free-sets"><span class="nav-number">1.0.2.</span> <span class="nav-text">Conflict-free sets</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-Example-1"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">As for Example 1:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-Example-2"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">As for Example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Argument-defence"><span class="nav-number">1.0.3.</span> <span class="nav-text">Argument defence</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-example-2"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">As for example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Admissible-可采纳的）"><span class="nav-number">1.0.4.</span> <span class="nav-text">Admissible(可采纳的）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-Example-3"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">As for Example 3:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#As-for-Example-2-1"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">As for Example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Complete-Extention-subset-of-admissible"><span class="nav-number">1.0.5.</span> <span class="nav-text">Complete Extention(subset of admissible)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-2-1"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">Example 2:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Maximal-and-minimal-subsets"><span class="nav-number">1.0.6.</span> <span class="nav-text">Maximal and minimal subsets</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Maximal-subsets"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">Maximal subsets</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Minimal-subsets"><span class="nav-number">1.0.6.2.</span> <span class="nav-text">Minimal subsets</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Grounded-extention-min"><span class="nav-number">1.0.7.</span> <span class="nav-text">Grounded extention(min)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Prefered-extention-max"><span class="nav-number">1.0.8.</span> <span class="nav-text">Prefered extention(max)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Stable-extention"><span class="nav-number">1.0.9.</span> <span class="nav-text">Stable extention</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-1-1"><span class="nav-number">1.0.9.1.</span> <span class="nav-text">Example 1:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-2-2"><span class="nav-number">1.0.9.2.</span> <span class="nav-text">Example 2:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Credulous-acceptance（信得过的接受）"><span class="nav-number">1.0.9.3.</span> <span class="nav-text">Credulous acceptance（信得过的接受）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Skeptical-acceptance（持有怀疑的接受）"><span class="nav-number">1.0.9.4.</span> <span class="nav-text">Skeptical acceptance（持有怀疑的接受）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Example"><span class="nav-number">1.0.9.5.</span> <span class="nav-text">Example:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Summary"><span class="nav-number">1.0.10.</span> <span class="nav-text">Summary</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Relationships-between-those-sets"><span class="nav-number">1.0.10.1.</span> <span class="nav-text">Relationships between those sets</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -229,6 +229,317 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/05/12/Final-Project-Revision/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/12/Final-Project-Revision/" itemprop="url">Final Project Revision</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T14:10:58+01:00">
+                2018-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Final-project-revision"><a href="#Final-project-revision" class="headerlink" title="Final project revision"></a>Final project revision</h1><p>This is a blog where I will have a brief introduction to my final year project which cost me a half year. I will complete this blog in three weeks to illustrate ever step to build the mini-cloud infrastructure and the problems I met which might be helpful.</p>
+<p>And at the final part, I will try to write some experience I got from the project.</p>
+<h2 id="Basic-introduction"><a href="#Basic-introduction" class="headerlink" title="Basic introduction"></a>Basic introduction</h2><p>Project name: A mini-cloud based e-commerce platform for small business</p>
+<p>Illustration: use one tower server and 7 Raspberry Pis to establish a mini-cloud infrastructure and then develop an e-commerce platforom for small businee which used to deployed on the infrastructure.</p>
+<p>PS: This project focuses more on the hardware part: how to establish a distributed system with high availability and reliability</p>
+<p><strong>Specific to Raspberry Pi:</strong></p>
+<p>Operation system: 2017-4-vga-raspbian-jessie </p>
+<p>CPU: QUAD Core ARMCortex-A7 </p>
+<p>RAM: 1GB </p>
+<p>Micro SD: 64G</p>
+<p><strong>Specific of Dell PowerEdge™ T110II Server:</strong></p>
+<p>Operating system:Ubuntu Trusty 14.04 (LTS) </p>
+<p>CPU: Intel Xeon processE3-1200 product family </p>
+<p>RAM:32GB </p>
+<h2 id="Mini-cloud-Infrastructure"><a href="#Mini-cloud-Infrastructure" class="headerlink" title="Mini-cloud Infrastructure"></a>Mini-cloud Infrastructure</h2><h3 id="Web-Frame-Work"><a href="#Web-Frame-Work" class="headerlink" title="Web Frame Work:"></a>Web Frame Work:</h3><p><img src="http://p8ltilmb1.bkt.clouddn.com/web_framework.png" alt="web framework"></p>
+<h3 id="Load-Balancer"><a href="#Load-Balancer" class="headerlink" title="Load Balancer:"></a>Load Balancer:</h3><p>Two Raspberry Pis to establish a load balacer cluster with failover function.</p>
+<p>Software: keepalived, NGINX</p>
+<p>The configuration process: <a href="http://octopusman.top/2018/01/26/Use-Nginx-keepalived-to-Establish-Load-Balancers-with-High-Availability/" target="_blank" rel="noopener">Nginx and keepalived configuration</a></p>
+<h3 id="Business-layer"><a href="#Business-layer" class="headerlink" title="Business layer:"></a>Business layer:</h3><p>Two Raspberry Pis to make up a process system</p>
+<p>Software: tomcat7</p>
+<p>The configuration process: <a href="http://www.octopusman.top" target="_blank" rel="noopener">not complete yet</a></p>
+<h3 id="Database-Layer"><a href="#Database-Layer" class="headerlink" title="Database Layer:"></a>Database Layer:</h3><p>Three Raspberry Pis to establish a data centre with high availability and reliability by using read-write separation and master-slave warm standby</p>
+<p>Software: MySQL 5.5.60</p>
+<p>The configuration process: <a href="http://octopusman.top/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/" target="_blank" rel="noopener">Use MySQL to establish master-slave warm standby and read-write separation</a></p>
+<h3 id="Static-server-layer"><a href="#Static-server-layer" class="headerlink" title="Static server layer"></a>Static server layer</h3><p>One tower server to store all static files like css,js,html.</p>
+<p>configuration: wait for completing…</p>
+<h2 id="Web-Application-Layer"><a href="#Web-Application-Layer" class="headerlink" title="Web Application Layer"></a>Web Application Layer</h2><p>Software part is the worst part in my project. Before design and implementation, requirements are not clear enough and the basic knowledge about the distributed system is not well learnt. After finishing the project when do this revision, I found the web application is just a piece of rubbish that has no single sepcific design for a distributed system. Thus the website is just for proving the whole infrastructure can work well.</p>
+<p>URL : <a href="www.finalproject.top/finalProject/index.jsp">Website URL</a></p>
+<p>Frontend: retrieved from <a href="http://w3layouts.com" target="_blank" rel="noopener">W3layouts</a></p>
+<p>Backend: JSP+Servlet+MySQL</p>
+<h3 id="not-fully-complete-yet…"><a href="#not-fully-complete-yet…" class="headerlink" title="not fully complete yet…"></a>not fully complete yet…</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/" itemprop="url">MySQL master-slave warm standby and read-write separation</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T13:49:25+01:00">
+                2018-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="MySQL-master-slave-warm-standby-and-read-write-separation"><a href="#MySQL-master-slave-warm-standby-and-read-write-separation" class="headerlink" title="MySQL master-slave warm standby and read-write separation"></a>MySQL master-slave warm standby and read-write separation</h1><h2 id="Technical-Context"><a href="#Technical-Context" class="headerlink" title="Technical Context"></a>Technical Context</h2><p>Hardware: Raspberry Pi</p>
+<p>OS:  <em>2017-4-vga-raspbian-jessie</em></p>
+<p>Software: MySQL 5.5.60</p>
+<h2 id="Illustration"><a href="#Illustration" class="headerlink" title="Illustration"></a>Illustration</h2><p>This configuration is Linux based. MySQL provides users with master-slave warm standby only requiring a simple configuration. However, </p>
+<h2 id="Configuration-process"><a href="#Configuration-process" class="headerlink" title="Configuration process"></a>Configuration process</h2><h3 id="1-Installing-MySQL"><a href="#1-Installing-MySQL" class="headerlink" title="1. Installing MySQL"></a>1. Installing MySQL</h3><p>Tutor: <a href="https://www.stewright.me/2014/06/tutorial-install-mysql-server-on-raspberry-pi/" target="_blank" rel="noopener">Install MySQL on Raspberry pi</a></p>
+<h3 id="2-Check-Basic-Information"><a href="#2-Check-Basic-Information" class="headerlink" title="2. Check Basic Information"></a>2. Check Basic Information</h3><p>Master host IP: 10.205.10.215</p>
+<p>Slave host IP: 10.205.10.216</p>
+<p><em>Guarantee the internel-availability between two hosts</em></p>
+<p><code>ping 10.205.10.215</code></p>
+<h3 id="3-Configuration"><a href="#3-Configuration" class="headerlink" title="3. Configuration"></a>3. Configuration</h3><p><em>File name: /etc/mysql/my.cnf</em></p>
+<p>In Master host: </p>
+<p>Add the following</p>
+<p><code>server-id = 215</code> the server-id just needs to be identical</p>
+<p><code>binlog-do-db=database_name</code>  here is the database need to be replicated</p>
+<p>In Slave host:</p>
+<p>Add the following</p>
+<p><code>server-id = 216</code> also identical</p>
+<p><code>replicate-do-db = database_name</code> here is the database need to be replicated</p>
+<h3 id="4-Restart-MySQL-net-service"><a href="#4-Restart-MySQL-net-service" class="headerlink" title="4. Restart MySQL net service"></a>4. Restart MySQL net service</h3><ol>
+<li>net stop mysql</li>
+<li>net start mysql</li>
+</ol>
+<h3 id="5-Grant-authority-to-slave-hosts-to-visit"><a href="#5-Grant-authority-to-slave-hosts-to-visit" class="headerlink" title="5. Grant authority to slave hosts to visit"></a>5. Grant authority to slave hosts to visit</h3><p><code>GRANT REPLICATION SLAVE ON *.* to &#39;slave&#39;@&#39;%&#39; identified by &#39;password&#39;</code></p>
+<p>Illustration: </p>
+<p>‘slave’ is the account name of the slave hosts</p>
+<p>‘%’ is the IP address of slave hosts. % means all the IPs are allowed</p>
+<h3 id="6-Check-master-state"><a href="#6-Check-master-state" class="headerlink" title="6. Check master state"></a>6. Check master state</h3><p><code>show master status;</code></p>
+<p><img src="http://p8ltilmb1.bkt.clouddn.com/image/master-slave-warm-standby/master.png" alt=""></p>
+<p>Remember the <strong>Position</strong> and <strong>File</strong></p>
+<h3 id="7-Grant-Authority-to-Master-host"><a href="#7-Grant-Authority-to-Master-host" class="headerlink" title="7.Grant Authority to Master host"></a>7.Grant Authority to Master host</h3><p>In the Slave hosts, it needs authority to allow master to send sql or data to the slave hosts.</p>
+<p><code>change master to master_host=&#39;Master_IP&#39;,master_user=&#39;master&#39;,master_password=&#39;password&#39;,master_log_file=&#39;mysql-bin.000011&#39;,master_log_pos=107;</code></p>
+<p>master_log_pos and master_log_file are all gotten above.</p>
+<p>Then start the slave host</p>
+<p><code>start slave;</code></p>
+<h3 id="8-Check-slave-status"><a href="#8-Check-slave-status" class="headerlink" title="8.  Check slave status"></a>8.  Check slave status</h3><p><code>show slave status\G</code></p>
+<p>Slave_IO_Running: Yes    //YES<br>Slave_SQL_Running: Yes     //YES</p>
+<p>Possible error:</p>
+<h4 id="error-1-error-connecting-to-master-‘root-10-205-10-198-3306’-retry-time-60-retries-86400"><a href="#error-1-error-connecting-to-master-‘root-10-205-10-198-3306’-retry-time-60-retries-86400" class="headerlink" title="error 1:  error connecting to master ‘root@10.205.10.198:3306’ - retry-time: 60  retries: 86400"></a>error 1:  error connecting to master ‘root@10.205.10.198:3306’ - retry-time: 60  retries: 86400</h4><h4 id="error2：jdbc4-CommunicationsException-Communications-link-failure"><a href="#error2：jdbc4-CommunicationsException-Communications-link-failure" class="headerlink" title="error2：jdbc4.CommunicationsException: Communications link failure"></a>error2：jdbc4.CommunicationsException: Communications link failure</h4><p>Solution:  sudo vim /etc/mysql/my.cnf   bind-address = 127.0.0.1  【delete】</p>
+<p>ref: <a href="https://blog.csdn.net/u010578251/article/details/52217419" target="_blank" rel="noopener">https://blog.csdn.net/u010578251/article/details/52217419</a></p>
+<h2 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h2><ol>
+<li><a href="https://www.cnblogs.com/kissdodog/p/5422195.html" target="_blank" rel="noopener">https://www.cnblogs.com/kissdodog/p/5422195.html</a></li>
+<li><a href="https://lanjingling.github.io/2015/10/29/mysql-ha/" target="_blank" rel="noopener">https://lanjingling.github.io/2015/10/29/mysql-ha/</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/01/26/Use-Nginx-keepalived-to-Establish-Load-Balancers-with-High-Availability/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -802,7 +1113,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -815,7 +1126,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
