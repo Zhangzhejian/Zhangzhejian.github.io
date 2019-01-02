@@ -1069,6 +1069,261 @@ b_{k+1:t} &= \mathcal{P}(e_{k+1:t}|X_k)\\
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/11/NOTE-WEEK-5-Agents-and-Multi-Agent-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/11/NOTE-WEEK-5-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 5:Communication, coordination and working together</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T19:39:01+00:00">
+                2018-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Agents-and-Multi-Agent-System"><a href="#Agents-and-Multi-Agent-System" class="headerlink" title="Agents and Multi-Agent System"></a>Agents and Multi-Agent System</h2><h2 id="智能体与多智能体系统"><a href="#智能体与多智能体系统" class="headerlink" title="智能体与多智能体系统"></a>智能体与多智能体系统</h2><h3 id="Lecture-5-Communication-coordination-and-working-together"><a href="#Lecture-5-Communication-coordination-and-working-together" class="headerlink" title="Lecture 5: Communication, coordination and working together"></a>Lecture 5: Communication, coordination and working together</h3><h4 id="Agent-communication"><a href="#Agent-communication" class="headerlink" title="Agent communication"></a>Agent communication</h4><p>agents are autonomous and self-interested. One agent can’t force another to perform some action</p>
+<p>Instead they can perform <u>communicative actions</u> to try to influence other agents.</p>
+<h4 id="Speech-act-theory"><a href="#Speech-act-theory" class="headerlink" title="Speech act theory"></a>Speech act theory</h4><p>Speech act theory treats communication as action. It is a theory of how utterances are used to achieve intentions.</p>
+<h5 id="Three-aspects-of-speech-acts"><a href="#Three-aspects-of-speech-acts" class="headerlink" title="Three aspects of speech acts"></a>Three aspects of speech acts</h5><ul>
+<li><p>The <strong>locutionary act(语言行为)</strong>: the act of making the utterance</p>
+<ul>
+<li>Saying “Please make me some tea”</li>
+</ul>
+</li>
+<li><p>The <strong>illocutionary act(言外行为)</strong>: the conveying of the speaker’s intentions to the hearer</p>
+<ul>
+<li>The speaker has requested the hearer to make some tea</li>
+</ul>
+</li>
+<li><p>The <strong>perlocution(表达效果)</strong>: the effect of the act</p>
+<ul>
+<li>The hearer (perhaps) makes some tea.</li>
+</ul>
+</li>
+</ul>
+<p>Speaker makes a locutionary act(语言行为) with hope(言外行为) that the hearer correctly recognises the speaker’s intentions and acts(表达效果) accordingly.</p>
+<p>we can in general think of a speech act as having two components:</p>
+<ul>
+<li>a <strong>performative verb</strong> (e.g request, inform, promise)</li>
+<li><strong>Propositional content命题内容</strong>(e.g ‘the door is closed’)</li>
+</ul>
+<p>Example：</p>
+<p>performative = request content = ‘the door is closed’ speech act = ‘please close the door’</p>
+<p>performative = inform content = ‘the door is closed’ speech act = ‘the door is closed!’</p>
+<p>performative = inquire content = ‘the door is closed’ speech act = ‘is the door closed?’</p>
+<h5 id="Plan-based-theory-of-speech-acts"><a href="#Plan-based-theory-of-speech-acts" class="headerlink" title="Plan-based theory of speech acts"></a>Plan-based theory of speech acts</h5><p><strong>request(s, h, φ)</strong></p>
+<p>pre:</p>
+<p>s believes (h can do φ)</p>
+<p>s believes (h believes (h can do φ))</p>
+<p>s believes (s want φ)</p>
+<p>post:</p>
+<p>h believe (s believe (s want φ))</p>
+<p><strong>inform(s, h, φ)</strong></p>
+<p>pre:</p>
+<p>s believes φ</p>
+<p>s believes (s wants (h to believe φ))</p>
+<p>post:</p>
+<p>h believes (s believes φ)</p>
+<h5 id="KQML-Knowledge-Query-Manipulation-Language-Agent-based"><a href="#KQML-Knowledge-Query-Manipulation-Language-Agent-based" class="headerlink" title="KQML(Knowledge Query Manipulation Language) Agent-based"></a>KQML(Knowledge Query Manipulation Language) Agent-based</h5><p>comprised of <strong>two parts:</strong></p>
+<ol>
+<li><h5 id="the-KQML-‘Outer’-language-that-defines-‘communicative-verbs’-or-performatives-examples"><a href="#the-KQML-‘Outer’-language-that-defines-‘communicative-verbs’-or-performatives-examples" class="headerlink" title="the KQML. ‘Outer’ language that defines ‘communicative verbs’ or performatives, examples:"></a>the KQML. ‘Outer’ language that defines ‘communicative verbs’ or performatives, examples:</h5></li>
+</ol>
+<ul>
+<li>ask-if (‘is it true that. . . ’)</li>
+<li>perform (‘please perform the following action. . . ’)</li>
+<li>tell (‘it is true that. . . ’)</li>
+<li>reply (‘the answer is . . . ’)</li>
+</ul>
+<ol>
+<li><h5 id="The-knowledge-interchange-format-KIF"><a href="#The-knowledge-interchange-format-KIF" class="headerlink" title="The knowledge interchange format (KIF)."></a>The knowledge interchange format (KIF).</h5></li>
+</ol>
+<ul>
+<li>Language for expressing message content. Used to state:<ul>
+<li><strong>Properties</strong> of things in a domain<ul>
+<li>E.g. ‘The temperature of m1 is 83 Celsius’ (= (temperature m1) (scalar 83 Celsius))</li>
+</ul>
+</li>
+<li><strong>Relationships</strong> between things in a domain<ul>
+<li>E.g. ‘Any individual with the property of being a person also has the property of being a mammal’ (defrelation person (?x) :=&gt; (mammal ?x))</li>
+</ul>
+</li>
+<li><strong>General properties</strong> of things in a domain<ul>
+<li>E.g. ‘An object is a bachelor if the object is a man and is not married’ (defrelation bachelor (?x) := (and (man ?x) (not (married ?x))))</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Criticisms"><a href="#Criticisms" class="headerlink" title="Criticisms:"></a>Criticisms:</h5><ul>
+<li><p>Semantics of <u>performatives</u> only informally defined, so open to different interpretations.(执行动词的定义是非正式的，所以可以会导致不同的解释)</p>
+</li>
+<li><p>No ‘commissives’, could argue that performative set rather ad hoc.</p>
+</li>
+</ul>
+<h4 id="FIPA-Agent-Communication-Language-ACL"><a href="#FIPA-Agent-Communication-Language-ACL" class="headerlink" title="FIPA Agent Communication Language(ACL)"></a>FIPA Agent Communication Language(ACL)</h4><h5 id="Similar-to-KQML"><a href="#Similar-to-KQML" class="headerlink" title="Similar to KQML:"></a>Similar to KQML:</h5><ul>
+<li>performative<ul>
+<li>20 performatives in FIPA</li>
+</ul>
+</li>
+<li>content</li>
+<li>housekeeping<ul>
+<li>e.g., sender, etc</li>
+</ul>
+</li>
+</ul>
+<h5 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h5><p>(inform</p>
+<p>:sender         agent1</p>
+<p>:receiver     agent5</p>
+<p>:content          (price good200 150)</p>
+<p>:language     sl</p>
+<p>:ontology     hpl-auction</p>
+<p>)</p>
+<h5 id="FIPA-ACL-semantics-语义学"><a href="#FIPA-ACL-semantics-语义学" class="headerlink" title="FIPA ACL semantics(语义学)"></a>FIPA ACL semantics(语义学)</h5><p>can represent beliefs, desires, uncertain beliefs of agents, and actions they perform</p>
+<p><strong>Feasibility precondition</strong>: constraint the sender must satisfy.</p>
+<p><strong>Rational effect</strong>: what sender is attempting to achieve (perlocutionary act).</p>
+<p>Inform and Request are the two basic performatives in FIPA. All others are macro definitions, defined in terms of these.</p>
+<h5 id="Inform"><a href="#Inform" class="headerlink" title="Inform"></a>Inform</h5><h5 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h5><h4 id="ontologies-本体论"><a href="#ontologies-本体论" class="headerlink" title="ontologies(本体论)"></a>ontologies(本体论)</h4><h4 id="working-together"><a href="#working-together" class="headerlink" title="working together"></a>working together</h4><p>It is often necessary or preferable for agents to work together in order to achieve their goals.</p>
+<p>Since agents are autonomous they make decisions about what to do at run-time, they must be capable of dynamically coordinating their activities and cooperating with others.</p>
+<p>Compare this with traditional distributed and concurrent systems, where coordination and cooperation is typically hardwired at design time.</p>
+<p>two criteria for assessing how well agents work together.</p>
+<h5 id="Coherence-连贯性"><a href="#Coherence-连贯性" class="headerlink" title="Coherence(连贯性)"></a>Coherence(连贯性)</h5><p>is about how “well the [multiagent] system behaves as a unit along some dimension of evaluation”. 作为一个整体的表现</p>
+<p>We can measure it in terms of solution quality, e.g. how efficiently resources are used, conceptual clarity.</p>
+<h5 id="Coordination-协调性"><a href="#Coordination-协调性" class="headerlink" title="Coordination(协调性)"></a>Coordination(协调性)</h5><p>is about “the degree. . . to which [the agents]. . . can avoid “extraneous” activity [such as] . . . synchronizing and aligning their activities”. 对于各自活动的同步和调整</p>
+<p>If the system is perfectly coordinated, agents will not get in each others’ way, in a physical or a metaphorical sense.</p>
+<h4 id="Cooperative-Distributed-Problem-Solving-CDPS"><a href="#Cooperative-Distributed-Problem-Solving-CDPS" class="headerlink" title="Cooperative Distributed Problem Solving(CDPS)"></a>Cooperative Distributed Problem Solving(CDPS)</h4><p>Stage of CDPS</p>
+<ul>
+<li><h5 id="Problem-decomposition"><a href="#Problem-decomposition" class="headerlink" title="Problem decomposition"></a>Problem decomposition</h5></li>
+</ul>
+<p>Overall problem decomposed into subproblems, hierarchical</p>
+<ul>
+<li><h5 id="Subproblem-allocation"><a href="#Subproblem-allocation" class="headerlink" title="Subproblem allocation"></a>Subproblem allocation</h5></li>
+</ul>
+<p>decide which agent should get which task</p>
+<ul>
+<li><h5 id="Subproblem-solution"><a href="#Subproblem-solution" class="headerlink" title="Subproblem solution"></a>Subproblem solution</h5></li>
+</ul>
+<p>Subproblems are individually solved. This typically involves sharing of information. And agents might have to coordinate their actions.</p>
+<ul>
+<li><h5 id="Subproblem-synthesis"><a href="#Subproblem-synthesis" class="headerlink" title="Subproblem synthesis"></a>Subproblem synthesis</h5></li>
+</ul>
+<p>Solutions to individual subproblems are integrated into an overall solution</p>
+<p>how to determine the granularity(粒度),how to decompose(by one agent or cooperatively)</p>
+<h5 id="Properties-for-CDPS"><a href="#Properties-for-CDPS" class="headerlink" title="Properties for CDPS"></a>Properties for CDPS</h5><ul>
+<li>Distributed data and control</li>
+<li>modular problems with reasonable grain size</li>
+<li>spend more time on computation than communication</li>
+</ul>
+<h4 id="Contract-Net-Protocol-very-important"><a href="#Contract-Net-Protocol-very-important" class="headerlink" title="Contract Net Protocol(very important)"></a>Contract Net Protocol(very important)</h4><p>deal with the second stage of CDPS: subproblem allocation</p>
+<h4 id="Multi-agent-planning"><a href="#Multi-agent-planning" class="headerlink" title="Multi-agent planning"></a>Multi-agent planning</h4><h5 id="centralised-planning-for-distributed-agents"><a href="#centralised-planning-for-distributed-agents" class="headerlink" title="centralised planning for distributed agents"></a>centralised planning for distributed agents</h5><h5 id="Partial-global-planning"><a href="#Partial-global-planning" class="headerlink" title="Partial global planning"></a>Partial global planning</h5><h5 id="Merging-of-individual-plans"><a href="#Merging-of-individual-plans" class="headerlink" title="Merging of individual plans"></a>Merging of individual plans</h5><p>not finished yet</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/11/NOTE-WEEK-5-Artificial-Intelligence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1533,158 +1788,6 @@ U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Re
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/12/NOTE-WEEK-3-Artificial-Intelligence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/12/NOTE-WEEK-3-Artificial-Intelligence/" itemprop="url">(AI)Lec 3:Probailistic Reasonning II</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-12T10:13:09+01:00">
-                2018-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-3-Probailistic-Reasoning-概率推理-II"><a href="#Lecture-3-Probailistic-Reasoning-概率推理-II" class="headerlink" title="Lecture 3: Probailistic Reasoning(概率推理) II"></a>Lecture 3: Probailistic Reasoning(概率推理) II</h3><h3 id="Bayesian-Network"><a href="#Bayesian-Network" class="headerlink" title="Bayesian Network"></a>Bayesian Network</h3><h4 id="Naive-Bayes-model"><a href="#Naive-Bayes-model" class="headerlink" title="Naive Bayes model:"></a>Naive Bayes model:</h4><p>If  $Effect_n$   are conditional independent of given Cause, then: </p>
-<script type="math/tex; mode=display">
-P(Cause|Effect_1, Effect_2,...,Effect_n) = P(Cause)\prod_iP(Effect_i|Cause)\\</script><p>To prove:</p>
-<script type="math/tex; mode=display">
-P(C,e_1,e_2) = p(C)P(e_1|C)P(e_2|C)</script><p> Effect_n are conditional independent of given Cause:</p>
-<script type="math/tex; mode=display">
-P(e_1|C,e_2) = P(e_1|C)\\
-\implies \frac{P(C,e_2|e_1)P(e_1)}{P(C,e_2)} = P(e_1|C)\\
-\implies P(C,e_1,e_2) = P(e_1|C)P(C,e_2)=P(e_1|C)P(e_2|C)P(C)</script><p>Visualises as:</p>
-<p><img src="https://i.postimg.cc/2y7w8KFf/vis.png" alt=""></p>
-<p>Exmaple network:</p>
-<p><img src="https://i.postimg.cc/xjvgRXrF/bayexm.png" alt=""></p>
-<h5 id="Global-Semantics"><a href="#Global-Semantics" class="headerlink" title="Global Semantics:"></a><strong>Global Semantics:</strong></h5><p>deﬁnes the full joint distribution as the product of the local conditional distributions</p>
-<script type="math/tex; mode=display">
-P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))\\</script><p>So </p>
-<script type="math/tex; mode=display">
-\begin{align}
-P(j,m,a,\not b,\not e) &= P(j|a)P(m|a)P(a|\not b,\not e)P(\not b)P(\not e)\\
-& = 0.00063
-
-\end{align}</script><h5 id="Local-semantics"><a href="#Local-semantics" class="headerlink" title="Local semantics:"></a>Local semantics:</h5><p>each node is conditionally independent of its nondescendants given its parents</p>
-<p>Each node is conditionally independent of all others given its <strong>Markov blanket</strong>: parents + children + children’s parents</p>
-<h4 id="Constructing-Bayesian-network"><a href="#Constructing-Bayesian-network" class="headerlink" title="Constructing Bayesian network"></a>Constructing Bayesian network</h4><p>The bayesian network can be considered as a form of <strong>knowledge representation</strong></p>
-<ol>
-<li>Figure out the variables that describe the world</li>
-<li>decide how they are connected(conditional independence)</li>
-<li>Work out the values in the CPTs(conditional probality table)</li>
-</ol>
-<h5 id="Noisy-OR-model"><a href="#Noisy-OR-model" class="headerlink" title="Noisy-OR model"></a>Noisy-OR model</h5><p>Parents $U_1,…U_k$ include all causes (can add leak node) (leak node is like $U_0$ that similiar to a bias)</p>
-<script type="math/tex; mode=display">
-P(X |U_1 . . . U_j , \not U_{j +1} . . . \not U_k ) = 1 -\prod_{i=1}^j  q_i\\
-q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sampling"><a href="#Sampling" class="headerlink" title="Sampling"></a>Sampling</h3><h4 id="Prior-Sampling"><a href="#Prior-Sampling" class="headerlink" title="Prior Sampling"></a>Prior Sampling</h4><h4 id="Rejection-Sampling"><a href="#Rejection-Sampling" class="headerlink" title="Rejection Sampling"></a>Rejection Sampling</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -1735,7 +1838,7 @@ q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sam
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
