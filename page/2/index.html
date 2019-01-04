@@ -453,7 +453,7 @@ q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sam
       
         
           
-            <h2 id="Lecture-3-Practical-Reasoning-实践推理"><a href="#Lecture-3-Practical-Reasoning-实践推理" class="headerlink" title="Lecture 3 Practical Reasoning(实践推理)"></a>Lecture 3 Practical Reasoning(实践推理)</h2><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h4><h3 id="Practical-Reasoning"><a href="#Practical-Reasoning" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h3><h4 id="Practical-Reasoning-1"><a href="#Practical-Reasoning-1" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h4><h5 id="Practical-Reasoning-2"><a href="#Practical-Reasoning-2" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h5><p>Is reasoning directed towards actions</p>
+            <h2 id="Lecture-3-Practical-Reasoning-实践推理"><a href="#Lecture-3-Practical-Reasoning-实践推理" class="headerlink" title="Lecture 3 Practical Reasoning(实践推理)"></a>Lecture 3 Practical Reasoning(实践推理)</h2><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h4><h4 id="Practical-Reasoning"><a href="#Practical-Reasoning" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h4><h5 id="Practical-Reasoning-1"><a href="#Practical-Reasoning-1" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h5><p>Is reasoning directed towards actions</p>
 <h5 id="Theoretical-reasoning"><a href="#Theoretical-reasoning" class="headerlink" title="Theoretical reasoning"></a>Theoretical reasoning</h5><p>Is reasoning directed towards belief</p>
 <p><em>Human practical</em> reasoning consists of two activities:</p>
 <p>•<strong>Deliberation:</strong>  deciding <strong>what</strong> state of affairs we want to achieve. <strong>The outputs of deliberation  are intentions</strong></p>
@@ -963,7 +963,7 @@ E = \{e_0,e_1,...\}</script><p>Agents are assumed to have a repertoire of possib
 Ac = \{\alpha_0, \alpha_1,...\}</script><p>A run, r, of an agent in an environment is a sequence of interleaved environment states and actions:</p>
 <script type="math/tex; mode=display">
 r: e_0 \longrightarrow^{\alpha_0} e_1 \\
-r \subset \mathcal{R}</script><p>Let $\mathcal{R}$ be the set of all such possible finite <strong>sequences</strong> (over E and Ac)</p>
+r \in \mathcal{R}</script><p>Let $\mathcal{R}$ be the set of all such possible finite <strong>sequences</strong> (over E and Ac)</p>
 <p>$\mathcal{R}^{AC}$ be the subset of these that end with an <strong>action</strong></p>
 <p>$\mathcal{R}^{E}$ be the subset of these that end with an <strong>environment state</strong></p>
 <p><strong>State transformer function:</strong></p>
@@ -988,7 +988,7 @@ E = {e_0,e_1,e_3,e_4,e_5}\\\tau(e_0\longrightarrow^{a_0}) = \{e_1,e_2\}\\\tau(e_
 <script type="math/tex; mode=display">
 \mathcal{R}(Ag_1, Env) = \mathcal{R}(Ag_2,Env)</script><h4 id="Purely-Reactive-Agents"><a href="#Purely-Reactive-Agents" class="headerlink" title="Purely Reactive Agents"></a>Purely Reactive Agents</h4><p>Some agents decide what to do <strong>without reference to their history</strong> — they base their decision making entirely on the present, with no reference at all to the past</p>
 <script type="math/tex; mode=display">
-action: E\longrightarrow Ac</script><h4 id="Agents-with-state"><a href="#Agents-with-state" class="headerlink" title="Agents with state"></a>Agents with state</h4><h5 id="Perception"><a href="#Perception" class="headerlink" title="Perception"></a>Perception</h5><p>The perception function <em>see</em> maps an environment state to a percept:</p>
+action: E\longrightarrow Ac</script><h4 id="Agents-with-state"><a href="#Agents-with-state" class="headerlink" title="Agents with state"></a>Agents with state</h4><h5 id="Perception-subsystem"><a href="#Perception-subsystem" class="headerlink" title="Perception subsystem"></a>Perception subsystem</h5><p>The perception function <em>see</em> maps an environment state to a percept:</p>
 <script type="math/tex; mode=display">
 see: E \longrightarrow Per</script><p>The action-selection function action maps an internal state to an action:</p>
 <script type="math/tex; mode=display">
@@ -1010,9 +1010,9 @@ action: I \longrightarrow Ac</script><p>The function next is introduced, which m
 u: E\longrightarrow \mathbb{R}</script><p><strong>Disadvantage</strong>: difficult to specify a <strong>long term</strong> view when assigning utilities to individual states</p>
 <h5 id="Associate-utilities-with-runs"><a href="#Associate-utilities-with-runs" class="headerlink" title="Associate utilities with runs"></a>Associate utilities with runs</h5><script type="math/tex; mode=display">
 u: \mathcal{R} \longrightarrow \mathbb{R}</script><p>Example: trading agent might use $u(r) = (p(r) l(r)) x fp(r)$ where $fp(r)$ is profit in the final state of r, $p(r)$ is the number of states agent is in profit and $l(r)$ is the number of states agent is not in profit.</p>
-<h4 id="Expected-utility-amp-optimal-agents"><a href="#Expected-utility-amp-optimal-agents" class="headerlink" title="Expected utility &amp; optimal agents"></a>Expected utility &amp; optimal agents</h4><h5 id="Expected-utility"><a href="#Expected-utility" class="headerlink" title="Expected utility"></a>Expected utility</h5><p>P(r|Ag,Env) to be denoted as probability that run r occurs when agent Ag is placed in environment Env.</p>
+<h4 id="Expected-utility-amp-optimal-agents"><a href="#Expected-utility-amp-optimal-agents" class="headerlink" title="Expected utility &amp; optimal agents"></a>Expected utility &amp; optimal agents</h4><h5 id="Expected-utility"><a href="#Expected-utility" class="headerlink" title="Expected utility"></a>Expected utility</h5><p>P(r|Ag,Env) to be denoted as probability that <strong>run r occurs</strong> when agent Ag is placed in environment Env.</p>
 <script type="math/tex; mode=display">
-\sum_{r \subset\mathcal{R}(Ag,Env)}P(r|Ag,Env) =1</script><p>Expected utility: $u(r)P(r|Ag,Env)$</p>
+\sum_{r \in\mathcal{R}(Ag,Env)}P(r|Ag,Env) =1</script><p>Expected utility(for run): u(r)P(r|Ag,Env)</p>
 <p>Optimal agent $Ag_{opt}$ is the one that maximizes expected utility over all possible runs in the environment</p>
 <script type="math/tex; mode=display">
 Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Difficulties-with-utility-based-approaches"><a href="#Difficulties-with-utility-based-approaches" class="headerlink" title="Difficulties with utility-based approaches"></a>Difficulties with utility-based approaches</h4><ol>
@@ -1020,15 +1020,15 @@ Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Diffi
 <li>People don’t think in terms of utilities</li>
 <li>Hard to formulate tasks in these terms</li>
 </ol>
-<h4 id="Predicate-断言-task-specifications"><a href="#Predicate-断言-task-specifications" class="headerlink" title="Predicate(断言) task specifications"></a>Predicate(断言) task specifications</h4><p>A special case of assigning utilities to runs is to assign 0 (false) or 1 (true).  Denote predicate task specification by Ψ.</p>
+<h4 id="Predicate-断言-task-specifications"><a href="#Predicate-断言-task-specifications" class="headerlink" title="Predicate(断言) task specifications"></a>Predicate(断言) task specifications</h4><p>A special case of assigning utilities to runs is to assign 0 (false) or 1 (true).  Denote predicate task specification by function Ψ.</p>
 <script type="math/tex; mode=display">
 \Psi: \mathcal{R} \longrightarrow \{0,1\}\\
-\mathcal{R}_\Psi(Ag,Env) = \{r|r\in \mathcal{R}(Ag,Env)\; \& \; \Psi(r) = 1\}</script><h4 id="Types-of-tasks"><a href="#Types-of-tasks" class="headerlink" title="Types of tasks"></a>Types of tasks</h4><h5 id="Achievement-tasks"><a href="#Achievement-tasks" class="headerlink" title="Achievement tasks"></a>Achievement tasks</h5><p>Are those of the form achieve state of affairs $\psi$</p>
+\mathcal{R}_\Psi(Ag,Env) = \{r|r\in \mathcal{R}(Ag,Env)\; \& \; \Psi(r) = 1\}</script><h4 id="Types-of-tasks"><a href="#Types-of-tasks" class="headerlink" title="Types of tasks"></a>Types of tasks</h4><h5 id="Achievement-tasks-at-least-bring-about-one-of-the-good-states"><a href="#Achievement-tasks-at-least-bring-about-one-of-the-good-states" class="headerlink" title="Achievement tasks(at least bring about one of the good states)"></a>Achievement tasks(at least bring about one of the good states)</h5><p>Are those of the form achieve state of affairs $\psi$</p>
 <p>An achievement task is specified by a set G of “good” or “goal” states: G ⊆ E. The agent succeeds if it is guaranteed to bring about at least one of these states (we do not care which one — they are all considered equally good)</p>
 <p>Let G ⊆ E be the set of states in which the achievement goal is realised. An agent Ag succeeds if and only if</p>
 <script type="math/tex; mode=display">
 \forall r \in \mathcal{R}(Ag,Env):\\
-\exists e_i \in \{e_x|e_x \; is \;a\;state\;that\;appears\; in\;r \;such\;that\; e_i\in G\}</script><h5 id="Maintenance-tasks"><a href="#Maintenance-tasks" class="headerlink" title="Maintenance tasks"></a>Maintenance tasks</h5><p>Are those of the form maintain state of affairs $\psi$</p>
+\exists e_i \in \{e_x|e_x \; is \;a\;state\;that\;appears\; in\;r \;such\;that\; e_i\in G\}</script><h5 id="Maintenance-tasks-never-to-bring-about-one-of-the-bad-states"><a href="#Maintenance-tasks-never-to-bring-about-one-of-the-bad-states" class="headerlink" title="Maintenance tasks(never to bring about one of the bad states)"></a>Maintenance tasks(never to bring about one of the bad states)</h5><p>Are those of the form maintain state of affairs \psi</p>
 <p>A maintenance task is specified by a set B of “bad” states: B ⊆ E. The agent succeeds if it is guaranteed never to bring about one of these states, i.e. it manages to avoid all states in B, it never performs actions which result in any state in B occurring</p>
 <p>Let B ⊆ E be the set of bad states that we wish to avoid. An agent Ag succeeds if and only if</p>
 <script type="math/tex; mode=display">
