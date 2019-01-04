@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="【note】," />
+  <meta name="keywords" content="【note, web】," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Web Infrastructurekey points: system architectures LODE">
-<meta name="keywords" content="【note】">
+<meta name="description" content="Web Infrastructurekey points: system architectures LODE  System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each other">
+<meta name="keywords" content="【note, web】">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NOTE_WEEK-1_Web Infrastructure">
 <meta property="og:url" content="https://zhangzhejian.com/2018/09/27/NOTE-Web-Infrastructure/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Web Infrastructurekey points: system architectures LODE">
+<meta property="og:description" content="Web Infrastructurekey points: system architectures LODE  System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each other">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-28T12:44:44.368Z">
+<meta property="og:updated_time" content="2019-01-04T13:14:11.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NOTE_WEEK-1_Web Infrastructure">
-<meta name="twitter:description" content="Web Infrastructurekey points: system architectures LODE">
+<meta name="twitter:description" content="Web Infrastructurekey points: system architectures LODE  System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each other">
 
 
 
@@ -302,8 +302,49 @@
       
         <h2 id="Web-Infrastructure"><a href="#Web-Infrastructure" class="headerlink" title="Web Infrastructure"></a>Web Infrastructure</h2><h4 id="key-points"><a href="#key-points" class="headerlink" title="key points:"></a>key points:</h4><ol>
 <li>system architectures LODE</li>
-<li></li>
 </ol>
+<h4 id="System-architecture-styles"><a href="#System-architecture-styles" class="headerlink" title="System architecture styles"></a>System architecture styles</h4><p>System architecture styles are formulated in terms of <strong>components</strong>, <strong>the way</strong> that components are <strong>connected</strong> to each other, the <strong>data exchanged</strong> between components and finally how these <strong>elements</strong> are jointly <strong>configured</strong> into a system.</p>
+<ul>
+<li>Layered architectures </li>
+<li>Object-based architectures</li>
+<li>Data-centered architectures </li>
+<li>Event-based architectures</li>
+</ul>
+<h5 id="Layered-Architectures"><a href="#Layered-Architectures" class="headerlink" title="Layered Architectures"></a>Layered Architectures</h5><ul>
+<li>Components are organised in a <strong>layered fashion</strong> where a component layer $L_i$ is allowed to call components at the underlying layer $L_{i -1}$</li>
+<li>Widely adopted by communication network community</li>
+<li>Control flows from layer to layer; <strong>requests go down</strong> the hierarchy whereas <strong>results flow upward</strong></li>
+</ul>
+<h5 id="Object-based-acchitectures"><a href="#Object-based-acchitectures" class="headerlink" title="Object-based acchitectures"></a>Object-based acchitectures</h5><ul>
+<li><p>This architecture holds components loosely</p>
+</li>
+<li><p>Each component is defined as an object and components are connected through mechanisms defined in the interface (example, RPC)</p>
+</li>
+</ul>
+<h5 id="Data-centered-architecture"><a href="#Data-centered-architecture" class="headerlink" title="Data-centered architecture"></a>Data-centered architecture</h5><p>Web-based distributed systems are largely data-centric.They rely on shared distributed file systems</p>
+<p>Processes communicate through a common passive or active repository. They use shared web-based data services.</p>
+<h5 id="Event-based-architecture"><a href="#Event-based-architecture" class="headerlink" title="Event-based architecture"></a>Event-based architecture</h5><p>Processes essentially communicate through the propagation of events, which optionally also carry data. Event propagation is generally through publish/subscribe systems.(进程通过事件的传播来交流，可以携带数据。事件传播是通过发布/订阅系统来实现的)</p>
+<p>Processes publish events after which middleware ensures that only processes that subscribe receive them.(只有订阅的进程才能接受到)</p>
+<h4 id="Client-server-model"><a href="#Client-server-model" class="headerlink" title="Client-server model"></a>Client-server model</h4><p>A server is a process implementing a specific service. A client is a process that requests a service from a server</p>
+<h5 id="Centralised-architecture-中心化"><a href="#Centralised-architecture-中心化" class="headerlink" title="Centralised architecture(中心化)"></a>Centralised architecture(中心化)</h5><ul>
+<li>Clear distinction between clients and servers </li>
+<li>A leader monitors the system</li>
+<li>Fault tolerant and robust systems</li>
+</ul>
+<h5 id="Decentralised-architecture-去中心化"><a href="#Decentralised-architecture-去中心化" class="headerlink" title="Decentralised architecture(去中心化)"></a>Decentralised architecture(去中心化)</h5><ul>
+<li>No monitor to observe processes </li>
+<li>Useful architecture with <strong>reliable underlying(block chain)</strong> networks </li>
+<li>Useful with <strong>large number of components</strong> in the system</li>
+</ul>
+<h4 id="Web-proxy-caching"><a href="#Web-proxy-caching" class="headerlink" title="Web proxy caching"></a>Web proxy caching</h4><ul>
+<li>To improve consistency of the system </li>
+<li>Client-side caching stores frequently visited pages at browser’s cache.</li>
+<li><p>Web proxy is another type of client-side cache that is placed between client and web server.</p>
+</li>
+<li><p>Web proxy can implement a shared cache. </p>
+</li>
+<li>Cooperative caching or distributed caching</li>
+</ul>
 
       
     </div>
@@ -321,7 +362,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/【note】/" rel="tag"># 【note】</a>
+            <a href="/tags/【note-web】/" rel="tag"># 【note, web】</a>
           
         </div>
       
@@ -436,7 +477,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -469,7 +510,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Infrastructure"><span class="nav-number">1.</span> <span class="nav-text">Web Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#key-points"><span class="nav-number">1.0.1.</span> <span class="nav-text">key points:</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Infrastructure"><span class="nav-number">1.</span> <span class="nav-text">Web Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#key-points"><span class="nav-number">1.0.1.</span> <span class="nav-text">key points:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#System-architecture-styles"><span class="nav-number">1.0.2.</span> <span class="nav-text">System architecture styles</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Layered-Architectures"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">Layered Architectures</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Object-based-acchitectures"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">Object-based acchitectures</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Data-centered-architecture"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">Data-centered architecture</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-based-architecture"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">Event-based architecture</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Client-server-model"><span class="nav-number">1.0.3.</span> <span class="nav-text">Client-server model</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Centralised-architecture-中心化"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">Centralised architecture(中心化)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Decentralised-architecture-去中心化"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">Decentralised architecture(去中心化)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-proxy-caching"><span class="nav-number">1.0.4.</span> <span class="nav-text">Web proxy caching</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

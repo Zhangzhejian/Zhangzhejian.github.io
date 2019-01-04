@@ -938,9 +938,9 @@ P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
       
         
           
-            <h2 id="Agents-and-Multi-Agent-System"><a href="#Agents-and-Multi-Agent-System" class="headerlink" title="Agents and Multi-Agent System"></a>Agents and Multi-Agent System</h2><h2 id="智能体与多智能体系统"><a href="#智能体与多智能体系统" class="headerlink" title="智能体与多智能体系统"></a>智能体与多智能体系统</h2><h3 id="Lecture-2-More-on-intelligent-agents"><a href="#Lecture-2-More-on-intelligent-agents" class="headerlink" title="Lecture 2 More on intelligent agents"></a>Lecture 2 More on intelligent agents</h3><h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><ol>
+            <h2 id="Agents-and-Multi-Agent-System-智能体与多智能体系统"><a href="#Agents-and-Multi-Agent-System-智能体与多智能体系统" class="headerlink" title="Agents and Multi-Agent System(智能体与多智能体系统)"></a>Agents and Multi-Agent System(智能体与多智能体系统)</h2><h3 id="Lecture-2-More-on-intelligent-agents"><a href="#Lecture-2-More-on-intelligent-agents" class="headerlink" title="Lecture 2 More on intelligent agents"></a>Lecture 2 More on intelligent agents</h3><h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><ol>
 <li>Object and agents difference</li>
-<li>Environment (see in <a href="http://octopusman.top/2018/09/28/NOTE-Artificial-Intelligence/#Environment" target="_blank" rel="noopener">Artificial Intelligence note week 1</a>)</li>
+<li>Environment (see in <a href="http://zhangzhejian.com/2018/09/28/NOTE-Artificial-Intelligence/#Environment">Artificial Intelligence note week 1</a>)</li>
 <li>agent behaviour: state transformer</li>
 <li>agent utility</li>
 </ol>
@@ -977,8 +977,8 @@ E = {e_0,e_1,e_3,e_4,e_5}\\
 \tau(e_0\longrightarrow^{a_0}) = \{e_1,e_2\}\\
 \tau(e_0 \longrightarrow^{a_1}) = \{e_3, e_4, e_5\}\\</script><h4 id="Agent-behaviour-1"><a href="#Agent-behaviour-1" class="headerlink" title="Agent behaviour"></a>Agent behaviour</h4><p>Agent is a function which maps <strong>runs</strong> to <strong>actions</strong></p>
 <script type="math/tex; mode=display">
-Ag: \mathcal{R}^E \longrightarrow Ac</script><p>An agent makes a decision about what action to perform based on the history of the system that it has witnessed to date. Let \mathcal{AG} be the set of all agents. (Agent做的就是根据输入的环境状态，给出决定的动作)</p>
-<p>A system is a pair (Ag, Env) containing an agent and an environment. Any system will have associated with it a set of possible runs; we denote the <strong>set of runs</strong> of agent Ag in environment Env by \mathcal{R}(Ag, Env) (We assume \mathcal{R}(Ag, Env) contains only <strong>terminated</strong> runs) (\mathcal{R}(Ag, Env)是在Env环境下，Ag做出的所有run的集合，假设只包含所有完整的run)</p>
+Ag: \mathcal{R}^E \longrightarrow Ac</script><p>An agent makes a decision about what action to perform based on the history of the system that it has witnessed to date. Let $\mathcal{AG}$ be the set of all agents. (Agent做的就是根据输入的环境状态，给出决定的动作)</p>
+<p>A system is a pair (Ag, Env) containing an agent and an environment. Any system will have associated with it a set of possible runs; we denote the <strong>set of runs</strong> of agent Ag in environment Env by $\mathcal{R}(Ag, Env)$ (We assume $\mathcal{R}(Ag, Env)$ contains only <strong>terminated</strong> runs) ($\mathcal{R}(Ag, Env)$是在Env环境下，Ag做出的所有run的集合，假设只包含所有完整的run)</p>
 <h5 id="EXAMPLE-1"><a href="#EXAMPLE-1" class="headerlink" title="EXAMPLE"></a>EXAMPLE</h5><p>The same example as above</p>
 <script type="math/tex; mode=display">
 E = {e_0,e_1,e_3,e_4,e_5}\\\tau(e_0\longrightarrow^{a_0}) = \{e_1,e_2\}\\\tau(e_0 \longrightarrow^{a_1}) = \{e_3, e_4, e_5\}\\</script><p>First to determine the Ag() function.</p>
@@ -1464,8 +1464,49 @@ Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Diffi
           
             <h2 id="Web-Infrastructure"><a href="#Web-Infrastructure" class="headerlink" title="Web Infrastructure"></a>Web Infrastructure</h2><h4 id="key-points"><a href="#key-points" class="headerlink" title="key points:"></a>key points:</h4><ol>
 <li>system architectures LODE</li>
-<li></li>
 </ol>
+<h4 id="System-architecture-styles"><a href="#System-architecture-styles" class="headerlink" title="System architecture styles"></a>System architecture styles</h4><p>System architecture styles are formulated in terms of <strong>components</strong>, <strong>the way</strong> that components are <strong>connected</strong> to each other, the <strong>data exchanged</strong> between components and finally how these <strong>elements</strong> are jointly <strong>configured</strong> into a system.</p>
+<ul>
+<li>Layered architectures </li>
+<li>Object-based architectures</li>
+<li>Data-centered architectures </li>
+<li>Event-based architectures</li>
+</ul>
+<h5 id="Layered-Architectures"><a href="#Layered-Architectures" class="headerlink" title="Layered Architectures"></a>Layered Architectures</h5><ul>
+<li>Components are organised in a <strong>layered fashion</strong> where a component layer $L_i$ is allowed to call components at the underlying layer $L_{i -1}$</li>
+<li>Widely adopted by communication network community</li>
+<li>Control flows from layer to layer; <strong>requests go down</strong> the hierarchy whereas <strong>results flow upward</strong></li>
+</ul>
+<h5 id="Object-based-acchitectures"><a href="#Object-based-acchitectures" class="headerlink" title="Object-based acchitectures"></a>Object-based acchitectures</h5><ul>
+<li><p>This architecture holds components loosely</p>
+</li>
+<li><p>Each component is defined as an object and components are connected through mechanisms defined in the interface (example, RPC)</p>
+</li>
+</ul>
+<h5 id="Data-centered-architecture"><a href="#Data-centered-architecture" class="headerlink" title="Data-centered architecture"></a>Data-centered architecture</h5><p>Web-based distributed systems are largely data-centric.They rely on shared distributed file systems</p>
+<p>Processes communicate through a common passive or active repository. They use shared web-based data services.</p>
+<h5 id="Event-based-architecture"><a href="#Event-based-architecture" class="headerlink" title="Event-based architecture"></a>Event-based architecture</h5><p>Processes essentially communicate through the propagation of events, which optionally also carry data. Event propagation is generally through publish/subscribe systems.(进程通过事件的传播来交流，可以携带数据。事件传播是通过发布/订阅系统来实现的)</p>
+<p>Processes publish events after which middleware ensures that only processes that subscribe receive them.(只有订阅的进程才能接受到)</p>
+<h4 id="Client-server-model"><a href="#Client-server-model" class="headerlink" title="Client-server model"></a>Client-server model</h4><p>A server is a process implementing a specific service. A client is a process that requests a service from a server</p>
+<h5 id="Centralised-architecture-中心化"><a href="#Centralised-architecture-中心化" class="headerlink" title="Centralised architecture(中心化)"></a>Centralised architecture(中心化)</h5><ul>
+<li>Clear distinction between clients and servers </li>
+<li>A leader monitors the system</li>
+<li>Fault tolerant and robust systems</li>
+</ul>
+<h5 id="Decentralised-architecture-去中心化"><a href="#Decentralised-architecture-去中心化" class="headerlink" title="Decentralised architecture(去中心化)"></a>Decentralised architecture(去中心化)</h5><ul>
+<li>No monitor to observe processes </li>
+<li>Useful architecture with <strong>reliable underlying(block chain)</strong> networks </li>
+<li>Useful with <strong>large number of components</strong> in the system</li>
+</ul>
+<h4 id="Web-proxy-caching"><a href="#Web-proxy-caching" class="headerlink" title="Web proxy caching"></a>Web proxy caching</h4><ul>
+<li>To improve consistency of the system </li>
+<li>Client-side caching stores frequently visited pages at browser’s cache.</li>
+<li><p>Web proxy is another type of client-side cache that is placed between client and web server.</p>
+</li>
+<li><p>Web proxy can implement a shared cache. </p>
+</li>
+<li>Cooperative caching or distributed caching</li>
+</ul>
 
           
         
@@ -1587,7 +1628,7 @@ Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Diffi
       
         
           
-            <h2 id="Agents-and-Multi-Agent-System-智能体与多智能体系统"><a href="#Agents-and-Multi-Agent-System-智能体与多智能体系统" class="headerlink" title="Agents and Multi-Agent System 智能体与多智能体系统"></a>Agents and Multi-Agent System 智能体与多智能体系统</h2><h3 id="Lecture-1-Introduction"><a href="#Lecture-1-Introduction" class="headerlink" title="Lecture 1 Introduction"></a>Lecture 1 Introduction</h3><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h4><ol>
+            <h2 id="Agents-and-Multi-Agent-System-智能体与多智能体系统"><a href="#Agents-and-Multi-Agent-System-智能体与多智能体系统" class="headerlink" title="Agents and Multi-Agent System (智能体与多智能体系统)"></a>Agents and Multi-Agent System (智能体与多智能体系统)</h2><h3 id="Lecture-1-Introduction"><a href="#Lecture-1-Introduction" class="headerlink" title="Lecture 1 Introduction"></a>Lecture 1 Introduction</h3><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h4><ol>
 <li>What’s an agent</li>
 <li>Reactive—Proactive(goal-oriented)</li>
 <li>proactive(goal-oriented)</li>
@@ -1879,7 +1920,7 @@ a_1^{j+1}\\a_2^{j+1}\\a_3^{j+1}\\\vdots\\a^{j+1}_{s_{j+1}}
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
