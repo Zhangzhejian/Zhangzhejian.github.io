@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Agents and Multi-Agent System智能体与多智能体系统Lecture 5: Communication, coordination and working togetherAgent communicationagents are autonomous and self-interested. One agent can’t force another to perform">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-02T16:13:39.351Z">
+<meta property="og:updated_time" content="2019-01-05T14:20:13.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(MAS) Lec 5:Communication, coordination and working together">
 <meta name="twitter:description" content="Agents and Multi-Agent System智能体与多智能体系统Lecture 5: Communication, coordination and working togetherAgent communicationagents are autonomous and self-interested. One agent can’t force another to perform">
@@ -309,7 +309,7 @@
 <li>Saying “Please make me some tea”</li>
 </ul>
 </li>
-<li><p>The <strong>illocutionary act(言外行为)</strong>: the conveying of the speaker’s intentions to the hearer</p>
+<li><p>The <strong>illocutionary act(言外行为)</strong>:<strong>(intention behind utterance)</strong> the conveying of the speaker’s intentions to the hearer</p>
 <ul>
 <li>The speaker has requested the hearer to make some tea</li>
 </ul>
@@ -321,6 +321,13 @@
 </li>
 </ul>
 <p>Speaker makes a locutionary act(语言行为) with hope(言外行为) that the hearer correctly recognises the speaker’s intentions and acts(表达效果) accordingly.</p>
+<h5 id="Five-types-of-speech-act"><a href="#Five-types-of-speech-act" class="headerlink" title="Five types of speech act"></a>Five types of speech act</h5><ul>
+<li><strong>Representatives:</strong>commit the speaker to the truth of an expressed proposition, e.g. ‘it’s raining’.</li>
+<li><strong>Directiives:</strong> attempt to get the hearer to do something, e.g. ‘please make the tea’.</li>
+<li><strong>Commissive:</strong> commit the speaker to doing something, e.g. ‘I promise to come to the lecture on Thursday’.</li>
+<li><strong>Expressive:</strong> express some mental state, e.g. ‘thank you!’.</li>
+<li><strong>Declaration:</strong> entail the occurrence of an action in themselves, so effect some changes in an institutional state of affairs, e.g. declaring war, ‘We the jury find the defendant to be guilty’.</li>
+</ul>
 <p>we can in general think of a speech act as having two components:</p>
 <ul>
 <li>a <strong>performative verb</strong> (e.g request, inform, promise)</li>
@@ -330,7 +337,7 @@
 <p>performative = request content = ‘the door is closed’ speech act = ‘please close the door’</p>
 <p>performative = inform content = ‘the door is closed’ speech act = ‘the door is closed!’</p>
 <p>performative = inquire content = ‘the door is closed’ speech act = ‘is the door closed?’</p>
-<h5 id="Plan-based-theory-of-speech-acts"><a href="#Plan-based-theory-of-speech-acts" class="headerlink" title="Plan-based theory of speech acts"></a>Plan-based theory of speech acts</h5><p><strong>request(s, h, φ)</strong></p>
+<h4 id="Plan-based-theory-of-speech-acts"><a href="#Plan-based-theory-of-speech-acts" class="headerlink" title="Plan-based theory of speech acts"></a>Plan-based theory of speech acts</h4><p><strong>request(s, h, φ)</strong></p>
 <p>pre:</p>
 <p>s believes (h can do φ)</p>
 <p>s believes (h believes (h can do φ))</p>
@@ -357,7 +364,7 @@
 <li><h5 id="The-knowledge-interchange-format-KIF"><a href="#The-knowledge-interchange-format-KIF" class="headerlink" title="The knowledge interchange format (KIF)."></a>The knowledge interchange format (KIF).</h5></li>
 </ol>
 <ul>
-<li>Language for expressing message content. Used to state:<ul>
+<li>Language for expressing message <strong>content</strong>. Used to state:<ul>
 <li><strong>Properties</strong> of things in a domain<ul>
 <li>E.g. ‘The temperature of m1 is 83 Celsius’ (= (temperature m1) (scalar 83 Celsius))</li>
 </ul>
@@ -391,17 +398,19 @@
 </li>
 </ul>
 <h5 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h5><p>(inform</p>
-<p>:sender         agent1</p>
-<p>:receiver     agent5</p>
-<p>:content          (price good200 150)</p>
-<p>:language     sl</p>
-<p>:ontology     hpl-auction</p>
+<p>​    :sender         agent1</p>
+<p>​    :receiver     agent5</p>
+<p>​    :content          (price good200 150)</p>
+<p>​    :language     sl</p>
+<p>​    :ontology     hpl-auction</p>
 <p>)</p>
 <h5 id="FIPA-ACL-semantics-语义学"><a href="#FIPA-ACL-semantics-语义学" class="headerlink" title="FIPA ACL semantics(语义学)"></a>FIPA ACL semantics(语义学)</h5><p>can represent beliefs, desires, uncertain beliefs of agents, and actions they perform</p>
 <p><strong>Feasibility precondition</strong>: constraint the sender must satisfy.</p>
 <p><strong>Rational effect</strong>: what sender is attempting to achieve (perlocutionary act).</p>
 <p>Inform and Request are the two basic performatives in FIPA. All others are macro definitions, defined in terms of these.</p>
-<h5 id="Inform"><a href="#Inform" class="headerlink" title="Inform"></a>Inform</h5><h5 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h5><h4 id="ontologies-本体论"><a href="#ontologies-本体论" class="headerlink" title="ontologies(本体论)"></a>ontologies(本体论)</h4><h4 id="working-together"><a href="#working-together" class="headerlink" title="working together"></a>working together</h4><p>It is often necessary or preferable for agents to work together in order to achieve their goals.</p>
+<h5 id="Inform"><a href="#Inform" class="headerlink" title="Inform"></a>Inform</h5><h5 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h5><h5 id="Interaction-protocols-IPs"><a href="#Interaction-protocols-IPs" class="headerlink" title="Interaction protocols(IPs)"></a>Interaction protocols(IPs)</h5><p>define interaction sequences for standard situations in agent systems,</p>
+<p>Provide explicit context; make it easier to reason about which messages to send and easier to interpret messages received.</p>
+<h4 id="ontologies-本体论"><a href="#ontologies-本体论" class="headerlink" title="ontologies(本体论)"></a>ontologies(本体论)</h4><h4 id="working-together"><a href="#working-together" class="headerlink" title="working together"></a>working together</h4><p>It is often necessary or preferable for agents to work together in order to achieve their goals.</p>
 <p>Since agents are autonomous they make decisions about what to do at run-time, they must be capable of dynamically coordinating their activities and cooperating with others.</p>
 <p>Compare this with traditional distributed and concurrent systems, where coordination and cooperation is typically hardwired at design time.</p>
 <p>two criteria for assessing how well agents work together.</p>
@@ -432,8 +441,81 @@
 <li>modular problems with reasonable grain size</li>
 <li>spend more time on computation than communication</li>
 </ul>
-<h4 id="Contract-Net-Protocol-very-important"><a href="#Contract-Net-Protocol-very-important" class="headerlink" title="Contract Net Protocol(very important)"></a>Contract Net Protocol(very important)</h4><p>deal with the second stage of CDPS: subproblem allocation</p>
-<h4 id="Multi-agent-planning"><a href="#Multi-agent-planning" class="headerlink" title="Multi-agent planning"></a>Multi-agent planning</h4><h5 id="centralised-planning-for-distributed-agents"><a href="#centralised-planning-for-distributed-agents" class="headerlink" title="centralised planning for distributed agents"></a>centralised planning for distributed agents</h5><h5 id="Partial-global-planning"><a href="#Partial-global-planning" class="headerlink" title="Partial global planning"></a>Partial global planning</h5><h5 id="Merging-of-individual-plans"><a href="#Merging-of-individual-plans" class="headerlink" title="Merging of individual plans"></a>Merging of individual plans</h5><p>not finished yet</p>
+<h4 id="Contract-Net-Protocol-very-important"><a href="#Contract-Net-Protocol-very-important" class="headerlink" title="Contract Net Protocol(very important)"></a>Contract Net Protocol(very important)</h4><p>deal with the second stage of CDPS: <strong>subproblem allocation</strong></p>
+<p>Each node on the network can, at different times or for different tasks, be a manager or a contractor. When a node gets a composite task (or for any reason can’t solve its present task), it breaks it into subtasks (if possible) and announces them (acting as a manager), receives bids from potential contractors, then awards the job.</p>
+<h5 id="Stage-of-CNP"><a href="#Stage-of-CNP" class="headerlink" title="Stage of CNP:"></a>Stage of CNP:</h5><ol>
+<li><strong>Recognition</strong><ul>
+<li>Recognize a problem it wants help with</li>
+</ul>
+</li>
+<li><strong>Announcement</strong><ul>
+<li>broadcasts an announcement of the task, which includes a specification of the task to be achieved</li>
+</ul>
+</li>
+<li><strong>Bidding</strong><ul>
+<li>Agents receiving an announcement decide whether they wish to bid for the task.</li>
+</ul>
+</li>
+<li><strong>Awarding</strong><ul>
+<li>Agent that sent task announcement must choose between bids and decide who to award the contract to.</li>
+</ul>
+</li>
+<li><strong>Expediting</strong><ul>
+<li>The successful contractor expedites the task</li>
+</ul>
+</li>
+</ol>
+<h4 id="Coordination-relationship"><a href="#Coordination-relationship" class="headerlink" title="Coordination relationship"></a>Coordination relationship</h4><ul>
+<li><h5 id="Negative-Relationships"><a href="#Negative-Relationships" class="headerlink" title="Negative Relationships"></a>Negative Relationships</h5><ul>
+<li>Resource induced(资源不足)</li>
+<li>Incompatibility不兼容)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h5 id="Possitive-Relationships"><a href="#Possitive-Relationships" class="headerlink" title="Possitive Relationships"></a>Possitive Relationships</h5><ul>
+<li>Requested(agent explicitly asks for help with activities)</li>
+<li>Non-requested</li>
+</ul>
+</li>
+</ul>
+<p>We want to avoid/deal with negative relationships.</p>
+<p>We want to recognise and benefit from positive relationships.</p>
+<p>Some approaches to coordination:</p>
+<ul>
+<li><p>Multi-agent planning</p>
+</li>
+<li><p>Joint intentions (teamwork)</p>
+</li>
+<li><p>Normative multi-agent systems</p>
+</li>
+</ul>
+<h4 id="Multi-agent-planning"><a href="#Multi-agent-planning" class="headerlink" title="Multi-agent planning"></a>Multi-agent planning</h4><ul>
+<li><h5 id="centralised-planning-for-distributed-agents"><a href="#centralised-planning-for-distributed-agents" class="headerlink" title="centralised planning for distributed agents"></a>centralised planning for distributed agents</h5></li>
+</ul>
+<p>Centralised agent <strong>has all information</strong> (agents’ private goals, actions available) and uses this to determine efficient plan for each agent.</p>
+<ul>
+<li><h5 id="Partial-global-planning"><a href="#Partial-global-planning" class="headerlink" title="Partial global planning"></a>Partial global planning</h5></li>
+</ul>
+<p>Agents plan for themselves, but also have partial information about the global plan of all agents.</p>
+<ul>
+<li><h5 id="Merging-of-individual-plans"><a href="#Merging-of-individual-plans" class="headerlink" title="Merging of individual plans"></a>Merging of individual plans</h5></li>
+</ul>
+<p>Agents plan for themselves, <strong>share their plans</strong> with a centralised agent, who merges these to produce an efficient global plan</p>
+<h4 id="Joint-intentions-teamwork"><a href="#Joint-intentions-teamwork" class="headerlink" title="Joint intentions(teamwork)"></a>Joint intentions(teamwork)</h4><p>Agents in team have collective intention towards the goal and have responsibilities to other agents in the team.</p>
+<p>A group of agents have a collective commitment to bringing about some goal G; the motivation for this goal is M.</p>
+<p>The termination condition is that it is mutually believed that either:</p>
+<p>• G is satisfied;</p>
+<p>• G is impossible;</p>
+<p>• M is not longer present.</p>
+<h4 id="Normative-multi-agent-system"><a href="#Normative-multi-agent-system" class="headerlink" title="Normative multi-agent system"></a>Normative multi-agent system</h4><p>A norm is an established, expected pattern of behaviour.</p>
+<p>Norms affect agent reasoning.</p>
+<p>If you’re caught, then violating a norm will lead to a decrease in utility (punishment).</p>
+<h5 id="Challenges-for-normative-agent-systems"><a href="#Challenges-for-normative-agent-systems" class="headerlink" title="Challenges for normative agent systems."></a>Challenges for normative agent systems.</h5><p>• Agents need to know the norms.</p>
+<p>• Agents need to understand the norms.</p>
+<p>• Monitoring needs to be effective.</p>
+<p>• Punishments need to be suitable.</p>
+<p><strong>Finished</strong></p>
 
       
     </div>
@@ -555,7 +637,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -568,7 +650,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -601,7 +683,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Agents-and-Multi-Agent-System"><span class="nav-number">1.</span> <span class="nav-text">Agents and Multi-Agent System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#智能体与多智能体系统"><span class="nav-number">2.</span> <span class="nav-text">智能体与多智能体系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-5-Communication-coordination-and-working-together"><span class="nav-number">2.1.</span> <span class="nav-text">Lecture 5: Communication, coordination and working together</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Agent-communication"><span class="nav-number">2.1.1.</span> <span class="nav-text">Agent communication</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Speech-act-theory"><span class="nav-number">2.1.2.</span> <span class="nav-text">Speech act theory</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Three-aspects-of-speech-acts"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Three aspects of speech acts</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Plan-based-theory-of-speech-acts"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">Plan-based theory of speech acts</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#KQML-Knowledge-Query-Manipulation-Language-Agent-based"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">KQML(Knowledge Query Manipulation Language) Agent-based</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#the-KQML-‘Outer’-language-that-defines-‘communicative-verbs’-or-performatives-examples"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">the KQML. ‘Outer’ language that defines ‘communicative verbs’ or performatives, examples:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#The-knowledge-interchange-format-KIF"><span class="nav-number">2.1.2.5.</span> <span class="nav-text">The knowledge interchange format (KIF).</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Criticisms"><span class="nav-number">2.1.2.6.</span> <span class="nav-text">Criticisms:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FIPA-Agent-Communication-Language-ACL"><span class="nav-number">2.1.3.</span> <span class="nav-text">FIPA Agent Communication Language(ACL)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Similar-to-KQML"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">Similar to KQML:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Example"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">Example:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FIPA-ACL-semantics-语义学"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">FIPA ACL semantics(语义学)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Inform"><span class="nav-number">2.1.3.4.</span> <span class="nav-text">Inform</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Request"><span class="nav-number">2.1.3.5.</span> <span class="nav-text">Request</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ontologies-本体论"><span class="nav-number">2.1.4.</span> <span class="nav-text">ontologies(本体论)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#working-together"><span class="nav-number">2.1.5.</span> <span class="nav-text">working together</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Coherence-连贯性"><span class="nav-number">2.1.5.1.</span> <span class="nav-text">Coherence(连贯性)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Coordination-协调性"><span class="nav-number">2.1.5.2.</span> <span class="nav-text">Coordination(协调性)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cooperative-Distributed-Problem-Solving-CDPS"><span class="nav-number">2.1.6.</span> <span class="nav-text">Cooperative Distributed Problem Solving(CDPS)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Problem-decomposition"><span class="nav-number">2.1.6.1.</span> <span class="nav-text">Problem decomposition</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Subproblem-allocation"><span class="nav-number">2.1.6.2.</span> <span class="nav-text">Subproblem allocation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Subproblem-solution"><span class="nav-number">2.1.6.3.</span> <span class="nav-text">Subproblem solution</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Subproblem-synthesis"><span class="nav-number">2.1.6.4.</span> <span class="nav-text">Subproblem synthesis</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Properties-for-CDPS"><span class="nav-number">2.1.6.5.</span> <span class="nav-text">Properties for CDPS</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Contract-Net-Protocol-very-important"><span class="nav-number">2.1.7.</span> <span class="nav-text">Contract Net Protocol(very important)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multi-agent-planning"><span class="nav-number">2.1.8.</span> <span class="nav-text">Multi-agent planning</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#centralised-planning-for-distributed-agents"><span class="nav-number">2.1.8.1.</span> <span class="nav-text">centralised planning for distributed agents</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Partial-global-planning"><span class="nav-number">2.1.8.2.</span> <span class="nav-text">Partial global planning</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Merging-of-individual-plans"><span class="nav-number">2.1.8.3.</span> <span class="nav-text">Merging of individual plans</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Agents-and-Multi-Agent-System"><span class="nav-number">1.</span> <span class="nav-text">Agents and Multi-Agent System</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#智能体与多智能体系统"><span class="nav-number">2.</span> <span class="nav-text">智能体与多智能体系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lecture-5-Communication-coordination-and-working-together"><span class="nav-number">2.1.</span> <span class="nav-text">Lecture 5: Communication, coordination and working together</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Agent-communication"><span class="nav-number">2.1.1.</span> <span class="nav-text">Agent communication</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Speech-act-theory"><span class="nav-number">2.1.2.</span> <span class="nav-text">Speech act theory</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Three-aspects-of-speech-acts"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">Three aspects of speech acts</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Five-types-of-speech-act"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">Five types of speech act</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Plan-based-theory-of-speech-acts"><span class="nav-number">2.1.3.</span> <span class="nav-text">Plan-based theory of speech acts</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#KQML-Knowledge-Query-Manipulation-Language-Agent-based"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">KQML(Knowledge Query Manipulation Language) Agent-based</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#the-KQML-‘Outer’-language-that-defines-‘communicative-verbs’-or-performatives-examples"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">the KQML. ‘Outer’ language that defines ‘communicative verbs’ or performatives, examples:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#The-knowledge-interchange-format-KIF"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">The knowledge interchange format (KIF).</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Criticisms"><span class="nav-number">2.1.3.4.</span> <span class="nav-text">Criticisms:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#FIPA-Agent-Communication-Language-ACL"><span class="nav-number">2.1.4.</span> <span class="nav-text">FIPA Agent Communication Language(ACL)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Similar-to-KQML"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">Similar to KQML:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Example"><span class="nav-number">2.1.4.2.</span> <span class="nav-text">Example:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#FIPA-ACL-semantics-语义学"><span class="nav-number">2.1.4.3.</span> <span class="nav-text">FIPA ACL semantics(语义学)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Inform"><span class="nav-number">2.1.4.4.</span> <span class="nav-text">Inform</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Request"><span class="nav-number">2.1.4.5.</span> <span class="nav-text">Request</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Interaction-protocols-IPs"><span class="nav-number">2.1.4.6.</span> <span class="nav-text">Interaction protocols(IPs)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ontologies-本体论"><span class="nav-number">2.1.5.</span> <span class="nav-text">ontologies(本体论)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#working-together"><span class="nav-number">2.1.6.</span> <span class="nav-text">working together</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Coherence-连贯性"><span class="nav-number">2.1.6.1.</span> <span class="nav-text">Coherence(连贯性)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Coordination-协调性"><span class="nav-number">2.1.6.2.</span> <span class="nav-text">Coordination(协调性)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cooperative-Distributed-Problem-Solving-CDPS"><span class="nav-number">2.1.7.</span> <span class="nav-text">Cooperative Distributed Problem Solving(CDPS)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Problem-decomposition"><span class="nav-number">2.1.7.1.</span> <span class="nav-text">Problem decomposition</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Subproblem-allocation"><span class="nav-number">2.1.7.2.</span> <span class="nav-text">Subproblem allocation</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Subproblem-solution"><span class="nav-number">2.1.7.3.</span> <span class="nav-text">Subproblem solution</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Subproblem-synthesis"><span class="nav-number">2.1.7.4.</span> <span class="nav-text">Subproblem synthesis</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Properties-for-CDPS"><span class="nav-number">2.1.7.5.</span> <span class="nav-text">Properties for CDPS</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Contract-Net-Protocol-very-important"><span class="nav-number">2.1.8.</span> <span class="nav-text">Contract Net Protocol(very important)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Stage-of-CNP"><span class="nav-number">2.1.8.1.</span> <span class="nav-text">Stage of CNP:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Coordination-relationship"><span class="nav-number">2.1.9.</span> <span class="nav-text">Coordination relationship</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Negative-Relationships"><span class="nav-number">2.1.9.1.</span> <span class="nav-text">Negative Relationships</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Possitive-Relationships"><span class="nav-number">2.1.9.2.</span> <span class="nav-text">Possitive Relationships</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Multi-agent-planning"><span class="nav-number">2.1.10.</span> <span class="nav-text">Multi-agent planning</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#centralised-planning-for-distributed-agents"><span class="nav-number">2.1.10.1.</span> <span class="nav-text">centralised planning for distributed agents</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Partial-global-planning"><span class="nav-number">2.1.10.2.</span> <span class="nav-text">Partial global planning</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Merging-of-individual-plans"><span class="nav-number">2.1.10.3.</span> <span class="nav-text">Merging of individual plans</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Joint-intentions-teamwork"><span class="nav-number">2.1.11.</span> <span class="nav-text">Joint intentions(teamwork)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Normative-multi-agent-system"><span class="nav-number">2.1.12.</span> <span class="nav-text">Normative multi-agent system</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Challenges-for-normative-agent-systems"><span class="nav-number">2.1.12.1.</span> <span class="nav-text">Challenges for normative agent systems.</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

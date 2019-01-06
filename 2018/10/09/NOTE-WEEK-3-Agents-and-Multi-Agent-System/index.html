@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="Lecture 3 Practical Reasoning(实践推理)Key points:Practical ReasoningPractical ReasoningIs reasoning directed towards actions Theoretical reasoningIs reasoning directed towards belief Human practical reas">
+<meta name="description" content="Lecture 3 Practical Reasoning(实践推理)Key points: practical reasoning control loop reconsideration architecture  Practical ReasoningPractical ReasoningIs reasoning directed towards actions Theoretical re">
 <meta name="keywords" content="note,MAS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(MAS) Lec 3:Practical Reasoning(实践推理)">
 <meta property="og:url" content="https://zhangzhejian.com/2018/10/09/NOTE-WEEK-3-Agents-and-Multi-Agent-System/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Lecture 3 Practical Reasoning(实践推理)Key points:Practical ReasoningPractical ReasoningIs reasoning directed towards actions Theoretical reasoningIs reasoning directed towards belief Human practical reas">
+<meta property="og:description" content="Lecture 3 Practical Reasoning(实践推理)Key points: practical reasoning control loop reconsideration architecture  Practical ReasoningPractical ReasoningIs reasoning directed towards actions Theoretical re">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-04T15:19:31.308Z">
+<meta property="og:image" content="https://i.postimg.cc/dVX0CWnb/prs1.png">
+<meta property="og:image" content="https://i.postimg.cc/Ls183zbn/prs2.png">
+<meta property="og:image" content="https://i.postimg.cc/dVD1LMRR/prs3.png">
+<meta property="og:updated_time" content="2019-01-06T16:40:41.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(MAS) Lec 3:Practical Reasoning(实践推理)">
-<meta name="twitter:description" content="Lecture 3 Practical Reasoning(实践推理)Key points:Practical ReasoningPractical ReasoningIs reasoning directed towards actions Theoretical reasoningIs reasoning directed towards belief Human practical reas">
+<meta name="twitter:description" content="Lecture 3 Practical Reasoning(实践推理)Key points: practical reasoning control loop reconsideration architecture  Practical ReasoningPractical ReasoningIs reasoning directed towards actions Theoretical re">
+<meta name="twitter:image" content="https://i.postimg.cc/dVX0CWnb/prs1.png">
 
 
 
@@ -300,13 +304,18 @@
       
 
       
-        <h2 id="Lecture-3-Practical-Reasoning-实践推理"><a href="#Lecture-3-Practical-Reasoning-实践推理" class="headerlink" title="Lecture 3 Practical Reasoning(实践推理)"></a>Lecture 3 Practical Reasoning(实践推理)</h2><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h4><h4 id="Practical-Reasoning"><a href="#Practical-Reasoning" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h4><h5 id="Practical-Reasoning-1"><a href="#Practical-Reasoning-1" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h5><p>Is reasoning directed towards actions</p>
+        <h2 id="Lecture-3-Practical-Reasoning-实践推理"><a href="#Lecture-3-Practical-Reasoning-实践推理" class="headerlink" title="Lecture 3 Practical Reasoning(实践推理)"></a>Lecture 3 Practical Reasoning(实践推理)</h2><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h4><ul>
+<li>practical reasoning</li>
+<li>control loop</li>
+<li>reconsideration</li>
+<li>architecture</li>
+</ul>
+<h3 id="Practical-Reasoning"><a href="#Practical-Reasoning" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h3><h5 id="Practical-Reasoning-1"><a href="#Practical-Reasoning-1" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h5><p>Is reasoning directed towards actions</p>
 <h5 id="Theoretical-reasoning"><a href="#Theoretical-reasoning" class="headerlink" title="Theoretical reasoning"></a>Theoretical reasoning</h5><p>Is reasoning directed towards belief</p>
 <p><em>Human practical</em> reasoning consists of two activities:</p>
 <p>•<strong>Deliberation:</strong>  deciding <strong>what</strong> state of affairs we want to achieve. <strong>The outputs of deliberation  are intentions</strong></p>
 <p>• <strong>Means-ends reasoning :</strong> deciding <strong>how</strong> to achieve these states of affairs. <strong>The outputs are plans</strong></p>
-<h5 id="Intention-in-practical-reasoning"><a href="#Intention-in-practical-reasoning" class="headerlink" title="Intention in practical reasoning"></a>Intention in practical reasoning</h5><p><strong>Intention</strong>: what state of affairs want to achieve</p>
-<ol>
+<h5 id="Intention-in-practical-reasoning"><a href="#Intention-in-practical-reasoning" class="headerlink" title="Intention in practical reasoning"></a>Intention in practical reasoning</h5><h5 id="Intention-what-state-of-affairs-want-to-achieve"><a href="#Intention-what-state-of-affairs-want-to-achieve" class="headerlink" title="Intention: what state of affairs want to achieve"></a><strong>Intention</strong>: what state of affairs want to achieve</h5><ol>
 <li>Intentions pose problems for agents, who need to determine ways to achieving them.(<u>If I have an intention to φ, you would expect me to <strong>devote resources to</strong> deciding how to bring about φ</u>.)</li>
 <li>Agents track the success of their intentions, and are inclined to try again if their attempts fail. (If an agent’s ﬁrst attempt to achieve φ fails, then all other things being equal, it will try an alternative plan to achieve φ.)</li>
 <li>Intentions provide a “ﬁlter” for adopting other intentions, which must not conﬂict.(don’t waste resources to do conflict things)</li>
@@ -360,7 +369,7 @@
 <li>If γ is low (i.e., the environment does not change quickly, <strong>static</strong>), then bold agents do well compared to cautious ones. This is because cautious ones waste time reconsidering their commitments while bold agents are busy working towards — and achieving — their intentions.</li>
 <li>If γ is high (i.e., the environment changes frequently), then cautious agents tend to outperform bold agents. This is because they are able to recognize when intentions are doomed, and also to take advantage of serendipitous situations and new opportunities when they arise.</li>
 </ul>
-<h3 id="Implemented-BDI-Belief-Desire-Intention-Agents"><a href="#Implemented-BDI-Belief-Desire-Intention-Agents" class="headerlink" title="Implemented BDI(Belief-Desire-Intention) Agents"></a>Implemented BDI(Belief-Desire-Intention) Agents</h3><h4 id="IRMA-Intelligent-Resource-bounded-Machine-Architecture-–-Bratman-Israel-Pollack"><a href="#IRMA-Intelligent-Resource-bounded-Machine-Architecture-–-Bratman-Israel-Pollack" class="headerlink" title="IRMA(Intelligent Resource-bounded Machine Architecture – Bratman, Israel, Pollack)"></a>IRMA(Intelligent Resource-bounded Machine Architecture – Bratman, Israel, Pollack)</h4><h5 id="Four-key-symbolic-data-structures"><a href="#Four-key-symbolic-data-structures" class="headerlink" title="Four key symbolic data structures:"></a>Four key symbolic data structures:</h5><ul>
+<h3 id="Architecture-of-Implemented-BDI-Belief-Desire-Intention-Agents"><a href="#Architecture-of-Implemented-BDI-Belief-Desire-Intention-Agents" class="headerlink" title="Architecture of Implemented BDI(Belief-Desire-Intention) Agents"></a>Architecture of Implemented BDI(Belief-Desire-Intention) Agents</h3><h4 id="IRMA-Intelligent-Resource-bounded-Machine-Architecture-–-Bratman-Israel-Pollack"><a href="#IRMA-Intelligent-Resource-bounded-Machine-Architecture-–-Bratman-Israel-Pollack" class="headerlink" title="IRMA(Intelligent Resource-bounded Machine Architecture – Bratman, Israel, Pollack)"></a>IRMA(Intelligent Resource-bounded Machine Architecture – Bratman, Israel, Pollack)</h4><h5 id="Four-key-symbolic-data-structures"><a href="#Four-key-symbolic-data-structures" class="headerlink" title="Four key symbolic data structures:"></a>Four key symbolic data structures:</h5><ul>
 <li>a plan library</li>
 <li>Explicit representations of :<ul>
 <li>Beliefs: information available to the agen</li>
@@ -373,7 +382,17 @@
 <li><strong>a plan library</strong>, representing that agent’s procedural knowledge: knowledge about the mechanisms that can be used by the agent in order to realize its intentions. The options available to an agent are directly determined by the plans an agent has: an agent with no plans has no options</li>
 <li>explicit representations of beliefs, desires, and intentions(the same as IRMA)</li>
 </ul>
-<p>Not finished yet, p60</p>
+<h5 id="PRS-plans"><a href="#PRS-plans" class="headerlink" title="PRS plans"></a>PRS plans</h5><p>Each plan contains:</p>
+<ul>
+<li>invocation condition(调用条件):circumstances for plan consideration</li>
+<li>Maintenance condition(维持条件): must be true while plan is executing, in order for it to succeed</li>
+<li>Context(上下文): circumstances for successful plan execution.</li>
+<li>Body: course of action(行动方针), consisting of both goals and actions.</li>
+</ul>
+<h5 id="PRS-operation"><a href="#PRS-operation" class="headerlink" title="PRS operation"></a>PRS operation</h5><p><img src="https://i.postimg.cc/dVX0CWnb/prs1.png" alt=""></p>
+<p><img src="https://i.postimg.cc/Ls183zbn/prs2.png" alt=""></p>
+<p><img src="https://i.postimg.cc/dVD1LMRR/prs3.png" alt=""></p>
+<p><strong>FInished</strong></p>
 
       
     </div>
@@ -495,7 +514,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">33</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -508,7 +527,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -541,7 +560,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-3-Practical-Reasoning-实践推理"><span class="nav-number">1.</span> <span class="nav-text">Lecture 3 Practical Reasoning(实践推理)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Key-points"><span class="nav-number">1.0.1.</span> <span class="nav-text">Key points:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Practical-Reasoning"><span class="nav-number">1.0.2.</span> <span class="nav-text">Practical Reasoning</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Practical-Reasoning-1"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">Practical Reasoning</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Theoretical-reasoning"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">Theoretical reasoning</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Intention-in-practical-reasoning"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">Intention in practical reasoning</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deliberation-outputs-are-intentions"><span class="nav-number">1.0.3.</span> <span class="nav-text">Deliberation(outputs are intentions)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Commitment-Strategies"><span class="nav-number">1.0.4.</span> <span class="nav-text">Commitment Strategies</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Blind-commitment-fanatical-commitment-盲目或狂热"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">Blind commitment(fanatical commitment)盲目或狂热</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Single-minded-commitment"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">Single-minded commitment</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#open-minded-commitment"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">open-minded commitment</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Intention-Reconsideration"><span class="nav-number">1.0.5.</span> <span class="nav-text">Intention Reconsideration</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Modiﬁcation"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">Modiﬁcation:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Problem"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">Problem:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Optimal-Intention-Reconsideration"><span class="nav-number">1.0.6.</span> <span class="nav-text">Optimal Intention Reconsideration</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Two-different-types-of-reconsideration-strategy"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">Two different types of reconsideration strategy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Result"><span class="nav-number">1.0.6.2.</span> <span class="nav-text">Result:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implemented-BDI-Belief-Desire-Intention-Agents"><span class="nav-number">1.1.</span> <span class="nav-text">Implemented BDI(Belief-Desire-Intention) Agents</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IRMA-Intelligent-Resource-bounded-Machine-Architecture-–-Bratman-Israel-Pollack"><span class="nav-number">1.1.1.</span> <span class="nav-text">IRMA(Intelligent Resource-bounded Machine Architecture – Bratman, Israel, Pollack)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Four-key-symbolic-data-structures"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Four key symbolic data structures:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PRS-Procedural-Reasoning-System-Georgeff-Lansky"><span class="nav-number">1.1.2.</span> <span class="nav-text">PRS(Procedural Reasoning System (Georgeff, Lansky))</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Lecture-3-Practical-Reasoning-实践推理"><span class="nav-number">1.</span> <span class="nav-text">Lecture 3 Practical Reasoning(实践推理)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Key-points"><span class="nav-number">1.0.1.</span> <span class="nav-text">Key points:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Practical-Reasoning"><span class="nav-number">1.1.</span> <span class="nav-text">Practical Reasoning</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Practical-Reasoning-1"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">Practical Reasoning</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Theoretical-reasoning"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">Theoretical reasoning</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Intention-in-practical-reasoning"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">Intention in practical reasoning</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Intention-what-state-of-affairs-want-to-achieve"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">Intention: what state of affairs want to achieve</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deliberation-outputs-are-intentions"><span class="nav-number">1.1.1.</span> <span class="nav-text">Deliberation(outputs are intentions)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Commitment-Strategies"><span class="nav-number">1.1.2.</span> <span class="nav-text">Commitment Strategies</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Blind-commitment-fanatical-commitment-盲目或狂热"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Blind commitment(fanatical commitment)盲目或狂热</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Single-minded-commitment"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Single-minded commitment</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#open-minded-commitment"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">open-minded commitment</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Intention-Reconsideration"><span class="nav-number">1.1.3.</span> <span class="nav-text">Intention Reconsideration</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Modiﬁcation"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Modiﬁcation:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Problem"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">Problem:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Optimal-Intention-Reconsideration"><span class="nav-number">1.1.4.</span> <span class="nav-text">Optimal Intention Reconsideration</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Two-different-types-of-reconsideration-strategy"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">Two different types of reconsideration strategy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Result"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">Result:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Architecture-of-Implemented-BDI-Belief-Desire-Intention-Agents"><span class="nav-number">1.2.</span> <span class="nav-text">Architecture of Implemented BDI(Belief-Desire-Intention) Agents</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IRMA-Intelligent-Resource-bounded-Machine-Architecture-–-Bratman-Israel-Pollack"><span class="nav-number">1.2.1.</span> <span class="nav-text">IRMA(Intelligent Resource-bounded Machine Architecture – Bratman, Israel, Pollack)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Four-key-symbolic-data-structures"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Four key symbolic data structures:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PRS-Procedural-Reasoning-System-Georgeff-Lansky"><span class="nav-number">1.2.2.</span> <span class="nav-text">PRS(Procedural Reasoning System (Georgeff, Lansky))</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PRS-plans"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">PRS plans</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PRS-operation"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">PRS operation</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
