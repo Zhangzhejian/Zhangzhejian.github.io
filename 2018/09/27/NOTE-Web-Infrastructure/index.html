@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Web Infrastructurekey points: system architectures LODE  System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each other">
+<meta name="description" content="key points: system architectures LODE  System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each other, the data exchang">
 <meta name="keywords" content="【note, WI】">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(WI) Lec 1:Introduction">
 <meta property="og:url" content="https://zhangzhejian.com/2018/09/27/NOTE-Web-Infrastructure/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Web Infrastructurekey points: system architectures LODE  System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each other">
+<meta property="og:description" content="key points: system architectures LODE  System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each other, the data exchang">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-04T19:23:45.590Z">
+<meta property="og:updated_time" content="2019-01-10T13:31:42.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(WI) Lec 1:Introduction">
-<meta name="twitter:description" content="Web Infrastructurekey points: system architectures LODE  System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each other">
+<meta name="twitter:description" content="key points: system architectures LODE  System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each other, the data exchang">
 
 
 
@@ -300,10 +300,10 @@
       
 
       
-        <h2 id="Web-Infrastructure"><a href="#Web-Infrastructure" class="headerlink" title="Web Infrastructure"></a>Web Infrastructure</h2><h4 id="key-points"><a href="#key-points" class="headerlink" title="key points:"></a>key points:</h4><ol>
+        <h4 id="key-points"><a href="#key-points" class="headerlink" title="key points:"></a>key points:</h4><ol>
 <li>system architectures LODE</li>
 </ol>
-<h4 id="System-architecture-styles"><a href="#System-architecture-styles" class="headerlink" title="System architecture styles"></a>System architecture styles</h4><p>System architecture styles are formulated in terms of <strong>components</strong>, <strong>the way</strong> that components are <strong>connected</strong> to each other, the <strong>data exchanged</strong> between components and finally how these <strong>elements</strong> are jointly <strong>configured</strong> into a system.</p>
+<h3 id="System-architecture-styles"><a href="#System-architecture-styles" class="headerlink" title="System architecture styles"></a>System architecture styles</h3><p>System architecture styles are formulated in terms of <strong>components</strong>, <strong>the way</strong> that components are <strong>connected</strong> to each other, the <strong>data exchanged</strong> between components and finally how these <strong>elements</strong> are jointly <strong>configured</strong> into a system.</p>
 <ul>
 <li>Layered architectures </li>
 <li>Object-based architectures</li>
@@ -345,6 +345,29 @@
 </li>
 <li>Cooperative caching or distributed caching</li>
 </ul>
+<h3 id="Web-Service"><a href="#Web-Service" class="headerlink" title="Web Service"></a>Web Service</h3><h4 id="Caching"><a href="#Caching" class="headerlink" title="Caching"></a>Caching</h4><ul>
+<li>For the Client (browser): avoid extra network transfers </li>
+<li>For the Web Server: reduce load on the server </li>
+<li>For the Service Provider: reduce external traffic</li>
+</ul>
+<p>Why:</p>
+<ul>
+<li>Because of the locality of reference </li>
+<li>Users tend to request the same object in succession </li>
+<li>Some objects are popular: requested by many users</li>
+</ul>
+<h5 id="Local-Cache-本地缓存"><a href="#Local-Cache-本地缓存" class="headerlink" title="Local Cache(本地缓存)"></a>Local Cache(本地缓存)</h5><p>Browsers include a local cache mechanism this local cache mechanism saves time and bandwidth, which increases performance.</p>
+<p>Operation of web cache</p>
+<h4 id="Replacement-Rules-strategies"><a href="#Replacement-Rules-strategies" class="headerlink" title="Replacement Rules strategies"></a>Replacement Rules strategies</h4><ul>
+<li>Least Recently Used (LRU)</li>
+<li>First In, First Out (FIFO)</li>
+<li>Least Frequently Used (LFU)</li>
+<li>Next to Expire (NTE)</li>
+<li>Largest File First (LFF)</li>
+</ul>
+<h4 id="Dynamic-Object-Rules-Strategies"><a href="#Dynamic-Object-Rules-Strategies" class="headerlink" title="Dynamic Object Rules Strategies"></a>Dynamic Object Rules Strategies</h4><p><u>To estimate the value an object may have in serving future requests.</u></p>
+<h4 id="Expiration"><a href="#Expiration" class="headerlink" title="Expiration"></a>Expiration</h4><p>HTTP 1.1 Cache control Directives</p>
+<p>ICP(Internet Cache Protocol)</p>
 
       
     </div>
@@ -464,7 +487,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -510,7 +533,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Infrastructure"><span class="nav-number">1.</span> <span class="nav-text">Web Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#key-points"><span class="nav-number">1.0.1.</span> <span class="nav-text">key points:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#System-architecture-styles"><span class="nav-number">1.0.2.</span> <span class="nav-text">System architecture styles</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Layered-Architectures"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">Layered Architectures</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Object-based-acchitectures"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">Object-based acchitectures</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Data-centered-architecture"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">Data-centered architecture</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-based-architecture"><span class="nav-number">1.0.2.4.</span> <span class="nav-text">Event-based architecture</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Client-server-model"><span class="nav-number">1.0.3.</span> <span class="nav-text">Client-server model</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Centralised-architecture-中心化"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">Centralised architecture(中心化)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Decentralised-architecture-去中心化"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">Decentralised architecture(去中心化)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-proxy-caching"><span class="nav-number">1.0.4.</span> <span class="nav-text">Web proxy caching</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#key-points"><span class="nav-number">1.</span> <span class="nav-text">key points:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#System-architecture-styles"><span class="nav-number"></span> <span class="nav-text">System architecture styles</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Layered-Architectures"><span class="nav-number">0.1.</span> <span class="nav-text">Layered Architectures</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Object-based-acchitectures"><span class="nav-number">0.2.</span> <span class="nav-text">Object-based acchitectures</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Data-centered-architecture"><span class="nav-number">0.3.</span> <span class="nav-text">Data-centered architecture</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Event-based-architecture"><span class="nav-number">0.4.</span> <span class="nav-text">Event-based architecture</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Client-server-model"><span class="nav-number">1.</span> <span class="nav-text">Client-server model</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Centralised-architecture-中心化"><span class="nav-number">1.1.</span> <span class="nav-text">Centralised architecture(中心化)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Decentralised-architecture-去中心化"><span class="nav-number">1.2.</span> <span class="nav-text">Decentralised architecture(去中心化)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Web-proxy-caching"><span class="nav-number">2.</span> <span class="nav-text">Web proxy caching</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web-Service"><span class="nav-number"></span> <span class="nav-text">Web Service</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Caching"><span class="nav-number">1.</span> <span class="nav-text">Caching</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Local-Cache-本地缓存"><span class="nav-number">1.1.</span> <span class="nav-text">Local Cache(本地缓存)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Replacement-Rules-strategies"><span class="nav-number">2.</span> <span class="nav-text">Replacement Rules strategies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dynamic-Object-Rules-Strategies"><span class="nav-number">3.</span> <span class="nav-text">Dynamic Object Rules Strategies</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Expiration"><span class="nav-number">4.</span> <span class="nav-text">Expiration</span></a></li></ol></div>
             
 
           </div>

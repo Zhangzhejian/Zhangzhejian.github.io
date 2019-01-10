@@ -217,6 +217,361 @@
   <section id="posts" class="posts-expand">
     
       
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/12/30/NOTE-WEEK-8-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/30/NOTE-WEEK-8-Artificial-Intelligence/" itemprop="url">(AI)Lec 7:Argumentation(论证) II</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-30T17:38:02+00:00">
+                2018-12-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Lecture-8-Argumentation-II"><a href="#Lecture-8-Argumentation-II" class="headerlink" title="Lecture 8: Argumentation II"></a>Lecture 8: Argumentation II</h3><p>In the <a href="http://zhangzhejian.com/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/">last lecture</a>, we introduced the concepts of the semantics, and in this lecture, the way of computing semantics will be illustrated.</p>
+<h3 id="key-point"><a href="#key-point" class="headerlink" title="key point"></a>key point</h3><ul>
+<li>Equational approach for determining <strong>complete extensions</strong></li>
+<li>Argument game approach for determining <strong>membership of grounded extension</strong></li>
+<li>Decomposition approach for determining <strong>preferred extensions</strong></li>
+</ul>
+<p>Computation of semantics of argumentation</p>
+<ul>
+<li>enumeration</li>
+<li>Decision making</li>
+</ul>
+<h4 id="Reduction-based"><a href="#Reduction-based" class="headerlink" title="Reduction-based"></a>Reduction-based</h4><ol>
+<li><h5 id="Translate-the-argumentation-problem-into-a-different-equivalent-reasoning-problem"><a href="#Translate-the-argumentation-problem-into-a-different-equivalent-reasoning-problem" class="headerlink" title="Translate the argumentation problem into a different equivalent reasoning problem;"></a>Translate the argumentation problem into a different equivalent reasoning problem;</h5></li>
+<li><h5 id="Solve-the-translated-problem"><a href="#Solve-the-translated-problem" class="headerlink" title="Solve the translated problem;"></a>Solve the translated problem;</h5></li>
+<li><h5 id="Translate-the-solution-back-into-argumentation"><a href="#Translate-the-solution-back-into-argumentation" class="headerlink" title="Translate the solution back into argumentation."></a>Translate the solution back into argumentation.</h5></li>
+</ol>
+<ul>
+<li>Directly </li>
+</ul>
+<h4 id="Equational-approach-complete-extensions"><a href="#Equational-approach-complete-extensions" class="headerlink" title="Equational approach(complete extensions)"></a>Equational approach(complete extensions)</h4><p><img src="https://i.postimg.cc/2jcVLSLg/arg2ex1.png" alt=""></p>
+<p><img src="https://i.postimg.cc/TYB1QN99/arg2ex2.png" alt=""></p>
+<p><img src="https://i.postimg.cc/JzJnF3YW/arg2ex3.png" alt=""></p>
+<p><img src="https://i.postimg.cc/k5m4PVLR/arg2ex4.png" alt=""></p>
+<p><img src="https://i.postimg.cc/ZKW08zrn/arg2ex5.png" alt=""></p>
+<h4 id="Argument-game-approach-ground-extension"><a href="#Argument-game-approach-ground-extension" class="headerlink" title="Argument game approach(ground extension)"></a>Argument game approach(ground extension)</h4><p><img src="https://i.postimg.cc/43pgvs46/arg2ex6.png" alt=""></p>
+<h5 id="Difference-between-game-tree-and-strategy"><a href="#Difference-between-game-tree-and-strategy" class="headerlink" title="Difference between game tree and strategy"></a>Difference between game tree and strategy</h5><p><strong>A game tree represents all the possible games that can be played according to the rules of the game:</strong></p>
+<p>• Every branch is a dispute (sequence of allowable moves).</p>
+<p>• The game tree contains all possible disputes.</p>
+<p><strong>A strategy for player p is a partial game tree:</strong></p>
+<p>• Every branch is a dispute (sequence of allowable moves).</p>
+<p>• The tree only branches after moves by p.</p>
+<p>• The children of p’s moves are all the legal moves by the other player.</p>
+<p><strong>A strategy S for player p is winning if and only if p wins all disputes in S.</strong></p>
+<h4 id="Decomposition-approach-prefered-extension"><a href="#Decomposition-approach-prefered-extension" class="headerlink" title="Decomposition approach(prefered extension)"></a>Decomposition approach(prefered extension)</h4><p>Idea is to decompose an argumentation framework into a set of sub-frameworks and compute the semantics of each subframework locally.</p>
+<p>We need to perform the decomposition so that the resulting subframeworks respect the dependency of the attack relation and form an acyclic graph(非循环图).</p>
+<h5 id="Strongly-Connected-components-SCC"><a href="#Strongly-Connected-components-SCC" class="headerlink" title="Strongly Connected components(SCC):"></a>Strongly Connected components(SCC):</h5><p>Two arguments A and B are in the same strongly connected component if and only if there is a path from A to B and a path from B to A (using the attack relation).</p>
+<p><img src="https://i.postimg.cc/L4JMvts4/arg2ex7.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/12/01/NOTE-WEEK-9-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/01/NOTE-WEEK-9-Artificial-Intelligence/" itemprop="url">(AI)Lec 4:Machine Learning</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-01T16:52:24+00:00">
+                2018-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lecture-9-Introduction-to-Machine-Learning-a-peek"><a href="#Lecture-9-Introduction-to-Machine-Learning-a-peek" class="headerlink" title="Lecture 9: Introduction to Machine Learning(a peek)"></a>Lecture 9: Introduction to Machine Learning(a peek)</h2><h4 id="key-point"><a href="#key-point" class="headerlink" title="key point:"></a>key point:</h4><ul>
+<li><p>Supervised learning ‚ </p>
+<ul>
+<li>Correct answers for each instance. ‚ </li>
+<li>Use these to be able to identify correct answer on new instances.</li>
+</ul>
+</li>
+<li><p>Unsupervised learning ‚</p>
+<ul>
+<li>No correct answers available. ‚ </li>
+<li>Identify patterns/relations.</li>
+</ul>
+</li>
+<li>Reinforcement learning ‚ <ul>
+<li>Occasional rewards ‚ </li>
+<li>Need to associate actions with the rewards they bring.</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="Supervised-Learning-监督学习）"><a href="#Supervised-Learning-监督学习）" class="headerlink" title="Supervised Learning(监督学习）"></a>Supervised Learning(监督学习）</h3><p>Training set:</p>
+<script type="math/tex; mode=display">
+(X,Y)\\
+where: \;\; y_i = f(x_i)\\
+h(x) \approx f(x)</script><p>h(x) is the function that we try to find</p>
+<ul>
+<li>When y is a a member of a ﬁnite set, this is classiﬁcation </li>
+<li>When y is a number, this is regression.</li>
+</ul>
+<p>Reference: <a href="http://zhangzhejian.com/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">Note</a></p>
+<h4 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h4><h5 id="Decision-Tree"><a href="#Decision-Tree" class="headerlink" title="Decision Tree"></a>Decision Tree</h5><p>How to choose attribute: <a href="https://blog.csdn.net/xbinworld/article/details/44660339" target="_blank" rel="noopener">refference</a></p>
+<h5 id="performance-measurment"><a href="#performance-measurment" class="headerlink" title="performance measurment"></a>performance measurment</h5><p>Learning curve =% correct on test set as a function of training set size</p>
+<h5 id="Cross-validation-交叉验证）"><a href="#Cross-validation-交叉验证）" class="headerlink" title="Cross validation(交叉验证）"></a>Cross validation(交叉验证）</h5><p>s k-fold cross validation.</p>
+<ol>
+<li><p>Split data into k equal subsets. Learn on k-1 sets and test each result on the remainder.</p>
+</li>
+<li><p>Repeat k times.</p>
+</li>
+<li><p>Average test set score is a better estimate of the error rate than a single score.</p>
+</li>
+<li><p>Common values of k are 5 and 10, both giving error estimates that are very likely to be accurate.</p>
+</li>
+</ol>
+<h3 id="Unsupervised-Learning-非监督学习）"><a href="#Unsupervised-Learning-非监督学习）" class="headerlink" title="Unsupervised Learning(非监督学习）"></a>Unsupervised Learning(非监督学习）</h3><h4 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h4><ol>
+<li>Given a set of examples:</li>
+</ol>
+<script type="math/tex; mode=display">
+X =\{x_1 , . . . x_N\}</script><p>​    identify K different groups.</p>
+<ol>
+<li><p>Each $x_i$ should be in the group that it matches most closely. Identify each group by its centre/mean, $u_j$ .</p>
+</li>
+<li><p>The clusters $z^i$ are then made up of the points closest to the $µ_j $.</p>
+</li>
+</ol>
+<h5 id="K-means"><a href="#K-means" class="headerlink" title="K-means"></a>K-means</h5><ul>
+<li><p>Pick random values for µ k .</p>
+</li>
+<li><p>Then repeat:</p>
+<ol>
+<li><p>Assign each x i to its closest cluster centre:</p>
+<script type="math/tex; mode=display">
+z^i = arg \; min_{u_k} \; distance(x_i,u_k)</script></li>
+<li><p>Update each cluster centre as the mean of the points assigned to that cluster: </p>
+<p>until converged</p>
+<script type="math/tex; mode=display">
+u_k = \frac{1}{|\{j:z^i=k\}|} \sum_{i\in\{j:z^i = k\}}x_i</script></li>
+</ol>
+</li>
+<li></li>
+</ul>
+<p>​    </p>
+<p>​    </p>
+<h3 id="Reinforcement-learning-强化学习"><a href="#Reinforcement-learning-强化学习" class="headerlink" title="Reinforcement learning(强化学习)"></a>Reinforcement learning(强化学习)</h3><h4 id="Passive-被动-RL"><a href="#Passive-被动-RL" class="headerlink" title="Passive(被动) RL"></a>Passive(被动) RL</h4><p>In passive reinforcement learning the agent’s <strong>policy is ﬁxed</strong></p>
+<p><a href="http://zhangzhejian.com/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/">MDP</a></p>
+<h5 id="Direct-utility-estimation"><a href="#Direct-utility-estimation" class="headerlink" title="Direct utility estimation"></a>Direct utility estimation</h5>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
       
 
   
@@ -672,6 +1027,24 @@ b_{k+1:t} &= \mathcal{P}(e_{k+1:t}|X_k)\\
 <li>social welfare</li>
 </ul>
 <p>Properties of agreement mechanism</p>
+<ul>
+<li><p>An agreement mechanism is <strong>individually rational</strong> if no agent will end up worse off as a result of participating (agents cannot end up with negative expected utility). Otherwise it would not be rational for agents to participate.</p>
+</li>
+<li><p>An agreement mechanism is <strong>symmetric</strong> if the rules of the game are the same for all participants.</p>
+</li>
+<li><p>An agreement mechanism is <strong>fair</strong> if participants have equal opportunity to influence the outcome.</p>
+</li>
+<li><p>An agreement mechanism is <strong>Pareto optimal</strong> if it guarantees a Pareto optimal outcome.</p>
+</li>
+<li><p>An agreement mechanism <strong>maximises social utility</strong> if it guarantees an outcome that maximises social utility.</p>
+</li>
+<li><p>An agreement mechanism is <strong>guaranteed to terminate</strong> if there is no way that participants following the protocol can continue to interact indefinitely.</p>
+</li>
+<li><p>An agreement mechanism is <strong>stable</strong> if a Nash Equilibrium exists.</p>
+</li>
+<li><p>An agreement mechanism is <strong>simple</strong> if it is easy to work out what the best strategy is.</p>
+</li>
+</ul>
 <h4 id="Negotiation"><a href="#Negotiation" class="headerlink" title="Negotiation"></a>Negotiation</h4><h5 id="Alternating-offers-protocol-交替offer协议"><a href="#Alternating-offers-protocol-交替offer协议" class="headerlink" title="Alternating offers protocol (交替offer协议)"></a>Alternating offers protocol (交替offer协议)</h5><p>This is about bargaining for resource division</p>
 <ul>
 <li><p>One-to-one protocol.</p>
@@ -696,7 +1069,13 @@ b_{k+1:t} &= \mathcal{P}(e_{k+1:t}|X_k)\\
 utility_i (δ) = c(T_i ) – cost_i (δ)</script><p>The <strong>conflict deal</strong>, Θ, is the deal $<t_1 ,="" t_2="">$ consisting of the tasks originally allocated. Note that $utility_i (Θ) = 0$ for all i ∈ Ag.</t_1></p>
 <p>Deal δ is <strong>individual rational</strong> if it weakly dominates the conflict deal, i.e., neither agent prefers the conflict deal.</p>
 <p><strong>negoation set</strong>: individual rational, and Pareto optimal.</p>
-<h5 id="Monotonic-concession-protocol-单方面让步协议"><a href="#Monotonic-concession-protocol-单方面让步协议" class="headerlink" title="Monotonic concession protocol(单方面让步协议)"></a>Monotonic concession protocol(单方面让步协议)</h5><h4 id="Zeuthen-strategy"><a href="#Zeuthen-strategy" class="headerlink" title="Zeuthen strategy"></a>Zeuthen strategy</h4><p>The Zeuthen strategy determines what an agent should do by answering three questions.</p>
+<h5 id="Monotonic-concession-protocol-单方面让步协议"><a href="#Monotonic-concession-protocol-单方面让步协议" class="headerlink" title="Monotonic concession protocol(单方面让步协议)"></a>Monotonic concession protocol(单方面让步协议)</h5><p>Negotiation proceeds in rounds.</p>
+<p>On round 1, agents simultaneously propose a deal from the negotiation set.</p>
+<p>Agreement is reached if one agent finds that the deal proposed by the other is at least as good or better than its proposal. If each agent’s offer matches or exceeds that of the other agent, then one of the proposals is randomly selected as the agreement deal. If only one proposal exceeds of matches the other’s, then this is the agreement deal.</p>
+<p>If no agreement is reached, then negotiation proceeds to another round of simultaneous proposals.</p>
+<p>In round u + 1, no agent is allowed to make a proposal that is less preferred by the other agent than the deal it proposed at time u.</p>
+<p>If neither agent makes a concession in some round u &gt; 0, then negotiation terminates, with the conflict deal.</p>
+<h4 id="Zeuthen-strategy"><a href="#Zeuthen-strategy" class="headerlink" title="Zeuthen strategy"></a>Zeuthen strategy</h4><p>The Zeuthen strategy determines what an agent should do by answering three questions.</p>
 <ul>
 <li><p>What should an agent’s first proposal be?</p>
 <p>Its most preferred deal.</p>
@@ -864,11 +1243,11 @@ utility_i (δ) = c(T_i ) – cost_i (δ)</script><p>The <strong>conflict deal</s
 </ul>
 <p>Speaker makes a locutionary act(语言行为) with hope(言外行为) that the hearer correctly recognises the speaker’s intentions and acts(表达效果) accordingly.</p>
 <h5 id="Five-types-of-speech-act"><a href="#Five-types-of-speech-act" class="headerlink" title="Five types of speech act"></a>Five types of speech act</h5><ul>
-<li><strong>Representatives:</strong>commit the speaker to the truth of an expressed proposition, e.g. ‘it’s raining’.</li>
-<li><strong>Directiives:</strong> attempt to get the hearer to do something, e.g. ‘please make the tea’.</li>
-<li><strong>Commissive:</strong> commit the speaker to doing something, e.g. ‘I promise to come to the lecture on Thursday’.</li>
-<li><strong>Expressive:</strong> express some mental state, e.g. ‘thank you!’.</li>
-<li><strong>Declaration:</strong> entail the occurrence of an action in themselves, so effect some changes in an institutional state of affairs, e.g. declaring war, ‘We the jury find the defendant to be guilty’.</li>
+<li><strong>Representatives(阐述):</strong>commit the speaker to the truth of an expressed proposition, e.g. ‘it’s raining’.</li>
+<li><strong>Directiives(指令):</strong> attempt to get the hearer to do something, e.g. ‘please make the tea’.</li>
+<li><strong>Commissive(承诺):</strong> commit the speaker to doing something, e.g. ‘I promise to come to the lecture on Thursday’.</li>
+<li><strong>Expressive(表达):</strong> express some mental state, e.g. ‘thank you!’.</li>
+<li><strong>Declaration(宣告):</strong> entail the occurrence of an action in themselves, so effect some changes in an institutional state of affairs, e.g. declaring war, ‘We the jury find the defendant to be guilty’.</li>
 </ul>
 <p>we can in general think of a speech act as having two components:</p>
 <ul>
@@ -1575,534 +1954,6 @@ U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Re
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/12/NOTE-WEEK-3-Artificial-Intelligence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/12/NOTE-WEEK-3-Artificial-Intelligence/" itemprop="url">(AI)Lec 3:Probailistic Reasonning II</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-12T10:13:09+01:00">
-                2018-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-3-Probailistic-Reasoning-概率推理-II"><a href="#Lecture-3-Probailistic-Reasoning-概率推理-II" class="headerlink" title="Lecture 3: Probailistic Reasoning(概率推理) II"></a>Lecture 3: Probailistic Reasoning(概率推理) II</h3><h3 id="Bayesian-Network"><a href="#Bayesian-Network" class="headerlink" title="Bayesian Network"></a>Bayesian Network</h3><h4 id="Naive-Bayes-model"><a href="#Naive-Bayes-model" class="headerlink" title="Naive Bayes model:"></a>Naive Bayes model:</h4><p>If  $Effect_n$   are conditional independent of given Cause, then: </p>
-<script type="math/tex; mode=display">
-P(Cause|Effect_1, Effect_2,...,Effect_n) = P(Cause)\prod_iP(Effect_i|Cause)\\</script><p>To prove:</p>
-<script type="math/tex; mode=display">
-P(C,e_1,e_2) = p(C)P(e_1|C)P(e_2|C)</script><p> Effect_n are conditional independent of given Cause:</p>
-<script type="math/tex; mode=display">
-P(e_1|C,e_2) = P(e_1|C)\\
-\implies \frac{P(C,e_2|e_1)P(e_1)}{P(C,e_2)} = P(e_1|C)\\
-\implies P(C,e_1,e_2) = P(e_1|C)P(C,e_2)=P(e_1|C)P(e_2|C)P(C)</script><p>Visualises as:</p>
-<p><img src="https://i.postimg.cc/2y7w8KFf/vis.png" alt=""></p>
-<p>Exmaple network:</p>
-<p><img src="https://i.postimg.cc/xjvgRXrF/bayexm.png" alt=""></p>
-<h5 id="Global-Semantics"><a href="#Global-Semantics" class="headerlink" title="Global Semantics:"></a><strong>Global Semantics:</strong></h5><p>deﬁnes the full joint distribution as the product of the local conditional distributions</p>
-<script type="math/tex; mode=display">
-P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))\\</script><p>So </p>
-<script type="math/tex; mode=display">
-\begin{align}
-P(j,m,a,\not b,\not e) &= P(j|a)P(m|a)P(a|\not b,\not e)P(\not b)P(\not e)\\
-& = 0.00063
-
-\end{align}</script><h5 id="Local-semantics"><a href="#Local-semantics" class="headerlink" title="Local semantics:"></a>Local semantics:</h5><p>each node is conditionally independent of its nondescendants given its parents</p>
-<p>Each node is conditionally independent of all others given its <strong>Markov blanket</strong>: parents + children + children’s parents</p>
-<h4 id="Constructing-Bayesian-network"><a href="#Constructing-Bayesian-network" class="headerlink" title="Constructing Bayesian network"></a>Constructing Bayesian network</h4><p>The bayesian network can be considered as a form of <strong>knowledge representation</strong></p>
-<ol>
-<li>Figure out the variables that describe the world</li>
-<li>decide how they are connected(conditional independence)</li>
-<li>Work out the values in the CPTs(conditional probality table)</li>
-</ol>
-<h5 id="Noisy-OR-model"><a href="#Noisy-OR-model" class="headerlink" title="Noisy-OR model"></a>Noisy-OR model</h5><p>Parents $U_1,…U_k$ include all causes (can add leak node) (leak node is like $U_0$ that similiar to a bias)</p>
-<script type="math/tex; mode=display">
-P(X |U_1 . . . U_j , \not U_{j +1} . . . \not U_k ) = 1 -\prod_{i=1}^j  q_i\\
-q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sampling"><a href="#Sampling" class="headerlink" title="Sampling"></a>Sampling</h3><h4 id="Prior-Sampling"><a href="#Prior-Sampling" class="headerlink" title="Prior Sampling"></a>Prior Sampling</h4><h4 id="Rejection-Sampling"><a href="#Rejection-Sampling" class="headerlink" title="Rejection Sampling"></a>Rejection Sampling</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/09/NOTE-WEEK-3-Agents-and-Multi-Agent-System/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/09/NOTE-WEEK-3-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 3:Practical Reasoning(实践推理)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-09T16:28:56+01:00">
-                2018-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Lecture-3-Practical-Reasoning-实践推理"><a href="#Lecture-3-Practical-Reasoning-实践推理" class="headerlink" title="Lecture 3 Practical Reasoning(实践推理)"></a>Lecture 3 Practical Reasoning(实践推理)</h2><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h4><ul>
-<li>practical reasoning</li>
-<li>control loop</li>
-<li>reconsideration</li>
-<li>architecture</li>
-</ul>
-<h3 id="Practical-Reasoning"><a href="#Practical-Reasoning" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h3><h5 id="Practical-Reasoning-1"><a href="#Practical-Reasoning-1" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h5><p>Is reasoning directed towards actions</p>
-<h5 id="Theoretical-reasoning"><a href="#Theoretical-reasoning" class="headerlink" title="Theoretical reasoning"></a>Theoretical reasoning</h5><p>Is reasoning directed towards belief</p>
-<p><em>Human practical</em> reasoning consists of two activities:</p>
-<p>•<strong>Deliberation:</strong>  deciding <strong>what</strong> state of affairs we want to achieve. <strong>The outputs of deliberation  are intentions</strong></p>
-<p>• <strong>Means-ends reasoning :</strong> deciding <strong>how</strong> to achieve these states of affairs. <strong>The outputs are plans</strong></p>
-<h5 id="Intention-in-practical-reasoning"><a href="#Intention-in-practical-reasoning" class="headerlink" title="Intention in practical reasoning"></a>Intention in practical reasoning</h5><h5 id="Intention-what-state-of-affairs-want-to-achieve"><a href="#Intention-what-state-of-affairs-want-to-achieve" class="headerlink" title="Intention: what state of affairs want to achieve"></a><strong>Intention</strong>: what state of affairs want to achieve</h5><ol>
-<li>Intentions pose problems for agents, who need to determine ways to achieving them.(<u>If I have an intention to φ, you would expect me to <strong>devote resources to</strong> deciding how to bring about φ</u>.)</li>
-<li>Agents track the success of their intentions, and are inclined to try again if their attempts fail. (If an agent’s ﬁrst attempt to achieve φ fails, then all other things being equal, it will try an alternative plan to achieve φ.)</li>
-<li>Intentions provide a “ﬁlter” for adopting other intentions, which must not conﬂict.(don’t waste resources to do conflict things)</li>
-<li>Agents believe their intentions are possible. </li>
-<li>Agents do not believe they will not bring about their intentions.</li>
-<li>Under certain circumstances, agents believe they will bring about their intentions. </li>
-<li>Agents need not intend all the expected side effects of their intentions(<u>If I believe φ→ψ and I intend that φ, I do not necessarily intend ψ also</u>)</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">B := B0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	I = deliberate(B);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	execute(pi);</span><br><span class="line">end while</span><br><span class="line"></span><br><span class="line">//overcommitted, replan if ever a plan goes wrong</span><br></pre></td></tr></table></figure>
-<h4 id="Deliberation-outputs-are-intentions"><a href="#Deliberation-outputs-are-intentions" class="headerlink" title="Deliberation(outputs are intentions)"></a>Deliberation(outputs are intentions)</h4><ol>
-<li>Option generation</li>
-</ol>
-<p>The agent generates a set of <strong>possible alternatives</strong>. Represent option generation via a function, options, which takes the <u>agent’s current beliefs and current intentions</u>, and from them determines a set of options</p>
-<ol>
-<li>filtering</li>
-</ol>
-<p>In which the agent chooses between competing alternatives, and commits to achieving them. </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,I)</span><br><span class="line">	I = filter(D,B,I)</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	execute(pi);</span><br><span class="line">end while</span><br><span class="line"></span><br><span class="line">//blind commitment</span><br><span class="line">//overcommitted, replan if ever a plan goes wrong</span><br></pre></td></tr></table></figure>
-<h4 id="Commitment-Strategies"><a href="#Commitment-Strategies" class="headerlink" title="Commitment Strategies"></a>Commitment Strategies</h4><h5 id="Blind-commitment-fanatical-commitment-盲目或狂热"><a href="#Blind-commitment-fanatical-commitment-盲目或狂热" class="headerlink" title="Blind commitment(fanatical commitment)盲目或狂热"></a>Blind commitment(fanatical commitment)盲目或狂热</h5><p>Continue to maintain an intention until it believes the intention has actually been <strong>achieved</strong></p>
-<h5 id="Single-minded-commitment"><a href="#Single-minded-commitment" class="headerlink" title="Single-minded commitment"></a>Single-minded commitment</h5><p>Continue to maintain an intention until it believes that either the intention <strong>has been achieved</strong> , or else that it is <strong>no longer possible</strong> to achieve the intention</p>
-<h5 id="open-minded-commitment"><a href="#open-minded-commitment" class="headerlink" title="open-minded commitment"></a>open-minded commitment</h5><p>Maintain an intention as long as it is still believed possible</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,p);</span><br><span class="line">	I = filter(D,B,I);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	while not empty(pi) do:</span><br><span class="line">		alpha = head(pi);</span><br><span class="line">		execute(alpha);</span><br><span class="line">		pi = tail(pi); // remove alpha from pi</span><br><span class="line">		get next percept p;</span><br><span class="line">		B = brf(B,p);</span><br><span class="line">		if not sound(pi,I,B) do: //check whether the plan still makes sense to achieve the intention given the new beliefs</span><br><span class="line">			pi = plan(I,B)</span><br><span class="line">		end-if</span><br><span class="line">	end-while</span><br><span class="line">end while</span><br><span class="line"></span><br><span class="line">//replan if the plan is wrong</span><br><span class="line">//but when the intention is inappropriate?</span><br><span class="line">//needs single minded commitment</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,p);</span><br><span class="line">	I = filter(D,B,I);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	//when intention is succeed or impossible achieve</span><br><span class="line">	//stop performing actions</span><br><span class="line">	//single-minded</span><br><span class="line">	while not (empty(pi) or successed(I,B) or impossible(I,B)) do:</span><br><span class="line">		alpha = head(pi);</span><br><span class="line">		execute(alpha);</span><br><span class="line">		pi = tail(pi); // remove alpha from pi</span><br><span class="line">		get next percept p;</span><br><span class="line">		B = brf(B,p);</span><br><span class="line">		 //check whether the plan still makes sense to achieve </span><br><span class="line">		 //the intention given the new beliefs</span><br><span class="line">		if not sound(pi,I,B) do:</span><br><span class="line">			pi = plan(I,B)</span><br><span class="line">		end-if</span><br><span class="line">	end-while</span><br><span class="line">end while</span><br></pre></td></tr></table></figure>
-<h4 id="Intention-Reconsideration"><a href="#Intention-Reconsideration" class="headerlink" title="Intention Reconsideration"></a>Intention Reconsideration</h4><p>agent gets to reconsider its intentions once every time around the outer control loop, i.e., when:</p>
-<ol>
-<li>it has completely executed a plan to achieve its current intentions; </li>
-<li>or it believes it has achieved its current intentions; </li>
-<li>or it believes its current intentions are no longer possible.</li>
-</ol>
-<h5 id="Modiﬁcation"><a href="#Modiﬁcation" class="headerlink" title="Modiﬁcation:"></a>Modiﬁcation:</h5><p>Reconsider intentions after executing every action (open minded)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,p);</span><br><span class="line">	I = filter(D,B,I);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	//when intention is succeed or impossible achieve</span><br><span class="line">	//stop performing actions</span><br><span class="line">	//regenerate the intention</span><br><span class="line">	while not (empty(pi) or successed(I,B) or impossible(I,B)) do:</span><br><span class="line">		alpha = head(pi);</span><br><span class="line">		execute(alpha);</span><br><span class="line">		pi = tail(pi); // remove alpha from pi</span><br><span class="line">		get next percept p;</span><br><span class="line">		B = brf(B,p);</span><br><span class="line">		//regenerate intention</span><br><span class="line">		D = options(B,p);</span><br><span class="line">		I = filter(D,B,I);</span><br><span class="line">		//check whether the plan still makes sense to achieve </span><br><span class="line">		//the intention given the new beliefs</span><br><span class="line">		if not sound(pi,I,B) do: </span><br><span class="line">			pi = plan(I,B)</span><br><span class="line">		end-if</span><br><span class="line">	end-while</span><br><span class="line">end while</span><br></pre></td></tr></table></figure>
-<h5 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h5><p>Iintention reconsideration is costly</p>
-<p>A dilemma:</p>
-<ul>
-<li>an agent that does not stop to reconsider its intentions sufficiently often will continue attempting to achieve its intentions even after it is clear that they cannot be achieved, or that there is no longer any reason for achieving them</li>
-<li>an agent that constantly reconsiders its attentions may spend insufficient time actually working to achieve them, and hence runs the risk of never actually achieving them</li>
-</ul>
-<p>Solution:</p>
-<p>incorporate an explicit <strong>meta-level control component(控制组件)</strong>, that decides whether or not to reconsider</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,p);</span><br><span class="line">	I = filter(D,B,I);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	//when intention is succeed or impossible achieve</span><br><span class="line">	//stop performing actions</span><br><span class="line">	//regenerate the intention</span><br><span class="line">	while not (empty(pi) or successed(I,B) or impossible(I,B)) do:</span><br><span class="line">		alpha = head(pi);</span><br><span class="line">		execute(alpha);</span><br><span class="line">		pi = tail(pi); // remove alpha from pi</span><br><span class="line">		get next percept p;</span><br><span class="line">		B = brf(B,p);</span><br><span class="line">		//the comtrol component to determine</span><br><span class="line">		//whether is appropriate to reconsider intentions</span><br><span class="line">		if reconsider(I,B) then</span><br><span class="line">			//regenerate intention</span><br><span class="line">			D = options(B,p);</span><br><span class="line">			I = filter(D,B,I);</span><br><span class="line">		end-if</span><br><span class="line">		//check whether the plan still makes sense to achieve </span><br><span class="line">		//the intention given the new beliefs</span><br><span class="line">		if not sound(pi,I,B) do: </span><br><span class="line">			pi = plan(I,B)</span><br><span class="line">		end-if</span><br><span class="line">	end-while</span><br><span class="line">end while</span><br></pre></td></tr></table></figure>
-<h4 id="Optimal-Intention-Reconsideration"><a href="#Optimal-Intention-Reconsideration" class="headerlink" title="Optimal Intention Reconsideration"></a>Optimal Intention Reconsideration</h4><h5 id="Two-different-types-of-reconsideration-strategy"><a href="#Two-different-types-of-reconsideration-strategy" class="headerlink" title="Two different types of reconsideration strategy"></a>Two different types of reconsideration strategy</h5><ul>
-<li>bold agents</li>
-</ul>
-<p>never pause to reconsider intentions</p>
-<ul>
-<li>Cautious agent</li>
-</ul>
-<p>stop to reconsider after every action</p>
-<p><strong>Dynamism(活跃性)</strong> in the environment is represented by the rate of world change,$\gamma$</p>
-<h5 id="Result"><a href="#Result" class="headerlink" title="Result:"></a>Result:</h5><ul>
-<li>If γ is low (i.e., the environment does not change quickly, <strong>static</strong>), then bold agents do well compared to cautious ones. This is because cautious ones waste time reconsidering their commitments while bold agents are busy working towards — and achieving — their intentions.</li>
-<li>If γ is high (i.e., the environment changes frequently), then cautious agents tend to outperform bold agents. This is because they are able to recognize when intentions are doomed, and also to take advantage of serendipitous situations and new opportunities when they arise.</li>
-</ul>
-<h3 id="Architecture-of-Implemented-BDI-Belief-Desire-Intention-Agents"><a href="#Architecture-of-Implemented-BDI-Belief-Desire-Intention-Agents" class="headerlink" title="Architecture of Implemented BDI(Belief-Desire-Intention) Agents"></a>Architecture of Implemented BDI(Belief-Desire-Intention) Agents</h3><h4 id="IRMA-Intelligent-Resource-bounded-Machine-Architecture-–-Bratman-Israel-Pollack"><a href="#IRMA-Intelligent-Resource-bounded-Machine-Architecture-–-Bratman-Israel-Pollack" class="headerlink" title="IRMA(Intelligent Resource-bounded Machine Architecture – Bratman, Israel, Pollack)"></a>IRMA(Intelligent Resource-bounded Machine Architecture – Bratman, Israel, Pollack)</h4><h5 id="Four-key-symbolic-data-structures"><a href="#Four-key-symbolic-data-structures" class="headerlink" title="Four key symbolic data structures:"></a>Four key symbolic data structures:</h5><ul>
-<li>a plan library</li>
-<li>Explicit representations of :<ul>
-<li>Beliefs: information available to the agen</li>
-<li>Desires: those things the agent would like to make true</li>
-<li>Intentions: desires that the agent has chosen and committed to</li>
-</ul>
-</li>
-</ul>
-<h4 id="PRS-Procedural-Reasoning-System-Georgeff-Lansky"><a href="#PRS-Procedural-Reasoning-System-Georgeff-Lansky" class="headerlink" title="PRS(Procedural Reasoning System (Georgeff, Lansky))"></a>PRS(Procedural Reasoning System (Georgeff, Lansky))</h4><ul>
-<li><strong>a plan library</strong>, representing that agent’s procedural knowledge: knowledge about the mechanisms that can be used by the agent in order to realize its intentions. The options available to an agent are directly determined by the plans an agent has: an agent with no plans has no options</li>
-<li>explicit representations of beliefs, desires, and intentions(the same as IRMA)</li>
-</ul>
-<h5 id="PRS-plans"><a href="#PRS-plans" class="headerlink" title="PRS plans"></a>PRS plans</h5><p>Each plan contains:</p>
-<ul>
-<li>invocation condition(调用条件):circumstances for plan consideration</li>
-<li>Maintenance condition(维持条件): must be true while plan is executing, in order for it to succeed</li>
-<li>Context(上下文): circumstances for successful plan execution.</li>
-<li>Body: course of action(行动方针), consisting of both goals and actions.</li>
-</ul>
-<h5 id="PRS-operation"><a href="#PRS-operation" class="headerlink" title="PRS operation"></a>PRS operation</h5><p><img src="https://i.postimg.cc/dVX0CWnb/prs1.png" alt=""></p>
-<p><img src="https://i.postimg.cc/Ls183zbn/prs2.png" alt=""></p>
-<p><img src="https://i.postimg.cc/dVD1LMRR/prs3.png" alt=""></p>
-<p><strong>FInished</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/" itemprop="url">(AI)Lec 2:Probailistic Reasonning I</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-05T09:04:15+01:00">
-                2018-10-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-2-Probailistic-Reasoning-概率推理-I"><a href="#Lecture-2-Probailistic-Reasoning-概率推理-I" class="headerlink" title="Lecture 2: Probailistic Reasoning(概率推理) I"></a>Lecture 2: Probailistic Reasoning(概率推理) I</h3><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h4><ol>
-<li>Uncertainty and methods for handling</li>
-<li>Introduce to probability</li>
-<li>Basic probability</li>
-<li>Bayes rules</li>
-</ol>
-<h2 id="Why-Uncertainty"><a href="#Why-Uncertainty" class="headerlink" title="Why Uncertainty"></a>Why Uncertainty</h2><p><strong>Partial observability equals uncertainty</strong></p>
-<p>Full ovservability not true of the real world</p>
-<p>Partial observability can arise for many reasons</p>
-<ul>
-<li>Sensor noise</li>
-<li>Computational complexity</li>
-<li>World structure and sensor ability</li>
-</ul>
-<h4 id="Utility-theory"><a href="#Utility-theory" class="headerlink" title="Utility theory"></a>Utility theory</h4><p>used to represent and infer preference</p>
-<p><strong>Decision theory = utility theory + probability theory</strong></p>
-<h4 id="Bayes-rules"><a href="#Bayes-rules" class="headerlink" title="Bayes rules"></a>Bayes rules</h4><script type="math/tex; mode=display">
-P(A , B) = P(A \mid B)P(B)\\
-P(A|B )= \frac{P(A ,B)}{P(B)}</script><h4 id="Chain-rule"><a href="#Chain-rule" class="headerlink" title="Chain rule"></a>Chain rule</h4><script type="math/tex; mode=display">
-\begin{align}
-P(X_1,...,X_n) & = P(X_1,...X_{n-1})P(X_n|X_1,...,X_{n-1})\\
-&= P(X_1,...,X_{n-2})P(X_{n-1}|X_1,...,X_{n-2})P(X_n)|X_1,...X_{n-1})\\
-&= \prod_{i=1}^{n}P(X_i|X_1,...,X_{i-1})
-\end{align}</script><p>For</p>
-<h4 id="Indenpendent"><a href="#Indenpendent" class="headerlink" title="Indenpendent"></a>Indenpendent</h4><p>A and B are independent iff</p>
-<script type="math/tex; mode=display">
-P(A|B) = P(A),or\\
-P(B|A) = P(B),or\\
-P(A,B)= P(A)P(B)</script><h4 id="Conditional-Independence"><a href="#Conditional-Independence" class="headerlink" title="Conditional Independence"></a>Conditional Independence</h4><script type="math/tex; mode=display">
-P(A|B,C) = P(A|C)</script><p>we say A is conditionally independent of B given C.</p>
-<h5 id="Equivalent-statements"><a href="#Equivalent-statements" class="headerlink" title="Equivalent statements:"></a>Equivalent statements:</h5><script type="math/tex; mode=display">
-P(A|B,C) = P(A|C)\\
-\iff P(A,B|C) = P(A|C) \times P(B|C)</script><h4 id="According-to-Bayes’-Rule"><a href="#According-to-Bayes’-Rule" class="headerlink" title="According to Bayes’ Rule"></a>According to Bayes’ Rule</h4><script type="math/tex; mode=display">
-P(A,B) = P(A|B)P(B) = P(B|A)P(A)\\
-\implies P(B|A) = \frac{P(A|B)P(B)}{P(A)}\\
-P(e) = P(e,h)+P(e,\not h)  \\
-\implies P(e) = P(e|h)P(h)+P(e|\not h)P(\not h)（全概率公式）\\
-\begin{align}
-P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
-&= \frac{P(e|h)P(h)}{P(e|h)P(h)+P(e|\not h)(1-P(h))}
-\end{align}</script><p><strong>Finished</strong> </p>
-<p>Reference:</p>
-<ol>
-<li><a href="https://www.cnblogs.com/ohshit/p/5629581.html" target="_blank" rel="noopener">https://www.cnblogs.com/ohshit/p/5629581.html</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -2153,7 +2004,7 @@ P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

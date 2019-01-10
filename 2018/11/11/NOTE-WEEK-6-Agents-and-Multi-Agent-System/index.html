@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Agents and Multi-Agent System智能体与多智能体系统Lecture 6: Negotiation(reaching agreements)Game theoryBasic knowledge  Dominant Strategy Nash Equilibrium Pareto optimal social welfare  Properties of agreement">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-05T17:51:05.207Z">
+<meta property="og:updated_time" content="2019-01-06T17:05:15.806Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(MAS) Lec 6:Negotiation(reaching agreements)">
 <meta name="twitter:description" content="Agents and Multi-Agent System智能体与多智能体系统Lecture 6: Negotiation(reaching agreements)Game theoryBasic knowledge  Dominant Strategy Nash Equilibrium Pareto optimal social welfare  Properties of agreement">
@@ -308,6 +308,24 @@
 <li>social welfare</li>
 </ul>
 <p>Properties of agreement mechanism</p>
+<ul>
+<li><p>An agreement mechanism is <strong>individually rational</strong> if no agent will end up worse off as a result of participating (agents cannot end up with negative expected utility). Otherwise it would not be rational for agents to participate.</p>
+</li>
+<li><p>An agreement mechanism is <strong>symmetric</strong> if the rules of the game are the same for all participants.</p>
+</li>
+<li><p>An agreement mechanism is <strong>fair</strong> if participants have equal opportunity to influence the outcome.</p>
+</li>
+<li><p>An agreement mechanism is <strong>Pareto optimal</strong> if it guarantees a Pareto optimal outcome.</p>
+</li>
+<li><p>An agreement mechanism <strong>maximises social utility</strong> if it guarantees an outcome that maximises social utility.</p>
+</li>
+<li><p>An agreement mechanism is <strong>guaranteed to terminate</strong> if there is no way that participants following the protocol can continue to interact indefinitely.</p>
+</li>
+<li><p>An agreement mechanism is <strong>stable</strong> if a Nash Equilibrium exists.</p>
+</li>
+<li><p>An agreement mechanism is <strong>simple</strong> if it is easy to work out what the best strategy is.</p>
+</li>
+</ul>
 <h4 id="Negotiation"><a href="#Negotiation" class="headerlink" title="Negotiation"></a>Negotiation</h4><h5 id="Alternating-offers-protocol-交替offer协议"><a href="#Alternating-offers-protocol-交替offer协议" class="headerlink" title="Alternating offers protocol (交替offer协议)"></a>Alternating offers protocol (交替offer协议)</h5><p>This is about bargaining for resource division</p>
 <ul>
 <li><p>One-to-one protocol.</p>
@@ -332,7 +350,13 @@
 utility_i (δ) = c(T_i ) – cost_i (δ)</script><p>The <strong>conflict deal</strong>, Θ, is the deal $<t_1 ,="" t_2="">$ consisting of the tasks originally allocated. Note that $utility_i (Θ) = 0$ for all i ∈ Ag.</t_1></p>
 <p>Deal δ is <strong>individual rational</strong> if it weakly dominates the conflict deal, i.e., neither agent prefers the conflict deal.</p>
 <p><strong>negoation set</strong>: individual rational, and Pareto optimal.</p>
-<h5 id="Monotonic-concession-protocol-单方面让步协议"><a href="#Monotonic-concession-protocol-单方面让步协议" class="headerlink" title="Monotonic concession protocol(单方面让步协议)"></a>Monotonic concession protocol(单方面让步协议)</h5><h4 id="Zeuthen-strategy"><a href="#Zeuthen-strategy" class="headerlink" title="Zeuthen strategy"></a>Zeuthen strategy</h4><p>The Zeuthen strategy determines what an agent should do by answering three questions.</p>
+<h5 id="Monotonic-concession-protocol-单方面让步协议"><a href="#Monotonic-concession-protocol-单方面让步协议" class="headerlink" title="Monotonic concession protocol(单方面让步协议)"></a>Monotonic concession protocol(单方面让步协议)</h5><p>Negotiation proceeds in rounds.</p>
+<p>On round 1, agents simultaneously propose a deal from the negotiation set.</p>
+<p>Agreement is reached if one agent finds that the deal proposed by the other is at least as good or better than its proposal. If each agent’s offer matches or exceeds that of the other agent, then one of the proposals is randomly selected as the agreement deal. If only one proposal exceeds of matches the other’s, then this is the agreement deal.</p>
+<p>If no agreement is reached, then negotiation proceeds to another round of simultaneous proposals.</p>
+<p>In round u + 1, no agent is allowed to make a proposal that is less preferred by the other agent than the deal it proposed at time u.</p>
+<p>If neither agent makes a concession in some round u &gt; 0, then negotiation terminates, with the conflict deal.</p>
+<h4 id="Zeuthen-strategy"><a href="#Zeuthen-strategy" class="headerlink" title="Zeuthen strategy"></a>Zeuthen strategy</h4><p>The Zeuthen strategy determines what an agent should do by answering three questions.</p>
 <ul>
 <li><p>What should an agent’s first proposal be?</p>
 <p>Its most preferred deal.</p>
@@ -478,7 +502,7 @@ utility_i (δ) = c(T_i ) – cost_i (δ)</script><p>The <strong>conflict deal</s
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

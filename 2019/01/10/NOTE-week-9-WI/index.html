@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="project,Linux,Web," />
+  <meta name="keywords" content="note,WI," />
 
 
 
@@ -79,20 +79,15 @@
 
 
 
-<meta name="description" content="Final project revisionThis is a blog where I will have a brief introduction to my final year project which cost me a half year. I will complete this blog in three weeks to illustrate ever step to buil">
-<meta name="keywords" content="project,Linux,Web">
+<meta name="keywords" content="note,WI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Final Project Revision">
-<meta property="og:url" content="https://zhangzhejian.com/2018/05/12/Final-Project-Revision/index.html">
+<meta property="og:title" content="(WI) Cloud Computing">
+<meta property="og:url" content="https://zhangzhejian.com/2019/01/10/NOTE-week-9-WI/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Final project revisionThis is a blog where I will have a brief introduction to my final year project which cost me a half year. I will complete this blog in three weeks to illustrate ever step to buil">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://p8ltilmb1.bkt.clouddn.com/web_framework.png">
-<meta property="og:updated_time" content="2018-07-04T11:56:10.343Z">
+<meta property="og:updated_time" content="2019-01-10T15:53:43.116Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Final Project Revision">
-<meta name="twitter:description" content="Final project revisionThis is a blog where I will have a brief introduction to my final year project which cost me a half year. I will complete this blog in three weeks to illustrate ever step to buil">
-<meta name="twitter:image" content="http://p8ltilmb1.bkt.clouddn.com/web_framework.png">
+<meta name="twitter:title" content="(WI) Cloud Computing">
 
 
 
@@ -122,13 +117,13 @@
 
 
 
-  <link rel="canonical" href="https://zhangzhejian.com/2018/05/12/Final-Project-Revision/"/>
+  <link rel="canonical" href="https://zhangzhejian.com/2019/01/10/NOTE-week-9-WI/"/>
 
 
 
 
 
-  <title>Final Project Revision | Recap</title>
+  <title>(WI) Cloud Computing | Recap</title>
   
 
 
@@ -235,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/05/12/Final-Project-Revision/">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/10/NOTE-week-9-WI/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhejian">
@@ -252,7 +247,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Final Project Revision</h1>
+          <h1 class="post-title" itemprop="name headline">(WI) Cloud Computing</h1>
         
 
         <div class="post-meta">
@@ -264,8 +259,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T14:10:58+01:00">
-                2018-05-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-10T15:53:01+00:00">
+                2019-01-10
               </time>
             
 
@@ -302,37 +297,7 @@
       
 
       
-        <h1 id="Final-project-revision"><a href="#Final-project-revision" class="headerlink" title="Final project revision"></a>Final project revision</h1><p>This is a blog where I will have a brief introduction to my final year project which cost me a half year. I will complete this blog in three weeks to illustrate ever step to build the mini-cloud infrastructure and the problems I met which might be helpful.</p>
-<p>And at the final part, I will try to write some experience I got from the project.</p>
-<h2 id="Basic-introduction"><a href="#Basic-introduction" class="headerlink" title="Basic introduction"></a>Basic introduction</h2><p>Project name: A mini-cloud based e-commerce platform for small business</p>
-<p>Illustration: use one tower server and 7 Raspberry Pis to establish a mini-cloud infrastructure and then develop an e-commerce platforom for small businee which used to deployed on the infrastructure.</p>
-<p>PS: This project focuses more on the hardware part: how to establish a distributed system with high availability and reliability</p>
-<p><strong>Specific to Raspberry Pi:</strong></p>
-<p>Operation system: 2017-4-vga-raspbian-jessie </p>
-<p>CPU: QUAD Core ARMCortex-A7 </p>
-<p>RAM: 1GB </p>
-<p>Micro SD: 64G</p>
-<p><strong>Specific of Dell PowerEdge™ T110II Server:</strong></p>
-<p>Operating system:Ubuntu Trusty 14.04 (LTS) </p>
-<p>CPU: Intel Xeon processE3-1200 product family </p>
-<p>RAM:32GB </p>
-<h2 id="Mini-cloud-Infrastructure"><a href="#Mini-cloud-Infrastructure" class="headerlink" title="Mini-cloud Infrastructure"></a>Mini-cloud Infrastructure</h2><h3 id="Web-Frame-Work"><a href="#Web-Frame-Work" class="headerlink" title="Web Frame Work:"></a>Web Frame Work:</h3><p><img src="http://p8ltilmb1.bkt.clouddn.com/web_framework.png" alt="web framework"></p>
-<h3 id="Load-Balancer"><a href="#Load-Balancer" class="headerlink" title="Load Balancer:"></a>Load Balancer:</h3><p>Two Raspberry Pis to establish a load balacer cluster with failover function.</p>
-<p>Software: keepalived, NGINX</p>
-<p>The configuration process: <a href="http://octopusman.top/2018/01/26/Use-Nginx-keepalived-to-Establish-Load-Balancers-with-High-Availability/" target="_blank" rel="noopener">Nginx and keepalived configuration</a></p>
-<h3 id="Business-layer"><a href="#Business-layer" class="headerlink" title="Business layer:"></a>Business layer:</h3><p>Two Raspberry Pis to make up a process system</p>
-<p>Software: tomcat7</p>
-<p>The configuration process: <a href="http://www.octopusman.top" target="_blank" rel="noopener">not complete yet</a></p>
-<h3 id="Database-Layer"><a href="#Database-Layer" class="headerlink" title="Database Layer:"></a>Database Layer:</h3><p>Three Raspberry Pis to establish a data centre with high availability and reliability by using read-write separation and master-slave warm standby</p>
-<p>Software: MySQL 5.5.60</p>
-<p>The configuration process: <a href="http://octopusman.top/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/" target="_blank" rel="noopener">Use MySQL to establish master-slave warm standby and read-write separation</a></p>
-<h3 id="Static-server-layer"><a href="#Static-server-layer" class="headerlink" title="Static server layer"></a>Static server layer</h3><p>One tower server to store all static files like css,js,html.</p>
-<p>configuration: wait for completing…</p>
-<h2 id="Web-Application-Layer"><a href="#Web-Application-Layer" class="headerlink" title="Web Application Layer"></a>Web Application Layer</h2><p>Software part is the worst part in my project. Before design and implementation, requirements are not clear enough and the basic knowledge about the distributed system is not well learnt. After finishing the project when do this revision, I found the web application is just a piece of rubbish that has no single sepcific design for a distributed system. Thus the website is just for proving the whole infrastructure can work well.</p>
-<p>URL : <a href="www.finalproject.top/finalProject/index.jsp">Website URL</a></p>
-<p>Frontend: retrieved from <a href="http://w3layouts.com" target="_blank" rel="noopener">W3layouts</a></p>
-<p>Backend: JSP+Servlet+MySQL</p>
-<h3 id="not-fully-complete-yet…"><a href="#not-fully-complete-yet…" class="headerlink" title="not fully complete yet…"></a>not fully complete yet…</h3>
+        
       
     </div>
     
@@ -349,11 +314,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/project/" rel="tag"># project</a>
+            <a href="/tags/note/" rel="tag"># note</a>
           
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
-          
-            <a href="/tags/Web/" rel="tag"># Web</a>
+            <a href="/tags/WI/" rel="tag"># WI</a>
           
         </div>
       
@@ -366,8 +329,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/" rel="next" title="MySQL master-slave warm standby and read-write separation">
-                <i class="fa fa-chevron-left"></i> MySQL master-slave warm standby and read-write separation
+              <a href="/2019/01/09/NOTE-week-6-WI/" rel="next" title="NOTE-week-6-WI-">
+                <i class="fa fa-chevron-left"></i> NOTE-week-6-WI-
               </a>
             
           </div>
@@ -375,10 +338,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/09/13/Machine-Learning-Notes-StrandfordCourse/" rel="prev" title="Machine-Learning-Notes_StrandfordCourse">
-                Machine-Learning-Notes_StrandfordCourse <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -430,17 +389,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -491,22 +441,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Final-project-revision"><span class="nav-number">1.</span> <span class="nav-text">Final project revision</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Basic introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mini-cloud-Infrastructure"><span class="nav-number">1.2.</span> <span class="nav-text">Mini-cloud Infrastructure</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web-Frame-Work"><span class="nav-number">1.2.1.</span> <span class="nav-text">Web Frame Work:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Load-Balancer"><span class="nav-number">1.2.2.</span> <span class="nav-text">Load Balancer:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Business-layer"><span class="nav-number">1.2.3.</span> <span class="nav-text">Business layer:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Database-Layer"><span class="nav-number">1.2.4.</span> <span class="nav-text">Database Layer:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Static-server-layer"><span class="nav-number">1.2.5.</span> <span class="nav-text">Static server layer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Web-Application-Layer"><span class="nav-number">1.3.</span> <span class="nav-text">Web Application Layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#not-fully-complete-yet…"><span class="nav-number">1.3.1.</span> <span class="nav-text">not fully complete yet…</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

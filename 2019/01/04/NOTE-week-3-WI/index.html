@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="note,WI," />
 
 
 
@@ -79,14 +79,21 @@
 
 
 
+<meta name="description" content="HTTP Request and Response ProxyA proxy acts on behalf of other clients and presents requests from other clients to a server. The proxy acts as a server in interacting with a client and as a client in">
+<meta name="keywords" content="note,WI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NOTE-week-3-WI-">
+<meta property="og:title" content="(WI) Web Server and HTTP">
 <meta property="og:url" content="https://zhangzhejian.com/2019/01/04/NOTE-week-3-WI/index.html">
 <meta property="og:site_name" content="Recap">
+<meta property="og:description" content="HTTP Request and Response ProxyA proxy acts on behalf of other clients and presents requests from other clients to a server. The proxy acts as a server in interacting with a client and as a client in">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-04T19:25:04.146Z">
+<meta property="og:image" content="https://i.postimg.cc/mgBQBxbL/WI1.png">
+<meta property="og:image" content="https://i.postimg.cc/g2s30MJv/WI-2.png">
+<meta property="og:updated_time" content="2019-01-09T14:58:59.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NOTE-week-3-WI-">
+<meta name="twitter:title" content="(WI) Web Server and HTTP">
+<meta name="twitter:description" content="HTTP Request and Response ProxyA proxy acts on behalf of other clients and presents requests from other clients to a server. The proxy acts as a server in interacting with a client and as a client in">
+<meta name="twitter:image" content="https://i.postimg.cc/mgBQBxbL/WI1.png">
 
 
 
@@ -122,7 +129,7 @@
 
 
 
-  <title>NOTE-week-3-WI- | Recap</title>
+  <title>(WI) Web Server and HTTP | Recap</title>
   
 
 
@@ -246,7 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NOTE-week-3-WI-</h1>
+          <h1 class="post-title" itemprop="name headline">(WI) Web Server and HTTP</h1>
         
 
         <div class="post-meta">
@@ -296,7 +303,66 @@
       
 
       
-        
+        <p>HTTP Request and Response</p>
+<h5 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h5><p>A proxy acts on behalf of other clients and presents requests from other clients to a server. The proxy acts as a server in interacting with a client and as a client in interacting with a server.</p>
+<ul>
+<li>client and server be separated by security intermediary (firewall).</li>
+<li>Different Version of HTTP.</li>
+</ul>
+<h5 id="Gate-way"><a href="#Gate-way" class="headerlink" title="Gate way"></a>Gate way</h5><p>A gateway is a server that appears to the client as if it were an origin server. It acts on behalf of other servers that may not be able to communicate directly with a client</p>
+<ol>
+<li>Client talks to gateway host as if final server</li>
+<li>Gateway passes data on to final server</li>
+</ol>
+<ul>
+<li><strong>Security intermediary</strong>:The client and server may be separated by a security intermediary such as a firewall, with the gateway on the server side of the firewall.</li>
+<li><strong>Non-HTTP server</strong>: Web browsers have built into them the capability to contact servers for protocols other than HTTP, such as FTP servers</li>
+</ul>
+<h5 id="Tunnel"><a href="#Tunnel" class="headerlink" title="Tunnel"></a>Tunnel</h5><p>Client talks to server as if tunnel was not there. Tunnel does nothing but forwards messages</p>
+<p>Tunnels are used when there must be an intermediary system between client and server but it is not necessary for that system to understand the contents of messages. Eg. An example is a firewall in which a client or server external to a protected network can establish an authenticated connection.</p>
+<h4 id="HTTP-Request-format"><a href="#HTTP-Request-format" class="headerlink" title="HTTP Request format"></a>HTTP Request format</h4><p><img src="https://i.postimg.cc/mgBQBxbL/WI1.png" alt=""></p>
+<ul>
+<li>Request Line<ul>
+<li>GET /URL /HTTP version </li>
+</ul>
+</li>
+<li>General Header Line<ul>
+<li>Connection Type : determine the connection type, persistent or not</li>
+</ul>
+</li>
+<li>Request Header Lines<ul>
+<li>Host: specify the web server</li>
+<li>Accept: what format of file should be received</li>
+<li>User-Agent: browser type </li>
+</ul>
+</li>
+</ul>
+<h4 id="HTTP-Response-format"><a href="#HTTP-Response-format" class="headerlink" title="HTTP Response format"></a>HTTP Response format</h4><p><img src="https://i.postimg.cc/g2s30MJv/WI-2.png" alt=""></p>
+<ul>
+<li>Status Line<ul>
+<li>HTTP version</li>
+<li>status code</li>
+<li>Description</li>
+</ul>
+</li>
+<li>General Header Lines<ul>
+<li>Date</li>
+<li>Connection</li>
+</ul>
+</li>
+<li>Response Header line<ul>
+<li>Server type:</li>
+<li>Accpet-ranges:</li>
+</ul>
+</li>
+<li>Entity header line<ul>
+<li>Content-type</li>
+<li>Content-length</li>
+</ul>
+</li>
+<li>Entity Body </li>
+</ul>
+
       
     </div>
     
@@ -310,6 +376,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/note/" rel="tag"># note</a>
+          
+            <a href="/tags/WI/" rel="tag"># WI</a>
+          
+        </div>
       
 
       
@@ -330,8 +404,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/04/NOTE-week-4-WI/" rel="prev" title="NOTE-week-4-WI-">
-                NOTE-week-4-WI- <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/04/NOTE-week-4-WI/" rel="prev" title="(WI) DNS">
+                (WI) DNS <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -384,8 +458,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -400,7 +483,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -436,6 +519,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Proxy"><span class="nav-number">1.</span> <span class="nav-text">Proxy</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Gate-way"><span class="nav-number">2.</span> <span class="nav-text">Gate way</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Tunnel"><span class="nav-number">3.</span> <span class="nav-text">Tunnel</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-Request-format"><span class="nav-number"></span> <span class="nav-text">HTTP Request format</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP-Response-format"><span class="nav-number"></span> <span class="nav-text">HTTP Response format</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

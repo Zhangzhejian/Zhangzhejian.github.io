@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="note,WI," />
 
 
 
@@ -79,14 +79,18 @@
 
 
 
+<meta name="description" content="DNS A distributed database implemented in hierarchy of many name servers An application layer protocol that allows hosts to communicate with name servers to resolve names (address/name translation)  T">
+<meta name="keywords" content="note,WI">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NOTE-week-4-WI-">
+<meta property="og:title" content="(WI) DNS">
 <meta property="og:url" content="https://zhangzhejian.com/2019/01/04/NOTE-week-4-WI/index.html">
 <meta property="og:site_name" content="Recap">
+<meta property="og:description" content="DNS A distributed database implemented in hierarchy of many name servers An application layer protocol that allows hosts to communicate with name servers to resolve names (address/name translation)  T">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-04T19:25:09.142Z">
+<meta property="og:updated_time" content="2019-01-10T21:05:07.489Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NOTE-week-4-WI-">
+<meta name="twitter:title" content="(WI) DNS">
+<meta name="twitter:description" content="DNS A distributed database implemented in hierarchy of many name servers An application layer protocol that allows hosts to communicate with name servers to resolve names (address/name translation)  T">
 
 
 
@@ -122,7 +126,7 @@
 
 
 
-  <title>NOTE-week-4-WI- | Recap</title>
+  <title>(WI) DNS | Recap</title>
   
 
 
@@ -246,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NOTE-week-4-WI-</h1>
+          <h1 class="post-title" itemprop="name headline">(WI) DNS</h1>
         
 
         <div class="post-meta">
@@ -296,7 +300,46 @@
       
 
       
-        
+        <h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><ul>
+<li>A distributed database implemented in hierarchy of many name servers</li>
+<li>An application layer protocol that allows hosts to communicate with name servers to resolve names (address/name translation)</li>
+</ul>
+<h5 id="Three-classes-of-DNS-server"><a href="#Three-classes-of-DNS-server" class="headerlink" title="Three classes of DNS server"></a>Three classes of DNS server</h5><ul>
+<li>Root DNS Server<ul>
+<li>13 such root DNS servers</li>
+</ul>
+</li>
+<li>Top-level domain servers<ul>
+<li>top-level domain servers for example .com</li>
+</ul>
+</li>
+<li>Authoritative DNS Servers<ul>
+<li>contains authoritative DNS servers which provide actual answers to the DNS queries.</li>
+</ul>
+</li>
+</ul>
+<h4 id="DNS-resource-record-RR"><a href="#DNS-resource-record-RR" class="headerlink" title="DNS resource record (RR)"></a>DNS resource record (RR)</h4><p>In DNS servers all information including hostnames to IP translation is kept in the so-called Resource Records (RR). A Resource Record is a 4-tuple containing this info: {Name, Value, Type, TTL}.</p>
+<ul>
+<li>A<ul>
+<li>Map a hostname to a ip</li>
+</ul>
+</li>
+<li>NS<ul>
+<li>Which Name Server is authoritative for a domain</li>
+</ul>
+</li>
+<li>CNAME<ul>
+<li>used to make one domain an alias(别名) of another</li>
+</ul>
+</li>
+<li>MX<ul>
+<li>a list of mail exchange server </li>
+</ul>
+</li>
+</ul>
+<h4 id="DNS-Message"><a href="#DNS-Message" class="headerlink" title="DNS Message"></a>DNS Message</h4><h4 id="DNS-Threat"><a href="#DNS-Threat" class="headerlink" title="DNS Threat"></a>DNS Threat</h4><h5 id="DNS-poisoning"><a href="#DNS-poisoning" class="headerlink" title="DNS poisoning"></a>DNS poisoning</h5><p>With cache poisoning an attacker attempts to insert a fake address record for an Internet domain into the DNS</p>
+<p>If the server accepts the fake record, the cache is poisoned and subsequent requests for the address of the domain are answered with the address of a server controlled by the attacker.</p>
+
       
     </div>
     
@@ -311,6 +354,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/note/" rel="tag"># note</a>
+          
+            <a href="/tags/WI/" rel="tag"># WI</a>
+          
+        </div>
+      
 
       
       
@@ -320,8 +371,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/04/NOTE-week-3-WI/" rel="next" title="NOTE-week-3-WI-">
-                <i class="fa fa-chevron-left"></i> NOTE-week-3-WI-
+              <a href="/2019/01/04/NOTE-week-3-WI/" rel="next" title="(WI) Web Server and HTTP">
+                <i class="fa fa-chevron-left"></i> (WI) Web Server and HTTP
               </a>
             
           </div>
@@ -384,8 +435,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -400,7 +460,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">36</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -436,6 +496,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS"><span class="nav-number">1.</span> <span class="nav-text">DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Three-classes-of-DNS-server"><span class="nav-number">1.1.</span> <span class="nav-text">Three classes of DNS server</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS-resource-record-RR"><span class="nav-number">2.</span> <span class="nav-text">DNS resource record (RR)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS-Message"><span class="nav-number">3.</span> <span class="nav-text">DNS Message</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS-Threat"><span class="nav-number">4.</span> <span class="nav-text">DNS Threat</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DNS-poisoning"><span class="nav-number">4.1.</span> <span class="nav-text">DNS poisoning</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
