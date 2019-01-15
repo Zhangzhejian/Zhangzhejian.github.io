@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="key points: system architectures LODE  System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each other, the data exchang">
+<meta name="description" content="key points: system architectures LODE  web proxy cache    System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each othe">
 <meta name="keywords" content="【note, WI】">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(WI) Lec 1:Introduction">
 <meta property="og:url" content="https://zhangzhejian.com/2018/09/27/NOTE-Web-Infrastructure/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="key points: system architectures LODE  System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each other, the data exchang">
+<meta property="og:description" content="key points: system architectures LODE  web proxy cache    System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each othe">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-10T13:31:42.877Z">
+<meta property="og:updated_time" content="2019-01-11T11:38:35.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(WI) Lec 1:Introduction">
-<meta name="twitter:description" content="key points: system architectures LODE  System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each other, the data exchang">
+<meta name="twitter:description" content="key points: system architectures LODE  web proxy cache    System architecture stylesSystem architecture styles are formulated in terms of components, the way that components are connected to each othe">
 
 
 
@@ -301,7 +301,11 @@
 
       
         <h4 id="key-points"><a href="#key-points" class="headerlink" title="key points:"></a>key points:</h4><ol>
-<li>system architectures LODE</li>
+<li><p>system architectures LODE</p>
+</li>
+<li><p>web proxy cache</p>
+</li>
+<li></li>
 </ol>
 <h3 id="System-architecture-styles"><a href="#System-architecture-styles" class="headerlink" title="System architecture styles"></a>System architecture styles</h3><p>System architecture styles are formulated in terms of <strong>components</strong>, <strong>the way</strong> that components are <strong>connected</strong> to each other, the <strong>data exchanged</strong> between components and finally how these <strong>elements</strong> are jointly <strong>configured</strong> into a system.</p>
 <ul>
@@ -321,10 +325,15 @@
 <li><p>Each component is defined as an object and components are connected through mechanisms defined in the interface (example, RPC)</p>
 </li>
 </ul>
-<h5 id="Data-centered-architecture"><a href="#Data-centered-architecture" class="headerlink" title="Data-centered architecture"></a>Data-centered architecture</h5><p>Web-based distributed systems are largely data-centric.They rely on shared distributed file systems</p>
-<p>Processes communicate through a common passive or active repository. They use shared web-based data services.</p>
-<h5 id="Event-based-architecture"><a href="#Event-based-architecture" class="headerlink" title="Event-based architecture"></a>Event-based architecture</h5><p>Processes essentially communicate through the propagation of events, which optionally also carry data. Event propagation is generally through publish/subscribe systems.(进程通过事件的传播来交流，可以携带数据。事件传播是通过发布/订阅系统来实现的)</p>
-<p>Processes publish events after which middleware ensures that only processes that subscribe receive them.(只有订阅的进程才能接受到)</p>
+<h5 id="Data-centered-architecture"><a href="#Data-centered-architecture" class="headerlink" title="Data-centered architecture"></a>Data-centered architecture</h5><ul>
+<li>Web-based distributed systems are largely data-centric.</li>
+<li>They rely on shared <strong>distributed file systems</strong></li>
+<li>Processes communicate through a common passive or active repository. They use shared web-based data services.</li>
+</ul>
+<h5 id="Event-based-architecture"><a href="#Event-based-architecture" class="headerlink" title="Event-based architecture"></a>Event-based architecture</h5><ul>
+<li>Processes essentially communicate through the propagation of events, which optionally also carry data. Event propagation is generally through publish/subscribe systems.(进程通过事件的传播来交流，可以携带数据。事件传播是通过发布/订阅系统来实现的)</li>
+<li>Processes publish events after which middleware ensures that only processes that subscribe receive them.(只有订阅的进程才能接受到)</li>
+</ul>
 <h4 id="Client-server-model"><a href="#Client-server-model" class="headerlink" title="Client-server model"></a>Client-server model</h4><p>A server is a process implementing a specific service. A client is a process that requests a service from a server</p>
 <h5 id="Centralised-architecture-中心化"><a href="#Centralised-architecture-中心化" class="headerlink" title="Centralised architecture(中心化)"></a>Centralised architecture(中心化)</h5><ul>
 <li>Clear distinction between clients and servers </li>
@@ -487,7 +496,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -500,7 +509,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

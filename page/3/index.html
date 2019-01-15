@@ -230,6 +230,343 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/" itemprop="url">(AI)Lec 4:Sequential Decision Making(马尔可夫决策过程MDP)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-07T00:02:09+00:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lecture-4-Sequential-Decision-Making-马尔可夫决策过程MDP"><a href="#Lecture-4-Sequential-Decision-Making-马尔可夫决策过程MDP" class="headerlink" title="Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)"></a>Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)</h2><h4 id="How-to-make-the-decision"><a href="#How-to-make-the-decision" class="headerlink" title="How to make the decision"></a>How to make the decision</h4><ul>
+<li>a set of possible states S</li>
+<li>a set of possible actions A</li>
+<li>each a \in A has a set of possible outcomes s_a</li>
+</ul>
+<h5 id="Maximising-the-expected-utility-MEU"><a href="#Maximising-the-expected-utility-MEU" class="headerlink" title="Maximising the expected utility(MEU)"></a>Maximising the expected utility(MEU)</h5><p>dealing with non-deterministic actions</p>
+<script type="math/tex; mode=display">
+a^* = arg \; max_{a \in A}E(u(a))\\
+E(u(a)) = \sum_{s'\in s_a} u(s')Pr(s_a =s')</script><p><img src="https://i.postimg.cc/rwCkXCgc/AI-lec4.png" alt=""></p>
+<h5 id="find-the-Least-bad-worst-outcome"><a href="#find-the-Least-bad-worst-outcome" class="headerlink" title="find the Least-bad worst outcome"></a>find the Least-bad worst outcome</h5><script type="math/tex; mode=display">
+a^* = arg \; max_{a \in A}\{min_{s' \in s_a}u(s')\}</script><p>ignore the probability of outcomes and concentrate on <u>optimising the worst case outcome</u></p>
+<h5 id="find-the-maximax-outcome"><a href="#find-the-maximax-outcome" class="headerlink" title="find the maximax outcome"></a>find the maximax outcome</h5><script type="math/tex; mode=display">
+a^* = arg \; max_{a \in A}\{max_{s' \in s_a}u(s')\}</script><p>Just focus on the best outcome of each action and ignore possible bad outcomes</p>
+<h4 id="Markov-decision-process-MDP-马尔可夫决策过程"><a href="#Markov-decision-process-MDP-马尔可夫决策过程" class="headerlink" title="Markov decision process (MDP 马尔可夫决策过程)"></a>Markov decision process (MDP 马尔可夫决策过程)</h4><ul>
+<li>A set of states  s \in S with an initial state s_0</li>
+<li>A set of actions A(s) q in each state. ‚</li>
+<li>A transition model P(s’|s,a) </li>
+<li>A reward function R(s).</li>
+</ul>
+<h5 id="Policy"><a href="#Policy" class="headerlink" title="Policy"></a>Policy</h5><p>A solution is a policy which we write as $\pi$</p>
+<p>This is a choice of <strong>action</strong> for every state. In any state s, $\pi(s)$ identifies what action to take</p>
+<p>The optimum policy $\pi^*$ is the policy with the highest expected value.</p>
+<h5 id="Reward"><a href="#Reward" class="headerlink" title="Reward"></a>Reward</h5><p>The reward function can change the optimal policy</p>
+<p><img src="https://i.postimg.cc/BvSGqLwF/AI-week4.png" alt=""></p>
+<h4 id="Utilities-calculation"><a href="#Utilities-calculation" class="headerlink" title="Utilities calculation"></a>Utilities calculation</h4><p>utilities are summed along a run(not the only way)</p>
+<script type="math/tex; mode=display">
+U_r([s_0,s_1,...,s_n])</script><ul>
+<li><strong>Finite</strong> or <strong>infinite</strong></li>
+<li><strong>Stationary</strong> or <strong>non-stationary</strong></li>
+</ul>
+<h5 id="Addntive-rewards"><a href="#Addntive-rewards" class="headerlink" title="Addntive rewards:"></a>Addntive rewards:</h5><script type="math/tex; mode=display">
+U_r([s_0,s_1,...,s_n]) = R(s_0)+R(s_1)+...+R(s_n)</script><p>Problem: when it’s infinite, the result will not be convergence and become infinite which makes it impossible to compare to get the optimial policy</p>
+<p>Solution:</p>
+<ul>
+<li>Proper policies: always end up in terminal state, which makes the result  finite</li>
+<li>Average reward: average reward per time step.</li>
+<li>Discounted rewards</li>
+</ul>
+<h5 id="Discounted-rewards"><a href="#Discounted-rewards" class="headerlink" title="Discounted rewards:"></a>Discounted rewards:</h5><p>\gamma is the discount factor between 0 and 1.</p>
+<p>It shows the preference of the agent for current over future rewards(先到手的最好)</p>
+<p>Uncertainty about the future may not be fully presented.</p>
+<p>Human behaviours shows preference for immediate rewards.</p>
+<script type="math/tex; mode=display">
+U_r([s_0,s_1,...,s_n]) = R(s_0)+\gamma R(s_1)+...+\gamma ^ nR(s_n)</script><script type="math/tex; mode=display">
+\begin{align}
+U_r([s_0,s_1,...,s_n]) & = \sum_{t=0}^\infty \gamma ^t R(s_t)\\
+&\leq \sum_{t=0}^\infty \gamma ^t R_{max}\\
+&\leq \frac{R_{max}}{1-\gamma}
+\end{align}</script><p>so the utility is bounded by the R_{max}</p>
+<h5 id="Optimal-policy"><a href="#Optimal-policy" class="headerlink" title="Optimal policy"></a>Optimal policy</h5><p>We compare policies by computing their expected utilities</p>
+<p>The expected utility of executing π starting in s is given by:</p>
+<script type="math/tex; mode=display">
+U^\pi(s) = E[\sum_{t=0}^\infty \gamma ^t R(s_t)]</script><p>$S_t $is the state the agent gets to at time t</p>
+<p>Then the optimal policy is selected by MEU</p>
+<script type="math/tex; mode=display">
+\pi ^* = arg max_\pi U^\pi (s)</script><h4 id="Value-iteration"><a href="#Value-iteration" class="headerlink" title="Value iteration"></a>Value iteration</h4><h5 id="Bellman-Equation"><a href="#Bellman-Equation" class="headerlink" title="Bellman Equation"></a>Bellman Equation</h5><p>to caculate the utility of each state</p>
+<script type="math/tex; mode=display">
+U(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U(s')</script><p>And use the value iteration to ensure the convergence of the utility</p>
+<script type="math/tex; mode=display">
+U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Reference:</p>
+<ol>
+<li><a href="https://blog.csdn.net/jxl_1207/article/details/61414332" target="_blank" rel="noopener">https://blog.csdn.net/jxl_1207/article/details/61414332</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/35231424" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35231424</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/28084942" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28084942</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/31/NOTE-WEEK-4-Agents-and-Multi-Agent-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/31/NOTE-WEEK-4-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 4:Reasoning and Architectures</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-31T15:31:56+00:00">
+                2018-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Agents-and-Multi-Agent-System"><a href="#Agents-and-Multi-Agent-System" class="headerlink" title="Agents and Multi-Agent System"></a>Agents and Multi-Agent System</h2><h2 id="智能体与多智能体系统"><a href="#智能体与多智能体系统" class="headerlink" title="智能体与多智能体系统"></a>智能体与多智能体系统</h2><h3 id="Lecture-4-More-on-agent-architectures"><a href="#Lecture-4-More-on-agent-architectures" class="headerlink" title="Lecture 4 More on agent architectures"></a>Lecture 4 More on agent architectures</h3><p>key points:</p>
+<ol>
+<li>deductive reasoning agents</li>
+<li>Reactive agent</li>
+<li>hybrid agent</li>
+</ol>
+<h4 id="Deductive-reasoning-演绎推理-agents"><a href="#Deductive-reasoning-演绎推理-agents" class="headerlink" title="Deductive reasoning(演绎推理) agents"></a>Deductive reasoning(演绎推理) agents</h4><p>Deductive reasoning = particular <strong>symbolic</strong> approach where <strong>representations are logical formulas</strong> and reasoning used is <strong>logical deduction(逻辑演绎)</strong> (theorem proving).</p>
+<ul>
+<li>Symbolic AI paradigm</li>
+<li><p>Contains an explicitly represented, symbolic model of the world.</p>
+</li>
+<li><p>Makes decisions (for example about what actions to perform) via symbolic reasoning.</p>
+</li>
+</ul>
+<p><strong>Use logic to encode a theory stating the best action to perform in any given situation.</strong></p>
+<p>Let:</p>
+<p>• ρ be this theory (typically a set of rules)</p>
+<p>• Δ be a logical database that describes the current state of the world</p>
+<p>• Ac be the set of actions the agent can perform</p>
+<p>• Δ |- ρ ϕ means that ϕ can be deduced from Δ using ρ</p>
+<p>according to the input of environment and the logical database get the current state. then based on the theory and the current state, the agent get the right decision.</p>
+<h4 id="planning-agents"><a href="#planning-agents" class="headerlink" title="planning agents"></a>planning agents</h4><p>Planning agents find a sequence of actions that transforms an initial state into a goal state.</p>
+<p>Planning involves issues of both Search and Knowledge Representation.</p>
+<h4 id="Reactive-agent-architectures"><a href="#Reactive-agent-architectures" class="headerlink" title="Reactive agent architectures"></a>Reactive agent architectures</h4><h5 id="Traditional-AI-View"><a href="#Traditional-AI-View" class="headerlink" title="Traditional AI View"></a>Traditional AI View</h5><p>• Symbolic (internal) representation.</p>
+<p>• Manipulate this representation to work out what to do next.</p>
+<h5 id="Alternative-View"><a href="#Alternative-View" class="headerlink" title="Alternative View"></a>Alternative View</h5><p>• Symbolic reasoning is very <strong>resource demanding</strong>.</p>
+<p>• Effective behaviour does not need representation and manipulation.</p>
+<p>• Intelligent behaviour is a product of the agent’s interaction with its environment.</p>
+<p>• Intelligent behaviour emerges from the interaction of various simpler behaviours.</p>
+<p>not finished yet</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/12/NOTE-WEEK-3-Artificial-Intelligence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1478,7 +1815,11 @@ Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Diffi
         
           
             <h4 id="key-points"><a href="#key-points" class="headerlink" title="key points:"></a>key points:</h4><ol>
-<li>system architectures LODE</li>
+<li><p>system architectures LODE</p>
+</li>
+<li><p>web proxy cache</p>
+</li>
+<li></li>
 </ol>
 <h3 id="System-architecture-styles"><a href="#System-architecture-styles" class="headerlink" title="System architecture styles"></a>System architecture styles</h3><p>System architecture styles are formulated in terms of <strong>components</strong>, <strong>the way</strong> that components are <strong>connected</strong> to each other, the <strong>data exchanged</strong> between components and finally how these <strong>elements</strong> are jointly <strong>configured</strong> into a system.</p>
 <ul>
@@ -1498,10 +1839,15 @@ Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Diffi
 <li><p>Each component is defined as an object and components are connected through mechanisms defined in the interface (example, RPC)</p>
 </li>
 </ul>
-<h5 id="Data-centered-architecture"><a href="#Data-centered-architecture" class="headerlink" title="Data-centered architecture"></a>Data-centered architecture</h5><p>Web-based distributed systems are largely data-centric.They rely on shared distributed file systems</p>
-<p>Processes communicate through a common passive or active repository. They use shared web-based data services.</p>
-<h5 id="Event-based-architecture"><a href="#Event-based-architecture" class="headerlink" title="Event-based architecture"></a>Event-based architecture</h5><p>Processes essentially communicate through the propagation of events, which optionally also carry data. Event propagation is generally through publish/subscribe systems.(进程通过事件的传播来交流，可以携带数据。事件传播是通过发布/订阅系统来实现的)</p>
-<p>Processes publish events after which middleware ensures that only processes that subscribe receive them.(只有订阅的进程才能接受到)</p>
+<h5 id="Data-centered-architecture"><a href="#Data-centered-architecture" class="headerlink" title="Data-centered architecture"></a>Data-centered architecture</h5><ul>
+<li>Web-based distributed systems are largely data-centric.</li>
+<li>They rely on shared <strong>distributed file systems</strong></li>
+<li>Processes communicate through a common passive or active repository. They use shared web-based data services.</li>
+</ul>
+<h5 id="Event-based-architecture"><a href="#Event-based-architecture" class="headerlink" title="Event-based architecture"></a>Event-based architecture</h5><ul>
+<li>Processes essentially communicate through the propagation of events, which optionally also carry data. Event propagation is generally through publish/subscribe systems.(进程通过事件的传播来交流，可以携带数据。事件传播是通过发布/订阅系统来实现的)</li>
+<li>Processes publish events after which middleware ensures that only processes that subscribe receive them.(只有订阅的进程才能接受到)</li>
+</ul>
 <h4 id="Client-server-model"><a href="#Client-server-model" class="headerlink" title="Client-server model"></a>Client-server model</h4><p>A server is a process implementing a specific service. A client is a process that requests a service from a server</p>
 <h5 id="Centralised-architecture-中心化"><a href="#Centralised-architecture-中心化" class="headerlink" title="Centralised architecture(中心化)"></a>Centralised architecture(中心化)</h5><ul>
 <li>Clear distinction between clients and servers </li>
@@ -1545,320 +1891,6 @@ Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Diffi
 <h4 id="Dynamic-Object-Rules-Strategies"><a href="#Dynamic-Object-Rules-Strategies" class="headerlink" title="Dynamic Object Rules Strategies"></a>Dynamic Object Rules Strategies</h4><p><u>To estimate the value an object may have in serving future requests.</u></p>
 <h4 id="Expiration"><a href="#Expiration" class="headerlink" title="Expiration"></a>Expiration</h4><p>HTTP 1.1 Cache control Directives</p>
 <p>ICP(Internet Cache Protocol)</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/24/NOTE-Agents-and-Multi-Agent-System/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/24/NOTE-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 1:Introduction</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T12:40:15+01:00">
-                2018-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Agents-and-Multi-Agent-System-智能体与多智能体系统"><a href="#Agents-and-Multi-Agent-System-智能体与多智能体系统" class="headerlink" title="Agents and Multi-Agent System (智能体与多智能体系统)"></a>Agents and Multi-Agent System (智能体与多智能体系统)</h2><h3 id="Lecture-1-Introduction"><a href="#Lecture-1-Introduction" class="headerlink" title="Lecture 1 Introduction"></a>Lecture 1 Introduction</h3><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h4><ol>
-<li>What’s an agent</li>
-<li>Reactive—Proactive(goal-oriented)</li>
-<li>proactive(goal-oriented)</li>
-<li></li>
-</ol>
-<h4 id="On-going-trends-in-computing"><a href="#On-going-trends-in-computing" class="headerlink" title="On going trends in computing:"></a>On going trends in computing:</h4><ul>
-<li><p>Ubiquity(普遍): The continual reduction in cost of computing capability has made it possible to introduce processing power into places and devices that would have once been uneconomic.</p>
-</li>
-<li><p>Interconnection(互联): Since distributed and concurrent systems have become the norm, it is natural to think of theoretical models that portray computing as primarily a process of interaction</p>
-</li>
-<li><p>Intelligence(智能):The complexity of tasks that we are capable of automating and delegating to computers has grown steadily</p>
-</li>
-<li><p>Delegation(委托): Computers are doing more for us – without our intervention.</p>
-</li>
-<li><p>Human-orientation(面向人类): The movement away from machine-oriented views of programming toward concepts and metaphors that more closely reflect the way we ourselves understand the world.</p>
-</li>
-</ul>
-<h4 id="What-is-an-agent"><a href="#What-is-an-agent" class="headerlink" title="What is an agent"></a>What is an agent</h4><p>An agent is a system that:</p>
-<p>• is <strong>situated</strong> in an environment,</p>
-<p>• is capable of <strong>perceiving(察觉)</strong> its environment, and</p>
-<p>• is capable of <strong>acting</strong> in its environment</p>
-<p>with the <strong>goal</strong> of satisfying its design objectives.</p>
-<h5 id="Two-essential-features-properties"><a href="#Two-essential-features-properties" class="headerlink" title="Two essential  features/properties:"></a>Two essential  features/properties:</h5><ol>
-<li><strong>Antonomous(自治的)</strong> (<strong>decide</strong> for themselves what to do) Control over internal state and over own behaviour.</li>
-<li><strong>Self-interested(自利的)</strong> (act so as to try to <strong>achieve their goals</strong>)</li>
-</ol>
-<p>Intelligent agent: can work out the best way to act in <strong>complex, unpredictable </strong> environment</p>
-<p>Want to delegate goals to the agent <u>without having to specify exactly how those goals should be achieved</u>. Agent <u>works out for itself</u> what to do to try to achieve its goals.</p>
-<h5 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a><strong>Definition</strong></h5><p><strong>A computer system capable of <u>flexible, autonomous (problem-solving) action</u>, situated in <u>dynamic, open, unpredictable and typically multi-agent domains.</u></strong></p>
-<p><strong>An agent </strong>is a computer system that is capable of <strong>independent</strong> action on behalf of its user or owner (figuring out what needs to be done <u>to satisfy design objectives</u>, rather than constantly being told).</p>
-<p><strong>A multi-agent </strong>system is one that consists of a number of agents, which <u>interact with one-another</u>. In the most general case, agents will be acting on behalf of users with different goals and motivations. To successfully interact, they will require the ability to <u>cooperate, coordinate, and negotiate</u> with each other, much as people do.</p>
-<h4 id="Compared-with"><a href="#Compared-with" class="headerlink" title="Compared with"></a>Compared with</h4><h5 id="AI"><a href="#AI" class="headerlink" title="AI:"></a>AI:</h5><p>Classical AI ignored social aspects of agency, which are important parts of intelligent activity in real-world setting.</p>
-<h5 id="Concurrent-Distributed-Systems"><a href="#Concurrent-Distributed-Systems" class="headerlink" title="Concurrent/Distributed Systems"></a>Concurrent/Distributed Systems</h5><ol>
-<li>Agents are autonomous, capable of making independent decisions</li>
-<li>Agents are self-interested</li>
-</ol>
-<h4 id="Flexable-Reactive-and-Proactive"><a href="#Flexable-Reactive-and-Proactive" class="headerlink" title="Flexable: Reactive and Proactive"></a><em>Flexable</em>: Reactive and Proactive</h4><h5 id="Reactivity-interact-with-environment-changes"><a href="#Reactivity-interact-with-environment-changes" class="headerlink" title="Reactivity (interact with environment changes)"></a>Reactivity (interact with environment changes)</h5><p>A reactive system is one that maintains an ongoing interaction with its environment, and responds to changes that occur in it (in time for the response to be useful).</p>
-<h5 id="Proactiveness-goal-oriented"><a href="#Proactiveness-goal-oriented" class="headerlink" title="Proactiveness (goal-oriented)"></a>Proactiveness (goal-oriented)</h5><p>Generating and attempting to <u>achieve goals</u>; not driven solely by events; taking the <strong>initiative</strong>(主动性).</p>
-<h4 id="Balancing-reactive-and-goal-oriented-behaviour"><a href="#Balancing-reactive-and-goal-oriented-behaviour" class="headerlink" title="Balancing reactive and goal-oriented behaviour"></a><u>Balancing reactive and goal-oriented behaviour</u></h4><h5 id="Reason"><a href="#Reason" class="headerlink" title="Reason:"></a>Reason:</h5><p>Reactivity means that the system needs to be passive while proactiveness requires the system to be proactive.</p>
-<ul>
-<li><p>We want our agents to be reactive, responding to changing conditions in an appropriate (<strong>timely</strong>) fashion.</p>
-</li>
-<li><p>We want our agents to systematically work towards <strong>long-term goals</strong>.</p>
-</li>
-</ul>
-<h4 id="Multi-agent"><a href="#Multi-agent" class="headerlink" title="Multi-agent"></a>Multi-agent</h4><p>Agents need to be able to interact(communicates, coordinates, cooperates, competes, negotiates, delegates, persuades, incentivises …) with each other.</p>
-<p><strong>Social ability</strong> in agents is the ability to interact with other agents (and possibly humans) via some kind of agent-communication language, and perhaps cooperate with others.</p>
-<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p><strong>A computer system capable of <u>flexible, autonomous (problem-solving) action</u>, situated in <u>dynamic, open, unpredictable and typically multi-agent domains.</u></strong></p>
-<ul>
-<li><p>Agents have control over the own state and behaviour (autonomous).</p>
-</li>
-<li><p>Agents balance reactive and proactive behaviour (flexible).</p>
-</li>
-<li><p>Agents have social abilities to interact with other agents (multiagent).</p>
-</li>
-<li><p>Agents perceive and act on their environment (situated).</p>
-</li>
-</ul>
-<p>Finished</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/" itemprop="url">Machine Learning Notes StrandfordCourse 2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-23T21:46:54+01:00">
-                2018-09-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h2><h3 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h3><h4 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h4><p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/0rgjYLDeEeajLxLfjQiSjg_0c07c56839f8d6e8d7b0d09acedc88fd_Screenshot-2016-11-22-10.08.51.png?expiry=1537833600000&amp;hmac=FRBeg-NN4oEZPKrlnOGAfcfpNXkgb9Z1SQ17aQB417Q" alt=""></p>
-<p>a_i^j =  activation of unit i in layer j</p>
-<p>$\theta^j =$ matrix of weights controlling function mapping from layer j to layer j+1</p>
-<script type="math/tex; mode=display">
-a_i^j = g(\theta^{j-1} \times X^{j-1})\\
-h_\theta(x) = a_1^j = g(\theta^{j-1}\times X^{j-1})\\
-\theta^j \times \begin{bmatrix}
-a_0^j\\a_1^j\\a_2^j\\a_3^j\\\vdots\\a^j_{s_j}
-\end{bmatrix} = \begin{bmatrix}
-a_1^{j+1}\\a_2^{j+1}\\a_3^{j+1}\\\vdots\\a^{j+1}_{s_{j+1}}
-\end{bmatrix}</script><p>so $\theta^j$ needs to be a $s_{j+1}\times (s_j+1)$ matrix</p>
-<p><strong>note</strong> : there will be a bias unit called $a_0^j$ be added every layer after computed</p>
 
           
         
@@ -1945,7 +1977,7 @@ a_1^{j+1}\\a_2^{j+1}\\a_3^{j+1}\\\vdots\\a^{j+1}_{s_{j+1}}
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1958,7 +1990,7 @@ a_1^{j+1}\\a_2^{j+1}\\a_3^{j+1}\\\vdots\\a^{j+1}_{s_{j+1}}
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

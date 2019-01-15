@@ -217,6 +217,426 @@
   <section id="posts" class="posts-expand">
     
       
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/04/NOTE-week-3-WI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/04/NOTE-week-3-WI/" itemprop="url">(WI) Web Server and HTTP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-04T19:25:04+00:00">
+                2019-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><p>Designed for communicating enriched documents between computers</p>
+<h5 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h5><p>A proxy acts on behalf of other clients and presents requests from other clients to a server. The proxy acts as a server in interacting with a client and as a client in interacting with a server.</p>
+<ul>
+<li>client and server be separated by security intermediary (firewall).</li>
+<li>Different Version of HTTP.</li>
+</ul>
+<h5 id="Gate-way"><a href="#Gate-way" class="headerlink" title="Gate way"></a>Gate way</h5><p>A gateway is a server that appears to the client as if it were an origin server. It acts on behalf of other servers that may not be able to communicate directly with a client</p>
+<ol>
+<li>Client talks to gateway host as if final server</li>
+<li>Gateway passes data on to final server</li>
+</ol>
+<ul>
+<li><strong>Security intermediary</strong>:The client and server may be separated by a security intermediary such as a firewall, with the gateway on the server side of the firewall.</li>
+<li><strong>Non-HTTP server</strong>: Web browsers have built into them the capability to contact servers for protocols other than HTTP, such as FTP servers</li>
+</ul>
+<h5 id="Tunnel"><a href="#Tunnel" class="headerlink" title="Tunnel"></a>Tunnel</h5><p>Client talks to server as if tunnel was not there. Tunnel does nothing but forwards messages</p>
+<p>Tunnels are used when there must be an intermediary system between client and server but it is not necessary for that system to understand the contents of messages. Eg. An example is a firewall in which a client or server external to a protected network can establish an authenticated connection.</p>
+<h4 id="HTTP-Request-format"><a href="#HTTP-Request-format" class="headerlink" title="HTTP Request format"></a>HTTP Request format</h4><p><img src="https://i.postimg.cc/mgBQBxbL/WI1.png" alt=""></p>
+<ul>
+<li>Request Line<ul>
+<li>GET /URL /HTTP version </li>
+</ul>
+</li>
+<li>General Header Line<ul>
+<li>Connection Type : determine the connection type, persistent or not</li>
+</ul>
+</li>
+<li>Request Header Lines<ul>
+<li>Host: specify the web server</li>
+<li>Accept: what format of file should be received</li>
+<li>User-Agent: browser type </li>
+</ul>
+</li>
+</ul>
+<h4 id="HTTP-Response-format"><a href="#HTTP-Response-format" class="headerlink" title="HTTP Response format"></a>HTTP Response format</h4><p><img src="https://i.postimg.cc/g2s30MJv/WI-2.png" alt=""></p>
+<ul>
+<li>Status Line<ul>
+<li>HTTP version</li>
+<li>status code</li>
+<li>Description</li>
+</ul>
+</li>
+<li>General Header Lines<ul>
+<li>Date</li>
+<li>Connection</li>
+</ul>
+</li>
+<li>Response Header line<ul>
+<li>Server type:</li>
+<li>Accpet-ranges:</li>
+</ul>
+</li>
+<li>Entity header line<ul>
+<li>Content-type</li>
+<li>Content-length</li>
+</ul>
+</li>
+<li>Entity Body </li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/04/NOTE-week-2-WI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/04/NOTE-week-2-WI/" itemprop="url">(WI) Lec 2:TCP/IP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-04T19:25:00+00:00">
+                2019-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lec-2-TCP-IP"><a href="#Lec-2-TCP-IP" class="headerlink" title="Lec 2: TCP/IP"></a>Lec 2: TCP/IP</h2><h4 id="Internet-Protocol-IP-network-layer"><a href="#Internet-Protocol-IP-network-layer" class="headerlink" title="Internet Protocol(IP) network layer"></a>Internet Protocol(IP) network layer</h4><p>Provides a <strong>routhing function</strong> that attempts to <strong>deliver messages to the right destination</strong></p>
+<p>IP is an unreliable protocol: fragments might be lost, arrive out of order, or be duplicated</p>
+<h5 id="IP-datagrame-Header"><a href="#IP-datagrame-Header" class="headerlink" title="IP datagrame Header"></a>IP datagrame Header</h5><p>Length of IP header: 20-60 bytes </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Version field</th>
+<th>4-bit(0100 or 0110)</th>
+<th>to determine the IP version(IPV4 IPV6)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version field</td>
+<td>4-bit(0100 or 0110)</td>
+<td>determine the IP version(IPV4 IPV6)</td>
+</tr>
+<tr>
+<td>IHL(length)</td>
+<td>4-bit  (20-60) byte</td>
+<td>determine the length of this IP header</td>
+</tr>
+<tr>
+<td>TOS(type of service)</td>
+<td>8 bits(3,4,1)</td>
+<td>Specifies the quality of service requested</td>
+</tr>
+<tr>
+<td>Total length field</td>
+<td>16 bits (20-65535 bytes)</td>
+<td>the number of bytes of the whole ip datagram<br>(header plus data)</td>
+</tr>
+<tr>
+<td>Identification Field</td>
+<td>16 bits</td>
+<td>for reconstructing message from fragments</td>
+</tr>
+<tr>
+<td>Flag field</td>
+<td>3 bit</td>
+<td>“Reserved”,”don’t fragment(DF)”,”more fragments(MF)”</td>
+</tr>
+<tr>
+<td>Fragment offset</td>
+<td>13 bits</td>
+<td></td>
+</tr>
+<tr>
+<td>Time to live</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>8 bits</td>
+<td>Transport layer protocol used(TCP for 6)</td>
+</tr>
+<tr>
+<td>Header checksum</td>
+<td>16 bits</td>
+<td></td>
+</tr>
+<tr>
+<td>Source</td>
+<td>32 bits</td>
+<td>IP of the source</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>32 bits</td>
+<td>IP address of the destination</td>
+</tr>
+<tr>
+<td>Options</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Padding</td>
+<td>0-31</td>
+<td>make the header up to <br>Multiple of 32 bits</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h5><p><strong>MTU(Max transmission unit)</strong>: the limit of the size of message it can carry</p>
+<p>in order to fit the local MTU, the sender will fragment the message into small pieces</p>
+<p>Algorithm</p>
+<ol>
+<li><p>The DF ﬂag bit is checked to see if fragmentation is allowed</p>
+<p>If DF is set, but the message needs to be fragmented to move onto a network with a lower MTU, an error message is sent by ICMP</p>
+</li>
+<li><p>Based on the MTU value, the data ﬁeld is split into two or more parts</p>
+<p>every newly created data portion must be a multiple of 8 bytes (64 bits) except the last one</p>
+</li>
+<li><p>Each data portion is placed in an IP datagram.</p>
+</li>
+<li><p>Each of the fragmented datagrams is forwarded as a normal IP datagram</p>
+</li>
+</ol>
+<h3 id="TCP-Transmission-Control-Protocol"><a href="#TCP-Transmission-Control-Protocol" class="headerlink" title="TCP(Transmission Control Protocol)"></a>TCP(Transmission Control Protocol)</h3><h4 id="Key-features"><a href="#Key-features" class="headerlink" title="Key features"></a>Key features</h4><ul>
+<li><strong>Connection oriented:</strong> implements mechanisms to setup and tear down a full duplex connection between end points </li>
+<li><strong>Reliable:</strong> implements mechanisms to guarantee error free and ordered delivery of information </li>
+<li><strong>Flow and Congestion controlled:</strong> implements mechanisms to control trafﬁc</li>
+</ul>
+<h4 id="Port-and-sockets"><a href="#Port-and-sockets" class="headerlink" title="Port and sockets"></a>Port and sockets</h4><ul>
+<li><strong>Port:</strong> 16-bit to identify to which application/process the message should be delivered</li>
+<li><strong>Socket:</strong> is the combination of a host’s IP address and a port number.Every communication in TCP is between two sockets, i.e. two hosts using particular ports</li>
+</ul>
+<p>TCP connection set-up</p>
+<p>Three-times Handshake </p>
+<p>Four-times Handshake</p>
+<h4 id="Positive-Acknowledgment-with-Retransmission-PAR"><a href="#Positive-Acknowledgment-with-Retransmission-PAR" class="headerlink" title="Positive Acknowledgment with Retransmission (PAR)"></a>Positive Acknowledgment with Retransmission (PAR)</h4><p>FLow control</p>
+<p>window size</p>
+<p>Reference:</p>
+<ol>
+<li><a href="https://www.jianshu.com/p/de29f55d8304" target="_blank" rel="noopener">https://www.jianshu.com/p/de29f55d8304</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
     
       
       
@@ -1617,343 +2037,6 @@ utility_i (δ) = c(T_i ) – cost_i (δ)</script><p>The <strong>conflict deal</s
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/" itemprop="url">(AI)Lec 4:Sequential Decision Making(马尔可夫决策过程MDP)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-07T00:02:09+00:00">
-                2018-11-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Lecture-4-Sequential-Decision-Making-马尔可夫决策过程MDP"><a href="#Lecture-4-Sequential-Decision-Making-马尔可夫决策过程MDP" class="headerlink" title="Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)"></a>Lecture 4: Sequential Decision Making(马尔可夫决策过程MDP)</h2><h4 id="How-to-make-the-decision"><a href="#How-to-make-the-decision" class="headerlink" title="How to make the decision"></a>How to make the decision</h4><ul>
-<li>a set of possible states S</li>
-<li>a set of possible actions A</li>
-<li>each a \in A has a set of possible outcomes s_a</li>
-</ul>
-<h5 id="Maximising-the-expected-utility-MEU"><a href="#Maximising-the-expected-utility-MEU" class="headerlink" title="Maximising the expected utility(MEU)"></a>Maximising the expected utility(MEU)</h5><p>dealing with non-deterministic actions</p>
-<script type="math/tex; mode=display">
-a^* = arg \; max_{a \in A}E(u(a))\\
-E(u(a)) = \sum_{s'\in s_a} u(s')Pr(s_a =s')</script><p><img src="https://i.postimg.cc/rwCkXCgc/AI-lec4.png" alt=""></p>
-<h5 id="find-the-Least-bad-worst-outcome"><a href="#find-the-Least-bad-worst-outcome" class="headerlink" title="find the Least-bad worst outcome"></a>find the Least-bad worst outcome</h5><script type="math/tex; mode=display">
-a^* = arg \; max_{a \in A}\{min_{s' \in s_a}u(s')\}</script><p>ignore the probability of outcomes and concentrate on <u>optimising the worst case outcome</u></p>
-<h5 id="find-the-maximax-outcome"><a href="#find-the-maximax-outcome" class="headerlink" title="find the maximax outcome"></a>find the maximax outcome</h5><script type="math/tex; mode=display">
-a^* = arg \; max_{a \in A}\{max_{s' \in s_a}u(s')\}</script><p>Just focus on the best outcome of each action and ignore possible bad outcomes</p>
-<h4 id="Markov-decision-process-MDP-马尔可夫决策过程"><a href="#Markov-decision-process-MDP-马尔可夫决策过程" class="headerlink" title="Markov decision process (MDP 马尔可夫决策过程)"></a>Markov decision process (MDP 马尔可夫决策过程)</h4><ul>
-<li>A set of states  s \in S with an initial state s_0</li>
-<li>A set of actions A(s) q in each state. ‚</li>
-<li>A transition model P(s’|s,a) </li>
-<li>A reward function R(s).</li>
-</ul>
-<h5 id="Policy"><a href="#Policy" class="headerlink" title="Policy"></a>Policy</h5><p>A solution is a policy which we write as $\pi$</p>
-<p>This is a choice of <strong>action</strong> for every state. In any state s, $\pi(s)$ identifies what action to take</p>
-<p>The optimum policy $\pi^*$ is the policy with the highest expected value.</p>
-<h5 id="Reward"><a href="#Reward" class="headerlink" title="Reward"></a>Reward</h5><p>The reward function can change the optimal policy</p>
-<p><img src="https://i.postimg.cc/BvSGqLwF/AI-week4.png" alt=""></p>
-<h4 id="Utilities-calculation"><a href="#Utilities-calculation" class="headerlink" title="Utilities calculation"></a>Utilities calculation</h4><p>utilities are summed along a run(not the only way)</p>
-<script type="math/tex; mode=display">
-U_r([s_0,s_1,...,s_n])</script><ul>
-<li><strong>Finite</strong> or <strong>infinite</strong></li>
-<li><strong>Stationary</strong> or <strong>non-stationary</strong></li>
-</ul>
-<h5 id="Addntive-rewards"><a href="#Addntive-rewards" class="headerlink" title="Addntive rewards:"></a>Addntive rewards:</h5><script type="math/tex; mode=display">
-U_r([s_0,s_1,...,s_n]) = R(s_0)+R(s_1)+...+R(s_n)</script><p>Problem: when it’s infinite, the result will not be convergence and become infinite which makes it impossible to compare to get the optimial policy</p>
-<p>Solution:</p>
-<ul>
-<li>Proper policies: always end up in terminal state, which makes the result  finite</li>
-<li>Average reward: average reward per time step.</li>
-<li>Discounted rewards</li>
-</ul>
-<h5 id="Discounted-rewards"><a href="#Discounted-rewards" class="headerlink" title="Discounted rewards:"></a>Discounted rewards:</h5><p>\gamma is the discount factor between 0 and 1.</p>
-<p>It shows the preference of the agent for current over future rewards(先到手的最好)</p>
-<p>Uncertainty about the future may not be fully presented.</p>
-<p>Human behaviours shows preference for immediate rewards.</p>
-<script type="math/tex; mode=display">
-U_r([s_0,s_1,...,s_n]) = R(s_0)+\gamma R(s_1)+...+\gamma ^ nR(s_n)</script><script type="math/tex; mode=display">
-\begin{align}
-U_r([s_0,s_1,...,s_n]) & = \sum_{t=0}^\infty \gamma ^t R(s_t)\\
-&\leq \sum_{t=0}^\infty \gamma ^t R_{max}\\
-&\leq \frac{R_{max}}{1-\gamma}
-\end{align}</script><p>so the utility is bounded by the R_{max}</p>
-<h5 id="Optimal-policy"><a href="#Optimal-policy" class="headerlink" title="Optimal policy"></a>Optimal policy</h5><p>We compare policies by computing their expected utilities</p>
-<p>The expected utility of executing π starting in s is given by:</p>
-<script type="math/tex; mode=display">
-U^\pi(s) = E[\sum_{t=0}^\infty \gamma ^t R(s_t)]</script><p>$S_t $is the state the agent gets to at time t</p>
-<p>Then the optimal policy is selected by MEU</p>
-<script type="math/tex; mode=display">
-\pi ^* = arg max_\pi U^\pi (s)</script><h4 id="Value-iteration"><a href="#Value-iteration" class="headerlink" title="Value iteration"></a>Value iteration</h4><h5 id="Bellman-Equation"><a href="#Bellman-Equation" class="headerlink" title="Bellman Equation"></a>Bellman Equation</h5><p>to caculate the utility of each state</p>
-<script type="math/tex; mode=display">
-U(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U(s')</script><p>And use the value iteration to ensure the convergence of the utility</p>
-<script type="math/tex; mode=display">
-U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Reference:</p>
-<ol>
-<li><a href="https://blog.csdn.net/jxl_1207/article/details/61414332" target="_blank" rel="noopener">https://blog.csdn.net/jxl_1207/article/details/61414332</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/35231424" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35231424</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/28084942" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28084942</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/31/NOTE-WEEK-4-Agents-and-Multi-Agent-System/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/31/NOTE-WEEK-4-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 4:Reasoning and Architectures</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-31T15:31:56+00:00">
-                2018-10-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Agents-and-Multi-Agent-System"><a href="#Agents-and-Multi-Agent-System" class="headerlink" title="Agents and Multi-Agent System"></a>Agents and Multi-Agent System</h2><h2 id="智能体与多智能体系统"><a href="#智能体与多智能体系统" class="headerlink" title="智能体与多智能体系统"></a>智能体与多智能体系统</h2><h3 id="Lecture-4-More-on-agent-architectures"><a href="#Lecture-4-More-on-agent-architectures" class="headerlink" title="Lecture 4 More on agent architectures"></a>Lecture 4 More on agent architectures</h3><p>key points:</p>
-<ol>
-<li>deductive reasoning agents</li>
-<li>Reactive agent</li>
-<li>hybrid agent</li>
-</ol>
-<h4 id="Deductive-reasoning-演绎推理-agents"><a href="#Deductive-reasoning-演绎推理-agents" class="headerlink" title="Deductive reasoning(演绎推理) agents"></a>Deductive reasoning(演绎推理) agents</h4><p>Deductive reasoning = particular <strong>symbolic</strong> approach where <strong>representations are logical formulas</strong> and reasoning used is <strong>logical deduction(逻辑演绎)</strong> (theorem proving).</p>
-<ul>
-<li>Symbolic AI paradigm</li>
-<li><p>Contains an explicitly represented, symbolic model of the world.</p>
-</li>
-<li><p>Makes decisions (for example about what actions to perform) via symbolic reasoning.</p>
-</li>
-</ul>
-<p><strong>Use logic to encode a theory stating the best action to perform in any given situation.</strong></p>
-<p>Let:</p>
-<p>• ρ be this theory (typically a set of rules)</p>
-<p>• Δ be a logical database that describes the current state of the world</p>
-<p>• Ac be the set of actions the agent can perform</p>
-<p>• Δ |- ρ ϕ means that ϕ can be deduced from Δ using ρ</p>
-<p>according to the input of environment and the logical database get the current state. then based on the theory and the current state, the agent get the right decision.</p>
-<h4 id="planning-agents"><a href="#planning-agents" class="headerlink" title="planning agents"></a>planning agents</h4><p>Planning agents find a sequence of actions that transforms an initial state into a goal state.</p>
-<p>Planning involves issues of both Search and Knowledge Representation.</p>
-<h4 id="Reactive-agent-architectures"><a href="#Reactive-agent-architectures" class="headerlink" title="Reactive agent architectures"></a>Reactive agent architectures</h4><h5 id="Traditional-AI-View"><a href="#Traditional-AI-View" class="headerlink" title="Traditional AI View"></a>Traditional AI View</h5><p>• Symbolic (internal) representation.</p>
-<p>• Manipulate this representation to work out what to do next.</p>
-<h5 id="Alternative-View"><a href="#Alternative-View" class="headerlink" title="Alternative View"></a>Alternative View</h5><p>• Symbolic reasoning is very <strong>resource demanding</strong>.</p>
-<p>• Effective behaviour does not need representation and manipulation.</p>
-<p>• Intelligent behaviour is a product of the agent’s interaction with its environment.</p>
-<p>• Intelligent behaviour emerges from the interaction of various simpler behaviours.</p>
-<p>not finished yet</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -2004,7 +2087,7 @@ U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Re
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2017,7 +2100,7 @@ U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Re
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
