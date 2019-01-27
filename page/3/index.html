@@ -230,6 +230,1247 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/12/01/NOTE-WEEK-9-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/01/NOTE-WEEK-9-Artificial-Intelligence/" itemprop="url">(AI)Lec 4:Machine Learning</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-01T16:52:24+00:00">
+                2018-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lecture-9-Introduction-to-Machine-Learning-a-peek"><a href="#Lecture-9-Introduction-to-Machine-Learning-a-peek" class="headerlink" title="Lecture 9: Introduction to Machine Learning(a peek)"></a>Lecture 9: Introduction to Machine Learning(a peek)</h2><h4 id="key-point"><a href="#key-point" class="headerlink" title="key point:"></a>key point:</h4><ul>
+<li><p>Supervised learning ‚ </p>
+<ul>
+<li>Correct answers for each instance. ‚ </li>
+<li>Use these to be able to identify correct answer on new instances.</li>
+</ul>
+</li>
+<li><p>Unsupervised learning ‚</p>
+<ul>
+<li>No correct answers available. ‚ </li>
+<li>Identify patterns/relations.</li>
+</ul>
+</li>
+<li>Reinforcement learning ‚ <ul>
+<li>Occasional rewards ‚ </li>
+<li>Need to associate actions with the rewards they bring.</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="Supervised-Learning-监督学习）"><a href="#Supervised-Learning-监督学习）" class="headerlink" title="Supervised Learning(监督学习）"></a>Supervised Learning(监督学习）</h3><p>Training set:</p>
+<script type="math/tex; mode=display">
+(X,Y)\\
+where: \;\; y_i = f(x_i)\\
+h(x) \approx f(x)</script><p>h(x) is the function that we try to find</p>
+<ul>
+<li>When y is a a member of a ﬁnite set, this is classiﬁcation </li>
+<li>When y is a number, this is regression.</li>
+</ul>
+<p>Reference: <a href="http://zhangzhejian.com/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">Note</a></p>
+<h4 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h4><h5 id="Decision-Tree"><a href="#Decision-Tree" class="headerlink" title="Decision Tree"></a>Decision Tree</h5><p>How to choose attribute: <a href="https://blog.csdn.net/xbinworld/article/details/44660339" target="_blank" rel="noopener">refference</a></p>
+<h5 id="performance-measurment"><a href="#performance-measurment" class="headerlink" title="performance measurment"></a>performance measurment</h5><p>Learning curve =% correct on test set as a function of training set size</p>
+<h5 id="Cross-validation-交叉验证）"><a href="#Cross-validation-交叉验证）" class="headerlink" title="Cross validation(交叉验证）"></a>Cross validation(交叉验证）</h5><p>s k-fold cross validation.</p>
+<ol>
+<li><p>Split data into k equal subsets. Learn on k-1 sets and test each result on the remainder.</p>
+</li>
+<li><p>Repeat k times.</p>
+</li>
+<li><p>Average test set score is a better estimate of the error rate than a single score.</p>
+</li>
+<li><p>Common values of k are 5 and 10, both giving error estimates that are very likely to be accurate.</p>
+</li>
+</ol>
+<h3 id="Unsupervised-Learning-非监督学习）"><a href="#Unsupervised-Learning-非监督学习）" class="headerlink" title="Unsupervised Learning(非监督学习）"></a>Unsupervised Learning(非监督学习）</h3><h4 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h4><ol>
+<li>Given a set of examples:</li>
+</ol>
+<script type="math/tex; mode=display">
+X =\{x_1 , . . . x_N\}</script><p>​    identify K different groups.</p>
+<ol>
+<li><p>Each $x_i$ should be in the group that it matches most closely. Identify each group by its centre/mean, $u_j$ .</p>
+</li>
+<li><p>The clusters $z^i$ are then made up of the points closest to the $µ_j $.</p>
+</li>
+</ol>
+<h5 id="K-means"><a href="#K-means" class="headerlink" title="K-means"></a>K-means</h5><ul>
+<li><p>Pick random values for µ k .</p>
+</li>
+<li><p>Then repeat:</p>
+<ol>
+<li><p>Assign each x i to its closest cluster centre:</p>
+<script type="math/tex; mode=display">
+z^i = arg \; min_{u_k} \; distance(x_i,u_k)</script></li>
+<li><p>Update each cluster centre as the mean of the points assigned to that cluster: </p>
+<p>until converged</p>
+<script type="math/tex; mode=display">
+u_k = \frac{1}{|\{j:z^i=k\}|} \sum_{i\in\{j:z^i = k\}}x_i</script></li>
+</ol>
+</li>
+<li></li>
+</ul>
+<p>​    </p>
+<p>​    </p>
+<h3 id="Reinforcement-learning-强化学习"><a href="#Reinforcement-learning-强化学习" class="headerlink" title="Reinforcement learning(强化学习)"></a>Reinforcement learning(强化学习)</h3><h4 id="Passive-被动-RL"><a href="#Passive-被动-RL" class="headerlink" title="Passive(被动) RL"></a>Passive(被动) RL</h4><p>In passive reinforcement learning the agent’s <strong>policy is ﬁxed</strong></p>
+<p><a href="http://zhangzhejian.com/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/">MDP</a></p>
+<h5 id="Direct-utility-estimation"><a href="#Direct-utility-estimation" class="headerlink" title="Direct utility estimation"></a>Direct utility estimation</h5>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/" itemprop="url">(AI)Lec 7:Argumentation(论证) I</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-20T12:16:35+00:00">
+                2018-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lecture-7-Argumentation-I"><a href="#Lecture-7-Argumentation-I" class="headerlink" title="Lecture 7: Argumentation I"></a>Lecture 7: Argumentation I</h2><h4 id="Abstract-argumentation-framework"><a href="#Abstract-argumentation-framework" class="headerlink" title="Abstract argumentation framework"></a>Abstract argumentation framework</h4><p>An abstract argumentation framework is a tuple &lt;𝑆, 𝑅&gt; where 𝑆 is a set of arguments and 𝑅 ⊆ 𝑆 × 𝑆 is an attack relation.</p>
+<p>For 𝑎, 𝑏 ∈ 𝑆, (𝑎, 𝑏) ∈ 𝑅 means that argument 𝑎 attacks argument 𝑏.</p>
+<h5 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h5><p>The abstract argumentation framework 𝑆, 𝑅 where 𝑆 = {𝑎1, 𝑎2, 𝑎3} and 𝑅 = { (𝑎1, 𝑎2) , (𝑎2, 𝑎1) , (𝑎3, 𝑎2) }can be represented as:</p>
+<p><img src="https://i.postimg.cc/XvqS9WhJ/arg-ex1.png" alt=""></p>
+<h5 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h5><p>𝑆 = {𝑎1, 𝑎2, 𝑎3, 𝑎4, 𝑎5}</p>
+<p>𝑅 ={(𝑎1, 𝑎2) , (𝑎2, 𝑎5) , (𝑎2, 𝑎3), (𝑎3, 𝑎2) , (𝑎4, 𝑎3 ), (𝑎4, 𝑎4)}</p>
+<p><img src="https://i.postimg.cc/Jz79WmRq/argex2.png" alt=""></p>
+<h4 id="Conflict-free-sets"><a href="#Conflict-free-sets" class="headerlink" title="Conflict-free sets"></a>Conflict-free sets</h4><p>A set 𝑇 ⊆ 𝑆 is conflict-free <strong>if and only if</strong> there are no arguments in 𝑇 that attack each other. Formally:</p>
+<p>For all (𝑎, 𝑏) ∈ 𝑇, (𝑎, 𝑏) ∉ 𝑅.</p>
+<h5 id="As-for-Example-1"><a href="#As-for-Example-1" class="headerlink" title="As for Example 1:"></a>As for Example 1:</h5><p>The conflict-free subsets are:</p>
+<p><strong>{}</strong>,{𝑎1,},{𝑎2},{𝑎3},{𝑎1, 𝑎3}</p>
+<p>The <strong>empty set</strong> is always in the conflict-free subset.</p>
+<h5 id="As-for-Example-2"><a href="#As-for-Example-2" class="headerlink" title="As for Example 2:"></a>As for Example 2:</h5><p><strong>{}</strong>,{𝑎1,},{𝑎2},{𝑎3},{a5},{a1,a5},{a1,a3},{a3,a5}</p>
+<h4 id="Argument-defence"><a href="#Argument-defence" class="headerlink" title="Argument defence"></a>Argument defence</h4><p>A set 𝑇 ⊆ 𝑆 defends an argument 𝑥 ∈ 𝑆 if and only if for every 𝑦 ∈ 𝑆 such that 𝑦 attacks 𝑥 there is an element 𝑧 ∈ 𝑇 such that 𝑧 attacks 𝑦.</p>
+<h5 id="As-for-example-2"><a href="#As-for-example-2" class="headerlink" title="As for example 2:"></a>As for example 2:</h5><p><img src="https://i.postimg.cc/Jz79WmRq/argex2.png" alt=""></p>
+<p>{a1} defends a5</p>
+<p>{a4} defends a4</p>
+<p>{a1,a4},{a3,a4} defends a3</p>
+<p>{} defends a1</p>
+<h4 id="Admissible-可采纳的）"><a href="#Admissible-可采纳的）" class="headerlink" title="Admissible(可采纳的）"></a>Admissible(可采纳的）</h4><p>A set 𝐴 ⊆ 𝑆 is admissible if and only if 𝐴 is conflict-free and 𝐴 defends each argument that is a member of 𝐴.</p>
+<p>First it should be a subset of conflict-free.</p>
+<p>Then find the defence relationship between them.</p>
+<h5 id="As-for-Example-3"><a href="#As-for-Example-3" class="headerlink" title="As for Example 3:"></a>As for Example 3:</h5><p>{},{a1},{a3},{a1,a3}</p>
+<h5 id="As-for-Example-2-1"><a href="#As-for-Example-2-1" class="headerlink" title="As for Example 2:"></a>As for Example 2:</h5><p>{},{a1}, {a1,a5}</p>
+<h4 id="Complete-Extention-subset-of-admissible"><a href="#Complete-Extention-subset-of-admissible" class="headerlink" title="Complete Extention(subset of admissible)"></a>Complete Extention(subset of admissible)</h4><p>A complete extension is an admissible set that <u>includes all arguments it defends</u>.</p>
+<h5 id="Example-2-1"><a href="#Example-2-1" class="headerlink" title="Example 2:"></a>Example 2:</h5><p><img src="https://i.postimg.cc/vTbpHxJ4/argex3.png" alt=""></p>
+<h4 id="Maximal-and-minimal-subsets"><a href="#Maximal-and-minimal-subsets" class="headerlink" title="Maximal and minimal subsets"></a>Maximal and minimal subsets</h4><h5 id="Maximal-subsets"><a href="#Maximal-subsets" class="headerlink" title="Maximal subsets"></a>Maximal subsets</h5><p>Take 𝐶 ⊆ 2 𝑆 , a maximal subset of 𝑆 in 𝐶 is a set 𝑇 ∈ 𝐶 such that no other set in 𝐶 strictly <strong>includes</strong> 𝑇.</p>
+<p>Formally, 𝑇 is a maximal subset of 𝑆 in 𝐶 if and only if ∄𝑇′ ∈ 𝐶 such that 𝑇 ⊊ 𝑇 ′ .</p>
+<p><img src="https://i.postimg.cc/X78yJMCq/argex4.png" alt=""></p>
+<h5 id="Minimal-subsets"><a href="#Minimal-subsets" class="headerlink" title="Minimal subsets"></a>Minimal subsets</h5><p>Take 𝐶 ⊆ 2 𝑆 , a minimal subset of 𝑆 in 𝐶 is a set 𝑇 ∈ 𝐶 such that no other set in 𝐶 is <strong>strictly included in</strong> 𝑇.</p>
+<p>Formally, 𝑇 is a minimal subset of 𝑆 in 𝐶 if and only if ∄𝑇′ ∈ 𝐶 such that 𝑇 ′ ⊊ 𝑇.</p>
+<p><img src="https://i.postimg.cc/fRRSSHcK/argex5.png" alt=""></p>
+<h4 id="Grounded-extention-min"><a href="#Grounded-extention-min" class="headerlink" title="Grounded extention(min)"></a>Grounded extention(min)</h4><p>The grounded extension is the minimal complete extension with respect to set inclusion (ie, the minimal subset of the set of complete extensions).</p>
+<p><img src="https://i.postimg.cc/dQnqZJ4b/argex6.png" alt=""></p>
+<p><u><strong>The grounded extension always exists and it is unique.</strong></u></p>
+<p><strong><u>The grounded extension can be empty.</u></strong></p>
+<p><img src="https://i.postimg.cc/RVNz3K3t/argex7.png" alt=""></p>
+<h4 id="Prefered-extention-max"><a href="#Prefered-extention-max" class="headerlink" title="Prefered extention(max)"></a>Prefered extention(max)</h4><p>A preferred extension is a complete extension that is maximal with respect to set inclusion (ie, a maximal subset of the set of all complete extensions).</p>
+<h4 id="Stable-extention"><a href="#Stable-extention" class="headerlink" title="Stable extention"></a>Stable extention</h4><p>A stable extension of an argumentation framework 𝑆, 𝑅 is a <strong>preferred extension</strong> 𝐸 such that for all 𝑦 ∈ 𝑆 ∖ 𝐸 there exists 𝑥 ∈ 𝐸 such that 𝑥, 𝑦 ∈ 𝑅 (<strong>in other words, for every argument 𝑦 that isn’t part of 𝐸, there is an argument in 𝐸 that attacks 𝑦</strong>).</p>
+<h5 id="Example-1-1"><a href="#Example-1-1" class="headerlink" title="Example 1:"></a>Example 1:</h5><p><img src="https://i.postimg.cc/MGx6jXJ8/argex-8.png" alt=""></p>
+<h5 id="Example-2-2"><a href="#Example-2-2" class="headerlink" title="Example 2:"></a>Example 2:</h5><p><img src="https://i.postimg.cc/Bvgq5sJP/argex9.png" alt=""></p>
+<h5 id="Credulous-acceptance（信得过的接受）"><a href="#Credulous-acceptance（信得过的接受）" class="headerlink" title="Credulous acceptance（信得过的接受）"></a>Credulous acceptance（信得过的接受）</h5><p>An argument is credulously accepted by an argumentation framework under a particular semantics if and only if it is part of at least one of the extensions generated by those semantics.</p>
+<h5 id="Skeptical-acceptance（持有怀疑的接受）"><a href="#Skeptical-acceptance（持有怀疑的接受）" class="headerlink" title="Skeptical acceptance（持有怀疑的接受）"></a>Skeptical acceptance（持有怀疑的接受）</h5><p>An argument is skeptically accepted by an argumentation framework under a particular semantics if and only if it is part of all of the extensions generated by those semantics.</p>
+<h5 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h5><p><img src="https://i.postimg.cc/ht39MFMv/argex10.png" alt=""></p>
+<p><img src="https://i.postimg.cc/P5qWmfW0/argex11.png" alt=""></p>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><h5 id="Relationships-between-those-sets"><a href="#Relationships-between-those-sets" class="headerlink" title="Relationships between those sets"></a>Relationships between those sets</h5><p><strong>Min/max subset ⊆ Complete-extention⊆ adimissible ⊆ conflict-free</strong></p>
+<p><strong>stable extention ⊆ prefered/max extention</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/13/NOTE-WEEK-6-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/13/NOTE-WEEK-6-Artificial-Intelligence/" itemprop="url">(AI)Lec 6:Probabilistic reasoning over time</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T17:01:53+00:00">
+                2018-11-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lecture-6-Probabilistic-reasoning-over-time"><a href="#Lecture-6-Probabilistic-reasoning-over-time" class="headerlink" title="Lecture 6: Probabilistic reasoning over time"></a>Lecture 6: Probabilistic reasoning over time</h2><h4 id="Dynamic-Bayesian-Network-DBN"><a href="#Dynamic-Bayesian-Network-DBN" class="headerlink" title="Dynamic Bayesian Network(DBN)"></a>Dynamic Bayesian Network(DBN)</h4><p>to handle dynamic situation</p>
+<p>Consider the world to be a series of time slices. Each slice contains some variables:</p>
+<ul>
+<li>the set $X_t$ which we can’t observe</li>
+<li>the set $E_t$ which we can observe</li>
+</ul>
+<h5 id="Transition-model-过渡模型"><a href="#Transition-model-过渡模型" class="headerlink" title="Transition model(过渡模型)"></a>Transition model(过渡模型)</h5><script type="math/tex; mode=display">
+P(X_t|X_{0:t-1})</script><p>Problem: when t is large, the data and computation cost too many resource</p>
+<p>Solution: make a <strong>Markov Assumption</strong> that the value of the current state depends only on a ﬁnite ﬁxed number of previous states</p>
+<p><img src="https://i.postimg.cc/sX9QM0YX/transitionmodel.png" alt=""></p>
+<p>First-order:</p>
+<script type="math/tex; mode=display">
+P(X_t|X_{0:t-1}) = P(X_t|X_{t-1})</script><p>Second-order:</p>
+<script type="math/tex; mode=display">
+P(X_t|X_{0:t-1}) = P(X_t|X_{t-2},X_{t-1})</script><h5 id="Sensor-model"><a href="#Sensor-model" class="headerlink" title="Sensor model"></a>Sensor model</h5><p>The evidence variables $E_t$ could depend on lots of previous variables.</p>
+<p>But we will assume the state is constructed in such a way that evidence <strong>only depends on the current state</strong>.</p>
+<p>A Markov assumption for the sensor model:</p>
+<script type="math/tex; mode=display">
+P(E_t|X_{0:t-1},E_{0:t-1}) = P(E_t|X_{t})</script><p><img src="https://i.postimg.cc/kMsR9zMY/sensormodel.png" alt=""></p>
+<p>in this bayesian network, arrows run from effect to causes.</p>
+<script type="math/tex; mode=display">
+P(X_{0:t},E_{1:t}) = P(X_0)\prod_{i=1}^t [P(X_i|X_{i-1})P(E_i|X_i)]\\
+because:\quad P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))</script><p>and in this network, the parent of $E_t$ is $X_t$</p>
+<h4 id="Inference-tasks"><a href="#Inference-tasks" class="headerlink" title="Inference tasks"></a>Inference tasks</h4><ul>
+<li>Filtering: $P(X_t|e_{1:t})$  determine belief state— input to the decision process of a rational agent </li>
+<li>Prediction:$P(X_{t+k}|e_{1:t})$ for k &gt; 0  evaluate future states</li>
+<li>smoothing: P(X_k|e_{1:t}) for 0&lt;=k&lt;t better estimate past states</li>
+<li>Most likely explanation: $arg_max_{x_{1:t}}P(x_{1:t}|e_{1:t})$ </li>
+</ul>
+<h5 id="Filtering"><a href="#Filtering" class="headerlink" title="Filtering"></a>Filtering</h5><p>determine the belief state (current state) $x_t$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{P}(X_t | e_{1:t}) &= \mathcal{P}(X_t | e_{1:t-1},e_{t})\\
+&=\alpha \mathcal{P}(e_{t}|X_t , e_{1:t-1})\mathcal{P}(X_t|e_{1:t-1}) \; \;Bayes \; rule\\
+&=\alpha \color{maroon}{\mathcal{P}(e_{t}|X_t)} \mathcal{P}(X_t|e_{1:t-1}) \;\;\; Markov \; assumption\\
+&=\alpha \color{maroon}{\mathcal{P}(e_{t}|X_t)} \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1},\color{red}{e_{1:t}})\mathcal{P}(X_{t-1}|e_{1:t-1}) \;\;\;\\
+&=\alpha \color{maroon}{\mathcal{P}(e_{t}|X_t)} \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1})\mathcal{P}(X_{t-1}|e_{1:t-1}) \;\;\; Markov \; assumption\\
+\end{align}</script><p>so we can make the filtering to a iteration function:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+f_{1:t} &= \mathcal{P}(X_t|e_{1:t}) \\
+&=  \alpha \mathcal{P}(e_{t}|X_t) \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1})\mathcal{P}(X_{t-1}|e_{1:t-1})\\
+& = \alpha \mathcal{P}(e_{t}|X_t) \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1}) f_{1:t-1}
+\end{align}</script><h5 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h5><p>Prediction is filtering without new evidence</p>
+<p>used to predict future state $x_{t+k}$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{P}(X_{t+1}|e_{1:t}) &= \sum_{x_t} \mathcal{P}(X_{t+1}|x_t,e_{1:t})\mathcal{P}(x_t|e_{1:t})\\
+& =  \sum_{x_t} \mathcal{P}(X_{t+1}|x_t)\mathcal{P}(x_t|e_{1:t})\\
+
+\end{align}</script><p>Above is predict one step forward</p>
+<p>K steps forward:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{P}(X_{t+k}|e_{1:t}) &= \sum_{x_{t+k-1}} \mathcal{P}(X_{t+k}|x_{t+k-1},e_{1:t})\mathcal{P}(x_t|e_{1:t})\\
+& =  \sum_{x_{t+k-1}} \mathcal{P}(X_{t+k}|x_{t+k-1})\mathcal{P}(x_{t+k-1}|e_{1:t})\\
+\end{align}</script><h5 id="Smoothing"><a href="#Smoothing" class="headerlink" title="Smoothing"></a>Smoothing</h5><p>1&lt; k &lt; t</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\mathcal{P}(X_k|e_{1:t}) &= \mathcal{P}(X_k|e_{1:k},e_{k+1:t})\\
+&= \alpha \mathcal{P}(X_k|e_{1:k})\mathcal{P}(e_{k+1:t}|X_k,e_{1:k}) \;\;\; Bayes\; rule\\
+&= \alpha \mathcal{P}(X_k|e_{1:k})\mathcal{P}(e_{k+1:t}|X_k) \;\;\; conditional\; independence \\
+& = \alpha f_{1:k} b_{k+1:t}
+\end{align}</script><p>“f” is a forward message computed as filtering</p>
+<p>“b” is a backward message</p>
+<script type="math/tex; mode=display">
+\begin{align}
+b_{k+1:t} &= \mathcal{P}(e_{k+1:t}|X_k)\\
+&= \sum_{x_{k+1}}\mathcal{P}(e_{k+1:t}|x_{k+1},X_k) \mathcal{P}(x_{k+1}|X_k)\\
+&= \sum_{x_{k+1}}\mathcal{P}(e_{k+1:t}|x_{k+1}) \mathcal{P}(x_{k+1}|X_k) \;\;\; conditional\; independence\\
+&= \sum_{x_{k+1}}\mathcal{P}(e_{k+2:t},e_{k+1}|x_{k+1}) \mathcal{P}(x_{k+1}|X_k)\\
+&= \color{red}{P(e_{k+1}|x_{k+1})}P(e_{k+2}|x_{k+1}) \color{red}{\mathcal{P}(x_{k+1}|X_k)}\\
+\end{align}</script><p>The two red terms can get from the model. We only need to compute the second part</p>
+<h5 id="most-likely"><a href="#most-likely" class="headerlink" title="most likely"></a>most likely</h5><h4 id="Hidden-Markov-Model-HMM-隐式马尔可夫链"><a href="#Hidden-Markov-Model-HMM-隐式马尔可夫链" class="headerlink" title="Hidden Markov Model (HMM) 隐式马尔可夫链"></a>Hidden Markov Model (HMM) 隐式马尔可夫链</h4><p>Not finished yet</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/11/NOTE-WEEK-6-Agents-and-Multi-Agent-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/11/NOTE-WEEK-6-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 6:Negotiation(reaching agreements)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T19:39:08+00:00">
+                2018-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Agents-and-Multi-Agent-System"><a href="#Agents-and-Multi-Agent-System" class="headerlink" title="Agents and Multi-Agent System"></a>Agents and Multi-Agent System</h2><h2 id="智能体与多智能体系统"><a href="#智能体与多智能体系统" class="headerlink" title="智能体与多智能体系统"></a>智能体与多智能体系统</h2><h3 id="Lecture-6-Negotiation-reaching-agreements"><a href="#Lecture-6-Negotiation-reaching-agreements" class="headerlink" title="Lecture 6: Negotiation(reaching agreements)"></a>Lecture 6: Negotiation(reaching agreements)</h3><h4 id="Game-theory"><a href="#Game-theory" class="headerlink" title="Game theory"></a>Game theory</h4><p><a href="http://zhangzhejian.com/2018/11/11/NOTE-WEEK-5-Artificial-Intelligence/">Basic knowledge</a></p>
+<ul>
+<li>Dominant Strategy</li>
+<li>Nash Equilibrium</li>
+<li>Pareto optimal</li>
+<li>social welfare</li>
+</ul>
+<p>Properties of agreement mechanism</p>
+<ul>
+<li><p>An agreement mechanism is <strong>individually rational</strong> if no agent will end up worse off as a result of participating (agents cannot end up with negative expected utility). Otherwise it would not be rational for agents to participate.</p>
+</li>
+<li><p>An agreement mechanism is <strong>symmetric</strong> if the rules of the game are the same for all participants.</p>
+</li>
+<li><p>An agreement mechanism is <strong>fair</strong> if participants have equal opportunity to influence the outcome.</p>
+</li>
+<li><p>An agreement mechanism is <strong>Pareto optimal</strong> if it guarantees a Pareto optimal outcome.</p>
+</li>
+<li><p>An agreement mechanism <strong>maximises social utility</strong> if it guarantees an outcome that maximises social utility.</p>
+</li>
+<li><p>An agreement mechanism is <strong>guaranteed to terminate</strong> if there is no way that participants following the protocol can continue to interact indefinitely.</p>
+</li>
+<li><p>An agreement mechanism is <strong>stable</strong> if a Nash Equilibrium exists.</p>
+</li>
+<li><p>An agreement mechanism is <strong>simple</strong> if it is easy to work out what the best strategy is.</p>
+</li>
+</ul>
+<h4 id="Negotiation"><a href="#Negotiation" class="headerlink" title="Negotiation"></a>Negotiation</h4><h5 id="Alternating-offers-protocol-交替offer协议"><a href="#Alternating-offers-protocol-交替offer协议" class="headerlink" title="Alternating offers protocol (交替offer协议)"></a>Alternating offers protocol (交替offer协议)</h5><p>This is about bargaining for resource division</p>
+<ul>
+<li><p>One-to-one protocol.</p>
+</li>
+<li><p>Negotiation takes place in series of rounds.</p>
+</li>
+<li>Not guaranteed to terminate</li>
+</ul>
+<p>If there’s no agreement, we say the result is the conflict deal !</p>
+<h4 id="Task-Oriented-Domains-TOD"><a href="#Task-Oriented-Domains-TOD" class="headerlink" title="Task Oriented Domains (TOD)"></a>Task Oriented Domains (TOD)</h4><p>Agents have tasks to achieve. Negotiation leads to task redistribution.</p>
+<p>A TOD is a triple</p>
+<p>​        <t, ag,="" c=""></t,></p>
+<p>where</p>
+<p>• T is the (finite) set of all possible tasks</p>
+<p>• Ag = {1,…,n} is the set of participating agents</p>
+<p>• $c = 2^T → ℝ+$ defines the cost of executing each subset of tasks</p>
+<p>An encounter is a collection of sets of tasks associated with each agent $<t_1 ,…,t_n=""> $</t_1></p>
+<p>where T i ⊆ T for each i ∈ Ag</p>
+<p>A deal δ = <d1, d2=""> is an allocation of the tasks T1 ∪ T2 to the agents 1 and 2</d1,></p>
+<p>The utility of deal δ to agent i is:</p>
+<script type="math/tex; mode=display">
+utility_i (δ) = c(T_i ) – cost_i (δ)</script><p>The <strong>conflict deal</strong>, Θ, is the deal $<t_1 ,="" t_2="">$ consisting of the tasks originally allocated. Note that $utility_i (Θ) = 0$ for all i ∈ Ag.</t_1></p>
+<p>Deal δ is <strong>individual rational</strong> if it weakly dominates the conflict deal, i.e., neither agent prefers the conflict deal.</p>
+<p><strong>negoation set</strong>: individual rational, and Pareto optimal.</p>
+<h5 id="Monotonic-concession-protocol-单方面让步协议"><a href="#Monotonic-concession-protocol-单方面让步协议" class="headerlink" title="Monotonic concession protocol(单方面让步协议)"></a>Monotonic concession protocol(单方面让步协议)</h5><p>Negotiation proceeds in rounds.</p>
+<p>On round 1, agents simultaneously propose a deal from the negotiation set.</p>
+<p>Agreement is reached if one agent finds that the deal proposed by the other is at least as good or better than its proposal. If each agent’s offer matches or exceeds that of the other agent, then one of the proposals is randomly selected as the agreement deal. If only one proposal exceeds of matches the other’s, then this is the agreement deal.</p>
+<p>If no agreement is reached, then negotiation proceeds to another round of simultaneous proposals.</p>
+<p>In round u + 1, no agent is allowed to make a proposal that is less preferred by the other agent than the deal it proposed at time u.</p>
+<p>If neither agent makes a concession in some round u &gt; 0, then negotiation terminates, with the conflict deal.</p>
+<h4 id="Zeuthen-strategy"><a href="#Zeuthen-strategy" class="headerlink" title="Zeuthen strategy"></a>Zeuthen strategy</h4><p>The Zeuthen strategy determines what an agent should do by answering three questions.</p>
+<ul>
+<li><p>What should an agent’s first proposal be?</p>
+<p>Its most preferred deal.</p>
+</li>
+<li><p>On any given round, who should concede?</p>
+<p>The agent least willing to risk conflict (if equal risk, flip a coin).</p>
+</li>
+<li><p>If an agent concedes, then how much should it concede?</p>
+<p>Just enough to change the balance of risk.</p>
+</li>
+</ul>
+<h5 id="Deception-in-TODs"><a href="#Deception-in-TODs" class="headerlink" title="Deception in TODs"></a>Deception in TODs</h5><ul>
+<li><p>Phantom and Decoy tasks</p>
+<ul>
+<li>Pretending that you have been allocated tasks you have not</li>
+</ul>
+</li>
+<li><p>Hidden tasks</p>
+<ul>
+<li>Pretending not to have been allocated tasks that you have been</li>
+</ul>
+</li>
+</ul>
+<p>not finished</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/11/NOTE-WEEK-5-Agents-and-Multi-Agent-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/11/NOTE-WEEK-5-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 5:Communication, coordination and working together</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T19:39:01+00:00">
+                2018-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Agents-and-Multi-Agent-System"><a href="#Agents-and-Multi-Agent-System" class="headerlink" title="Agents and Multi-Agent System"></a>Agents and Multi-Agent System</h2><h2 id="智能体与多智能体系统"><a href="#智能体与多智能体系统" class="headerlink" title="智能体与多智能体系统"></a>智能体与多智能体系统</h2><h3 id="Lecture-5-Communication-coordination-and-working-together"><a href="#Lecture-5-Communication-coordination-and-working-together" class="headerlink" title="Lecture 5: Communication, coordination and working together"></a>Lecture 5: Communication, coordination and working together</h3><h4 id="Agent-communication"><a href="#Agent-communication" class="headerlink" title="Agent communication"></a>Agent communication</h4><p>agents are autonomous and self-interested. One agent can’t force another to perform some action</p>
+<p>Instead they can perform <u>communicative actions</u> to try to influence other agents.</p>
+<h4 id="Speech-act-theory"><a href="#Speech-act-theory" class="headerlink" title="Speech act theory"></a>Speech act theory</h4><p>Speech act theory treats communication as action. It is a theory of how utterances are used to achieve intentions.</p>
+<h5 id="Three-aspects-of-speech-acts"><a href="#Three-aspects-of-speech-acts" class="headerlink" title="Three aspects of speech acts"></a>Three aspects of speech acts</h5><ul>
+<li><p>The <strong>locutionary act(语言行为)</strong>: the act of making the utterance</p>
+<ul>
+<li>Saying “Please make me some tea”</li>
+</ul>
+</li>
+<li><p>The <strong>illocutionary act(言外行为)</strong>:<strong>(intention behind utterance)</strong> the conveying of the speaker’s intentions to the hearer</p>
+<ul>
+<li>The speaker has requested the hearer to make some tea</li>
+</ul>
+</li>
+<li><p>The <strong>perlocution(表达效果)</strong>: the effect of the act</p>
+<ul>
+<li>The hearer (perhaps) makes some tea.</li>
+</ul>
+</li>
+</ul>
+<p>Speaker makes a locutionary act(语言行为) with hope(言外行为) that the hearer correctly recognises the speaker’s intentions and acts(表达效果) accordingly.</p>
+<h5 id="Five-types-of-speech-act"><a href="#Five-types-of-speech-act" class="headerlink" title="Five types of speech act"></a>Five types of speech act</h5><ul>
+<li><strong>Representatives(阐述):</strong>commit the speaker to the truth of an expressed proposition, e.g. ‘it’s raining’.</li>
+<li><strong>Directiives(指令):</strong> attempt to get the hearer to do something, e.g. ‘please make the tea’.</li>
+<li><strong>Commissive(承诺):</strong> commit the speaker to doing something, e.g. ‘I promise to come to the lecture on Thursday’.</li>
+<li><strong>Expressive(表达):</strong> express some mental state, e.g. ‘thank you!’.</li>
+<li><strong>Declaration(宣告):</strong> entail the occurrence of an action in themselves, so effect some changes in an institutional state of affairs, e.g. declaring war, ‘We the jury find the defendant to be guilty’.</li>
+</ul>
+<p>we can in general think of a speech act as having two components:</p>
+<ul>
+<li>a <strong>performative verb</strong> (e.g request, inform, promise)</li>
+<li><strong>Propositional content命题内容</strong>(e.g ‘the door is closed’)</li>
+</ul>
+<p>Example：</p>
+<p>performative = request content = ‘the door is closed’ speech act = ‘please close the door’</p>
+<p>performative = inform content = ‘the door is closed’ speech act = ‘the door is closed!’</p>
+<p>performative = inquire content = ‘the door is closed’ speech act = ‘is the door closed?’</p>
+<h4 id="Plan-based-theory-of-speech-acts"><a href="#Plan-based-theory-of-speech-acts" class="headerlink" title="Plan-based theory of speech acts"></a>Plan-based theory of speech acts</h4><p><strong>request(s, h, φ)</strong></p>
+<p>pre:</p>
+<p>s believes (h can do φ)</p>
+<p>s believes (h believes (h can do φ))</p>
+<p>s believes (s want φ)</p>
+<p>post:</p>
+<p>h believe (s believe (s want φ))</p>
+<p><strong>inform(s, h, φ)</strong></p>
+<p>pre:</p>
+<p>s believes φ</p>
+<p>s believes (s wants (h to believe φ))</p>
+<p>post:</p>
+<p>h believes (s believes φ)</p>
+<h5 id="KQML-Knowledge-Query-Manipulation-Language-Agent-based"><a href="#KQML-Knowledge-Query-Manipulation-Language-Agent-based" class="headerlink" title="KQML(Knowledge Query Manipulation Language) Agent-based"></a>KQML(Knowledge Query Manipulation Language) Agent-based</h5><p>comprised of <strong>two parts:</strong></p>
+<ol>
+<li><h5 id="the-KQML-‘Outer’-language-that-defines-‘communicative-verbs’-or-performatives-examples"><a href="#the-KQML-‘Outer’-language-that-defines-‘communicative-verbs’-or-performatives-examples" class="headerlink" title="the KQML. ‘Outer’ language that defines ‘communicative verbs’ or performatives, examples:"></a>the KQML. ‘Outer’ language that defines ‘communicative verbs’ or performatives, examples:</h5></li>
+</ol>
+<ul>
+<li>ask-if (‘is it true that. . . ’)</li>
+<li>perform (‘please perform the following action. . . ’)</li>
+<li>tell (‘it is true that. . . ’)</li>
+<li>reply (‘the answer is . . . ’)</li>
+</ul>
+<ol>
+<li><h5 id="The-knowledge-interchange-format-KIF"><a href="#The-knowledge-interchange-format-KIF" class="headerlink" title="The knowledge interchange format (KIF)."></a>The knowledge interchange format (KIF).</h5></li>
+</ol>
+<ul>
+<li>Language for expressing message <strong>content</strong>. Used to state:<ul>
+<li><strong>Properties</strong> of things in a domain<ul>
+<li>E.g. ‘The temperature of m1 is 83 Celsius’ (= (temperature m1) (scalar 83 Celsius))</li>
+</ul>
+</li>
+<li><strong>Relationships</strong> between things in a domain<ul>
+<li>E.g. ‘Any individual with the property of being a person also has the property of being a mammal’ (defrelation person (?x) :=&gt; (mammal ?x))</li>
+</ul>
+</li>
+<li><strong>General properties</strong> of things in a domain<ul>
+<li>E.g. ‘An object is a bachelor if the object is a man and is not married’ (defrelation bachelor (?x) := (and (man ?x) (not (married ?x))))</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="Criticisms"><a href="#Criticisms" class="headerlink" title="Criticisms:"></a>Criticisms:</h5><ul>
+<li><p>Semantics of <u>performatives</u> only informally defined, so open to different interpretations.(执行动词的定义是非正式的，所以可以会导致不同的解释)</p>
+</li>
+<li><p>No ‘commissives’, could argue that performative set rather ad hoc.</p>
+</li>
+</ul>
+<h4 id="FIPA-Agent-Communication-Language-ACL"><a href="#FIPA-Agent-Communication-Language-ACL" class="headerlink" title="FIPA Agent Communication Language(ACL)"></a>FIPA Agent Communication Language(ACL)</h4><h5 id="Similar-to-KQML"><a href="#Similar-to-KQML" class="headerlink" title="Similar to KQML:"></a>Similar to KQML:</h5><ul>
+<li>performative<ul>
+<li>20 performatives in FIPA</li>
+</ul>
+</li>
+<li>content</li>
+<li>housekeeping<ul>
+<li>e.g., sender, etc</li>
+</ul>
+</li>
+</ul>
+<h5 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h5><p>(inform</p>
+<p>​    :sender         agent1</p>
+<p>​    :receiver     agent5</p>
+<p>​    :content          (price good200 150)</p>
+<p>​    :language     sl</p>
+<p>​    :ontology     hpl-auction</p>
+<p>)</p>
+<h5 id="FIPA-ACL-semantics-语义学"><a href="#FIPA-ACL-semantics-语义学" class="headerlink" title="FIPA ACL semantics(语义学)"></a>FIPA ACL semantics(语义学)</h5><p>can represent beliefs, desires, uncertain beliefs of agents, and actions they perform</p>
+<p><strong>Feasibility precondition</strong>: constraint the sender must satisfy.</p>
+<p><strong>Rational effect</strong>: what sender is attempting to achieve (perlocutionary act).</p>
+<p>Inform and Request are the two basic performatives in FIPA. All others are macro definitions, defined in terms of these.</p>
+<h5 id="Inform"><a href="#Inform" class="headerlink" title="Inform"></a>Inform</h5><h5 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h5><h5 id="Interaction-protocols-IPs"><a href="#Interaction-protocols-IPs" class="headerlink" title="Interaction protocols(IPs)"></a>Interaction protocols(IPs)</h5><p>define interaction sequences for standard situations in agent systems,</p>
+<p>Provide explicit context; make it easier to reason about which messages to send and easier to interpret messages received.</p>
+<h4 id="ontologies-本体论"><a href="#ontologies-本体论" class="headerlink" title="ontologies(本体论)"></a>ontologies(本体论)</h4><h4 id="working-together"><a href="#working-together" class="headerlink" title="working together"></a>working together</h4><p>It is often necessary or preferable for agents to work together in order to achieve their goals.</p>
+<p>Since agents are autonomous they make decisions about what to do at run-time, they must be capable of dynamically coordinating their activities and cooperating with others.</p>
+<p>Compare this with traditional distributed and concurrent systems, where coordination and cooperation is typically hardwired at design time.</p>
+<p>two criteria for assessing how well agents work together.</p>
+<h5 id="Coherence-连贯性"><a href="#Coherence-连贯性" class="headerlink" title="Coherence(连贯性)"></a>Coherence(连贯性)</h5><p>is about how “well the [multiagent] system behaves as a unit along some dimension of evaluation”. 作为一个整体的表现</p>
+<p>We can measure it in terms of solution quality, e.g. how efficiently resources are used, conceptual clarity.</p>
+<h5 id="Coordination-协调性"><a href="#Coordination-协调性" class="headerlink" title="Coordination(协调性)"></a>Coordination(协调性)</h5><p>is about “the degree. . . to which [the agents]. . . can avoid “extraneous” activity [such as] . . . synchronizing and aligning their activities”. 对于各自活动的同步和调整</p>
+<p>If the system is perfectly coordinated, agents will not get in each others’ way, in a physical or a metaphorical sense.</p>
+<h4 id="Cooperative-Distributed-Problem-Solving-CDPS"><a href="#Cooperative-Distributed-Problem-Solving-CDPS" class="headerlink" title="Cooperative Distributed Problem Solving(CDPS)"></a>Cooperative Distributed Problem Solving(CDPS)</h4><p>Stage of CDPS</p>
+<ul>
+<li><h5 id="Problem-decomposition"><a href="#Problem-decomposition" class="headerlink" title="Problem decomposition"></a>Problem decomposition</h5></li>
+</ul>
+<p>Overall problem decomposed into subproblems, hierarchical</p>
+<ul>
+<li><h5 id="Subproblem-allocation"><a href="#Subproblem-allocation" class="headerlink" title="Subproblem allocation"></a>Subproblem allocation</h5></li>
+</ul>
+<p>decide which agent should get which task</p>
+<ul>
+<li><h5 id="Subproblem-solution"><a href="#Subproblem-solution" class="headerlink" title="Subproblem solution"></a>Subproblem solution</h5></li>
+</ul>
+<p>Subproblems are individually solved. This typically involves sharing of information. And agents might have to coordinate their actions.</p>
+<ul>
+<li><h5 id="Subproblem-synthesis"><a href="#Subproblem-synthesis" class="headerlink" title="Subproblem synthesis"></a>Subproblem synthesis</h5></li>
+</ul>
+<p>Solutions to individual subproblems are integrated into an overall solution</p>
+<p>how to determine the granularity(粒度),how to decompose(by one agent or cooperatively)</p>
+<h5 id="Properties-for-CDPS"><a href="#Properties-for-CDPS" class="headerlink" title="Properties for CDPS"></a>Properties for CDPS</h5><ul>
+<li>Distributed data and control</li>
+<li>modular problems with reasonable grain size</li>
+<li>spend more time on computation than communication</li>
+</ul>
+<h4 id="Contract-Net-Protocol-very-important"><a href="#Contract-Net-Protocol-very-important" class="headerlink" title="Contract Net Protocol(very important)"></a>Contract Net Protocol(very important)</h4><p>deal with the second stage of CDPS: <strong>subproblem allocation</strong></p>
+<p>Each node on the network can, at different times or for different tasks, be a manager or a contractor. When a node gets a composite task (or for any reason can’t solve its present task), it breaks it into subtasks (if possible) and announces them (acting as a manager), receives bids from potential contractors, then awards the job.</p>
+<h5 id="Stage-of-CNP"><a href="#Stage-of-CNP" class="headerlink" title="Stage of CNP:"></a>Stage of CNP:</h5><ol>
+<li><strong>Recognition</strong><ul>
+<li>Recognize a problem it wants help with</li>
+</ul>
+</li>
+<li><strong>Announcement</strong><ul>
+<li>broadcasts an announcement of the task, which includes a specification of the task to be achieved</li>
+</ul>
+</li>
+<li><strong>Bidding</strong><ul>
+<li>Agents receiving an announcement decide whether they wish to bid for the task.</li>
+</ul>
+</li>
+<li><strong>Awarding</strong><ul>
+<li>Agent that sent task announcement must choose between bids and decide who to award the contract to.</li>
+</ul>
+</li>
+<li><strong>Expediting</strong><ul>
+<li>The successful contractor expedites the task</li>
+</ul>
+</li>
+</ol>
+<h4 id="Coordination-relationship"><a href="#Coordination-relationship" class="headerlink" title="Coordination relationship"></a>Coordination relationship</h4><ul>
+<li><h5 id="Negative-Relationships"><a href="#Negative-Relationships" class="headerlink" title="Negative Relationships"></a>Negative Relationships</h5><ul>
+<li>Resource induced(资源不足)</li>
+<li>Incompatibility不兼容)</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h5 id="Possitive-Relationships"><a href="#Possitive-Relationships" class="headerlink" title="Possitive Relationships"></a>Possitive Relationships</h5><ul>
+<li>Requested(agent explicitly asks for help with activities)</li>
+<li>Non-requested</li>
+</ul>
+</li>
+</ul>
+<p>We want to avoid/deal with negative relationships.</p>
+<p>We want to recognise and benefit from positive relationships.</p>
+<p>Some approaches to coordination:</p>
+<ul>
+<li><p>Multi-agent planning</p>
+</li>
+<li><p>Joint intentions (teamwork)</p>
+</li>
+<li><p>Normative multi-agent systems</p>
+</li>
+</ul>
+<h4 id="Multi-agent-planning"><a href="#Multi-agent-planning" class="headerlink" title="Multi-agent planning"></a>Multi-agent planning</h4><ul>
+<li><h5 id="centralised-planning-for-distributed-agents"><a href="#centralised-planning-for-distributed-agents" class="headerlink" title="centralised planning for distributed agents"></a>centralised planning for distributed agents</h5></li>
+</ul>
+<p>Centralised agent <strong>has all information</strong> (agents’ private goals, actions available) and uses this to determine efficient plan for each agent.</p>
+<ul>
+<li><h5 id="Partial-global-planning"><a href="#Partial-global-planning" class="headerlink" title="Partial global planning"></a>Partial global planning</h5></li>
+</ul>
+<p>Agents plan for themselves, but also have partial information about the global plan of all agents.</p>
+<ul>
+<li><h5 id="Merging-of-individual-plans"><a href="#Merging-of-individual-plans" class="headerlink" title="Merging of individual plans"></a>Merging of individual plans</h5></li>
+</ul>
+<p>Agents plan for themselves, <strong>share their plans</strong> with a centralised agent, who merges these to produce an efficient global plan</p>
+<h4 id="Joint-intentions-teamwork"><a href="#Joint-intentions-teamwork" class="headerlink" title="Joint intentions(teamwork)"></a>Joint intentions(teamwork)</h4><p>Agents in team have collective intention towards the goal and have responsibilities to other agents in the team.</p>
+<p>A group of agents have a collective commitment to bringing about some goal G; the motivation for this goal is M.</p>
+<p>The termination condition is that it is mutually believed that either:</p>
+<p>• G is satisfied;</p>
+<p>• G is impossible;</p>
+<p>• M is not longer present.</p>
+<h4 id="Normative-multi-agent-system"><a href="#Normative-multi-agent-system" class="headerlink" title="Normative multi-agent system"></a>Normative multi-agent system</h4><p>A norm is an established, expected pattern of behaviour.</p>
+<p>Norms affect agent reasoning.</p>
+<p>If you’re caught, then violating a norm will lead to a decrease in utility (punishment).</p>
+<h5 id="Challenges-for-normative-agent-systems"><a href="#Challenges-for-normative-agent-systems" class="headerlink" title="Challenges for normative agent systems."></a>Challenges for normative agent systems.</h5><p>• Agents need to know the norms.</p>
+<p>• Agents need to understand the norms.</p>
+<p>• Monitoring needs to be effective.</p>
+<p>• Punishments need to be suitable.</p>
+<p><strong>Finished</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/11/NOTE-WEEK-5-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/11/NOTE-WEEK-5-Artificial-Intelligence/" itemprop="url">(AI)Lec 5:Strategic Reasoning(Game Theory)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T17:02:55+00:00">
+                2018-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lecture-5-Strategic-Reasoning-Game-Theory"><a href="#Lecture-5-Strategic-Reasoning-Game-Theory" class="headerlink" title="Lecture 5: Strategic Reasoning(Game Theory)"></a>Lecture 5: Strategic Reasoning(Game Theory)</h2><h4 id="Game-Theory"><a href="#Game-Theory" class="headerlink" title="Game Theory"></a>Game Theory</h4><p>Game theory is a framework for analysing interactions between a set of agents.</p>
+<h5 id="Key-points-in-game-theory"><a href="#Key-points-in-game-theory" class="headerlink" title="Key points in game theory:"></a>Key points in game theory:</h5><ul>
+<li>Dominant strategy</li>
+<li>Nash equilibrium strategy</li>
+<li>Pareto optimal strategies</li>
+<li>Strategies that maximise social welfare</li>
+</ul>
+<h5 id="Dominant-strategies-占优策略"><a href="#Dominant-strategies-占优策略" class="headerlink" title="Dominant strategies(占优策略)"></a>Dominant strategies(占优策略)</h5><p>A strategy S is dominant if no matter what the other participants do, you can’t do any better than play S.</p>
+<h5 id="Nash-Equilibrium-纳什均衡"><a href="#Nash-Equilibrium-纳什均衡" class="headerlink" title="Nash Equilibrium(纳什均衡)"></a>Nash Equilibrium(纳什均衡)</h5><p>In general, we will say that two strategies $s_1$ and $s_2$ are in Nash equilibrium (NE) if:</p>
+<ol>
+<li><p>under the assumption that agent i plays $s_1$ , agent j can do no better than play $s_2$ ; and </p>
+</li>
+<li><p>under the assumption that agent j plays $s_2$ , agent i can do no better than play $s_1$ .</p>
+</li>
+</ol>
+<ul>
+<li>Not every interaction scenario has a pure strategy NE. </li>
+<li>Some interaction scenarios have more than one NE.</li>
+</ul>
+<h5 id="Pareto-optimal-Strategy"><a href="#Pareto-optimal-Strategy" class="headerlink" title="Pareto optimal Strategy"></a>Pareto optimal Strategy</h5><p>An outcome is said to be Pareto optimal (or Pareto efﬁcient) if there is no other outcome that makes one agent better off without making another agent worse </p>
+<h5 id="Social-welfare"><a href="#Social-welfare" class="headerlink" title="Social welfare"></a>Social welfare</h5><p>The social welfare of an outcome ω is the sum of the utilities that each agent gets from ω</p>
+<p>not finished yet</p>
+<p>this lecture is simple</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -915,1023 +2156,11 @@ q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sam
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/" itemprop="url">(AI)Lec 2:Probailistic Reasonning I</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-05T09:04:15+01:00">
-                2018-10-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-2-Probailistic-Reasoning-概率推理-I"><a href="#Lecture-2-Probailistic-Reasoning-概率推理-I" class="headerlink" title="Lecture 2: Probailistic Reasoning(概率推理) I"></a>Lecture 2: Probailistic Reasoning(概率推理) I</h3><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h4><ol>
-<li>Uncertainty and methods for handling</li>
-<li>Introduce to probability</li>
-<li>Basic probability</li>
-<li>Bayes rules</li>
-</ol>
-<h2 id="Why-Uncertainty"><a href="#Why-Uncertainty" class="headerlink" title="Why Uncertainty"></a>Why Uncertainty</h2><p><strong>Partial observability equals uncertainty</strong></p>
-<p>Full ovservability not true of the real world</p>
-<p>Partial observability can arise for many reasons</p>
-<ul>
-<li>Sensor noise</li>
-<li>Computational complexity</li>
-<li>World structure and sensor ability</li>
-</ul>
-<h4 id="Utility-theory"><a href="#Utility-theory" class="headerlink" title="Utility theory"></a>Utility theory</h4><p>used to represent and infer preference</p>
-<p><strong>Decision theory = utility theory + probability theory</strong></p>
-<h4 id="Bayes-rules"><a href="#Bayes-rules" class="headerlink" title="Bayes rules"></a>Bayes rules</h4><script type="math/tex; mode=display">
-P(A , B) = P(A \mid B)P(B)\\
-P(A|B )= \frac{P(A ,B)}{P(B)}</script><h4 id="Chain-rule"><a href="#Chain-rule" class="headerlink" title="Chain rule"></a>Chain rule</h4><script type="math/tex; mode=display">
-\begin{align}
-P(X_1,...,X_n) & = P(X_1,...X_{n-1})P(X_n|X_1,...,X_{n-1})\\
-&= P(X_1,...,X_{n-2})P(X_{n-1}|X_1,...,X_{n-2})P(X_n)|X_1,...X_{n-1})\\
-&= \prod_{i=1}^{n}P(X_i|X_1,...,X_{i-1})
-\end{align}</script><p>For</p>
-<h4 id="Indenpendent"><a href="#Indenpendent" class="headerlink" title="Indenpendent"></a>Indenpendent</h4><p>A and B are independent iff</p>
-<script type="math/tex; mode=display">
-P(A|B) = P(A),or\\
-P(B|A) = P(B),or\\
-P(A,B)= P(A)P(B)</script><h4 id="Conditional-Independence"><a href="#Conditional-Independence" class="headerlink" title="Conditional Independence"></a>Conditional Independence</h4><script type="math/tex; mode=display">
-P(A|B,C) = P(A|C)</script><p>we say A is conditionally independent of B given C.</p>
-<h5 id="Equivalent-statements"><a href="#Equivalent-statements" class="headerlink" title="Equivalent statements:"></a>Equivalent statements:</h5><script type="math/tex; mode=display">
-P(A|B,C) = P(A|C)\\
-\iff P(A,B|C) = P(A|C) \times P(B|C)</script><h4 id="According-to-Bayes’-Rule"><a href="#According-to-Bayes’-Rule" class="headerlink" title="According to Bayes’ Rule"></a>According to Bayes’ Rule</h4><script type="math/tex; mode=display">
-P(A,B) = P(A|B)P(B) = P(B|A)P(A)\\
-\implies P(B|A) = \frac{P(A|B)P(B)}{P(A)}\\
-P(e) = P(e,h)+P(e,\not h)  \\
-\implies P(e) = P(e|h)P(h)+P(e|\not h)P(\not h)（全概率公式）\\
-\begin{align}
-P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
-&= \frac{P(e|h)P(h)}{P(e|h)P(h)+P(e|\not h)(1-P(h))}
-\end{align}</script><p><strong>Finished</strong> </p>
-<p>Reference:</p>
-<ol>
-<li><a href="https://www.cnblogs.com/ohshit/p/5629581.html" target="_blank" rel="noopener">https://www.cnblogs.com/ohshit/p/5629581.html</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/04/NOTE-WEEK-2-Web-Infrastructure-md/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/04/NOTE-WEEK-2-Web-Infrastructure-md/" itemprop="url">NOTE-WEEK-2--Web-Infrastructure.md</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-04T12:08:41+01:00">
-                2018-10-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="key-points"><a href="#key-points" class="headerlink" title="#####key points"></a>#####key points</h5><ol>
-<li>ip datagram header</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 2:More on Agents</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-01T09:04:31+01:00">
-                2018-10-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Agents-and-Multi-Agent-System-智能体与多智能体系统"><a href="#Agents-and-Multi-Agent-System-智能体与多智能体系统" class="headerlink" title="Agents and Multi-Agent System(智能体与多智能体系统)"></a>Agents and Multi-Agent System(智能体与多智能体系统)</h2><h3 id="Lecture-2-More-on-intelligent-agents"><a href="#Lecture-2-More-on-intelligent-agents" class="headerlink" title="Lecture 2 More on intelligent agents"></a>Lecture 2 More on intelligent agents</h3><h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><ol>
-<li>Object and agents difference</li>
-<li>Environment (see in <a href="http://zhangzhejian.com/2018/09/28/NOTE-Artificial-Intelligence/#Environment">Artificial Intelligence note week 1</a>)</li>
-<li>agent behaviour: state transformer</li>
-<li>agent utility</li>
-</ol>
-<h3 id="Objects-and-Agents"><a href="#Objects-and-Agents" class="headerlink" title="Objects and Agents"></a>Objects and Agents</h3><h4 id="Main-differences"><a href="#Main-differences" class="headerlink" title="Main differences"></a>Main differences</h4><ul>
-<li>agents are autonomous</li>
-</ul>
-<p>They decide for themselves whether or not to perform an action</p>
-<ul>
-<li>agents are smart</li>
-</ul>
-<p>capable of flexible(reactive, pro-active, social) behaviours</p>
-<ul>
-<li>agents are active</li>
-</ul>
-<p>continuous sense-decide-act loop, not passive service providers</p>
-<h3 id="Agent-behaviour"><a href="#Agent-behaviour" class="headerlink" title="Agent behaviour"></a>Agent behaviour</h3><h4 id="State-action-and-run"><a href="#State-action-and-run" class="headerlink" title="State, action and run"></a>State, action and run</h4><p>Assume the environment may be in any of a finite set E of discrete, instantaneous states:</p>
-<script type="math/tex; mode=display">
-E = \{e_0,e_1,...\}</script><p>Agents are assumed to have a repertoire of possible actions available to them, which transform the state of the environment:</p>
-<script type="math/tex; mode=display">
-Ac = \{\alpha_0, \alpha_1,...\}</script><p>A run, r, of an agent in an environment is a sequence of interleaved environment states and actions:</p>
-<script type="math/tex; mode=display">
-r: e_0 \longrightarrow^{\alpha_0} e_1 \\
-r \in \mathcal{R}</script><p>Let $\mathcal{R}$ be the set of all such possible finite <strong>sequences</strong> (over E and Ac)</p>
-<p>$\mathcal{R}^{AC}$ be the subset of these that end with an <strong>action</strong></p>
-<p>$\mathcal{R}^{E}$ be the subset of these that end with an <strong>environment state</strong></p>
-<p><strong>State transformer function:</strong></p>
-<script type="math/tex; mode=display">
-\tau:\mathcal{R}^{Ac}\to 2^E\</script><p>Hint: $2^A$ means all the subsets of A</p>
-<p>This function takes a run that ends with an action and returns a subset of E (so a set of environment states). </p>
-<p>$\tau$可以理解为是一个以action为结尾的run，到一个状态$2^E$</p>
-<h5 id="EXAMPLE"><a href="#EXAMPLE" class="headerlink" title="EXAMPLE"></a>EXAMPLE</h5><p>Environment: ENV_1 = <e,e_0,\tau>, e_0 is the initial state of the environment.</e,e_0,\tau></p>
-<script type="math/tex; mode=display">
-E = {e_0,e_1,e_3,e_4,e_5}\\
-\tau(e_0\longrightarrow^{a_0}) = \{e_1,e_2\}\\
-\tau(e_0 \longrightarrow^{a_1}) = \{e_3, e_4, e_5\}\\</script><h4 id="Agent-behaviour-1"><a href="#Agent-behaviour-1" class="headerlink" title="Agent behaviour"></a>Agent behaviour</h4><p>Agent is a function which maps <strong>runs</strong> to <strong>actions</strong></p>
-<script type="math/tex; mode=display">
-Ag: \mathcal{R}^E \longrightarrow Ac</script><p>An agent makes a decision about what action to perform based on the history of the system that it has witnessed to date. Let $\mathcal{AG}$ be the set of all agents. (Agent做的就是根据输入的环境状态，给出决定的动作)</p>
-<p>A system is a pair (Ag, Env) containing an agent and an environment. Any system will have associated with it a set of possible runs; we denote the <strong>set of runs</strong> of agent Ag in environment Env by $\mathcal{R}(Ag, Env)$ (We assume $\mathcal{R}(Ag, Env)$ contains only <strong>terminated</strong> runs) ($\mathcal{R}(Ag, Env)$是在Env环境下，Ag做出的所有run的集合，假设只包含所有完整的run)</p>
-<h5 id="EXAMPLE-1"><a href="#EXAMPLE-1" class="headerlink" title="EXAMPLE"></a>EXAMPLE</h5><p>The same example as above</p>
-<script type="math/tex; mode=display">
-E = {e_0,e_1,e_3,e_4,e_5}\\\tau(e_0\longrightarrow^{a_0}) = \{e_1,e_2\}\\\tau(e_0 \longrightarrow^{a_1}) = \{e_3, e_4, e_5\}\\</script><p>First to determine the Ag() function.</p>
-<p>If $Ag(e_0) = \alpha_0$</p>
-<p>Then $\mathcal{R}(Ag,Env_1) = \{(e_0,\alpha_0,e_1), (e_0,\alpha+0, e_2)\}$</p>
-<h4 id="Behaviourally-equivalent-with-respect-to-environment-Env"><a href="#Behaviourally-equivalent-with-respect-to-environment-Env" class="headerlink" title="Behaviourally equivalent with respect to environment Env"></a>Behaviourally equivalent with respect to environment Env</h4><p>iff</p>
-<script type="math/tex; mode=display">
-\mathcal{R}(Ag_1, Env) = \mathcal{R}(Ag_2,Env)</script><h4 id="Purely-Reactive-Agents"><a href="#Purely-Reactive-Agents" class="headerlink" title="Purely Reactive Agents"></a>Purely Reactive Agents</h4><p>Some agents decide what to do <strong>without reference to their history</strong> — they base their decision making entirely on the present, with no reference at all to the past</p>
-<script type="math/tex; mode=display">
-action: E\longrightarrow Ac</script><h4 id="Agents-with-state"><a href="#Agents-with-state" class="headerlink" title="Agents with state"></a>Agents with state</h4><h5 id="Perception-subsystem"><a href="#Perception-subsystem" class="headerlink" title="Perception subsystem"></a>Perception subsystem</h5><p>The perception function <em>see</em> maps an environment state to a percept:</p>
-<script type="math/tex; mode=display">
-see: E \longrightarrow Per</script><p>The action-selection function action maps an internal state to an action:</p>
-<script type="math/tex; mode=display">
-action: Per \longrightarrow Ac</script><h5 id="Agents-with-state-1"><a href="#Agents-with-state-1" class="headerlink" title="Agents with state"></a>Agents with state</h5><p>Internal data structure state typically used to record information about the environment state and history. $\mathcal{I}$ be the set of all internal states of the agent</p>
-<script type="math/tex; mode=display">
-see: E\longrightarrow Per\\
-next: I \times Per \longrightarrow I\\
-action: I \longrightarrow Ac</script><p>The function next is introduced, which maps an internal state and a percept to an internal state, and then the action-selection function action maps an internal state to an action.</p>
-<h5 id="Control-Loop"><a href="#Control-Loop" class="headerlink" title="Control Loop"></a>Control Loop</h5><ol>
-<li>Agent starts in some initial internal state $i_0$</li>
-<li>Observes its environment state e, and generates a percept $see(e)$</li>
-<li>Internal state of the agent is then updated via next function, becoming $next(i_0 , see(e))$</li>
-<li>The action selected by the agent is $action (next(i_0 , see(e)))$</li>
-<li>Goto 2</li>
-</ol>
-<h3 id="Tasks-for-Agents"><a href="#Tasks-for-Agents" class="headerlink" title="Tasks for Agents"></a>Tasks for Agents</h3><p>How to specify the tasks for agents is a problem</p>
-<h5 id="Maxmise-utility"><a href="#Maxmise-utility" class="headerlink" title="Maxmise utility"></a>Maxmise utility</h5><h5 id="Associate-utilities-with-individual-states"><a href="#Associate-utilities-with-individual-states" class="headerlink" title="Associate utilities with individual states"></a>Associate utilities with individual states</h5><p>the task specification is a function which asscociates a real number with every environments state</p>
-<script type="math/tex; mode=display">
-u: E\longrightarrow \mathbb{R}</script><p><strong>Disadvantage</strong>: difficult to specify a <strong>long term</strong> view when assigning utilities to individual states</p>
-<h5 id="Associate-utilities-with-runs"><a href="#Associate-utilities-with-runs" class="headerlink" title="Associate utilities with runs"></a>Associate utilities with runs</h5><script type="math/tex; mode=display">
-u: \mathcal{R} \longrightarrow \mathbb{R}</script><p>Example: trading agent might use $u(r) = (p(r) l(r)) x fp(r)$ where $fp(r)$ is profit in the final state of r, $p(r)$ is the number of states agent is in profit and $l(r)$ is the number of states agent is not in profit.</p>
-<h4 id="Expected-utility-amp-optimal-agents"><a href="#Expected-utility-amp-optimal-agents" class="headerlink" title="Expected utility &amp; optimal agents"></a>Expected utility &amp; optimal agents</h4><h5 id="Expected-utility"><a href="#Expected-utility" class="headerlink" title="Expected utility"></a>Expected utility</h5><p>P(r|Ag,Env) to be denoted as probability that <strong>run r occurs</strong> when agent Ag is placed in environment Env.</p>
-<script type="math/tex; mode=display">
-\sum_{r \in\mathcal{R}(Ag,Env)}P(r|Ag,Env) =1</script><p>Expected utility(for run): u(r)P(r|Ag,Env)</p>
-<p>Optimal agent $Ag_{opt}$ is the one that maximizes expected utility over all possible runs in the environment</p>
-<script type="math/tex; mode=display">
-Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Difficulties-with-utility-based-approaches"><a href="#Difficulties-with-utility-based-approaches" class="headerlink" title="Difficulties with utility-based approaches"></a>Difficulties with utility-based approaches</h4><ol>
-<li>Not obvious how to generate the numbers</li>
-<li>People don’t think in terms of utilities</li>
-<li>Hard to formulate tasks in these terms</li>
-</ol>
-<h4 id="Predicate-断言-task-specifications"><a href="#Predicate-断言-task-specifications" class="headerlink" title="Predicate(断言) task specifications"></a>Predicate(断言) task specifications</h4><p>A special case of assigning utilities to runs is to assign 0 (false) or 1 (true).  Denote predicate task specification by function Ψ.</p>
-<script type="math/tex; mode=display">
-\Psi: \mathcal{R} \longrightarrow \{0,1\}\\
-\mathcal{R}_\Psi(Ag,Env) = \{r|r\in \mathcal{R}(Ag,Env)\; \& \; \Psi(r) = 1\}</script><h4 id="Types-of-tasks"><a href="#Types-of-tasks" class="headerlink" title="Types of tasks"></a>Types of tasks</h4><h5 id="Achievement-tasks-at-least-bring-about-one-of-the-good-states"><a href="#Achievement-tasks-at-least-bring-about-one-of-the-good-states" class="headerlink" title="Achievement tasks(at least bring about one of the good states)"></a>Achievement tasks(at least bring about one of the good states)</h5><p>Are those of the form achieve state of affairs $\psi$</p>
-<p>An achievement task is specified by a set G of “good” or “goal” states: G ⊆ E. The agent succeeds if it is guaranteed to bring about at least one of these states (we do not care which one — they are all considered equally good)</p>
-<p>Let G ⊆ E be the set of states in which the achievement goal is realised. An agent Ag succeeds if and only if</p>
-<script type="math/tex; mode=display">
-\forall r \in \mathcal{R}(Ag,Env):\\
-\exists e_i \in \{e_x|e_x \; is \;a\;state\;that\;appears\; in\;r \;such\;that\; e_i\in G\}</script><h5 id="Maintenance-tasks-never-to-bring-about-one-of-the-bad-states"><a href="#Maintenance-tasks-never-to-bring-about-one-of-the-bad-states" class="headerlink" title="Maintenance tasks(never to bring about one of the bad states)"></a>Maintenance tasks(never to bring about one of the bad states)</h5><p>Are those of the form maintain state of affairs \psi</p>
-<p>A maintenance task is specified by a set B of “bad” states: B ⊆ E. The agent succeeds if it is guaranteed never to bring about one of these states, i.e. it manages to avoid all states in B, it never performs actions which result in any state in B occurring</p>
-<p>Let B ⊆ E be the set of bad states that we wish to avoid. An agent Ag succeeds if and only if</p>
-<script type="math/tex; mode=display">
-\forall r \in \mathcal{R}(Ag,Env):\\
-\not\exists e_i \in \{e_x|e_x \; is \;a\;state\;that\;appears\; in\;r \;such\;that\; e_i\in B\}</script><p><strong>Finished</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/28/Advanced Research Topic/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/28/Advanced Research Topic/" itemprop="url">Advanced Research Topic</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-28T12:40:15+01:00">
-                2018-09-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Advanced-Research-Topic"><a href="#Advanced-Research-Topic" class="headerlink" title="Advanced Research Topic"></a>Advanced Research Topic</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/28/NOTE-Artificial-Intelligence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/28/NOTE-Artificial-Intelligence/" itemprop="url">(AI)Lec 1:Introduction</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-28T09:58:25+01:00">
-                2018-09-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="AI-Introduction"><a href="#AI-Introduction" class="headerlink" title="AI Introduction"></a>AI Introduction</h2><h4 id="Course"><a href="#Course" class="headerlink" title="Course"></a>Course</h4><ol>
-<li><p>Introduction to Artiﬁcial Intelligence </p>
-</li>
-<li><p>Probabilistic Reasoning I </p>
-</li>
-<li><p>Probabilistic Reasoning II </p>
-</li>
-<li><p>Sequential Decision Making </p>
-</li>
-<li><p>Temporal Probabilistic Reasoning</p>
-</li>
-<li><p>Game Theory</p>
-</li>
-<li><p>Argumentation I </p>
-</li>
-<li><p>Argumentation II </p>
-</li>
-<li><p>(A peek at) Machine Learning </p>
-</li>
-<li><p>AI &amp; Ethics </p>
-</li>
-</ol>
-<h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h4><ol>
-<li>Introduction of how to make right decision</li>
-</ol>
-<h3 id="How-to-do-the-right-thing"><a href="#How-to-do-the-right-thing" class="headerlink" title="How to do the right thing"></a>How to do the right thing</h3><p>Need to be able to </p>
-<ol>
-<li><strong>identify the alternatives</strong></li>
-<li><strong>decide</strong> which alternative will lead to the best outcome</li>
-<li>and do so <strong>quickly enough</strong> for the decision to be useful</li>
-</ol>
-<h4 id="Ideal-rational-理性的-agent"><a href="#Ideal-rational-理性的-agent" class="headerlink" title="Ideal rational(理性的) agent"></a>Ideal rational(理性的) agent</h4><p>For each <strong>percept sequence(感知序列)</strong>, an ideal rational agent will act to maximise its expected performance measure, <strong>on the basis of information provided</strong> by the percept sequence plus any information built into the agent.</p>
-<p>Rational agent <u>doesn’t</u> mean omniscient(全知的) or clairvoyant(先知) agent.</p>
-<h4 id="Percept-sequence"><a href="#Percept-sequence" class="headerlink" title="Percept sequence"></a>Percept sequence</h4><p><u>According to the sensors, the agent can percept from the environment and get the information.</u></p>
-<p>A simple agent maps each percept directly to an action. All static.</p>
-<p>When facing a complex environment, and even dynamic, it become hard for agents to do the right thing.</p>
-<h4 id="Problems"><a href="#Problems" class="headerlink" title="Problems:"></a>Problems:</h4><ol>
-<li>what to represent</li>
-<li>How to represent</li>
-<li>interpreting the percepts</li>
-</ol>
-<h4 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h4><ul>
-<li>Accessible&amp;Inaccessible</li>
-</ul>
-<p>An environment is <strong>accessible</strong> if the agent can obtain <strong>complete</strong> <strong>accurate and up-to-date</strong> information about <strong>all the relevant aspects</strong>.</p>
-<ul>
-<li>Deterministic&amp;Non-determinist</li>
-</ul>
-<p>A <strong>deterministic(确定性的)</strong> environment is one in which any action has <strong><u>a single guaranteed effect</u></strong> – there’s <u>no uncertainty</u> about the state that will result from performing an action.</p>
-<p>An environment where we can <u><strong>quantify</strong> the non-determinism with probability</u> is called <strong>stochastic(随机的)</strong>.</p>
-<ul>
-<li>Episodic&amp;non-episodic</li>
-</ul>
-<p>In an <strong>episodic(情节的)</strong> environment, performance of an agent is dependent on a number of discrete episodes, with no link between the performance of an agent in different episodes.</p>
-<p>In a non-episodic(非偶发性) or sequential environment, the current decision affects future decisions.</p>
-<ul>
-<li>Static &amp; dynamic</li>
-</ul>
-<p>A <strong>static</strong> environment is one that can be assumed to <u>remain unchanged except</u> by the performance of actions by the agent.</p>
-<p>A <strong>dynamic</strong> environment is one that has <u>other processes operating</u> on it, and which hence changes in ways beyond the agent’s control.</p>
-<ul>
-<li>Discrete &amp; continuous</li>
-</ul>
-<p>An environment is <strong>discrete</strong> if there are a <u><strong>fixed, finite number of actions and percepts</strong></u> in it. Discrete environments could in principle be handled by a kind of “lookup table”.</p>
-<p><a href="http://zhangzhejian.com/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/#State-action-and-run">RUN</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/27/NOTE-Web-Infrastructure/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/27/NOTE-Web-Infrastructure/" itemprop="url">(WI) Lec 1:Introduction</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-27T12:04:18+01:00">
-                2018-09-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="key-points"><a href="#key-points" class="headerlink" title="key points:"></a>key points:</h4><ol>
-<li><p>system architectures LODE</p>
-</li>
-<li><p>web proxy cache</p>
-</li>
-<li></li>
-</ol>
-<h3 id="System-architecture-styles"><a href="#System-architecture-styles" class="headerlink" title="System architecture styles"></a>System architecture styles</h3><p>System architecture styles are formulated in terms of <strong>components</strong>, <strong>the way</strong> that components are <strong>connected</strong> to each other, the <strong>data exchanged</strong> between components and finally how these <strong>elements</strong> are jointly <strong>configured</strong> into a system.</p>
-<ul>
-<li>Layered architectures </li>
-<li>Object-based architectures</li>
-<li>Data-centered architectures </li>
-<li>Event-based architectures</li>
-</ul>
-<h5 id="Layered-Architectures"><a href="#Layered-Architectures" class="headerlink" title="Layered Architectures"></a>Layered Architectures</h5><ul>
-<li>Components are organised in a <strong>layered fashion</strong> where a component layer $L_i$ is allowed to call components at the underlying layer $L_{i -1}$</li>
-<li>Widely adopted by communication network community</li>
-<li>Control flows from layer to layer; <strong>requests go down</strong> the hierarchy whereas <strong>results flow upward</strong></li>
-</ul>
-<h5 id="Object-based-acchitectures"><a href="#Object-based-acchitectures" class="headerlink" title="Object-based acchitectures"></a>Object-based acchitectures</h5><ul>
-<li><p>This architecture holds components loosely</p>
-</li>
-<li><p>Each component is defined as an object and components are connected through mechanisms defined in the interface (example, RPC)</p>
-</li>
-</ul>
-<h5 id="Data-centered-architecture"><a href="#Data-centered-architecture" class="headerlink" title="Data-centered architecture"></a>Data-centered architecture</h5><ul>
-<li>Web-based distributed systems are largely data-centric.</li>
-<li>They rely on shared <strong>distributed file systems</strong></li>
-<li>Processes communicate through a common passive or active repository. They use shared web-based data services.</li>
-</ul>
-<h5 id="Event-based-architecture"><a href="#Event-based-architecture" class="headerlink" title="Event-based architecture"></a>Event-based architecture</h5><ul>
-<li>Processes essentially communicate through the propagation of events, which optionally also carry data. Event propagation is generally through publish/subscribe systems.(进程通过事件的传播来交流，可以携带数据。事件传播是通过发布/订阅系统来实现的)</li>
-<li>Processes publish events after which middleware ensures that only processes that subscribe receive them.(只有订阅的进程才能接受到)</li>
-</ul>
-<h4 id="Client-server-model"><a href="#Client-server-model" class="headerlink" title="Client-server model"></a>Client-server model</h4><p>A server is a process implementing a specific service. A client is a process that requests a service from a server</p>
-<h5 id="Centralised-architecture-中心化"><a href="#Centralised-architecture-中心化" class="headerlink" title="Centralised architecture(中心化)"></a>Centralised architecture(中心化)</h5><ul>
-<li>Clear distinction between clients and servers </li>
-<li>A leader monitors the system</li>
-<li>Fault tolerant and robust systems</li>
-</ul>
-<h5 id="Decentralised-architecture-去中心化"><a href="#Decentralised-architecture-去中心化" class="headerlink" title="Decentralised architecture(去中心化)"></a>Decentralised architecture(去中心化)</h5><ul>
-<li>No monitor to observe processes </li>
-<li>Useful architecture with <strong>reliable underlying(block chain)</strong> networks </li>
-<li>Useful with <strong>large number of components</strong> in the system</li>
-</ul>
-<h4 id="Web-proxy-caching"><a href="#Web-proxy-caching" class="headerlink" title="Web proxy caching"></a>Web proxy caching</h4><ul>
-<li>To improve consistency of the system </li>
-<li>Client-side caching stores frequently visited pages at browser’s cache.</li>
-<li><p>Web proxy is another type of client-side cache that is placed between client and web server.</p>
-</li>
-<li><p>Web proxy can implement a shared cache. </p>
-</li>
-<li>Cooperative caching or distributed caching</li>
-</ul>
-<h3 id="Web-Service"><a href="#Web-Service" class="headerlink" title="Web Service"></a>Web Service</h3><h4 id="Caching"><a href="#Caching" class="headerlink" title="Caching"></a>Caching</h4><ul>
-<li>For the Client (browser): avoid extra network transfers </li>
-<li>For the Web Server: reduce load on the server </li>
-<li>For the Service Provider: reduce external traffic</li>
-</ul>
-<p>Why:</p>
-<ul>
-<li>Because of the locality of reference </li>
-<li>Users tend to request the same object in succession </li>
-<li>Some objects are popular: requested by many users</li>
-</ul>
-<h5 id="Local-Cache-本地缓存"><a href="#Local-Cache-本地缓存" class="headerlink" title="Local Cache(本地缓存)"></a>Local Cache(本地缓存)</h5><p>Browsers include a local cache mechanism this local cache mechanism saves time and bandwidth, which increases performance.</p>
-<p>Operation of web cache</p>
-<h4 id="Replacement-Rules-strategies"><a href="#Replacement-Rules-strategies" class="headerlink" title="Replacement Rules strategies"></a>Replacement Rules strategies</h4><ul>
-<li>Least Recently Used (LRU)</li>
-<li>First In, First Out (FIFO)</li>
-<li>Least Frequently Used (LFU)</li>
-<li>Next to Expire (NTE)</li>
-<li>Largest File First (LFF)</li>
-</ul>
-<h4 id="Dynamic-Object-Rules-Strategies"><a href="#Dynamic-Object-Rules-Strategies" class="headerlink" title="Dynamic Object Rules Strategies"></a>Dynamic Object Rules Strategies</h4><p><u>To estimate the value an object may have in serving future requests.</u></p>
-<h4 id="Expiration"><a href="#Expiration" class="headerlink" title="Expiration"></a>Expiration</h4><p>HTTP 1.1 Cache control Directives</p>
-<p>ICP(Internet Cache Protocol)</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1977,7 +2206,7 @@ Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Diffi
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1990,7 +2219,7 @@ Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Diffi
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

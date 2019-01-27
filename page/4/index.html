@@ -230,6 +230,1018 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/" itemprop="url">(AI)Lec 2:Probailistic Reasonning I</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-05T09:04:15+01:00">
+                2018-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-2-Probailistic-Reasoning-概率推理-I"><a href="#Lecture-2-Probailistic-Reasoning-概率推理-I" class="headerlink" title="Lecture 2: Probailistic Reasoning(概率推理) I"></a>Lecture 2: Probailistic Reasoning(概率推理) I</h3><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h4><ol>
+<li>Uncertainty and methods for handling</li>
+<li>Introduce to probability</li>
+<li>Basic probability</li>
+<li>Bayes rules</li>
+</ol>
+<h2 id="Why-Uncertainty"><a href="#Why-Uncertainty" class="headerlink" title="Why Uncertainty"></a>Why Uncertainty</h2><p><strong>Partial observability equals uncertainty</strong></p>
+<p>Full ovservability not true of the real world</p>
+<p>Partial observability can arise for many reasons</p>
+<ul>
+<li>Sensor noise</li>
+<li>Computational complexity</li>
+<li>World structure and sensor ability</li>
+</ul>
+<h4 id="Utility-theory"><a href="#Utility-theory" class="headerlink" title="Utility theory"></a>Utility theory</h4><p>used to represent and infer preference</p>
+<p><strong>Decision theory = utility theory + probability theory</strong></p>
+<h4 id="Bayes-rules"><a href="#Bayes-rules" class="headerlink" title="Bayes rules"></a>Bayes rules</h4><script type="math/tex; mode=display">
+P(A , B) = P(A \mid B)P(B)\\
+P(A|B )= \frac{P(A ,B)}{P(B)}</script><h4 id="Chain-rule"><a href="#Chain-rule" class="headerlink" title="Chain rule"></a>Chain rule</h4><script type="math/tex; mode=display">
+\begin{align}
+P(X_1,...,X_n) & = P(X_1,...X_{n-1})P(X_n|X_1,...,X_{n-1})\\
+&= P(X_1,...,X_{n-2})P(X_{n-1}|X_1,...,X_{n-2})P(X_n)|X_1,...X_{n-1})\\
+&= \prod_{i=1}^{n}P(X_i|X_1,...,X_{i-1})
+\end{align}</script><p>For</p>
+<h4 id="Indenpendent"><a href="#Indenpendent" class="headerlink" title="Indenpendent"></a>Indenpendent</h4><p>A and B are independent iff</p>
+<script type="math/tex; mode=display">
+P(A|B) = P(A),or\\
+P(B|A) = P(B),or\\
+P(A,B)= P(A)P(B)</script><h4 id="Conditional-Independence"><a href="#Conditional-Independence" class="headerlink" title="Conditional Independence"></a>Conditional Independence</h4><script type="math/tex; mode=display">
+P(A|B,C) = P(A|C)</script><p>we say A is conditionally independent of B given C.</p>
+<h5 id="Equivalent-statements"><a href="#Equivalent-statements" class="headerlink" title="Equivalent statements:"></a>Equivalent statements:</h5><script type="math/tex; mode=display">
+P(A|B,C) = P(A|C)\\
+\iff P(A,B|C) = P(A|C) \times P(B|C)</script><h4 id="According-to-Bayes’-Rule"><a href="#According-to-Bayes’-Rule" class="headerlink" title="According to Bayes’ Rule"></a>According to Bayes’ Rule</h4><script type="math/tex; mode=display">
+P(A,B) = P(A|B)P(B) = P(B|A)P(A)\\
+\implies P(B|A) = \frac{P(A|B)P(B)}{P(A)}\\
+P(e) = P(e,h)+P(e,\not h)  \\
+\implies P(e) = P(e|h)P(h)+P(e|\not h)P(\not h)（全概率公式）\\
+\begin{align}
+P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
+&= \frac{P(e|h)P(h)}{P(e|h)P(h)+P(e|\not h)(1-P(h))}
+\end{align}</script><p><strong>Finished</strong> </p>
+<p>Reference:</p>
+<ol>
+<li><a href="https://www.cnblogs.com/ohshit/p/5629581.html" target="_blank" rel="noopener">https://www.cnblogs.com/ohshit/p/5629581.html</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/04/NOTE-WEEK-2-Web-Infrastructure-md/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/04/NOTE-WEEK-2-Web-Infrastructure-md/" itemprop="url">NOTE-WEEK-2--Web-Infrastructure.md</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-04T12:08:41+01:00">
+                2018-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="key-points"><a href="#key-points" class="headerlink" title="#####key points"></a>#####key points</h5><ol>
+<li>ip datagram header</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 2:More on Agents</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-01T09:04:31+01:00">
+                2018-10-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Agents-and-Multi-Agent-System-智能体与多智能体系统"><a href="#Agents-and-Multi-Agent-System-智能体与多智能体系统" class="headerlink" title="Agents and Multi-Agent System(智能体与多智能体系统)"></a>Agents and Multi-Agent System(智能体与多智能体系统)</h2><h3 id="Lecture-2-More-on-intelligent-agents"><a href="#Lecture-2-More-on-intelligent-agents" class="headerlink" title="Lecture 2 More on intelligent agents"></a>Lecture 2 More on intelligent agents</h3><h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><ol>
+<li>Object and agents difference</li>
+<li>Environment (see in <a href="http://zhangzhejian.com/2018/09/28/NOTE-Artificial-Intelligence/#Environment">Artificial Intelligence note week 1</a>)</li>
+<li>agent behaviour: state transformer</li>
+<li>agent utility</li>
+</ol>
+<h3 id="Objects-and-Agents"><a href="#Objects-and-Agents" class="headerlink" title="Objects and Agents"></a>Objects and Agents</h3><h4 id="Main-differences"><a href="#Main-differences" class="headerlink" title="Main differences"></a>Main differences</h4><ul>
+<li>agents are autonomous</li>
+</ul>
+<p>They decide for themselves whether or not to perform an action</p>
+<ul>
+<li>agents are smart</li>
+</ul>
+<p>capable of flexible(reactive, pro-active, social) behaviours</p>
+<ul>
+<li>agents are active</li>
+</ul>
+<p>continuous sense-decide-act loop, not passive service providers</p>
+<h3 id="Agent-behaviour"><a href="#Agent-behaviour" class="headerlink" title="Agent behaviour"></a>Agent behaviour</h3><h4 id="State-action-and-run"><a href="#State-action-and-run" class="headerlink" title="State, action and run"></a>State, action and run</h4><p>Assume the environment may be in any of a finite set E of discrete, instantaneous states:</p>
+<script type="math/tex; mode=display">
+E = \{e_0,e_1,...\}</script><p>Agents are assumed to have a repertoire of possible actions available to them, which transform the state of the environment:</p>
+<script type="math/tex; mode=display">
+Ac = \{\alpha_0, \alpha_1,...\}</script><p>A run, r, of an agent in an environment is a sequence of interleaved environment states and actions:</p>
+<script type="math/tex; mode=display">
+r: e_0 \longrightarrow^{\alpha_0} e_1 \\
+r \in \mathcal{R}</script><p>Let $\mathcal{R}$ be the set of all such possible finite <strong>sequences</strong> (over E and Ac)</p>
+<p>$\mathcal{R}^{AC}$ be the subset of these that end with an <strong>action</strong></p>
+<p>$\mathcal{R}^{E}$ be the subset of these that end with an <strong>environment state</strong></p>
+<p><strong>State transformer function:</strong></p>
+<script type="math/tex; mode=display">
+\tau:\mathcal{R}^{Ac}\to 2^E\</script><p>Hint: $2^A$ means all the subsets of A</p>
+<p>This function takes a run that ends with an action and returns a subset of E (so a set of environment states). </p>
+<p>$\tau$可以理解为是一个以action为结尾的run，到一个状态$2^E$</p>
+<h5 id="EXAMPLE"><a href="#EXAMPLE" class="headerlink" title="EXAMPLE"></a>EXAMPLE</h5><p>Environment: ENV_1 = <e,e_0,\tau>, e_0 is the initial state of the environment.</e,e_0,\tau></p>
+<script type="math/tex; mode=display">
+E = {e_0,e_1,e_3,e_4,e_5}\\
+\tau(e_0\longrightarrow^{a_0}) = \{e_1,e_2\}\\
+\tau(e_0 \longrightarrow^{a_1}) = \{e_3, e_4, e_5\}\\</script><h4 id="Agent-behaviour-1"><a href="#Agent-behaviour-1" class="headerlink" title="Agent behaviour"></a>Agent behaviour</h4><p>Agent is a function which maps <strong>runs</strong> to <strong>actions</strong></p>
+<script type="math/tex; mode=display">
+Ag: \mathcal{R}^E \longrightarrow Ac</script><p>An agent makes a decision about what action to perform based on the history of the system that it has witnessed to date. Let $\mathcal{AG}$ be the set of all agents. (Agent做的就是根据输入的环境状态，给出决定的动作)</p>
+<p>A system is a pair (Ag, Env) containing an agent and an environment. Any system will have associated with it a set of possible runs; we denote the <strong>set of runs</strong> of agent Ag in environment Env by $\mathcal{R}(Ag, Env)$ (We assume $\mathcal{R}(Ag, Env)$ contains only <strong>terminated</strong> runs) ($\mathcal{R}(Ag, Env)$是在Env环境下，Ag做出的所有run的集合，假设只包含所有完整的run)</p>
+<h5 id="EXAMPLE-1"><a href="#EXAMPLE-1" class="headerlink" title="EXAMPLE"></a>EXAMPLE</h5><p>The same example as above</p>
+<script type="math/tex; mode=display">
+E = {e_0,e_1,e_3,e_4,e_5}\\\tau(e_0\longrightarrow^{a_0}) = \{e_1,e_2\}\\\tau(e_0 \longrightarrow^{a_1}) = \{e_3, e_4, e_5\}\\</script><p>First to determine the Ag() function.</p>
+<p>If $Ag(e_0) = \alpha_0$</p>
+<p>Then $\mathcal{R}(Ag,Env_1) = \{(e_0,\alpha_0,e_1), (e_0,\alpha+0, e_2)\}$</p>
+<h4 id="Behaviourally-equivalent-with-respect-to-environment-Env"><a href="#Behaviourally-equivalent-with-respect-to-environment-Env" class="headerlink" title="Behaviourally equivalent with respect to environment Env"></a>Behaviourally equivalent with respect to environment Env</h4><p>iff</p>
+<script type="math/tex; mode=display">
+\mathcal{R}(Ag_1, Env) = \mathcal{R}(Ag_2,Env)</script><h4 id="Purely-Reactive-Agents"><a href="#Purely-Reactive-Agents" class="headerlink" title="Purely Reactive Agents"></a>Purely Reactive Agents</h4><p>Some agents decide what to do <strong>without reference to their history</strong> — they base their decision making entirely on the present, with no reference at all to the past</p>
+<script type="math/tex; mode=display">
+action: E\longrightarrow Ac</script><h4 id="Agents-with-state"><a href="#Agents-with-state" class="headerlink" title="Agents with state"></a>Agents with state</h4><h5 id="Perception-subsystem"><a href="#Perception-subsystem" class="headerlink" title="Perception subsystem"></a>Perception subsystem</h5><p>The perception function <em>see</em> maps an environment state to a percept:</p>
+<script type="math/tex; mode=display">
+see: E \longrightarrow Per</script><p>The action-selection function action maps an internal state to an action:</p>
+<script type="math/tex; mode=display">
+action: Per \longrightarrow Ac</script><h5 id="Agents-with-state-1"><a href="#Agents-with-state-1" class="headerlink" title="Agents with state"></a>Agents with state</h5><p>Internal data structure state typically used to record information about the environment state and history. $\mathcal{I}$ be the set of all internal states of the agent</p>
+<script type="math/tex; mode=display">
+see: E\longrightarrow Per\\
+next: I \times Per \longrightarrow I\\
+action: I \longrightarrow Ac</script><p>The function next is introduced, which maps an internal state and a percept to an internal state, and then the action-selection function action maps an internal state to an action.</p>
+<h5 id="Control-Loop"><a href="#Control-Loop" class="headerlink" title="Control Loop"></a>Control Loop</h5><ol>
+<li>Agent starts in some initial internal state $i_0$</li>
+<li>Observes its environment state e, and generates a percept $see(e)$</li>
+<li>Internal state of the agent is then updated via next function, becoming $next(i_0 , see(e))$</li>
+<li>The action selected by the agent is $action (next(i_0 , see(e)))$</li>
+<li>Goto 2</li>
+</ol>
+<h3 id="Tasks-for-Agents"><a href="#Tasks-for-Agents" class="headerlink" title="Tasks for Agents"></a>Tasks for Agents</h3><p>How to specify the tasks for agents is a problem</p>
+<h5 id="Maxmise-utility"><a href="#Maxmise-utility" class="headerlink" title="Maxmise utility"></a>Maxmise utility</h5><h5 id="Associate-utilities-with-individual-states"><a href="#Associate-utilities-with-individual-states" class="headerlink" title="Associate utilities with individual states"></a>Associate utilities with individual states</h5><p>the task specification is a function which asscociates a real number with every environments state</p>
+<script type="math/tex; mode=display">
+u: E\longrightarrow \mathbb{R}</script><p><strong>Disadvantage</strong>: difficult to specify a <strong>long term</strong> view when assigning utilities to individual states</p>
+<h5 id="Associate-utilities-with-runs"><a href="#Associate-utilities-with-runs" class="headerlink" title="Associate utilities with runs"></a>Associate utilities with runs</h5><script type="math/tex; mode=display">
+u: \mathcal{R} \longrightarrow \mathbb{R}</script><p>Example: trading agent might use $u(r) = (p(r) l(r)) x fp(r)$ where $fp(r)$ is profit in the final state of r, $p(r)$ is the number of states agent is in profit and $l(r)$ is the number of states agent is not in profit.</p>
+<h4 id="Expected-utility-amp-optimal-agents"><a href="#Expected-utility-amp-optimal-agents" class="headerlink" title="Expected utility &amp; optimal agents"></a>Expected utility &amp; optimal agents</h4><h5 id="Expected-utility"><a href="#Expected-utility" class="headerlink" title="Expected utility"></a>Expected utility</h5><p>P(r|Ag,Env) to be denoted as probability that <strong>run r occurs</strong> when agent Ag is placed in environment Env.</p>
+<script type="math/tex; mode=display">
+\sum_{r \in\mathcal{R}(Ag,Env)}P(r|Ag,Env) =1</script><p>Expected utility(for run): u(r)P(r|Ag,Env)</p>
+<p>Optimal agent $Ag_{opt}$ is the one that maximizes expected utility over all possible runs in the environment</p>
+<script type="math/tex; mode=display">
+Ag_{opt} = \arg max_{Ag \in \mathcal{AG}}(u(r)P(r|Ag,Env))</script><h4 id="Difficulties-with-utility-based-approaches"><a href="#Difficulties-with-utility-based-approaches" class="headerlink" title="Difficulties with utility-based approaches"></a>Difficulties with utility-based approaches</h4><ol>
+<li>Not obvious how to generate the numbers</li>
+<li>People don’t think in terms of utilities</li>
+<li>Hard to formulate tasks in these terms</li>
+</ol>
+<h4 id="Predicate-断言-task-specifications"><a href="#Predicate-断言-task-specifications" class="headerlink" title="Predicate(断言) task specifications"></a>Predicate(断言) task specifications</h4><p>A special case of assigning utilities to runs is to assign 0 (false) or 1 (true).  Denote predicate task specification by function Ψ.</p>
+<script type="math/tex; mode=display">
+\Psi: \mathcal{R} \longrightarrow \{0,1\}\\
+\mathcal{R}_\Psi(Ag,Env) = \{r|r\in \mathcal{R}(Ag,Env)\; \& \; \Psi(r) = 1\}</script><h4 id="Types-of-tasks"><a href="#Types-of-tasks" class="headerlink" title="Types of tasks"></a>Types of tasks</h4><h5 id="Achievement-tasks-at-least-bring-about-one-of-the-good-states"><a href="#Achievement-tasks-at-least-bring-about-one-of-the-good-states" class="headerlink" title="Achievement tasks(at least bring about one of the good states)"></a>Achievement tasks(at least bring about one of the good states)</h5><p>Are those of the form achieve state of affairs $\psi$</p>
+<p>An achievement task is specified by a set G of “good” or “goal” states: G ⊆ E. The agent succeeds if it is guaranteed to bring about at least one of these states (we do not care which one — they are all considered equally good)</p>
+<p>Let G ⊆ E be the set of states in which the achievement goal is realised. An agent Ag succeeds if and only if</p>
+<script type="math/tex; mode=display">
+\forall r \in \mathcal{R}(Ag,Env):\\
+\exists e_i \in \{e_x|e_x \; is \;a\;state\;that\;appears\; in\;r \;such\;that\; e_i\in G\}</script><h5 id="Maintenance-tasks-never-to-bring-about-one-of-the-bad-states"><a href="#Maintenance-tasks-never-to-bring-about-one-of-the-bad-states" class="headerlink" title="Maintenance tasks(never to bring about one of the bad states)"></a>Maintenance tasks(never to bring about one of the bad states)</h5><p>Are those of the form maintain state of affairs \psi</p>
+<p>A maintenance task is specified by a set B of “bad” states: B ⊆ E. The agent succeeds if it is guaranteed never to bring about one of these states, i.e. it manages to avoid all states in B, it never performs actions which result in any state in B occurring</p>
+<p>Let B ⊆ E be the set of bad states that we wish to avoid. An agent Ag succeeds if and only if</p>
+<script type="math/tex; mode=display">
+\forall r \in \mathcal{R}(Ag,Env):\\
+\not\exists e_i \in \{e_x|e_x \; is \;a\;state\;that\;appears\; in\;r \;such\;that\; e_i\in B\}</script><p><strong>Finished</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/28/Advanced Research Topic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/28/Advanced Research Topic/" itemprop="url">Advanced Research Topic</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-28T12:40:15+01:00">
+                2018-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Advanced-Research-Topic"><a href="#Advanced-Research-Topic" class="headerlink" title="Advanced Research Topic"></a>Advanced Research Topic</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/28/NOTE-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/28/NOTE-Artificial-Intelligence/" itemprop="url">(AI)Lec 1:Introduction</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-28T09:58:25+01:00">
+                2018-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="AI-Introduction"><a href="#AI-Introduction" class="headerlink" title="AI Introduction"></a>AI Introduction</h2><h4 id="Course"><a href="#Course" class="headerlink" title="Course"></a>Course</h4><ol>
+<li><p>Introduction to Artiﬁcial Intelligence </p>
+</li>
+<li><p>Probabilistic Reasoning I </p>
+</li>
+<li><p>Probabilistic Reasoning II </p>
+</li>
+<li><p>Sequential Decision Making </p>
+</li>
+<li><p>Temporal Probabilistic Reasoning</p>
+</li>
+<li><p>Game Theory</p>
+</li>
+<li><p>Argumentation I </p>
+</li>
+<li><p>Argumentation II </p>
+</li>
+<li><p>(A peek at) Machine Learning </p>
+</li>
+<li><p>AI &amp; Ethics </p>
+</li>
+</ol>
+<h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h4><ol>
+<li>Introduction of how to make right decision</li>
+</ol>
+<h3 id="How-to-do-the-right-thing"><a href="#How-to-do-the-right-thing" class="headerlink" title="How to do the right thing"></a>How to do the right thing</h3><p>Need to be able to </p>
+<ol>
+<li><strong>identify the alternatives</strong></li>
+<li><strong>decide</strong> which alternative will lead to the best outcome</li>
+<li>and do so <strong>quickly enough</strong> for the decision to be useful</li>
+</ol>
+<h4 id="Ideal-rational-理性的-agent"><a href="#Ideal-rational-理性的-agent" class="headerlink" title="Ideal rational(理性的) agent"></a>Ideal rational(理性的) agent</h4><p>For each <strong>percept sequence(感知序列)</strong>, an ideal rational agent will act to maximise its expected performance measure, <strong>on the basis of information provided</strong> by the percept sequence plus any information built into the agent.</p>
+<p>Rational agent <u>doesn’t</u> mean omniscient(全知的) or clairvoyant(先知) agent.</p>
+<h4 id="Percept-sequence"><a href="#Percept-sequence" class="headerlink" title="Percept sequence"></a>Percept sequence</h4><p><u>According to the sensors, the agent can percept from the environment and get the information.</u></p>
+<p>A simple agent maps each percept directly to an action. All static.</p>
+<p>When facing a complex environment, and even dynamic, it become hard for agents to do the right thing.</p>
+<h4 id="Problems"><a href="#Problems" class="headerlink" title="Problems:"></a>Problems:</h4><ol>
+<li>what to represent</li>
+<li>How to represent</li>
+<li>interpreting the percepts</li>
+</ol>
+<h4 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h4><ul>
+<li>Accessible&amp;Inaccessible</li>
+</ul>
+<p>An environment is <strong>accessible</strong> if the agent can obtain <strong>complete</strong> <strong>accurate and up-to-date</strong> information about <strong>all the relevant aspects</strong>.</p>
+<ul>
+<li>Deterministic&amp;Non-determinist</li>
+</ul>
+<p>A <strong>deterministic(确定性的)</strong> environment is one in which any action has <strong><u>a single guaranteed effect</u></strong> – there’s <u>no uncertainty</u> about the state that will result from performing an action.</p>
+<p>An environment where we can <u><strong>quantify</strong> the non-determinism with probability</u> is called <strong>stochastic(随机的)</strong>.</p>
+<ul>
+<li>Episodic&amp;non-episodic</li>
+</ul>
+<p>In an <strong>episodic(情节的)</strong> environment, performance of an agent is dependent on a number of discrete episodes, with no link between the performance of an agent in different episodes.</p>
+<p>In a non-episodic(非偶发性) or sequential environment, the current decision affects future decisions.</p>
+<ul>
+<li>Static &amp; dynamic</li>
+</ul>
+<p>A <strong>static</strong> environment is one that can be assumed to <u>remain unchanged except</u> by the performance of actions by the agent.</p>
+<p>A <strong>dynamic</strong> environment is one that has <u>other processes operating</u> on it, and which hence changes in ways beyond the agent’s control.</p>
+<ul>
+<li>Discrete &amp; continuous</li>
+</ul>
+<p>An environment is <strong>discrete</strong> if there are a <u><strong>fixed, finite number of actions and percepts</strong></u> in it. Discrete environments could in principle be handled by a kind of “lookup table”.</p>
+<p><a href="http://zhangzhejian.com/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/#State-action-and-run">RUN</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/27/NOTE-Web-Infrastructure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/27/NOTE-Web-Infrastructure/" itemprop="url">(WI) Lec 1:Introduction</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-27T12:04:18+01:00">
+                2018-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="key-points"><a href="#key-points" class="headerlink" title="key points:"></a>key points:</h4><ol>
+<li><p>system architectures LODE</p>
+</li>
+<li><p>web proxy cache</p>
+</li>
+<li></li>
+</ol>
+<h3 id="System-architecture-styles"><a href="#System-architecture-styles" class="headerlink" title="System architecture styles"></a>System architecture styles</h3><p>System architecture styles are formulated in terms of <strong>components</strong>, <strong>the way</strong> that components are <strong>connected</strong> to each other, the <strong>data exchanged</strong> between components and finally how these <strong>elements</strong> are jointly <strong>configured</strong> into a system.</p>
+<ul>
+<li>Layered architectures </li>
+<li>Object-based architectures</li>
+<li>Data-centered architectures </li>
+<li>Event-based architectures</li>
+</ul>
+<h5 id="Layered-Architectures"><a href="#Layered-Architectures" class="headerlink" title="Layered Architectures"></a>Layered Architectures</h5><ul>
+<li>Components are organised in a <strong>layered fashion</strong> where a component layer $L_i$ is allowed to call components at the underlying layer $L_{i -1}$</li>
+<li>Widely adopted by communication network community</li>
+<li>Control flows from layer to layer; <strong>requests go down</strong> the hierarchy whereas <strong>results flow upward</strong></li>
+</ul>
+<h5 id="Object-based-acchitectures"><a href="#Object-based-acchitectures" class="headerlink" title="Object-based acchitectures"></a>Object-based acchitectures</h5><ul>
+<li><p>This architecture holds components loosely</p>
+</li>
+<li><p>Each component is defined as an object and components are connected through mechanisms defined in the interface (example, RPC)</p>
+</li>
+</ul>
+<h5 id="Data-centered-architecture"><a href="#Data-centered-architecture" class="headerlink" title="Data-centered architecture"></a>Data-centered architecture</h5><ul>
+<li>Web-based distributed systems are largely data-centric.</li>
+<li>They rely on shared <strong>distributed file systems</strong></li>
+<li>Processes communicate through a common passive or active repository. They use shared web-based data services.</li>
+</ul>
+<h5 id="Event-based-architecture"><a href="#Event-based-architecture" class="headerlink" title="Event-based architecture"></a>Event-based architecture</h5><ul>
+<li>Processes essentially communicate through the propagation of events, which optionally also carry data. Event propagation is generally through publish/subscribe systems.(进程通过事件的传播来交流，可以携带数据。事件传播是通过发布/订阅系统来实现的)</li>
+<li>Processes publish events after which middleware ensures that only processes that subscribe receive them.(只有订阅的进程才能接受到)</li>
+</ul>
+<h4 id="Client-server-model"><a href="#Client-server-model" class="headerlink" title="Client-server model"></a>Client-server model</h4><p>A server is a process implementing a specific service. A client is a process that requests a service from a server</p>
+<h5 id="Centralised-architecture-中心化"><a href="#Centralised-architecture-中心化" class="headerlink" title="Centralised architecture(中心化)"></a>Centralised architecture(中心化)</h5><ul>
+<li>Clear distinction between clients and servers </li>
+<li>A leader monitors the system</li>
+<li>Fault tolerant and robust systems</li>
+</ul>
+<h5 id="Decentralised-architecture-去中心化"><a href="#Decentralised-architecture-去中心化" class="headerlink" title="Decentralised architecture(去中心化)"></a>Decentralised architecture(去中心化)</h5><ul>
+<li>No monitor to observe processes </li>
+<li>Useful architecture with <strong>reliable underlying(block chain)</strong> networks </li>
+<li>Useful with <strong>large number of components</strong> in the system</li>
+</ul>
+<h4 id="Web-proxy-caching"><a href="#Web-proxy-caching" class="headerlink" title="Web proxy caching"></a>Web proxy caching</h4><ul>
+<li>To improve consistency of the system </li>
+<li>Client-side caching stores frequently visited pages at browser’s cache.</li>
+<li><p>Web proxy is another type of client-side cache that is placed between client and web server.</p>
+</li>
+<li><p>Web proxy can implement a shared cache. </p>
+</li>
+<li>Cooperative caching or distributed caching</li>
+</ul>
+<h3 id="Web-Service"><a href="#Web-Service" class="headerlink" title="Web Service"></a>Web Service</h3><h4 id="Caching"><a href="#Caching" class="headerlink" title="Caching"></a>Caching</h4><ul>
+<li>For the Client (browser): avoid extra network transfers </li>
+<li>For the Web Server: reduce load on the server </li>
+<li>For the Service Provider: reduce external traffic</li>
+</ul>
+<p>Why:</p>
+<ul>
+<li>Because of the locality of reference </li>
+<li>Users tend to request the same object in succession </li>
+<li>Some objects are popular: requested by many users</li>
+</ul>
+<h5 id="Local-Cache-本地缓存"><a href="#Local-Cache-本地缓存" class="headerlink" title="Local Cache(本地缓存)"></a>Local Cache(本地缓存)</h5><p>Browsers include a local cache mechanism this local cache mechanism saves time and bandwidth, which increases performance.</p>
+<p>Operation of web cache</p>
+<h4 id="Replacement-Rules-strategies"><a href="#Replacement-Rules-strategies" class="headerlink" title="Replacement Rules strategies"></a>Replacement Rules strategies</h4><ul>
+<li>Least Recently Used (LRU)</li>
+<li>First In, First Out (FIFO)</li>
+<li>Least Frequently Used (LFU)</li>
+<li>Next to Expire (NTE)</li>
+<li>Largest File First (LFF)</li>
+</ul>
+<h4 id="Dynamic-Object-Rules-Strategies"><a href="#Dynamic-Object-Rules-Strategies" class="headerlink" title="Dynamic Object Rules Strategies"></a>Dynamic Object Rules Strategies</h4><p><u>To estimate the value an object may have in serving future requests.</u></p>
+<h4 id="Expiration"><a href="#Expiration" class="headerlink" title="Expiration"></a>Expiration</h4><p>HTTP 1.1 Cache control Directives</p>
+<p>ICP(Internet Cache Protocol)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/24/NOTE-Agents-and-Multi-Agent-System/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1006,717 +2018,11 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/" itemprop="url">MySQL master-slave warm standby and read-write separation</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T13:49:25+01:00">
-                2018-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="MySQL-master-slave-warm-standby-and-read-write-separation"><a href="#MySQL-master-slave-warm-standby-and-read-write-separation" class="headerlink" title="MySQL master-slave warm standby and read-write separation"></a>MySQL master-slave warm standby and read-write separation</h1><h2 id="Technical-Context"><a href="#Technical-Context" class="headerlink" title="Technical Context"></a>Technical Context</h2><p>Hardware: Raspberry Pi</p>
-<p>OS:  <em>2017-4-vga-raspbian-jessie</em></p>
-<p>Software: MySQL 5.5.60</p>
-<h2 id="Illustration"><a href="#Illustration" class="headerlink" title="Illustration"></a>Illustration</h2><p>This configuration is Linux based. MySQL provides users with master-slave warm standby only requiring a simple configuration. However, </p>
-<h2 id="Configuration-process"><a href="#Configuration-process" class="headerlink" title="Configuration process"></a>Configuration process</h2><h3 id="1-Installing-MySQL"><a href="#1-Installing-MySQL" class="headerlink" title="1. Installing MySQL"></a>1. Installing MySQL</h3><p>Tutor: <a href="https://www.stewright.me/2014/06/tutorial-install-mysql-server-on-raspberry-pi/" target="_blank" rel="noopener">Install MySQL on Raspberry pi</a></p>
-<h3 id="2-Check-Basic-Information"><a href="#2-Check-Basic-Information" class="headerlink" title="2. Check Basic Information"></a>2. Check Basic Information</h3><p>Master host IP: 10.205.10.215</p>
-<p>Slave host IP: 10.205.10.216</p>
-<p><em>Guarantee the internel-availability between two hosts</em></p>
-<p><code>ping 10.205.10.215</code></p>
-<h3 id="3-Configuration"><a href="#3-Configuration" class="headerlink" title="3. Configuration"></a>3. Configuration</h3><p><em>File name: /etc/mysql/my.cnf</em></p>
-<p>In Master host: </p>
-<p>Add the following</p>
-<p><code>server-id = 215</code> the server-id just needs to be identical</p>
-<p><code>binlog-do-db=database_name</code>  here is the database need to be replicated</p>
-<p>In Slave host:</p>
-<p>Add the following</p>
-<p><code>server-id = 216</code> also identical</p>
-<p><code>replicate-do-db = database_name</code> here is the database need to be replicated</p>
-<h3 id="4-Restart-MySQL-net-service"><a href="#4-Restart-MySQL-net-service" class="headerlink" title="4. Restart MySQL net service"></a>4. Restart MySQL net service</h3><ol>
-<li>net stop mysql</li>
-<li>net start mysql</li>
-</ol>
-<h3 id="5-Grant-authority-to-slave-hosts-to-visit"><a href="#5-Grant-authority-to-slave-hosts-to-visit" class="headerlink" title="5. Grant authority to slave hosts to visit"></a>5. Grant authority to slave hosts to visit</h3><p><code>GRANT REPLICATION SLAVE ON *.* to &#39;slave&#39;@&#39;%&#39; identified by &#39;password&#39;</code></p>
-<p>Illustration: </p>
-<p>‘slave’ is the account name of the slave hosts</p>
-<p>‘%’ is the IP address of slave hosts. % means all the IPs are allowed</p>
-<h3 id="6-Check-master-state"><a href="#6-Check-master-state" class="headerlink" title="6. Check master state"></a>6. Check master state</h3><p><code>show master status;</code></p>
-<p><img src="http://p8ltilmb1.bkt.clouddn.com/image/master-slave-warm-standby/master.png" alt=""></p>
-<p>Remember the <strong>Position</strong> and <strong>File</strong></p>
-<h3 id="7-Grant-Authority-to-Master-host"><a href="#7-Grant-Authority-to-Master-host" class="headerlink" title="7.Grant Authority to Master host"></a>7.Grant Authority to Master host</h3><p>In the Slave hosts, it needs authority to allow master to send sql or data to the slave hosts.</p>
-<p><code>change master to master_host=&#39;Master_IP&#39;,master_user=&#39;master&#39;,master_password=&#39;password&#39;,master_log_file=&#39;mysql-bin.000011&#39;,master_log_pos=107;</code></p>
-<p>master_log_pos and master_log_file are all gotten above.</p>
-<p>Then start the slave host</p>
-<p><code>start slave;</code></p>
-<h3 id="8-Check-slave-status"><a href="#8-Check-slave-status" class="headerlink" title="8.  Check slave status"></a>8.  Check slave status</h3><p><code>show slave status\G</code></p>
-<p>Slave_IO_Running: Yes    //YES<br>Slave_SQL_Running: Yes     //YES</p>
-<p>Possible error:</p>
-<h4 id="error-1-error-connecting-to-master-‘root-10-205-10-198-3306’-retry-time-60-retries-86400"><a href="#error-1-error-connecting-to-master-‘root-10-205-10-198-3306’-retry-time-60-retries-86400" class="headerlink" title="error 1:  error connecting to master ‘root@10.205.10.198:3306’ - retry-time: 60  retries: 86400"></a>error 1:  error connecting to master ‘root@10.205.10.198:3306’ - retry-time: 60  retries: 86400</h4><h4 id="error2：jdbc4-CommunicationsException-Communications-link-failure"><a href="#error2：jdbc4-CommunicationsException-Communications-link-failure" class="headerlink" title="error2：jdbc4.CommunicationsException: Communications link failure"></a>error2：jdbc4.CommunicationsException: Communications link failure</h4><p>Solution:  sudo vim /etc/mysql/my.cnf   bind-address = 127.0.0.1  【delete】</p>
-<p>ref: <a href="https://blog.csdn.net/u010578251/article/details/52217419" target="_blank" rel="noopener">https://blog.csdn.net/u010578251/article/details/52217419</a></p>
-<h2 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h2><ol>
-<li><a href="https://www.cnblogs.com/kissdodog/p/5422195.html" target="_blank" rel="noopener">https://www.cnblogs.com/kissdodog/p/5422195.html</a></li>
-<li><a href="https://lanjingling.github.io/2015/10/29/mysql-ha/" target="_blank" rel="noopener">https://lanjingling.github.io/2015/10/29/mysql-ha/</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/01/26/Use-Nginx-keepalived-to-Establish-Load-Balancers-with-High-Availability/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/26/Use-Nginx-keepalived-to-Establish-Load-Balancers-with-High-Availability/" itemprop="url">Use Nginx+keepalived to Establish Load Balancers with High Availability</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-26T11:55:39+00:00">
-                2018-01-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>There some examples and tutorials on the Internet, however I didn’t find a compeletely perfect solution for Raspberry Pis. So here I try to make one that might be helpful.</p>
-<h4 id="The-basic-structure"><a href="#The-basic-structure" class="headerlink" title="The basic structure"></a>The basic structure</h4><p><strong>host 1</strong>: static ip address 10.206.10.200</p>
-<p><strong>host 2:</strong> static ip address  10.206.10.199</p>
-<p><strong>virtual ip add:</strong> 10.206.10. 211</p>
-<p><strong>Note:</strong> the selection of the virtual ip address is very important. The VIP is the entrance of your web, so please make sure the availability of the VIP. </p>
-<h4 id="Set-static-ip-address"><a href="#Set-static-ip-address" class="headerlink" title="Set static ip address"></a>Set static ip address</h4><p>Tutorial for Raspbian jessie:<a href="https://www.modmypi.com/blog/how-to-give-your-raspberry-pi-a-static-ip-address-update" target="_blank" rel="noopener">tutorial</a></p>
-<p><strong>Note:</strong> When setting the ip, you are requied basic knowledge about the TCP/IP </p>
-<h4 id="Install-and-configure-Nginx"><a href="#Install-and-configure-Nginx" class="headerlink" title="Install and configure Nginx"></a>Install and configure Nginx</h4><p>The OS is raspbian jessie. </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nginx</span><br><span class="line">sudo vim /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
-<p>The content of nginx.conf:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">user www-data;</span><br><span class="line">worker_processes 4;</span><br><span class="line">pid /run/nginx.pid;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">        worker_connections 768;</span><br><span class="line">        # multi_accept on;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    server &#123;</span><br><span class="line">        listen 8000; #the port can be changed</span><br><span class="line">        server_name test;</span><br><span class="line">        charset utf-8;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">        root html;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">        proxy_set_header X-Real_IP $remote_addr;</span><br><span class="line">        client_max_body_size 100m;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong> Install Nginx in both hosts, and the configuration needs to be the same.</p>
-<p>Now do some changes to make the index.html differernt, which can be used for test.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/share/nginx/html/index.html</span><br></pre></td></tr></table></figure>
-<p>Then make some changes! For example, in host1, the index.html can be inserted into some values.</p>
-<p><strong>commonds that used to control Nginx</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo service nginx start</span><br><span class="line">sudo service nginx stop</span><br><span class="line">sudo service nginx restart</span><br></pre></td></tr></table></figure>
-<p>Start the nginx, then use the web browser to visit.</p>
-<p>10.206.10.200:8000</p>
-<p>10.206.10.199:8000</p>
-<p>If you can see this, then Nginx is successfully running.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Welcome to nginx on Debian!123</span><br><span class="line">If you see this page, the nginx web server is successfully installed and working on Debian. Further configuration is required.pis4</span><br><span class="line"></span><br><span class="line">For online documentation and support please refer to nginx.org</span><br><span class="line"></span><br><span class="line">Please use the reportbug tool to report bugs in the nginx package with Debian. However, check existing bug reports before reporting a new bug.</span><br><span class="line"></span><br><span class="line">Thank you for using debian and nginx.</span><br></pre></td></tr></table></figure>
-<h4 id="Install-and-Configure-KEEPALIVED"><a href="#Install-and-Configure-KEEPALIVED" class="headerlink" title="Install and Configure KEEPALIVED"></a>Install and Configure KEEPALIVED</h4><p>keepalived here is used to provide a virtual connection between the two hosts.</p>
-<p>In raspbian, installing is simple than centOS and other tutorials in the Internet.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install keepalived</span><br></pre></td></tr></table></figure>
-<p>Then configuration</p>
-<p><strong>here is the configuration for MASTER host</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/keepalived/keepalived.conf</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">global_defs &#123;</span><br><span class="line">            notification_email &#123;</span><br><span class="line">                tiddy@example.com</span><br><span class="line">            &#125;</span><br><span class="line">            notification_email_from keepalived@example.com</span><br><span class="line">            smtp_server 192.168.1.5</span><br><span class="line">            smtp_connect_timeout 30</span><br><span class="line">            router_id  LVS_DEVEL_11  #与backup配置不相同的任意合法字符串</span><br><span class="line">        &#125;</span><br><span class="line">        vrrp_instance VI_1 &#123;</span><br><span class="line">            state MASTER             #backup机器配置为BACKUP</span><br><span class="line">            interface eth0       #绑定的网卡名称</span><br><span class="line">            virtual_router_id 250    #need to be the same as backup</span><br><span class="line">            use_vmac #名字可为任意合法字符串(默认字符串vrrp.$&#123;virtual_router_id&#125; 此处默认使用vrrp.250) </span><br><span class="line">            priority 250  #优先级，50 higher thanbackup</span><br><span class="line">            advert_int 1   </span><br><span class="line">mcast_src_ip 10.206.10.199 #according to the host&apos;s ip</span><br><span class="line">            authentication &#123;</span><br><span class="line">               auth_type PASS       #need to be the same as backup</span><br><span class="line">               auth_pass 1111       #need to be the same as backup</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">            virtual_ipaddress &#123;</span><br><span class="line">                10.206.10.211/27 #virual ip, need to be the same as backup, according to the real situation</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>NOTE:</strong> After testing, here  I found two strange problems that may occur when you use others toturials</p>
-<ol>
-<li>The priority. The first time I configured, I set the master’s priority to 400, and slave’s to 200(it’s obviously correct according to the rules that others stated, should be higher at least 50). However, when testing, the MASTER host became the SLAVE host. By checking the log(<strong>/var/log/messages</strong>), I found that  the SLAVE’s priority was higher than the MASTER. This situation is quite ridiculous right? Then I tried to set the priority of MASTER to 250(just higher 50), then it works. 250 is a really amazing number, what else can I say?</li>
-<li>The virtual_ipaddress. the VIP is important. You must make sure the ip address is usable. A random one may not work.</li>
-</ol>
-<p>Then Restart the KEEPALIVED</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service keepalived restart</span><br></pre></td></tr></table></figure>
-<p>use <strong>ifconfig</strong> to check the situation of network</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vrrp.250  Link encap:Ethernet  HWaddr 00:00:5e:00:01:fa  </span><br><span class="line">          inet addr:10.206.10.211  Bcast:0.0.0.0  Mask:255.255.255.224</span><br><span class="line">          inet6 addr: fe80::2479:6bf0:af3:7ba5/64 Scope:Link</span><br><span class="line">          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1</span><br><span class="line">          RX packets:79294 errors:0 dropped:15 overruns:0 frame:0</span><br><span class="line">          TX packets:45157 errors:0 dropped:0 overruns:0 carrier:0</span><br><span class="line">          collisions:0 txqueuelen:1 </span><br><span class="line">          RX bytes:8424394 (8.0 MiB)  TX bytes:2555646 (2.4 MiB)</span><br></pre></td></tr></table></figure>
-<p>you will find an extra vrrp.250 interface, which means the keepalived working</p>
-<p>start both hosts and keepalived.</p>
-<p><strong>Test</strong></p>
-<p>In the browser, visit the VIP:8000 to see whether the index page can be seen.</p>
-<p>And then shut MASTER’s keepalived down to see whether SLAVE host gets the VIP and the index page changed.</p>
-<p>REFERENCE:</p>
-<ol>
-<li><a href="http://www.cnblogs.com/kaituorensheng/p/4889268.html" target="_blank" rel="noopener">http://www.cnblogs.com/kaituorensheng/p/4889268.html</a></li>
-<li><a href="http://blog.csdn.net/wanglei_storage/article/details/51175418" target="_blank" rel="noopener">http://blog.csdn.net/wanglei_storage/article/details/51175418</a></li>
-<li><a href="http://blog.csdn.net/zzban1111/article/details/15504783" target="_blank" rel="noopener">http://blog.csdn.net/zzban1111/article/details/15504783</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2017/12/29/Data-types-of-JavaScript/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/29/Data-types-of-JavaScript/" itemprop="url">Data types of JavaScript</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-29T13:45:31+00:00">
-                2017-12-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="Six-basic-types-of-data-in-JavaScript"><a href="#Six-basic-types-of-data-in-JavaScript" class="headerlink" title="Six basic types of data in JavaScript"></a>Six basic types of data in JavaScript</h4><p><strong>1. NULL</strong></p>
-<p>The value of the type is <strong>null</strong> which points to an empty object, thus when use <em>typeof</em> to detect the type of a null value, an object will be returned.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> m = <span class="literal">null</span>;</span><br><span class="line">alert(<span class="keyword">typeof</span>(m));</span><br></pre></td></tr></table></figure>
-<p><strong>2. Boolean</strong></p>
-<p>Boolean is also a special type in JS. There are only two values for boolean type, <em>true</em> or <em>false</em>. In addition, boolean is case sensitive, which means True and False are different from true and false.</p>
-<p>When trying to convert other types to Boolean using <strong>Boolean()</strong>:</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Equals true</th>
-<th>Equals false</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Boolean</td>
-<td>true</td>
-<td>false</td>
-</tr>
-<tr>
-<td>String</td>
-<td>any other non-null value</td>
-<td>“”(null String)</td>
-</tr>
-<tr>
-<td>Number</td>
-<td>any non-zero value</td>
-<td>0 or NaN(not a number)</td>
-</tr>
-<tr>
-<td>Object</td>
-<td>any object</td>
-<td>null(as mentioned above, null is an object)</td>
-</tr>
-<tr>
-<td>Undefined</td>
-<td>not applicable(always false)</td>
-<td>undefined</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>3. Number</strong></p>
-<p>Including <strong>int</strong> and <strong>float</strong>, </p>
-<p><strong>NaN</strong> means <strong>not a Number</strong>. It happens when a Number type is expected but not be returned. For Example:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x=<span class="number">10</span>;</span><br><span class="line"><span class="keyword">var</span> y=<span class="string">'a'</span>;</span><br><span class="line">alert(x/y);</span><br></pre></td></tr></table></figure>
-<p>NaN has two special features:</p>
-<ol>
-<li><p>Any operation involves in NaN will return NaN</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var x= NaN;</span><br><span class="line">alert(10/x);</span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-<li><p>NaN equals no other values</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="literal">NaN</span>==<span class="literal">NaN</span>);              <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-</ol>
-<p><strong>4. Undefined</strong></p>
-<p>Undefined means a variable doesn’t refers to any value</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x;</span><br><span class="line">alert(x);</span><br></pre></td></tr></table></figure>
-<p><strong>5. String</strong></p>
-<p>“asd” and ‘asd’ are both String</p>
-<p><em>some basic operations of String</em></p>
-<ol>
-<li><p>String.substr(start,length)   <em>start</em> can be a char or an index</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">"hello world"</span>;</span><br><span class="line">str.substr(<span class="string">"h"</span>,<span class="number">3</span>);   <span class="comment">//hel</span></span><br><span class="line">str.substr(<span class="number">1</span>,<span class="number">3</span>);     <span class="comment">//ell</span></span><br></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-<li><p>Strring.concat()</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="string">"abc"</span>;</span><br><span class="line"><span class="keyword">var</span> y = <span class="string">"def"</span>;</span><br><span class="line">alert(x.concat(y));  <span class="comment">//abcdef</span></span><br><span class="line">alert(<span class="string">""</span>.concat(x,y)); <span class="comment">//abcdef</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong>6. Object</strong></p>
-<p> a little complicated, discuss latter.</p>
-<h4 id="Some-operation-between-String-and-other-types"><a href="#Some-operation-between-String-and-other-types" class="headerlink" title="Some operation between String and other types"></a>Some operation between String and other types</h4><ol>
-<li><p>String + (Number. Boolean…..) = String</p>
-<blockquote>
-<p>“12.34”+123 = “12.34123”<br>“12.34’+ true = “12.34true”</p>
-<p>“12.34”+ null = “12.34null”</p>
-</blockquote>
-</li>
-<li><p>String - (Number,Boollean….) = Number</p>
-<blockquote>
-<p>“12.34” - true = 11.34</p>
-<p>“12.34” - 1 =11.34</p>
-<p>“12.34 “ - null = 12.34</p>
-<p>“asd” - 1 = NaN</p>
-</blockquote>
-</li>
-<li><p>String == ?</p>
-<blockquote>
-<p>‘5’==5  // true</p>
-<p>‘5’===5 // false</p>
-<p>‘null’ == null //false</p>
-<p>‘false’ == false // false</p>
-</blockquote>
-<p>​</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2017/12/18/The-basic-use-of-Raspberry-pi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/18/The-basic-use-of-Raspberry-pi/" itemprop="url">The basic use of Raspberry pi</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T12:48:08+00:00">
-                2017-12-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Because of my final year project which involves using Raspberry Pi (RPI for short) to establish a mini cloud server cluster for an e-commerce platform, I purchased one, the detail information: Raspberry Pi 3 model B.It is the newest one that support WLAN, so it can also be user as a mini linux server.</p>
-<p>In this article, I will recap some problems occurred in my work</p>
-<h2 id="Installing-the-OS—Raspbian"><a href="#Installing-the-OS—Raspbian" class="headerlink" title="Installing the OS—Raspbian"></a>Installing the OS—Raspbian</h2><p>Basic material: RPI, sd card(16G)</p>
-<p>Operating system I choosed to use is <em>2017-4-vga-raspbian-jessie</em></p>
-<p>Tools: <em>SDFormatter</em> and <em>Win32DiskImager</em></p>
-<h3 id="1-Format-the-sd-card"><a href="#1-Format-the-sd-card" class="headerlink" title="1. Format the sd card"></a>1. Format the sd card</h3><p>use the SDFormatter</p>
-<h3 id="2-Burn-the-OS"><a href="#2-Burn-the-OS" class="headerlink" title="2. Burn the OS"></a>2. Burn the OS</h3><p>use the Win32DiskImager to burn </p>
-<h3 id="3-Boot-the-RPI-and-connect-it-to-a-monitor-with-HDMI"><a href="#3-Boot-the-RPI-and-connect-it-to-a-monitor-with-HDMI" class="headerlink" title="3. Boot the RPI and connect it to a monitor with HDMI"></a>3. Boot the RPI and connect it to a monitor with <em>HDMI</em></h3><p>check whether it work</p>
-<h2 id="Installing-some-softerware-for-further-use"><a href="#Installing-some-softerware-for-further-use" class="headerlink" title="Installing some softerware for further use"></a>Installing some softerware for further use</h2><h3 id="1-SSH"><a href="#1-SSH" class="headerlink" title="1. SSH"></a>1. SSH</h3><p>The default Raspbian doesn’t have the SSH so we need to install one</p>
-<h4 id="install-and-start"><a href="#install-and-start" class="headerlink" title="install and start"></a>install and start</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openssh-server</span><br><span class="line"></span><br><span class="line">sudo /etc/init.d/ssh start</span><br></pre></td></tr></table></figure>
-<h4 id="make-ssh-start-when-boot"><a href="#make-ssh-start-when-boot" class="headerlink" title="make ssh start when boot"></a>make ssh start when boot</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/rc.local</span><br></pre></td></tr></table></figure>
-<p><em>add the following before ‘exit 0’</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ssh start</span><br></pre></td></tr></table></figure>
-<p>Then have a test</p>
-<p>Now U can connect the RPI remotely</p>
-<h3 id="2-VSFTP"><a href="#2-VSFTP" class="headerlink" title="2. VSFTP"></a>2. VSFTP</h3><p>If you want to transmit some files by FTP, we need to install VSFTP first</p>
-<p><em>1. install</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install vsftpd</span><br><span class="line"></span><br><span class="line">sudo service vsftpd start</span><br></pre></td></tr></table></figure>
-<p><em>2. configgure</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/vsftpd.conf</span><br></pre></td></tr></table></figure>
-<h5 id="find-the-following"><a href="#find-the-following" class="headerlink" title="find the following"></a><em>find the following</em></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO</span><br><span class="line"></span><br><span class="line">local_enable=YES</span><br><span class="line"></span><br><span class="line">write_enable=YES	</span><br><span class="line"></span><br><span class="line">local_umask=022</span><br></pre></td></tr></table></figure>
-<p><em>3. save and restart the service</em></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service vsftpd restart</span><br></pre></td></tr></table></figure>
-<p>then have a test</p>
-<p>one problem occurred:</p>
-<p><em>500 OOPS: vsftpd: refusing to run with writable root inside chroot()</em></p>
-<p>to solves this, we need to add one statement in the /etc/vsftpd.conf</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allow_writeable_chroot=YES</span><br></pre></td></tr></table></figure>
-<p>then restart the vsftp service</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1762,7 +2068,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1775,7 +2081,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

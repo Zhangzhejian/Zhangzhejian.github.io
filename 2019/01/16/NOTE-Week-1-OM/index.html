@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="note,OM,Algorithm," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Overview: Introduction Branch and Bound Methods for ﬁnding exact solutions Shortest-paths problems and algorithms Network ﬂow problems Linear Programming to solve Network ﬂow problems Heuristic Optimi">
+<meta name="keywords" content="note,OM,Algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(OM) Introduction to Algorithms and TSP">
+<meta property="og:url" content="https://zhangzhejian.com/2019/01/16/NOTE-Week-1-OM/index.html">
+<meta property="og:site_name" content="Recap">
+<meta property="og:description" content="Overview: Introduction Branch and Bound Methods for ﬁnding exact solutions Shortest-paths problems and algorithms Network ﬂow problems Linear Programming to solve Network ﬂow problems Heuristic Optimi">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-01-24T13:07:50.997Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(OM) Introduction to Algorithms and TSP">
+<meta name="twitter:description" content="Overview: Introduction Branch and Bound Methods for ﬁnding exact solutions Shortest-paths problems and algorithms Network ﬂow problems Linear Programming to solve Network ﬂow problems Heuristic Optimi">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhangzhejian.com/2019/01/16/NOTE-Week-1-OM/"/>
+
+
+
+
+
+  <title>(OM) Introduction to Algorithms and TSP | Recap</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Recap</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">zhejian</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/16/NOTE-Week-1-OM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">(OM) Introduction to Algorithms and TSP</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-16T23:38:05+00:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview:"></a>Overview:</h3><ol>
+<li>Introduction</li>
+<li>Branch and Bound Methods for ﬁnding exact solutions</li>
+<li>Shortest-paths problems and algorithms</li>
+<li>Network ﬂow problems</li>
+<li>Linear Programming to solve Network ﬂow problems</li>
+<li>Heuristic Optimisation Techniques: Genetic Algorithms</li>
+<li>Simulated Annealing</li>
+</ol>
+<h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h3><ul>
+<li>Complexity of algorithms</li>
+<li>P,NP,NP-hard,NP-complete</li>
+<li>Combinational Problem</li>
+<li>TSP(Traveling Salesman Problem)</li>
+</ul>
+<h3 id="Complexity-of-algorithms"><a href="#Complexity-of-algorithms" class="headerlink" title="Complexity of algorithms"></a>Complexity of algorithms</h3><p>n denotes the size of input</p>
+<ul>
+<li>Polynomial-time algorithm:<ul>
+<li>The worst-case running time is $\Theta(n^k)$</li>
+</ul>
+</li>
+<li>Exponential-time algorithm:<ul>
+<li>The worst-case running time is $\Theta(2^{dn})$ and $\Omega(2^{cn})$</li>
+</ul>
+</li>
+</ul>
+<h4 id="Asymptotic-渐进的-notation-Omega-n-Theta-n-and-O-n"><a href="#Asymptotic-渐进的-notation-Omega-n-Theta-n-and-O-n" class="headerlink" title="Asymptotic(渐进的) notation $\Omega(n)$ $\Theta(n)$ and $O(n)$"></a>Asymptotic(渐进的) notation $\Omega(n)$ $\Theta(n)$ and $O(n)$</h4><ul>
+<li>$O(n)$: is an asymptotic upper bound</li>
+<li>$Omega(n)$ is a lower bound</li>
+</ul>
+<p>Mathmaticla Definition:</p>
+<ul>
+<li>if $\lim_{n \to +\infty} \frac{f(n)}{g(n)} = 0$, then f(n) is strictly less than g(n). $f(n) = o(g(n))$</li>
+<li>if $\lim_{n \to +\infty} \frac{f(n)}{g(n)} = \infty$, then f(n) is strictly larger than g(n). $f(n) = \omega(g(n))$</li>
+<li>if $\lim_{n \to +\infty} \frac{f(n)}{g(n)} = c $, then f(n) is strictly equal to g(n). $f(n) =g(n)$</li>
+</ul>
+<script type="math/tex; mode=display">
+\Omega(g(n))<\Theta(f(n))< O(g(n))</script><h3 id="P-NP-NP-hard-NP-complete"><a href="#P-NP-NP-hard-NP-complete" class="headerlink" title="P, NP, NP-hard, NP-complete"></a>P, NP, NP-hard, NP-complete</h3><ul>
+<li><strong>P</strong>: problems can be solved in polynomial time</li>
+<li><strong>NP</strong>: ‘N’ denotes “non-deterministic”(非确定). Which meas these problems is non-deterministic can be solved in polynomial time currently(至少现在不确定有没有线性复杂度的算法能解决这些问题), but can be verified in polynomial time given an answer.</li>
+<li>In order for further definition, we introduce a new definition here. <strong>“Reduction(归约，约化)”</strong> means a problem A can be reduced from problem B, if A can be transformed to B. Which means B is as hard as A. </li>
+<li><strong>NP-complete</strong>: NPC problem is kind of problem that:<ul>
+<li>is a NP problem(can be verificated polynomially)</li>
+<li>all NP problem can be reduced from it</li>
+</ul>
+</li>
+<li><strong>NP-hard</strong>: NP problems are as hard as NP problems <ul>
+<li>all NP problem can be reduced from it</li>
+<li>but not a NP</li>
+</ul>
+</li>
+</ul>
+<p>Reference:<a href="http://www.matrix67.com/blog/archives/105?replytocom=20331#respond" target="_blank" rel="noopener">Matrix67</a></p>
+<h3 id="Combinitional-Optimisation-组合优化"><a href="#Combinitional-Optimisation-组合优化" class="headerlink" title="Combinitional Optimisation(组合优化)"></a>Combinitional Optimisation(组合优化)</h3><p>   A combinatorial optimisation problem:</p>
+<ul>
+<li>view an instance as a pair $(\mathcal(R), \mathcal(C))$<ul>
+<li>$\mathcal(R)$ is a finite set of configurations</li>
+<li>$\mathcal(C)$ is a cost function, $\mathcal(C): \mathcal(R) \to real \; number$</li>
+</ul>
+</li>
+<li>Problem: find a confuguration with the minimum cost. That is to find a configuration config $\in \mathcal(R)$ such that the cost $\mathcal(C)(config)$ of this configuration is as small as possible.</li>
+<li>Illustrations: if the size of the configuration set $\mathcal(R)$ is N, the the number of config, the subset of $\mathcal(R)$ is $2^N$. So in order to find the minum of the config, the complexity of the problem is $\Omega(2^n)$. <ul>
+<li>NP-hard </li>
+</ul>
+</li>
+<li>Examples: TSP, SAT</li>
+</ul>
+<p>Reference:</p>
+<ol>
+<li><a href="https://blog.csdn.net/golden1314521/article/details/51470999" target="_blank" rel="noopener">https://blog.csdn.net/golden1314521/article/details/51470999</a></li>
+<li><a href="http://www.matrix67.com/blog/archives/105" target="_blank" rel="noopener">http://www.matrix67.com/blog/archives/105</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/note/" rel="tag"># note</a>
+          
+            <a href="/tags/OM/" rel="tag"># OM</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/16/NOTE-Week-1-Software-Engineering-of-Internet-Application/" rel="next" title="(SE)Introduction of Software Engineering of Internet Application">
+                <i class="fa fa-chevron-left"></i> (SE)Introduction of Software Engineering of Internet Application
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/19/NOTE-Week-1-Cryptocurrencies/" rel="prev" title="(Blockchain)Introduction to Cryptocurrencies">
+                (Blockchain)Introduction to Cryptocurrencies <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zhejian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Key-points"><span class="nav-number">2.</span> <span class="nav-text">Key points</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complexity-of-algorithms"><span class="nav-number">3.</span> <span class="nav-text">Complexity of algorithms</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Asymptotic-渐进的-notation-Omega-n-Theta-n-and-O-n"><span class="nav-number">3.1.</span> <span class="nav-text">Asymptotic(渐进的) notation $\Omega(n)$ $\Theta(n)$ and $O(n)$</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P-NP-NP-hard-NP-complete"><span class="nav-number">4.</span> <span class="nav-text">P, NP, NP-hard, NP-complete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Combinitional-Optimisation-组合优化"><span class="nav-number">5.</span> <span class="nav-text">Combinitional Optimisation(组合优化)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhejian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

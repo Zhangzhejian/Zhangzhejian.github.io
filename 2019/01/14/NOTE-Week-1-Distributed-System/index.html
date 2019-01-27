@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Basic Introduction D Design characteristics for distributed systems design considerations(10)     5 Examples Design ConsiderationsOpenness(对开发人员)Interfaces to the OS, network and services must be bas">
+<meta name="description" content="Key points Basic Introduction  Design characteristics for distributed systems design considerations(10)   Communication problem  Design ConsiderationsOpenness(对开发人员)Interfaces to the OS, network and s">
 <meta name="keywords" content="note,Distribtued System">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(Distributed System) Introduction">
 <meta property="og:url" content="https://zhangzhejian.com/2019/01/14/NOTE-Week-1-Distributed-System/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Basic Introduction D Design characteristics for distributed systems design considerations(10)     5 Examples Design ConsiderationsOpenness(对开发人员)Interfaces to the OS, network and services must be bas">
+<meta property="og:description" content="Key points Basic Introduction  Design characteristics for distributed systems design considerations(10)   Communication problem  Design ConsiderationsOpenness(对开发人员)Interfaces to the OS, network and s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-15T10:48:33.498Z">
+<meta property="og:updated_time" content="2019-01-16T23:14:43.507Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(Distributed System) Introduction">
-<meta name="twitter:description" content="Basic Introduction D Design characteristics for distributed systems design considerations(10)     5 Examples Design ConsiderationsOpenness(对开发人员)Interfaces to the OS, network and services must be bas">
+<meta name="twitter:description" content="Key points Basic Introduction  Design characteristics for distributed systems design considerations(10)   Communication problem  Design ConsiderationsOpenness(对开发人员)Interfaces to the OS, network and s">
 
 
 
@@ -300,15 +300,14 @@
       
 
       
-        <ul>
-<li>Basic Introduction D</li>
+        <h2 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h2><ul>
+<li>Basic Introduction </li>
 <li>Design characteristics for distributed systems<ul>
 <li>design considerations(10)</li>
-<li></li>
 </ul>
 </li>
+<li>Communication problem</li>
 </ul>
-<p>5 Examples</p>
 <h2 id="Design-Considerations"><a href="#Design-Considerations" class="headerlink" title="Design Considerations"></a>Design Considerations</h2><h3 id="Openness-对开发人员"><a href="#Openness-对开发人员" class="headerlink" title="Openness(对开发人员)"></a>Openness(对开发人员)</h3><p>Interfaces to the OS, network and services must be based on published specifications (such as standards)</p>
 <ul>
 <li>This makes it possible for one vendor to build systems which interact with those of another</li>
@@ -431,7 +430,27 @@
 <li>Throughput</li>
 <li>Load Balancing</li>
 </ul>
-<h3 id="Heterogeneity-异质性"><a href="#Heterogeneity-异质性" class="headerlink" title="Heterogeneity(异质性)"></a>Heterogeneity(异质性)</h3>
+<h3 id="Heterogeneity-异质性"><a href="#Heterogeneity-异质性" class="headerlink" title="Heterogeneity(异质性)"></a>Heterogeneity(异质性)</h3><p>??</p>
+<h3 id="Communication-Models"><a href="#Communication-Models" class="headerlink" title="Communication Models"></a>Communication Models</h3><ul>
+<li>Client-server communication</li>
+<li>Multicast communication</li>
+</ul>
+<h3 id="Reliable-agreement"><a href="#Reliable-agreement" class="headerlink" title="Reliable agreement"></a>Reliable agreement</h3><p>Many improtant functions such as data duplications, requre agreement between hosts. This is often achieved through broadcast of information among distributed processes.</p>
+<p>Communication links are not reliable. Therefore, <strong>distributed algorithms</strong> allow us to achieve reliable broadcasts</p>
+<h3 id="Data-Distributed-models"><a href="#Data-Distributed-models" class="headerlink" title="Data Distributed models"></a>Data Distributed models</h3><ul>
+<li>Fragmentation:分片<ul>
+<li>data is divided into parts and split between hosts</li>
+</ul>
+</li>
+<li>Migration:迁移<ul>
+<li>data moves from one host to another over time</li>
+</ul>
+</li>
+</ul>
+<h3 id="Distributed-Transcation-分布式事务"><a href="#Distributed-Transcation-分布式事务" class="headerlink" title="Distributed Transcation(分布式事务)"></a>Distributed Transcation(分布式事务)</h3><p>Ensuring that either all or none of a sequence of actions are performed maintains the integrity of the resources acted on.确保无论执不执行操作，都会保持资源的完整性。</p>
+<h3 id="Distributed-File-System"><a href="#Distributed-File-System" class="headerlink" title="Distributed File System"></a>Distributed File System</h3><p>Provide access to directories and files spread acorss multiple hosts as if one directory structure.</p>
+<p>Finished.</p>
+
       
     </div>
     
@@ -552,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">38</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -565,7 +584,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -598,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Design-Considerations"><span class="nav-number">1.</span> <span class="nav-text">Design Considerations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Openness-对开发人员"><span class="nav-number">1.1.</span> <span class="nav-text">Openness(对开发人员)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Concurrency"><span class="nav-number">1.2.</span> <span class="nav-text">Concurrency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scalability-伸缩性-and-state"><span class="nav-number">1.3.</span> <span class="nav-text">Scalability(伸缩性) and state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fault-tolerance"><span class="nav-number">1.4.</span> <span class="nav-text">Fault tolerance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Measure-of-failure-rate"><span class="nav-number">1.4.1.</span> <span class="nav-text">Measure of failure rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Failure-modes-and-illustrations"><span class="nav-number">1.4.2.</span> <span class="nav-text">Failure modes and illustrations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transparency-对用户"><span class="nav-number">1.5.</span> <span class="nav-text">Transparency(对用户)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Types-of-transparency"><span class="nav-number">1.5.1.</span> <span class="nav-text">Types of transparency:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security"><span class="nav-number">1.6.</span> <span class="nav-text">Security</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Management"><span class="nav-number">1.7.</span> <span class="nav-text">Management</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance"><span class="nav-number">1.8.</span> <span class="nav-text">Performance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heterogeneity-异质性"><span class="nav-number">1.9.</span> <span class="nav-text">Heterogeneity(异质性)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-points"><span class="nav-number">1.</span> <span class="nav-text">Key points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Design-Considerations"><span class="nav-number">2.</span> <span class="nav-text">Design Considerations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Openness-对开发人员"><span class="nav-number">2.1.</span> <span class="nav-text">Openness(对开发人员)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Concurrency"><span class="nav-number">2.2.</span> <span class="nav-text">Concurrency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scalability-伸缩性-and-state"><span class="nav-number">2.3.</span> <span class="nav-text">Scalability(伸缩性) and state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fault-tolerance"><span class="nav-number">2.4.</span> <span class="nav-text">Fault tolerance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Measure-of-failure-rate"><span class="nav-number">2.4.1.</span> <span class="nav-text">Measure of failure rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Failure-modes-and-illustrations"><span class="nav-number">2.4.2.</span> <span class="nav-text">Failure modes and illustrations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transparency-对用户"><span class="nav-number">2.5.</span> <span class="nav-text">Transparency(对用户)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Types-of-transparency"><span class="nav-number">2.5.1.</span> <span class="nav-text">Types of transparency:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security"><span class="nav-number">2.6.</span> <span class="nav-text">Security</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Management"><span class="nav-number">2.7.</span> <span class="nav-text">Management</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance"><span class="nav-number">2.8.</span> <span class="nav-text">Performance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heterogeneity-异质性"><span class="nav-number">2.9.</span> <span class="nav-text">Heterogeneity(异质性)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Communication-Models"><span class="nav-number">2.10.</span> <span class="nav-text">Communication Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reliable-agreement"><span class="nav-number">2.11.</span> <span class="nav-text">Reliable agreement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Distributed-models"><span class="nav-number">2.12.</span> <span class="nav-text">Data Distributed models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Distributed-Transcation-分布式事务"><span class="nav-number">2.13.</span> <span class="nav-text">Distributed Transcation(分布式事务)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Distributed-File-System"><span class="nav-number">2.14.</span> <span class="nav-text">Distributed File System</span></a></li></ol></li></ol></div>
             
 
           </div>
