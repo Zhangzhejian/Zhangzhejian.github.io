@@ -230,6 +230,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/27/NOTE-Week-2-Cryptocurrencies/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/27/NOTE-Week-2-Cryptocurrencies/" itemprop="url">(Blockchain)Structure of the blockchain</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-27T09:34:32+00:00">
+                2019-01-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Overview:</p>
+<ul>
+<li>Cryptographic Hash Functions</li>
+<li>Digital Signatures</li>
+<li>Blockchain structured in Bitcoin/Ethereum</li>
+<li>UTXO in bitcoin</li>
+<li>Account-based model in Ethereum</li>
+</ul>
+<h2 id="Cryptography"><a href="#Cryptography" class="headerlink" title="Cryptography"></a>Cryptography</h2><p>One-way Hash Function </p>
+<p>Propety:</p>
+<ol>
+<li>Preimage Resistance(抗原像性)<ul>
+<li>Given y, it is hard to find the x that h(x) = y</li>
+<li>no clues or hints</li>
+<li>给出密文，很难获得原文</li>
+</ul>
+</li>
+<li>Second Preimage Resistance(弱抗碰撞性)<ul>
+<li>given x and h(x) = y, it is computational hard to find a x’ such that h(x’) = y</li>
+<li>很难找到两个不同的原文，使得两者拥有相同的hash密文</li>
+</ul>
+</li>
+<li>Collision-Resistance(强抗碰撞性)<ul>
+<li>it is hard to find two different messages, m1 and m2 such that h(m1)==h(m2)</li>
+</ul>
+</li>
+</ol>
+<h3 id="Bitcoin-Block-Header"><a href="#Bitcoin-Block-Header" class="headerlink" title="Bitcoin Block Header"></a>Bitcoin Block Header</h3><p><img src="https://i.postimg.cc/2jnQzKyT/BLC-2-1.png" alt=""></p>
+<h3 id="How-to-verify-a-transaction-is-in-the-blockchain"><a href="#How-to-verify-a-transaction-is-in-the-blockchain" class="headerlink" title="How to verify a transaction is in the blockchain"></a>How to verify a transaction is in the blockchain</h3><p><img src="https://i.postimg.cc/BZhq1qjv/BLC-1-1.png" alt=""></p>
+<p>Use the <strong>Merkle Root </strong> to verify</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/23/NOTE-Week-2-software-engineering/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -307,7 +458,41 @@
 <li>Unified modelling language (UML)</li>
 <li>Usecase diagrams (A type of UML diagram)</li>
 </ol>
-<h2 id="MDD"><a href="#MDD" class="headerlink" title="MDD"></a>MDD</h2>
+<h2 id="MDD"><a href="#MDD" class="headerlink" title="MDD"></a>MDD</h2><p>Model-Driven Development envisages(设想) development of software systems as a process consisting of:</p>
+<ul>
+<li>construction and transformation of <strong>models</strong></li>
+<li>Semi-automated generation of executable code from models</li>
+</ul>
+<p>Can make production more efficient:</p>
+<ul>
+<li>Free developers from complexity of <strong>implementation details</strong>(开发者不用去关注实现的细节)</li>
+<li><strong>Retaining core functionality</strong> of a system despite changes in its technology(技术的变化不会影响核心功能的模型变化)</li>
+</ul>
+<p>MDD is especially relevant for internet applications because of rapid changes in web technologies, and similar processes across many internet applications.互联网技术的变化非常快(架构，编程语言等)，并且应用之间有极大的相似之处(涉及到模型的相似)</p>
+<h2 id="MDA-Model-Driven-Architecture"><a href="#MDA-Model-Driven-Architecture" class="headerlink" title="MDA(Model-Driven Architecture)"></a>MDA(Model-Driven Architecture)</h2><p>Constains:</p>
+<ul>
+<li><p>PIM (platform-independent models)</p>
+</li>
+<li><p>PSMs (platform-specific models)</p>
+</li>
+<li>Model transformations</li>
+</ul>
+<h3 id="PIM"><a href="#PIM" class="headerlink" title="PIM"></a>PIM</h3><ul>
+<li>Implementation-indepndent constructs<ul>
+<li>Express business rules that are core definition of functionalities of system(表述核心功能的业务逻辑)</li>
+<li>Reusable across different paltforms</li>
+<li>Flexible to accommodate enhancements and other backwards-compatible changes(对于之后的优化或者向后兼容的改变很灵活)</li>
+</ul>
+</li>
+</ul>
+<h3 id="PSM"><a href="#PSM" class="headerlink" title="PSM"></a>PSM</h3><p>Tailored to <strong>specific software platform and programming language</strong> and define functionalities of system in <strong>sufficient detail</strong> that they can be <strong>directly programmed</strong> from the model</p>
+<h3 id="Model-Transformations"><a href="#Model-Transformations" class="headerlink" title="Model Transformations"></a>Model Transformations</h3><p>Produce a new model from an existing model</p>
+<ul>
+<li>improve the quality</li>
+<li>Refine a PIM towards a PSM</li>
+<li>refine a PSM to an implementation</li>
+</ul>
+
           
         
       
@@ -808,7 +993,8 @@ K(x,x_i) =
 </ul>
 <h2 id="Interaction-Model"><a href="#Interaction-Model" class="headerlink" title="Interaction Model"></a>Interaction Model</h2><p>Interaction model show the broadcast and delivery of message over time.</p>
 <p>Focus on several examples</p>
-<h2 id="Implementing-Reliable-Broadcast"><a href="#Implementing-Reliable-Broadcast" class="headerlink" title="Implementing Reliable Broadcast"></a>Implementing Reliable Broadcast</h2><p>A message sent or received is augmented to include:</p>
+<h2 id="Implementing-Reliable-Broadcast"><a href="#Implementing-Reliable-Broadcast" class="headerlink" title="Implementing Reliable Broadcast"></a>Implementing Reliable Broadcast</h2><p>References: <a href="http://fileadmin.cs.lth.se/cs/Personal/Amr_Ergawy/dist-algos-slides/fourth-presentation.pdf" target="_blank" rel="noopener">http://fileadmin.cs.lth.se/cs/Personal/Amr_Ergawy/dist-algos-slides/fourth-presentation.pdf</a></p>
+<p>A message sent or received is augmented to include:</p>
 <ul>
 <li>message text or body</li>
 <li>sequence number </li>
@@ -838,7 +1024,7 @@ K(x,x_i) =
 </li>
 </ul>
 <h3 id="Uniform-RB-algorithm"><a href="#Uniform-RB-algorithm" class="headerlink" title="Uniform RB algorithm"></a>Uniform RB algorithm</h3><p>Receive:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if recorded does not contain (m,s,i):</span><br><span class="line">	add(m,s,i) to recorded</span><br><span class="line">	for each process p:</span><br><span class="line">		send (m,s,i) //re-broadcast to other process again</span><br><span class="line">	deliver(m) //deliver after sending to others</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if recorded does not contain (m,s,i):</span><br><span class="line">	add(m,s,i) to recorded</span><br><span class="line">	for each process p:</span><br><span class="line">		send (m,s,i) //re-broadcast to other process again</span><br><span class="line">	if send to all correct process:</span><br><span class="line">		deliver(m) //deliver after sending to others</span><br></pre></td></tr></table></figure>
 <h3 id="Uniform-FIFO-algorithm"><a href="#Uniform-FIFO-algorithm" class="headerlink" title="Uniform FIFO algorithm"></a>Uniform FIFO algorithm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add(m,s,i) to recorded</span><br><span class="line">if recorded does not contain (m,s,i):</span><br><span class="line">	for each process p:</span><br><span class="line">		send (m,next[i],i) //re-broadcast to other process again</span><br><span class="line">	deliver(m) </span><br><span class="line">	next[i] = next[i]+1</span><br></pre></td></tr></table></figure>
 <h3 id="Uniform-Causal-Algorithm"><a href="#Uniform-Causal-Algorithm" class="headerlink" title="Uniform Causal Algorithm"></a>Uniform Causal Algorithm</h3><p>Broadcast:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mc := concatenation of causes &amp; m </span><br><span class="line">causes := []</span><br><span class="line">for each process p :</span><br><span class="line">	send (mc,s,i) to p</span><br><span class="line">s:= s+1</span><br></pre></td></tr></table></figure>
@@ -976,10 +1162,45 @@ K(x,x_i) =
       
         
           
-            <p>Reference:</p>
+            <p>Blockchain provides verification of the sequence of transactions to re-create a database, but it doesn’t provide a mechanism to prove its  the same database everyone else is using.</p>
+<h2 id="Consensus-on-a-global-scale"><a href="#Consensus-on-a-global-scale" class="headerlink" title="Consensus on a global scale"></a>Consensus on a global scale</h2><p>A set of computers want to reach agreement that about a single decision (or data item)</p>
+<p>Consideration</p>
+<ul>
+<li>Safety<ul>
+<li>Everyone should agree and never forget</li>
+</ul>
+</li>
+<li>Liveness<ul>
+<li>How many peers must be online before a decision is final</li>
+</ul>
+</li>
+</ul>
+<h3 id="Classical-Consensus"><a href="#Classical-Consensus" class="headerlink" title="Classical Consensus"></a>Classical Consensus</h3><ul>
+<li>small scale and up to 1/3 fault tolerance</li>
+<li>safety and <strong>fork-avoidance</strong></li>
+<li>no financial incentive</li>
+</ul>
+<h3 id="Nakamoto-Consensus"><a href="#Nakamoto-Consensus" class="headerlink" title="Nakamoto Consensus"></a>Nakamoto Consensus</h3><ul>
+<li>Global Scale and 99%+ fault-tolerance</li>
+<li>Liveness and fork-tolerance(eventual consistency)<ul>
+<li>all computers will <strong>eventually agree</strong> on a decision</li>
+</ul>
+</li>
+<li>Financial incentive(Profit)<ul>
+<li>Rewarded with coins for participating</li>
+</ul>
+</li>
+</ul>
+<p>Bitcoin is the first consensus protocol that strives for liveness instead of safety.</p>
+<p>All financially motivated peers(miners) will eventually agree upon a single blockchain.</p>
+<p>Reference:</p>
 <ol>
 <li><a href="https://www.jianshu.com/p/588aa249e8be" target="_blank" rel="noopener">https://www.jianshu.com/p/588aa249e8be</a></li>
 <li><a href="https://www.zhihu.com/question/265428094" target="_blank" rel="noopener">https://www.zhihu.com/question/265428094</a></li>
+</ol>
+<p>Related Reading:</p>
+<ol>
+<li><a href="https://medium.com/@Francesco_AI/the-convergence-of-ai-and-blockchain-whats-the-deal-60c618e3accc" target="_blank" rel="noopener">The convergence of AI and Blockchain—Medium</a></li>
 </ol>
 
           
@@ -1945,127 +2166,6 @@ K(x,x_i) =
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/09/NOTE-week-6-WI/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/09/NOTE-week-6-WI/" itemprop="url">NOTE-week-6-WI-</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-09T16:29:01+00:00">
-                2019-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -2116,7 +2216,7 @@ K(x,x_i) =
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

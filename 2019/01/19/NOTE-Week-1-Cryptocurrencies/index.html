@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Reference:  https://www.jianshu.com/p/588aa249e8be https://www.zhihu.com/question/265428094">
+<meta name="description" content="Blockchain provides verification of the sequence of transactions to re-create a database, but it doesn’t provide a mechanism to prove its  the same database everyone else is using. Consensus on a glob">
 <meta name="keywords" content="note,Blockchain">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(Blockchain)Introduction to Cryptocurrencies">
 <meta property="og:url" content="https://zhangzhejian.com/2019/01/19/NOTE-Week-1-Cryptocurrencies/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Reference:  https://www.jianshu.com/p/588aa249e8be https://www.zhihu.com/question/265428094">
+<meta property="og:description" content="Blockchain provides verification of the sequence of transactions to re-create a database, but it doesn’t provide a mechanism to prove its  the same database everyone else is using. Consensus on a glob">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-21T12:11:21.814Z">
+<meta property="og:updated_time" content="2019-01-27T16:29:36.891Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(Blockchain)Introduction to Cryptocurrencies">
-<meta name="twitter:description" content="Reference:  https://www.jianshu.com/p/588aa249e8be https://www.zhihu.com/question/265428094">
+<meta name="twitter:description" content="Blockchain provides verification of the sequence of transactions to re-create a database, but it doesn’t provide a mechanism to prove its  the same database everyone else is using. Consensus on a glob">
 
 
 
@@ -300,10 +300,45 @@
       
 
       
-        <p>Reference:</p>
+        <p>Blockchain provides verification of the sequence of transactions to re-create a database, but it doesn’t provide a mechanism to prove its  the same database everyone else is using.</p>
+<h2 id="Consensus-on-a-global-scale"><a href="#Consensus-on-a-global-scale" class="headerlink" title="Consensus on a global scale"></a>Consensus on a global scale</h2><p>A set of computers want to reach agreement that about a single decision (or data item)</p>
+<p>Consideration</p>
+<ul>
+<li>Safety<ul>
+<li>Everyone should agree and never forget</li>
+</ul>
+</li>
+<li>Liveness<ul>
+<li>How many peers must be online before a decision is final</li>
+</ul>
+</li>
+</ul>
+<h3 id="Classical-Consensus"><a href="#Classical-Consensus" class="headerlink" title="Classical Consensus"></a>Classical Consensus</h3><ul>
+<li>small scale and up to 1/3 fault tolerance</li>
+<li>safety and <strong>fork-avoidance</strong></li>
+<li>no financial incentive</li>
+</ul>
+<h3 id="Nakamoto-Consensus"><a href="#Nakamoto-Consensus" class="headerlink" title="Nakamoto Consensus"></a>Nakamoto Consensus</h3><ul>
+<li>Global Scale and 99%+ fault-tolerance</li>
+<li>Liveness and fork-tolerance(eventual consistency)<ul>
+<li>all computers will <strong>eventually agree</strong> on a decision</li>
+</ul>
+</li>
+<li>Financial incentive(Profit)<ul>
+<li>Rewarded with coins for participating</li>
+</ul>
+</li>
+</ul>
+<p>Bitcoin is the first consensus protocol that strives for liveness instead of safety.</p>
+<p>All financially motivated peers(miners) will eventually agree upon a single blockchain.</p>
+<p>Reference:</p>
 <ol>
 <li><a href="https://www.jianshu.com/p/588aa249e8be" target="_blank" rel="noopener">https://www.jianshu.com/p/588aa249e8be</a></li>
 <li><a href="https://www.zhihu.com/question/265428094" target="_blank" rel="noopener">https://www.zhihu.com/question/265428094</a></li>
+</ol>
+<p>Related Reading:</p>
+<ol>
+<li><a href="https://medium.com/@Francesco_AI/the-convergence-of-ai-and-blockchain-whats-the-deal-60c618e3accc" target="_blank" rel="noopener">The convergence of AI and Blockchain—Medium</a></li>
 </ol>
 
       
@@ -401,8 +436,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -417,7 +461,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -453,6 +497,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Consensus-on-a-global-scale"><span class="nav-number">1.</span> <span class="nav-text">Consensus on a global scale</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Classical-Consensus"><span class="nav-number">1.1.</span> <span class="nav-text">Classical Consensus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nakamoto-Consensus"><span class="nav-number">1.2.</span> <span class="nav-text">Nakamoto Consensus</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -230,6 +230,216 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/09/NOTE-WEEK-3-Agents-and-Multi-Agent-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/09/NOTE-WEEK-3-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 3:Practical Reasoning(实践推理)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-09T16:28:56+01:00">
+                2018-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lecture-3-Practical-Reasoning-实践推理"><a href="#Lecture-3-Practical-Reasoning-实践推理" class="headerlink" title="Lecture 3 Practical Reasoning(实践推理)"></a>Lecture 3 Practical Reasoning(实践推理)</h2><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h4><ul>
+<li>practical reasoning</li>
+<li>control loop</li>
+<li>reconsideration</li>
+<li>architecture</li>
+</ul>
+<h3 id="Practical-Reasoning"><a href="#Practical-Reasoning" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h3><h5 id="Practical-Reasoning-1"><a href="#Practical-Reasoning-1" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h5><p>Is reasoning directed towards actions</p>
+<h5 id="Theoretical-reasoning"><a href="#Theoretical-reasoning" class="headerlink" title="Theoretical reasoning"></a>Theoretical reasoning</h5><p>Is reasoning directed towards belief</p>
+<p><em>Human practical</em> reasoning consists of two activities:</p>
+<p>•<strong>Deliberation:</strong>  deciding <strong>what</strong> state of affairs we want to achieve. <strong>The outputs of deliberation  are intentions</strong></p>
+<p>• <strong>Means-ends reasoning :</strong> deciding <strong>how</strong> to achieve these states of affairs. <strong>The outputs are plans</strong></p>
+<h5 id="Intention-in-practical-reasoning"><a href="#Intention-in-practical-reasoning" class="headerlink" title="Intention in practical reasoning"></a>Intention in practical reasoning</h5><h5 id="Intention-what-state-of-affairs-want-to-achieve"><a href="#Intention-what-state-of-affairs-want-to-achieve" class="headerlink" title="Intention: what state of affairs want to achieve"></a><strong>Intention</strong>: what state of affairs want to achieve</h5><ol>
+<li>Intentions pose problems for agents, who need to determine ways to achieving them.(<u>If I have an intention to φ, you would expect me to <strong>devote resources to</strong> deciding how to bring about φ</u>.)</li>
+<li>Agents track the success of their intentions, and are inclined to try again if their attempts fail. (If an agent’s ﬁrst attempt to achieve φ fails, then all other things being equal, it will try an alternative plan to achieve φ.)</li>
+<li>Intentions provide a “ﬁlter” for adopting other intentions, which must not conﬂict.(don’t waste resources to do conflict things)</li>
+<li>Agents believe their intentions are possible. </li>
+<li>Agents do not believe they will not bring about their intentions.</li>
+<li>Under certain circumstances, agents believe they will bring about their intentions. </li>
+<li>Agents need not intend all the expected side effects of their intentions(<u>If I believe φ→ψ and I intend that φ, I do not necessarily intend ψ also</u>)</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">B := B0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	I = deliberate(B);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	execute(pi);</span><br><span class="line">end while</span><br><span class="line"></span><br><span class="line">//overcommitted, replan if ever a plan goes wrong</span><br></pre></td></tr></table></figure>
+<h4 id="Deliberation-outputs-are-intentions"><a href="#Deliberation-outputs-are-intentions" class="headerlink" title="Deliberation(outputs are intentions)"></a>Deliberation(outputs are intentions)</h4><ol>
+<li>Option generation</li>
+</ol>
+<p>The agent generates a set of <strong>possible alternatives</strong>. Represent option generation via a function, options, which takes the <u>agent’s current beliefs and current intentions</u>, and from them determines a set of options</p>
+<ol>
+<li>filtering</li>
+</ol>
+<p>In which the agent chooses between competing alternatives, and commits to achieving them. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,I)</span><br><span class="line">	I = filter(D,B,I)</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	execute(pi);</span><br><span class="line">end while</span><br><span class="line"></span><br><span class="line">//blind commitment</span><br><span class="line">//overcommitted, replan if ever a plan goes wrong</span><br></pre></td></tr></table></figure>
+<h4 id="Commitment-Strategies"><a href="#Commitment-Strategies" class="headerlink" title="Commitment Strategies"></a>Commitment Strategies</h4><h5 id="Blind-commitment-fanatical-commitment-盲目或狂热"><a href="#Blind-commitment-fanatical-commitment-盲目或狂热" class="headerlink" title="Blind commitment(fanatical commitment)盲目或狂热"></a>Blind commitment(fanatical commitment)盲目或狂热</h5><p>Continue to maintain an intention until it believes the intention has actually been <strong>achieved</strong></p>
+<h5 id="Single-minded-commitment"><a href="#Single-minded-commitment" class="headerlink" title="Single-minded commitment"></a>Single-minded commitment</h5><p>Continue to maintain an intention until it believes that either the intention <strong>has been achieved</strong> , or else that it is <strong>no longer possible</strong> to achieve the intention</p>
+<h5 id="open-minded-commitment"><a href="#open-minded-commitment" class="headerlink" title="open-minded commitment"></a>open-minded commitment</h5><p>Maintain an intention as long as it is still believed possible</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,p);</span><br><span class="line">	I = filter(D,B,I);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	while not empty(pi) do:</span><br><span class="line">		alpha = head(pi);</span><br><span class="line">		execute(alpha);</span><br><span class="line">		pi = tail(pi); // remove alpha from pi</span><br><span class="line">		get next percept p;</span><br><span class="line">		B = brf(B,p);</span><br><span class="line">		if not sound(pi,I,B) do: //check whether the plan still makes sense to achieve the intention given the new beliefs</span><br><span class="line">			pi = plan(I,B)</span><br><span class="line">		end-if</span><br><span class="line">	end-while</span><br><span class="line">end while</span><br><span class="line"></span><br><span class="line">//replan if the plan is wrong</span><br><span class="line">//but when the intention is inappropriate?</span><br><span class="line">//needs single minded commitment</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,p);</span><br><span class="line">	I = filter(D,B,I);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	//when intention is succeed or impossible achieve</span><br><span class="line">	//stop performing actions</span><br><span class="line">	//single-minded</span><br><span class="line">	while not (empty(pi) or successed(I,B) or impossible(I,B)) do:</span><br><span class="line">		alpha = head(pi);</span><br><span class="line">		execute(alpha);</span><br><span class="line">		pi = tail(pi); // remove alpha from pi</span><br><span class="line">		get next percept p;</span><br><span class="line">		B = brf(B,p);</span><br><span class="line">		 //check whether the plan still makes sense to achieve </span><br><span class="line">		 //the intention given the new beliefs</span><br><span class="line">		if not sound(pi,I,B) do:</span><br><span class="line">			pi = plan(I,B)</span><br><span class="line">		end-if</span><br><span class="line">	end-while</span><br><span class="line">end while</span><br></pre></td></tr></table></figure>
+<h4 id="Intention-Reconsideration"><a href="#Intention-Reconsideration" class="headerlink" title="Intention Reconsideration"></a>Intention Reconsideration</h4><p>agent gets to reconsider its intentions once every time around the outer control loop, i.e., when:</p>
+<ol>
+<li>it has completely executed a plan to achieve its current intentions; </li>
+<li>or it believes it has achieved its current intentions; </li>
+<li>or it believes its current intentions are no longer possible.</li>
+</ol>
+<h5 id="Modiﬁcation"><a href="#Modiﬁcation" class="headerlink" title="Modiﬁcation:"></a>Modiﬁcation:</h5><p>Reconsider intentions after executing every action (open minded)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,p);</span><br><span class="line">	I = filter(D,B,I);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	//when intention is succeed or impossible achieve</span><br><span class="line">	//stop performing actions</span><br><span class="line">	//regenerate the intention</span><br><span class="line">	while not (empty(pi) or successed(I,B) or impossible(I,B)) do:</span><br><span class="line">		alpha = head(pi);</span><br><span class="line">		execute(alpha);</span><br><span class="line">		pi = tail(pi); // remove alpha from pi</span><br><span class="line">		get next percept p;</span><br><span class="line">		B = brf(B,p);</span><br><span class="line">		//regenerate intention</span><br><span class="line">		D = options(B,p);</span><br><span class="line">		I = filter(D,B,I);</span><br><span class="line">		//check whether the plan still makes sense to achieve </span><br><span class="line">		//the intention given the new beliefs</span><br><span class="line">		if not sound(pi,I,B) do: </span><br><span class="line">			pi = plan(I,B)</span><br><span class="line">		end-if</span><br><span class="line">	end-while</span><br><span class="line">end while</span><br></pre></td></tr></table></figure>
+<h5 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h5><p>Iintention reconsideration is costly</p>
+<p>A dilemma:</p>
+<ul>
+<li>an agent that does not stop to reconsider its intentions sufficiently often will continue attempting to achieve its intentions even after it is clear that they cannot be achieved, or that there is no longer any reason for achieving them</li>
+<li>an agent that constantly reconsiders its attentions may spend insufficient time actually working to achieve them, and hence runs the risk of never actually achieving them</li>
+</ul>
+<p>Solution:</p>
+<p>incorporate an explicit <strong>meta-level control component(控制组件)</strong>, that decides whether or not to reconsider</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,p);</span><br><span class="line">	I = filter(D,B,I);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	//when intention is succeed or impossible achieve</span><br><span class="line">	//stop performing actions</span><br><span class="line">	//regenerate the intention</span><br><span class="line">	while not (empty(pi) or successed(I,B) or impossible(I,B)) do:</span><br><span class="line">		alpha = head(pi);</span><br><span class="line">		execute(alpha);</span><br><span class="line">		pi = tail(pi); // remove alpha from pi</span><br><span class="line">		get next percept p;</span><br><span class="line">		B = brf(B,p);</span><br><span class="line">		//the comtrol component to determine</span><br><span class="line">		//whether is appropriate to reconsider intentions</span><br><span class="line">		if reconsider(I,B) then</span><br><span class="line">			//regenerate intention</span><br><span class="line">			D = options(B,p);</span><br><span class="line">			I = filter(D,B,I);</span><br><span class="line">		end-if</span><br><span class="line">		//check whether the plan still makes sense to achieve </span><br><span class="line">		//the intention given the new beliefs</span><br><span class="line">		if not sound(pi,I,B) do: </span><br><span class="line">			pi = plan(I,B)</span><br><span class="line">		end-if</span><br><span class="line">	end-while</span><br><span class="line">end while</span><br></pre></td></tr></table></figure>
+<h4 id="Optimal-Intention-Reconsideration"><a href="#Optimal-Intention-Reconsideration" class="headerlink" title="Optimal Intention Reconsideration"></a>Optimal Intention Reconsideration</h4><h5 id="Two-different-types-of-reconsideration-strategy"><a href="#Two-different-types-of-reconsideration-strategy" class="headerlink" title="Two different types of reconsideration strategy"></a>Two different types of reconsideration strategy</h5><ul>
+<li>bold agents</li>
+</ul>
+<p>never pause to reconsider intentions</p>
+<ul>
+<li>Cautious agent</li>
+</ul>
+<p>stop to reconsider after every action</p>
+<p><strong>Dynamism(活跃性)</strong> in the environment is represented by the rate of world change,$\gamma$</p>
+<h5 id="Result"><a href="#Result" class="headerlink" title="Result:"></a>Result:</h5><ul>
+<li>If γ is low (i.e., the environment does not change quickly, <strong>static</strong>), then bold agents do well compared to cautious ones. This is because cautious ones waste time reconsidering their commitments while bold agents are busy working towards — and achieving — their intentions.</li>
+<li>If γ is high (i.e., the environment changes frequently), then cautious agents tend to outperform bold agents. This is because they are able to recognize when intentions are doomed, and also to take advantage of serendipitous situations and new opportunities when they arise.</li>
+</ul>
+<h3 id="Architecture-of-Implemented-BDI-Belief-Desire-Intention-Agents"><a href="#Architecture-of-Implemented-BDI-Belief-Desire-Intention-Agents" class="headerlink" title="Architecture of Implemented BDI(Belief-Desire-Intention) Agents"></a>Architecture of Implemented BDI(Belief-Desire-Intention) Agents</h3><h4 id="IRMA-Intelligent-Resource-bounded-Machine-Architecture-–-Bratman-Israel-Pollack"><a href="#IRMA-Intelligent-Resource-bounded-Machine-Architecture-–-Bratman-Israel-Pollack" class="headerlink" title="IRMA(Intelligent Resource-bounded Machine Architecture – Bratman, Israel, Pollack)"></a>IRMA(Intelligent Resource-bounded Machine Architecture – Bratman, Israel, Pollack)</h4><h5 id="Four-key-symbolic-data-structures"><a href="#Four-key-symbolic-data-structures" class="headerlink" title="Four key symbolic data structures:"></a>Four key symbolic data structures:</h5><ul>
+<li>a plan library</li>
+<li>Explicit representations of :<ul>
+<li>Beliefs: information available to the agen</li>
+<li>Desires: those things the agent would like to make true</li>
+<li>Intentions: desires that the agent has chosen and committed to</li>
+</ul>
+</li>
+</ul>
+<h4 id="PRS-Procedural-Reasoning-System-Georgeff-Lansky"><a href="#PRS-Procedural-Reasoning-System-Georgeff-Lansky" class="headerlink" title="PRS(Procedural Reasoning System (Georgeff, Lansky))"></a>PRS(Procedural Reasoning System (Georgeff, Lansky))</h4><ul>
+<li><strong>a plan library</strong>, representing that agent’s procedural knowledge: knowledge about the mechanisms that can be used by the agent in order to realize its intentions. The options available to an agent are directly determined by the plans an agent has: an agent with no plans has no options</li>
+<li>explicit representations of beliefs, desires, and intentions(the same as IRMA)</li>
+</ul>
+<h5 id="PRS-plans"><a href="#PRS-plans" class="headerlink" title="PRS plans"></a>PRS plans</h5><p>Each plan contains:</p>
+<ul>
+<li>invocation condition(调用条件):circumstances for plan consideration</li>
+<li>Maintenance condition(维持条件): must be true while plan is executing, in order for it to succeed</li>
+<li>Context(上下文): circumstances for successful plan execution.</li>
+<li>Body: course of action(行动方针), consisting of both goals and actions.</li>
+</ul>
+<h5 id="PRS-operation"><a href="#PRS-operation" class="headerlink" title="PRS operation"></a>PRS operation</h5><p><img src="https://i.postimg.cc/dVX0CWnb/prs1.png" alt=""></p>
+<p><img src="https://i.postimg.cc/Ls183zbn/prs2.png" alt=""></p>
+<p><img src="https://i.postimg.cc/dVD1LMRR/prs3.png" alt=""></p>
+<p><strong>FInished</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1867,157 +2077,6 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/05/12/Final-Project-Revision/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/12/Final-Project-Revision/" itemprop="url">Final Project Revision</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T14:10:58+01:00">
-                2018-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Final-project-revision"><a href="#Final-project-revision" class="headerlink" title="Final project revision"></a>Final project revision</h1><p>This is a blog where I will have a brief introduction to my final year project which cost me a half year. I will complete this blog in three weeks to illustrate ever step to build the mini-cloud infrastructure and the problems I met which might be helpful.</p>
-<p>And at the final part, I will try to write some experience I got from the project.</p>
-<h2 id="Basic-introduction"><a href="#Basic-introduction" class="headerlink" title="Basic introduction"></a>Basic introduction</h2><p>Project name: A mini-cloud based e-commerce platform for small business</p>
-<p>Illustration: use one tower server and 7 Raspberry Pis to establish a mini-cloud infrastructure and then develop an e-commerce platforom for small businee which used to deployed on the infrastructure.</p>
-<p>PS: This project focuses more on the hardware part: how to establish a distributed system with high availability and reliability</p>
-<p><strong>Specific to Raspberry Pi:</strong></p>
-<p>Operation system: 2017-4-vga-raspbian-jessie </p>
-<p>CPU: QUAD Core ARMCortex-A7 </p>
-<p>RAM: 1GB </p>
-<p>Micro SD: 64G</p>
-<p><strong>Specific of Dell PowerEdge™ T110II Server:</strong></p>
-<p>Operating system:Ubuntu Trusty 14.04 (LTS) </p>
-<p>CPU: Intel Xeon processE3-1200 product family </p>
-<p>RAM:32GB </p>
-<h2 id="Mini-cloud-Infrastructure"><a href="#Mini-cloud-Infrastructure" class="headerlink" title="Mini-cloud Infrastructure"></a>Mini-cloud Infrastructure</h2><h3 id="Web-Frame-Work"><a href="#Web-Frame-Work" class="headerlink" title="Web Frame Work:"></a>Web Frame Work:</h3><p><img src="http://p8ltilmb1.bkt.clouddn.com/web_framework.png" alt="web framework"></p>
-<h3 id="Load-Balancer"><a href="#Load-Balancer" class="headerlink" title="Load Balancer:"></a>Load Balancer:</h3><p>Two Raspberry Pis to establish a load balacer cluster with failover function.</p>
-<p>Software: keepalived, NGINX</p>
-<p>The configuration process: <a href="http://octopusman.top/2018/01/26/Use-Nginx-keepalived-to-Establish-Load-Balancers-with-High-Availability/" target="_blank" rel="noopener">Nginx and keepalived configuration</a></p>
-<h3 id="Business-layer"><a href="#Business-layer" class="headerlink" title="Business layer:"></a>Business layer:</h3><p>Two Raspberry Pis to make up a process system</p>
-<p>Software: tomcat7</p>
-<p>The configuration process: <a href="http://www.octopusman.top" target="_blank" rel="noopener">not complete yet</a></p>
-<h3 id="Database-Layer"><a href="#Database-Layer" class="headerlink" title="Database Layer:"></a>Database Layer:</h3><p>Three Raspberry Pis to establish a data centre with high availability and reliability by using read-write separation and master-slave warm standby</p>
-<p>Software: MySQL 5.5.60</p>
-<p>The configuration process: <a href="http://octopusman.top/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/" target="_blank" rel="noopener">Use MySQL to establish master-slave warm standby and read-write separation</a></p>
-<h3 id="Static-server-layer"><a href="#Static-server-layer" class="headerlink" title="Static server layer"></a>Static server layer</h3><p>One tower server to store all static files like css,js,html.</p>
-<p>configuration: wait for completing…</p>
-<h2 id="Web-Application-Layer"><a href="#Web-Application-Layer" class="headerlink" title="Web Application Layer"></a>Web Application Layer</h2><p>Software part is the worst part in my project. Before design and implementation, requirements are not clear enough and the basic knowledge about the distributed system is not well learnt. After finishing the project when do this revision, I found the web application is just a piece of rubbish that has no single sepcific design for a distributed system. Thus the website is just for proving the whole infrastructure can work well.</p>
-<p>URL : <a href="www.finalproject.top/finalProject/index.jsp">Website URL</a></p>
-<p>Frontend: retrieved from <a href="http://w3layouts.com" target="_blank" rel="noopener">W3layouts</a></p>
-<p>Backend: JSP+Servlet+MySQL</p>
-<h3 id="not-fully-complete-yet…"><a href="#not-fully-complete-yet…" class="headerlink" title="not fully complete yet…"></a>not fully complete yet…</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -2068,7 +2127,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">45</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
