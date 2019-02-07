@@ -822,6 +822,260 @@ w: E \to R^+</script><p>all the weights should be non-negative.</p>
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/04/NOTE-Week-4-Pattern-Recognition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/04/NOTE-Week-4-Pattern-Recognition/" itemprop="url">(PR) Neural Networks</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-04T13:04:41+00:00">
+                2019-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Overview:</p>
+<ul>
+<li>What is a Neural Network</li>
+<li>Why</li>
+<li>Types of artificial Neural network</li>
+</ul>
+<h2 id="What-is-NN"><a href="#What-is-NN" class="headerlink" title="What is NN"></a>What is NN</h2><p>A Neural Network is a network of connected elements called neurons.</p>
+<ul>
+<li>Biological</li>
+<li>Artificial</li>
+</ul>
+<p>a Neuron has:</p>
+<ul>
+<li>A cell body</li>
+<li>An axon(轴突)</li>
+<li>Many Synapses(突触)</li>
+<li>Many Dendrites(树突)</li>
+</ul>
+<p>Synapses are the connections between the axon of one neuron and the dendrites of another neuron.</p>
+<h3 id="Information-flow-through-a-neuron"><a href="#Information-flow-through-a-neuron" class="headerlink" title="Information flow through a neuron"></a>Information flow through a neuron</h3><h2 id="Artificial-NN"><a href="#Artificial-NN" class="headerlink" title="Artificial NN"></a>Artificial NN</h2><p>A network of simple processing units which communicate by sending signals to each other over weighted connections</p>
+<p>An ANN is a parallel computational system consisting of many simple processing elements connected together in a specific way in order to perform a particular task.</p>
+<p>Also known as:</p>
+<ul>
+<li>Parallel distributed processing(PDP)</li>
+<li>connectionist models</li>
+</ul>
+<p><img src="https://i.postimg.cc/7L66dRwM/pr-4-1.png" alt=""></p>
+<h3 id="Why-ANN"><a href="#Why-ANN" class="headerlink" title="Why ANN"></a>Why ANN</h3><p>From a biological perspective:</p>
+<ul>
+<li>To build models to understand brain function by simulation</li>
+<li>To mimic(模仿) certain <u>cognitive capabilities(认知能力)</u> of human beings.</li>
+</ul>
+<p>From a pratical perspective</p>
+<ul>
+<li>powerful computational</li>
+<li>Any continuous function from input to output can be implemented in a three-layer ANN</li>
+</ul>
+<h3 id="Processing-units"><a href="#Processing-units" class="headerlink" title="Processing units:"></a>Processing units:</h3><p><img src="https://i.postimg.cc/25K6Dx5p/pr-4-2.png" alt=""></p>
+<h4 id="Layers"><a href="#Layers" class="headerlink" title="Layers"></a>Layers</h4><ul>
+<li>Visible<ul>
+<li>receive inputs from, or send outputs to, the external environment</li>
+<li>Input: receive signals from the environment</li>
+<li>Output: send signals to the environment</li>
+</ul>
+</li>
+<li>Hidden<ul>
+<li>Only receive inputs and send output to other processing units</li>
+</ul>
+</li>
+</ul>
+<h4 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h4><ul>
+<li>Transfer function<ul>
+<li>determines how the inputs are integrated</li>
+</ul>
+</li>
+<li>Activation function <ul>
+<li>determines the output the neuron produces</li>
+</ul>
+</li>
+</ul>
+<h4 id="Weights"><a href="#Weights" class="headerlink" title="Weights"></a>Weights</h4><p>Connection weights can be defined by:</p>
+<ul>
+<li>Setting weights explicitly using prior knowledge</li>
+<li>Optimising connectivity to achieve some objective(e.g. using a genetic algorithm)</li>
+<li>Training the network by training data and allowing it to adapt the connection weights<ul>
+<li>Supervised<ul>
+<li>e.g. Delta Learning Rule $\delta w_{ji} = \eta(t_j-y_j)x_i$</li>
+</ul>
+</li>
+<li>Unsupervised <ul>
+<li>e.g. Hebbian Learning rule $\delta w_{ji} = \eta y_jx_i$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ANN-types"><a href="#ANN-types" class="headerlink" title="ANN types"></a>ANN types</h2><p>General Types:</p>
+<ol>
+<li>Linear Threshold Unit (or Perceptron) </li>
+<li>Competitive Learning Networks </li>
+<li>Inhibitory Feedback Networks </li>
+<li>Autoencoder Networks </li>
+<li>Multilayer Perceptrons </li>
+<li>Radial Basis Function Networks </li>
+<li>Convolutional Neural Networks </li>
+<li>Restricted Boltzmann Machines </li>
+<li>Hopfield Networks </li>
+<li>Kohonen Networks </li>
+<li>Capsule Networks</li>
+</ol>
+<h2 id="LInear-Threshold-Unit-perceptron感知器"><a href="#LInear-Threshold-Unit-perceptron感知器" class="headerlink" title="LInear Threshold Unit (perceptron感知器)"></a>LInear Threshold Unit (perceptron感知器)</h2><p><img src="https://i.postimg.cc/25K6Dx5p/pr-4-2.png" alt=""></p>
+<script type="math/tex; mode=display">
+y_j = H(\sum_i w_{ji}x_i - \theta_j)\\
+y = H(\mathcal{w}\mathcal{x} - \theta)\\
+\text{if $x_0 = 1, w_0 = -\theta$  }\\
+y = H(wx)</script><p>$\theta$ is the threshold</p>
+<p>$\sum_i w_{ji}x_i$ is the transfer function </p>
+<p>$H(x)$ is an impulse function</p>
+<p><img src="https://i.postimg.cc/90h5y4fg/pr-4-3.png" width="200px"></p>
+<p>The learning methods are the same as Linear discriminant function:</p>
+<ul>
+<li>MSE(Widrow-Hoff)</li>
+<li>Perceptron Learning</li>
+</ul>
+<p>In Addition:</p>
+<ul>
+<li>Delta Learning Rule</li>
+<li>Hebbian Learning Rule</li>
+</ul>
+<h2 id="Delta-Learning-Rule-supervised"><a href="#Delta-Learning-Rule-supervised" class="headerlink" title="Delta Learning Rule(supervised)"></a>Delta Learning Rule(supervised)</h2><p>Adjust weights in proportion to the difference between:</p>
+<ul>
+<li>the <strong>desired output t</strong></li>
+<li>the <strong>actual output y</strong></li>
+</ul>
+<ul>
+<li>Sequential(online) update:$w = w + \eta(t-y)x^t$ </li>
+<li>Batch:$w = w + \eta \sum_p (t_p-y_p)x_p^t$ </li>
+</ul>
+<p>Two types of update:</p>
+<ul>
+<li>false negative(t=1,y=0)<ul>
+<li>$w = w + \eta (t-y)x^t$</li>
+</ul>
+</li>
+<li>false positive(t=0,y=1)<ul>
+<li>$w = w + \eta \sum_p(t_p-y_p)x_p^t$</li>
+</ul>
+</li>
+</ul>
+<p>Delta Learning rule</p>
+<h2 id="Hebbian-Learning-Rule-unsupervised"><a href="#Hebbian-Learning-Rule-unsupervised" class="headerlink" title="Hebbian Learning Rule(unsupervised)"></a>Hebbian Learning Rule(unsupervised)</h2><script type="math/tex; mode=display">
+w = w+ \eta yx^t</script><h2 id="Competitive-Learning"><a href="#Competitive-Learning" class="headerlink" title="Competitive Learning"></a>Competitive Learning</h2><h2 id="Negative-Feedback-Network"><a href="#Negative-Feedback-Network" class="headerlink" title="Negative Feedback Network"></a>Negative Feedback Network</h2><h2 id="Autoencoder-Networks"><a href="#Autoencoder-Networks" class="headerlink" title="Autoencoder Networks"></a>Autoencoder Networks</h2><p>reconstructiong the network and remove the inhibitary feedback connection</p>
+<script type="math/tex; mode=display">
+y = f(Wx)\\</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/04/NOTE-Week-4-Distributed-System/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1690,165 +1944,6 @@ or \;\; a = Y^+ b</script><h3 id="Widrow-Hoff-or-LMS-algroithm"><a href="#Widrow
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/27/NOTE-Week-2-Cryptocurrencies/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/27/NOTE-Week-2-Cryptocurrencies/" itemprop="url">(Blockchain)Structure of the blockchain</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-27T09:34:32+00:00">
-                2019-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Overview:</p>
-<ul>
-<li>Cryptographic Hash Functions</li>
-<li>Digital Signatures</li>
-<li>Blockchain structured in Bitcoin/Ethereum</li>
-<li>UTXO in bitcoin</li>
-<li>Account-based model in Ethereum</li>
-</ul>
-<h2 id="Cryptography"><a href="#Cryptography" class="headerlink" title="Cryptography"></a>Cryptography</h2><p>One-way Hash Function </p>
-<p>Propety:</p>
-<ol>
-<li>Preimage Resistance(抗原像性)<ul>
-<li>Given y, it is hard to find the x that h(x) = y</li>
-<li>no clues or hints</li>
-<li>给出密文，很难获得原文</li>
-</ul>
-</li>
-<li>Second Preimage Resistance(弱抗碰撞性)<ul>
-<li>given x and h(x) = y, it is computational hard to find a x’ such that h(x’) = y</li>
-<li>很难找到两个不同的原文，使得两者拥有相同的hash密文</li>
-</ul>
-</li>
-<li>Collision-Resistance(强抗碰撞性)<ul>
-<li>it is hard to find two different messages, m1 and m2 such that h(m1)==h(m2)</li>
-</ul>
-</li>
-</ol>
-<h3 id="Bitcoin-Block-Header"><a href="#Bitcoin-Block-Header" class="headerlink" title="Bitcoin Block Header"></a>Bitcoin Block Header</h3><p><img src="https://i.postimg.cc/2jnQzKyT/BLC-2-1.png" alt=""></p>
-<h3 id="How-to-verify-a-transaction-is-in-the-blockchain"><a href="#How-to-verify-a-transaction-is-in-the-blockchain" class="headerlink" title="How to verify a transaction is in the blockchain"></a>How to verify a transaction is in the blockchain</h3><p><img src="https://i.postimg.cc/BZhq1qjv/BLC-1-1.png" alt=""></p>
-<p>Use the <strong>Merkle Root </strong> to verify</p>
-<h2 id="Digital-Signature"><a href="#Digital-Signature" class="headerlink" title="Digital Signature"></a>Digital Signature</h2><p>We often call a cryptographic hash function a “commitment” and not an “encryption”. We open the preimage of a hash, there is no concept of decrypting or private keys. It is not about the data <strong>privacy</strong>, but the Integrity and authentication.</p>
-<p>ECDSA Signature</p>
-<p>an ECDSA signature is denoted: (r,s)</p>
-<p>r is the randomness, s is the signature</p>
-<h2 id="Bitcoin’s-UTXO-Model"><a href="#Bitcoin’s-UTXO-Model" class="headerlink" title="Bitcoin’s UTXO Model"></a>Bitcoin’s UTXO Model</h2><p>Reference:</p>
-<ol>
-<li><a href="http://8btc.com/article-4381-1.html" target="_blank" rel="noopener">http://8btc.com/article-4381-1.html</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -1899,7 +1994,7 @@ or \;\; a = Y^+ b</script><h3 id="Widrow-Hoff-or-LMS-algroithm"><a href="#Widrow
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

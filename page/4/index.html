@@ -230,6 +230,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/12/01/NOTE-WEEK-9-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/01/NOTE-WEEK-9-Artificial-Intelligence/" itemprop="url">(AI)Lec 4:Machine Learning</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-01T16:52:24+00:00">
+                2018-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lecture-9-Introduction-to-Machine-Learning-a-peek"><a href="#Lecture-9-Introduction-to-Machine-Learning-a-peek" class="headerlink" title="Lecture 9: Introduction to Machine Learning(a peek)"></a>Lecture 9: Introduction to Machine Learning(a peek)</h2><h4 id="key-point"><a href="#key-point" class="headerlink" title="key point:"></a>key point:</h4><ul>
+<li><p>Supervised learning ‚ </p>
+<ul>
+<li>Correct answers for each instance. ‚ </li>
+<li>Use these to be able to identify correct answer on new instances.</li>
+</ul>
+</li>
+<li><p>Unsupervised learning ‚</p>
+<ul>
+<li>No correct answers available. ‚ </li>
+<li>Identify patterns/relations.</li>
+</ul>
+</li>
+<li>Reinforcement learning ‚ <ul>
+<li>Occasional rewards ‚ </li>
+<li>Need to associate actions with the rewards they bring.</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<h3 id="Supervised-Learning-监督学习）"><a href="#Supervised-Learning-监督学习）" class="headerlink" title="Supervised Learning(监督学习）"></a>Supervised Learning(监督学习）</h3><p>Training set:</p>
+<script type="math/tex; mode=display">
+(X,Y)\\
+where: \;\; y_i = f(x_i)\\
+h(x) \approx f(x)</script><p>h(x) is the function that we try to find</p>
+<ul>
+<li>When y is a a member of a ﬁnite set, this is classiﬁcation </li>
+<li>When y is a number, this is regression.</li>
+</ul>
+<p>Reference: <a href="http://zhangzhejian.com/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">Note</a></p>
+<h4 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h4><h5 id="Decision-Tree"><a href="#Decision-Tree" class="headerlink" title="Decision Tree"></a>Decision Tree</h5><p>How to choose attribute: <a href="https://blog.csdn.net/xbinworld/article/details/44660339" target="_blank" rel="noopener">refference</a></p>
+<h5 id="performance-measurment"><a href="#performance-measurment" class="headerlink" title="performance measurment"></a>performance measurment</h5><p>Learning curve =% correct on test set as a function of training set size</p>
+<h5 id="Cross-validation-交叉验证）"><a href="#Cross-validation-交叉验证）" class="headerlink" title="Cross validation(交叉验证）"></a>Cross validation(交叉验证）</h5><p>s k-fold cross validation.</p>
+<ol>
+<li><p>Split data into k equal subsets. Learn on k-1 sets and test each result on the remainder.</p>
+</li>
+<li><p>Repeat k times.</p>
+</li>
+<li><p>Average test set score is a better estimate of the error rate than a single score.</p>
+</li>
+<li><p>Common values of k are 5 and 10, both giving error estimates that are very likely to be accurate.</p>
+</li>
+</ol>
+<h3 id="Unsupervised-Learning-非监督学习）"><a href="#Unsupervised-Learning-非监督学习）" class="headerlink" title="Unsupervised Learning(非监督学习）"></a>Unsupervised Learning(非监督学习）</h3><h4 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h4><ol>
+<li>Given a set of examples:</li>
+</ol>
+<script type="math/tex; mode=display">
+X =\{x_1 , . . . x_N\}</script><p>​    identify K different groups.</p>
+<ol>
+<li><p>Each $x_i$ should be in the group that it matches most closely. Identify each group by its centre/mean, $u_j$ .</p>
+</li>
+<li><p>The clusters $z^i$ are then made up of the points closest to the $µ_j $.</p>
+</li>
+</ol>
+<h5 id="K-means"><a href="#K-means" class="headerlink" title="K-means"></a>K-means</h5><ul>
+<li><p>Pick random values for µ k .</p>
+</li>
+<li><p>Then repeat:</p>
+<ol>
+<li><p>Assign each x i to its closest cluster centre:</p>
+<script type="math/tex; mode=display">
+z^i = arg \; min_{u_k} \; distance(x_i,u_k)</script></li>
+<li><p>Update each cluster centre as the mean of the points assigned to that cluster: </p>
+<p>until converged</p>
+<script type="math/tex; mode=display">
+u_k = \frac{1}{|\{j:z^i=k\}|} \sum_{i\in\{j:z^i = k\}}x_i</script></li>
+</ol>
+</li>
+<li></li>
+</ul>
+<p>​    </p>
+<p>​    </p>
+<h3 id="Reinforcement-learning-强化学习"><a href="#Reinforcement-learning-强化学习" class="headerlink" title="Reinforcement learning(强化学习)"></a>Reinforcement learning(强化学习)</h3><h4 id="Passive-被动-RL"><a href="#Passive-被动-RL" class="headerlink" title="Passive(被动) RL"></a>Passive(被动) RL</h4><p>In passive reinforcement learning the agent’s <strong>policy is ﬁxed</strong></p>
+<p><a href="http://zhangzhejian.com/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/">MDP</a></p>
+<h5 id="Direct-utility-estimation"><a href="#Direct-utility-estimation" class="headerlink" title="Direct utility estimation"></a>Direct utility estimation</h5>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1961,172 +2156,6 @@ q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sam
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/" itemprop="url">(AI)Lec 2:Probailistic Reasonning I</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-05T09:04:15+01:00">
-                2018-10-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-2-Probailistic-Reasoning-概率推理-I"><a href="#Lecture-2-Probailistic-Reasoning-概率推理-I" class="headerlink" title="Lecture 2: Probailistic Reasoning(概率推理) I"></a>Lecture 2: Probailistic Reasoning(概率推理) I</h3><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h4><ol>
-<li>Uncertainty and methods for handling</li>
-<li>Introduce to probability</li>
-<li>Basic probability</li>
-<li>Bayes rules</li>
-</ol>
-<h2 id="Why-Uncertainty"><a href="#Why-Uncertainty" class="headerlink" title="Why Uncertainty"></a>Why Uncertainty</h2><p><strong>Partial observability equals uncertainty</strong></p>
-<p>Full ovservability not true of the real world</p>
-<p>Partial observability can arise for many reasons</p>
-<ul>
-<li>Sensor noise</li>
-<li>Computational complexity</li>
-<li>World structure and sensor ability</li>
-</ul>
-<h4 id="Utility-theory"><a href="#Utility-theory" class="headerlink" title="Utility theory"></a>Utility theory</h4><p>used to represent and infer preference</p>
-<p><strong>Decision theory = utility theory + probability theory</strong></p>
-<h4 id="Bayes-rules"><a href="#Bayes-rules" class="headerlink" title="Bayes rules"></a>Bayes rules</h4><script type="math/tex; mode=display">
-P(A , B) = P(A \mid B)P(B)\\
-P(A|B )= \frac{P(A ,B)}{P(B)}</script><h4 id="Chain-rule"><a href="#Chain-rule" class="headerlink" title="Chain rule"></a>Chain rule</h4><script type="math/tex; mode=display">
-\begin{align}
-P(X_1,...,X_n) & = P(X_1,...X_{n-1})P(X_n|X_1,...,X_{n-1})\\
-&= P(X_1,...,X_{n-2})P(X_{n-1}|X_1,...,X_{n-2})P(X_n)|X_1,...X_{n-1})\\
-&= \prod_{i=1}^{n}P(X_i|X_1,...,X_{i-1})
-\end{align}</script><p>For</p>
-<h4 id="Indenpendent"><a href="#Indenpendent" class="headerlink" title="Indenpendent"></a>Indenpendent</h4><p>A and B are independent iff</p>
-<script type="math/tex; mode=display">
-P(A|B) = P(A),or\\
-P(B|A) = P(B),or\\
-P(A,B)= P(A)P(B)</script><h4 id="Conditional-Independence"><a href="#Conditional-Independence" class="headerlink" title="Conditional Independence"></a>Conditional Independence</h4><script type="math/tex; mode=display">
-P(A|B,C) = P(A|C)</script><p>we say A is conditionally independent of B given C.</p>
-<h5 id="Equivalent-statements"><a href="#Equivalent-statements" class="headerlink" title="Equivalent statements:"></a>Equivalent statements:</h5><script type="math/tex; mode=display">
-P(A|B,C) = P(A|C)\\
-\iff P(A,B|C) = P(A|C) \times P(B|C)</script><h4 id="According-to-Bayes’-Rule"><a href="#According-to-Bayes’-Rule" class="headerlink" title="According to Bayes’ Rule"></a>According to Bayes’ Rule</h4><script type="math/tex; mode=display">
-P(A,B) = P(A|B)P(B) = P(B|A)P(A)\\
-\implies P(B|A) = \frac{P(A|B)P(B)}{P(A)}\\
-P(e) = P(e,h)+P(e,\not h)  \\
-\implies P(e) = P(e|h)P(h)+P(e|\not h)P(\not h)（全概率公式）\\
-\begin{align}
-P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
-&= \frac{P(e|h)P(h)}{P(e|h)P(h)+P(e|\not h)(1-P(h))}
-\end{align}</script><p><strong>Finished</strong> </p>
-<p>Reference:</p>
-<ol>
-<li><a href="https://www.cnblogs.com/ohshit/p/5629581.html" target="_blank" rel="noopener">https://www.cnblogs.com/ohshit/p/5629581.html</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -2177,7 +2206,7 @@ P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

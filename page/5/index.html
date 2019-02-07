@@ -230,6 +230,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/05/NOTE-WEEK-2-Artificial-Intelligence/" itemprop="url">(AI)Lec 2:Probailistic Reasonning I</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-05T09:04:15+01:00">
+                2018-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-2-Probailistic-Reasoning-概率推理-I"><a href="#Lecture-2-Probailistic-Reasoning-概率推理-I" class="headerlink" title="Lecture 2: Probailistic Reasoning(概率推理) I"></a>Lecture 2: Probailistic Reasoning(概率推理) I</h3><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h4><ol>
+<li>Uncertainty and methods for handling</li>
+<li>Introduce to probability</li>
+<li>Basic probability</li>
+<li>Bayes rules</li>
+</ol>
+<h2 id="Why-Uncertainty"><a href="#Why-Uncertainty" class="headerlink" title="Why Uncertainty"></a>Why Uncertainty</h2><p><strong>Partial observability equals uncertainty</strong></p>
+<p>Full ovservability not true of the real world</p>
+<p>Partial observability can arise for many reasons</p>
+<ul>
+<li>Sensor noise</li>
+<li>Computational complexity</li>
+<li>World structure and sensor ability</li>
+</ul>
+<h4 id="Utility-theory"><a href="#Utility-theory" class="headerlink" title="Utility theory"></a>Utility theory</h4><p>used to represent and infer preference</p>
+<p><strong>Decision theory = utility theory + probability theory</strong></p>
+<h4 id="Bayes-rules"><a href="#Bayes-rules" class="headerlink" title="Bayes rules"></a>Bayes rules</h4><script type="math/tex; mode=display">
+P(A , B) = P(A \mid B)P(B)\\
+P(A|B )= \frac{P(A ,B)}{P(B)}</script><h4 id="Chain-rule"><a href="#Chain-rule" class="headerlink" title="Chain rule"></a>Chain rule</h4><script type="math/tex; mode=display">
+\begin{align}
+P(X_1,...,X_n) & = P(X_1,...X_{n-1})P(X_n|X_1,...,X_{n-1})\\
+&= P(X_1,...,X_{n-2})P(X_{n-1}|X_1,...,X_{n-2})P(X_n)|X_1,...X_{n-1})\\
+&= \prod_{i=1}^{n}P(X_i|X_1,...,X_{i-1})
+\end{align}</script><p>For</p>
+<h4 id="Indenpendent"><a href="#Indenpendent" class="headerlink" title="Indenpendent"></a>Indenpendent</h4><p>A and B are independent iff</p>
+<script type="math/tex; mode=display">
+P(A|B) = P(A),or\\
+P(B|A) = P(B),or\\
+P(A,B)= P(A)P(B)</script><h4 id="Conditional-Independence"><a href="#Conditional-Independence" class="headerlink" title="Conditional Independence"></a>Conditional Independence</h4><script type="math/tex; mode=display">
+P(A|B,C) = P(A|C)</script><p>we say A is conditionally independent of B given C.</p>
+<h5 id="Equivalent-statements"><a href="#Equivalent-statements" class="headerlink" title="Equivalent statements:"></a>Equivalent statements:</h5><script type="math/tex; mode=display">
+P(A|B,C) = P(A|C)\\
+\iff P(A,B|C) = P(A|C) \times P(B|C)</script><h4 id="According-to-Bayes’-Rule"><a href="#According-to-Bayes’-Rule" class="headerlink" title="According to Bayes’ Rule"></a>According to Bayes’ Rule</h4><script type="math/tex; mode=display">
+P(A,B) = P(A|B)P(B) = P(B|A)P(A)\\
+\implies P(B|A) = \frac{P(A|B)P(B)}{P(A)}\\
+P(e) = P(e,h)+P(e,\not h)  \\
+\implies P(e) = P(e|h)P(h)+P(e|\not h)P(\not h)（全概率公式）\\
+\begin{align}
+P(h|e) & = \frac{P(e|h)P(h)}{P(e)}\\
+&= \frac{P(e|h)P(h)}{P(e|h)P(h)+P(e|\not h)(1-P(h))}
+\end{align}</script><p><strong>Finished</strong> </p>
+<p>Reference:</p>
+<ol>
+<li><a href="https://www.cnblogs.com/ohshit/p/5629581.html" target="_blank" rel="noopener">https://www.cnblogs.com/ohshit/p/5629581.html</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/04/NOTE-WEEK-2-Web-Infrastructure-md/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1852,170 +2018,6 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/12/MySQL-master-slave-warm-standby-and-read-write-separation/" itemprop="url">MySQL master-slave warm standby and read-write separation</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-12T13:49:25+01:00">
-                2018-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="MySQL-master-slave-warm-standby-and-read-write-separation"><a href="#MySQL-master-slave-warm-standby-and-read-write-separation" class="headerlink" title="MySQL master-slave warm standby and read-write separation"></a>MySQL master-slave warm standby and read-write separation</h1><h2 id="Technical-Context"><a href="#Technical-Context" class="headerlink" title="Technical Context"></a>Technical Context</h2><p>Hardware: Raspberry Pi</p>
-<p>OS:  <em>2017-4-vga-raspbian-jessie</em></p>
-<p>Software: MySQL 5.5.60</p>
-<h2 id="Illustration"><a href="#Illustration" class="headerlink" title="Illustration"></a>Illustration</h2><p>This configuration is Linux based. MySQL provides users with master-slave warm standby only requiring a simple configuration. However, </p>
-<h2 id="Configuration-process"><a href="#Configuration-process" class="headerlink" title="Configuration process"></a>Configuration process</h2><h3 id="1-Installing-MySQL"><a href="#1-Installing-MySQL" class="headerlink" title="1. Installing MySQL"></a>1. Installing MySQL</h3><p>Tutor: <a href="https://www.stewright.me/2014/06/tutorial-install-mysql-server-on-raspberry-pi/" target="_blank" rel="noopener">Install MySQL on Raspberry pi</a></p>
-<h3 id="2-Check-Basic-Information"><a href="#2-Check-Basic-Information" class="headerlink" title="2. Check Basic Information"></a>2. Check Basic Information</h3><p>Master host IP: 10.205.10.215</p>
-<p>Slave host IP: 10.205.10.216</p>
-<p><em>Guarantee the internel-availability between two hosts</em></p>
-<p><code>ping 10.205.10.215</code></p>
-<h3 id="3-Configuration"><a href="#3-Configuration" class="headerlink" title="3. Configuration"></a>3. Configuration</h3><p><em>File name: /etc/mysql/my.cnf</em></p>
-<p>In Master host: </p>
-<p>Add the following</p>
-<p><code>server-id = 215</code> the server-id just needs to be identical</p>
-<p><code>binlog-do-db=database_name</code>  here is the database need to be replicated</p>
-<p>In Slave host:</p>
-<p>Add the following</p>
-<p><code>server-id = 216</code> also identical</p>
-<p><code>replicate-do-db = database_name</code> here is the database need to be replicated</p>
-<h3 id="4-Restart-MySQL-net-service"><a href="#4-Restart-MySQL-net-service" class="headerlink" title="4. Restart MySQL net service"></a>4. Restart MySQL net service</h3><ol>
-<li>net stop mysql</li>
-<li>net start mysql</li>
-</ol>
-<h3 id="5-Grant-authority-to-slave-hosts-to-visit"><a href="#5-Grant-authority-to-slave-hosts-to-visit" class="headerlink" title="5. Grant authority to slave hosts to visit"></a>5. Grant authority to slave hosts to visit</h3><p><code>GRANT REPLICATION SLAVE ON *.* to &#39;slave&#39;@&#39;%&#39; identified by &#39;password&#39;</code></p>
-<p>Illustration: </p>
-<p>‘slave’ is the account name of the slave hosts</p>
-<p>‘%’ is the IP address of slave hosts. % means all the IPs are allowed</p>
-<h3 id="6-Check-master-state"><a href="#6-Check-master-state" class="headerlink" title="6. Check master state"></a>6. Check master state</h3><p><code>show master status;</code></p>
-<p><img src="http://p8ltilmb1.bkt.clouddn.com/image/master-slave-warm-standby/master.png" alt=""></p>
-<p>Remember the <strong>Position</strong> and <strong>File</strong></p>
-<h3 id="7-Grant-Authority-to-Master-host"><a href="#7-Grant-Authority-to-Master-host" class="headerlink" title="7.Grant Authority to Master host"></a>7.Grant Authority to Master host</h3><p>In the Slave hosts, it needs authority to allow master to send sql or data to the slave hosts.</p>
-<p><code>change master to master_host=&#39;Master_IP&#39;,master_user=&#39;master&#39;,master_password=&#39;password&#39;,master_log_file=&#39;mysql-bin.000011&#39;,master_log_pos=107;</code></p>
-<p>master_log_pos and master_log_file are all gotten above.</p>
-<p>Then start the slave host</p>
-<p><code>start slave;</code></p>
-<h3 id="8-Check-slave-status"><a href="#8-Check-slave-status" class="headerlink" title="8.  Check slave status"></a>8.  Check slave status</h3><p><code>show slave status\G</code></p>
-<p>Slave_IO_Running: Yes    //YES<br>Slave_SQL_Running: Yes     //YES</p>
-<p>Possible error:</p>
-<h4 id="error-1-error-connecting-to-master-‘root-10-205-10-198-3306’-retry-time-60-retries-86400"><a href="#error-1-error-connecting-to-master-‘root-10-205-10-198-3306’-retry-time-60-retries-86400" class="headerlink" title="error 1:  error connecting to master ‘root@10.205.10.198:3306’ - retry-time: 60  retries: 86400"></a>error 1:  error connecting to master ‘root@10.205.10.198:3306’ - retry-time: 60  retries: 86400</h4><h4 id="error2：jdbc4-CommunicationsException-Communications-link-failure"><a href="#error2：jdbc4-CommunicationsException-Communications-link-failure" class="headerlink" title="error2：jdbc4.CommunicationsException: Communications link failure"></a>error2：jdbc4.CommunicationsException: Communications link failure</h4><p>Solution:  sudo vim /etc/mysql/my.cnf   bind-address = 127.0.0.1  【delete】</p>
-<p>ref: <a href="https://blog.csdn.net/u010578251/article/details/52217419" target="_blank" rel="noopener">https://blog.csdn.net/u010578251/article/details/52217419</a></p>
-<h2 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h2><ol>
-<li><a href="https://www.cnblogs.com/kissdodog/p/5422195.html" target="_blank" rel="noopener">https://www.cnblogs.com/kissdodog/p/5422195.html</a></li>
-<li><a href="https://lanjingling.github.io/2015/10/29/mysql-ha/" target="_blank" rel="noopener">https://lanjingling.github.io/2015/10/29/mysql-ha/</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -2066,7 +2068,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">53</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

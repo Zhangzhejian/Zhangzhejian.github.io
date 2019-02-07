@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="note,Machine-Learning,PR," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Overview:  What is a Neural Network Why Types of artificial Neural network  What is NNA Neural Network is a network of connected elements called neurons.  Biological Artificial  a Neuron has:  A cell">
+<meta name="keywords" content="note,Machine-Learning,PR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(PR) Neural Networks">
+<meta property="og:url" content="https://zhangzhejian.com/2019/02/04/NOTE-Week-4-Pattern-Recognition/index.html">
+<meta property="og:site_name" content="Recap">
+<meta property="og:description" content="Overview:  What is a Neural Network Why Types of artificial Neural network  What is NNA Neural Network is a network of connected elements called neurons.  Biological Artificial  a Neuron has:  A cell">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.postimg.cc/7L66dRwM/pr-4-1.png">
+<meta property="og:image" content="https://i.postimg.cc/25K6Dx5p/pr-4-2.png">
+<meta property="og:image" content="https://i.postimg.cc/25K6Dx5p/pr-4-2.png">
+<meta property="og:image" content="https://i.postimg.cc/90h5y4fg/pr-4-3.png">
+<meta property="og:updated_time" content="2019-02-07T18:06:09.718Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(PR) Neural Networks">
+<meta name="twitter:description" content="Overview:  What is a Neural Network Why Types of artificial Neural network  What is NNA Neural Network is a network of connected elements called neurons.  Biological Artificial  a Neuron has:  A cell">
+<meta name="twitter:image" content="https://i.postimg.cc/7L66dRwM/pr-4-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhangzhejian.com/2019/02/04/NOTE-Week-4-Pattern-Recognition/"/>
+
+
+
+
+
+  <title>(PR) Neural Networks | Recap</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Recap</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">zhejian</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/04/NOTE-Week-4-Pattern-Recognition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">(PR) Neural Networks</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-04T13:04:41+00:00">
+                2019-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Overview:</p>
+<ul>
+<li>What is a Neural Network</li>
+<li>Why</li>
+<li>Types of artificial Neural network</li>
+</ul>
+<h2 id="What-is-NN"><a href="#What-is-NN" class="headerlink" title="What is NN"></a>What is NN</h2><p>A Neural Network is a network of connected elements called neurons.</p>
+<ul>
+<li>Biological</li>
+<li>Artificial</li>
+</ul>
+<p>a Neuron has:</p>
+<ul>
+<li>A cell body</li>
+<li>An axon(轴突)</li>
+<li>Many Synapses(突触)</li>
+<li>Many Dendrites(树突)</li>
+</ul>
+<p>Synapses are the connections between the axon of one neuron and the dendrites of another neuron.</p>
+<h3 id="Information-flow-through-a-neuron"><a href="#Information-flow-through-a-neuron" class="headerlink" title="Information flow through a neuron"></a>Information flow through a neuron</h3><h2 id="Artificial-NN"><a href="#Artificial-NN" class="headerlink" title="Artificial NN"></a>Artificial NN</h2><p>A network of simple processing units which communicate by sending signals to each other over weighted connections</p>
+<p>An ANN is a parallel computational system consisting of many simple processing elements connected together in a specific way in order to perform a particular task.</p>
+<p>Also known as:</p>
+<ul>
+<li>Parallel distributed processing(PDP)</li>
+<li>connectionist models</li>
+</ul>
+<p><img src="https://i.postimg.cc/7L66dRwM/pr-4-1.png" alt=""></p>
+<h3 id="Why-ANN"><a href="#Why-ANN" class="headerlink" title="Why ANN"></a>Why ANN</h3><p>From a biological perspective:</p>
+<ul>
+<li>To build models to understand brain function by simulation</li>
+<li>To mimic(模仿) certain <u>cognitive capabilities(认知能力)</u> of human beings.</li>
+</ul>
+<p>From a pratical perspective</p>
+<ul>
+<li>powerful computational</li>
+<li>Any continuous function from input to output can be implemented in a three-layer ANN</li>
+</ul>
+<h3 id="Processing-units"><a href="#Processing-units" class="headerlink" title="Processing units:"></a>Processing units:</h3><p><img src="https://i.postimg.cc/25K6Dx5p/pr-4-2.png" alt=""></p>
+<h4 id="Layers"><a href="#Layers" class="headerlink" title="Layers"></a>Layers</h4><ul>
+<li>Visible<ul>
+<li>receive inputs from, or send outputs to, the external environment</li>
+<li>Input: receive signals from the environment</li>
+<li>Output: send signals to the environment</li>
+</ul>
+</li>
+<li>Hidden<ul>
+<li>Only receive inputs and send output to other processing units</li>
+</ul>
+</li>
+</ul>
+<h4 id="Functions"><a href="#Functions" class="headerlink" title="Functions"></a>Functions</h4><ul>
+<li>Transfer function<ul>
+<li>determines how the inputs are integrated</li>
+</ul>
+</li>
+<li>Activation function <ul>
+<li>determines the output the neuron produces</li>
+</ul>
+</li>
+</ul>
+<h4 id="Weights"><a href="#Weights" class="headerlink" title="Weights"></a>Weights</h4><p>Connection weights can be defined by:</p>
+<ul>
+<li>Setting weights explicitly using prior knowledge</li>
+<li>Optimising connectivity to achieve some objective(e.g. using a genetic algorithm)</li>
+<li>Training the network by training data and allowing it to adapt the connection weights<ul>
+<li>Supervised<ul>
+<li>e.g. Delta Learning Rule $\delta w_{ji} = \eta(t_j-y_j)x_i$</li>
+</ul>
+</li>
+<li>Unsupervised <ul>
+<li>e.g. Hebbian Learning rule $\delta w_{ji} = \eta y_jx_i$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="ANN-types"><a href="#ANN-types" class="headerlink" title="ANN types"></a>ANN types</h2><p>General Types:</p>
+<ol>
+<li>Linear Threshold Unit (or Perceptron) </li>
+<li>Competitive Learning Networks </li>
+<li>Inhibitory Feedback Networks </li>
+<li>Autoencoder Networks </li>
+<li>Multilayer Perceptrons </li>
+<li>Radial Basis Function Networks </li>
+<li>Convolutional Neural Networks </li>
+<li>Restricted Boltzmann Machines </li>
+<li>Hopfield Networks </li>
+<li>Kohonen Networks </li>
+<li>Capsule Networks</li>
+</ol>
+<h2 id="LInear-Threshold-Unit-perceptron感知器"><a href="#LInear-Threshold-Unit-perceptron感知器" class="headerlink" title="LInear Threshold Unit (perceptron感知器)"></a>LInear Threshold Unit (perceptron感知器)</h2><p><img src="https://i.postimg.cc/25K6Dx5p/pr-4-2.png" alt=""></p>
+<script type="math/tex; mode=display">
+y_j = H(\sum_i w_{ji}x_i - \theta_j)\\
+y = H(\mathcal{w}\mathcal{x} - \theta)\\
+\text{if $x_0 = 1, w_0 = -\theta$  }\\
+y = H(wx)</script><p>$\theta$ is the threshold</p>
+<p>$\sum_i w_{ji}x_i$ is the transfer function </p>
+<p>$H(x)$ is an impulse function</p>
+<p><img src="https://i.postimg.cc/90h5y4fg/pr-4-3.png" width="200px"></p>
+<p>The learning methods are the same as Linear discriminant function:</p>
+<ul>
+<li>MSE(Widrow-Hoff)</li>
+<li>Perceptron Learning</li>
+</ul>
+<p>In Addition:</p>
+<ul>
+<li>Delta Learning Rule</li>
+<li>Hebbian Learning Rule</li>
+</ul>
+<h2 id="Delta-Learning-Rule-supervised"><a href="#Delta-Learning-Rule-supervised" class="headerlink" title="Delta Learning Rule(supervised)"></a>Delta Learning Rule(supervised)</h2><p>Adjust weights in proportion to the difference between:</p>
+<ul>
+<li>the <strong>desired output t</strong></li>
+<li>the <strong>actual output y</strong></li>
+</ul>
+<ul>
+<li>Sequential(online) update:$w = w + \eta(t-y)x^t$ </li>
+<li>Batch:$w = w + \eta \sum_p (t_p-y_p)x_p^t$ </li>
+</ul>
+<p>Two types of update:</p>
+<ul>
+<li>false negative(t=1,y=0)<ul>
+<li>$w = w + \eta (t-y)x^t$</li>
+</ul>
+</li>
+<li>false positive(t=0,y=1)<ul>
+<li>$w = w + \eta \sum_p(t_p-y_p)x_p^t$</li>
+</ul>
+</li>
+</ul>
+<p>Delta Learning rule</p>
+<h2 id="Hebbian-Learning-Rule-unsupervised"><a href="#Hebbian-Learning-Rule-unsupervised" class="headerlink" title="Hebbian Learning Rule(unsupervised)"></a>Hebbian Learning Rule(unsupervised)</h2><script type="math/tex; mode=display">
+w = w+ \eta yx^t</script><h2 id="Competitive-Learning"><a href="#Competitive-Learning" class="headerlink" title="Competitive Learning"></a>Competitive Learning</h2><h2 id="Negative-Feedback-Network"><a href="#Negative-Feedback-Network" class="headerlink" title="Negative Feedback Network"></a>Negative Feedback Network</h2><h2 id="Autoencoder-Networks"><a href="#Autoencoder-Networks" class="headerlink" title="Autoencoder Networks"></a>Autoencoder Networks</h2><p>reconstructiong the network and remove the inhibitary feedback connection</p>
+<script type="math/tex; mode=display">
+y = f(Wx)\\</script>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/note/" rel="tag"># note</a>
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine-Learning</a>
+          
+            <a href="/tags/PR/" rel="tag"># PR</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/04/NOTE-Week-4-Distributed-System/" rel="next" title="(DS) Replica Management">
+                <i class="fa fa-chevron-left"></i> (DS) Replica Management
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/05/NOTE-Week-4-OME/" rel="prev" title="Single-source shortest-paths problem (II)">
+                Single-source shortest-paths problem (II) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zhejian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-NN"><span class="nav-number">1.</span> <span class="nav-text">What is NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Information-flow-through-a-neuron"><span class="nav-number">1.1.</span> <span class="nav-text">Information flow through a neuron</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Artificial-NN"><span class="nav-number">2.</span> <span class="nav-text">Artificial NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-ANN"><span class="nav-number">2.1.</span> <span class="nav-text">Why ANN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Processing-units"><span class="nav-number">2.2.</span> <span class="nav-text">Processing units:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Layers"><span class="nav-number">2.2.1.</span> <span class="nav-text">Layers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Functions"><span class="nav-number">2.2.2.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Weights"><span class="nav-number">2.2.3.</span> <span class="nav-text">Weights</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ANN-types"><span class="nav-number">3.</span> <span class="nav-text">ANN types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LInear-Threshold-Unit-perceptron感知器"><span class="nav-number">4.</span> <span class="nav-text">LInear Threshold Unit (perceptron感知器)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delta-Learning-Rule-supervised"><span class="nav-number">5.</span> <span class="nav-text">Delta Learning Rule(supervised)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hebbian-Learning-Rule-unsupervised"><span class="nav-number">6.</span> <span class="nav-text">Hebbian Learning Rule(unsupervised)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Competitive-Learning"><span class="nav-number">7.</span> <span class="nav-text">Competitive Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Negative-Feedback-Network"><span class="nav-number">8.</span> <span class="nav-text">Negative Feedback Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Autoencoder-Networks"><span class="nav-number">9.</span> <span class="nav-text">Autoencoder Networks</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhejian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
