@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="Overview: Logical clocks Vector clocks stability of emssages  Exercise:  Exercise answer:  [m1,m2,m3],[m1,m3,m2] Reliable: [m1,m2,m3] [m1,m3,m2] FIFO: [m1,m2,m3] [m3,m1,m2] [m1,m3,m2] Causal: [m1,m3,m">
+<meta name="description" content="Overview: Logical clocks: ensure the total ordering Vector clocks stability of emssages  Use clocks to ensure the total ordering Logical ClocksUnlike a physical clock, it does not progress if no event">
 <meta name="keywords" content="note,DS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NOTE-Week-3-Distributed System">
 <meta property="og:url" content="https://zhangzhejian.com/2019/01/28/NOTE-Week-3-Distributed-System/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Overview: Logical clocks Vector clocks stability of emssages  Exercise:  Exercise answer:  [m1,m2,m3],[m1,m3,m2] Reliable: [m1,m2,m3] [m1,m3,m2] FIFO: [m1,m2,m3] [m3,m1,m2] [m1,m3,m2] Causal: [m1,m3,m">
+<meta property="og:description" content="Overview: Logical clocks: ensure the total ordering Vector clocks stability of emssages  Use clocks to ensure the total ordering Logical ClocksUnlike a physical clock, it does not progress if no event">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.postimg.cc/qRBw4KSG/ds-3-1.png">
-<meta property="og:updated_time" content="2019-01-28T12:27:45.871Z">
+<meta property="og:updated_time" content="2019-02-04T10:50:59.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NOTE-Week-3-Distributed System">
-<meta name="twitter:description" content="Overview: Logical clocks Vector clocks stability of emssages  Exercise:  Exercise answer:  [m1,m2,m3],[m1,m3,m2] Reliable: [m1,m2,m3] [m1,m3,m2] FIFO: [m1,m2,m3] [m3,m1,m2] [m1,m3,m2] Causal: [m1,m3,m">
+<meta name="twitter:description" content="Overview: Logical clocks: ensure the total ordering Vector clocks stability of emssages  Use clocks to ensure the total ordering Logical ClocksUnlike a physical clock, it does not progress if no event">
 <meta name="twitter:image" content="https://i.postimg.cc/qRBw4KSG/ds-3-1.png">
 
 
@@ -303,10 +303,30 @@
 
       
         <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview:"></a>Overview:</h2><ol>
-<li>Logical clocks</li>
+<li>Logical clocks: ensure the total ordering</li>
 <li>Vector clocks</li>
 <li>stability of emssages</li>
 </ol>
+<p>Use clocks to ensure the total ordering</p>
+<h2 id="Logical-Clocks"><a href="#Logical-Clocks" class="headerlink" title="Logical Clocks"></a>Logical Clocks</h2><p>Unlike a physical clock, it does not progress if no event occurs.</p>
+<p>Mapping C between events and integers, if event e1 occurred before e2, then</p>
+<p>C(e1) &lt; C(e2)</p>
+<p>a higher value indicates a later point in time</p>
+<p>Logical clocks in a distributed system can maintain <strong>causal</strong> or <strong>total</strong> orderings </p>
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>Whenever a process broadcasts a message, it:</p>
+<ol>
+<li>Adds 1 to its clock as broadcast is an event </li>
+<li>Sends the clock time along with message</li>
+</ol>
+<p>Whenever a process delivers a message:</p>
+<ol>
+<li>Adds 1 to its clock, as deliver is an event </li>
+<li>If the message contains a higher or equal clock time than its own, it updates its clock to 1 more than this value, to ensure it is at least 1 tick on from sender</li>
+</ol>
+<p>Other events (internal events) in a process could also cause it to add 1 to its clock</p>
+<h3 id="Properties"><a href="#Properties" class="headerlink" title="Properties:"></a>Properties:</h3><h2 id="Vector-Clock"><a href="#Vector-Clock" class="headerlink" title="Vector Clock"></a>Vector Clock</h2><p>Logical clock does not ensure total ordering because concurrent messages.</p>
+<p>With vector clocks, each process Pi does not just keep a single logical clock value, but an array of them, one for each process in the system.</p>
+<h2 id="Stability-of-messages"><a href="#Stability-of-messages" class="headerlink" title="Stability of messages"></a>Stability of messages</h2><p>Stable Messages: A message M is stable at a process P if P knows that no other message that should be delivered before M is yet to be received by P</p>
 <p>Exercise:</p>
 <p><img src="https://i.postimg.cc/qRBw4KSG/ds-3-1.png" alt=""></p>
 <p>Exercise answer:</p>
@@ -360,6 +380,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/29/NOTE-Week-3-OME/" rel="prev" title="Single-source shortest-paths problem (I)">
+                Single-source shortest-paths problem (I) <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -436,7 +460,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -482,7 +506,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview:</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overview"><span class="nav-number">1.</span> <span class="nav-text">Overview:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logical-Clocks"><span class="nav-number">2.</span> <span class="nav-text">Logical Clocks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Algorithm"><span class="nav-number">2.1.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties"><span class="nav-number">2.2.</span> <span class="nav-text">Properties:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vector-Clock"><span class="nav-number">3.</span> <span class="nav-text">Vector Clock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stability-of-messages"><span class="nav-number">4.</span> <span class="nav-text">Stability of messages</span></a></li></ol></div>
             
 
           </div>
