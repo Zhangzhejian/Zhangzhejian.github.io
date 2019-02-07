@@ -230,6 +230,246 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/04/NOTE-week-2-WI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/04/NOTE-week-2-WI/" itemprop="url">(WI) Lec 2:TCP/IP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-04T19:25:00+00:00">
+                2019-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lec-2-TCP-IP"><a href="#Lec-2-TCP-IP" class="headerlink" title="Lec 2: TCP/IP"></a>Lec 2: TCP/IP</h2><h4 id="Internet-Protocol-IP-network-layer"><a href="#Internet-Protocol-IP-network-layer" class="headerlink" title="Internet Protocol(IP) network layer"></a>Internet Protocol(IP) network layer</h4><p>Provides a <strong>routhing function</strong> that attempts to <strong>deliver messages to the right destination</strong></p>
+<p>IP is an unreliable protocol: fragments might be lost, arrive out of order, or be duplicated</p>
+<h5 id="IP-datagrame-Header"><a href="#IP-datagrame-Header" class="headerlink" title="IP datagrame Header"></a>IP datagrame Header</h5><p>Length of IP header: 20-60 bytes </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Version field</th>
+<th>4-bit(0100 or 0110)</th>
+<th>to determine the IP version(IPV4 IPV6)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version field</td>
+<td>4-bit(0100 or 0110)</td>
+<td>determine the IP version(IPV4 IPV6)</td>
+</tr>
+<tr>
+<td>IHL(length)</td>
+<td>4-bit  (20-60) byte</td>
+<td>determine the length of this IP header</td>
+</tr>
+<tr>
+<td>TOS(type of service)</td>
+<td>8 bits(3,4,1)</td>
+<td>Specifies the quality of service requested</td>
+</tr>
+<tr>
+<td>Total length field</td>
+<td>16 bits (20-65535 bytes)</td>
+<td>the number of bytes of the whole ip datagram<br>(header plus data)</td>
+</tr>
+<tr>
+<td>Identification Field</td>
+<td>16 bits</td>
+<td>for reconstructing message from fragments</td>
+</tr>
+<tr>
+<td>Flag field</td>
+<td>3 bit</td>
+<td>“Reserved”,”don’t fragment(DF)”,”more fragments(MF)”</td>
+</tr>
+<tr>
+<td>Fragment offset</td>
+<td>13 bits</td>
+<td></td>
+</tr>
+<tr>
+<td>Time to live</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>8 bits</td>
+<td>Transport layer protocol used(TCP for 6)</td>
+</tr>
+<tr>
+<td>Header checksum</td>
+<td>16 bits</td>
+<td></td>
+</tr>
+<tr>
+<td>Source</td>
+<td>32 bits</td>
+<td>IP of the source</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>32 bits</td>
+<td>IP address of the destination</td>
+</tr>
+<tr>
+<td>Options</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Padding</td>
+<td>0-31</td>
+<td>make the header up to <br>Multiple of 32 bits</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h5><p><strong>MTU(Max transmission unit)</strong>: the limit of the size of message it can carry</p>
+<p>in order to fit the local MTU, the sender will fragment the message into small pieces</p>
+<p>Algorithm</p>
+<ol>
+<li><p>The DF ﬂag bit is checked to see if fragmentation is allowed</p>
+<p>If DF is set, but the message needs to be fragmented to move onto a network with a lower MTU, an error message is sent by ICMP</p>
+</li>
+<li><p>Based on the MTU value, the data ﬁeld is split into two or more parts</p>
+<p>every newly created data portion must be a multiple of 8 bytes (64 bits) except the last one</p>
+</li>
+<li><p>Each data portion is placed in an IP datagram.</p>
+</li>
+<li><p>Each of the fragmented datagrams is forwarded as a normal IP datagram</p>
+</li>
+</ol>
+<h3 id="TCP-Transmission-Control-Protocol"><a href="#TCP-Transmission-Control-Protocol" class="headerlink" title="TCP(Transmission Control Protocol)"></a>TCP(Transmission Control Protocol)</h3><h4 id="Key-features"><a href="#Key-features" class="headerlink" title="Key features"></a>Key features</h4><ul>
+<li><strong>Connection oriented:</strong> implements mechanisms to setup and tear down a full duplex connection between end points </li>
+<li><strong>Reliable:</strong> implements mechanisms to guarantee error free and ordered delivery of information </li>
+<li><strong>Flow and Congestion controlled:</strong> implements mechanisms to control trafﬁc</li>
+</ul>
+<h4 id="Port-and-sockets"><a href="#Port-and-sockets" class="headerlink" title="Port and sockets"></a>Port and sockets</h4><ul>
+<li><strong>Port:</strong> 16-bit to identify to which application/process the message should be delivered</li>
+<li><strong>Socket:</strong> is the combination of a host’s IP address and a port number.Every communication in TCP is between two sockets, i.e. two hosts using particular ports</li>
+</ul>
+<p>TCP connection set-up</p>
+<p>Three-times Handshake </p>
+<p>Four-times Handshake</p>
+<h4 id="Positive-Acknowledgment-with-Retransmission-PAR"><a href="#Positive-Acknowledgment-with-Retransmission-PAR" class="headerlink" title="Positive Acknowledgment with Retransmission (PAR)"></a>Positive Acknowledgment with Retransmission (PAR)</h4><p>FLow control</p>
+<p>window size</p>
+<p>Reference:</p>
+<ol>
+<li><a href="https://www.jianshu.com/p/de29f55d8304" target="_blank" rel="noopener">https://www.jianshu.com/p/de29f55d8304</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/12/30/NOTE-WEEK-8-Artificial-Intelligence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1952,158 +2192,6 @@ U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Re
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/12/NOTE-WEEK-3-Artificial-Intelligence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/12/NOTE-WEEK-3-Artificial-Intelligence/" itemprop="url">(AI)Lec 3:Probailistic Reasonning II</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-12T10:13:09+01:00">
-                2018-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-3-Probailistic-Reasoning-概率推理-II"><a href="#Lecture-3-Probailistic-Reasoning-概率推理-II" class="headerlink" title="Lecture 3: Probailistic Reasoning(概率推理) II"></a>Lecture 3: Probailistic Reasoning(概率推理) II</h3><h3 id="Bayesian-Network"><a href="#Bayesian-Network" class="headerlink" title="Bayesian Network"></a>Bayesian Network</h3><h4 id="Naive-Bayes-model"><a href="#Naive-Bayes-model" class="headerlink" title="Naive Bayes model:"></a>Naive Bayes model:</h4><p>If  $Effect_n$   are conditional independent of given Cause, then: </p>
-<script type="math/tex; mode=display">
-P(Cause|Effect_1, Effect_2,...,Effect_n) = P(Cause)\prod_iP(Effect_i|Cause)\\</script><p>To prove:</p>
-<script type="math/tex; mode=display">
-P(C,e_1,e_2) = p(C)P(e_1|C)P(e_2|C)</script><p> Effect_n are conditional independent of given Cause:</p>
-<script type="math/tex; mode=display">
-P(e_1|C,e_2) = P(e_1|C)\\
-\implies \frac{P(C,e_2|e_1)P(e_1)}{P(C,e_2)} = P(e_1|C)\\
-\implies P(C,e_1,e_2) = P(e_1|C)P(C,e_2)=P(e_1|C)P(e_2|C)P(C)</script><p>Visualises as:</p>
-<p><img src="https://i.postimg.cc/2y7w8KFf/vis.png" alt=""></p>
-<p>Exmaple network:</p>
-<p><img src="https://i.postimg.cc/xjvgRXrF/bayexm.png" alt=""></p>
-<h5 id="Global-Semantics"><a href="#Global-Semantics" class="headerlink" title="Global Semantics:"></a><strong>Global Semantics:</strong></h5><p>deﬁnes the full joint distribution as the product of the local conditional distributions</p>
-<script type="math/tex; mode=display">
-P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))\\</script><p>So </p>
-<script type="math/tex; mode=display">
-\begin{align}
-P(j,m,a,\not b,\not e) &= P(j|a)P(m|a)P(a|\not b,\not e)P(\not b)P(\not e)\\
-& = 0.00063
-
-\end{align}</script><h5 id="Local-semantics"><a href="#Local-semantics" class="headerlink" title="Local semantics:"></a>Local semantics:</h5><p>each node is conditionally independent of its nondescendants given its parents</p>
-<p>Each node is conditionally independent of all others given its <strong>Markov blanket</strong>: parents + children + children’s parents</p>
-<h4 id="Constructing-Bayesian-network"><a href="#Constructing-Bayesian-network" class="headerlink" title="Constructing Bayesian network"></a>Constructing Bayesian network</h4><p>The bayesian network can be considered as a form of <strong>knowledge representation</strong></p>
-<ol>
-<li>Figure out the variables that describe the world</li>
-<li>decide how they are connected(conditional independence)</li>
-<li>Work out the values in the CPTs(conditional probality table)</li>
-</ol>
-<h5 id="Noisy-OR-model"><a href="#Noisy-OR-model" class="headerlink" title="Noisy-OR model"></a>Noisy-OR model</h5><p>Parents $U_1,…U_k$ include all causes (can add leak node) (leak node is like $U_0$ that similiar to a bias)</p>
-<script type="math/tex; mode=display">
-P(X |U_1 . . . U_j , \not U_{j +1} . . . \not U_k ) = 1 -\prod_{i=1}^j  q_i\\
-q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sampling"><a href="#Sampling" class="headerlink" title="Sampling"></a>Sampling</h3><h4 id="Prior-Sampling"><a href="#Prior-Sampling" class="headerlink" title="Prior Sampling"></a>Prior Sampling</h4><h4 id="Rejection-Sampling"><a href="#Rejection-Sampling" class="headerlink" title="Rejection Sampling"></a>Rejection Sampling</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -2154,7 +2242,7 @@ q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sam
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2167,7 +2255,7 @@ q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sam
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
