@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Overview:  Basic concepts Bellman-Fodr algorithm  最短路径问题本质上是组合优化问题 PreliminariesDefinition of G = (V,E) Weight Function $w: E \to R$ mapping edges (u,v) to real-valued weights w(u,v) The weight of a p">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-05T16:12:22.591Z">
+<meta property="og:updated_time" content="2019-02-07T19:25:36.924Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Single-source shortest-paths problem (I)">
 <meta name="twitter:description" content="Overview:  Basic concepts Bellman-Fodr algorithm  最短路径问题本质上是组合优化问题 PreliminariesDefinition of G = (V,E) Weight Function $w: E \to R$ mapping edges (u,v) to real-valued weights w(u,v) The weight of a p">
@@ -335,10 +335,22 @@ w(p) = \sum_{i=1}^k w(v_{i-1},v_i)</script><p>The shortest-path weight from u to
 <p>Problem: how to prove the convergency of the algorithm</p>
 <p>Proof: <a href="https://web.stanford.edu/class/archive/cs/cs161/cs161.1168/lecture14.pdf" target="_blank" rel="noopener">CS 161 Lecture 14 – Amortized Analysis Jessica Su (some parts copied from CLRS)</a></p>
 <h3 id="Properties-Lemma"><a href="#Properties-Lemma" class="headerlink" title="Properties(Lemma):"></a>Properties(Lemma):</h3><ul>
-<li>Upper-bound property</li>
-<li>Convergence Property</li>
-<li>no-path property</li>
-<li>triangle inequality</li>
+<li>Upper-bound property<ul>
+<li>we always have $v.d \ge \delta(s,v) $ for all $v \in V$. Once v.d achieves $\delta(s,v)$ it never changes</li>
+</ul>
+</li>
+<li>Convergence Property<ul>
+<li>if $s \to u \to v$ is a shortest path in G for some $u,v \in V$, and if $u.d = \delta(s,u)$ at any time prior to relaxing edge(u,v) then $v.d = \delta(s,v) $ at all times afterwards</li>
+</ul>
+</li>
+<li>no-path property<ul>
+<li>if there is no path from s to v, then we always have $v.d = \delta(s,v) = \infty$</li>
+</ul>
+</li>
+<li>triangle inequality<ul>
+<li>For any edge (u,v) $\in$ E, we have $\delta(s,v) \le \delta(s,u) + w(u,v)$</li>
+</ul>
+</li>
 </ul>
 <p>Reference:</p>
 <ol>
@@ -346,7 +358,8 @@ w(p) = \sum_{i=1}^k w(v_{i-1},v_i)</script><p>The shortest-path weight from u to
 <li><a href="https://courses.csail.mit.edu/6.006/spring11/lectures/lec15.pdf" target="_blank" rel="noopener">https://courses.csail.mit.edu/6.006/spring11/lectures/lec15.pdf</a></li>
 <li><a href="https://web.stanford.edu/class/archive/cs/cs161/cs161.1168/lecture14.pdf" target="_blank" rel="noopener">https://web.stanford.edu/class/archive/cs/cs161/cs161.1168/lecture14.pdf</a></li>
 </ol>
-
+<script type="math/tex; mode=display">
+\ge</script>
       
     </div>
     

@@ -91,7 +91,8 @@
 <meta property="og:image" content="https://i.postimg.cc/25K6Dx5p/pr-4-2.png">
 <meta property="og:image" content="https://i.postimg.cc/25K6Dx5p/pr-4-2.png">
 <meta property="og:image" content="https://i.postimg.cc/90h5y4fg/pr-4-3.png">
-<meta property="og:updated_time" content="2019-02-07T18:06:09.718Z">
+<meta property="og:image" content="https://i.postimg.cc/tRM2MYQs/pr-4-4.png">
+<meta property="og:updated_time" content="2019-02-07T19:12:16.844Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(PR) Neural Networks">
 <meta name="twitter:description" content="Overview:  What is a Neural Network Why Types of artificial Neural network  What is NNA Neural Network is a network of connected elements called neurons.  Biological Artificial  a Neuron has:  A cell">
@@ -434,9 +435,24 @@ y = H(wx)</script><p>$\theta$ is the threshold</p>
 </ul>
 </li>
 </ul>
-<p>Delta Learning rule</p>
-<h2 id="Hebbian-Learning-Rule-unsupervised"><a href="#Hebbian-Learning-Rule-unsupervised" class="headerlink" title="Hebbian Learning Rule(unsupervised)"></a>Hebbian Learning Rule(unsupervised)</h2><script type="math/tex; mode=display">
-w = w+ \eta yx^t</script><h2 id="Competitive-Learning"><a href="#Competitive-Learning" class="headerlink" title="Competitive Learning"></a>Competitive Learning</h2><h2 id="Negative-Feedback-Network"><a href="#Negative-Feedback-Network" class="headerlink" title="Negative Feedback Network"></a>Negative Feedback Network</h2><h2 id="Autoencoder-Networks"><a href="#Autoencoder-Networks" class="headerlink" title="Autoencoder Networks"></a>Autoencoder Networks</h2><p>reconstructiong the network and remove the inhibitary feedback connection</p>
+<h4 id="Delta-Learning-rule-via-Gradient-descent"><a href="#Delta-Learning-rule-via-Gradient-descent" class="headerlink" title="Delta Learning rule via Gradient descent"></a>Delta Learning rule via Gradient descent</h4><p><img src="https://i.postimg.cc/tRM2MYQs/pr-4-4.png" alt=""></p>
+<p>Note: Iterate till convergence. If dataset not linearly separable, <strong>learning will not converge</strong></p>
+<h2 id="Hebbian-Learning-Rule-unsupervised"><a href="#Hebbian-Learning-Rule-unsupervised" class="headerlink" title="Hebbian Learning Rule(unsupervised)"></a>Hebbian Learning Rule(unsupervised)</h2><p>Sequential Update:</p>
+<script type="math/tex; mode=display">
+w = w+ \eta yx^t</script><h2 id="Competitive-Learning"><a href="#Competitive-Learning" class="headerlink" title="Competitive Learning"></a>Competitive Learning</h2><p>Output units compete for the. right to respond to the input</p>
+<h2 id="Negative-Feedback-Network"><a href="#Negative-Feedback-Network" class="headerlink" title="Negative Feedback Network"></a>Negative Feedback Network</h2><ol>
+<li>Activation<ol>
+<li>Initial y to 0</li>
+<li>Perform several iterations of:<ul>
+<li>update input units:  $e = x - W^Ty$</li>
+<li>update output units: $y = y + \alpha We$</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Learning $W = W +\beta ye^T$</li>
+</ol>
+<h2 id="Autoencoder-Networks"><a href="#Autoencoder-Networks" class="headerlink" title="Autoencoder Networks"></a>Autoencoder Networks</h2><p>reconstructiong the network and remove the inhibitary feedback connection</p>
 <script type="math/tex; mode=display">
 y = f(Wx)\\</script>
       
@@ -607,7 +623,7 @@ y = f(Wx)\\</script>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-NN"><span class="nav-number">1.</span> <span class="nav-text">What is NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Information-flow-through-a-neuron"><span class="nav-number">1.1.</span> <span class="nav-text">Information flow through a neuron</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Artificial-NN"><span class="nav-number">2.</span> <span class="nav-text">Artificial NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-ANN"><span class="nav-number">2.1.</span> <span class="nav-text">Why ANN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Processing-units"><span class="nav-number">2.2.</span> <span class="nav-text">Processing units:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Layers"><span class="nav-number">2.2.1.</span> <span class="nav-text">Layers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Functions"><span class="nav-number">2.2.2.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Weights"><span class="nav-number">2.2.3.</span> <span class="nav-text">Weights</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ANN-types"><span class="nav-number">3.</span> <span class="nav-text">ANN types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LInear-Threshold-Unit-perceptron感知器"><span class="nav-number">4.</span> <span class="nav-text">LInear Threshold Unit (perceptron感知器)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delta-Learning-Rule-supervised"><span class="nav-number">5.</span> <span class="nav-text">Delta Learning Rule(supervised)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hebbian-Learning-Rule-unsupervised"><span class="nav-number">6.</span> <span class="nav-text">Hebbian Learning Rule(unsupervised)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Competitive-Learning"><span class="nav-number">7.</span> <span class="nav-text">Competitive Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Negative-Feedback-Network"><span class="nav-number">8.</span> <span class="nav-text">Negative Feedback Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Autoencoder-Networks"><span class="nav-number">9.</span> <span class="nav-text">Autoencoder Networks</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-NN"><span class="nav-number">1.</span> <span class="nav-text">What is NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Information-flow-through-a-neuron"><span class="nav-number">1.1.</span> <span class="nav-text">Information flow through a neuron</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Artificial-NN"><span class="nav-number">2.</span> <span class="nav-text">Artificial NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-ANN"><span class="nav-number">2.1.</span> <span class="nav-text">Why ANN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Processing-units"><span class="nav-number">2.2.</span> <span class="nav-text">Processing units:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Layers"><span class="nav-number">2.2.1.</span> <span class="nav-text">Layers</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Functions"><span class="nav-number">2.2.2.</span> <span class="nav-text">Functions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Weights"><span class="nav-number">2.2.3.</span> <span class="nav-text">Weights</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ANN-types"><span class="nav-number">3.</span> <span class="nav-text">ANN types</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LInear-Threshold-Unit-perceptron感知器"><span class="nav-number">4.</span> <span class="nav-text">LInear Threshold Unit (perceptron感知器)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Delta-Learning-Rule-supervised"><span class="nav-number">5.</span> <span class="nav-text">Delta Learning Rule(supervised)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Delta-Learning-rule-via-Gradient-descent"><span class="nav-number">5.0.1.</span> <span class="nav-text">Delta Learning rule via Gradient descent</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hebbian-Learning-Rule-unsupervised"><span class="nav-number">6.</span> <span class="nav-text">Hebbian Learning Rule(unsupervised)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Competitive-Learning"><span class="nav-number">7.</span> <span class="nav-text">Competitive Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Negative-Feedback-Network"><span class="nav-number">8.</span> <span class="nav-text">Negative Feedback Network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Autoencoder-Networks"><span class="nav-number">9.</span> <span class="nav-text">Autoencoder Networks</span></a></li></ol></div>
             
 
           </div>

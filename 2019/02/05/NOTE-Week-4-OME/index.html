@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Dijkstra algorithm All pairs shortest-path problem  Dijkstra’s Algorithm w: E \to R^+all the weights should be non-negative. 123456789//initialise-single-source(G,s)S = NULLQ = G.Vwhile q not empty:">
+<meta name="description" content="Dijkstra algorithm All pairs shortest-path problem Johnson’s algorithm    Dijkstra’s Algorithm w: E \to R^+All the weights should be non-negative. 12345678910//initialise-single-source(G,s)S = NULLQ">
 <meta name="keywords" content="note,OM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Single-source shortest-paths problem (II)">
 <meta property="og:url" content="https://zhangzhejian.com/2019/02/05/NOTE-Week-4-OME/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Dijkstra algorithm All pairs shortest-path problem  Dijkstra’s Algorithm w: E \to R^+all the weights should be non-negative. 123456789//initialise-single-source(G,s)S = NULLQ = G.Vwhile q not empty:">
+<meta property="og:description" content="Dijkstra algorithm All pairs shortest-path problem Johnson’s algorithm    Dijkstra’s Algorithm w: E \to R^+All the weights should be non-negative. 12345678910//initialise-single-source(G,s)S = NULLQ">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-05T18:23:45.222Z">
+<meta property="og:updated_time" content="2019-02-07T23:25:23.425Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Single-source shortest-paths problem (II)">
-<meta name="twitter:description" content="Dijkstra algorithm All pairs shortest-path problem  Dijkstra’s Algorithm w: E \to R^+all the weights should be non-negative. 123456789//initialise-single-source(G,s)S = NULLQ = G.Vwhile q not empty:">
+<meta name="twitter:description" content="Dijkstra algorithm All pairs shortest-path problem Johnson’s algorithm    Dijkstra’s Algorithm w: E \to R^+All the weights should be non-negative. 12345678910//initialise-single-source(G,s)S = NULLQ">
 
 
 
@@ -302,11 +302,14 @@
       
         <ul>
 <li>Dijkstra algorithm</li>
-<li>All pairs shortest-path problem</li>
+<li>All pairs shortest-path problem<ul>
+<li>Johnson’s algorithm</li>
+</ul>
+</li>
 </ul>
 <h2 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h2><script type="math/tex; mode=display">
-w: E \to R^+</script><p>all the weights should be non-negative.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//initialise-single-source(G,s)</span><br><span class="line">S = NULL</span><br><span class="line">Q = G.V</span><br><span class="line">while q not empty:</span><br><span class="line">	u = EXTRACT-MIN(Q)</span><br><span class="line">	Q = Q remove u</span><br><span class="line">	S = S add u</span><br><span class="line">	for each vertex v in G.Adj[u]</span><br><span class="line">		RELAX(u,v,w)</span><br></pre></td></tr></table></figure>
+w: E \to R^+</script><p><strong>All the weights should be non-negative.</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//initialise-single-source(G,s)</span><br><span class="line">S = NULL</span><br><span class="line">Q = G.V</span><br><span class="line">//Dijkstra algorithm</span><br><span class="line">while q not empty:</span><br><span class="line">	u = EXTRACT-MIN(Q)</span><br><span class="line">	Q = Q remove u</span><br><span class="line">	S = S add u</span><br><span class="line">	for each vertex v in G.Adj[u]</span><br><span class="line">		RELAX(u,v,w)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>EXTRACT-MIN(Q) is the function that find a vertex with minimum value of v.d</li>
 <li>G.Adj(u) is the function returns the neighbors of the vertex u</li>
@@ -330,6 +333,10 @@ w: E \to R^+</script><p>all the weights should be non-negative.</p>
 \hat{w}(u,v) = w(u,v) - h(v) + h(u)\\
 \sum_{i=0}^k \hat{w}(v_{i-1},v_i) =\sum_{i=0}^k w(v_{i-1},v_i) - h(v_{i-1}) + h(v_i) \\
 \hat{w}(v_0,v_k) = w(v_0,v_k) - h(v_k)+h(v_0)</script><p>it’s obvious that the new weight function $\hat{w}(x)$ has no relation to the path but the source and the destination point.</p>
+<p>To get non-negative weights, create a new graph G’ as a copy of G but with an extra node s, connected (with zero-weight edges) to all other nodes. Then, deﬁne for each v ∈ V , h(v) = δ(s, v).</p>
+<h3 id="Johnson’s-Algorithm"><a href="#Johnson’s-Algorithm" class="headerlink" title="Johnson’s Algorithm"></a>Johnson’s Algorithm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if Bellman-Ford(G_0 , w, s) == false:</span><br><span class="line">	print “the input graph contains a negative-weight cycle”</span><br><span class="line">else </span><br><span class="line">	for v in G_new.V:</span><br><span class="line">		set h[v] according to the v.d calculated by Bellman-Ford algorithm</span><br><span class="line">	for each edge (u,v) in G_new:</span><br><span class="line">		w_new(u,v) = w(u,v) +h[u] - h[v]</span><br><span class="line">		</span><br><span class="line">	for v in G_0:</span><br><span class="line">		run DIJKSTRA algorithm to compute the shortest value use the w_new</span><br></pre></td></tr></table></figure>
+<p>Complexity:</p>
+<p>$O(min{V^3,VElogV})$</p>
 
       
     </div>
@@ -497,7 +504,7 @@ w: E \to R^+</script><p>all the weights should be non-negative.</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dijkstra’s-Algorithm"><span class="nav-number">1.</span> <span class="nav-text">Dijkstra’s Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#All-pairs-shortest-path-problem"><span class="nav-number">2.</span> <span class="nav-text">All pairs shortest-path problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reweighting"><span class="nav-number">2.1.</span> <span class="nav-text">Reweighting</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dijkstra’s-Algorithm"><span class="nav-number">1.</span> <span class="nav-text">Dijkstra’s Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#All-pairs-shortest-path-problem"><span class="nav-number">2.</span> <span class="nav-text">All pairs shortest-path problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reweighting"><span class="nav-number">2.1.</span> <span class="nav-text">Reweighting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Johnson’s-Algorithm"><span class="nav-number">2.2.</span> <span class="nav-text">Johnson’s Algorithm</span></a></li></ol></li></ol></div>
             
 
           </div>

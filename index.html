@@ -744,11 +744,14 @@
           
             <ul>
 <li>Dijkstra algorithm</li>
-<li>All pairs shortest-path problem</li>
+<li>All pairs shortest-path problem<ul>
+<li>Johnson’s algorithm</li>
+</ul>
+</li>
 </ul>
 <h2 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h2><script type="math/tex; mode=display">
-w: E \to R^+</script><p>all the weights should be non-negative.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//initialise-single-source(G,s)</span><br><span class="line">S = NULL</span><br><span class="line">Q = G.V</span><br><span class="line">while q not empty:</span><br><span class="line">	u = EXTRACT-MIN(Q)</span><br><span class="line">	Q = Q remove u</span><br><span class="line">	S = S add u</span><br><span class="line">	for each vertex v in G.Adj[u]</span><br><span class="line">		RELAX(u,v,w)</span><br></pre></td></tr></table></figure>
+w: E \to R^+</script><p><strong>All the weights should be non-negative.</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//initialise-single-source(G,s)</span><br><span class="line">S = NULL</span><br><span class="line">Q = G.V</span><br><span class="line">//Dijkstra algorithm</span><br><span class="line">while q not empty:</span><br><span class="line">	u = EXTRACT-MIN(Q)</span><br><span class="line">	Q = Q remove u</span><br><span class="line">	S = S add u</span><br><span class="line">	for each vertex v in G.Adj[u]</span><br><span class="line">		RELAX(u,v,w)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>EXTRACT-MIN(Q) is the function that find a vertex with minimum value of v.d</li>
 <li>G.Adj(u) is the function returns the neighbors of the vertex u</li>
@@ -772,6 +775,10 @@ w: E \to R^+</script><p>all the weights should be non-negative.</p>
 \hat{w}(u,v) = w(u,v) - h(v) + h(u)\\
 \sum_{i=0}^k \hat{w}(v_{i-1},v_i) =\sum_{i=0}^k w(v_{i-1},v_i) - h(v_{i-1}) + h(v_i) \\
 \hat{w}(v_0,v_k) = w(v_0,v_k) - h(v_k)+h(v_0)</script><p>it’s obvious that the new weight function $\hat{w}(x)$ has no relation to the path but the source and the destination point.</p>
+<p>To get non-negative weights, create a new graph G’ as a copy of G but with an extra node s, connected (with zero-weight edges) to all other nodes. Then, deﬁne for each v ∈ V , h(v) = δ(s, v).</p>
+<h3 id="Johnson’s-Algorithm"><a href="#Johnson’s-Algorithm" class="headerlink" title="Johnson’s Algorithm"></a>Johnson’s Algorithm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if Bellman-Ford(G_0 , w, s) == false:</span><br><span class="line">	print “the input graph contains a negative-weight cycle”</span><br><span class="line">else </span><br><span class="line">	for v in G_new.V:</span><br><span class="line">		set h[v] according to the v.d calculated by Bellman-Ford algorithm</span><br><span class="line">	for each edge (u,v) in G_new:</span><br><span class="line">		w_new(u,v) = w(u,v) +h[u] - h[v]</span><br><span class="line">		</span><br><span class="line">	for v in G_0:</span><br><span class="line">		run DIJKSTRA algorithm to compute the shortest value use the w_new</span><br></pre></td></tr></table></figure>
+<p>Complexity:</p>
+<p>$O(min{V^3,VElogV})$</p>
 
           
         
@@ -1022,9 +1029,24 @@ y = H(wx)</script><p>$\theta$ is the threshold</p>
 </ul>
 </li>
 </ul>
-<p>Delta Learning rule</p>
-<h2 id="Hebbian-Learning-Rule-unsupervised"><a href="#Hebbian-Learning-Rule-unsupervised" class="headerlink" title="Hebbian Learning Rule(unsupervised)"></a>Hebbian Learning Rule(unsupervised)</h2><script type="math/tex; mode=display">
-w = w+ \eta yx^t</script><h2 id="Competitive-Learning"><a href="#Competitive-Learning" class="headerlink" title="Competitive Learning"></a>Competitive Learning</h2><h2 id="Negative-Feedback-Network"><a href="#Negative-Feedback-Network" class="headerlink" title="Negative Feedback Network"></a>Negative Feedback Network</h2><h2 id="Autoencoder-Networks"><a href="#Autoencoder-Networks" class="headerlink" title="Autoencoder Networks"></a>Autoencoder Networks</h2><p>reconstructiong the network and remove the inhibitary feedback connection</p>
+<h4 id="Delta-Learning-rule-via-Gradient-descent"><a href="#Delta-Learning-rule-via-Gradient-descent" class="headerlink" title="Delta Learning rule via Gradient descent"></a>Delta Learning rule via Gradient descent</h4><p><img src="https://i.postimg.cc/tRM2MYQs/pr-4-4.png" alt=""></p>
+<p>Note: Iterate till convergence. If dataset not linearly separable, <strong>learning will not converge</strong></p>
+<h2 id="Hebbian-Learning-Rule-unsupervised"><a href="#Hebbian-Learning-Rule-unsupervised" class="headerlink" title="Hebbian Learning Rule(unsupervised)"></a>Hebbian Learning Rule(unsupervised)</h2><p>Sequential Update:</p>
+<script type="math/tex; mode=display">
+w = w+ \eta yx^t</script><h2 id="Competitive-Learning"><a href="#Competitive-Learning" class="headerlink" title="Competitive Learning"></a>Competitive Learning</h2><p>Output units compete for the. right to respond to the input</p>
+<h2 id="Negative-Feedback-Network"><a href="#Negative-Feedback-Network" class="headerlink" title="Negative Feedback Network"></a>Negative Feedback Network</h2><ol>
+<li>Activation<ol>
+<li>Initial y to 0</li>
+<li>Perform several iterations of:<ul>
+<li>update input units:  $e = x - W^Ty$</li>
+<li>update output units: $y = y + \alpha We$</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>Learning $W = W +\beta ye^T$</li>
+</ol>
+<h2 id="Autoencoder-Networks"><a href="#Autoencoder-Networks" class="headerlink" title="Autoencoder Networks"></a>Autoencoder Networks</h2><p>reconstructiong the network and remove the inhibitary feedback connection</p>
 <script type="math/tex; mode=display">
 y = f(Wx)\\</script>
           
@@ -1510,10 +1532,22 @@ w(p) = \sum_{i=1}^k w(v_{i-1},v_i)</script><p>The shortest-path weight from u to
 <p>Problem: how to prove the convergency of the algorithm</p>
 <p>Proof: <a href="https://web.stanford.edu/class/archive/cs/cs161/cs161.1168/lecture14.pdf" target="_blank" rel="noopener">CS 161 Lecture 14 – Amortized Analysis Jessica Su (some parts copied from CLRS)</a></p>
 <h3 id="Properties-Lemma"><a href="#Properties-Lemma" class="headerlink" title="Properties(Lemma):"></a>Properties(Lemma):</h3><ul>
-<li>Upper-bound property</li>
-<li>Convergence Property</li>
-<li>no-path property</li>
-<li>triangle inequality</li>
+<li>Upper-bound property<ul>
+<li>we always have $v.d \ge \delta(s,v) $ for all $v \in V$. Once v.d achieves $\delta(s,v)$ it never changes</li>
+</ul>
+</li>
+<li>Convergence Property<ul>
+<li>if $s \to u \to v$ is a shortest path in G for some $u,v \in V$, and if $u.d = \delta(s,u)$ at any time prior to relaxing edge(u,v) then $v.d = \delta(s,v) $ at all times afterwards</li>
+</ul>
+</li>
+<li>no-path property<ul>
+<li>if there is no path from s to v, then we always have $v.d = \delta(s,v) = \infty$</li>
+</ul>
+</li>
+<li>triangle inequality<ul>
+<li>For any edge (u,v) $\in$ E, we have $\delta(s,v) \le \delta(s,u) + w(u,v)$</li>
+</ul>
+</li>
 </ul>
 <p>Reference:</p>
 <ol>
@@ -1521,7 +1555,8 @@ w(p) = \sum_{i=1}^k w(v_{i-1},v_i)</script><p>The shortest-path weight from u to
 <li><a href="https://courses.csail.mit.edu/6.006/spring11/lectures/lec15.pdf" target="_blank" rel="noopener">https://courses.csail.mit.edu/6.006/spring11/lectures/lec15.pdf</a></li>
 <li><a href="https://web.stanford.edu/class/archive/cs/cs161/cs161.1168/lecture14.pdf" target="_blank" rel="noopener">https://web.stanford.edu/class/archive/cs/cs161/cs161.1168/lecture14.pdf</a></li>
 </ol>
-
+<script type="math/tex; mode=display">
+\ge</script>
           
         
       
@@ -1904,6 +1939,7 @@ or \;\; a = Y^+ b</script><h3 id="Widrow-Hoff-or-LMS-algroithm"><a href="#Widrow
 <li>Iterate untill $\sum_k |(b_k - \theta^Tx_k)x_k|&lt;\Theta$</li>
 </ol>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">m=<span class="built_in">size</span>(x,<span class="number">1</span>);</span><br><span class="line">iterationTime = m;</span><br><span class="line">alpha = <span class="number">0.1</span>;</span><br><span class="line">y = X(:,<span class="number">4</span>);</span><br><span class="line">x = X(:,<span class="number">1</span>:<span class="number">3</span>)</span><br><span class="line">z = x .*y</span><br><span class="line"><span class="built_in">round</span> = <span class="built_in">fix</span>(iterationTime/m)</span><br><span class="line">r = <span class="built_in">mod</span>(iterationTime,m)</span><br><span class="line"><span class="keyword">for</span> n = <span class="number">1</span>:<span class="built_in">round</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:m</span><br><span class="line">    display(<span class="built_in">i</span>)</span><br><span class="line">    display(theta')</span><br><span class="line">    theta = theta - lamda* z(<span class="built_in">i</span>,:)' * (z(<span class="built_in">i</span>,:) * theta - b(<span class="built_in">i</span>,:));</span><br><span class="line">    J = (z*theta -b)'*(z*theta -b)</span><br><span class="line">    display(z(<span class="built_in">i</span>,:))</span><br><span class="line">    display(z(<span class="built_in">i</span>,:) * theta)</span><br><span class="line">    format short</span><br><span class="line">    display(theta')</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:r</span><br><span class="line">    display(<span class="built_in">i</span>)</span><br><span class="line">    display(theta')</span><br><span class="line">    theta = theta - lamda* z(<span class="built_in">i</span>,:)' * (z(<span class="built_in">i</span>,:) * theta - b(<span class="built_in">i</span>,:));</span><br><span class="line">    J = (z*theta -b)'*(z*theta -b)</span><br><span class="line">    </span><br><span class="line">    display(z(<span class="built_in">i</span>,:))</span><br><span class="line">    display(z(<span class="built_in">i</span>,:) * theta)</span><br><span class="line">    format short</span><br><span class="line">    display(theta')</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://ecee.colorado.edu/~ecen4831/Demuth/Ch10_pres.pdf" target="_blank" rel="noopener">Convergence analysis</a></p>
 <p>Reference:</p>
 <ol>
 <li><a href="https://blog.csdn.net/daunxx/article/details/51881956" target="_blank" rel="noopener">https://blog.csdn.net/daunxx/article/details/51881956</a></li>
