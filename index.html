@@ -1841,7 +1841,7 @@ p_{i,i}+1\\
 p_{j,j}\\
 \vdots\\
 p_{i,n}
-\end{pmatrix}</script><p>The clock value of other processes should be the same, but not always.</p>
+\end{pmatrix}</script><p>The clock value of other processes should be the same, but not always. we will continue discuss in the following part.</p>
 <h2 id="Stability-of-messages"><a href="#Stability-of-messages" class="headerlink" title="Stability of messages"></a>Stability of messages</h2><h4 id="Stable-Messages"><a href="#Stable-Messages" class="headerlink" title="Stable Messages:"></a>Stable Messages:</h4><p>A message M is stable at a process P if P knows that no other message that should be delivered before M is yet to be received by P.如果进程知道不会再收到该信息前的信息，那么这个信息就是稳定的。</p>
 <h4 id="Knowing-stability-with-clocks"><a href="#Knowing-stability-with-clocks" class="headerlink" title="Knowing stability with clocks:"></a>Knowing stability with clocks:</h4><p>A process would know message M from process P is stable if it knew the clock of all processes was equal or greater than P’s clock in M.</p>
 <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><ul>
@@ -1849,6 +1849,8 @@ p_{i,n}
 <li>whether a message with a lower clock value exists?</li>
 <li>How long should the process wait before delivering the message?</li>
 </ul>
+<p>Consider Situation:</p>
+<p><img src="https://i.postimg.cc/qqCWKHKw/DS-4-4.png" zoom="70%"></p>
 <p>Exercise:</p>
 <p><img src="https://i.postimg.cc/qRBw4KSG/ds-3-1.png" alt=""></p>
 <p>Exercise answer:</p>

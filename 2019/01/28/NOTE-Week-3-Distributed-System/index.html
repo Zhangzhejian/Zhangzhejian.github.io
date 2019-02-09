@@ -88,8 +88,9 @@
 <meta property="og:description" content="Overview: Logical clocks: ensure the total ordering Vector clocks stability of emssages  Use clocks to ensure the total ordering Logical ClocksUnlike a physical clock, it does not progress if no event">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.postimg.cc/qM6ps9r9/DS-3-3.png">
+<meta property="og:image" content="https://i.postimg.cc/qqCWKHKw/DS-4-4.png">
 <meta property="og:image" content="https://i.postimg.cc/qRBw4KSG/ds-3-1.png">
-<meta property="og:updated_time" content="2019-02-09T16:14:13.996Z">
+<meta property="og:updated_time" content="2019-02-09T16:21:35.340Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(DS) Clocks">
 <meta name="twitter:description" content="Overview: Logical clocks: ensure the total ordering Vector clocks stability of emssages  Use clocks to ensure the total ordering Logical ClocksUnlike a physical clock, it does not progress if no event">
@@ -395,7 +396,7 @@ p_{i,i}+1\\
 p_{j,j}\\
 \vdots\\
 p_{i,n}
-\end{pmatrix}</script><p>The clock value of other processes should be the same, but not always.</p>
+\end{pmatrix}</script><p>The clock value of other processes should be the same, but not always. we will continue discuss in the following part.</p>
 <h2 id="Stability-of-messages"><a href="#Stability-of-messages" class="headerlink" title="Stability of messages"></a>Stability of messages</h2><h4 id="Stable-Messages"><a href="#Stable-Messages" class="headerlink" title="Stable Messages:"></a>Stable Messages:</h4><p>A message M is stable at a process P if P knows that no other message that should be delivered before M is yet to be received by P.如果进程知道不会再收到该信息前的信息，那么这个信息就是稳定的。</p>
 <h4 id="Knowing-stability-with-clocks"><a href="#Knowing-stability-with-clocks" class="headerlink" title="Knowing stability with clocks:"></a>Knowing stability with clocks:</h4><p>A process would know message M from process P is stable if it knew the clock of all processes was equal or greater than P’s clock in M.</p>
 <h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><ul>
@@ -403,6 +404,8 @@ p_{i,n}
 <li>whether a message with a lower clock value exists?</li>
 <li>How long should the process wait before delivering the message?</li>
 </ul>
+<p>Consider Situation:</p>
+<p><img src="https://i.postimg.cc/qqCWKHKw/DS-4-4.png" zoom="70%"></p>
 <p>Exercise:</p>
 <p><img src="https://i.postimg.cc/qRBw4KSG/ds-3-1.png" alt=""></p>
 <p>Exercise answer:</p>
