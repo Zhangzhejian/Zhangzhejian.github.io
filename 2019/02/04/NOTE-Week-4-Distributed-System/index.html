@@ -87,10 +87,13 @@
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Overview:  Data distribution Strategies Replication architecture Consistency in Replication  Data distribution modelsDistributing a service means replicating hardware and/or distributing data  Duplica">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-08T11:42:07.545Z">
+<meta property="og:image" content="https://i.postimg.cc/d0gwbKMK/DS-4-1.png">
+<meta property="og:image" content="https://i.postimg.cc/HLrTvkh2/DS-4-2.png">
+<meta property="og:updated_time" content="2019-02-09T11:50:54.195Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(DS) Replica Management">
 <meta name="twitter:description" content="Overview:  Data distribution Strategies Replication architecture Consistency in Replication  Data distribution modelsDistributing a service means replicating hardware and/or distributing data  Duplica">
+<meta name="twitter:image" content="https://i.postimg.cc/d0gwbKMK/DS-4-1.png">
 
 
 
@@ -356,7 +359,65 @@
 <li>Consistency</li>
 </ul>
 <h4 id="Location-Aware-Replication"><a href="#Location-Aware-Replication" class="headerlink" title="Location-Aware Replication"></a>Location-Aware Replication</h4><p>To make the most of distributed replicas, we will want each client to use a replica physically close to it, to reduce latency</p>
-<h2 id="Replication-architecture"><a href="#Replication-architecture" class="headerlink" title="Replication architecture"></a>Replication architecture</h2>
+<h2 id="Replication-architecture"><a href="#Replication-architecture" class="headerlink" title="Replication architecture"></a>Replication architecture</h2><h3 id="Preliminaries"><a href="#Preliminaries" class="headerlink" title="Preliminaries"></a>Preliminaries</h3><ul>
+<li>Clients: A,B,C</li>
+<li>Sequence numbers: 1, 2, 3</li>
+<li>Request with i from client c is :<strong>Rci</strong></li>
+<li>The state of a resource replica: <strong>s</strong></li>
+<li>State reached after processing request <strong>Rci</strong> from state <strong>s</strong>: Rci(s)</li>
+</ul>
+<h3 id="Rules-for-maintaining-consistency"><a href="#Rules-for-maintaining-consistency" class="headerlink" title="Rules for maintaining consistency"></a>Rules for maintaining consistency</h3><ul>
+<li>Each manager has same initial state</li>
+<li>For a client c, it processes Rci before Rci+1 <strong>(FIFO ordering)</strong></li>
+<li>If RAi is a potential cause of RBj, for any A, B, i, j, then it processes RAi before RBj <strong>(casual ordering)</strong></li>
+<li>Every manager processes requests in the same order <strong>(total ordering)</strong></li>
+</ul>
+<h3 id="States"><a href="#States" class="headerlink" title="States"></a>States</h3><ol>
+<li>initial: not yet received Rci</li>
+<li>pending: Received Rci, but do not know if it is stable</li>
+<li>stable: Rci is known to be stable</li>
+<li>Processed: Rci has been processed</li>
+</ol>
+<h3 id="Consistency"><a href="#Consistency" class="headerlink" title="Consistency"></a>Consistency</h3><ul>
+<li>A read request does not alter the state of the resource, so RA1(s) = s</li>
+<li>Some request commute: RA1(RA2(s)) = RA2(RA1(s))<ul>
+<li>both read requests</li>
+<li>updates made on distinct parts of the data</li>
+</ul>
+</li>
+</ul>
+<p>Requires:</p>
+<ul>
+<li><strong>Agreement</strong> between all managers about the requests they have been sent </li>
+<li><strong>Ordering</strong>  the rquests according to the rulse</li>
+</ul>
+<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ul>
+<li>Primary Backup Approach:<ul>
+<li>Clients only communicate with one manager(primary) others are backups.类似于主从复制，但是没有读写分离，读写操作只访问主数据库</li>
+</ul>
+</li>
+<li>State Machine Approach: treats all managers on an equal footing</li>
+</ul>
+<h2 id="State-Machine"><a href="#State-Machine" class="headerlink" title="State Machine"></a>State Machine</h2><p><img src="https://i.postimg.cc/d0gwbKMK/DS-4-1.png" width="500px"></p>
+<p>Connectivity:</p>
+<p><img src="https://i.postimg.cc/HLrTvkh2/DS-4-2.png" width="500px"></p>
+<p>Each pair of managers has its own link which fails independently of other links</p>
+<h3 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements:"></a>Requirements:</h3><p>Agreement:</p>
+<ol>
+<li>Each front end must be able to broadcast requests to all managers</li>
+<li>Each front end must know that the managers have received a request, Reliable Broadcasts</li>
+</ol>
+<p>Ordering:</p>
+<ol>
+<li>A unique identifier to each request</li>
+<li>Enable same ordering to be maintained at each manager</li>
+</ol>
+<ul>
+<li>Replica-Generated identifiers</li>
+<li>State machine with RM broadcasts</li>
+<li>primary backup approach</li>
+</ul>
+
       
     </div>
     
@@ -523,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-distribution-models"><span class="nav-number">1.</span> <span class="nav-text">Data distribution models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Duplication"><span class="nav-number">2.</span> <span class="nav-text">Duplication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Variety-of-Data"><span class="nav-number">2.1.</span> <span class="nav-text">Variety of Data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Types-of-information-stored-by-applications"><span class="nav-number">2.1.1.</span> <span class="nav-text">Types of information stored by applications:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Longevity-of-data"><span class="nav-number">2.1.2.</span> <span class="nav-text">Longevity of data:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Database-Fragmentation"><span class="nav-number">2.2.</span> <span class="nav-text">Database Fragmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sharding-碎片"><span class="nav-number">2.3.</span> <span class="nav-text">Sharding(碎片):</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Suitability-of-Sharding"><span class="nav-number">2.3.1.</span> <span class="nav-text">Suitability of Sharding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Replication"><span class="nav-number">2.4.</span> <span class="nav-text">Replication</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Objectives"><span class="nav-number">2.4.1.</span> <span class="nav-text">Objectives</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Location-Aware-Replication"><span class="nav-number">2.4.2.</span> <span class="nav-text">Location-Aware Replication</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Replication-architecture"><span class="nav-number">3.</span> <span class="nav-text">Replication architecture</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-distribution-models"><span class="nav-number">1.</span> <span class="nav-text">Data distribution models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Duplication"><span class="nav-number">2.</span> <span class="nav-text">Duplication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Variety-of-Data"><span class="nav-number">2.1.</span> <span class="nav-text">Variety of Data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Types-of-information-stored-by-applications"><span class="nav-number">2.1.1.</span> <span class="nav-text">Types of information stored by applications:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Longevity-of-data"><span class="nav-number">2.1.2.</span> <span class="nav-text">Longevity of data:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Database-Fragmentation"><span class="nav-number">2.2.</span> <span class="nav-text">Database Fragmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sharding-碎片"><span class="nav-number">2.3.</span> <span class="nav-text">Sharding(碎片):</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Suitability-of-Sharding"><span class="nav-number">2.3.1.</span> <span class="nav-text">Suitability of Sharding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Replication"><span class="nav-number">2.4.</span> <span class="nav-text">Replication</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Objectives"><span class="nav-number">2.4.1.</span> <span class="nav-text">Objectives</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Location-Aware-Replication"><span class="nav-number">2.4.2.</span> <span class="nav-text">Location-Aware Replication</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Replication-architecture"><span class="nav-number">3.</span> <span class="nav-text">Replication architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Preliminaries"><span class="nav-number">3.1.</span> <span class="nav-text">Preliminaries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rules-for-maintaining-consistency"><span class="nav-number">3.2.</span> <span class="nav-text">Rules for maintaining consistency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#States"><span class="nav-number">3.3.</span> <span class="nav-text">States</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Consistency"><span class="nav-number">3.4.</span> <span class="nav-text">Consistency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach"><span class="nav-number">3.5.</span> <span class="nav-text">Approach</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#State-Machine"><span class="nav-number">4.</span> <span class="nav-text">State Machine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Requirements"><span class="nav-number">4.1.</span> <span class="nav-text">Requirements:</span></a></li></ol></li></ol></div>
             
 
           </div>

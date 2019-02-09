@@ -1225,7 +1225,65 @@ y = f(Wx)\\</script>
 <li>Consistency</li>
 </ul>
 <h4 id="Location-Aware-Replication"><a href="#Location-Aware-Replication" class="headerlink" title="Location-Aware Replication"></a>Location-Aware Replication</h4><p>To make the most of distributed replicas, we will want each client to use a replica physically close to it, to reduce latency</p>
-<h2 id="Replication-architecture"><a href="#Replication-architecture" class="headerlink" title="Replication architecture"></a>Replication architecture</h2>
+<h2 id="Replication-architecture"><a href="#Replication-architecture" class="headerlink" title="Replication architecture"></a>Replication architecture</h2><h3 id="Preliminaries"><a href="#Preliminaries" class="headerlink" title="Preliminaries"></a>Preliminaries</h3><ul>
+<li>Clients: A,B,C</li>
+<li>Sequence numbers: 1, 2, 3</li>
+<li>Request with i from client c is :<strong>Rci</strong></li>
+<li>The state of a resource replica: <strong>s</strong></li>
+<li>State reached after processing request <strong>Rci</strong> from state <strong>s</strong>: Rci(s)</li>
+</ul>
+<h3 id="Rules-for-maintaining-consistency"><a href="#Rules-for-maintaining-consistency" class="headerlink" title="Rules for maintaining consistency"></a>Rules for maintaining consistency</h3><ul>
+<li>Each manager has same initial state</li>
+<li>For a client c, it processes Rci before Rci+1 <strong>(FIFO ordering)</strong></li>
+<li>If RAi is a potential cause of RBj, for any A, B, i, j, then it processes RAi before RBj <strong>(casual ordering)</strong></li>
+<li>Every manager processes requests in the same order <strong>(total ordering)</strong></li>
+</ul>
+<h3 id="States"><a href="#States" class="headerlink" title="States"></a>States</h3><ol>
+<li>initial: not yet received Rci</li>
+<li>pending: Received Rci, but do not know if it is stable</li>
+<li>stable: Rci is known to be stable</li>
+<li>Processed: Rci has been processed</li>
+</ol>
+<h3 id="Consistency"><a href="#Consistency" class="headerlink" title="Consistency"></a>Consistency</h3><ul>
+<li>A read request does not alter the state of the resource, so RA1(s) = s</li>
+<li>Some request commute: RA1(RA2(s)) = RA2(RA1(s))<ul>
+<li>both read requests</li>
+<li>updates made on distinct parts of the data</li>
+</ul>
+</li>
+</ul>
+<p>Requires:</p>
+<ul>
+<li><strong>Agreement</strong> between all managers about the requests they have been sent </li>
+<li><strong>Ordering</strong>  the rquests according to the rulse</li>
+</ul>
+<h3 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h3><ul>
+<li>Primary Backup Approach:<ul>
+<li>Clients only communicate with one manager(primary) others are backups.类似于主从复制，但是没有读写分离，读写操作只访问主数据库</li>
+</ul>
+</li>
+<li>State Machine Approach: treats all managers on an equal footing</li>
+</ul>
+<h2 id="State-Machine"><a href="#State-Machine" class="headerlink" title="State Machine"></a>State Machine</h2><p><img src="https://i.postimg.cc/d0gwbKMK/DS-4-1.png" width="500px"></p>
+<p>Connectivity:</p>
+<p><img src="https://i.postimg.cc/HLrTvkh2/DS-4-2.png" width="500px"></p>
+<p>Each pair of managers has its own link which fails independently of other links</p>
+<h3 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements:"></a>Requirements:</h3><p>Agreement:</p>
+<ol>
+<li>Each front end must be able to broadcast requests to all managers</li>
+<li>Each front end must know that the managers have received a request, Reliable Broadcasts</li>
+</ol>
+<p>Ordering:</p>
+<ol>
+<li>A unique identifier to each request</li>
+<li>Enable same ordering to be maintained at each manager</li>
+</ol>
+<ul>
+<li>Replica-Generated identifiers</li>
+<li>State machine with RM broadcasts</li>
+<li>primary backup approach</li>
+</ul>
+
           
         
       
@@ -1639,7 +1697,7 @@ w(p) = \sum_{i=1}^k w(v_{i-1},v_i)</script><p>The shortest-path weight from u to
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/28/NOTE-Week-3-Distributed-System/" itemprop="url">NOTE-Week-3-Distributed System</a></h1>
+                <a class="post-title-link" href="/2019/01/28/NOTE-Week-3-Distributed-System/" itemprop="url">(DS) Clocks</a></h1>
         
 
         <div class="post-meta">
@@ -1715,7 +1773,82 @@ w(p) = \sum_{i=1}^k w(v_{i-1},v_i)</script><p>The shortest-path weight from u to
 <p>Other events (internal events) in a process could also cause it to add 1 to its clock</p>
 <h3 id="Properties"><a href="#Properties" class="headerlink" title="Properties:"></a>Properties:</h3><h2 id="Vector-Clock"><a href="#Vector-Clock" class="headerlink" title="Vector Clock"></a>Vector Clock</h2><p>Logical clock does not ensure total ordering because concurrent messages.</p>
 <p>With vector clocks, each process Pi does not just keep a single logical clock value, but an array of them, one for each process in the system.</p>
-<h2 id="Stability-of-messages"><a href="#Stability-of-messages" class="headerlink" title="Stability of messages"></a>Stability of messages</h2><p>Stable Messages: A message M is stable at a process P if P knows that no other message that should be delivered before M is yet to be received by P</p>
+<h3 id="Vector-Clock-Algorithm"><a href="#Vector-Clock-Algorithm" class="headerlink" title="Vector Clock Algorithm"></a>Vector Clock Algorithm</h3><p>Every process keeps an array of the clock value of all process, we denote the $P_i$ to be the vector Clock values stored in the process <strong>i.</strong> There are <strong>n</strong> processes in the whole system. </p>
+<script type="math/tex; mode=display">
+P_i=\begin{pmatrix}
+p_{i,1}\\
+p_{i,2}\\
+\vdots \\
+p_{i,i}\\
+\vdots\\
+p_{i,n}
+\end{pmatrix}</script><ul>
+<li>When Broadcasting a message, $p_{i,i}+1$</li>
+<li>when receiving a message from process, $p_{i,m} = max\{ p_{i,m}, p_{j,m}\}$</li>
+</ul>
+<p>When another process <strong>j</strong> sends a message M, it </p>
+<ol>
+<li>Change its own clock value $p_{j,j}+1$</li>
+<li>Then send its whole vector $P_j$ to other processes:</li>
+</ol>
+<script type="math/tex; mode=display">
+P_j=\begin{pmatrix}
+p_{j,1}\\
+p_{j,2}\\
+\vdots \\
+p_{j,j}\\
+\vdots\\
+p_{j,n}
+\end{pmatrix}</script><p>After receiving the message M, the updating change in process i:</p>
+<script type="math/tex; mode=display">
+P_i=\begin{pmatrix}
+max\{p_{i,1},p_{j,1}\}\\
+max\{p_{i,2},p_{j,2}\}\\
+\vdots \\
+max\{(p_{i,i}+1),p_{j,i}\}\\
+\vdots\\
+max\{p_{i,j},p_{j,j}\}\\
+\vdots\\
+max\{p_{i,n},p_{j,n}\}
+\end{pmatrix}</script><p>Because of the algorithm that the only two way of changing the clock value of process <strong>i</strong> is:</p>
+<ol>
+<li>Receiving a message (for process i)</li>
+<li>Broadcasting a message (for process i)</li>
+</ol>
+<p>So the only after the operation of process <strong>i</strong>, the clock value of <strong>i</strong> can be changed in the whole system scope. So $max\{(p_{i,i}+1),p_{j,i}\} = p_{i,i}+1$ and $max\{p_{i,j},p_{j,j}\} = p_{j,j}$</p>
+<p>Example:</p>
+<p><img src="https://i.postimg.cc/qM6ps9r9/DS-3-3.png" zoom="70%"></p>
+<p>In the stable situation, the message M is a stable message, then $P_i$ should update like:</p>
+<script type="math/tex; mode=display">
+P_i \to P_i'=
+\begin{pmatrix}
+p_{i,1}\\
+p_{i,2}\\
+\vdots \\
+p_{i,i}\\
+\vdots \\
+p_{j,j}
+\vdots\\
+p_{i,n}
+\end{pmatrix}
+\to
+\begin{pmatrix}
+p_{i,1}\\
+p_{i,2}\\
+\vdots \\
+p_{i,i}+1\\
+\vdots \\
+p_{j,j}\\
+\vdots\\
+p_{i,n}
+\end{pmatrix}</script><p>The clock value of other processes should be the same, but not always.</p>
+<h2 id="Stability-of-messages"><a href="#Stability-of-messages" class="headerlink" title="Stability of messages"></a>Stability of messages</h2><h4 id="Stable-Messages"><a href="#Stable-Messages" class="headerlink" title="Stable Messages:"></a>Stable Messages:</h4><p>A message M is stable at a process P if P knows that no other message that should be delivered before M is yet to be received by P.如果进程知道不会再收到该信息前的信息，那么这个信息就是稳定的。</p>
+<h4 id="Knowing-stability-with-clocks"><a href="#Knowing-stability-with-clocks" class="headerlink" title="Knowing stability with clocks:"></a>Knowing stability with clocks:</h4><p>A process would know message M from process P is stable if it knew the clock of all processes was equal or greater than P’s clock in M.</p>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><ul>
+<li>when to deliver</li>
+<li>whether a message with a lower clock value exists?</li>
+<li>How long should the process wait before delivering the message?</li>
+</ul>
 <p>Exercise:</p>
 <p><img src="https://i.postimg.cc/qRBw4KSG/ds-3-1.png" alt=""></p>
 <p>Exercise answer:</p>
