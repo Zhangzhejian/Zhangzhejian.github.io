@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Overview:  Distribution of data Replication architecture Consistency in Replication  Data distribution models Duplication Replication: maintain copies in a proactive Caching: maintain in reactive mann">
+<meta name="description" content="Overview:  Data distribution Strategies Replication architecture Consistency in Replication  Data distribution modelsDistributing a service means replicating hardware and/or distributing data  Duplica">
 <meta name="keywords" content="note,DS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(DS) Replica Management">
 <meta property="og:url" content="https://zhangzhejian.com/2019/02/04/NOTE-Week-4-Distributed-System/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Overview:  Distribution of data Replication architecture Consistency in Replication  Data distribution models Duplication Replication: maintain copies in a proactive Caching: maintain in reactive mann">
+<meta property="og:description" content="Overview:  Data distribution Strategies Replication architecture Consistency in Replication  Data distribution modelsDistributing a service means replicating hardware and/or distributing data  Duplica">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-04T17:08:48.840Z">
+<meta property="og:updated_time" content="2019-02-08T11:42:07.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(DS) Replica Management">
-<meta name="twitter:description" content="Overview:  Distribution of data Replication architecture Consistency in Replication  Data distribution models Duplication Replication: maintain copies in a proactive Caching: maintain in reactive mann">
+<meta name="twitter:description" content="Overview:  Data distribution Strategies Replication architecture Consistency in Replication  Data distribution modelsDistributing a service means replicating hardware and/or distributing data  Duplica">
 
 
 
@@ -302,47 +302,61 @@
       
         <p>Overview:</p>
 <ol>
-<li>Distribution of data</li>
+<li>Data distribution Strategies</li>
 <li>Replication architecture</li>
 <li>Consistency in Replication</li>
 </ol>
-<h3 id="Data-distribution-models"><a href="#Data-distribution-models" class="headerlink" title="Data distribution models"></a>Data distribution models</h3><ul>
-<li>Duplication<ul>
-<li>Replication: maintain copies in a proactive</li>
-<li>Caching: maintain in reactive manner</li>
+<h2 id="Data-distribution-models"><a href="#Data-distribution-models" class="headerlink" title="Data distribution models"></a>Data distribution models</h2><p>Distributing a service means replicating hardware and/or distributing data</p>
+<ul>
+<li>Duplication(复制): Copies of the same data are maintained at several hosts<ul>
+<li><strong>Replication</strong>: maintain copies in a proactive manner</li>
+<li><strong>Caching</strong>: maintain in reactive manner</li>
 </ul>
 </li>
-<li>Fragmentation<ul>
+<li>Fragmentation(分割): The data is divided into parts and split between hosts<ul>
 <li>Vertical Partitioning</li>
 <li>Horizontal Partitioning</li>
 </ul>
 </li>
-<li>Migration </li>
+<li>Migration(迁移): Data moves from one host to another</li>
 </ul>
-<h3 id="Variety-of-Data"><a href="#Variety-of-Data" class="headerlink" title="Variety of Data"></a>Variety of Data</h3><h4 id="types-of-information"><a href="#types-of-information" class="headerlink" title="types of information:"></a>types of information:</h4><ul>
+<h2 id="Duplication"><a href="#Duplication" class="headerlink" title="Duplication"></a>Duplication</h2><h3 id="Variety-of-Data"><a href="#Variety-of-Data" class="headerlink" title="Variety of Data"></a>Variety of Data</h3><h4 id="Types-of-information-stored-by-applications"><a href="#Types-of-information-stored-by-applications" class="headerlink" title="Types of information stored by applications:"></a>Types of information stored by applications:</h4><ul>
 <li>Content</li>
-<li>user informatino</li>
-<li>application</li>
+<li>user information</li>
+<li>application: Executable code</li>
 </ul>
 <h4 id="Longevity-of-data"><a href="#Longevity-of-data" class="headerlink" title="Longevity of data:"></a>Longevity of data:</h4><ul>
-<li>Persistent</li>
-<li>Working: Used internally to produce required functionality; usually possible to recover from loss but needs low latency</li>
+<li>Persistent: Characterises and shapes the service over time.构建，塑造了整个服务。</li>
+<li>Working: Used internally to produce required functionality; usually possible to recover from loss but needs low latency 互相交流的数据</li>
 </ul>
-<h3 id="Fragmentation"><a href="#Fragmentation" class="headerlink" title="Fragmentation"></a>Fragmentation</h3><ul>
-<li>Vertical:<ul>
+<h3 id="Database-Fragmentation"><a href="#Database-Fragmentation" class="headerlink" title="Database Fragmentation"></a>Database Fragmentation</h3><ul>
+<li>Vertical垂直:<ul>
 <li>a table is divided with some columns</li>
 </ul>
 </li>
-<li>Horizontal:<ul>
+<li>Horizontal水平:<ul>
 <li>a table is divided with some rows on one host and other rows on another</li>
+<li>Sharding</li>
 </ul>
 </li>
 </ul>
-<h3 id="Sharding"><a href="#Sharding" class="headerlink" title="Sharding:"></a>Sharding:</h3><p> horizontal partitioning across hosts, plus replication of related data in other small tables so that one host can resolve queries without further comms</p>
+<p>NOTE:数据库的垂直于水平分割参考《构建高性能web站点》郭欣。</p>
+<h3 id="Sharding-碎片"><a href="#Sharding-碎片" class="headerlink" title="Sharding(碎片):"></a>Sharding(碎片):</h3><p> horizontal partitioning across hosts, plus replication of related data in other <strong>small tables</strong> so that one host can resolve queries without further comms<br>通过碎片这种小规模的表来储存一些公用数据，方便做union或者查询操作。</p>
 <h4 id="Suitability-of-Sharding"><a href="#Suitability-of-Sharding" class="headerlink" title="Suitability of Sharding"></a>Suitability of Sharding</h4><ul>
-<li>Read-only transactions or temporary for a transaction</li>
+<li>Read-only transactions or <strong>temporary</strong> for a transaction</li>
 </ul>
-<h4 id="Location-Aware-Replication"><a href="#Location-Aware-Replication" class="headerlink" title="Location-Aware Replication"></a>Location-Aware Replication</h4><h2 id="Replication-architecture"><a href="#Replication-architecture" class="headerlink" title="Replication architecture"></a>Replication architecture</h2>
+<h3 id="Replication"><a href="#Replication" class="headerlink" title="Replication"></a>Replication</h3><p>WHY:</p>
+<ul>
+<li>Fault tolerance</li>
+<li>Spreading the load</li>
+</ul>
+<p><strong>Issues: whether the resource has state</strong></p>
+<h4 id="Objectives"><a href="#Objectives" class="headerlink" title="Objectives"></a>Objectives</h4><ul>
+<li>Trasparency: Idependent of which replicas are functioning </li>
+<li>Consistency</li>
+</ul>
+<h4 id="Location-Aware-Replication"><a href="#Location-Aware-Replication" class="headerlink" title="Location-Aware Replication"></a>Location-Aware Replication</h4><p>To make the most of distributed replicas, we will want each client to use a replica physically close to it, to reduce latency</p>
+<h2 id="Replication-architecture"><a href="#Replication-architecture" class="headerlink" title="Replication architecture"></a>Replication architecture</h2>
       
     </div>
     
@@ -509,7 +523,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-distribution-models"><span class="nav-number">1.</span> <span class="nav-text">Data distribution models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variety-of-Data"><span class="nav-number">2.</span> <span class="nav-text">Variety of Data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#types-of-information"><span class="nav-number">2.1.</span> <span class="nav-text">types of information:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Longevity-of-data"><span class="nav-number">2.2.</span> <span class="nav-text">Longevity of data:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fragmentation"><span class="nav-number">3.</span> <span class="nav-text">Fragmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sharding"><span class="nav-number">4.</span> <span class="nav-text">Sharding:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Suitability-of-Sharding"><span class="nav-number">4.1.</span> <span class="nav-text">Suitability of Sharding</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Location-Aware-Replication"><span class="nav-number">4.2.</span> <span class="nav-text">Location-Aware Replication</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Replication-architecture"><span class="nav-number"></span> <span class="nav-text">Replication architecture</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-distribution-models"><span class="nav-number">1.</span> <span class="nav-text">Data distribution models</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Duplication"><span class="nav-number">2.</span> <span class="nav-text">Duplication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Variety-of-Data"><span class="nav-number">2.1.</span> <span class="nav-text">Variety of Data</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Types-of-information-stored-by-applications"><span class="nav-number">2.1.1.</span> <span class="nav-text">Types of information stored by applications:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Longevity-of-data"><span class="nav-number">2.1.2.</span> <span class="nav-text">Longevity of data:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Database-Fragmentation"><span class="nav-number">2.2.</span> <span class="nav-text">Database Fragmentation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sharding-碎片"><span class="nav-number">2.3.</span> <span class="nav-text">Sharding(碎片):</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Suitability-of-Sharding"><span class="nav-number">2.3.1.</span> <span class="nav-text">Suitability of Sharding</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Replication"><span class="nav-number">2.4.</span> <span class="nav-text">Replication</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Objectives"><span class="nav-number">2.4.1.</span> <span class="nav-text">Objectives</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Location-Aware-Replication"><span class="nav-number">2.4.2.</span> <span class="nav-text">Location-Aware Replication</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Replication-architecture"><span class="nav-number">3.</span> <span class="nav-text">Replication architecture</span></a></li></ol></div>
             
 
           </div>
