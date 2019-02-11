@@ -1783,7 +1783,7 @@ p_{i,i}\\
 \vdots\\
 p_{i,n}
 \end{pmatrix}</script><ul>
-<li>When Broadcasting a message, $p_{i,i}+1$</li>
+<li>When Broadcasting a message, $p_{i,i}+1$, which is enough to ensure <strong>FIFO ordering</strong></li>
 <li>when receiving a message from process, $p_{i,m} = max\{ p_{i,m}, p_{j,m}\}$</li>
 </ul>
 <p>When another process <strong>j</strong> sends a message M, it </p>
@@ -1820,7 +1820,7 @@ max\{p_{i,n},p_{j,n}\}
 <p><img src="https://i.postimg.cc/qM6ps9r9/DS-3-3.png" zoom="70%"></p>
 <p>In the stable situation, the message M is a stable message, then $P_i$ should update like:</p>
 <script type="math/tex; mode=display">
-P_i \to P_i'=
+P_i \to^{P_j} P_i'=
 \begin{pmatrix}
 p_{i,1}\\
 p_{i,2}\\
@@ -1831,7 +1831,7 @@ p_{j,j}
 \vdots\\
 p_{i,n}
 \end{pmatrix}
-\to
+\to^{P_j}
 \begin{pmatrix}
 p_{i,1}\\
 p_{i,2}\\
@@ -1849,8 +1849,21 @@ p_{i,n}
 <li>whether a message with a lower clock value exists?</li>
 <li>How long should the process wait before delivering the message?</li>
 </ul>
-<p>Consider Situation:</p>
+<p>Example:</p>
 <p><img src="https://i.postimg.cc/qqCWKHKw/DS-4-4.png" zoom="70%"></p>
+<p>In this situation, we can regraded m2 and m1 as the causal ordering. </p>
+<script type="math/tex; mode=display">
+P_2=\begin{pmatrix}
+0\\2\\ 1
+\end{pmatrix}\\
+
+P_1 \to^{P_2} P_1'= \begin{pmatrix}
+1\\0\\ 0
+\end{pmatrix}
+\to^{P_2}
+\begin{pmatrix}
+2\\2\\ 1
+\end{pmatrix}\\</script><p>In this transform example, <strong>i=1,j=2</strong>, But the value of process 3 changes in this process which should not happen. Thus Process 1 can determine that the message m2 should after one message from Process 3.</p>
 <p>Exercise:</p>
 <p><img src="https://i.postimg.cc/qRBw4KSG/ds-3-1.png" alt=""></p>
 <p>Exercise answer:</p>
