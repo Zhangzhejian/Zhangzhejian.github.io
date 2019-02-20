@@ -230,6 +230,404 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/04/NOTE-week-2-WI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/04/NOTE-week-2-WI/" itemprop="url">(WI) Lec 2:TCP/IP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-04T19:25:00+00:00">
+                2019-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lec-2-TCP-IP"><a href="#Lec-2-TCP-IP" class="headerlink" title="Lec 2: TCP/IP"></a>Lec 2: TCP/IP</h2><h4 id="Internet-Protocol-IP-network-layer"><a href="#Internet-Protocol-IP-network-layer" class="headerlink" title="Internet Protocol(IP) network layer"></a>Internet Protocol(IP) network layer</h4><p>Provides a <strong>routhing function</strong> that attempts to <strong>deliver messages to the right destination</strong></p>
+<p>IP is an unreliable protocol: fragments might be lost, arrive out of order, or be duplicated</p>
+<h5 id="IP-datagrame-Header"><a href="#IP-datagrame-Header" class="headerlink" title="IP datagrame Header"></a>IP datagrame Header</h5><p>Length of IP header: 20-60 bytes </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Version field</th>
+<th>4-bit(0100 or 0110)</th>
+<th>to determine the IP version(IPV4 IPV6)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version field</td>
+<td>4-bit(0100 or 0110)</td>
+<td>determine the IP version(IPV4 IPV6)</td>
+</tr>
+<tr>
+<td>IHL(length)</td>
+<td>4-bit  (20-60) byte</td>
+<td>determine the length of this IP header</td>
+</tr>
+<tr>
+<td>TOS(type of service)</td>
+<td>8 bits(3,4,1)</td>
+<td>Specifies the quality of service requested</td>
+</tr>
+<tr>
+<td>Total length field</td>
+<td>16 bits (20-65535 bytes)</td>
+<td>the number of bytes of the whole ip datagram<br>(header plus data)</td>
+</tr>
+<tr>
+<td>Identification Field</td>
+<td>16 bits</td>
+<td>for reconstructing message from fragments</td>
+</tr>
+<tr>
+<td>Flag field</td>
+<td>3 bit</td>
+<td>“Reserved”,”don’t fragment(DF)”,”more fragments(MF)”</td>
+</tr>
+<tr>
+<td>Fragment offset</td>
+<td>13 bits</td>
+<td></td>
+</tr>
+<tr>
+<td>Time to live</td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>8 bits</td>
+<td>Transport layer protocol used(TCP for 6)</td>
+</tr>
+<tr>
+<td>Header checksum</td>
+<td>16 bits</td>
+<td></td>
+</tr>
+<tr>
+<td>Source</td>
+<td>32 bits</td>
+<td>IP of the source</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>32 bits</td>
+<td>IP address of the destination</td>
+</tr>
+<tr>
+<td>Options</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Padding</td>
+<td>0-31</td>
+<td>make the header up to <br>Multiple of 32 bits</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h5><p><strong>MTU(Max transmission unit)</strong>: the limit of the size of message it can carry</p>
+<p>in order to fit the local MTU, the sender will fragment the message into small pieces</p>
+<p>Algorithm</p>
+<ol>
+<li><p>The DF ﬂag bit is checked to see if fragmentation is allowed</p>
+<p>If DF is set, but the message needs to be fragmented to move onto a network with a lower MTU, an error message is sent by ICMP</p>
+</li>
+<li><p>Based on the MTU value, the data ﬁeld is split into two or more parts</p>
+<p>every newly created data portion must be a multiple of 8 bytes (64 bits) except the last one</p>
+</li>
+<li><p>Each data portion is placed in an IP datagram.</p>
+</li>
+<li><p>Each of the fragmented datagrams is forwarded as a normal IP datagram</p>
+</li>
+</ol>
+<h3 id="TCP-Transmission-Control-Protocol"><a href="#TCP-Transmission-Control-Protocol" class="headerlink" title="TCP(Transmission Control Protocol)"></a>TCP(Transmission Control Protocol)</h3><h4 id="Key-features"><a href="#Key-features" class="headerlink" title="Key features"></a>Key features</h4><ul>
+<li><strong>Connection oriented:</strong> implements mechanisms to setup and tear down a full duplex connection between end points </li>
+<li><strong>Reliable:</strong> implements mechanisms to guarantee error free and ordered delivery of information </li>
+<li><strong>Flow and Congestion controlled:</strong> implements mechanisms to control trafﬁc</li>
+</ul>
+<h4 id="Port-and-sockets"><a href="#Port-and-sockets" class="headerlink" title="Port and sockets"></a>Port and sockets</h4><ul>
+<li><strong>Port:</strong> 16-bit to identify to which application/process the message should be delivered</li>
+<li><strong>Socket:</strong> is the combination of a host’s IP address and a port number.Every communication in TCP is between two sockets, i.e. two hosts using particular ports</li>
+</ul>
+<p>TCP connection set-up</p>
+<p>Three-times Handshake </p>
+<p>Four-times Handshake</p>
+<h4 id="Positive-Acknowledgment-with-Retransmission-PAR"><a href="#Positive-Acknowledgment-with-Retransmission-PAR" class="headerlink" title="Positive Acknowledgment with Retransmission (PAR)"></a>Positive Acknowledgment with Retransmission (PAR)</h4><p>FLow control</p>
+<p>window size</p>
+<p>Reference:</p>
+<ol>
+<li><a href="https://www.jianshu.com/p/de29f55d8304" target="_blank" rel="noopener">https://www.jianshu.com/p/de29f55d8304</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/12/30/NOTE-WEEK-8-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/30/NOTE-WEEK-8-Artificial-Intelligence/" itemprop="url">(AI)Lec 7:Argumentation(论证) II</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-30T17:38:02+00:00">
+                2018-12-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Lecture-8-Argumentation-II"><a href="#Lecture-8-Argumentation-II" class="headerlink" title="Lecture 8: Argumentation II"></a>Lecture 8: Argumentation II</h3><p>In the <a href="http://zhangzhejian.com/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/">last lecture</a>, we introduced the concepts of the semantics, and in this lecture, the way of computing semantics will be illustrated.</p>
+<h3 id="key-point"><a href="#key-point" class="headerlink" title="key point"></a>key point</h3><ul>
+<li>Equational approach for determining <strong>complete extensions</strong></li>
+<li>Argument game approach for determining <strong>membership of grounded extension</strong></li>
+<li>Decomposition approach for determining <strong>preferred extensions</strong></li>
+</ul>
+<p>Computation of semantics of argumentation</p>
+<ul>
+<li>enumeration</li>
+<li>Decision making</li>
+</ul>
+<h4 id="Reduction-based"><a href="#Reduction-based" class="headerlink" title="Reduction-based"></a>Reduction-based</h4><ol>
+<li><h5 id="Translate-the-argumentation-problem-into-a-different-equivalent-reasoning-problem"><a href="#Translate-the-argumentation-problem-into-a-different-equivalent-reasoning-problem" class="headerlink" title="Translate the argumentation problem into a different equivalent reasoning problem;"></a>Translate the argumentation problem into a different equivalent reasoning problem;</h5></li>
+<li><h5 id="Solve-the-translated-problem"><a href="#Solve-the-translated-problem" class="headerlink" title="Solve the translated problem;"></a>Solve the translated problem;</h5></li>
+<li><h5 id="Translate-the-solution-back-into-argumentation"><a href="#Translate-the-solution-back-into-argumentation" class="headerlink" title="Translate the solution back into argumentation."></a>Translate the solution back into argumentation.</h5></li>
+</ol>
+<ul>
+<li>Directly </li>
+</ul>
+<h4 id="Equational-approach-complete-extensions"><a href="#Equational-approach-complete-extensions" class="headerlink" title="Equational approach(complete extensions)"></a>Equational approach(complete extensions)</h4><p><img src="https://i.postimg.cc/2jcVLSLg/arg2ex1.png" alt=""></p>
+<p><img src="https://i.postimg.cc/TYB1QN99/arg2ex2.png" alt=""></p>
+<p><img src="https://i.postimg.cc/JzJnF3YW/arg2ex3.png" alt=""></p>
+<p><img src="https://i.postimg.cc/k5m4PVLR/arg2ex4.png" alt=""></p>
+<p><img src="https://i.postimg.cc/ZKW08zrn/arg2ex5.png" alt=""></p>
+<h4 id="Argument-game-approach-ground-extension"><a href="#Argument-game-approach-ground-extension" class="headerlink" title="Argument game approach(ground extension)"></a>Argument game approach(ground extension)</h4><p><img src="https://i.postimg.cc/43pgvs46/arg2ex6.png" alt=""></p>
+<h5 id="Difference-between-game-tree-and-strategy"><a href="#Difference-between-game-tree-and-strategy" class="headerlink" title="Difference between game tree and strategy"></a>Difference between game tree and strategy</h5><p><strong>A game tree represents all the possible games that can be played according to the rules of the game:</strong></p>
+<p>• Every branch is a dispute (sequence of allowable moves).</p>
+<p>• The game tree contains all possible disputes.</p>
+<p><strong>A strategy for player p is a partial game tree:</strong></p>
+<p>• Every branch is a dispute (sequence of allowable moves).</p>
+<p>• The tree only branches after moves by p.</p>
+<p>• The children of p’s moves are all the legal moves by the other player.</p>
+<p><strong>A strategy S for player p is winning if and only if p wins all disputes in S.</strong></p>
+<h4 id="Decomposition-approach-prefered-extension"><a href="#Decomposition-approach-prefered-extension" class="headerlink" title="Decomposition approach(prefered extension)"></a>Decomposition approach(prefered extension)</h4><p>Idea is to decompose an argumentation framework into a set of sub-frameworks and compute the semantics of each subframework locally.</p>
+<p>We need to perform the decomposition so that the resulting subframeworks respect the dependency of the attack relation and form an acyclic graph(非循环图).</p>
+<h5 id="Strongly-Connected-components-SCC"><a href="#Strongly-Connected-components-SCC" class="headerlink" title="Strongly Connected components(SCC):"></a>Strongly Connected components(SCC):</h5><p>Two arguments A and B are in the same strongly connected component if and only if there is a path from A to B and a path from B to A (using the attack relation).</p>
+<p><img src="https://i.postimg.cc/L4JMvts4/arg2ex7.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/12/01/NOTE-WEEK-9-Artificial-Intelligence/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1794,368 +2192,6 @@ U_{i+1}(s) = R(s)+\gamma max_{a\in A(s)}\sum_{s'}Pr(s'|s,a)U_i(s')</script><p>Re
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/12/NOTE-WEEK-3-Artificial-Intelligence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/12/NOTE-WEEK-3-Artificial-Intelligence/" itemprop="url">(AI)Lec 3:Probailistic Reasonning II</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-12T10:13:09+01:00">
-                2018-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Artificial-Intelligence"><a href="#Artificial-Intelligence" class="headerlink" title="Artificial Intelligence"></a>Artificial Intelligence</h2><h3 id="Lecture-3-Probailistic-Reasoning-概率推理-II"><a href="#Lecture-3-Probailistic-Reasoning-概率推理-II" class="headerlink" title="Lecture 3: Probailistic Reasoning(概率推理) II"></a>Lecture 3: Probailistic Reasoning(概率推理) II</h3><h3 id="Bayesian-Network"><a href="#Bayesian-Network" class="headerlink" title="Bayesian Network"></a>Bayesian Network</h3><h4 id="Naive-Bayes-model"><a href="#Naive-Bayes-model" class="headerlink" title="Naive Bayes model:"></a>Naive Bayes model:</h4><p>If  $Effect_n$   are conditional independent of given Cause, then: </p>
-<script type="math/tex; mode=display">
-P(Cause|Effect_1, Effect_2,...,Effect_n) = P(Cause)\prod_iP(Effect_i|Cause)\\</script><p>To prove:</p>
-<script type="math/tex; mode=display">
-P(C,e_1,e_2) = p(C)P(e_1|C)P(e_2|C)</script><p> Effect_n are conditional independent of given Cause:</p>
-<script type="math/tex; mode=display">
-P(e_1|C,e_2) = P(e_1|C)\\
-\implies \frac{P(C,e_2|e_1)P(e_1)}{P(C,e_2)} = P(e_1|C)\\
-\implies P(C,e_1,e_2) = P(e_1|C)P(C,e_2)=P(e_1|C)P(e_2|C)P(C)</script><p>Visualises as:</p>
-<p><img src="https://i.postimg.cc/2y7w8KFf/vis.png" alt=""></p>
-<p>Exmaple network:</p>
-<p><img src="https://i.postimg.cc/xjvgRXrF/bayexm.png" alt=""></p>
-<h5 id="Global-Semantics"><a href="#Global-Semantics" class="headerlink" title="Global Semantics:"></a><strong>Global Semantics:</strong></h5><p>deﬁnes the full joint distribution as the product of the local conditional distributions</p>
-<script type="math/tex; mode=display">
-P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))\\</script><p>So </p>
-<script type="math/tex; mode=display">
-\begin{align}
-P(j,m,a,\not b,\not e) &= P(j|a)P(m|a)P(a|\not b,\not e)P(\not b)P(\not e)\\
-& = 0.00063
-
-\end{align}</script><h5 id="Local-semantics"><a href="#Local-semantics" class="headerlink" title="Local semantics:"></a>Local semantics:</h5><p>each node is conditionally independent of its nondescendants given its parents</p>
-<p>Each node is conditionally independent of all others given its <strong>Markov blanket</strong>: parents + children + children’s parents</p>
-<h4 id="Constructing-Bayesian-network"><a href="#Constructing-Bayesian-network" class="headerlink" title="Constructing Bayesian network"></a>Constructing Bayesian network</h4><p>The bayesian network can be considered as a form of <strong>knowledge representation</strong></p>
-<ol>
-<li>Figure out the variables that describe the world</li>
-<li>decide how they are connected(conditional independence)</li>
-<li>Work out the values in the CPTs(conditional probality table)</li>
-</ol>
-<h5 id="Noisy-OR-model"><a href="#Noisy-OR-model" class="headerlink" title="Noisy-OR model"></a>Noisy-OR model</h5><p>Parents $U_1,…U_k$ include all causes (can add leak node) (leak node is like $U_0$ that similiar to a bias)</p>
-<script type="math/tex; mode=display">
-P(X |U_1 . . . U_j , \not U_{j +1} . . . \not U_k ) = 1 -\prod_{i=1}^j  q_i\\
-q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sampling"><a href="#Sampling" class="headerlink" title="Sampling"></a>Sampling</h3><h4 id="Prior-Sampling"><a href="#Prior-Sampling" class="headerlink" title="Prior Sampling"></a>Prior Sampling</h4><h4 id="Rejection-Sampling"><a href="#Rejection-Sampling" class="headerlink" title="Rejection Sampling"></a>Rejection Sampling</h4>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/10/09/NOTE-WEEK-3-Agents-and-Multi-Agent-System/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/09/NOTE-WEEK-3-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 3:Practical Reasoning(实践推理)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-09T16:28:56+01:00">
-                2018-10-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Lecture-3-Practical-Reasoning-实践推理"><a href="#Lecture-3-Practical-Reasoning-实践推理" class="headerlink" title="Lecture 3 Practical Reasoning(实践推理)"></a>Lecture 3 Practical Reasoning(实践推理)</h2><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h4><ul>
-<li>practical reasoning</li>
-<li>control loop</li>
-<li>reconsideration</li>
-<li>architecture</li>
-</ul>
-<h3 id="Practical-Reasoning"><a href="#Practical-Reasoning" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h3><h5 id="Practical-Reasoning-1"><a href="#Practical-Reasoning-1" class="headerlink" title="Practical Reasoning"></a>Practical Reasoning</h5><p>Is reasoning directed towards actions</p>
-<h5 id="Theoretical-reasoning"><a href="#Theoretical-reasoning" class="headerlink" title="Theoretical reasoning"></a>Theoretical reasoning</h5><p>Is reasoning directed towards belief</p>
-<p><em>Human practical</em> reasoning consists of two activities:</p>
-<p>•<strong>Deliberation:</strong>  deciding <strong>what</strong> state of affairs we want to achieve. <strong>The outputs of deliberation  are intentions</strong></p>
-<p>• <strong>Means-ends reasoning :</strong> deciding <strong>how</strong> to achieve these states of affairs. <strong>The outputs are plans</strong></p>
-<h5 id="Intention-in-practical-reasoning"><a href="#Intention-in-practical-reasoning" class="headerlink" title="Intention in practical reasoning"></a>Intention in practical reasoning</h5><h5 id="Intention-what-state-of-affairs-want-to-achieve"><a href="#Intention-what-state-of-affairs-want-to-achieve" class="headerlink" title="Intention: what state of affairs want to achieve"></a><strong>Intention</strong>: what state of affairs want to achieve</h5><ol>
-<li>Intentions pose problems for agents, who need to determine ways to achieving them.(<u>If I have an intention to φ, you would expect me to <strong>devote resources to</strong> deciding how to bring about φ</u>.)</li>
-<li>Agents track the success of their intentions, and are inclined to try again if their attempts fail. (If an agent’s ﬁrst attempt to achieve φ fails, then all other things being equal, it will try an alternative plan to achieve φ.)</li>
-<li>Intentions provide a “ﬁlter” for adopting other intentions, which must not conﬂict.(don’t waste resources to do conflict things)</li>
-<li>Agents believe their intentions are possible. </li>
-<li>Agents do not believe they will not bring about their intentions.</li>
-<li>Under certain circumstances, agents believe they will bring about their intentions. </li>
-<li>Agents need not intend all the expected side effects of their intentions(<u>If I believe φ→ψ and I intend that φ, I do not necessarily intend ψ also</u>)</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">B := B0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	I = deliberate(B);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	execute(pi);</span><br><span class="line">end while</span><br><span class="line"></span><br><span class="line">//overcommitted, replan if ever a plan goes wrong</span><br></pre></td></tr></table></figure>
-<h4 id="Deliberation-outputs-are-intentions"><a href="#Deliberation-outputs-are-intentions" class="headerlink" title="Deliberation(outputs are intentions)"></a>Deliberation(outputs are intentions)</h4><ol>
-<li>Option generation</li>
-</ol>
-<p>The agent generates a set of <strong>possible alternatives</strong>. Represent option generation via a function, options, which takes the <u>agent’s current beliefs and current intentions</u>, and from them determines a set of options</p>
-<ol>
-<li>filtering</li>
-</ol>
-<p>In which the agent chooses between competing alternatives, and commits to achieving them. </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,I)</span><br><span class="line">	I = filter(D,B,I)</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	execute(pi);</span><br><span class="line">end while</span><br><span class="line"></span><br><span class="line">//blind commitment</span><br><span class="line">//overcommitted, replan if ever a plan goes wrong</span><br></pre></td></tr></table></figure>
-<h4 id="Commitment-Strategies"><a href="#Commitment-Strategies" class="headerlink" title="Commitment Strategies"></a>Commitment Strategies</h4><h5 id="Blind-commitment-fanatical-commitment-盲目或狂热"><a href="#Blind-commitment-fanatical-commitment-盲目或狂热" class="headerlink" title="Blind commitment(fanatical commitment)盲目或狂热"></a>Blind commitment(fanatical commitment)盲目或狂热</h5><p>Continue to maintain an intention until it believes the intention has actually been <strong>achieved</strong></p>
-<h5 id="Single-minded-commitment"><a href="#Single-minded-commitment" class="headerlink" title="Single-minded commitment"></a>Single-minded commitment</h5><p>Continue to maintain an intention until it believes that either the intention <strong>has been achieved</strong> , or else that it is <strong>no longer possible</strong> to achieve the intention</p>
-<h5 id="open-minded-commitment"><a href="#open-minded-commitment" class="headerlink" title="open-minded commitment"></a>open-minded commitment</h5><p>Maintain an intention as long as it is still believed possible</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,p);</span><br><span class="line">	I = filter(D,B,I);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	while not empty(pi) do:</span><br><span class="line">		alpha = head(pi);</span><br><span class="line">		execute(alpha);</span><br><span class="line">		pi = tail(pi); // remove alpha from pi</span><br><span class="line">		get next percept p;</span><br><span class="line">		B = brf(B,p);</span><br><span class="line">		if not sound(pi,I,B) do: //check whether the plan still makes sense to achieve the intention given the new beliefs</span><br><span class="line">			pi = plan(I,B)</span><br><span class="line">		end-if</span><br><span class="line">	end-while</span><br><span class="line">end while</span><br><span class="line"></span><br><span class="line">//replan if the plan is wrong</span><br><span class="line">//but when the intention is inappropriate?</span><br><span class="line">//needs single minded commitment</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,p);</span><br><span class="line">	I = filter(D,B,I);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	//when intention is succeed or impossible achieve</span><br><span class="line">	//stop performing actions</span><br><span class="line">	//single-minded</span><br><span class="line">	while not (empty(pi) or successed(I,B) or impossible(I,B)) do:</span><br><span class="line">		alpha = head(pi);</span><br><span class="line">		execute(alpha);</span><br><span class="line">		pi = tail(pi); // remove alpha from pi</span><br><span class="line">		get next percept p;</span><br><span class="line">		B = brf(B,p);</span><br><span class="line">		 //check whether the plan still makes sense to achieve </span><br><span class="line">		 //the intention given the new beliefs</span><br><span class="line">		if not sound(pi,I,B) do:</span><br><span class="line">			pi = plan(I,B)</span><br><span class="line">		end-if</span><br><span class="line">	end-while</span><br><span class="line">end while</span><br></pre></td></tr></table></figure>
-<h4 id="Intention-Reconsideration"><a href="#Intention-Reconsideration" class="headerlink" title="Intention Reconsideration"></a>Intention Reconsideration</h4><p>agent gets to reconsider its intentions once every time around the outer control loop, i.e., when:</p>
-<ol>
-<li>it has completely executed a plan to achieve its current intentions; </li>
-<li>or it believes it has achieved its current intentions; </li>
-<li>or it believes its current intentions are no longer possible.</li>
-</ol>
-<h5 id="Modiﬁcation"><a href="#Modiﬁcation" class="headerlink" title="Modiﬁcation:"></a>Modiﬁcation:</h5><p>Reconsider intentions after executing every action (open minded)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,p);</span><br><span class="line">	I = filter(D,B,I);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	//when intention is succeed or impossible achieve</span><br><span class="line">	//stop performing actions</span><br><span class="line">	//regenerate the intention</span><br><span class="line">	while not (empty(pi) or successed(I,B) or impossible(I,B)) do:</span><br><span class="line">		alpha = head(pi);</span><br><span class="line">		execute(alpha);</span><br><span class="line">		pi = tail(pi); // remove alpha from pi</span><br><span class="line">		get next percept p;</span><br><span class="line">		B = brf(B,p);</span><br><span class="line">		//regenerate intention</span><br><span class="line">		D = options(B,p);</span><br><span class="line">		I = filter(D,B,I);</span><br><span class="line">		//check whether the plan still makes sense to achieve </span><br><span class="line">		//the intention given the new beliefs</span><br><span class="line">		if not sound(pi,I,B) do: </span><br><span class="line">			pi = plan(I,B)</span><br><span class="line">		end-if</span><br><span class="line">	end-while</span><br><span class="line">end while</span><br></pre></td></tr></table></figure>
-<h5 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h5><p>Iintention reconsideration is costly</p>
-<p>A dilemma:</p>
-<ul>
-<li>an agent that does not stop to reconsider its intentions sufficiently often will continue attempting to achieve its intentions even after it is clear that they cannot be achieved, or that there is no longer any reason for achieving them</li>
-<li>an agent that constantly reconsiders its attentions may spend insufficient time actually working to achieve them, and hence runs the risk of never actually achieving them</li>
-</ul>
-<p>Solution:</p>
-<p>incorporate an explicit <strong>meta-level control component(控制组件)</strong>, that decides whether or not to reconsider</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">B = B0;</span><br><span class="line">I = I0;</span><br><span class="line">while true do:</span><br><span class="line">	get next percept p;</span><br><span class="line">	B = brf(B,p);</span><br><span class="line">	##I = deliberate(B);</span><br><span class="line">	D = options(B,p);</span><br><span class="line">	I = filter(D,B,I);</span><br><span class="line">	pi = plan(I,B);</span><br><span class="line">	//when intention is succeed or impossible achieve</span><br><span class="line">	//stop performing actions</span><br><span class="line">	//regenerate the intention</span><br><span class="line">	while not (empty(pi) or successed(I,B) or impossible(I,B)) do:</span><br><span class="line">		alpha = head(pi);</span><br><span class="line">		execute(alpha);</span><br><span class="line">		pi = tail(pi); // remove alpha from pi</span><br><span class="line">		get next percept p;</span><br><span class="line">		B = brf(B,p);</span><br><span class="line">		//the comtrol component to determine</span><br><span class="line">		//whether is appropriate to reconsider intentions</span><br><span class="line">		if reconsider(I,B) then</span><br><span class="line">			//regenerate intention</span><br><span class="line">			D = options(B,p);</span><br><span class="line">			I = filter(D,B,I);</span><br><span class="line">		end-if</span><br><span class="line">		//check whether the plan still makes sense to achieve </span><br><span class="line">		//the intention given the new beliefs</span><br><span class="line">		if not sound(pi,I,B) do: </span><br><span class="line">			pi = plan(I,B)</span><br><span class="line">		end-if</span><br><span class="line">	end-while</span><br><span class="line">end while</span><br></pre></td></tr></table></figure>
-<h4 id="Optimal-Intention-Reconsideration"><a href="#Optimal-Intention-Reconsideration" class="headerlink" title="Optimal Intention Reconsideration"></a>Optimal Intention Reconsideration</h4><h5 id="Two-different-types-of-reconsideration-strategy"><a href="#Two-different-types-of-reconsideration-strategy" class="headerlink" title="Two different types of reconsideration strategy"></a>Two different types of reconsideration strategy</h5><ul>
-<li>bold agents</li>
-</ul>
-<p>never pause to reconsider intentions</p>
-<ul>
-<li>Cautious agent</li>
-</ul>
-<p>stop to reconsider after every action</p>
-<p><strong>Dynamism(活跃性)</strong> in the environment is represented by the rate of world change,$\gamma$</p>
-<h5 id="Result"><a href="#Result" class="headerlink" title="Result:"></a>Result:</h5><ul>
-<li>If γ is low (i.e., the environment does not change quickly, <strong>static</strong>), then bold agents do well compared to cautious ones. This is because cautious ones waste time reconsidering their commitments while bold agents are busy working towards — and achieving — their intentions.</li>
-<li>If γ is high (i.e., the environment changes frequently), then cautious agents tend to outperform bold agents. This is because they are able to recognize when intentions are doomed, and also to take advantage of serendipitous situations and new opportunities when they arise.</li>
-</ul>
-<h3 id="Architecture-of-Implemented-BDI-Belief-Desire-Intention-Agents"><a href="#Architecture-of-Implemented-BDI-Belief-Desire-Intention-Agents" class="headerlink" title="Architecture of Implemented BDI(Belief-Desire-Intention) Agents"></a>Architecture of Implemented BDI(Belief-Desire-Intention) Agents</h3><h4 id="IRMA-Intelligent-Resource-bounded-Machine-Architecture-–-Bratman-Israel-Pollack"><a href="#IRMA-Intelligent-Resource-bounded-Machine-Architecture-–-Bratman-Israel-Pollack" class="headerlink" title="IRMA(Intelligent Resource-bounded Machine Architecture – Bratman, Israel, Pollack)"></a>IRMA(Intelligent Resource-bounded Machine Architecture – Bratman, Israel, Pollack)</h4><h5 id="Four-key-symbolic-data-structures"><a href="#Four-key-symbolic-data-structures" class="headerlink" title="Four key symbolic data structures:"></a>Four key symbolic data structures:</h5><ul>
-<li>a plan library</li>
-<li>Explicit representations of :<ul>
-<li>Beliefs: information available to the agen</li>
-<li>Desires: those things the agent would like to make true</li>
-<li>Intentions: desires that the agent has chosen and committed to</li>
-</ul>
-</li>
-</ul>
-<h4 id="PRS-Procedural-Reasoning-System-Georgeff-Lansky"><a href="#PRS-Procedural-Reasoning-System-Georgeff-Lansky" class="headerlink" title="PRS(Procedural Reasoning System (Georgeff, Lansky))"></a>PRS(Procedural Reasoning System (Georgeff, Lansky))</h4><ul>
-<li><strong>a plan library</strong>, representing that agent’s procedural knowledge: knowledge about the mechanisms that can be used by the agent in order to realize its intentions. The options available to an agent are directly determined by the plans an agent has: an agent with no plans has no options</li>
-<li>explicit representations of beliefs, desires, and intentions(the same as IRMA)</li>
-</ul>
-<h5 id="PRS-plans"><a href="#PRS-plans" class="headerlink" title="PRS plans"></a>PRS plans</h5><p>Each plan contains:</p>
-<ul>
-<li>invocation condition(调用条件):circumstances for plan consideration</li>
-<li>Maintenance condition(维持条件): must be true while plan is executing, in order for it to succeed</li>
-<li>Context(上下文): circumstances for successful plan execution.</li>
-<li>Body: course of action(行动方针), consisting of both goals and actions.</li>
-</ul>
-<h5 id="PRS-operation"><a href="#PRS-operation" class="headerlink" title="PRS operation"></a>PRS operation</h5><p><img src="https://i.postimg.cc/dVX0CWnb/prs1.png" alt=""></p>
-<p><img src="https://i.postimg.cc/Ls183zbn/prs2.png" alt=""></p>
-<p><img src="https://i.postimg.cc/dVD1LMRR/prs3.png" alt=""></p>
-<p><strong>FInished</strong></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -2206,7 +2242,7 @@ q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sam
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2219,7 +2255,7 @@ q_i = P(X|\not U_1,\not U_2,...U_i,\not U_{i+1},...\not U_k)</script><h3 id="Sam
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

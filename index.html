@@ -230,6 +230,254 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/11/NOTE-Week-5-Pattern-Recognition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/11/NOTE-Week-5-Pattern-Recognition/" itemprop="url">NOTE-Week-5-Pattern Recognition</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T12:02:17+00:00">
+                2019-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/11/NOTE-Week-5-Distributed-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/11/NOTE-Week-5-Distributed-System/" itemprop="url">(DS) Handling failure</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T12:02:00+00:00">
+                2019-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Overview:</p>
+<ul>
+<li>Failover in replica management</li>
+<li>Consensus</li>
+<li>How much replication to use</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/05/NOTE-Week-4-Software-Engineering/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1016,8 +1264,12 @@ y = H(wx)</script><p>$\theta$ is the threshold</p>
 </ul>
 <ul>
 <li>Sequential(online) update:$w = w + \eta(t-y)x^t$ </li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> true</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">i</span> =<span class="number">1</span>:m</span><br><span class="line">        w = w + alpha*(t(:,<span class="built_in">i</span>)-heaviside(w*x(<span class="built_in">i</span>,:)'))*x(<span class="built_in">i</span>,:);</span><br><span class="line">    <span class="keyword">end</span> </span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isequal</span>(heaviside(w*x'),t)</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<ul>
 <li>Batch:$w = w + \eta \sum_p (t_p-y_p)x_p^t$ </li>
 </ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> true</span><br><span class="line">    sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> <span class="built_in">i</span> =<span class="number">1</span>:m</span><br><span class="line">        sum = sum+ (t(:,<span class="built_in">i</span>)-heaviside(w*x(<span class="built_in">i</span>,:)'))*x(<span class="built_in">i</span>,:);</span><br><span class="line">    <span class="keyword">end</span> </span><br><span class="line">    w = w + alpha * sum;</span><br><span class="line">    display(w)</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">isequal</span>(heaviside(w*x'),t)</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>Two types of update:</p>
 <ul>
 <li>false negative(t=1,y=0)<ul>
@@ -1033,8 +1285,25 @@ y = H(wx)</script><p>$\theta$ is the threshold</p>
 <p>Note: Iterate till convergence. If dataset not linearly separable, <strong>learning will not converge</strong></p>
 <h2 id="Hebbian-Learning-Rule-unsupervised"><a href="#Hebbian-Learning-Rule-unsupervised" class="headerlink" title="Hebbian Learning Rule(unsupervised)"></a>Hebbian Learning Rule(unsupervised)</h2><p>Sequential Update:</p>
 <script type="math/tex; mode=display">
-w = w+ \eta yx^t</script><h2 id="Competitive-Learning"><a href="#Competitive-Learning" class="headerlink" title="Competitive Learning"></a>Competitive Learning</h2><p>Output units compete for the. right to respond to the input</p>
-<h2 id="Negative-Feedback-Network"><a href="#Negative-Feedback-Network" class="headerlink" title="Negative Feedback Network"></a>Negative Feedback Network</h2><ol>
+w = w+ \eta yx^t</script><p>Strengthen the connection between an active neuron and any active inputs.</p>
+<h2 id="Competitive-Learning"><a href="#Competitive-Learning" class="headerlink" title="Competitive Learning"></a>Competitive Learning</h2><p>Output units compete for the. right to respond to the input. Competition means that activity of some neurons is suppressed by other neurons.</p>
+<p>Implementation methods:</p>
+<ul>
+<li><p>Inhibitory lateral weights    </p>
+<ul>
+<li>Requires outputs to be determined iteratively</li>
+</ul>
+</li>
+<li><p>selection process that chooses the “winning” neuron</p>
+<ul>
+<li>simpler and more stable</li>
+<li>Winner-takes-all(WTA) can be used with Hebbian learning to perform <strong>clustering</strong>.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.postimg.cc/wjhPfnX7/PR-4-comp.png" zoom="70%"></p>
+<h2 id="Negative-Feedback-Network"><a href="#Negative-Feedback-Network" class="headerlink" title="Negative Feedback Network"></a>Negative Feedback Network</h2><p>Output neurons compete to receive inputs, rahter than compete to produce output.(require outputs to be determined iteratively)</p>
+<ol>
 <li>Activation<ol>
 <li>Initial y to 0</li>
 <li>Perform several iterations of:<ul>
@@ -1048,7 +1317,10 @@ w = w+ \eta yx^t</script><h2 id="Competitive-Learning"><a href="#Competitive-Lea
 </ol>
 <h2 id="Autoencoder-Networks"><a href="#Autoencoder-Networks" class="headerlink" title="Autoencoder Networks"></a>Autoencoder Networks</h2><p>reconstructiong the network and remove the inhibitary feedback connection</p>
 <script type="math/tex; mode=display">
-y = f(Wx)\\</script>
+y = f(Wx)\\</script><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ol>
+<li>Difference between Negative Feedback Network and process selection</li>
+</ol>
+
           
         
       
@@ -1664,484 +1936,6 @@ w(p) = \sum_{i=1}^k w(v_{i-1},v_i)</script><p>The shortest-path weight from u to
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/28/NOTE-Week-3-Distributed-System/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/28/NOTE-Week-3-Distributed-System/" itemprop="url">(DS) Clocks</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-28T10:40:10+00:00">
-                2019-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview:"></a>Overview:</h2><ol>
-<li>Logical clocks: ensure the total ordering</li>
-<li>Vector clocks</li>
-<li>stability of emssages</li>
-</ol>
-<p>Use clocks to ensure the total ordering</p>
-<h2 id="Logical-Clocks"><a href="#Logical-Clocks" class="headerlink" title="Logical Clocks"></a>Logical Clocks</h2><p>Unlike a physical clock, it does not progress if no event occurs.</p>
-<p>Mapping C between events and integers, if event e1 occurred before e2, then</p>
-<p>C(e1) &lt; C(e2)</p>
-<p>a higher value indicates a later point in time</p>
-<p>Logical clocks in a distributed system can maintain <strong>causal</strong> or <strong>total</strong> orderings </p>
-<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>Whenever a process broadcasts a message, it:</p>
-<ol>
-<li>Adds 1 to its clock as broadcast is an event </li>
-<li>Sends the clock time along with message</li>
-</ol>
-<p>Whenever a process delivers a message:</p>
-<ol>
-<li>Adds 1 to its clock, as deliver is an event </li>
-<li>If the message contains a higher or equal clock time than its own, it updates its clock to 1 more than this value, to ensure it is at least 1 tick on from sender</li>
-</ol>
-<p>Other events (internal events) in a process could also cause it to add 1 to its clock</p>
-<h3 id="Properties"><a href="#Properties" class="headerlink" title="Properties:"></a>Properties:</h3><h2 id="Vector-Clock"><a href="#Vector-Clock" class="headerlink" title="Vector Clock"></a>Vector Clock</h2><p>Logical clock does not ensure total ordering because concurrent messages.</p>
-<p>With vector clocks, each process Pi does not just keep a single logical clock value, but an array of them, one for each process in the system.</p>
-<h3 id="Vector-Clock-Algorithm"><a href="#Vector-Clock-Algorithm" class="headerlink" title="Vector Clock Algorithm"></a>Vector Clock Algorithm</h3><p>Every process keeps an array of the clock value of all process, we denote the $P_i$ to be the vector Clock values stored in the process <strong>i.</strong> There are <strong>n</strong> processes in the whole system. </p>
-<script type="math/tex; mode=display">
-P_i=\begin{pmatrix}
-p_{i,1}\\
-p_{i,2}\\
-\vdots \\
-p_{i,i}\\
-\vdots\\
-p_{i,n}
-\end{pmatrix}</script><ul>
-<li>When Broadcasting a message, $p_{i,i}+1$, which is enough to ensure <strong>FIFO ordering</strong></li>
-<li>when receiving a message from process, $p_{i,m} = max\{ p_{i,m}, p_{j,m}\}$</li>
-</ul>
-<p>When another process <strong>j</strong> sends a message M, it </p>
-<ol>
-<li>Change its own clock value $p_{j,j}+1$</li>
-<li>Then send its whole vector $P_j$ to other processes:</li>
-</ol>
-<script type="math/tex; mode=display">
-P_j=\begin{pmatrix}
-p_{j,1}\\
-p_{j,2}\\
-\vdots \\
-p_{j,j}\\
-\vdots\\
-p_{j,n}
-\end{pmatrix}</script><p>After receiving the message M, the updating change in process i:</p>
-<script type="math/tex; mode=display">
-P_i=\begin{pmatrix}
-max\{p_{i,1},p_{j,1}\}\\
-max\{p_{i,2},p_{j,2}\}\\
-\vdots \\
-max\{(p_{i,i}+1),p_{j,i}\}\\
-\vdots\\
-max\{p_{i,j},p_{j,j}\}\\
-\vdots\\
-max\{p_{i,n},p_{j,n}\}
-\end{pmatrix}</script><p>Because of the algorithm that the only two way of changing the clock value of process <strong>i</strong> is:</p>
-<ol>
-<li>Receiving a message (for process i)</li>
-<li>Broadcasting a message (for process i)</li>
-</ol>
-<p>So the only after the operation of process <strong>i</strong>, the clock value of <strong>i</strong> can be changed in the whole system scope. So $max\{(p_{i,i}+1),p_{j,i}\} = p_{i,i}+1$ and $max\{p_{i,j},p_{j,j}\} = p_{j,j}$</p>
-<p>Example:</p>
-<p><img src="https://i.postimg.cc/qM6ps9r9/DS-3-3.png" zoom="70%"></p>
-<p>In the stable situation, the message M is a stable message, then $P_i$ should update like:</p>
-<script type="math/tex; mode=display">
-P_i \to^{P_j} P_i'=
-\begin{pmatrix}
-p_{i,1}\\
-p_{i,2}\\
-\vdots \\
-p_{i,i}\\
-\vdots \\
-p_{j,j}
-\vdots\\
-p_{i,n}
-\end{pmatrix}
-\to^{P_j}
-\begin{pmatrix}
-p_{i,1}\\
-p_{i,2}\\
-\vdots \\
-p_{i,i}+1\\
-\vdots \\
-p_{j,j}\\
-\vdots\\
-p_{i,n}
-\end{pmatrix}</script><p>The clock value of other processes should be the same, but not always. we will continue discuss in the following part.</p>
-<h2 id="Stability-of-messages"><a href="#Stability-of-messages" class="headerlink" title="Stability of messages"></a>Stability of messages</h2><h4 id="Stable-Messages"><a href="#Stable-Messages" class="headerlink" title="Stable Messages:"></a>Stable Messages:</h4><p>A message M is stable at a process P if P knows that no other message that should be delivered before M is yet to be received by P.如果进程知道不会再收到该信息前的信息，那么这个信息就是稳定的。</p>
-<h4 id="Knowing-stability-with-clocks"><a href="#Knowing-stability-with-clocks" class="headerlink" title="Knowing stability with clocks:"></a>Knowing stability with clocks:</h4><p>A process would know message M from process P is stable if it knew the clock of all processes was equal or greater than P’s clock in M.</p>
-<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><ul>
-<li>when to deliver</li>
-<li>whether a message with a lower clock value exists?</li>
-<li>How long should the process wait before delivering the message?</li>
-</ul>
-<p>Example:</p>
-<p><img src="https://i.postimg.cc/qqCWKHKw/DS-4-4.png" zoom="70%"></p>
-<p>In this situation, we can regraded m2 and m1 as the causal ordering. </p>
-<script type="math/tex; mode=display">
-P_2=\begin{pmatrix}
-0\\2\\ 1
-\end{pmatrix}\\
-
-P_1 \to^{P_2} P_1'= \begin{pmatrix}
-1\\0\\ 0
-\end{pmatrix}
-\to^{P_2}
-\begin{pmatrix}
-2\\2\\ 1
-\end{pmatrix}\\</script><p>In this transform example, <strong>i=1,j=2</strong>, But the value of process 3 changes in this process which should not happen. Thus Process 1 can determine that the message m2 should after one message from Process 3.</p>
-<p>Exercise:</p>
-<p><img src="https://i.postimg.cc/qRBw4KSG/ds-3-1.png" alt=""></p>
-<p>Exercise answer:</p>
-<ol>
-<li>[m1,m2,m3],[m1,m3,m2]<ol>
-<li>Reliable: [m1,m2,m3] [m1,m3,m2]</li>
-<li>FIFO: [m1,m2,m3] [m3,m1,m2] [m1,m3,m2]</li>
-<li>Causal: [m1,m3,m2] [m1,m2,m3]</li>
-</ol>
-</li>
-<li>[m1,m3,m2] </li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/27/NOTE-Week-3-Pattern-Recognition/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/27/NOTE-Week-3-Pattern-Recognition/" itemprop="url">(PR) Discriminant Function</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-27T22:10:35+00:00">
-                2019-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><ol>
-<li>Discriminant Functions</li>
-<li>Equivalence to Bayesian Decision Theory </li>
-<li>Decision Regions and Decision Boundaries </li>
-<li>Dichotomizers </li>
-<li>Linear Discriminant Functions </li>
-<li>Generalised Linear Discriminant Functions </li>
-<li>Learning Decision Boundaries<ul>
-<li>perceptron learning </li>
-<li>minimum squared error (MSE) procedures</li>
-</ul>
-</li>
-</ol>
-<h2 id="Discriminant-Function-判别式函数"><a href="#Discriminant-Function-判别式函数" class="headerlink" title="Discriminant Function(判别式函数)"></a>Discriminant Function(判别式函数)</h2><p>A discriminant function is a function, g, defined over the feature vector, x:$g(x)$. We define a separate functino for each class:</p>
-<script type="math/tex; mode=display">
-g_i(x) \text{for i =1,2,...c}</script><p>Assign feature vector $x$ to class j if:</p>
-<script type="math/tex; mode=display">
-j = arg \;max_{i \in c} g_i(x)</script><p>if the discriminant function:</p>
-<script type="math/tex; mode=display">
-g_i(x) = P(\omega_i|x)</script><p>Then we say it’s equal to the <a href="http://zhangzhejian.com/2019/01/21/NOTE-Week-2-Pattern-Recognition/">Bayseian Decision Theory</a>.</p>
-<ul>
-<li>Minimum Error Rate Classifier</li>
-<li>Minimum Loss Classifier</li>
-</ul>
-<h3 id="Minimum-Error-rate"><a href="#Minimum-Error-rate" class="headerlink" title="Minimum Error rate"></a>Minimum Error rate</h3><script type="math/tex; mode=display">
-g_i(x) = p(x|\omega_i)p(\omega_i)\\
-g_i(x) = ln( p(x|\omega_i))+ln(p(\omega_i))</script><p>Assign feature vector x to class $\omega_j$ if:</p>
-<script type="math/tex; mode=display">
-\forall i \ne j, \; g_j(x) > g_i(x)</script><h3 id="Minimum-Loss-Classifier"><a href="#Minimum-Loss-Classifier" class="headerlink" title="Minimum Loss Classifier"></a>Minimum Loss Classifier</h3><script type="math/tex; mode=display">
-g_i(x) = -R(\alpha_i|x)</script><p>Assign feature vector x to class $\omega_j$ if:</p>
-<script type="math/tex; mode=display">
-\forall i \ne j, \; g_j(x) < g_i(x)</script><h3 id="Regions-and-decision-Boundaries"><a href="#Regions-and-decision-Boundaries" class="headerlink" title="Regions and decision Boundaries"></a>Regions and decision Boundaries</h3><p>Region $R_i$ in which, $\forall j \ne i, g_i(x) &gt; g_j(x)$</p>
-<h3 id="DIcchotomizers-二元-only-two-classes"><a href="#DIcchotomizers-二元-only-two-classes" class="headerlink" title="DIcchotomizers(二元) only two classes"></a>DIcchotomizers(二元) only two classes</h3><script type="math/tex; mode=display">
-g(x) = g_1(x) - g_2(x)</script><p>if $g(x) &gt;0$, assign to class 1</p>
-<h2 id="Linear-Discriminant-Function"><a href="#Linear-Discriminant-Function" class="headerlink" title="Linear Discriminant Function"></a>Linear Discriminant Function</h2><script type="math/tex; mode=display">
-g(x) = w^Tx + w_0\\
-g(x) = w_0+ \sum_{i} w_ix_i</script><p>Quadratic(平方)</p>
-<script type="math/tex; mode=display">
-g(x) =w_0+ \sum_{i} w_ix_i+ \sum_{i,j} w_{ij}x_ix_j</script><h3 id="Agumented-Vectors"><a href="#Agumented-Vectors" class="headerlink" title="Agumented Vectors"></a>Agumented Vectors</h3><script type="math/tex; mode=display">
-g(x) = a^Ty\\
-a = [w_0,w^T]\\
-y = [1, x^T]</script><p>similar to the <a href="http://zhangzhejian.com/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">Linear Regression part in ML</a></p>
-<h2 id="Learning-Linear-Discriminant-Function"><a href="#Learning-Linear-Discriminant-Function" class="headerlink" title="Learning Linear Discriminant Function"></a>Learning Linear Discriminant Function</h2><p>Give a training dataset:</p>
-<script type="math/tex; mode=display">
-X = [(\vec{x_1},\omega_1);(\vec{x_2},\omega_2);....;(\vec{x_m},\omega_m)]</script><p>Determine weights:</p>
-<script type="math/tex; mode=display">
-\vec{\Theta_j} = [\theta_1,\theta_2,....\theta_n]\\
-\Theta = [\vec{\Theta_1},....,\vec{\Theta_j}]</script><p>Where n is the dimension of the features, and m is the number of samples,and j is the number of classes.</p>
-<p>Such that  $g_j(x_k) &gt; g_i(x_k) \forall i \ne j \; where\; j = \omege_k for all k $, if the solution exists, dataset is linearly separable.</p>
-<h3 id="Two-category-Linear-Separable-case"><a href="#Two-category-Linear-Separable-case" class="headerlink" title="Two-category Linear Separable case"></a>Two-category Linear Separable case</h3><p>a sample $x_k$ is correctly classified if:<br>    $\theta x_k &gt;0 $ and $x_k$ is labelled $\omega_1$ or </p>
-<p>​    $\theta x_k &lt;0 $ and $x_k$ is labelled $\omega_2$</p>
-<script type="math/tex; mode=display">
-x \to -x \;\;\forall x \in \omega_2\\
-\theta x_k >0 \; \forall k</script><p>Gradient Descent Procedures to decrease the cost function </p>
-<p>The Learning procedure is also similar to the <a href="http://zhangzhejian.com/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">Linear Regression part</a>. Compared with the Linear Regression, the main difference between Classification and Regression can be obtained mainly from the Definition of cost Function.</p>
-<p>As for Linear Regression:</p>
-<p>The cost   function:</p>
-<script type="math/tex; mode=display">
-J(\theta) = (X \theta^T - Y)(X \theta^T - Y)^T</script><p>It calculates the <strong>Mean Square Error(MSE)</strong> of the model generated. However, in Linear Classification, the definition is a little bit different from the previous one.</p>
-<h3 id="There-are-mainly-two-types"><a href="#There-are-mainly-two-types" class="headerlink" title="There are mainly two types:"></a>There are mainly two types:</h3><ul>
-<li>Perceptron Algorithm(Sequential/Batch)<ul>
-<li>Solves linear inequalities $\theta^T x_k&gt;0 \;\; forall k$</li>
-<li>Learning driven by <strong>misclassified exemplars</strong></li>
-<li>converges only if data is linearly separable</li>
-</ul>
-</li>
-<li>Mean Squared Error Method(same as regression)<ul>
-<li>solves linear equations $\theta^T x_k = b_k \;\; \forall k$</li>
-<li>Learning depends on all exemplars</li>
-<li>uses matrix inversion to calculate </li>
-<li>Widrow-hoff(LMS, Least-Mean_Square) method</li>
-</ul>
-</li>
-</ul>
-<h3 id="Perceptron-Algorithm-Sequential-Batch-based-on-misclassified-exemplars"><a href="#Perceptron-Algorithm-Sequential-Batch-based-on-misclassified-exemplars" class="headerlink" title="Perceptron Algorithm(Sequential/Batch) (based on misclassified exemplars)"></a>Perceptron Algorithm(Sequential/Batch) (based on misclassified exemplars)</h3><p>the Cost function only depends on the <strong>misclassified exemplars</strong>.</p>
-<h4 id="Batch"><a href="#Batch" class="headerlink" title="Batch"></a>Batch</h4><script type="math/tex; mode=display">
-J(\theta) = \sum_{x\in\mathcal{X}} -\theta^T x\\
-\text{where $\mathcal{X} $ is the set of sample misclassified by $\theta$}\\
-\frac{d}{d\theta}J(\theta) = \sum_{x\in\mathcal{X}}-x\\
-\theta = \theta -\eta \frac{d}{d\theta}J(\theta)</script><p><img src="https://i.postimg.cc/7ZW3Bd20/PR-3-1.png" alt=""></p>
-<p>Converges when $\mathcal{X}$ is empty. which means the dataset is not linearly separable,if it is not convergency.</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">m=<span class="built_in">size</span>(x,<span class="number">1</span>)</span><br><span class="line">iterationTime = m;</span><br><span class="line">alpha = <span class="number">0.1</span>;</span><br><span class="line"><span class="keyword">while</span> true</span><br><span class="line">	misclassified = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:m</span><br><span class="line">		delta=<span class="number">0</span>;</span><br><span class="line">		J=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> x(<span class="built_in">i</span>,:)*theta &lt;<span class="number">0</span></span><br><span class="line">			J = J + (-x(<span class="built_in">i</span>,:)*theta)</span><br><span class="line">			delta = delta + (-x(<span class="built_in">i</span>,:))</span><br><span class="line">			misclassified = misclassified +<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line"> 		theta = theta - eta*delta</span><br><span class="line">	<span class="keyword">end</span> </span><br><span class="line">	<span class="keyword">if</span> misclassified = <span class="number">0</span></span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h4 id="Sequential"><a href="#Sequential" class="headerlink" title="Sequential"></a>Sequential</h4><p>Update based only on single sample errors.</p>
-<script type="math/tex; mode=display">
-\frac{d}{d\theta}J(\theta) = \sum_{x\in\mathcal{X}}-x_k</script><p><img src="https://i.postimg.cc/T3wjJfpT/pr-3-2.png" alt=""></p>
-<p>​    </p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">While true:</span><br><span class="line">	misclasified = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:m:</span><br><span class="line">		<span class="keyword">if</span> g(x_i)&lt;<span class="number">0</span>:</span><br><span class="line">			a = a - eta*y(<span class="built_in">i</span>,:)</span><br><span class="line">			misclassified  = misclassified+ <span class="number">1</span></span><br><span class="line">		<span class="keyword">end</span> </span><br><span class="line">	<span class="keyword">end</span> </span><br><span class="line">	<span class="keyword">if</span> misclassified ==<span class="number">0</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">end</span> </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h4 id="Multiclass-perceptron-Learning-Algorithm"><a href="#Multiclass-perceptron-Learning-Algorithm" class="headerlink" title="Multiclass perceptron Learning Algorithm"></a>Multiclass perceptron Learning Algorithm</h4><p><img src="https://i.postimg.cc/MZBzXQ5S/pr-3-3.png" alt=""></p>
-<h2 id="MSE"><a href="#MSE" class="headerlink" title="MSE"></a>MSE</h2><p>the same as <a href="http://zhangzhejian.com/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">Linear Regression part</a>.</p>
-<h3 id="MSE-via-Pseudoinverse-伪逆矩阵"><a href="#MSE-via-Pseudoinverse-伪逆矩阵" class="headerlink" title="MSE via Pseudoinverse(伪逆矩阵)"></a>MSE via Pseudoinverse(伪逆矩阵)</h3><script type="math/tex; mode=display">
-Ya = b\\
-Y^TYa = Y^Tb\\
-(Y^TY)^T Y^TYa = (Y^TY)^T Y^Tb\\
-Ea = (Y^TY)^T Y^Tb\\
-a =(Y^TY)^T Y^Tb\\
-or \;\; a = Y^+ b</script><h3 id="Widrow-Hoff-or-LMS-algroithm"><a href="#Widrow-Hoff-or-LMS-algroithm" class="headerlink" title="Widrow-Hoff(or LMS) algroithm"></a>Widrow-Hoff(or LMS) algroithm</h3><ol>
-<li>Initialise $\theta $ to arbitrary solution</li>
-<li>for each sample $x_k$:<ul>
-<li>Update solution: $\theta = \theta+\eta (b_k - \theta^T x_k)x_k$</li>
-</ul>
-</li>
-<li>Iterate untill $\sum_k |(b_k - \theta^Tx_k)x_k|&lt;\Theta$</li>
-</ol>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">m=<span class="built_in">size</span>(x,<span class="number">1</span>);</span><br><span class="line">iterationTime = m;</span><br><span class="line">alpha = <span class="number">0.1</span>;</span><br><span class="line">y = X(:,<span class="number">4</span>);</span><br><span class="line">x = X(:,<span class="number">1</span>:<span class="number">3</span>)</span><br><span class="line">z = x .*y</span><br><span class="line"><span class="built_in">round</span> = <span class="built_in">fix</span>(iterationTime/m)</span><br><span class="line">r = <span class="built_in">mod</span>(iterationTime,m)</span><br><span class="line"><span class="keyword">for</span> n = <span class="number">1</span>:<span class="built_in">round</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:m</span><br><span class="line">    display(<span class="built_in">i</span>)</span><br><span class="line">    display(theta')</span><br><span class="line">    theta = theta - lamda* z(<span class="built_in">i</span>,:)' * (z(<span class="built_in">i</span>,:) * theta - b(<span class="built_in">i</span>,:));</span><br><span class="line">    J = (z*theta -b)'*(z*theta -b)</span><br><span class="line">    display(z(<span class="built_in">i</span>,:))</span><br><span class="line">    display(z(<span class="built_in">i</span>,:) * theta)</span><br><span class="line">    format short</span><br><span class="line">    display(theta')</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:r</span><br><span class="line">    display(<span class="built_in">i</span>)</span><br><span class="line">    display(theta')</span><br><span class="line">    theta = theta - lamda* z(<span class="built_in">i</span>,:)' * (z(<span class="built_in">i</span>,:) * theta - b(<span class="built_in">i</span>,:));</span><br><span class="line">    J = (z*theta -b)'*(z*theta -b)</span><br><span class="line">    </span><br><span class="line">    display(z(<span class="built_in">i</span>,:))</span><br><span class="line">    display(z(<span class="built_in">i</span>,:) * theta)</span><br><span class="line">    format short</span><br><span class="line">    display(theta')</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://ecee.colorado.edu/~ecen4831/Demuth/Ch10_pres.pdf" target="_blank" rel="noopener">Convergence analysis</a></p>
-<p>Reference:</p>
-<ol>
-<li><a href="https://blog.csdn.net/daunxx/article/details/51881956" target="_blank" rel="noopener">https://blog.csdn.net/daunxx/article/details/51881956</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -2192,7 +1986,7 @@ or \;\; a = Y^+ b</script><h3 id="Widrow-Hoff-or-LMS-algroithm"><a href="#Widrow
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">56</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2205,7 +1999,7 @@ or \;\; a = Y^+ b</script><h3 id="Widrow-Hoff-or-LMS-algroithm"><a href="#Widrow
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

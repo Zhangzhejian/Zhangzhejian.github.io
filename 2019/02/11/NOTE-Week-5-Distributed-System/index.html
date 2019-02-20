@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="note,Blockchain," />
+  <meta name="keywords" content="note,DS," />
 
 
 
@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="Overview:  Cryptographic Hash Functions Digital Signatures Blockchain structured in Bitcoin/Ethereum UTXO in bitcoin Account-based model in Ethereum  CryptographyOne-way Hash Function  Propety:  Preim">
-<meta name="keywords" content="note,Blockchain">
+<meta name="description" content="Overview:  Failover in replica management Consensus How much replication to use">
+<meta name="keywords" content="note,DS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="(Blockchain)Structure of the blockchain">
-<meta property="og:url" content="https://zhangzhejian.com/2019/01/27/NOTE-Week-2-Cryptocurrencies/index.html">
+<meta property="og:title" content="(DS) Handling failure">
+<meta property="og:url" content="https://zhangzhejian.com/2019/02/11/NOTE-Week-5-Distributed-System/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Overview:  Cryptographic Hash Functions Digital Signatures Blockchain structured in Bitcoin/Ethereum UTXO in bitcoin Account-based model in Ethereum  CryptographyOne-way Hash Function  Propety:  Preim">
+<meta property="og:description" content="Overview:  Failover in replica management Consensus How much replication to use">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.postimg.cc/2jnQzKyT/BLC-2-1.png">
-<meta property="og:image" content="https://i.postimg.cc/BZhq1qjv/BLC-1-1.png">
-<meta property="og:updated_time" content="2019-01-29T14:56:10.745Z">
+<meta property="og:updated_time" content="2019-02-11T12:07:21.913Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="(Blockchain)Structure of the blockchain">
-<meta name="twitter:description" content="Overview:  Cryptographic Hash Functions Digital Signatures Blockchain structured in Bitcoin/Ethereum UTXO in bitcoin Account-based model in Ethereum  CryptographyOne-way Hash Function  Propety:  Preim">
-<meta name="twitter:image" content="https://i.postimg.cc/2jnQzKyT/BLC-2-1.png">
+<meta name="twitter:title" content="(DS) Handling failure">
+<meta name="twitter:description" content="Overview:  Failover in replica management Consensus How much replication to use">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="https://zhangzhejian.com/2019/01/27/NOTE-Week-2-Cryptocurrencies/"/>
+  <link rel="canonical" href="https://zhangzhejian.com/2019/02/11/NOTE-Week-5-Distributed-System/"/>
 
 
 
 
 
-  <title>(Blockchain)Structure of the blockchain | Recap</title>
+  <title>(DS) Handling failure | Recap</title>
   
 
 
@@ -236,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/27/NOTE-Week-2-Cryptocurrencies/">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/11/NOTE-Week-5-Distributed-System/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhejian">
@@ -253,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">(Blockchain)Structure of the blockchain</h1>
+          <h1 class="post-title" itemprop="name headline">(DS) Handling failure</h1>
         
 
         <div class="post-meta">
@@ -265,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-27T09:34:32+00:00">
-                2019-01-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T12:02:00+00:00">
+                2019-02-11
               </time>
             
 
@@ -305,42 +302,10 @@
       
         <p>Overview:</p>
 <ul>
-<li>Cryptographic Hash Functions</li>
-<li>Digital Signatures</li>
-<li>Blockchain structured in Bitcoin/Ethereum</li>
-<li>UTXO in bitcoin</li>
-<li>Account-based model in Ethereum</li>
+<li>Failover in replica management</li>
+<li>Consensus</li>
+<li>How much replication to use</li>
 </ul>
-<h2 id="Cryptography"><a href="#Cryptography" class="headerlink" title="Cryptography"></a>Cryptography</h2><p>One-way Hash Function </p>
-<p>Propety:</p>
-<ol>
-<li>Preimage Resistance(抗原像性)<ul>
-<li>Given y, it is hard to find the x that h(x) = y</li>
-<li>no clues or hints</li>
-<li>给出密文，很难获得原文</li>
-</ul>
-</li>
-<li>Second Preimage Resistance(弱抗碰撞性)<ul>
-<li>given x and h(x) = y, it is computational hard to find a x’ such that h(x’) = y</li>
-<li>很难找到两个不同的原文，使得两者拥有相同的hash密文</li>
-</ul>
-</li>
-<li>Collision-Resistance(强抗碰撞性)<ul>
-<li>it is hard to find two different messages, m1 and m2 such that h(m1)==h(m2)</li>
-</ul>
-</li>
-</ol>
-<h3 id="Bitcoin-Block-Header"><a href="#Bitcoin-Block-Header" class="headerlink" title="Bitcoin Block Header"></a>Bitcoin Block Header</h3><p><img src="https://i.postimg.cc/2jnQzKyT/BLC-2-1.png" alt=""></p>
-<h3 id="How-to-verify-a-transaction-is-in-the-blockchain"><a href="#How-to-verify-a-transaction-is-in-the-blockchain" class="headerlink" title="How to verify a transaction is in the blockchain"></a>How to verify a transaction is in the blockchain</h3><p><img src="https://i.postimg.cc/BZhq1qjv/BLC-1-1.png" alt=""></p>
-<p>Use the <strong>Merkle Root </strong> to verify</p>
-<h2 id="Digital-Signature"><a href="#Digital-Signature" class="headerlink" title="Digital Signature"></a>Digital Signature</h2><p>We often call a cryptographic hash function a “commitment” and not an “encryption”. We open the preimage of a hash, there is no concept of decrypting or private keys. It is not about the data <strong>privacy</strong>, but the Integrity and authentication.</p>
-<p>ECDSA Signature</p>
-<p>an ECDSA signature is denoted: (r,s)</p>
-<p>r is the randomness, s is the signature</p>
-<h2 id="Bitcoin’s-UTXO-Model"><a href="#Bitcoin’s-UTXO-Model" class="headerlink" title="Bitcoin’s UTXO Model"></a>Bitcoin’s UTXO Model</h2><p>Reference:</p>
-<ol>
-<li><a href="http://8btc.com/article-4381-1.html" target="_blank" rel="noopener">http://8btc.com/article-4381-1.html</a></li>
-</ol>
 
       
     </div>
@@ -360,7 +325,7 @@
           
             <a href="/tags/note/" rel="tag"># note</a>
           
-            <a href="/tags/Blockchain/" rel="tag"># Blockchain</a>
+            <a href="/tags/DS/" rel="tag"># DS</a>
           
         </div>
       
@@ -373,8 +338,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/23/NOTE-Week-2-software-engineering/" rel="next" title="(Software Engineering) MDD">
-                <i class="fa fa-chevron-left"></i> (Software Engineering) MDD
+              <a href="/2019/02/05/NOTE-Week-4-Software-Engineering/" rel="next" title="NOTE-Week-4-Software Engineering">
+                <i class="fa fa-chevron-left"></i> NOTE-Week-4-Software Engineering
               </a>
             
           </div>
@@ -383,8 +348,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/27/NOTE-Week-3-Pattern-Recognition/" rel="prev" title="(PR) Discriminant Function">
-                (PR) Discriminant Function <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/11/NOTE-Week-5-Pattern-Recognition/" rel="prev" title="NOTE-Week-5-Pattern Recognition">
+                NOTE-Week-5-Pattern Recognition <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -437,17 +402,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -498,22 +454,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cryptography"><span class="nav-number">1.</span> <span class="nav-text">Cryptography</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bitcoin-Block-Header"><span class="nav-number">1.1.</span> <span class="nav-text">Bitcoin Block Header</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-verify-a-transaction-is-in-the-blockchain"><span class="nav-number">1.2.</span> <span class="nav-text">How to verify a transaction is in the blockchain</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Digital-Signature"><span class="nav-number">2.</span> <span class="nav-text">Digital Signature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bitcoin’s-UTXO-Model"><span class="nav-number">3.</span> <span class="nav-text">Bitcoin’s UTXO Model</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -708,6 +648,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
