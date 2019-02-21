@@ -230,6 +230,704 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/28/NOTE-Artificial-Intelligence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/28/NOTE-Artificial-Intelligence/" itemprop="url">(AI)Lec 1:Introduction</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-28T09:58:25+01:00">
+                2018-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="AI-Introduction"><a href="#AI-Introduction" class="headerlink" title="AI Introduction"></a>AI Introduction</h2><h4 id="Course"><a href="#Course" class="headerlink" title="Course"></a>Course</h4><ol>
+<li><p>Introduction to Artiﬁcial Intelligence </p>
+</li>
+<li><p>Probabilistic Reasoning I </p>
+</li>
+<li><p>Probabilistic Reasoning II </p>
+</li>
+<li><p>Sequential Decision Making </p>
+</li>
+<li><p>Temporal Probabilistic Reasoning</p>
+</li>
+<li><p>Game Theory</p>
+</li>
+<li><p>Argumentation I </p>
+</li>
+<li><p>Argumentation II </p>
+</li>
+<li><p>(A peek at) Machine Learning </p>
+</li>
+<li><p>AI &amp; Ethics </p>
+</li>
+</ol>
+<h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h4><ol>
+<li>Introduction of how to make right decision</li>
+</ol>
+<h3 id="How-to-do-the-right-thing"><a href="#How-to-do-the-right-thing" class="headerlink" title="How to do the right thing"></a>How to do the right thing</h3><p>Need to be able to </p>
+<ol>
+<li><strong>identify the alternatives</strong></li>
+<li><strong>decide</strong> which alternative will lead to the best outcome</li>
+<li>and do so <strong>quickly enough</strong> for the decision to be useful</li>
+</ol>
+<h4 id="Ideal-rational-理性的-agent"><a href="#Ideal-rational-理性的-agent" class="headerlink" title="Ideal rational(理性的) agent"></a>Ideal rational(理性的) agent</h4><p>For each <strong>percept sequence(感知序列)</strong>, an ideal rational agent will act to maximise its expected performance measure, <strong>on the basis of information provided</strong> by the percept sequence plus any information built into the agent.</p>
+<p>Rational agent <u>doesn’t</u> mean omniscient(全知的) or clairvoyant(先知) agent.</p>
+<h4 id="Percept-sequence"><a href="#Percept-sequence" class="headerlink" title="Percept sequence"></a>Percept sequence</h4><p><u>According to the sensors, the agent can percept from the environment and get the information.</u></p>
+<p>A simple agent maps each percept directly to an action. All static.</p>
+<p>When facing a complex environment, and even dynamic, it become hard for agents to do the right thing.</p>
+<h4 id="Problems"><a href="#Problems" class="headerlink" title="Problems:"></a>Problems:</h4><ol>
+<li>what to represent</li>
+<li>How to represent</li>
+<li>interpreting the percepts</li>
+</ol>
+<h4 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h4><ul>
+<li>Accessible&amp;Inaccessible</li>
+</ul>
+<p>An environment is <strong>accessible</strong> if the agent can obtain <strong>complete</strong> <strong>accurate and up-to-date</strong> information about <strong>all the relevant aspects</strong>.</p>
+<ul>
+<li>Deterministic&amp;Non-determinist</li>
+</ul>
+<p>A <strong>deterministic(确定性的)</strong> environment is one in which any action has <strong><u>a single guaranteed effect</u></strong> – there’s <u>no uncertainty</u> about the state that will result from performing an action.</p>
+<p>An environment where we can <u><strong>quantify</strong> the non-determinism with probability</u> is called <strong>stochastic(随机的)</strong>.</p>
+<ul>
+<li>Episodic&amp;non-episodic</li>
+</ul>
+<p>In an <strong>episodic(情节的)</strong> environment, performance of an agent is dependent on a number of discrete episodes, with no link between the performance of an agent in different episodes.</p>
+<p>In a non-episodic(非偶发性) or sequential environment, the current decision affects future decisions.</p>
+<ul>
+<li>Static &amp; dynamic</li>
+</ul>
+<p>A <strong>static</strong> environment is one that can be assumed to <u>remain unchanged except</u> by the performance of actions by the agent.</p>
+<p>A <strong>dynamic</strong> environment is one that has <u>other processes operating</u> on it, and which hence changes in ways beyond the agent’s control.</p>
+<ul>
+<li>Discrete &amp; continuous</li>
+</ul>
+<p>An environment is <strong>discrete</strong> if there are a <u><strong>fixed, finite number of actions and percepts</strong></u> in it. Discrete environments could in principle be handled by a kind of “lookup table”.</p>
+<p><a href="http://zhangzhejian.com/2018/10/01/NOTE-WEEK-2-Agents-and-Multi-Agent-System/#State-action-and-run">RUN</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/27/NOTE-Web-Infrastructure/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/27/NOTE-Web-Infrastructure/" itemprop="url">(WI) Lec 1:Introduction</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-27T12:04:18+01:00">
+                2018-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="key-points"><a href="#key-points" class="headerlink" title="key points:"></a>key points:</h4><ol>
+<li><p>system architectures LODE</p>
+</li>
+<li><p>web proxy cache</p>
+</li>
+<li></li>
+</ol>
+<h3 id="System-architecture-styles"><a href="#System-architecture-styles" class="headerlink" title="System architecture styles"></a>System architecture styles</h3><p>System architecture styles are formulated in terms of <strong>components</strong>, <strong>the way</strong> that components are <strong>connected</strong> to each other, the <strong>data exchanged</strong> between components and finally how these <strong>elements</strong> are jointly <strong>configured</strong> into a system.</p>
+<ul>
+<li>Layered architectures </li>
+<li>Object-based architectures</li>
+<li>Data-centered architectures </li>
+<li>Event-based architectures</li>
+</ul>
+<h5 id="Layered-Architectures"><a href="#Layered-Architectures" class="headerlink" title="Layered Architectures"></a>Layered Architectures</h5><ul>
+<li>Components are organised in a <strong>layered fashion</strong> where a component layer $L_i$ is allowed to call components at the underlying layer $L_{i -1}$</li>
+<li>Widely adopted by communication network community</li>
+<li>Control flows from layer to layer; <strong>requests go down</strong> the hierarchy whereas <strong>results flow upward</strong></li>
+</ul>
+<h5 id="Object-based-acchitectures"><a href="#Object-based-acchitectures" class="headerlink" title="Object-based acchitectures"></a>Object-based acchitectures</h5><ul>
+<li><p>This architecture holds components loosely</p>
+</li>
+<li><p>Each component is defined as an object and components are connected through mechanisms defined in the interface (example, RPC)</p>
+</li>
+</ul>
+<h5 id="Data-centered-architecture"><a href="#Data-centered-architecture" class="headerlink" title="Data-centered architecture"></a>Data-centered architecture</h5><ul>
+<li>Web-based distributed systems are largely data-centric.</li>
+<li>They rely on shared <strong>distributed file systems</strong></li>
+<li>Processes communicate through a common passive or active repository. They use shared web-based data services.</li>
+</ul>
+<h5 id="Event-based-architecture"><a href="#Event-based-architecture" class="headerlink" title="Event-based architecture"></a>Event-based architecture</h5><ul>
+<li>Processes essentially communicate through the propagation of events, which optionally also carry data. Event propagation is generally through publish/subscribe systems.(进程通过事件的传播来交流，可以携带数据。事件传播是通过发布/订阅系统来实现的)</li>
+<li>Processes publish events after which middleware ensures that only processes that subscribe receive them.(只有订阅的进程才能接受到)</li>
+</ul>
+<h4 id="Client-server-model"><a href="#Client-server-model" class="headerlink" title="Client-server model"></a>Client-server model</h4><p>A server is a process implementing a specific service. A client is a process that requests a service from a server</p>
+<h5 id="Centralised-architecture-中心化"><a href="#Centralised-architecture-中心化" class="headerlink" title="Centralised architecture(中心化)"></a>Centralised architecture(中心化)</h5><ul>
+<li>Clear distinction between clients and servers </li>
+<li>A leader monitors the system</li>
+<li>Fault tolerant and robust systems</li>
+</ul>
+<h5 id="Decentralised-architecture-去中心化"><a href="#Decentralised-architecture-去中心化" class="headerlink" title="Decentralised architecture(去中心化)"></a>Decentralised architecture(去中心化)</h5><ul>
+<li>No monitor to observe processes </li>
+<li>Useful architecture with <strong>reliable underlying(block chain)</strong> networks </li>
+<li>Useful with <strong>large number of components</strong> in the system</li>
+</ul>
+<h4 id="Web-proxy-caching"><a href="#Web-proxy-caching" class="headerlink" title="Web proxy caching"></a>Web proxy caching</h4><ul>
+<li>To improve consistency of the system </li>
+<li>Client-side caching stores frequently visited pages at browser’s cache.</li>
+<li><p>Web proxy is another type of client-side cache that is placed between client and web server.</p>
+</li>
+<li><p>Web proxy can implement a shared cache. </p>
+</li>
+<li>Cooperative caching or distributed caching</li>
+</ul>
+<h3 id="Web-Service"><a href="#Web-Service" class="headerlink" title="Web Service"></a>Web Service</h3><h4 id="Caching"><a href="#Caching" class="headerlink" title="Caching"></a>Caching</h4><ul>
+<li>For the Client (browser): avoid extra network transfers </li>
+<li>For the Web Server: reduce load on the server </li>
+<li>For the Service Provider: reduce external traffic</li>
+</ul>
+<p>Why:</p>
+<ul>
+<li>Because of the locality of reference </li>
+<li>Users tend to request the same object in succession </li>
+<li>Some objects are popular: requested by many users</li>
+</ul>
+<h5 id="Local-Cache-本地缓存"><a href="#Local-Cache-本地缓存" class="headerlink" title="Local Cache(本地缓存)"></a>Local Cache(本地缓存)</h5><p>Browsers include a local cache mechanism this local cache mechanism saves time and bandwidth, which increases performance.</p>
+<p>Operation of web cache</p>
+<h4 id="Replacement-Rules-strategies"><a href="#Replacement-Rules-strategies" class="headerlink" title="Replacement Rules strategies"></a>Replacement Rules strategies</h4><ul>
+<li>Least Recently Used (LRU)</li>
+<li>First In, First Out (FIFO)</li>
+<li>Least Frequently Used (LFU)</li>
+<li>Next to Expire (NTE)</li>
+<li>Largest File First (LFF)</li>
+</ul>
+<h4 id="Dynamic-Object-Rules-Strategies"><a href="#Dynamic-Object-Rules-Strategies" class="headerlink" title="Dynamic Object Rules Strategies"></a>Dynamic Object Rules Strategies</h4><p><u>To estimate the value an object may have in serving future requests.</u></p>
+<h4 id="Expiration"><a href="#Expiration" class="headerlink" title="Expiration"></a>Expiration</h4><p>HTTP 1.1 Cache control Directives</p>
+<p>ICP(Internet Cache Protocol)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/24/NOTE-Agents-and-Multi-Agent-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/24/NOTE-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 1:Introduction</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T12:40:15+01:00">
+                2018-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Agents-and-Multi-Agent-System-智能体与多智能体系统"><a href="#Agents-and-Multi-Agent-System-智能体与多智能体系统" class="headerlink" title="Agents and Multi-Agent System (智能体与多智能体系统)"></a>Agents and Multi-Agent System (智能体与多智能体系统)</h2><h3 id="Lecture-1-Introduction"><a href="#Lecture-1-Introduction" class="headerlink" title="Lecture 1 Introduction"></a>Lecture 1 Introduction</h3><h4 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h4><ol>
+<li>What’s an agent</li>
+<li>Reactive—Proactive(goal-oriented)</li>
+<li>proactive(goal-oriented)</li>
+<li></li>
+</ol>
+<h4 id="On-going-trends-in-computing"><a href="#On-going-trends-in-computing" class="headerlink" title="On going trends in computing:"></a>On going trends in computing:</h4><ul>
+<li><p>Ubiquity(普遍): The continual reduction in cost of computing capability has made it possible to introduce processing power into places and devices that would have once been uneconomic.</p>
+</li>
+<li><p>Interconnection(互联): Since distributed and concurrent systems have become the norm, it is natural to think of theoretical models that portray computing as primarily a process of interaction</p>
+</li>
+<li><p>Intelligence(智能):The complexity of tasks that we are capable of automating and delegating to computers has grown steadily</p>
+</li>
+<li><p>Delegation(委托): Computers are doing more for us – without our intervention.</p>
+</li>
+<li><p>Human-orientation(面向人类): The movement away from machine-oriented views of programming toward concepts and metaphors that more closely reflect the way we ourselves understand the world.</p>
+</li>
+</ul>
+<h4 id="What-is-an-agent"><a href="#What-is-an-agent" class="headerlink" title="What is an agent"></a>What is an agent</h4><p>An agent is a system that:</p>
+<p>• is <strong>situated</strong> in an environment,</p>
+<p>• is capable of <strong>perceiving(察觉)</strong> its environment, and</p>
+<p>• is capable of <strong>acting</strong> in its environment</p>
+<p>with the <strong>goal</strong> of satisfying its design objectives.</p>
+<h5 id="Two-essential-features-properties"><a href="#Two-essential-features-properties" class="headerlink" title="Two essential  features/properties:"></a>Two essential  features/properties:</h5><ol>
+<li><strong>Antonomous(自治的)</strong> (<strong>decide</strong> for themselves what to do) Control over internal state and over own behaviour.</li>
+<li><strong>Self-interested(自利的)</strong> (act so as to try to <strong>achieve their goals</strong>)</li>
+</ol>
+<p>Intelligent agent: can work out the best way to act in <strong>complex, unpredictable </strong> environment</p>
+<p>Want to delegate goals to the agent <u>without having to specify exactly how those goals should be achieved</u>. Agent <u>works out for itself</u> what to do to try to achieve its goals.</p>
+<h5 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a><strong>Definition</strong></h5><p><strong>A computer system capable of <u>flexible, autonomous (problem-solving) action</u>, situated in <u>dynamic, open, unpredictable and typically multi-agent domains.</u></strong></p>
+<p><strong>An agent </strong>is a computer system that is capable of <strong>independent</strong> action on behalf of its user or owner (figuring out what needs to be done <u>to satisfy design objectives</u>, rather than constantly being told).</p>
+<p><strong>A multi-agent </strong>system is one that consists of a number of agents, which <u>interact with one-another</u>. In the most general case, agents will be acting on behalf of users with different goals and motivations. To successfully interact, they will require the ability to <u>cooperate, coordinate, and negotiate</u> with each other, much as people do.</p>
+<h4 id="Compared-with"><a href="#Compared-with" class="headerlink" title="Compared with"></a>Compared with</h4><h5 id="AI"><a href="#AI" class="headerlink" title="AI:"></a>AI:</h5><p>Classical AI ignored social aspects of agency, which are important parts of intelligent activity in real-world setting.</p>
+<h5 id="Concurrent-Distributed-Systems"><a href="#Concurrent-Distributed-Systems" class="headerlink" title="Concurrent/Distributed Systems"></a>Concurrent/Distributed Systems</h5><ol>
+<li>Agents are autonomous, capable of making independent decisions</li>
+<li>Agents are self-interested</li>
+</ol>
+<h4 id="Flexable-Reactive-and-Proactive"><a href="#Flexable-Reactive-and-Proactive" class="headerlink" title="Flexable: Reactive and Proactive"></a><em>Flexable</em>: Reactive and Proactive</h4><h5 id="Reactivity-interact-with-environment-changes"><a href="#Reactivity-interact-with-environment-changes" class="headerlink" title="Reactivity (interact with environment changes)"></a>Reactivity (interact with environment changes)</h5><p>A reactive system is one that maintains an ongoing interaction with its environment, and responds to changes that occur in it (in time for the response to be useful).</p>
+<h5 id="Proactiveness-goal-oriented"><a href="#Proactiveness-goal-oriented" class="headerlink" title="Proactiveness (goal-oriented)"></a>Proactiveness (goal-oriented)</h5><p>Generating and attempting to <u>achieve goals</u>; not driven solely by events; taking the <strong>initiative</strong>(主动性).</p>
+<h4 id="Balancing-reactive-and-goal-oriented-behaviour"><a href="#Balancing-reactive-and-goal-oriented-behaviour" class="headerlink" title="Balancing reactive and goal-oriented behaviour"></a><u>Balancing reactive and goal-oriented behaviour</u></h4><h5 id="Reason"><a href="#Reason" class="headerlink" title="Reason:"></a>Reason:</h5><p>Reactivity means that the system needs to be passive while proactiveness requires the system to be proactive.</p>
+<ul>
+<li><p>We want our agents to be reactive, responding to changing conditions in an appropriate (<strong>timely</strong>) fashion.</p>
+</li>
+<li><p>We want our agents to systematically work towards <strong>long-term goals</strong>.</p>
+</li>
+</ul>
+<h4 id="Multi-agent"><a href="#Multi-agent" class="headerlink" title="Multi-agent"></a>Multi-agent</h4><p>Agents need to be able to interact(communicates, coordinates, cooperates, competes, negotiates, delegates, persuades, incentivises …) with each other.</p>
+<p><strong>Social ability</strong> in agents is the ability to interact with other agents (and possibly humans) via some kind of agent-communication language, and perhaps cooperate with others.</p>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p><strong>A computer system capable of <u>flexible, autonomous (problem-solving) action</u>, situated in <u>dynamic, open, unpredictable and typically multi-agent domains.</u></strong></p>
+<ul>
+<li><p>Agents have control over the own state and behaviour (autonomous).</p>
+</li>
+<li><p>Agents balance reactive and proactive behaviour (flexible).</p>
+</li>
+<li><p>Agents have social abilities to interact with other agents (multiagent).</p>
+</li>
+<li><p>Agents perceive and act on their environment (situated).</p>
+</li>
+</ul>
+<p>Finished</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/23/Machine-Learning-Notes-StrandfordCourse-2/" itemprop="url">Machine Learning Notes StrandfordCourse 2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-23T21:46:54+01:00">
+                2018-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h2><h3 id="Neural-Networks"><a href="#Neural-Networks" class="headerlink" title="Neural Networks"></a>Neural Networks</h3><h4 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h4><p><img src="https://d3c33hcgiwev3.cloudfront.net/imageAssetProxy.v1/0rgjYLDeEeajLxLfjQiSjg_0c07c56839f8d6e8d7b0d09acedc88fd_Screenshot-2016-11-22-10.08.51.png?expiry=1537833600000&amp;hmac=FRBeg-NN4oEZPKrlnOGAfcfpNXkgb9Z1SQ17aQB417Q" alt=""></p>
+<p>a_i^j =  activation of unit i in layer j</p>
+<p>$\theta^j =$ matrix of weights controlling function mapping from layer j to layer j+1</p>
+<script type="math/tex; mode=display">
+a_i^j = g(\theta^{j-1} \times X^{j-1})\\
+h_\theta(x) = a_1^j = g(\theta^{j-1}\times X^{j-1})\\
+\theta^j \times \begin{bmatrix}
+a_0^j\\a_1^j\\a_2^j\\a_3^j\\\vdots\\a^j_{s_j}
+\end{bmatrix} = \begin{bmatrix}
+a_1^{j+1}\\a_2^{j+1}\\a_3^{j+1}\\\vdots\\a^{j+1}_{s_{j+1}}
+\end{bmatrix}</script><p>so $\theta^j$ needs to be a $s_{j+1}\times (s_j+1)$ matrix</p>
+<p><strong>note</strong> : there will be a bias unit called $a_0^j$ be added every layer after computed</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1448,7 +2146,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1461,7 +2159,7 @@ J(\theta) = -\frac{1}{m}\sum_{i=1}^m[y^ilog(h_\theta(x^i)) +(1-y^i)log(1-h_\thet
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

@@ -82,14 +82,14 @@
 <meta name="description" content="Dijkstra algorithm All pairs shortest-path problem Johnson’s algorithm    Dijkstra’s Algorithm w: E \to R^+All the weights should be non-negative. 12345678910//initialise-single-source(G,s)S = NULLQ">
 <meta name="keywords" content="note,OM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Single-source shortest-paths problem (II)">
+<meta property="og:title" content="(OM)Single-source shortest-paths problem (II)">
 <meta property="og:url" content="https://zhangzhejian.com/2019/02/05/NOTE-Week-4-OME/index.html">
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Dijkstra algorithm All pairs shortest-path problem Johnson’s algorithm    Dijkstra’s Algorithm w: E \to R^+All the weights should be non-negative. 12345678910//initialise-single-source(G,s)S = NULLQ">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-07T23:25:23.425Z">
+<meta property="og:updated_time" content="2019-02-14T11:45:27.687Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Single-source shortest-paths problem (II)">
+<meta name="twitter:title" content="(OM)Single-source shortest-paths problem (II)">
 <meta name="twitter:description" content="Dijkstra algorithm All pairs shortest-path problem Johnson’s algorithm    Dijkstra’s Algorithm w: E \to R^+All the weights should be non-negative. 12345678910//initialise-single-source(G,s)S = NULLQ">
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Single-source shortest-paths problem (II) | Recap</title>
+  <title>(OM)Single-source shortest-paths problem (II) | Recap</title>
   
 
 
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Single-source shortest-paths problem (II)</h1>
+          <h1 class="post-title" itemprop="name headline">(OM)Single-source shortest-paths problem (II)</h1>
         
 
         <div class="post-meta">
@@ -312,7 +312,7 @@ w: E \to R^+</script><p><strong>All the weights should be non-negative.</strong>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//initialise-single-source(G,s)</span><br><span class="line">S = NULL</span><br><span class="line">Q = G.V</span><br><span class="line">//Dijkstra algorithm</span><br><span class="line">while q not empty:</span><br><span class="line">	u = EXTRACT-MIN(Q)</span><br><span class="line">	Q = Q remove u</span><br><span class="line">	S = S add u</span><br><span class="line">	for each vertex v in G.Adj[u]</span><br><span class="line">		RELAX(u,v,w)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>EXTRACT-MIN(Q) is the function that find a vertex with minimum value of v.d</li>
-<li>G.Adj(u) is the function returns the neighbors of the vertex u</li>
+<li>$G.Adj(u)$ is the function returns the neighbors of the vertex u</li>
 <li>Complexity: $O(ELog(V))$  <a href="https://www.quora.com/What-is-the-complexity-of-Dijkstras-algorithm" target="_blank" rel="noopener">Quora</a><ul>
 <li>V = N, E = N(N-1)</li>
 <li>the complexity of EXTRACT-MIN function is $O(logV)$</li>
@@ -333,10 +333,14 @@ w: E \to R^+</script><p><strong>All the weights should be non-negative.</strong>
 \hat{w}(u,v) = w(u,v) - h(v) + h(u)\\
 \sum_{i=0}^k \hat{w}(v_{i-1},v_i) =\sum_{i=0}^k w(v_{i-1},v_i) - h(v_{i-1}) + h(v_i) \\
 \hat{w}(v_0,v_k) = w(v_0,v_k) - h(v_k)+h(v_0)</script><p>it’s obvious that the new weight function $\hat{w}(x)$ has no relation to the path but the source and the destination point.</p>
-<p>To get non-negative weights, create a new graph G’ as a copy of G but with an extra node s, connected (with zero-weight edges) to all other nodes. Then, deﬁne for each v ∈ V , h(v) = δ(s, v).</p>
+<p>To get non-negative weights, create a new graph G’ as a copy of G but with an extra source node <strong>s</strong>, connected (with zero-weight edges) to all other nodes. Then, deﬁne for each v ∈ V , h(v) = δ(s, v) by Bellman-Ford algorithm</p>
 <h3 id="Johnson’s-Algorithm"><a href="#Johnson’s-Algorithm" class="headerlink" title="Johnson’s Algorithm"></a>Johnson’s Algorithm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if Bellman-Ford(G_0 , w, s) == false:</span><br><span class="line">	print “the input graph contains a negative-weight cycle”</span><br><span class="line">else </span><br><span class="line">	for v in G_new.V:</span><br><span class="line">		set h[v] according to the v.d calculated by Bellman-Ford algorithm</span><br><span class="line">	for each edge (u,v) in G_new:</span><br><span class="line">		w_new(u,v) = w(u,v) +h[u] - h[v]</span><br><span class="line">		</span><br><span class="line">	for v in G_0:</span><br><span class="line">		run DIJKSTRA algorithm to compute the shortest value use the w_new</span><br></pre></td></tr></table></figure>
 <p>Complexity:</p>
 <p>$O(min{V^3,VElogV})$</p>
+<p>Reference:</p>
+<ol>
+<li><a href="http://www.cnblogs.com/gaochundong/p/johnson_algorithm.html" target="_blank" rel="noopener">http://www.cnblogs.com/gaochundong/p/johnson_algorithm.html</a></li>
+</ol>
 
       
     </div>
@@ -458,7 +462,7 @@ w: E \to R^+</script><p><strong>All the weights should be non-negative.</strong>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -471,7 +475,7 @@ w: E \to R^+</script><p><strong>All the weights should be non-negative.</strong>
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

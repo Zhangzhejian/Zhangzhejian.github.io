@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://i.postimg.cc/90h5y4fg/pr-4-3.png">
 <meta property="og:image" content="https://i.postimg.cc/tRM2MYQs/pr-4-4.png">
 <meta property="og:image" content="https://i.postimg.cc/wjhPfnX7/PR-4-comp.png">
-<meta property="og:updated_time" content="2019-02-10T17:52:49.480Z">
+<meta property="og:updated_time" content="2019-02-12T13:35:17.111Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(PR) Neural Networks">
 <meta name="twitter:description" content="Overview:  What is a Neural Network Why Types of artificial Neural network  What is NNA Neural Network is a network of connected elements called neurons.  Biological Artificial  a Neuron has:  A cell">
@@ -421,6 +421,7 @@ y = H(wx)</script><p>$\theta$ is the threshold</p>
 <li>the <strong>desired output t</strong></li>
 <li>the <strong>actual output y</strong></li>
 </ul>
+<p>$w =[-\theta, w_1]$ and $x = [1,x]^T$</p>
 <ul>
 <li>Sequential(online) update:$w = w + \eta(t-y)x^t$ </li>
 </ul>
@@ -474,7 +475,22 @@ w = w+ \eta yx^t</script><p>Strengthen the connection between an active neuron a
 </li>
 <li>Learning $W = W +\beta ye^T$</li>
 </ol>
-<h2 id="Autoencoder-Networks"><a href="#Autoencoder-Networks" class="headerlink" title="Autoencoder Networks"></a>Autoencoder Networks</h2><p>reconstructiong the network and remove the inhibitary feedback connection</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">W = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>]</span><br><span class="line">x = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>]';</span><br><span class="line">m = <span class="number">2</span>;</span><br><span class="line">y = <span class="built_in">zeros</span>(m);</span><br><span class="line">y = y(:,<span class="number">1</span>)</span><br><span class="line">alpha = <span class="number">0.25</span>;</span><br><span class="line"><span class="built_in">i</span>=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> true</span><br><span class="line">    e = x - W'*y</span><br><span class="line">    y = y + alpha*W*e</span><br><span class="line">    <span class="built_in">i</span> = <span class="built_in">i</span>+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">i</span> ==<span class="number">6</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>Consider</p>
+<ul>
+<li>$W^Ty $ as being a <strong>reconstruction</strong> of the input</li>
+<li>$e$ as being the error between the input and the reconstruction</li>
+<li>Activation<ul>
+<li>Tries to minimise reconstruction error $e$</li>
+<li>Tries to find $y$ values that accurately reconstruct the input</li>
+</ul>
+</li>
+<li>Learning<ul>
+<li>Adjust weights to accurately reconstruct the input</li>
+</ul>
+</li>
+</ul>
+<h2 id="Autoencoder-Networks"><a href="#Autoencoder-Networks" class="headerlink" title="Autoencoder Networks"></a>Autoencoder Networks</h2><p>Represent the reconstruction using a separate neural population, $r$,and remove the inhibitory feedback connections</p>
 <script type="math/tex; mode=display">
 y = f(Wx)\\</script><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ol>
 <li>Difference between Negative Feedback Network and process selection</li>
@@ -523,8 +539,8 @@ y = f(Wx)\\</script><h2 id="Summary"><a href="#Summary" class="headerlink" title
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/05/NOTE-Week-4-OME/" rel="prev" title="Single-source shortest-paths problem (II)">
-                Single-source shortest-paths problem (II) <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/05/NOTE-Week-4-OME/" rel="prev" title="(OM)Single-source shortest-paths problem (II)">
+                (OM)Single-source shortest-paths problem (II) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -602,7 +618,7 @@ y = f(Wx)\\</script><h2 id="Summary"><a href="#Summary" class="headerlink" title
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -615,7 +631,7 @@ y = f(Wx)\\</script><h2 id="Summary"><a href="#Summary" class="headerlink" title
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

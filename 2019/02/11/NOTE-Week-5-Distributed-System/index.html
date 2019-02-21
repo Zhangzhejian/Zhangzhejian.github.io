@@ -79,18 +79,23 @@
 
 
 
-<meta name="description" content="Overview:  Failover in replica management Consensus How much replication to use">
+<meta name="description" content="Overview:  Failover in replica management Consensus How much replication to use  Failovereither all failures must be failstop, or the system must be synchronous Properties of Primary BackupPrimary Bac">
 <meta name="keywords" content="note,DS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(DS) Handling failure">
 <meta property="og:url" content="https://zhangzhejian.com/2019/02/11/NOTE-Week-5-Distributed-System/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Overview:  Failover in replica management Consensus How much replication to use">
+<meta property="og:description" content="Overview:  Failover in replica management Consensus How much replication to use  Failovereither all failures must be failstop, or the system must be synchronous Properties of Primary BackupPrimary Bac">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-11T12:07:21.913Z">
+<meta property="og:image" content="https://i.postimg.cc/T1WPkYSD/DS-5-11.png">
+<meta property="og:image" content="https://i.postimg.cc/pTrrFBJk/DS-5-12.png">
+<meta property="og:image" content="https://i.postimg.cc/qRFRXCmr/DS-5-13.png">
+<meta property="og:image" content="https://i.postimg.cc/PNs50nsF/DS-5-14.png">
+<meta property="og:updated_time" content="2019-02-18T12:47:52.621Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(DS) Handling failure">
-<meta name="twitter:description" content="Overview:  Failover in replica management Consensus How much replication to use">
+<meta name="twitter:description" content="Overview:  Failover in replica management Consensus How much replication to use  Failovereither all failures must be failstop, or the system must be synchronous Properties of Primary BackupPrimary Bac">
+<meta name="twitter:image" content="https://i.postimg.cc/T1WPkYSD/DS-5-11.png">
 
 
 
@@ -306,6 +311,48 @@
 <li>Consensus</li>
 <li>How much replication to use</li>
 </ul>
+<h2 id="Failover"><a href="#Failover" class="headerlink" title="Failover"></a>Failover</h2><p>either all failures must be failstop, or the system must be synchronous</p>
+<h3 id="Properties-of-Primary-Backup"><a href="#Properties-of-Primary-Backup" class="headerlink" title="Properties of Primary Backup"></a>Properties of Primary Backup</h3><p>Primary Backup suffers a <strong>single point of failure</strong> in the primary manager.</p>
+<ul>
+<li>At any one time there must be at most one primary replication manager</li>
+<li>Each front end maintains a reference to the manager it currently believes to be primary </li>
+<li>A backup server ignores any client requests</li>
+</ul>
+<p><strong>Failover time</strong> is the period for which there is no primary replciation manager</p>
+<p>The primary manager receiving request RAi from a client:</p>
+<ol>
+<li>Update its state</li>
+<li>Forwards the request to backup</li>
+<li>replies to client that sent RAi</li>
+</ol>
+<p>this period is called <strong>blocking time</strong></p>
+<h2 id="Consensus-达成一致"><a href="#Consensus-达成一致" class="headerlink" title="Consensus(达成一致)"></a>Consensus(达成一致)</h2><p>Acheiving consensus for Choosing a new Primary Manager</p>
+<h3 id="Consensus-Protocol-Properties"><a href="#Consensus-Protocol-Properties" class="headerlink" title="Consensus Protocol Properties"></a>Consensus Protocol Properties</h3><ul>
+<li>Termination: every correct process will decide on a value</li>
+<li>Validity: if all proposals are for v then all correct processes eventually decide v</li>
+<li>Agreement: if one correct process decides v then all correct processes eventually decide v</li>
+<li>Integrity: every correct process decides at most one v, and either v = FAIL or some process must have proposed</li>
+</ul>
+<p>RAFT:</p>
+<p>Reference:</p>
+<ol>
+<li><a href="https://www.cnblogs.com/mindwind/p/5231986.html" target="_blank" rel="noopener">https://www.cnblogs.com/mindwind/p/5231986.html</a></li>
+</ol>
+<h2 id="How-much-replica-to-use"><a href="#How-much-replica-to-use" class="headerlink" title="How much replica to use"></a>How much replica to use</h2><h3 id="Failure-Measurements"><a href="#Failure-Measurements" class="headerlink" title="Failure Measurements"></a>Failure Measurements</h3><ul>
+<li>MTBF</li>
+<li>T-Fault Tolerance</li>
+<li>failure Modes</li>
+</ul>
+<p><a href="http://zhangzhejian.com/2019/01/14/NOTE-Week-1-Distributed-System/">detailed illustration</a></p>
+<h3 id="CAP-Theorem"><a href="#CAP-Theorem" class="headerlink" title="CAP Theorem"></a>CAP Theorem</h3><p><img src="https://i.postimg.cc/T1WPkYSD/DS-5-11.png" alt=""></p>
+<p><img src="https://i.postimg.cc/pTrrFBJk/DS-5-12.png" alt=""></p>
+<p><img src="https://i.postimg.cc/qRFRXCmr/DS-5-13.png" alt=""></p>
+<p><img src="https://i.postimg.cc/PNs50nsF/DS-5-14.png" alt=""></p>
+<p>Above from 《大型网站核心技术架构》</p>
+<p>Reference:</p>
+<ol>
+<li><a href="https://yeasy.gitbooks.io/blockchain_guide/content/distribute_system/cap.html" target="_blank" rel="noopener">https://yeasy.gitbooks.io/blockchain_guide/content/distribute_system/cap.html</a></li>
+</ol>
 
       
     </div>
@@ -348,8 +395,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/11/NOTE-Week-5-Pattern-Recognition/" rel="prev" title="NOTE-Week-5-Pattern Recognition">
-                NOTE-Week-5-Pattern Recognition <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/11/NOTE-Week-5-Pattern-Recognition/" rel="prev" title="(PR) Feature Extraction">
+                (PR) Feature Extraction <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -402,8 +449,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -418,7 +474,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -431,7 +487,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -454,6 +510,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Failover"><span class="nav-number">1.</span> <span class="nav-text">Failover</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties-of-Primary-Backup"><span class="nav-number">1.1.</span> <span class="nav-text">Properties of Primary Backup</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Consensus-达成一致"><span class="nav-number">2.</span> <span class="nav-text">Consensus(达成一致)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Consensus-Protocol-Properties"><span class="nav-number">2.1.</span> <span class="nav-text">Consensus Protocol Properties</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#How-much-replica-to-use"><span class="nav-number">3.</span> <span class="nav-text">How much replica to use</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Failure-Measurements"><span class="nav-number">3.1.</span> <span class="nav-text">Failure Measurements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAP-Theorem"><span class="nav-number">3.2.</span> <span class="nav-text">CAP Theorem</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

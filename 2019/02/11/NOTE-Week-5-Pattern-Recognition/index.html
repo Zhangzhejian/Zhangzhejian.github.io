@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="note,PR," />
 
 
 
@@ -79,14 +79,18 @@
 
 
 
+<meta name="description" content="Overview:  Feature Selection  Feature Extraction: Principal Component Analysis (PCA)  Whitening  Linear Discriminant Analysis (LDA)  Independent Component Analysis (ICA)  Random Projections  Sparse Co">
+<meta name="keywords" content="note,PR">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NOTE-Week-5-Pattern Recognition">
+<meta property="og:title" content="(PR) Feature Extraction">
 <meta property="og:url" content="https://zhangzhejian.com/2019/02/11/NOTE-Week-5-Pattern-Recognition/index.html">
 <meta property="og:site_name" content="Recap">
+<meta property="og:description" content="Overview:  Feature Selection  Feature Extraction: Principal Component Analysis (PCA)  Whitening  Linear Discriminant Analysis (LDA)  Independent Component Analysis (ICA)  Random Projections  Sparse Co">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-11T12:02:17.926Z">
+<meta property="og:updated_time" content="2019-02-18T15:38:11.966Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NOTE-Week-5-Pattern Recognition">
+<meta name="twitter:title" content="(PR) Feature Extraction">
+<meta name="twitter:description" content="Overview:  Feature Selection  Feature Extraction: Principal Component Analysis (PCA)  Whitening  Linear Discriminant Analysis (LDA)  Independent Component Analysis (ICA)  Random Projections  Sparse Co">
 
 
 
@@ -122,7 +126,7 @@
 
 
 
-  <title>NOTE-Week-5-Pattern Recognition | Recap</title>
+  <title>(PR) Feature Extraction | Recap</title>
   
 
 
@@ -246,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NOTE-Week-5-Pattern Recognition</h1>
+          <h1 class="post-title" itemprop="name headline">(PR) Feature Extraction</h1>
         
 
         <div class="post-meta">
@@ -296,7 +300,73 @@
       
 
       
-        
+        <p>Overview:</p>
+<ul>
+<li>Feature Selection </li>
+<li>Feature Extraction:<ul>
+<li>Principal Component Analysis (PCA) </li>
+<li>Whitening </li>
+<li>Linear Discriminant Analysis (LDA) </li>
+<li>Independent Component Analysis (ICA) </li>
+<li>Random Projections </li>
+<li>Sparse Coding </li>
+<li>Deep Learning</li>
+</ul>
+</li>
+</ul>
+<h2 id="Feature-Selection"><a href="#Feature-Selection" class="headerlink" title="Feature Selection"></a>Feature Selection</h2><p>Feature selection is the process of choosing the most discriminative subset of data on which to perform the classification process.</p>
+<h2 id="Feature-Extraction"><a href="#Feature-Extraction" class="headerlink" title="Feature Extraction"></a>Feature Extraction</h2><p>Find features that are functions of the raw data.</p>
+<p>Projects(投影) original data points into new feature space. Ideally, new feature space is one in which it is easier to classify data.</p>
+<h3 id="Principal-Component-Analysis-PCA"><a href="#Principal-Component-Analysis-PCA" class="headerlink" title="Principal Component Analysis(PCA)"></a>Principal Component Analysis(PCA)</h3><p>Takes N-dimensional data and finds the M (M≤N) orthogonal<a href="https://zh.wikipedia.org/wiki/%E6%AD%A3%E4%BA%A4" target="_blank" rel="noopener">(正交的)</a> directions in which the data has the most variance</p>
+<h3 id="Karhunen-Loeve-Transform-KLT"><a href="#Karhunen-Loeve-Transform-KLT" class="headerlink" title="Karhunen-Loève Transform (KLT)"></a>Karhunen-Loève Transform (KLT)</h3><ul>
+<li><p>Calculate mean of all data vectors,$\mu = \frac{1}{N}\sum_{i=1}^N x_i$ </p>
+</li>
+<li><p>Calculate convariance matrix of <strong>zero-mean data</strong> 移动到原点</p>
+<ul>
+<li><script type="math/tex; mode=display">
+C = \frac{1}{N} \sum_{i=1}^N(x_i-\mu)(x_i - \mu)^T</script></li>
+</ul>
+</li>
+<li><p>Find eigenvalues (E) &amp; eigenvectors (V) of C by <strong>SVD</strong></p>
+<ul>
+<li><script type="math/tex; mode=display">
+C = VEV^T</script></li>
+</ul>
+</li>
+<li><p>Order eigenvalues from large to small, and discard small eigenvalues and their respective vectors</p>
+</li>
+<li><p>Form matrix $U$</p>
+<script type="math/tex; mode=display">
+y_i = U^T(x_i-\mu)</script></li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">X = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>;<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">2</span>;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>];</span><br><span class="line"><span class="comment">%% m is the dimension and n is the number of samples</span></span><br><span class="line">[m,n] = <span class="built_in">size</span>(X);</span><br><span class="line">mu = <span class="built_in">zeros</span>(m,<span class="number">1</span>);</span><br><span class="line">k = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:m</span><br><span class="line">    mu(<span class="built_in">i</span>,:) = mean(X(<span class="built_in">i</span>,:));</span><br><span class="line"><span class="keyword">end</span> </span><br><span class="line">C = <span class="built_in">zeros</span>(m)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> =<span class="number">1</span>:n</span><br><span class="line">    C = C +(X(:,<span class="built_in">i</span>) - mu)*(X(:,<span class="built_in">i</span>) - mu)';</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">C = C ./n;</span><br><span class="line">[U,S,V] = svd(C)</span><br><span class="line">Ure = U(:,<span class="number">1</span>:k)</span><br><span class="line">y = <span class="built_in">zeros</span>(k,n);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:n</span><br><span class="line">    </span><br><span class="line">   y(:,<span class="built_in">i</span>) = Ure' * (X(:,<span class="built_in">i</span>)-mu);</span><br><span class="line">    </span><br><span class="line"><span class="keyword">end</span> </span><br><span class="line">display(y)</span><br></pre></td></tr></table></figure>
+<h3 id="Neural-Networks-for-PCA"><a href="#Neural-Networks-for-PCA" class="headerlink" title="Neural Networks for PCA"></a>Neural Networks for PCA</h3><p>Using zero-mean data as inpuit $x$</p>
+<ul>
+<li><p>Hebbian Learning</p>
+<ul>
+<li>$\Delta w = \eta y x^t$</li>
+</ul>
+</li>
+<li><p>Oja’s rule</p>
+<ul>
+<li>$\Delta w = \eta y(x_i^t-yw)$</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">X = [<span class="number">0</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>;<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">7</span>]</span><br><span class="line">[dimension,m] = <span class="built_in">size</span>(X);</span><br><span class="line">mu = <span class="built_in">zeros</span>(dimension,<span class="number">1</span>);</span><br><span class="line">eta = <span class="number">0.01</span>;</span><br><span class="line">w = [<span class="number">-1</span>,<span class="number">0</span>]</span><br><span class="line">iteration = <span class="number">100</span>;</span><br><span class="line">mu = <span class="built_in">zeros</span>(dimension,<span class="number">1</span>);</span><br><span class="line">k = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:dimension</span><br><span class="line">    mu(<span class="built_in">i</span>,:) = mean(X(<span class="built_in">i</span>,:));</span><br><span class="line">    X(<span class="built_in">i</span>,:) = X(<span class="built_in">i</span>,:) - mu(<span class="built_in">i</span>,:);</span><br><span class="line"><span class="keyword">end</span> </span><br><span class="line">display(mu);</span><br><span class="line">display(X);</span><br><span class="line"><span class="keyword">for</span> z = <span class="number">1</span>:iteration</span><br><span class="line">    dw =<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:m</span><br><span class="line">    	y = w*X(:,<span class="built_in">i</span>);</span><br><span class="line">    	dw = dw + eta*y*(X(:,<span class="built_in">i</span>)'-y*w)</span><br><span class="line">	<span class="keyword">end</span> </span><br><span class="line">    w = w + dw</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Linear-Discriminant-Analysis-LDA"><a href="#Linear-Discriminant-Analysis-LDA" class="headerlink" title="Linear Discriminant Analysis (LDA)"></a>Linear Discriminant Analysis (LDA)</h3><p>supervised</p>
+<p><strong>Fisher’s method</strong> to find $w$ that <strong>maximises</strong>:</p>
+<script type="math/tex; mode=display">
+J(w) = \frac{sb}{sw}\\
+sb = |w(m1-m2)|^2, m_i = \frac{1}{n_i}\sum_{\mathcal{X}\in \omega_i} \mathcal{x}\\
+sw = \sum s_i^2\\
+s_i^2 = \sum_{\mathcal{X}\in \omega_i} (w(x-m_1))^2</script><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">X = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>;<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>;<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>;<span class="number">2</span>,<span class="number">6</span>,<span class="number">5</span>;<span class="number">2</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line">T = X(:,<span class="number">1</span>)</span><br><span class="line">w_1 = [<span class="number">-1</span>,<span class="number">5</span>]';</span><br><span class="line">w_1 = [<span class="number">2</span>,<span class="number">-3</span>]';</span><br><span class="line">X_1 = X(X(:,<span class="number">1</span>)==<span class="number">1</span>,<span class="number">2</span>:<span class="number">3</span>)</span><br><span class="line">X_2 = X(X(:,<span class="number">1</span>)==<span class="number">2</span>,<span class="number">2</span>:<span class="number">3</span>)</span><br><span class="line">[dimension,m] = <span class="built_in">size</span>(X');</span><br><span class="line">meanMatrix = <span class="built_in">zeros</span>(dimension<span class="number">-1</span>,<span class="number">2</span>)</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> =<span class="number">1</span>:dimension<span class="number">-1</span></span><br><span class="line">    meanMatrix(<span class="number">1</span>,<span class="built_in">i</span>) = mean(X_1(:,<span class="built_in">i</span>));</span><br><span class="line">    meanMatrix(<span class="number">2</span>,<span class="built_in">i</span>) = mean(X_2(:,<span class="built_in">i</span>));</span><br><span class="line"><span class="keyword">end</span> </span><br><span class="line"></span><br><span class="line">sb =(w_1'*(meanMatrix(<span class="number">1</span>,:)-meanMatrix(<span class="number">2</span>,:))')^<span class="number">2</span></span><br><span class="line">n_1 = <span class="built_in">size</span>(X_1,<span class="number">1</span>);</span><br><span class="line">n_2 = <span class="built_in">size</span>(X_2,<span class="number">1</span>);</span><br><span class="line">s_1 = <span class="number">0</span>;</span><br><span class="line">s_2 = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:n_1</span><br><span class="line">   s_1 = s_1 + (w_1'*(X_1(<span class="built_in">i</span>,:) - meanMatrix(<span class="number">1</span>,:))')^<span class="number">2</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">end</span> </span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:n_2</span><br><span class="line">   s_2 = s_2 + (w_1'*(X_2(<span class="built_in">i</span>,:) - meanMatrix(<span class="number">2</span>,:))')^<span class="number">2</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">end</span> </span><br><span class="line">sw = s_1 + s_2</span><br><span class="line">J = sb/sw</span><br></pre></td></tr></table></figure>
+<h2 id="Random-Projections"><a href="#Random-Projections" class="headerlink" title="Random Projections"></a>Random Projections</h2><p>Project the data into a spcae with higher dimensionality, in the new space feature vectors that were non separable may become separable.</p>
+<h3 id="Extreme-Learning-Machines"><a href="#Extreme-Learning-Machines" class="headerlink" title="Extreme Learning Machines"></a>Extreme Learning Machines</h3><h3 id="Sparse-Coding"><a href="#Sparse-Coding" class="headerlink" title="Sparse Coding"></a>Sparse Coding</h3><p>Reference:</p>
+<ol>
+<li><a href="https://yoyoyohamapi.gitbooks.io/mit-ml/content/%E7%89%B9%E5%BE%81%E9%99%8D%E7%BB%B4/articles/PCA.html" target="_blank" rel="noopener">https://yoyoyohamapi.gitbooks.io/mit-ml/content/%E7%89%B9%E5%BE%81%E9%99%8D%E7%BB%B4/articles/PCA.html</a></li>
+</ol>
+
       
     </div>
     
@@ -310,6 +380,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/note/" rel="tag"># note</a>
+          
+            <a href="/tags/PR/" rel="tag"># PR</a>
+          
+        </div>
       
 
       
@@ -329,6 +407,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/12/NOTE-Week-5-OME/" rel="prev" title="(OM)Network Flow Problems">
+                (OM)Network Flow Problems <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -380,8 +462,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -396,7 +487,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">60</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -409,7 +500,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -432,6 +523,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-Selection"><span class="nav-number">1.</span> <span class="nav-text">Feature Selection</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feature-Extraction"><span class="nav-number">2.</span> <span class="nav-text">Feature Extraction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Principal-Component-Analysis-PCA"><span class="nav-number">2.1.</span> <span class="nav-text">Principal Component Analysis(PCA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Karhunen-Loeve-Transform-KLT"><span class="nav-number">2.2.</span> <span class="nav-text">Karhunen-Loève Transform (KLT)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Neural-Networks-for-PCA"><span class="nav-number">2.3.</span> <span class="nav-text">Neural Networks for PCA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Discriminant-Analysis-LDA"><span class="nav-number">2.4.</span> <span class="nav-text">Linear Discriminant Analysis (LDA)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Random-Projections"><span class="nav-number">3.</span> <span class="nav-text">Random Projections</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Extreme-Learning-Machines"><span class="nav-number">3.1.</span> <span class="nav-text">Extreme Learning Machines</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sparse-Coding"><span class="nav-number">3.2.</span> <span class="nav-text">Sparse Coding</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -626,6 +733,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
