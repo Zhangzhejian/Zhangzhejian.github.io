@@ -511,12 +511,12 @@ J(w) = \frac{1}{2}\sum_{k=1}^c (t_k-z_k)^2 = \frac{1}{2}||t-z||^2</script><h3 id
 <script type="math/tex; mode=display">
 \delta_k = -\frac{\partial J}{\partial net_k}</script><script type="math/tex; mode=display">
 \delta_k = -\frac{\partial J}{\partial net_k} = -\frac{\partial J}{\partial z_k}\frac{\partial z_k}{\partial net_k} = (t_k-z_k) \frac{\partial f(net_k)}{\partial net_k} = (t_k-z_k)  f'(net_k)\\
-net_k = \sum_{j=1}^{n_H}y_jw_{kj}+w_{k0} = \bold{w}_k^T\bold{y}</script><p>Then:</p>
+net_k = \sum_{j=1}^{n_H}y_jw_{kj}+w_{k0} = \boldsymbol{w}_k^T\boldsymbol{y}</script><p>Then:</p>
 <script type="math/tex; mode=display">
 \frac{\partial net_k}{\partial w_{kj}} = y_j\;\;y_0=1 \;\;bias</script><p>Conclusion:</p>
 <script type="math/tex; mode=display">
 \Delta w_{kj} = -\eta \frac{\partial J}{\partial w_{kj}} =\eta \delta_ky_j =(t_k-z_k)  f'(net_k) y_j</script><h3 id="Error-on-the-input-to-hidden-weights"><a href="#Error-on-the-input-to-hidden-weights" class="headerlink" title="Error on the input-to-hidden weights:"></a>Error on the input-to-hidden weights:</h3><script type="math/tex; mode=display">
-\frac{\partial J}{\partial w_{ji}} = \frac{\partial J}{\partial y_j} \frac{\partial y_j}{\partial net_j}\frac{\partial net_j}{\partial w_{ji}}</script><p>Since $J =\frac{1}{2}\sum_{k=1}^c (t_k-z_k)^2 , y_j = f(net_j)$ and $net_j = \bold{w}_j^T\bold{x}$</p>
+\frac{\partial J}{\partial w_{ji}} = \frac{\partial J}{\partial y_j} \frac{\partial y_j}{\partial net_j}\frac{\partial net_j}{\partial w_{ji}}</script><p>Since $J =\frac{1}{2}\sum_{k=1}^c (t_k-z_k)^2 , y_j = f(net_j)$ and $net_j = \boldsymbol{w}_j^T\boldsymbol{x}$</p>
 <script type="math/tex; mode=display">
 \frac{\partial J}{\partial y_j} = \sum_{k=1}^c \frac{\partial J}{\partial z_k} \frac{\partial z_k}{\partial y_j} = - \sum_{k=1}^c (t_k-z_k)\frac{\partial z_k}{\partial y_j}\\
 
