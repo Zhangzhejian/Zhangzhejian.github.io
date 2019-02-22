@@ -90,7 +90,14 @@
 <meta property="og:image" content="https://i.postimg.cc/Kv78XK0G/pr-6-1.png">
 <meta property="og:image" content="https://i.postimg.cc/wTYjb5c4/pr-6-2.png">
 <meta property="og:image" content="https://i.postimg.cc/sfh2cHSZ/pr-6-3.png">
-<meta property="og:updated_time" content="2019-02-21T02:12:03.495Z">
+<meta property="og:image" content="https://i.postimg.cc/XJx8ChdH/pr-6-7.png">
+<meta property="og:image" content="https://i.postimg.cc/zfZ0ZTqj/pr-6-4.png">
+<meta property="og:image" content="https://i.postimg.cc/0Q9nrxMK/pr-6-5.png">
+<meta property="og:image" content="https://i.postimg.cc/q7sQkgRd/pr-6-6.png">
+<meta property="og:image" content="https://i.postimg.cc/FsYZYTRp/pr-6-8.png">
+<meta property="og:image" content="https://i.postimg.cc/Gt8ymSQs/pr-6-9.png">
+<meta property="og:image" content="https://i.postimg.cc/mrL1Hrj4/pr-6-10.png">
+<meta property="og:updated_time" content="2019-02-21T14:47:40.404Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(PR) Multilayer NN">
 <meta name="twitter:description" content="Overview:  Feedforward NN Neuron Model  Three-Layer Fully-Connected Feedforward Neural Networks  Activation/Transfer Functions  XOR Problem  General Feed-Forward Operation  Expressive Power of Multi-L">
@@ -377,7 +384,8 @@ z_{1}\\
 z_{2}\\
 \vdots\\
 z_{k}\\
-\end{bmatrix} = f(W_{kj}Y+W_{k0}) = f(W_{kj}f(W_{ji}x+W_{j0})+W_{k0})</script><h2 id="Backpropagation-Algorithm"><a href="#Backpropagation-Algorithm" class="headerlink" title="Backpropagation Algorithm"></a>Backpropagation Algorithm</h2><h2 id="Network-Learning"><a href="#Network-Learning" class="headerlink" title="Network Learning"></a>Network Learning</h2><p>Training error:</p>
+\end{bmatrix} = f(W_{kj}Y+W_{k0}) = f(W_{kj}f(W_{ji}x+W_{j0})+W_{k0})</script><h2 id="Backpropagation-Algorithm"><a href="#Backpropagation-Algorithm" class="headerlink" title="Backpropagation Algorithm"></a>Backpropagation Algorithm</h2><h2 id="Network-Learning"><a href="#Network-Learning" class="headerlink" title="Network Learning"></a>Network Learning</h2><p><img src="https://i.postimg.cc/XJx8ChdH/pr-6-7.png"></p>
+<p>Training error:</p>
 <script type="math/tex; mode=display">
 J(w) = \frac{1}{2}\sum_{k=1}^c (t_k-z_k)^2 = \frac{1}{2}||t-z||^2</script><h3 id="Error-on-the-hidden-to-output-weights"><a href="#Error-on-the-hidden-to-output-weights" class="headerlink" title="Error on the hidden-to-output weights:"></a>Error on the hidden-to-output weights:</h3><script type="math/tex; mode=display">
 \frac{\partial J}{\partial w_{kj}} = \frac{\partial J}{\partial net_k}\frac{\partial net_k}{\partial w_{kj}} = -\delta_k \frac{\partial net_k}{\partial w_{kj}}</script><p>Where the sensitivity of unit k is defined as:</p>
@@ -408,8 +416,49 @@ net_k = \sum_{j=1}^{n_H}y_jw_{kj}+w_{k0} = \mathbf{w}_k^T\mathbf{y}</script><p>T
 
 
 \Delta w_{ji} = -\eta \frac{\partial J}{\partial w_{ji}} 
-= \eta \sum_{k=1}^c \delta_k w_{kj} f'(net_j) x_i = \eta \delta_j x_i = \eta f'(net_j)[\sum_{k=1}^c w_{kj}\delta_k] x_i</script><p>Algorithm</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">begin initialise network topology (d,$n_h$,c)</span><br></pre></td></tr></table></figure>
+= \eta \sum_{k=1}^c \delta_k w_{kj} f'(net_j) x_i = \eta \delta_j x_i = \eta f'(net_j)[\sum_{k=1}^c w_{kj}\delta_k] x_i</script><ul>
+<li>Stochastic Backpropagation Algorithm</li>
+</ul>
+<p><img src="https://i.postimg.cc/zfZ0ZTqj/pr-6-4.png"></p>
+<ul>
+<li>Batch Backpropagation Algoritnm</li>
+</ul>
+<p><img src="https://i.postimg.cc/0Q9nrxMK/pr-6-5.png"></p>
+<h2 id="Radial-Basis-Function-NN"><a href="#Radial-Basis-Function-NN" class="headerlink" title="Radial Basis Function NN"></a>Radial Basis Function NN</h2><p><img src="https://i.postimg.cc/q7sQkgRd/pr-6-6.png"></p>
+<p>Difference from Feed-forward:</p>
+<p>There is no bias on the input layer.</p>
+<h3 id="Hidden-units"><a href="#Hidden-units" class="headerlink" title="Hidden units:"></a>Hidden units:</h3><p><img src="https://i.postimg.cc/FsYZYTRp/pr-6-8.png"></p>
+<script type="math/tex; mode=display">
+d_j = ||\mathbf{x} - \mathbf{c}_j||, j=1,...,n_H\\
+\mathbf{x}=[x_1,x_2 \dots x_d] \;\; and \;\; \mathbf{c}_j = [c_{j1}, c_{j2} \dots c_{jd}]\\
+y_j(\mathbf{x}) = h(d_j) = h(||\mathbf{x} - \mathbf{c}_j||)</script><ul>
+<li>$\mathbf{c}_j$ can be preset or determined by a traning algorithm</li>
+<li>$h()$ is a radial basis function (function and parameters can be different for each hidden unit).</li>
+</ul>
+<p><img src="https://i.postimg.cc/Gt8ymSQs/pr-6-9.png"></p>
+<h3 id="Output-units"><a href="#Output-units" class="headerlink" title="Output units"></a>Output units</h3><p><img src="https://i.postimg.cc/mrL1Hrj4/pr-6-10.png"></p>
+<script type="math/tex; mode=display">
+\begin{align}
+z_k(\mathbf{x}) = f(net_k) &=f(\sum_{j=1}^{n_H}w_{kj} y_j(\mathbf{x})+w_{k0})\\
+&=f(\sum_{j=1}^{n_H}w_{kj} h(||\mathbf{x} - \mathbf{c}_j||)+w_{k0})
+\end{align}</script><p>Training error:</p>
+<script type="math/tex; mode=display">
+J = \sum_{p=1}^n J_p = \frac{1}{2}\sum_{p=1}^n (t_p-z_p)^2</script><p>Two pahses of training:</p>
+<ul>
+<li>(Unsupervised )<strong>Determine the centres $\mathbf{c}_j$</strong></li>
+<li>(Supervised)<strong>Determine the output weights $w_{kj}$</strong></li>
+</ul>
+<h3 id="Determine-the-centres-mathbf-c-j"><a href="#Determine-the-centres-mathbf-c-j" class="headerlink" title="Determine the centres $\mathbf{c}_j$"></a>Determine the centres $\mathbf{c}_j$</h3><p>Procedure:</p>
+<ol>
+<li><p>Choose number of hidden units $n_H$</p>
+</li>
+<li><p>pick randomly $n_H$ input pattern from the data set(with n input patterns) as the centres $\mathbf{c}_j, \; j=1, \dots , n_H$</p>
+</li>
+<li><p>When Gaussian function is employed, deﬁne $\sigma_j = \frac{\rho_{max}}{\sqrt{2n_H}}$ or $\sigma_j = 2\rho_{avg}$ for all j where $\rho_{max}$ is the maximum distance between the chosen centres and $\rho_avg$ is the average distance between the chosen centres</p>
+</li>
+<li><p>Other parameters are chosen randomly.</p>
+</li>
+</ol>
 
       
     </div>
@@ -577,7 +626,7 @@ net_k = \sum_{j=1}^{n_H}y_jw_{kj}+w_{k0} = \mathbf{w}_k^T\mathbf{y}</script><p>T
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Network-Architectures"><span class="nav-number">1.1.</span> <span class="nav-text">Network Architectures</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feedforward-NN"><span class="nav-number">2.</span> <span class="nav-text">Feedforward NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Neuron-model"><span class="nav-number">2.1.</span> <span class="nav-text">Neuron model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feed-forward-Operation"><span class="nav-number">2.2.</span> <span class="nav-text">Feed-forward Operation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagation-Algorithm"><span class="nav-number">3.</span> <span class="nav-text">Backpropagation Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-Learning"><span class="nav-number">4.</span> <span class="nav-text">Network Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-on-the-hidden-to-output-weights"><span class="nav-number">4.1.</span> <span class="nav-text">Error on the hidden-to-output weights:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-on-the-input-to-hidden-weights"><span class="nav-number">4.2.</span> <span class="nav-text">Error on the input-to-hidden weights:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Network-Architectures"><span class="nav-number">1.1.</span> <span class="nav-text">Network Architectures</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feedforward-NN"><span class="nav-number">2.</span> <span class="nav-text">Feedforward NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Neuron-model"><span class="nav-number">2.1.</span> <span class="nav-text">Neuron model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feed-forward-Operation"><span class="nav-number">2.2.</span> <span class="nav-text">Feed-forward Operation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagation-Algorithm"><span class="nav-number">3.</span> <span class="nav-text">Backpropagation Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-Learning"><span class="nav-number">4.</span> <span class="nav-text">Network Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-on-the-hidden-to-output-weights"><span class="nav-number">4.1.</span> <span class="nav-text">Error on the hidden-to-output weights:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-on-the-input-to-hidden-weights"><span class="nav-number">4.2.</span> <span class="nav-text">Error on the input-to-hidden weights:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Radial-Basis-Function-NN"><span class="nav-number">5.</span> <span class="nav-text">Radial Basis Function NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hidden-units"><span class="nav-number">5.1.</span> <span class="nav-text">Hidden units:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-units"><span class="nav-number">5.2.</span> <span class="nav-text">Output units</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Determine-the-centres-mathbf-c-j"><span class="nav-number">5.3.</span> <span class="nav-text">Determine the centres $\mathbf{c}_j$</span></a></li></ol></li></ol></div>
             
 
           </div>
