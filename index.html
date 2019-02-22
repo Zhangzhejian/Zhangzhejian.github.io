@@ -301,15 +301,20 @@
       
         
           
-            <p>A flow network:</p>
+            <h2 id="Basic-definition"><a href="#Basic-definition" class="headerlink" title="Basic definition"></a>Basic definition</h2><p>A flow network:</p>
 <script type="math/tex; mode=display">
 G = (V, E,u,c,d)</script><ul>
-<li>$u(v,w)$ is the capacity of edge $(v,w)$ </li>
-<li>$c(v,w)$ is the cost of one unit of flow on  edge $(v,w)$ </li>
+<li>$u(v,w) \geq 0$ is the capacity of edge $(v,w)$ </li>
+<li>$c(v,w) $ is the cost of one unit of flow on  edge $(v,w)$ </li>
+<li>for each node $v \in V$, $|d(v)|$ is the initial supply or demand at $v$</li>
 </ul>
-<p>the cost of a flow $f$ is:</p>
+<p><strong>Objective</strong>: Find a ﬂow which satisﬁes the speciﬁed supply/demand values (or, if not possible, ﬁnd a ﬂow which maximizes the value of ﬂow) and has the minimum possible cost.</p>
+<p>the <strong>cost of a flow</strong> $f$ is:</p>
 <script type="math/tex; mode=display">
-\sum_{(v,w)\in E} c(v,w) f(v,w)</script><p>Successive shortest path algorithm</p>
+\sum_{(v,w)\in E} c(v,w) f(v,w)</script><p>A technical assumption:</p>
+<p>if $(v,w) \in E$, then also $(w,v) \in E$, but either $u(v,w) =0$ or $u(w,v) =0$.</p>
+<h2 id="Residual-network"><a href="#Residual-network" class="headerlink" title="Residual network"></a>Residual network</h2><p>In this kind of problem, the construct of residual network is similar to the<a href="http://zhangzhejian.com/2019/02/12/NOTE-Week-5-OME/"> previous one</a></p>
+<p>Successive shortest path algorithm</p>
 
           
         
@@ -565,10 +570,22 @@ z_k(\mathbf{x}) = f(net_k) &=f(\sum_{j=1}^{n_H}w_{kj} y_j(\mathbf{x})+w_{k0})\\
 <script type="math/tex; mode=display">
 J = \sum_{p=1}^n J_p = \frac{1}{2}\sum_{p=1}^n (t_p-z_p)^2</script><p>Two pahses of training:</p>
 <ul>
-<li>(Unsupervised )<strong>Determine the centres $\mathbf{c}_j$</strong></li>
-<li>(Supervised)<strong>Determine the output weights $w_{kj}$</strong></li>
+<li>(Unsupervised )<strong>Determine the centres $\mathbf{c}_j$</strong><ul>
+<li>Fixed centres selected at random</li>
+<li>Clustering based approaches</li>
 </ul>
-<h3 id="Determine-the-centres-mathbf-c-j"><a href="#Determine-the-centres-mathbf-c-j" class="headerlink" title="Determine the centres $\mathbf{c}_j$"></a>Determine the centres $\mathbf{c}_j$</h3><p>Procedure:</p>
+</li>
+<li>(Supervised)<strong>Determine the output weights $w_{kj}$</strong><ul>
+<li>Computing the output weights using least squares method</li>
+<li>Gradient descent appraoches</li>
+</ul>
+</li>
+</ul>
+<h3 id="Fixed-centres-selected-at-random"><a href="#Fixed-centres-selected-at-random" class="headerlink" title="Fixed centres selected at random"></a>Fixed centres selected at random</h3><ul>
+<li>Simple and quick</li>
+<li>Number of hidden units $n_H$ is less than the number of input patterns n</li>
+<li>Procedure:</li>
+</ul>
 <ol>
 <li><p>Choose number of hidden units $n_H$</p>
 </li>
@@ -579,7 +596,11 @@ J = \sum_{p=1}^n J_p = \frac{1}{2}\sum_{p=1}^n (t_p-z_p)^2</script><p>Two pahses
 <li><p>Other parameters are chosen randomly.</p>
 </li>
 </ol>
-
+<h3 id="Clustering-based-approaches"><a href="#Clustering-based-approaches" class="headerlink" title="Clustering based approaches."></a>Clustering based approaches.</h3><p>K-Means Clustering</p>
+<h3 id="least-squares-method-linear-output-function"><a href="#least-squares-method-linear-output-function" class="headerlink" title="least squares method (linear output function)"></a>least squares method (linear output function)</h3><h3 id="Gradient-descent-approach-Backpropagation"><a href="#Gradient-descent-approach-Backpropagation" class="headerlink" title="Gradient descent approach (Backpropagation)"></a>Gradient descent approach (Backpropagation)</h3><script type="math/tex; mode=display">
+\Delta w_{kj} = -\eta \frac{\partial J}{\partial w_{kj}}\\
+\Delta \sigma_j = -\eta \frac{\partial J}{\partial \sigma_j}\\
+\Delta c_{ji} = -\eta \frac{\partial J}{\partial c_{ji}}</script>
           
         
       
@@ -784,7 +805,7 @@ J = \sum_{p=1}^n J_p = \frac{1}{2}\sum_{p=1}^n (t_p-z_p)^2</script><p>Two pahses
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/12/NOTE-Week-5-OME/" itemprop="url">(OM)Network Flow Problems</a></h1>
+                <a class="post-title-link" href="/2019/02/12/NOTE-Week-5-OME/" itemprop="url">(OM)Network Flow Problems and Ford-Fulkerson method</a></h1>
         
 
         <div class="post-meta">
@@ -836,7 +857,7 @@ J = \sum_{p=1}^n J_p = \frac{1}{2}\sum_{p=1}^n (t_p-z_p)^2</script><p>Two pahses
       
         
           
-            <h3 id="Flow-network"><a href="#Flow-network" class="headerlink" title="Flow network"></a>Flow network</h3><script type="math/tex; mode=display">
+            <h2 id="Flow-network"><a href="#Flow-network" class="headerlink" title="Flow network"></a>Flow network</h2><script type="math/tex; mode=display">
 G = (V,E,c,s,t)</script><ul>
 <li>$V$ – set of n nodes,$ E $– set of m directed edges (links);</li>
 <li>for each $(u, v) \in E, c(u, v) \geq 0$ is the capacity of edge $(u, v)$;</li>
@@ -850,7 +871,7 @@ G = (V,E,c,s,t)</script><ul>
 </ul>
 </li>
 </ul>
-<h3 id="Flows-Feasibility-Problem-Transshipment-problem"><a href="#Flows-Feasibility-Problem-Transshipment-problem" class="headerlink" title="Flows-Feasibility Problem(Transshipment problem)"></a>Flows-Feasibility Problem(Transshipment problem)</h3><h3 id="Definition-of-the-value-of-flow"><a href="#Definition-of-the-value-of-flow" class="headerlink" title="Definition of the value of flow"></a>Definition of the value of flow</h3><p>Assume:</p>
+<h3 id="Flows-Feasibility-Problem-Transshipment-problem"><a href="#Flows-Feasibility-Problem-Transshipment-problem" class="headerlink" title="Flows-Feasibility Problem(Transshipment problem)"></a>Flows-Feasibility Problem(Transshipment problem)</h3><h2 id="Definition-of-the-value-of-flow"><a href="#Definition-of-the-value-of-flow" class="headerlink" title="Definition of the value of flow"></a>Definition of the value of flow</h2><p>Assume:</p>
 <ul>
 <li><p>If $(u,v) \in E$ ,then $(v,u) \in E$</p>
 </li>
@@ -858,7 +879,7 @@ G = (V,E,c,s,t)</script><ul>
 <ul>
 <li><p>Capacity constrants:</p>
 <ul>
-<li>$0 \leq f(u,v) \leg c(u,v)$</li>
+<li>$0 \leq f(u,v) \leq c(u,v)$</li>
 </ul>
 </li>
 <li><p>Flow conservation:(对于除了原点和终点之外的点)</p>
@@ -871,6 +892,8 @@ G = (V,E,c,s,t)</script><ul>
 </li>
 <li><p>For each edge $(u,v) \in E$, if $f(u,v) &gt;0$, then $ f(v,u) =0$</p>
 </li>
+<li><p>If $f(v,u) = c(v,u)$, then we say that the flow saturates edge $(v,u)$, and edge $(v,u)$ is a saturated edge</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -880,7 +903,18 @@ G = (V,E,c,s,t)</script><ul>
 |f|  &= \sum_{(x,t) \in E} f(x,t) - \sum_{(t,z)\in E} f(t,z)\\
 &= \sum_{(s,v) \in E} f(s,v) - \sum_{(u,s)\in E} f(u,s)
 
-\end{align}</script><h3 id="The-maximum-flow-problem"><a href="#The-maximum-flow-problem" class="headerlink" title="The maximum flow problem"></a>The maximum flow problem</h3>
+\end{align}</script><h3 id="The-maximum-flow-problem"><a href="#The-maximum-flow-problem" class="headerlink" title="The maximum flow problem"></a>The maximum flow problem</h3><h2 id="Residual-Capacities-残余容量"><a href="#Residual-Capacities-残余容量" class="headerlink" title="Residual Capacities(残余容量)"></a>Residual Capacities(残余容量)</h2><p>The residual capacity of an edge $(u,v) \in E$ is defined as:</p>
+<script type="math/tex; mode=display">
+ c_f(u,v) = c(u,v) - f(u,v) \;\;\; \text{if $f(u,v) \geq 0 $ and $f(v,u) =0$;}\\
+ c_f(u,v) = c(u,v) + f(u,v) \;\;\; \text{if $f(u,v) = 0$ and $f(v,u) \geq 0$;}\\</script><p>The residual network of $G$ included by flow f is the flow network $G_f = (V,E_f,c_f,s,t)$, where $c_f$ are the residual capacities and $E_f$ is the set of residual edges</p>
+<h2 id="Max-flow-Min-cut-theorem最大流最小割定理"><a href="#Max-flow-Min-cut-theorem最大流最小割定理" class="headerlink" title="Max-flow Min-cut theorem最大流最小割定理"></a>Max-flow Min-cut theorem最大流最小割定理</h2><h2 id="Ford-Fulkerson-Method"><a href="#Ford-Fulkerson-Method" class="headerlink" title="Ford-Fulkerson Method"></a>Ford-Fulkerson Method</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">f = 0</span><br><span class="line">while true:</span><br><span class="line">	1. construct the residual network</span><br><span class="line">	2. find an augmenting path p, </span><br><span class="line">		if there is no agmenting path:</span><br><span class="line">			exit</span><br><span class="line">		end </span><br><span class="line">	3. f = f + f_p</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>Running time:</p>
+<script type="math/tex; mode=display">
+O(E)+O(E)+O(E)</script><h2 id="Edmonds-Karp-algorithm"><a href="#Edmonds-Karp-algorithm" class="headerlink" title="Edmonds-Karp algorithm"></a>Edmonds-Karp algorithm</h2><p>when selecting the augmenting path, it uses BFS to find a shortest augmenting path.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">f = 0</span><br><span class="line">while true:</span><br><span class="line">	1. construct the residual network</span><br><span class="line">	2. BFS to find a shortest augmenting path p </span><br><span class="line">	3. if there is no agmenting path:</span><br><span class="line">			exit</span><br><span class="line">		end </span><br><span class="line">	3. f = f + f_p3</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>Running time:</p>
+<script type="math/tex; mode=display">
+O(VE^2)</script>
           
         
       

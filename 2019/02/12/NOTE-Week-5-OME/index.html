@@ -82,14 +82,14 @@
 <meta name="description" content="Flow network G = (V,E,c,s,t) $V$ – set of n nodes,$ E $– set of m directed edges (links); for each $(u, v) \in E, c(u, v) \geq 0$ is the capacity of edge $(u, v)$; two distinguished nodes: source $s$">
 <meta name="keywords" content="note,OM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="(OM)Network Flow Problems">
+<meta property="og:title" content="(OM)Network Flow Problems and Ford-Fulkerson method">
 <meta property="og:url" content="https://zhangzhejian.com/2019/02/12/NOTE-Week-5-OME/index.html">
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Flow network G = (V,E,c,s,t) $V$ – set of n nodes,$ E $– set of m directed edges (links); for each $(u, v) \in E, c(u, v) \geq 0$ is the capacity of edge $(u, v)$; two distinguished nodes: source $s$">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-19T16:33:58.457Z">
+<meta property="og:updated_time" content="2019-02-22T17:11:19.692Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="(OM)Network Flow Problems">
+<meta name="twitter:title" content="(OM)Network Flow Problems and Ford-Fulkerson method">
 <meta name="twitter:description" content="Flow network G = (V,E,c,s,t) $V$ – set of n nodes,$ E $– set of m directed edges (links); for each $(u, v) \in E, c(u, v) \geq 0$ is the capacity of edge $(u, v)$; two distinguished nodes: source $s$">
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>(OM)Network Flow Problems | Recap</title>
+  <title>(OM)Network Flow Problems and Ford-Fulkerson method | Recap</title>
   
 
 
@@ -250,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">(OM)Network Flow Problems</h1>
+          <h1 class="post-title" itemprop="name headline">(OM)Network Flow Problems and Ford-Fulkerson method</h1>
         
 
         <div class="post-meta">
@@ -300,7 +300,7 @@
       
 
       
-        <h3 id="Flow-network"><a href="#Flow-network" class="headerlink" title="Flow network"></a>Flow network</h3><script type="math/tex; mode=display">
+        <h2 id="Flow-network"><a href="#Flow-network" class="headerlink" title="Flow network"></a>Flow network</h2><script type="math/tex; mode=display">
 G = (V,E,c,s,t)</script><ul>
 <li>$V$ – set of n nodes,$ E $– set of m directed edges (links);</li>
 <li>for each $(u, v) \in E, c(u, v) \geq 0$ is the capacity of edge $(u, v)$;</li>
@@ -314,7 +314,7 @@ G = (V,E,c,s,t)</script><ul>
 </ul>
 </li>
 </ul>
-<h3 id="Flows-Feasibility-Problem-Transshipment-problem"><a href="#Flows-Feasibility-Problem-Transshipment-problem" class="headerlink" title="Flows-Feasibility Problem(Transshipment problem)"></a>Flows-Feasibility Problem(Transshipment problem)</h3><h3 id="Definition-of-the-value-of-flow"><a href="#Definition-of-the-value-of-flow" class="headerlink" title="Definition of the value of flow"></a>Definition of the value of flow</h3><p>Assume:</p>
+<h3 id="Flows-Feasibility-Problem-Transshipment-problem"><a href="#Flows-Feasibility-Problem-Transshipment-problem" class="headerlink" title="Flows-Feasibility Problem(Transshipment problem)"></a>Flows-Feasibility Problem(Transshipment problem)</h3><h2 id="Definition-of-the-value-of-flow"><a href="#Definition-of-the-value-of-flow" class="headerlink" title="Definition of the value of flow"></a>Definition of the value of flow</h2><p>Assume:</p>
 <ul>
 <li><p>If $(u,v) \in E$ ,then $(v,u) \in E$</p>
 </li>
@@ -322,7 +322,7 @@ G = (V,E,c,s,t)</script><ul>
 <ul>
 <li><p>Capacity constrants:</p>
 <ul>
-<li>$0 \leq f(u,v) \leg c(u,v)$</li>
+<li>$0 \leq f(u,v) \leq c(u,v)$</li>
 </ul>
 </li>
 <li><p>Flow conservation:(对于除了原点和终点之外的点)</p>
@@ -335,6 +335,8 @@ G = (V,E,c,s,t)</script><ul>
 </li>
 <li><p>For each edge $(u,v) \in E$, if $f(u,v) &gt;0$, then $ f(v,u) =0$</p>
 </li>
+<li><p>If $f(v,u) = c(v,u)$, then we say that the flow saturates edge $(v,u)$, and edge $(v,u)$ is a saturated edge</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -344,7 +346,18 @@ G = (V,E,c,s,t)</script><ul>
 |f|  &= \sum_{(x,t) \in E} f(x,t) - \sum_{(t,z)\in E} f(t,z)\\
 &= \sum_{(s,v) \in E} f(s,v) - \sum_{(u,s)\in E} f(u,s)
 
-\end{align}</script><h3 id="The-maximum-flow-problem"><a href="#The-maximum-flow-problem" class="headerlink" title="The maximum flow problem"></a>The maximum flow problem</h3>
+\end{align}</script><h3 id="The-maximum-flow-problem"><a href="#The-maximum-flow-problem" class="headerlink" title="The maximum flow problem"></a>The maximum flow problem</h3><h2 id="Residual-Capacities-残余容量"><a href="#Residual-Capacities-残余容量" class="headerlink" title="Residual Capacities(残余容量)"></a>Residual Capacities(残余容量)</h2><p>The residual capacity of an edge $(u,v) \in E$ is defined as:</p>
+<script type="math/tex; mode=display">
+ c_f(u,v) = c(u,v) - f(u,v) \;\;\; \text{if $f(u,v) \geq 0 $ and $f(v,u) =0$;}\\
+ c_f(u,v) = c(u,v) + f(u,v) \;\;\; \text{if $f(u,v) = 0$ and $f(v,u) \geq 0$;}\\</script><p>The residual network of $G$ included by flow f is the flow network $G_f = (V,E_f,c_f,s,t)$, where $c_f$ are the residual capacities and $E_f$ is the set of residual edges</p>
+<h2 id="Max-flow-Min-cut-theorem最大流最小割定理"><a href="#Max-flow-Min-cut-theorem最大流最小割定理" class="headerlink" title="Max-flow Min-cut theorem最大流最小割定理"></a>Max-flow Min-cut theorem最大流最小割定理</h2><h2 id="Ford-Fulkerson-Method"><a href="#Ford-Fulkerson-Method" class="headerlink" title="Ford-Fulkerson Method"></a>Ford-Fulkerson Method</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">f = 0</span><br><span class="line">while true:</span><br><span class="line">	1. construct the residual network</span><br><span class="line">	2. find an augmenting path p, </span><br><span class="line">		if there is no agmenting path:</span><br><span class="line">			exit</span><br><span class="line">		end </span><br><span class="line">	3. f = f + f_p</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>Running time:</p>
+<script type="math/tex; mode=display">
+O(E)+O(E)+O(E)</script><h2 id="Edmonds-Karp-algorithm"><a href="#Edmonds-Karp-algorithm" class="headerlink" title="Edmonds-Karp algorithm"></a>Edmonds-Karp algorithm</h2><p>when selecting the augmenting path, it uses BFS to find a shortest augmenting path.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">f = 0</span><br><span class="line">while true:</span><br><span class="line">	1. construct the residual network</span><br><span class="line">	2. BFS to find a shortest augmenting path p </span><br><span class="line">	3. if there is no agmenting path:</span><br><span class="line">			exit</span><br><span class="line">		end </span><br><span class="line">	3. f = f + f_p3</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>Running time:</p>
+<script type="math/tex; mode=display">
+O(VE^2)</script>
       
     </div>
     
@@ -511,7 +524,7 @@ G = (V,E,c,s,t)</script><ul>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flow-network"><span class="nav-number">1.</span> <span class="nav-text">Flow network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Flows-Feasibility-Problem-Transshipment-problem"><span class="nav-number">2.</span> <span class="nav-text">Flows-Feasibility Problem(Transshipment problem)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Definition-of-the-value-of-flow"><span class="nav-number">3.</span> <span class="nav-text">Definition of the value of flow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-maximum-flow-problem"><span class="nav-number">4.</span> <span class="nav-text">The maximum flow problem</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flow-network"><span class="nav-number">1.</span> <span class="nav-text">Flow network</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flows-Feasibility-Problem-Transshipment-problem"><span class="nav-number">1.1.</span> <span class="nav-text">Flows-Feasibility Problem(Transshipment problem)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Definition-of-the-value-of-flow"><span class="nav-number">2.</span> <span class="nav-text">Definition of the value of flow</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The-maximum-flow-problem"><span class="nav-number">2.1.</span> <span class="nav-text">The maximum flow problem</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Residual-Capacities-残余容量"><span class="nav-number">3.</span> <span class="nav-text">Residual Capacities(残余容量)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Max-flow-Min-cut-theorem最大流最小割定理"><span class="nav-number">4.</span> <span class="nav-text">Max-flow Min-cut theorem最大流最小割定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ford-Fulkerson-Method"><span class="nav-number">5.</span> <span class="nav-text">Ford-Fulkerson Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Edmonds-Karp-algorithm"><span class="nav-number">6.</span> <span class="nav-text">Edmonds-Karp algorithm</span></a></li></ol></div>
             
 
           </div>

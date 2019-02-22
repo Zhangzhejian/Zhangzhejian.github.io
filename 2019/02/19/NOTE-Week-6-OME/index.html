@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="A flow network:  G = (V, E,u,c,d) $u(v,w)$ is the capacity of edge $(v,w)$  $c(v,w)$ is the cost of one unit of flow on  edge $(v,w)$   the cost of a flow $f$ is:  \sum_{(v,w)\in E} c(v,w) f(v,w)Succe">
+<meta name="description" content="Basic definitionA flow network:  G = (V, E,u,c,d) $u(v,w) \geq 0$ is the capacity of edge $(v,w)$  $c(v,w) $ is the cost of one unit of flow on  edge $(v,w)$  for each node $v \in V$, $|d(v)|$ is the">
 <meta name="keywords" content="note,OM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(OM)Minimum cost ﬂow problem Multicommodity ﬂow problems">
 <meta property="og:url" content="https://zhangzhejian.com/2019/02/19/NOTE-Week-6-OME/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="A flow network:  G = (V, E,u,c,d) $u(v,w)$ is the capacity of edge $(v,w)$  $c(v,w)$ is the cost of one unit of flow on  edge $(v,w)$   the cost of a flow $f$ is:  \sum_{(v,w)\in E} c(v,w) f(v,w)Succe">
+<meta property="og:description" content="Basic definitionA flow network:  G = (V, E,u,c,d) $u(v,w) \geq 0$ is the capacity of edge $(v,w)$  $c(v,w) $ is the cost of one unit of flow on  edge $(v,w)$  for each node $v \in V$, $|d(v)|$ is the">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-19T17:20:47.609Z">
+<meta property="og:updated_time" content="2019-02-22T18:03:37.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(OM)Minimum cost ﬂow problem Multicommodity ﬂow problems">
-<meta name="twitter:description" content="A flow network:  G = (V, E,u,c,d) $u(v,w)$ is the capacity of edge $(v,w)$  $c(v,w)$ is the cost of one unit of flow on  edge $(v,w)$   the cost of a flow $f$ is:  \sum_{(v,w)\in E} c(v,w) f(v,w)Succe">
+<meta name="twitter:description" content="Basic definitionA flow network:  G = (V, E,u,c,d) $u(v,w) \geq 0$ is the capacity of edge $(v,w)$  $c(v,w) $ is the cost of one unit of flow on  edge $(v,w)$  for each node $v \in V$, $|d(v)|$ is the">
 
 
 
@@ -300,15 +300,20 @@
       
 
       
-        <p>A flow network:</p>
+        <h2 id="Basic-definition"><a href="#Basic-definition" class="headerlink" title="Basic definition"></a>Basic definition</h2><p>A flow network:</p>
 <script type="math/tex; mode=display">
 G = (V, E,u,c,d)</script><ul>
-<li>$u(v,w)$ is the capacity of edge $(v,w)$ </li>
-<li>$c(v,w)$ is the cost of one unit of flow on  edge $(v,w)$ </li>
+<li>$u(v,w) \geq 0$ is the capacity of edge $(v,w)$ </li>
+<li>$c(v,w) $ is the cost of one unit of flow on  edge $(v,w)$ </li>
+<li>for each node $v \in V$, $|d(v)|$ is the initial supply or demand at $v$</li>
 </ul>
-<p>the cost of a flow $f$ is:</p>
+<p><strong>Objective</strong>: Find a ﬂow which satisﬁes the speciﬁed supply/demand values (or, if not possible, ﬁnd a ﬂow which maximizes the value of ﬂow) and has the minimum possible cost.</p>
+<p>the <strong>cost of a flow</strong> $f$ is:</p>
 <script type="math/tex; mode=display">
-\sum_{(v,w)\in E} c(v,w) f(v,w)</script><p>Successive shortest path algorithm</p>
+\sum_{(v,w)\in E} c(v,w) f(v,w)</script><p>A technical assumption:</p>
+<p>if $(v,w) \in E$, then also $(w,v) \in E$, but either $u(v,w) =0$ or $u(w,v) =0$.</p>
+<h2 id="Residual-network"><a href="#Residual-network" class="headerlink" title="Residual network"></a>Residual network</h2><p>In this kind of problem, the construct of residual network is similar to the<a href="http://zhangzhejian.com/2019/02/12/NOTE-Week-5-OME/"> previous one</a></p>
+<p>Successive shortest path algorithm</p>
 
       
     </div>
@@ -401,8 +406,17 @@ G = (V, E,u,c,d)</script><ul>
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -453,6 +467,22 @@ G = (V, E,u,c,d)</script><ul>
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-definition"><span class="nav-number">1.</span> <span class="nav-text">Basic definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Residual-network"><span class="nav-number">2.</span> <span class="nav-text">Residual network</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
