@@ -87,10 +87,12 @@
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Basic definitionA flow network:  G = (V, E,u,c,d) $u(v,w) \geq 0$ is the capacity of edge $(v,w)$  $c(v,w) $ is the cost of one unit of flow on  edge $(v,w)$  for each node $v \in V$, $|d(v)|$ is the">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-22T18:03:37.760Z">
+<meta property="og:image" content="https://i.postimg.cc/dtwvJktq/om-6-1.png">
+<meta property="og:updated_time" content="2019-02-23T18:06:09.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(OM)Minimum cost ﬂow problem Multicommodity ﬂow problems">
 <meta name="twitter:description" content="Basic definitionA flow network:  G = (V, E,u,c,d) $u(v,w) \geq 0$ is the capacity of edge $(v,w)$  $c(v,w) $ is the cost of one unit of flow on  edge $(v,w)$  for each node $v \in V$, $|d(v)|$ is the">
+<meta name="twitter:image" content="https://i.postimg.cc/dtwvJktq/om-6-1.png">
 
 
 
@@ -312,9 +314,40 @@ G = (V, E,u,c,d)</script><ul>
 <script type="math/tex; mode=display">
 \sum_{(v,w)\in E} c(v,w) f(v,w)</script><p>A technical assumption:</p>
 <p>if $(v,w) \in E$, then also $(w,v) \in E$, but either $u(v,w) =0$ or $u(w,v) =0$.</p>
-<h2 id="Residual-network"><a href="#Residual-network" class="headerlink" title="Residual network"></a>Residual network</h2><p>In this kind of problem, the construct of residual network is similar to the<a href="http://zhangzhejian.com/2019/02/12/NOTE-Week-5-OME/"> previous one</a></p>
-<p>Successive shortest path algorithm</p>
-
+<h2 id="Residual-network"><a href="#Residual-network" class="headerlink" title="Residual network"></a>Residual network</h2><p>In this kind of problem, the construct of residual network is similar to the<a href="http://zhangzhejian.com/2019/02/12/NOTE-Week-5-OME/"> previous one</a> but with one difference.</p>
+<script type="math/tex; mode=display">
+u_f(v,w) = u(v,w) - f(v,w)\\
+u_f(w,v) = f(v,w)\\
+c_f(v,w) = c(v,w)\\
+c_f(w,v) = -c(v,w)</script><p><img src="https://i.postimg.cc/dtwvJktq/om-6-1.png" zoom="50%"></p>
+<p>for each node $v \in V$ the residual supply/demand at $v$ is :</p>
+<script type="math/tex; mode=display">
+d_f(v) = d(v) - \sum_{(v,x) \in E} f(v,x) + \sum_{(z,v) \in E} f(z,v)</script><h2 id="Successive-shortest-path-algorithm"><a href="#Successive-shortest-path-algorithm" class="headerlink" title="Successive shortest path algorithm"></a>Successive shortest path algorithm</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">f = 0</span><br><span class="line">S = &#123;v in V: d_f(v)&gt;0&#125;##the nodes with positive redsidual supply</span><br><span class="line">while S is not empty do</span><br><span class="line">	compute the residual network G_f</span><br><span class="line">	select a node v in S </span><br><span class="line">	Compute a shortest-path tree T in G_f from v to all nodes reachable from v</span><br><span class="line">	if there is a node w in T with residual demand (d_f(w) &lt;0) then</span><br><span class="line">		p = the path in T from v to w</span><br><span class="line">		q = min&#123;d_f(v),-d_f(w), min &#123;u_f(x,y):(x,y) in P&#125;&#125;</span><br><span class="line">		f_P = the flow along P of value q</span><br><span class="line">		f = f + f_P</span><br><span class="line">		if d_f(v) = 0 then </span><br><span class="line">			S = S -&#123;v&#125;</span><br><span class="line">	else S = S-&#123;v&#125;</span><br><span class="line">	</span><br><span class="line">end while</span><br></pre></td></tr></table></figure>
+<h3 id="Correctness"><a href="#Correctness" class="headerlink" title="Correctness"></a>Correctness</h3><h3 id="Running-time"><a href="#Running-time" class="headerlink" title="Running time"></a>Running time</h3><p>The best known running time of a minimum cost flow algorithm is $O(m^2log^2n)$</p>
+<h2 id="Multicommodity-flow-problems"><a href="#Multicommodity-flow-problems" class="headerlink" title="Multicommodity flow problems"></a>Multicommodity flow problems</h2><ul>
+<li><p>A directed network $G = (V,E,u)$, where $u(x,y) is the capacity of an edge $(x,y) \in E$</p>
+</li>
+<li><p>K commodities specified as a sequence $C = &lt;(s_1,t_1,d_1),\dots,(s_k,t_k,d_k)&gt;$</p>
+<ul>
+<li><p>$s_q \in V$ and $t_q \in V$ are the source and destination of commodity $q$</p>
+</li>
+<li><p>$d_q(&gt;0)$ is the demand of this commodity</p>
+</li>
+<li><p>flow $f_q$ is the flow of commodity $q$</p>
+</li>
+<li><p>The congestion of flow on an edge (x,y) is defined as:</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\frac{f(x,y), \text{the total flow on edge (x,y)}}{u(x,y)}</script></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Minimum-cost"><a href="#Minimum-cost" class="headerlink" title="Minimum-cost"></a>Minimum-cost</h3><p>the cost of a simultaneous flow $<f_1,f_2, \dots,="" f_k="">$ is equal to:</f_1,f_2,></p>
+<script type="math/tex; mode=display">
+\sum_{(v,w) \in E} c(v,w)f(v,w) = \sum_{(v,w) \in E} c(v,w)[f_1(v,w)+f_2(v,w)+ \dots + f_k(v,w)]</script><h3 id="Minimum-congestion"><a href="#Minimum-congestion" class="headerlink" title="Minimum-congestion"></a>Minimum-congestion</h3><script type="math/tex; mode=display">
+\text{Minimise:} \; max\{\frac{f(x,y)}{u(x,y)}: \;(x,y) \in E\}</script>
       
     </div>
     
@@ -477,7 +510,7 @@ G = (V, E,u,c,d)</script><ul>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-definition"><span class="nav-number">1.</span> <span class="nav-text">Basic definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Residual-network"><span class="nav-number">2.</span> <span class="nav-text">Residual network</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-definition"><span class="nav-number">1.</span> <span class="nav-text">Basic definition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Residual-network"><span class="nav-number">2.</span> <span class="nav-text">Residual network</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Successive-shortest-path-algorithm"><span class="nav-number">3.</span> <span class="nav-text">Successive shortest path algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Correctness"><span class="nav-number">3.1.</span> <span class="nav-text">Correctness</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Running-time"><span class="nav-number">3.2.</span> <span class="nav-text">Running time</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multicommodity-flow-problems"><span class="nav-number">4.</span> <span class="nav-text">Multicommodity flow problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Minimum-cost"><span class="nav-number">4.1.</span> <span class="nav-text">Minimum-cost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Minimum-congestion"><span class="nav-number">4.2.</span> <span class="nav-text">Minimum-congestion</span></a></li></ol></li></ol></div>
             
 
           </div>
