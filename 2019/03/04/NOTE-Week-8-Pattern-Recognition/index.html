@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="note,PR," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Overview:  Introduction Linear SVM: Linearly Separable case Linear SVM: Linearly non-Separable case Nonlinear SVMs Multi-class SVMs  IntroductionSVM similar concept of linear machines with margins Cla">
+<meta name="keywords" content="note,PR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(PR) Support Vector Machines">
+<meta property="og:url" content="https://zhangzhejian.com/2019/03/04/NOTE-Week-8-Pattern-Recognition/index.html">
+<meta property="og:site_name" content="Recap">
+<meta property="og:description" content="Overview:  Introduction Linear SVM: Linearly Separable case Linear SVM: Linearly non-Separable case Nonlinear SVMs Multi-class SVMs  IntroductionSVM similar concept of linear machines with margins Cla">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.postimg.cc/0yjvWkZq/pr-8-1.png">
+<meta property="og:image" content="https://i.postimg.cc/VLD1WrqR/pr-8-2.png">
+<meta property="og:updated_time" content="2019-03-27T12:45:56.420Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(PR) Support Vector Machines">
+<meta name="twitter:description" content="Overview:  Introduction Linear SVM: Linearly Separable case Linear SVM: Linearly non-Separable case Nonlinear SVMs Multi-class SVMs  IntroductionSVM similar concept of linear machines with margins Cla">
+<meta name="twitter:image" content="https://i.postimg.cc/0yjvWkZq/pr-8-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhangzhejian.com/2019/03/04/NOTE-Week-8-Pattern-Recognition/"/>
+
+
+
+
+
+  <title>(PR) Support Vector Machines | Recap</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Recap</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">zhejian</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/03/04/NOTE-Week-8-Pattern-Recognition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">(PR) Support Vector Machines</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-04T13:35:18+00:00">
+                2019-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Overview:</p>
+<ul>
+<li>Introduction</li>
+<li>Linear SVM: Linearly Separable case</li>
+<li>Linear SVM: Linearly non-Separable case</li>
+<li>Nonlinear SVMs</li>
+<li>Multi-class SVMs</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h3><ul>
+<li>similar concept of linear machines with margins</li>
+<li><strong>Clasifies two classes</strong></li>
+<li>Computes the optimal weights instead of through training</li>
+<li>Relies on preprocessing the data in a high dimension using Kernel functions</li>
+</ul>
+<p>SVM iis based on Linear Discriminant Functions</p>
+<h3 id="Two-Class-Classification-Probelm"><a href="#Two-Class-Classification-Probelm" class="headerlink" title="Two-Class Classification Probelm"></a>Two-Class Classification Probelm</h3><ul>
+<li>Labelled training samples: $S = {(x_1,y_1),(x_2,y_2), \dots ,(x_N,y_N)}$<ul>
+<li>$x_i = [x_{i1},\dots, x_(id)]$</li>
+<li>$y_i \in {-1,1}$</li>
+<li>N is the number of samples</li>
+</ul>
+</li>
+<li>Goal is to design a hyperplane which can classify correctly the training samples</li>
+<li>SVM is to optimal :<ul>
+<li>No errors</li>
+<li>Distance or margin between nearest support vectors is maximal</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.postimg.cc/0yjvWkZq/pr-8-1.png"></p>
+<h2 id="Linear-SVM"><a href="#Linear-SVM" class="headerlink" title="Linear SVM"></a>Linear SVM</h2><p>Deal with linearly separable 2-class classification problem</p>
+<ul>
+<li><p>Hyperplane:$f(\mathbf{x}) = \mathbf{w}^T \mathbf{x} + w_o$</p>
+</li>
+<li><p>Find $\mathbf{w}$ and $w_0$ such that</p>
+<ul>
+<li><p>the margin is optimal</p>
+</li>
+<li><script type="math/tex; mode=display">
+\begin{cases}
+\mathbf{w^Tx} + w_0 \geq 1, \text{ $\forall \mathbf{x} \in $ class 1 ('1')} \\
+\mathbf{w^Tx} + w_0 \leq -1, \text{ $\forall \mathbf{x} \in $ class 2 ('-1')}
+\end{cases}</script></li>
+</ul>
+</li>
+</ul>
+<h3 id="Optimal-margin"><a href="#Optimal-margin" class="headerlink" title="Optimal margin"></a>Optimal margin</h3><p>Distance of a point from a hyperplane:</p>
+<script type="math/tex; mode=display">
+distance(x) = \frac{|f(\mathbf{x})|}{||\mathbf{w}||}</script><p>So the margin is given by:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+& min_{\mathbf{x_i}:y_i =-1} \frac{|f(\mathbf{x_i})|}{||\mathbf{w}||} + min_{\mathbf{x_i}:y_i =+1} \frac{|f(\mathbf{x_i})|}{||\mathbf{w}||}\\
+ &= \frac{1}{||\mathbf{w}||}(min_{\mathbf{x_i}:y_i =-1} |f(\mathbf{x_i})| + min_{\mathbf{x_i}:y_i =+1} |f(\mathbf{x_i})|)\\
+ &=\frac{2}{||\mathbf{w}||}
+ \end{align}</script><p>The problem is transformed into:</p>
+<script type="math/tex; mode=display">
+max_{\mathbf{w}} \frac{2}{||\mathbf{w}||} \iff min_{\mathbf{w}} J(\mathbf{w}) = \frac{1}{2} ||\mathbf{w}||^2</script><p>Meanwhile, the classification should be correct. So:</p>
+<script type="math/tex; mode=display">
+y_i(\mathbf{w^Tx_i}+w_0) \geq 1</script><p>The original problem can be transfered into a Quadratic Programing</p>
+<h3 id="Lagrange-multipliers-引入拉格朗日乘子"><a href="#Lagrange-multipliers-引入拉格朗日乘子" class="headerlink" title="Lagrange multipliers(引入拉格朗日乘子)"></a>Lagrange multipliers(引入拉格朗日乘子)</h3><script type="math/tex; mode=display">
+\mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda}) =
+\frac{1}{2} ||\mathbf{w}||^2 - \sum_{i=1}^N \lambda_i(y_i(\mathbf{w^Tx_i}+w_0)-1)\\
+\text{where $\lambda = [\lambda_1\; \lambda_2 \dots \lambda_N]$, $\lambda_i \geq 0 $ for all $i = 1,2,\dots,N$}\\
+\text{And let } \theta(\mathbf{w}) = \max_{\lambda} \mathcal{\scr{L}} (\mathbf{w},w_0,\mathbf{\lambda})</script><p>It is easy to prove that, </p>
+<script type="math/tex; mode=display">
+\min_{\mathbf{w},w_0} \theta(\mathbf(w)) = \min_{\mathbf{w},w_0} \max_{\lambda \geq0} 
+\mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda})</script><h3 id="Solve-the-Dual-problem"><a href="#Solve-the-Dual-problem" class="headerlink" title="Solve the Dual problem"></a>Solve the Dual problem</h3><p>Use KKT conditions</p>
+<script type="math/tex; mode=display">
+\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda})}
+{\part \mathbf{w}} = 0 \implies \;\; \mathbf{w} = \sum_{i=1} ^N \lambda_i y_i \mathbf{x}_i\\
+\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda})}
+{\part w_0} = 0 \implies \sum_{i=1}^N \lambda_i y_i = 0\\
+\lambda_i(y_i (\mathbf{w}^T \mathbf{x_i} - w_0)-1) = 0</script><p>Put them into $\mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda})$:</p>
+<script type="math/tex; mode=display">
+\mathcal{\scr{L}}(\mathbf{\lambda}) = \sum_{i=1}^N \lambda_i - \frac{1}{2}\sum_{i=1}^N \sum_{j=1}^N \lambda_i \lambda_j y_i y_j x_i^Tx_j</script><p>The dual problem is reduced to:</p>
+<script type="math/tex; mode=display">
+\max_{\lambda \geq 0} \left( \sum_{i=1}^N \lambda_i - \frac{1}{2}\sum_{i=1}^N \sum_{j=1}^N \lambda_i \lambda_j y_i y_j x_i^Tx_j \right)\\
+\text{subject ot } \begin{align} &\sum_{i=1}^N \lambda_i y_i = 0, \\
+& \lambda_i \geq 0
+\end{align}</script><h3 id="Support-Vector"><a href="#Support-Vector" class="headerlink" title="Support Vector"></a>Support Vector</h3><p>For those $\mathbf{x_i}$ with $\lambda_i \ne 0$, they are known as <strong>support vectors</strong>. As a result,</p>
+<script type="math/tex; mode=display">
+\mathbf{w} = \sum_{i=1} ^N \lambda_i y_i \mathbf{x}_i = \sum_{i=1} ^{N_s} \lambda_i y_i \mathbf{x}_i</script><ul>
+<li>Support vector $\mathbf{x_i}$: $y_i (\mathbf{w}^T \mathbf{x_i} - w_0)-1 =0$</li>
+</ul>
+<h2 id="Non-separable-Case"><a href="#Non-separable-Case" class="headerlink" title="Non-separable Case"></a>Non-separable Case</h2><p><img src="https://i.postimg.cc/VLD1WrqR/pr-8-2.png"></p>
+<p>Input:</p>
+<ul>
+<li><p>fall outside the band and are correctly classiﬁed</p>
+<ul>
+<li><script type="math/tex; mode=display">
+y_i(\mathbf{w^Tx_i}+w_0) \geq 1</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>fall inside the band and are correctly classiﬁed</p>
+<ul>
+<li><script type="math/tex; mode=display">
+0 \leq y_i(\mathbf{w^Tx_i}+w_0) < 1</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>misclassiﬁed</p>
+<ul>
+<li><script type="math/tex; mode=display">
+y_i(\mathbf{w^Tx_i}+w_0) \leq 0</script></li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+y_i(\mathbf{w^Tx_i}+w_0) \geq 1 - \xi_i\\
+\xi_i = 0; or \;\; 0<\xi \leq 1 ; \;\; or \; \xi_i >1</script><p>Max the margin and min the number of misclassified point.</p>
+<script type="math/tex; mode=display">
+\min_{\mathbf{w},w_0, \xi} J(\mathbf{w},\xi) = \frac{1}{2}||w||^2 + C \sum_{i=1}^N \xi_i\\
+subject \;\;to:
+\begin{align}
+& y_i(\mathbf{w^Tx_i}+w_0) \geq 1 - \xi_i\\
+& \xi_i \geq 0
+\end{align}</script><h3 id="Lagrange-multipliers"><a href="#Lagrange-multipliers" class="headerlink" title="Lagrange multipliers"></a>Lagrange multipliers</h3><script type="math/tex; mode=display">
+\mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda},\mu, \xi) =
+\frac{1}{2} ||\mathbf{w}||^2 + C \sum_{i=1}^N \xi_i -\sum_{i=1}^N \mu_i \xi_i - \sum_{i=1}^N \lambda_i(y_i(\mathbf{w^Tx_i}+w_0)-1+\xi_i)\\
+
+\text{where $\lambda = [\lambda_1\; \lambda_2 \dots \lambda_N]$, $\lambda_i \geq 0 $ $\mu_i \geq 0$ for all $i = 1,2,\dots,N$ , }</script><h3 id="Apply-KKT-condition"><a href="#Apply-KKT-condition" class="headerlink" title="Apply KKT condition"></a>Apply KKT condition</h3><script type="math/tex; mode=display">
+\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda},\mu, \xi)}{\part \mathbf{w}}= 0 \implies \;\; \mathbf{w} = \sum_{i=1} ^N \lambda_i y_i \mathbf{x}_i\\
+\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda} ,\mu, \xi)}
+{\part w_0} = 0 \implies \sum_{i=1}^N \lambda_i y_i = 0\\
+
+\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda} ,\mu, \xi)}
+{\part \xi_i} = 0 \implies C-\mu_i - \lambda_i = 0</script><p>We have:</p>
+<script type="math/tex; mode=display">
+\mathcal{\scr{L}}(\mathbf{\lambda},\xi) = \sum_{i=1}^N \lambda_i - \frac{1}{2}\sum_{i=1}^N \sum_{j=1}^N \lambda_i \lambda_j y_i y_j x_i^Tx_j</script><p>The dual problem is reduced to:</p>
+<script type="math/tex; mode=display">
+\max_{\lambda \geq 0} \left( \sum_{i=1}^N \lambda_i - \frac{1}{2}\sum_{i=1}^N \sum_{j=1}^N \lambda_i \lambda_j y_i y_j x_i^Tx_j \right)\\
+\text{subject ot } \begin{align} &\sum_{i=1}^N \lambda_i y_i = 0, \\
+& 0\leq \lambda_i \leq C
+\end{align}</script><h2 id="Non-linear-SVM"><a href="#Non-linear-SVM" class="headerlink" title="Non-linear SVM"></a>Non-linear SVM</h2><h2 id="Kernel-functions"><a href="#Kernel-functions" class="headerlink" title="Kernel functions"></a>Kernel functions</h2><script type="math/tex; mode=display">
+K(\mathbf{x_i},\mathbf{x}) = \Phi(\mathbf{x_i})^T\Phi(\mathbf{x})</script><h2 id="Multi-class-SVM"><a href="#Multi-class-SVM" class="headerlink" title="Multi-class SVM"></a>Multi-class SVM</h2><ul>
+<li>One against one</li>
+<li>One against all</li>
+<li>Binary decision tree</li>
+<li>Bianary Coded</li>
+</ul>
+<p>Ref:</p>
+<ol>
+<li><a href="https://blog.csdn.net/v_JULY_v/article/details/7624837" target="_blank" rel="noopener">https://blog.csdn.net/v_JULY_v/article/details/7624837</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/note/" rel="tag"># note</a>
+          
+            <a href="/tags/PR/" rel="tag"># PR</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/27/NOTE-Week-7-Software-engineering/" rel="next" title="(SE)Web Application Architecture">
+                <i class="fa fa-chevron-left"></i> (SE)Web Application Architecture
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/06/NOTE-Week-8-Software-Engineering/" rel="prev" title="(SE) Enterprise Information">
+                (SE) Enterprise Information <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zhejian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SVM"><span class="nav-number">1.1.</span> <span class="nav-text">SVM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Two-Class-Classification-Probelm"><span class="nav-number">1.2.</span> <span class="nav-text">Two-Class Classification Probelm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-SVM"><span class="nav-number">2.</span> <span class="nav-text">Linear SVM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Optimal-margin"><span class="nav-number">2.1.</span> <span class="nav-text">Optimal margin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Lagrange-multipliers-引入拉格朗日乘子"><span class="nav-number">2.2.</span> <span class="nav-text">Lagrange multipliers(引入拉格朗日乘子)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solve-the-Dual-problem"><span class="nav-number">2.3.</span> <span class="nav-text">Solve the Dual problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Support-Vector"><span class="nav-number">2.4.</span> <span class="nav-text">Support Vector</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-separable-Case"><span class="nav-number">3.</span> <span class="nav-text">Non-separable Case</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Lagrange-multipliers"><span class="nav-number">3.1.</span> <span class="nav-text">Lagrange multipliers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Apply-KKT-condition"><span class="nav-number">3.2.</span> <span class="nav-text">Apply KKT condition</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Non-linear-SVM"><span class="nav-number">4.</span> <span class="nav-text">Non-linear SVM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kernel-functions"><span class="nav-number">5.</span> <span class="nav-text">Kernel functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multi-class-SVM"><span class="nav-number">6.</span> <span class="nav-text">Multi-class SVM</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhejian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

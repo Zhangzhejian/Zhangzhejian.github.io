@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="note,PR," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Overview:  Fuzzy Inference System  Fuzziﬁers  Knowledge Base  Fuzzy Inference Engine  Defuzziﬁcation    Three Fuzzy Inference Systems Neural Fuzzy Network  Introduction—Fuzzy Logic Human can solve a l">
+<meta name="keywords" content="note,PR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(PR) Fuzzy Inference System(模糊推理)">
+<meta property="og:url" content="https://zhangzhejian.com/2019/02/25/NOTE-Week-7-Pattern-Recognition/index.html">
+<meta property="og:site_name" content="Recap">
+<meta property="og:description" content="Overview:  Fuzzy Inference System  Fuzziﬁers  Knowledge Base  Fuzzy Inference Engine  Defuzziﬁcation    Three Fuzzy Inference Systems Neural Fuzzy Network  Introduction—Fuzzy Logic Human can solve a l">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.postimg.cc/VvgsfpbJ/pr-7-1.png">
+<meta property="og:image" content="https://i.postimg.cc/G2nkTwjc/pr-7-2.png">
+<meta property="og:image" content="https://i.postimg.cc/q73s7Myb/pr-7-3.png">
+<meta property="og:image" content="https://i.postimg.cc/C1CbjPvb/pr-7-4.png">
+<meta property="og:image" content="https://i.postimg.cc/907jykVj/pr-7-5.png">
+<meta property="og:updated_time" content="2019-03-08T11:51:45.127Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(PR) Fuzzy Inference System(模糊推理)">
+<meta name="twitter:description" content="Overview:  Fuzzy Inference System  Fuzziﬁers  Knowledge Base  Fuzzy Inference Engine  Defuzziﬁcation    Three Fuzzy Inference Systems Neural Fuzzy Network  Introduction—Fuzzy Logic Human can solve a l">
+<meta name="twitter:image" content="https://i.postimg.cc/VvgsfpbJ/pr-7-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zhangzhejian.com/2019/02/25/NOTE-Week-7-Pattern-Recognition/"/>
+
+
+
+
+
+  <title>(PR) Fuzzy Inference System(模糊推理) | Recap</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Recap</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">zhejian</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/25/NOTE-Week-7-Pattern-Recognition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">(PR) Fuzzy Inference System(模糊推理)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-25T13:00:46+00:00">
+                2019-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Overview:</p>
+<ul>
+<li>Fuzzy Inference System <ul>
+<li>Fuzziﬁers </li>
+<li>Knowledge Base </li>
+<li>Fuzzy Inference Engine </li>
+<li>Defuzziﬁcation </li>
+</ul>
+</li>
+<li>Three Fuzzy Inference Systems</li>
+<li>Neural Fuzzy Network</li>
+</ul>
+<h2 id="Introduction—Fuzzy-Logic"><a href="#Introduction—Fuzzy-Logic" class="headerlink" title="Introduction—Fuzzy Logic"></a>Introduction—Fuzzy Logic</h2><ul>
+<li>Human can solve a lot of complex problems using imprecision such as common sense and expert knowledge</li>
+<li>Common sense and expert knowledge can be represented by linguistic rules, say, in <strong>If-Then</strong> format.</li>
+<li>Fuzzy logic is the theory of fuzzy sets, which is used to handle fuzziness/imprecision/ambiguity/vagueness.</li>
+<li>By using fuzzy logic, “human spirit” can be computed/represented mathematically.</li>
+</ul>
+<h3 id="Linguistic-Rules"><a href="#Linguistic-Rules" class="headerlink" title="Linguistic Rules"></a>Linguistic Rules</h3><ul>
+<li><p>Rule 1: If distance is small Then speed is low</p>
+</li>
+<li><p>Rule 2: If distance is medium Then speed is steady</p>
+</li>
+<li><p>Rule 3: If distance is large Then speed is high</p>
+</li>
+</ul>
+<h3 id="FIS"><a href="#FIS" class="headerlink" title="FIS"></a>FIS</h3><p><img src="https://i.postimg.cc/VvgsfpbJ/pr-7-1.png"></p>
+<ul>
+<li>Fuzzifiers:</li>
+<li>Knowledge Base:<ul>
+<li>A database consisting of linguistic rules in <strong>If-Then</strong> format</li>
+</ul>
+</li>
+<li>Fuzzy inference Engine<ul>
+<li>Using the rules in knowledge base, it performs reasoning by producing a fuzzy output according to the fuzzy input given by the fuzziﬁer</li>
+</ul>
+</li>
+<li>Defuzziers<ul>
+<li>It converts the fuzzy output given by the fuzzy inference engine to produce a crisp (real-valued) output. This process is called defuzziﬁaction.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Fuzzifiers"><a href="#Fuzzifiers" class="headerlink" title="Fuzzifiers"></a>Fuzzifiers</h2><p>The input is turned to fuzzy sets thought membership functions.</p>
+<p>A fuzzy set is represented by a membership functions (associated with a label called fuzzy term or linguistic term).</p>
+<h3 id="Membership-functions"><a href="#Membership-functions" class="headerlink" title="Membership functions:"></a>Membership functions:</h3><p>A membership function denoted by $\mu_A(x)$ corresponding to fuzzy set A is characterised by a linear/nonlinear function of premise variable x.</p>
+<p>$ 0 \leq \mu_A(x) \leq 1$</p>
+<h3 id="Property-of-membership-functions"><a href="#Property-of-membership-functions" class="headerlink" title="Property of membership functions:"></a>Property of membership functions:</h3><ul>
+<li>Core</li>
+<li>Support</li>
+<li>Boundaries</li>
+</ul>
+<p><img src="https://i.postimg.cc/G2nkTwjc/pr-7-2.png" zoom="70%"></p>
+<ul>
+<li>Normal/subnormal fuzzy set:<ul>
+<li>if its membership function has atleaast one element of x  whose grade is 1</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.postimg.cc/q73s7Myb/pr-7-3.png"></p>
+<ul>
+<li>height of a fuzzy set $hgt(A)$<ul>
+<li>$hgt(A) = max{\mu_A}$</li>
+</ul>
+</li>
+<li>Convex/non-convex fuzzy set:<ul>
+<li>If membership function are strictly monotonically increasing/decreasing or  strictly monotonically increasing then decreasing.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.postimg.cc/C1CbjPvb/pr-7-4.png"></p>
+<h3 id="Fuzzification"><a href="#Fuzzification" class="headerlink" title="Fuzzification"></a>Fuzzification</h3><p>The process turning the crisp input to a fuzzy value</p>
+<h2 id="Knowledge-Base"><a href="#Knowledge-Base" class="headerlink" title="Knowledge Base"></a>Knowledge Base</h2><p>The knowledge base is the rule base representing the expertise knowledge dealing with a speciﬁc problem.</p>
+<p>Linguistic rule: IF premise (antecedent) THEN conclusion (consequent)</p>
+<p><img src="https://i.postimg.cc/907jykVj/pr-7-5.png"></p>
+<h2 id="Fuzzy-Inference-Engine"><a href="#Fuzzy-Inference-Engine" class="headerlink" title="Fuzzy Inference Engine"></a>Fuzzy Inference Engine</h2><p>to produce the fuzzy output according to the crisp inputs based on the knowledge (knowledge base) represented by IF-THEN rule. This is the process of reasoning</p>
+<ul>
+<li>Rule evaluation<ul>
+<li>to apply the fuzzy set operators (AND,OR,NOT) to the antecedents to determine the firing strength of each rule</li>
+</ul>
+</li>
+<li>Rule aggregation<ul>
+<li>combine the output (consequents) fuzzy sets using the ﬁring strengths obtained in the process of rule evaluation.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h3><ul>
+<li><p>OR</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\mu_{A \bigcup B}(x) = \mu_A(x) \or \mu_B(x) = max(\mu_A(x) , \mu_B(x))</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>AND</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\mu_{A \bigcap B}(x) = \mu_A(x) \and \mu_B(x) = min(\mu_A(x) , \mu_B(x))</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>NOT</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\mu_{\bar{A}}(x) = 1-\mu_A(x)</script></li>
+</ul>
+</li>
+</ul>
+<h2 id="Defuzzification"><a href="#Defuzzification" class="headerlink" title="Defuzzification"></a>Defuzzification</h2><p>a process to convert the fuzzy output (an inferred membership function) to a crisp value.</p>
+<h3 id="Methods-for-defuzzification"><a href="#Methods-for-defuzzification" class="headerlink" title="Methods for defuzzification"></a>Methods for defuzzification</h3><ul>
+<li>max membership principle</li>
+<li>centroid method</li>
+<li>Weighted average method</li>
+<li>mean max membership</li>
+<li>center of sums</li>
+<li>Center of largest area</li>
+<li>First of maxima</li>
+</ul>
+<h4 id="Max-Membership-Principle"><a href="#Max-Membership-Principle" class="headerlink" title="Max Membership Principle"></a>Max Membership Principle</h4><p>choose the peaked value as the output</p>
+<script type="math/tex; mode=display">
+\mu_C(z^*) \geq \mu_C(z) \;\forall z \in Z \text{  where $z^*$ is the defuzzified value }</script><h4 id="Centroid-method-重心"><a href="#Centroid-method-重心" class="headerlink" title="Centroid method(重心)"></a>Centroid method(重心)</h4><p>COA or COG</p>
+<ul>
+<li><p>Continuous from:</p>
+<ul>
+<li><script type="math/tex; mode=display">
+z^* = \frac{\int \mu_C(z)z \rm dz}{\int \mu_C(z) \rm dz}</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Discrete form</p>
+<ul>
+<li><script type="math/tex; mode=display">
+z^* = \frac{\sum_{z_i \in Z}\mu_C(z_i)z_i}{\sum_{z_i \in Z}\mu_C(z_i)}</script></li>
+</ul>
+</li>
+</ul>
+<h4 id="Weighted-Average-Method"><a href="#Weighted-Average-Method" class="headerlink" title="Weighted Average Method"></a>Weighted Average Method</h4><p>Computational efficient but symmetrical output membership functions required</p>
+<script type="math/tex; mode=display">
+z^* = \frac{\sum \mu_C(\bar{z_i})\bar{z_i}}{\sum \mu_C(\bar{z_i})}</script><p>$\bar{z}$ is the centroid of each symmetric inferred membership function </p>
+<h4 id="Mean-Max-Membership"><a href="#Mean-Max-Membership" class="headerlink" title="Mean Max Membership"></a>Mean Max Membership</h4><p>Computational efficient.</p>
+<script type="math/tex; mode=display">
+z^* = \frac{a+b}{2}</script><h4 id="Center-of-Sums"><a href="#Center-of-Sums" class="headerlink" title="Center of Sums"></a>Center of Sums</h4><ul>
+<li><p>Continuous form</p>
+<ul>
+<li><script type="math/tex; mode=display">
+z^* = \frac{\sum_{k=1}^n \bar{z}_k\int \mu_{C_k}(z) \rm dz }{\sum_{k=1}^n \int \mu_{C_k}(z) \rm dz}</script></li>
+<li><p>$\bar{z}_k$ is the centroid of the $k^{th}$ output membership function</p>
+</li>
+<li><p>$\int \mu_{C_k}(z) \rm dz$ is the area of the member function</p>
+</li>
+</ul>
+</li>
+<li><p>Discrete form</p>
+<ul>
+<li><script type="math/tex; mode=display">
+z^* =\frac{\sum_{k=1}^n \bar{z}_k \sum_{z_i\in Z} \mu_{C_k}(z)  }{\sum_{k=1}^n \sum_{z_i\in Z} \mu_{C_k}(z) }</script></li>
+</ul>
+</li>
+</ul>
+<h4 id="Center-of-Largest-Area"><a href="#Center-of-Largest-Area" class="headerlink" title="Center of Largest Area"></a>Center of Largest Area</h4><h4 id="First-or-last-of-Maxima"><a href="#First-or-last-of-Maxima" class="headerlink" title="First(or last) of Maxima"></a>First(or last) of Maxima</h4><h2 id="Three-FIS"><a href="#Three-FIS" class="headerlink" title="Three FIS"></a>Three FIS</h2><ul>
+<li>Mamdani FIS</li>
+<li>Sugeno FIS</li>
+<li>Tsukamoto FIS</li>
+</ul>
+<p>The main difference is in the consequents of the IF-THEN rules:</p>
+<ul>
+<li>Mamdani: Consequent membership functino is general membership function</li>
+<li>Sugeno: mathematical function</li>
+<li>Tsukamoto: monotonic membership function (单调函数)</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/note/" rel="tag"># note</a>
+          
+            <a href="/tags/PR/" rel="tag"># PR</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/25/NOTE-Week-7-Distributed-System/" rel="next" title="(DS) Distributed Transcations">
+                <i class="fa fa-chevron-left"></i> (DS) Distributed Transcations
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/26/NOTE-Week-7-OME/" rel="prev" title="Linear Programming">
+                Linear Programming <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">zhejian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction—Fuzzy-Logic"><span class="nav-number">1.</span> <span class="nav-text">Introduction—Fuzzy Logic</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linguistic-Rules"><span class="nav-number">1.1.</span> <span class="nav-text">Linguistic Rules</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FIS"><span class="nav-number">1.2.</span> <span class="nav-text">FIS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fuzzifiers"><span class="nav-number">2.</span> <span class="nav-text">Fuzzifiers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Membership-functions"><span class="nav-number">2.1.</span> <span class="nav-text">Membership functions:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Property-of-membership-functions"><span class="nav-number">2.2.</span> <span class="nav-text">Property of membership functions:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fuzzification"><span class="nav-number">2.3.</span> <span class="nav-text">Fuzzification</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Knowledge-Base"><span class="nav-number">3.</span> <span class="nav-text">Knowledge Base</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fuzzy-Inference-Engine"><span class="nav-number">4.</span> <span class="nav-text">Fuzzy Inference Engine</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Operators"><span class="nav-number">4.1.</span> <span class="nav-text">Operators</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Defuzzification"><span class="nav-number">5.</span> <span class="nav-text">Defuzzification</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Methods-for-defuzzification"><span class="nav-number">5.1.</span> <span class="nav-text">Methods for defuzzification</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Max-Membership-Principle"><span class="nav-number">5.1.1.</span> <span class="nav-text">Max Membership Principle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Centroid-method-重心"><span class="nav-number">5.1.2.</span> <span class="nav-text">Centroid method(重心)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Weighted-Average-Method"><span class="nav-number">5.1.3.</span> <span class="nav-text">Weighted Average Method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Mean-Max-Membership"><span class="nav-number">5.1.4.</span> <span class="nav-text">Mean Max Membership</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Center-of-Sums"><span class="nav-number">5.1.5.</span> <span class="nav-text">Center of Sums</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Center-of-Largest-Area"><span class="nav-number">5.1.6.</span> <span class="nav-text">Center of Largest Area</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#First-or-last-of-Maxima"><span class="nav-number">5.1.7.</span> <span class="nav-text">First(or last) of Maxima</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Three-FIS"><span class="nav-number">6.</span> <span class="nav-text">Three FIS</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhejian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

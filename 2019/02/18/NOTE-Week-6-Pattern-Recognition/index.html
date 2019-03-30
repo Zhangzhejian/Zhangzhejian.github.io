@@ -97,7 +97,8 @@
 <meta property="og:image" content="https://i.postimg.cc/FsYZYTRp/pr-6-8.png">
 <meta property="og:image" content="https://i.postimg.cc/Gt8ymSQs/pr-6-9.png">
 <meta property="og:image" content="https://i.postimg.cc/mrL1Hrj4/pr-6-10.png">
-<meta property="og:updated_time" content="2019-02-22T13:52:39.944Z">
+<meta property="og:image" content="https://i.postimg.cc/L6ZSRS3v/pr-6-11.png">
+<meta property="og:updated_time" content="2019-02-25T13:26:56.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(PR) Multilayer NN">
 <meta name="twitter:description" content="Overview:  Feedforward NN Neuron Model  Three-Layer Fully-Connected Feedforward Neural Networks  Activation/Transfer Functions  XOR Problem  General Feed-Forward Operation  Expressive Power of Multi-L">
@@ -466,16 +467,35 @@ J = \sum_{p=1}^n J_p = \frac{1}{2}\sum_{p=1}^n (t_p-z_p)^2</script><p>Two pahses
 </li>
 <li><p>pick randomly $n_H$ input pattern from the data set(with n input patterns) as the centres $\mathbf{c}_j, \; j=1, \dots , n_H$</p>
 </li>
-<li><p>When Gaussian function is employed, deﬁne $\sigma_j = \frac{\rho_{max}}{\sqrt{2n_H}}$ or $\sigma_j = 2\rho_{avg}$ for all j where $\rho_{max}$ is the maximum distance between the chosen centres and $\rho_avg$ is the average distance between the chosen centres</p>
+<li><p>When Gaussian function is employed, deﬁne $\sigma_j = \frac{\rho_{max}}{\sqrt{2n_H}}$ or $\sigma_j = 2\rho_{avg}$ for all j where $\rho_{max}$ is the maximum distance between the chosen centres and $\rho_{avg}$ is the average distance between the chosen centres</p>
 </li>
 <li><p>Other parameters are chosen randomly.</p>
 </li>
 </ol>
-<h3 id="Clustering-based-approaches"><a href="#Clustering-based-approaches" class="headerlink" title="Clustering based approaches."></a>Clustering based approaches.</h3><p>K-Means Clustering</p>
-<h3 id="least-squares-method-linear-output-function"><a href="#least-squares-method-linear-output-function" class="headerlink" title="least squares method (linear output function)"></a>least squares method (linear output function)</h3><h3 id="Gradient-descent-approach-Backpropagation"><a href="#Gradient-descent-approach-Backpropagation" class="headerlink" title="Gradient descent approach (Backpropagation)"></a>Gradient descent approach (Backpropagation)</h3><script type="math/tex; mode=display">
+<p><img src="https://i.postimg.cc/L6ZSRS3v/pr-6-11.png"></p>
+<h3 id="Clustering-based-approaches"><a href="#Clustering-based-approaches" class="headerlink" title="Clustering based approaches."></a>Clustering based approaches.</h3><p><u>K-Means Clustering</u></p>
+<h3 id="least-squares-method-linear-output-function"><a href="#least-squares-method-linear-output-function" class="headerlink" title="least squares method (linear output function)"></a>least squares method (linear output function)</h3><p>$f()$ is a linear function </p>
+<script type="math/tex; mode=display">
+Y \times W_k = t_k\\
+\implies W_k = Y^T\times t_k</script><h3 id="Gradient-descent-approach-Backpropagation"><a href="#Gradient-descent-approach-Backpropagation" class="headerlink" title="Gradient descent approach (Backpropagation)"></a>Gradient descent approach (Backpropagation)</h3><script type="math/tex; mode=display">
 \Delta w_{kj} = -\eta \frac{\partial J}{\partial w_{kj}}\\
 \Delta \sigma_j = -\eta \frac{\partial J}{\partial \sigma_j}\\
-\Delta c_{ji} = -\eta \frac{\partial J}{\partial c_{ji}}</script>
+\Delta c_{ji} = -\eta \frac{\partial J}{\partial c_{ji}}</script><h2 id="Comparison-of-RBF-and-MLP-networks"><a href="#Comparison-of-RBF-and-MLP-networks" class="headerlink" title="Comparison of RBF and MLP networks"></a>Comparison of RBF and MLP networks</h2><ul>
+<li><p>Similarities</p>
+<ul>
+<li>universal approximators</li>
+</ul>
+</li>
+<li><p>Differences</p>
+<ul>
+<li>RBF have only on hidden layer while MLP can have more</li>
+<li>RBF use different basis function</li>
+<li>RBF networks compute the distance between the input patterns and centres while MLP networks compute the inner product of the input pattern and weights.</li>
+<li>RBF are trained with two-phase algorithm but MLP networks are trained with a single-phase algorithm.</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
     
@@ -596,7 +616,7 @@ J = \sum_{p=1}^n J_p = \frac{1}{2}\sum_{p=1}^n (t_p-z_p)^2</script><p>Two pahses
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -642,7 +662,7 @@ J = \sum_{p=1}^n J_p = \frac{1}{2}\sum_{p=1}^n (t_p-z_p)^2</script><p>Two pahses
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Network-Architectures"><span class="nav-number">1.1.</span> <span class="nav-text">Network Architectures</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feedforward-NN"><span class="nav-number">2.</span> <span class="nav-text">Feedforward NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Neuron-model"><span class="nav-number">2.1.</span> <span class="nav-text">Neuron model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feed-forward-Operation"><span class="nav-number">2.2.</span> <span class="nav-text">Feed-forward Operation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagation-Algorithm"><span class="nav-number">3.</span> <span class="nav-text">Backpropagation Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-Learning"><span class="nav-number">4.</span> <span class="nav-text">Network Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-on-the-hidden-to-output-weights"><span class="nav-number">4.1.</span> <span class="nav-text">Error on the hidden-to-output weights:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-on-the-input-to-hidden-weights"><span class="nav-number">4.2.</span> <span class="nav-text">Error on the input-to-hidden weights:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Radial-Basis-Function-NN"><span class="nav-number">5.</span> <span class="nav-text">Radial Basis Function NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hidden-units"><span class="nav-number">5.1.</span> <span class="nav-text">Hidden units:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-units"><span class="nav-number">5.2.</span> <span class="nav-text">Output units</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fixed-centres-selected-at-random"><span class="nav-number">5.3.</span> <span class="nav-text">Fixed centres selected at random</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clustering-based-approaches"><span class="nav-number">5.4.</span> <span class="nav-text">Clustering based approaches.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#least-squares-method-linear-output-function"><span class="nav-number">5.5.</span> <span class="nav-text">least squares method (linear output function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-descent-approach-Backpropagation"><span class="nav-number">5.6.</span> <span class="nav-text">Gradient descent approach (Backpropagation)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Network-Architectures"><span class="nav-number">1.1.</span> <span class="nav-text">Network Architectures</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Feedforward-NN"><span class="nav-number">2.</span> <span class="nav-text">Feedforward NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Neuron-model"><span class="nav-number">2.1.</span> <span class="nav-text">Neuron model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feed-forward-Operation"><span class="nav-number">2.2.</span> <span class="nav-text">Feed-forward Operation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Backpropagation-Algorithm"><span class="nav-number">3.</span> <span class="nav-text">Backpropagation Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-Learning"><span class="nav-number">4.</span> <span class="nav-text">Network Learning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-on-the-hidden-to-output-weights"><span class="nav-number">4.1.</span> <span class="nav-text">Error on the hidden-to-output weights:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Error-on-the-input-to-hidden-weights"><span class="nav-number">4.2.</span> <span class="nav-text">Error on the input-to-hidden weights:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Radial-Basis-Function-NN"><span class="nav-number">5.</span> <span class="nav-text">Radial Basis Function NN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hidden-units"><span class="nav-number">5.1.</span> <span class="nav-text">Hidden units:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output-units"><span class="nav-number">5.2.</span> <span class="nav-text">Output units</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fixed-centres-selected-at-random"><span class="nav-number">5.3.</span> <span class="nav-text">Fixed centres selected at random</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Clustering-based-approaches"><span class="nav-number">5.4.</span> <span class="nav-text">Clustering based approaches.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#least-squares-method-linear-output-function"><span class="nav-number">5.5.</span> <span class="nav-text">least squares method (linear output function)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-descent-approach-Backpropagation"><span class="nav-number">5.6.</span> <span class="nav-text">Gradient descent approach (Backpropagation)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison-of-RBF-and-MLP-networks"><span class="nav-number">6.</span> <span class="nav-text">Comparison of RBF and MLP networks</span></a></li></ol></div>
             
 
           </div>

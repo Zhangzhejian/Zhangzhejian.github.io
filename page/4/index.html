@@ -230,7 +230,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/05/NOTE-WEEK-8-Agents-and-Multi-Agent-System/">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/21/NOTE-Week-2-Distributed-System/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhejian">
@@ -249,7 +249,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/05/NOTE-WEEK-8-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 8:Auctions</a></h1>
+                <a class="post-title-link" href="/2019/01/21/NOTE-Week-2-Distributed-System/" itemprop="url">(DS) Reliable Broadcasts</a></h1>
         
 
         <div class="post-meta">
@@ -261,8 +261,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-05T20:42:50+00:00">
-                2019-01-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-21T12:10:15+00:00">
+                2019-01-21
               </time>
             
 
@@ -301,65 +301,135 @@
       
         
           
-            <h3 id="Lec-8-Auctions"><a href="#Lec-8-Auctions" class="headerlink" title="Lec 8: Auctions"></a>Lec 8: Auctions</h3><p>Key points:</p>
+            <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><ul>
+<li>Reliable broadcasts</li>
+<li>interaction models</li>
+<li>Implementing reliable broadcasts</li>
+</ul>
+<h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><p>Broadcast properties</p>
+<p>Order of message</p>
 <ul>
-<li>English auctions</li>
-<li>dutch auctions</li>
-<li>first price sealed bid auctions</li>
-<li>vickrey auctions</li>
-<li>combinatorial auctions<ul>
-<li>Vickrey-clarke-groves mechanism</li>
+<li>reliable</li>
+<li>FIFO</li>
+<li>Causal</li>
+<li>Atomic</li>
 </ul>
-</li>
-</ul>
-<h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>Auctions are used to <strong>allocate scarce resources</strong> that are desired by more than one agent</p>
-<p>Auctioneer aims to allocate a good to one of the bidders.</p>
-<p>Auctioneer wants to maximise the selling price. Attempts to do this through the design of an appropriate auction.</p>
-<p>Bidders want to minimise the price at which the good is auctioned. Attempt to do this by using an appropriate strategy.</p>
+<p>Interaction models</p>
+<p>implementation of reliable broadcast</p>
+<p><strong>Broadcasting are used to ensure the consistency of the whole system during duplicatign.</strong></p>
+<h2 id="Reliable-broadcasts"><a href="#Reliable-broadcasts" class="headerlink" title="Reliable broadcasts"></a>Reliable broadcasts</h2><p>Problems:</p>
 <ul>
-<li>Public/common value</li>
-<li>Private value </li>
-<li>correlated value </li>
+<li>processes receive messages in different order</li>
+<li>even different messages</li>
+<li>and sometimes process crashes</li>
 </ul>
+<p>Solution：</p>
 <ul>
-<li>open cry</li>
-<li>sealed bid</li>
+<li>Middleware</li>
 </ul>
+<p><img src="https://i.postimg.cc/BQrwYTx8/ds-2-3.png" alt=""></p>
+<h3 id="Properties-of-Reliable-Broadcast"><a href="#Properties-of-Reliable-Broadcast" class="headerlink" title="Properties of Reliable Broadcast"></a>Properties of Reliable Broadcast</h3><ul>
+<li>Agreement(一致性)<ul>
+<li>if any <strong>correc</strong>t process delivers m, then all correct processes eventually deliver m</li>
+<li>确保所有的进程都会收到同样的信息</li>
+</ul>
+</li>
+<li>Validity(有效性)<ul>
+<li>if a <strong>correct</strong> process executes broadcast(m) then all correct processes will eventually deliver m</li>
+<li>一次广播，那么所有的都会收到信息，确保这次广播的是有效的</li>
+</ul>
+</li>
+<li>Integrity(真实性)<ul>
+<li>deliver(m) occurs at most once at each <strong>correct</strong> process, and only if broadcast(m) occurred in some process</li>
+<li>只有当信息被广播之后，信息才会被送达且最多一次( 真实性，不存在欺骗，不会存在信息没有广播但是被送达的情况)</li>
+</ul>
+</li>
+</ul>
+<p>Note: a correct process is one that has not failed</p>
+<h3 id="Uniform-Reliable-Broadcast"><a href="#Uniform-Reliable-Broadcast" class="headerlink" title="Uniform Reliable Broadcast"></a>Uniform Reliable Broadcast</h3><p>Uniform broadcasts ensure <strong>agreement and itegrity</strong> to allow failed processes to <strong>recover</strong></p>
+<p>Properties of uniform reliable broadcast:</p>
 <ul>
-<li>ascending</li>
-<li>descending</li>
-<li>one shot</li>
+<li>Uniform agreement:<ul>
+<li>if any process delivers m, then all correct processes eventually deliver m</li>
 </ul>
+</li>
+<li>uniform integrity:<ul>
+<li>deliver(m) occurs at most once at each process, and only if broadcast(m) occurred in some process.</li>
+</ul>
+</li>
+</ul>
+<p>注意和reliable broadcast的区别</p>
+<h3 id="Order-of-messages"><a href="#Order-of-messages" class="headerlink" title="Order of messages"></a>Order of messages</h3><ul>
+<li>FIFO<ul>
+<li>Applies messages from a particular process</li>
+<li>对于一个进程按一定顺序发出的信息，其他所有进程收到的顺序也得遵从</li>
+</ul>
+</li>
+<li>Causal ordering<ul>
+<li>If message B is <strong>broadcast</strong> from P1 <strong>after</strong> message A is <strong>delivered</strong> at P1, then at all other processes, B must be delivered after A is delivered</li>
+</ul>
+</li>
+<li>Total ordering<ul>
+<li>the order of message delivery is the same at all processes</li>
+<li>The transmission of messages forms atomic broadcasts (AB)</li>
+<li>Atomic broadcast guarantee that:<ul>
+<li>A message is delivered to all processes or to none at all</li>
+<li>All messages are delivered in the same order to all processes.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Interaction-Model"><a href="#Interaction-Model" class="headerlink" title="Interaction Model"></a>Interaction Model</h2><p>Interaction model show the broadcast and delivery of message over time.</p>
+<p>Focus on several examples</p>
+<h2 id="Implementing-Reliable-Broadcast"><a href="#Implementing-Reliable-Broadcast" class="headerlink" title="Implementing Reliable Broadcast"></a>Implementing Reliable Broadcast</h2><p>References: <a href="http://fileadmin.cs.lth.se/cs/Personal/Amr_Ergawy/dist-algos-slides/fourth-presentation.pdf" target="_blank" rel="noopener">http://fileadmin.cs.lth.se/cs/Personal/Amr_Ergawy/dist-algos-slides/fourth-presentation.pdf</a></p>
+<p>A message sent or received is augmented to include:</p>
 <ul>
-<li>first price</li>
-<li>Second price: highest wins the good and pays the second highest number</li>
+<li>message text or body</li>
+<li>sequence number </li>
+<li>Identifier of the transmitter</li>
 </ul>
-<h4 id="English-Auction"><a href="#English-Auction" class="headerlink" title="English Auction"></a>English Auction</h4><ul>
-<li><p>For allocation of a single item.</p>
+<p>The sequence number and identifier of transmitter form a systemwide unique identifier for a message</p>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><h3 id="Reliable-broadcast-Algorithm"><a href="#Reliable-broadcast-Algorithm" class="headerlink" title="Reliable broadcast Algorithm"></a>Reliable broadcast Algorithm</h3><ul>
+<li>Broadcast</li>
+</ul>
+<p>Define send(m,s,i) to process p and receive(m,s,i)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s = 0</span><br><span class="line">for each process p:</span><br><span class="line">	send (m,s,i) to p</span><br><span class="line"></span><br><span class="line">s:= s+1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Receive </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if recorded does not contain (m,s,i):</span><br><span class="line">	deliver(m)</span><br><span class="line">	add(m,s,i) to recorded</span><br><span class="line">	for each process p:</span><br><span class="line">		send (m,s,i) //re-broadcast to other process again</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Agreement</li>
+<li><p>validity:</p>
+<ul>
+<li>one link fails, message will still reach via other intermediate processes</li>
+</ul>
 </li>
-<li><p>First price, open cry, ascending.</p>
+<li><p>integrity</p>
+<ul>
+<li>Messages only delivered if not already recorded</li>
+</ul>
 </li>
 </ul>
-<h4 id="Dutch-auction"><a href="#Dutch-auction" class="headerlink" title="Dutch auction"></a>Dutch auction</h4><ul>
-<li><p>For allocation of a single item.</p>
-</li>
-<li><p>First price, open cry, descending.</p>
-</li>
-</ul>
-<h4 id="First-price-sealed-bid-auctions"><a href="#First-price-sealed-bid-auctions" class="headerlink" title="First-price sealed bid auctions"></a>First-price sealed bid auctions</h4><ul>
-<li><p>For allocation of a single item.</p>
-</li>
-<li><p>First price, sealed bit, one shot.</p>
-</li>
-</ul>
-<h4 id="Vickrey-Auction"><a href="#Vickrey-Auction" class="headerlink" title="Vickrey Auction"></a>Vickrey Auction</h4><ul>
-<li><p>For allocation of a single item.</p>
-</li>
-<li><p>Second price, sealed bit, one shot.</p>
-</li>
-</ul>
-<h4 id="Collusions-合谋"><a href="#Collusions-合谋" class="headerlink" title="Collusions(合谋)"></a>Collusions(合谋)</h4><p>all the bidders can form a coalition (the grand coalition) and agree to buy the item for a low price from the auctioneer. The coalition can then sell the item for a higher price and split the profit between themselves.</p>
-<h4 id="Combinatorial-Auctions"><a href="#Combinatorial-Auctions" class="headerlink" title="Combinatorial Auctions"></a>Combinatorial Auctions</h4><p>not finished yet</p>
+<h3 id="Uniform-RB-algorithm"><a href="#Uniform-RB-algorithm" class="headerlink" title="Uniform RB algorithm"></a>Uniform RB algorithm</h3><p>Receive:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if recorded does not contain (m,s,i):</span><br><span class="line">	add(m,s,i) to recorded</span><br><span class="line">	for each process p:</span><br><span class="line">		send (m,s,i) //re-broadcast to other process again</span><br><span class="line">	if send to all correct process:</span><br><span class="line">		deliver(m) //deliver after sending to others</span><br></pre></td></tr></table></figure>
+<h3 id="Uniform-FIFO-algorithm"><a href="#Uniform-FIFO-algorithm" class="headerlink" title="Uniform FIFO algorithm"></a>Uniform FIFO algorithm</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add(m,s,i) to recorded</span><br><span class="line">if recorded does not contain (m,s,i):</span><br><span class="line">	for each process p:</span><br><span class="line">		send (m,next[i],i) //re-broadcast to other process again</span><br><span class="line">	deliver(m) </span><br><span class="line">	next[i] = next[i]+1</span><br></pre></td></tr></table></figure>
+<h3 id="Uniform-Causal-Algorithm"><a href="#Uniform-Causal-Algorithm" class="headerlink" title="Uniform Causal Algorithm"></a>Uniform Causal Algorithm</h3><p>Broadcast:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mc := concatenation of causes &amp; m </span><br><span class="line">causes := []</span><br><span class="line">for each process p :</span><br><span class="line">	send (mc,s,i) to p</span><br><span class="line">s:= s+1</span><br></pre></td></tr></table></figure>
+<p>Receive:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if m is concatenation of (mc,sc,ic) &amp; m2:</span><br><span class="line">	receive(mc,sc,ic)</span><br><span class="line">	receive (m2, s, i)</span><br><span class="line">else</span><br><span class="line">	Add (m, s, i) to causes</span><br><span class="line">	same receive algorithm as for FIFO</span><br></pre></td></tr></table></figure>
+<h3 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h3><p><img src="https://i.postimg.cc/KYFpFmpx/ds-2-1.png" alt=""></p>
+<p><img src="https://i.postimg.cc/XY91Tr8s/ds-2-2.png" alt=""></p>
+<p>Exercise answer:</p>
+<p>i) ABC</p>
+<p>ii) A</p>
+<p>iii) A</p>
+<p>iv) A</p>
+<p>i)DF</p>
+<p>ii)DF</p>
+<p>iii)F</p>
+<p>iv)</p>
 
           
         
@@ -410,7 +480,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/05/NOTE-WEEK-7-Agents-and-Multi-Agent-System/">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/19/NOTE-Week-1-Cryptocurrencies/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhejian">
@@ -429,7 +499,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/05/NOTE-WEEK-7-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 7:Social choice theory</a></h1>
+                <a class="post-title-link" href="/2019/01/19/NOTE-Week-1-Cryptocurrencies/" itemprop="url">(Blockchain)Introduction to Cryptocurrencies</a></h1>
         
 
         <div class="post-meta">
@@ -441,8 +511,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-05T17:53:46+00:00">
-                2019-01-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-19T15:14:40+00:00">
+                2019-01-19
               </time>
             
 
@@ -481,1167 +551,582 @@
       
         
           
-            <h3 id="Lecture-7-Social-Choice-Theory"><a href="#Lecture-7-Social-Choice-Theory" class="headerlink" title="Lecture 7: Social Choice Theory"></a>Lecture 7: Social Choice Theory</h3><h4 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h4><p>Social choice theory is about how to make <strong>group decisions.</strong></p>
-<p>Specifically, it provides a range of <strong>voting protocols</strong> that can be used to account for the preferences of a group of agents.</p>
-<p><u>Fundamental problem of social choice theory is one of preference aggregation:</u></p>
-<p>given a collection of preference orders, one for each voter, how do we combine these to derive a group decision, that reflects as closely as possible the preferences of the voters?</p>
+            <p>Blockchain provides verification of the sequence of transactions to re-create a database, but it doesn’t provide a mechanism to prove its  the same database everyone else is using.</p>
+<h2 id="Consensus-on-a-global-scale"><a href="#Consensus-on-a-global-scale" class="headerlink" title="Consensus on a global scale"></a>Consensus on a global scale</h2><p>A set of computers want to reach agreement that about a single decision (or data item)</p>
+<p>Consideration</p>
 <ul>
-<li><p>Social welfare functions</p>
-<ul>
-<li><p>produces a social preference order</p>
-</li>
-<li><script type="math/tex; mode=display">
-𝑓: Π(Ω) × ⋯ × Π(Ω) → \color{red}{Π(Ω)}</script></li>
+<li>Safety<ul>
+<li>Everyone should agree and never forget</li>
 </ul>
 </li>
-<li><p>Social choice functions</p>
-<ul>
-<li><p>selects a single outcome</p>
-</li>
-<li><script type="math/tex; mode=display">
-𝑓: Π(Ω) × ⋯ × Π(Ω) → \color{red}{Ω}</script></li>
+<li>Liveness<ul>
+<li>How many peers must be online before a decision is final</li>
 </ul>
 </li>
 </ul>
-<h5 id="Pluralit-Voting-procedure"><a href="#Pluralit-Voting-procedure" class="headerlink" title="Pluralit Voting procedure"></a>Pluralit Voting procedure</h5><p>Each candidate gets one point for every preference order that ranks them first.</p>
-<p>作为首选项的人数多的获胜</p>
-<h5 id="condorcet-winner"><a href="#condorcet-winner" class="headerlink" title="condorcet winner"></a>condorcet winner</h5><p>Condorcet winner is an outcome that beats every other outcome in pairwise majority contests.</p>
-<p>逐对比较，每组都获胜的，最后获胜</p>
-<h5 id="Condorcet-paradox"><a href="#Condorcet-paradox" class="headerlink" title="Condorcet paradox"></a>Condorcet paradox</h5><p>For every possible candidate, there is another candidate that is preferred by the majority of the voters!</p>
-<p>This is Condorcet’s paradox. There are situations in which, no matter which outcome we choose, a majority of voters will prefer another candidate.</p>
-<p>因为偏好的传递性导致的悖论</p>
-<h5 id="Linear-sequential-majority-elections"><a href="#Linear-sequential-majority-elections" class="headerlink" title="Linear sequential majority elections"></a>Linear sequential majority elections</h5><h5 id="Instant-runoff-rule"><a href="#Instant-runoff-rule" class="headerlink" title="Instant runoff rule"></a>Instant runoff rule</h5><p>Series of mini-elections in which the candidate with the fewest votes in each round is eliminated.</p>
-<p>Each round:</p>
-<p>• votes are counted for everyone’s first choice and the one with the fewest votes is eliminated;</p>
-<p>• any voter who had the eliminated option as their first choice, the votes for their second choice are now counted and we go again.</p>
-<p>The last candidate remaining is the winner.</p>
-<h5 id="Copeland-rule"><a href="#Copeland-rule" class="headerlink" title="Copeland rule"></a>Copeland rule</h5><p>All candidates face pairwise majority contest against all other candidates.</p>
-<p>Each candidate receives 1 point for every pairwise majority contest that they win…</p>
-<p>…and loses 1 point for every pairwise majority contest that they lose.</p>
-<h5 id="Borda-count"><a href="#Borda-count" class="headerlink" title="Borda count"></a>Borda count</h5><p>Each candidate receives (𝑚 − 1) points for each voter that lists them as their first choice, (𝑚 − 2) points for each voter that lists them as their second choice etc (where 𝑚 is the number of candidates).</p>
-<p><strong>spoiler effect</strong>: outcome can depend on the presence of alternatives that intuitively seem irrelevant. “Spoilers” shift the outcome from one highly ranked candidate to another.</p>
-<h5 id="Positional-scoring-rules-PSR"><a href="#Positional-scoring-rules-PSR" class="headerlink" title="Positional scoring rules(PSR)"></a>Positional scoring rules(PSR)</h5><ul>
-<li>Anonymity<ul>
-<li>A voting rule is said to be anonymous if all voters are treated symmetrically.</li>
+<h3 id="Classical-Consensus"><a href="#Classical-Consensus" class="headerlink" title="Classical Consensus"></a>Classical Consensus</h3><ul>
+<li>small scale and up to 1/3 fault tolerance</li>
+<li>safety and <strong>fork-avoidance</strong></li>
+<li>no financial incentive</li>
+</ul>
+<h3 id="Nakamoto-Consensus"><a href="#Nakamoto-Consensus" class="headerlink" title="Nakamoto Consensus"></a>Nakamoto Consensus</h3><ul>
+<li>Global Scale and 99%+ fault-tolerance</li>
+<li>Liveness and fork-tolerance(eventual consistency)<ul>
+<li>all computers will <strong>eventually agree</strong> on a decision</li>
 </ul>
 </li>
-<li>Resolute<ul>
-<li>if there is always a unique winner (no ties).</li>
-</ul>
-</li>
-<li>Surjective<ul>
-<li>for every candidate there is some profile of voter preferences such that the candidate will win.</li>
-</ul>
-</li>
-<li>Dictatorship<ul>
-<li>if there is some voter 𝑖 such that the winner is the first choice of 𝑖.(The dictator always picks the winner.)</li>
-</ul>
-</li>
-<li>Strategy-proof</li>
-</ul>
-<h5 id="Weakly-Pareto"><a href="#Weakly-Pareto" class="headerlink" title="Weakly Pareto"></a>Weakly Pareto</h5><p>A voting rule is said to be weakly Pareto if it does not elect some candidate 𝜔 whenever there is some other candidate 𝜔 𝑗 such that <strong>all</strong> voters prefer 𝜔 𝑗 to 𝜔 𝑖 .</p>
-<h4 id="Independence-of-irrelevant-alternatives"><a href="#Independence-of-irrelevant-alternatives" class="headerlink" title="Independence of irrelevant alternatives"></a>Independence of irrelevant alternatives</h4><p>(Neither do plurality, instant runoff or sequential majority elections satisfy IIA)</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/04/NOTE-week-4-WI/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/04/NOTE-week-4-WI/" itemprop="url">(WI) DNS</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-04T19:25:09+00:00">
-                2019-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h4><ul>
-<li>A distributed database implemented in hierarchy of many name servers</li>
-<li>An application layer protocol that allows hosts to communicate with name servers to resolve names (address/name translation)</li>
-</ul>
-<h5 id="Three-classes-of-DNS-server"><a href="#Three-classes-of-DNS-server" class="headerlink" title="Three classes of DNS server"></a>Three classes of DNS server</h5><ul>
-<li>Root DNS Server<ul>
-<li>13 such root DNS servers</li>
-</ul>
-</li>
-<li>Top-level domain servers<ul>
-<li>top-level domain servers for example .com</li>
-</ul>
-</li>
-<li>Authoritative DNS Servers<ul>
-<li>contains authoritative DNS servers which provide actual answers to the DNS queries.</li>
+<li>Financial incentive(Profit)<ul>
+<li>Rewarded with coins for participating</li>
 </ul>
 </li>
 </ul>
-<h4 id="DNS-resource-record-RR"><a href="#DNS-resource-record-RR" class="headerlink" title="DNS resource record (RR)"></a>DNS resource record (RR)</h4><p>In DNS servers all information including hostnames to IP translation is kept in the so-called Resource Records (RR). A Resource Record is a 4-tuple containing this info: {Name, Value, Type, TTL}.</p>
-<ul>
-<li>A<ul>
-<li>Map a hostname to a ip</li>
-</ul>
-</li>
-<li>NS<ul>
-<li>Which Name Server is authoritative for a domain</li>
-</ul>
-</li>
-<li>CNAME<ul>
-<li>used to make one domain an alias(别名) of another</li>
-</ul>
-</li>
-<li>MX<ul>
-<li>a list of mail exchange server </li>
-</ul>
-</li>
-</ul>
-<h4 id="DNS-Message"><a href="#DNS-Message" class="headerlink" title="DNS Message"></a>DNS Message</h4><h4 id="DNS-Threat"><a href="#DNS-Threat" class="headerlink" title="DNS Threat"></a>DNS Threat</h4><h5 id="DNS-poisoning"><a href="#DNS-poisoning" class="headerlink" title="DNS poisoning"></a>DNS poisoning</h5><p>With cache poisoning an attacker attempts to insert a fake address record for an Internet domain into the DNS</p>
-<p>If the server accepts the fake record, the cache is poisoned and subsequent requests for the address of the domain are answered with the address of a server controlled by the attacker.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/04/NOTE-week-3-WI/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/04/NOTE-week-3-WI/" itemprop="url">(WI) Web Server and HTTP</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-04T19:25:04+00:00">
-                2019-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><p>Designed for communicating enriched documents between computers</p>
-<h5 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h5><p>A proxy acts on behalf of other clients and presents requests from other clients to a server. The proxy acts as a server in interacting with a client and as a client in interacting with a server.</p>
-<ul>
-<li>client and server be separated by security intermediary (firewall).</li>
-<li>Different Version of HTTP.</li>
-</ul>
-<h5 id="Gate-way"><a href="#Gate-way" class="headerlink" title="Gate way"></a>Gate way</h5><p>A gateway is a server that appears to the client as if it were an origin server. It acts on behalf of other servers that may not be able to communicate directly with a client</p>
-<ol>
-<li>Client talks to gateway host as if final server</li>
-<li>Gateway passes data on to final server</li>
-</ol>
-<ul>
-<li><strong>Security intermediary</strong>:The client and server may be separated by a security intermediary such as a firewall, with the gateway on the server side of the firewall.</li>
-<li><strong>Non-HTTP server</strong>: Web browsers have built into them the capability to contact servers for protocols other than HTTP, such as FTP servers</li>
-</ul>
-<h5 id="Tunnel"><a href="#Tunnel" class="headerlink" title="Tunnel"></a>Tunnel</h5><p>Client talks to server as if tunnel was not there. Tunnel does nothing but forwards messages</p>
-<p>Tunnels are used when there must be an intermediary system between client and server but it is not necessary for that system to understand the contents of messages. Eg. An example is a firewall in which a client or server external to a protected network can establish an authenticated connection.</p>
-<h4 id="HTTP-Request-format"><a href="#HTTP-Request-format" class="headerlink" title="HTTP Request format"></a>HTTP Request format</h4><p><img src="https://i.postimg.cc/mgBQBxbL/WI1.png" alt=""></p>
-<ul>
-<li>Request Line<ul>
-<li>GET /URL /HTTP version </li>
-</ul>
-</li>
-<li>General Header Line<ul>
-<li>Connection Type : determine the connection type, persistent or not</li>
-</ul>
-</li>
-<li>Request Header Lines<ul>
-<li>Host: specify the web server</li>
-<li>Accept: what format of file should be received</li>
-<li>User-Agent: browser type </li>
-</ul>
-</li>
-</ul>
-<h4 id="HTTP-Response-format"><a href="#HTTP-Response-format" class="headerlink" title="HTTP Response format"></a>HTTP Response format</h4><p><img src="https://i.postimg.cc/g2s30MJv/WI-2.png" alt=""></p>
-<ul>
-<li>Status Line<ul>
-<li>HTTP version</li>
-<li>status code</li>
-<li>Description</li>
-</ul>
-</li>
-<li>General Header Lines<ul>
-<li>Date</li>
-<li>Connection</li>
-</ul>
-</li>
-<li>Response Header line<ul>
-<li>Server type:</li>
-<li>Accpet-ranges:</li>
-</ul>
-</li>
-<li>Entity header line<ul>
-<li>Content-type</li>
-<li>Content-length</li>
-</ul>
-</li>
-<li>Entity Body </li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/04/NOTE-week-2-WI/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/04/NOTE-week-2-WI/" itemprop="url">(WI) Lec 2:TCP/IP</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-04T19:25:00+00:00">
-                2019-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Lec-2-TCP-IP"><a href="#Lec-2-TCP-IP" class="headerlink" title="Lec 2: TCP/IP"></a>Lec 2: TCP/IP</h2><h4 id="Internet-Protocol-IP-network-layer"><a href="#Internet-Protocol-IP-network-layer" class="headerlink" title="Internet Protocol(IP) network layer"></a>Internet Protocol(IP) network layer</h4><p>Provides a <strong>routhing function</strong> that attempts to <strong>deliver messages to the right destination</strong></p>
-<p>IP is an unreliable protocol: fragments might be lost, arrive out of order, or be duplicated</p>
-<h5 id="IP-datagrame-Header"><a href="#IP-datagrame-Header" class="headerlink" title="IP datagrame Header"></a>IP datagrame Header</h5><p>Length of IP header: 20-60 bytes </p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>Version field</th>
-<th>4-bit(0100 or 0110)</th>
-<th>to determine the IP version(IPV4 IPV6)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Version field</td>
-<td>4-bit(0100 or 0110)</td>
-<td>determine the IP version(IPV4 IPV6)</td>
-</tr>
-<tr>
-<td>IHL(length)</td>
-<td>4-bit  (20-60) byte</td>
-<td>determine the length of this IP header</td>
-</tr>
-<tr>
-<td>TOS(type of service)</td>
-<td>8 bits(3,4,1)</td>
-<td>Specifies the quality of service requested</td>
-</tr>
-<tr>
-<td>Total length field</td>
-<td>16 bits (20-65535 bytes)</td>
-<td>the number of bytes of the whole ip datagram<br>(header plus data)</td>
-</tr>
-<tr>
-<td>Identification Field</td>
-<td>16 bits</td>
-<td>for reconstructing message from fragments</td>
-</tr>
-<tr>
-<td>Flag field</td>
-<td>3 bit</td>
-<td>“Reserved”,”don’t fragment(DF)”,”more fragments(MF)”</td>
-</tr>
-<tr>
-<td>Fragment offset</td>
-<td>13 bits</td>
-<td></td>
-</tr>
-<tr>
-<td>Time to live</td>
-<td>8</td>
-<td></td>
-</tr>
-<tr>
-<td>Protocol</td>
-<td>8 bits</td>
-<td>Transport layer protocol used(TCP for 6)</td>
-</tr>
-<tr>
-<td>Header checksum</td>
-<td>16 bits</td>
-<td></td>
-</tr>
-<tr>
-<td>Source</td>
-<td>32 bits</td>
-<td>IP of the source</td>
-</tr>
-<tr>
-<td>Destination</td>
-<td>32 bits</td>
-<td>IP address of the destination</td>
-</tr>
-<tr>
-<td>Options</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Padding</td>
-<td>0-31</td>
-<td>make the header up to <br>Multiple of 32 bits</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h5 id="Fragment"><a href="#Fragment" class="headerlink" title="Fragment"></a>Fragment</h5><p><strong>MTU(Max transmission unit)</strong>: the limit of the size of message it can carry</p>
-<p>in order to fit the local MTU, the sender will fragment the message into small pieces</p>
-<p>Algorithm</p>
-<ol>
-<li><p>The DF ﬂag bit is checked to see if fragmentation is allowed</p>
-<p>If DF is set, but the message needs to be fragmented to move onto a network with a lower MTU, an error message is sent by ICMP</p>
-</li>
-<li><p>Based on the MTU value, the data ﬁeld is split into two or more parts</p>
-<p>every newly created data portion must be a multiple of 8 bytes (64 bits) except the last one</p>
-</li>
-<li><p>Each data portion is placed in an IP datagram.</p>
-</li>
-<li><p>Each of the fragmented datagrams is forwarded as a normal IP datagram</p>
-</li>
-</ol>
-<h3 id="TCP-Transmission-Control-Protocol"><a href="#TCP-Transmission-Control-Protocol" class="headerlink" title="TCP(Transmission Control Protocol)"></a>TCP(Transmission Control Protocol)</h3><h4 id="Key-features"><a href="#Key-features" class="headerlink" title="Key features"></a>Key features</h4><ul>
-<li><strong>Connection oriented:</strong> implements mechanisms to setup and tear down a full duplex connection between end points </li>
-<li><strong>Reliable:</strong> implements mechanisms to guarantee error free and ordered delivery of information </li>
-<li><strong>Flow and Congestion controlled:</strong> implements mechanisms to control trafﬁc</li>
-</ul>
-<h4 id="Port-and-sockets"><a href="#Port-and-sockets" class="headerlink" title="Port and sockets"></a>Port and sockets</h4><ul>
-<li><strong>Port:</strong> 16-bit to identify to which application/process the message should be delivered</li>
-<li><strong>Socket:</strong> is the combination of a host’s IP address and a port number.Every communication in TCP is between two sockets, i.e. two hosts using particular ports</li>
-</ul>
-<p>TCP connection set-up</p>
-<p>Three-times Handshake </p>
-<p>Four-times Handshake</p>
-<h4 id="Positive-Acknowledgment-with-Retransmission-PAR"><a href="#Positive-Acknowledgment-with-Retransmission-PAR" class="headerlink" title="Positive Acknowledgment with Retransmission (PAR)"></a>Positive Acknowledgment with Retransmission (PAR)</h4><p>FLow control</p>
-<p>window size</p>
+<p>Bitcoin is the first consensus protocol that strives for liveness instead of safety.</p>
+<p>All financially motivated peers(miners) will eventually agree upon a single blockchain.</p>
 <p>Reference:</p>
 <ol>
-<li><a href="https://www.jianshu.com/p/de29f55d8304" target="_blank" rel="noopener">https://www.jianshu.com/p/de29f55d8304</a></li>
+<li><a href="https://www.jianshu.com/p/588aa249e8be" target="_blank" rel="noopener">https://www.jianshu.com/p/588aa249e8be</a></li>
+<li><a href="https://www.zhihu.com/question/265428094" target="_blank" rel="noopener">https://www.zhihu.com/question/265428094</a></li>
 </ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/12/30/NOTE-WEEK-8-Artificial-Intelligence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/30/NOTE-WEEK-8-Artificial-Intelligence/" itemprop="url">(AI)Lec 7:Argumentation(论证) II</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-30T17:38:02+00:00">
-                2018-12-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Lecture-8-Argumentation-II"><a href="#Lecture-8-Argumentation-II" class="headerlink" title="Lecture 8: Argumentation II"></a>Lecture 8: Argumentation II</h3><p>In the <a href="http://zhangzhejian.com/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/">last lecture</a>, we introduced the concepts of the semantics, and in this lecture, the way of computing semantics will be illustrated.</p>
-<h3 id="key-point"><a href="#key-point" class="headerlink" title="key point"></a>key point</h3><ul>
-<li>Equational approach for determining <strong>complete extensions</strong></li>
-<li>Argument game approach for determining <strong>membership of grounded extension</strong></li>
-<li>Decomposition approach for determining <strong>preferred extensions</strong></li>
-</ul>
-<p>Computation of semantics of argumentation</p>
-<ul>
-<li>enumeration</li>
-<li>Decision making</li>
-</ul>
-<h4 id="Reduction-based"><a href="#Reduction-based" class="headerlink" title="Reduction-based"></a>Reduction-based</h4><ol>
-<li><h5 id="Translate-the-argumentation-problem-into-a-different-equivalent-reasoning-problem"><a href="#Translate-the-argumentation-problem-into-a-different-equivalent-reasoning-problem" class="headerlink" title="Translate the argumentation problem into a different equivalent reasoning problem;"></a>Translate the argumentation problem into a different equivalent reasoning problem;</h5></li>
-<li><h5 id="Solve-the-translated-problem"><a href="#Solve-the-translated-problem" class="headerlink" title="Solve the translated problem;"></a>Solve the translated problem;</h5></li>
-<li><h5 id="Translate-the-solution-back-into-argumentation"><a href="#Translate-the-solution-back-into-argumentation" class="headerlink" title="Translate the solution back into argumentation."></a>Translate the solution back into argumentation.</h5></li>
-</ol>
-<ul>
-<li>Directly </li>
-</ul>
-<h4 id="Equational-approach-complete-extensions"><a href="#Equational-approach-complete-extensions" class="headerlink" title="Equational approach(complete extensions)"></a>Equational approach(complete extensions)</h4><p><img src="https://i.postimg.cc/2jcVLSLg/arg2ex1.png" alt=""></p>
-<p><img src="https://i.postimg.cc/TYB1QN99/arg2ex2.png" alt=""></p>
-<p><img src="https://i.postimg.cc/JzJnF3YW/arg2ex3.png" alt=""></p>
-<p><img src="https://i.postimg.cc/k5m4PVLR/arg2ex4.png" alt=""></p>
-<p><img src="https://i.postimg.cc/ZKW08zrn/arg2ex5.png" alt=""></p>
-<h4 id="Argument-game-approach-ground-extension"><a href="#Argument-game-approach-ground-extension" class="headerlink" title="Argument game approach(ground extension)"></a>Argument game approach(ground extension)</h4><p><img src="https://i.postimg.cc/43pgvs46/arg2ex6.png" alt=""></p>
-<h5 id="Difference-between-game-tree-and-strategy"><a href="#Difference-between-game-tree-and-strategy" class="headerlink" title="Difference between game tree and strategy"></a>Difference between game tree and strategy</h5><p><strong>A game tree represents all the possible games that can be played according to the rules of the game:</strong></p>
-<p>• Every branch is a dispute (sequence of allowable moves).</p>
-<p>• The game tree contains all possible disputes.</p>
-<p><strong>A strategy for player p is a partial game tree:</strong></p>
-<p>• Every branch is a dispute (sequence of allowable moves).</p>
-<p>• The tree only branches after moves by p.</p>
-<p>• The children of p’s moves are all the legal moves by the other player.</p>
-<p><strong>A strategy S for player p is winning if and only if p wins all disputes in S.</strong></p>
-<h4 id="Decomposition-approach-prefered-extension"><a href="#Decomposition-approach-prefered-extension" class="headerlink" title="Decomposition approach(prefered extension)"></a>Decomposition approach(prefered extension)</h4><p>Idea is to decompose an argumentation framework into a set of sub-frameworks and compute the semantics of each subframework locally.</p>
-<p>We need to perform the decomposition so that the resulting subframeworks respect the dependency of the attack relation and form an acyclic graph(非循环图).</p>
-<h5 id="Strongly-Connected-components-SCC"><a href="#Strongly-Connected-components-SCC" class="headerlink" title="Strongly Connected components(SCC):"></a>Strongly Connected components(SCC):</h5><p>Two arguments A and B are in the same strongly connected component if and only if there is a path from A to B and a path from B to A (using the attack relation).</p>
-<p><img src="https://i.postimg.cc/L4JMvts4/arg2ex7.png" alt=""></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/12/01/NOTE-WEEK-9-Artificial-Intelligence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/01/NOTE-WEEK-9-Artificial-Intelligence/" itemprop="url">(AI)Lec 4:Machine Learning</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-12-01T16:52:24+00:00">
-                2018-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Lecture-9-Introduction-to-Machine-Learning-a-peek"><a href="#Lecture-9-Introduction-to-Machine-Learning-a-peek" class="headerlink" title="Lecture 9: Introduction to Machine Learning(a peek)"></a>Lecture 9: Introduction to Machine Learning(a peek)</h2><h4 id="key-point"><a href="#key-point" class="headerlink" title="key point:"></a>key point:</h4><ul>
-<li><p>Supervised learning ‚ </p>
-<ul>
-<li>Correct answers for each instance. ‚ </li>
-<li>Use these to be able to identify correct answer on new instances.</li>
-</ul>
-</li>
-<li><p>Unsupervised learning ‚</p>
-<ul>
-<li>No correct answers available. ‚ </li>
-<li>Identify patterns/relations.</li>
-</ul>
-</li>
-<li>Reinforcement learning ‚ <ul>
-<li>Occasional rewards ‚ </li>
-<li>Need to associate actions with the rewards they bring.</li>
-<li></li>
-</ul>
-</li>
-</ul>
-<h3 id="Supervised-Learning-监督学习）"><a href="#Supervised-Learning-监督学习）" class="headerlink" title="Supervised Learning(监督学习）"></a>Supervised Learning(监督学习）</h3><p>Training set:</p>
-<script type="math/tex; mode=display">
-(X,Y)\\
-where: \;\; y_i = f(x_i)\\
-h(x) \approx f(x)</script><p>h(x) is the function that we try to find</p>
-<ul>
-<li>When y is a a member of a ﬁnite set, this is classiﬁcation </li>
-<li>When y is a number, this is regression.</li>
-</ul>
-<p>Reference: <a href="http://zhangzhejian.com/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">Note</a></p>
-<h4 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h4><h5 id="Decision-Tree"><a href="#Decision-Tree" class="headerlink" title="Decision Tree"></a>Decision Tree</h5><p>How to choose attribute: <a href="https://blog.csdn.net/xbinworld/article/details/44660339" target="_blank" rel="noopener">refference</a></p>
-<h5 id="performance-measurment"><a href="#performance-measurment" class="headerlink" title="performance measurment"></a>performance measurment</h5><p>Learning curve =% correct on test set as a function of training set size</p>
-<h5 id="Cross-validation-交叉验证）"><a href="#Cross-validation-交叉验证）" class="headerlink" title="Cross validation(交叉验证）"></a>Cross validation(交叉验证）</h5><p>s k-fold cross validation.</p>
+<p>Related Reading:</p>
 <ol>
-<li><p>Split data into k equal subsets. Learn on k-1 sets and test each result on the remainder.</p>
-</li>
-<li><p>Repeat k times.</p>
-</li>
-<li><p>Average test set score is a better estimate of the error rate than a single score.</p>
-</li>
-<li><p>Common values of k are 5 and 10, both giving error estimates that are very likely to be accurate.</p>
-</li>
+<li><a href="https://medium.com/@Francesco_AI/the-convergence-of-ai-and-blockchain-whats-the-deal-60c618e3accc" target="_blank" rel="noopener">The convergence of AI and Blockchain—Medium</a></li>
 </ol>
-<h3 id="Unsupervised-Learning-非监督学习）"><a href="#Unsupervised-Learning-非监督学习）" class="headerlink" title="Unsupervised Learning(非监督学习）"></a>Unsupervised Learning(非监督学习）</h3><h4 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h4><ol>
-<li>Given a set of examples:</li>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/16/NOTE-Week-1-OM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/16/NOTE-Week-1-OM/" itemprop="url">(OM) Introduction to Algorithms and TSP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-16T23:38:05+00:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview:"></a>Overview:</h3><ol>
+<li>Introduction</li>
+<li>Branch and Bound Methods for ﬁnding exact solutions</li>
+<li>Shortest-paths problems and algorithms</li>
+<li>Network ﬂow problems</li>
+<li>Linear Programming to solve Network ﬂow problems</li>
+<li>Heuristic Optimisation Techniques: Genetic Algorithms</li>
+<li>Simulated Annealing</li>
 </ol>
+<h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h3><ul>
+<li>Complexity of algorithms</li>
+<li>P,NP,NP-hard,NP-complete</li>
+<li>Combinational Problem</li>
+<li>TSP(Traveling Salesman Problem)</li>
+</ul>
+<h3 id="Complexity-of-algorithms"><a href="#Complexity-of-algorithms" class="headerlink" title="Complexity of algorithms"></a>Complexity of algorithms</h3><p>n denotes the size of input</p>
+<ul>
+<li>Polynomial-time algorithm:<ul>
+<li>The worst-case running time is $\Theta(n^k)$</li>
+</ul>
+</li>
+<li>Exponential-time algorithm:<ul>
+<li>The worst-case running time is $\Theta(2^{dn})$ and $\Omega(2^{cn})$</li>
+</ul>
+</li>
+</ul>
+<h4 id="Asymptotic-渐进的-notation-Omega-n-Theta-n-and-O-n"><a href="#Asymptotic-渐进的-notation-Omega-n-Theta-n-and-O-n" class="headerlink" title="Asymptotic(渐进的) notation $\Omega(n)$ $\Theta(n)$ and $O(n)$"></a>Asymptotic(渐进的) notation $\Omega(n)$ $\Theta(n)$ and $O(n)$</h4><ul>
+<li>$O(n)$: is an asymptotic upper bound</li>
+<li>$Omega(n)$ is a lower bound</li>
+</ul>
+<p>Mathmaticla Definition:</p>
+<ul>
+<li>if $\lim_{n \to +\infty} \frac{f(n)}{g(n)} = 0$, then f(n) is strictly less than g(n). $f(n) = o(g(n))$</li>
+<li>if $\lim_{n \to +\infty} \frac{f(n)}{g(n)} = \infty$, then f(n) is strictly larger than g(n). $f(n) = \omega(g(n))$</li>
+<li>if $\lim_{n \to +\infty} \frac{f(n)}{g(n)} = c $, then f(n) is strictly equal to g(n). $f(n) =g(n)$</li>
+</ul>
 <script type="math/tex; mode=display">
-X =\{x_1 , . . . x_N\}</script><p>​    identify K different groups.</p>
+\Omega(g(n))<\Theta(f(n))< O(g(n))</script><h3 id="P-NP-NP-hard-NP-complete"><a href="#P-NP-NP-hard-NP-complete" class="headerlink" title="P, NP, NP-hard, NP-complete"></a>P, NP, NP-hard, NP-complete</h3><ul>
+<li><strong>P</strong>: problems can be solved in polynomial time</li>
+<li><strong>NP</strong>: ‘N’ denotes “non-deterministic”(非确定). Which meas these problems is non-deterministic can be solved in polynomial time currently(至少现在不确定有没有线性复杂度的算法能解决这些问题), but can be verified in polynomial time given an answer.</li>
+<li>In order for further definition, we introduce a new definition here. <strong>“Reduction(归约，约化)”</strong> means a problem A can be reduced from problem B, if A can be transformed to B. Which means B is as hard as A. </li>
+<li><strong>NP-complete</strong>: NPC problem is kind of problem that:<ul>
+<li>is a NP problem(can be verificated polynomially)</li>
+<li>all NP problem can be reduced from it</li>
+</ul>
+</li>
+<li><strong>NP-hard</strong>: NP problems are as hard as NP problems <ul>
+<li>all NP problem can be reduced from it</li>
+<li>but not a NP</li>
+</ul>
+</li>
+</ul>
+<p>Reference:<a href="http://www.matrix67.com/blog/archives/105?replytocom=20331#respond" target="_blank" rel="noopener">Matrix67</a></p>
+<h3 id="Combinitional-Optimisation-组合优化"><a href="#Combinitional-Optimisation-组合优化" class="headerlink" title="Combinitional Optimisation(组合优化)"></a>Combinitional Optimisation(组合优化)</h3><p>   A combinatorial optimisation problem:</p>
+<ul>
+<li>view an instance as a pair $(\mathcal(R), \mathcal(C))$<ul>
+<li>$\mathcal(R)$ is a finite set of configurations</li>
+<li>$\mathcal(C)$ is a cost function, $\mathcal(C): \mathcal(R) \to real \; number$</li>
+</ul>
+</li>
+<li>Problem: find a confuguration with the minimum cost. That is to find a configuration config $\in \mathcal(R)$ such that the cost $\mathcal(C)(config)$ of this configuration is as small as possible.</li>
+<li>Illustrations: if the size of the configuration set $\mathcal(R)$ is N, the the number of config, the subset of $\mathcal(R)$ is $2^N$. So in order to find the minum of the config, the complexity of the problem is $\Omega(2^n)$. <ul>
+<li>NP-hard </li>
+</ul>
+</li>
+<li>Examples: TSP, SAT</li>
+</ul>
+<p>Reference:</p>
 <ol>
-<li><p>Each $x_i$ should be in the group that it matches most closely. Identify each group by its centre/mean, $u_j$ .</p>
-</li>
-<li><p>The clusters $z^i$ are then made up of the points closest to the $µ_j $.</p>
-</li>
+<li><a href="https://blog.csdn.net/golden1314521/article/details/51470999" target="_blank" rel="noopener">https://blog.csdn.net/golden1314521/article/details/51470999</a></li>
+<li><a href="http://www.matrix67.com/blog/archives/105" target="_blank" rel="noopener">http://www.matrix67.com/blog/archives/105</a></li>
 </ol>
-<h5 id="K-means"><a href="#K-means" class="headerlink" title="K-means"></a>K-means</h5><ul>
-<li><p>Pick random values for µ k .</p>
-</li>
-<li><p>Then repeat:</p>
-<ol>
-<li><p>Assign each x i to its closest cluster centre:</p>
-<script type="math/tex; mode=display">
-z^i = arg \; min_{u_k} \; distance(x_i,u_k)</script></li>
-<li><p>Update each cluster centre as the mean of the points assigned to that cluster: </p>
-<p>until converged</p>
-<script type="math/tex; mode=display">
-u_k = \frac{1}{|\{j:z^i=k\}|} \sum_{i\in\{j:z^i = k\}}x_i</script></li>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/16/NOTE-Week-1-Software-Engineering-of-Internet-Application/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/16/NOTE-Week-1-Software-Engineering-of-Internet-Application/" itemprop="url">(SE)Introduction of Software Engineering of Internet Application</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-16T10:48:40+00:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/14/NOTE-Week-1-Pattern-Recognition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/14/NOTE-Week-1-Pattern-Recognition/" itemprop="url">(PR) Introduction to Pattern Recognition</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-14T13:18:20+00:00">
+                2019-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><ol>
+<li>Introduction to Pattern Recognition</li>
+<li>Bayesian Decision Theory &amp; Density Estimation</li>
+<li>Discriminant Functions</li>
+<li>Neural Networks</li>
+<li>Feature Extraction</li>
+<li>Multilayer Neural Networks</li>
+<li>Fuzzy Inference Systems</li>
+<li>Support Vector Machines</li>
+<li>Ensemble Methods</li>
+<li>Clustering</li>
 </ol>
+<h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><ul>
+<li><p>What is Pattern Recognition?</p>
 </li>
-<li></li>
+<li><p>Applications of Pattern Recognition </p>
+</li>
+<li>An Example of Designing a Pattern Recognition System </li>
+<li>General Principles:<ul>
+<li>Data and Features </li>
+<li>The Design Cycle </li>
+<li>Classification Methods </li>
+<li>Types of Learning</li>
 </ul>
-<p>​    </p>
-<p>​    </p>
-<h3 id="Reinforcement-learning-强化学习"><a href="#Reinforcement-learning-强化学习" class="headerlink" title="Reinforcement learning(强化学习)"></a>Reinforcement learning(强化学习)</h3><h4 id="Passive-被动-RL"><a href="#Passive-被动-RL" class="headerlink" title="Passive(被动) RL"></a>Passive(被动) RL</h4><p>In passive reinforcement learning the agent’s <strong>policy is ﬁxed</strong></p>
-<p><a href="http://zhangzhejian.com/2018/11/07/NOTE-WEEK-4-Artificial-Intelligence/">MDP</a></p>
-<h5 id="Direct-utility-estimation"><a href="#Direct-utility-estimation" class="headerlink" title="Direct utility estimation"></a>Direct utility estimation</h5>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/20/NOTE-WEEK-7-Artificial-Intelligence/" itemprop="url">(AI)Lec 7:Argumentation(论证) I</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-20T12:16:35+00:00">
-                2018-11-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Lecture-7-Argumentation-I"><a href="#Lecture-7-Argumentation-I" class="headerlink" title="Lecture 7: Argumentation I"></a>Lecture 7: Argumentation I</h2><h4 id="Abstract-argumentation-framework"><a href="#Abstract-argumentation-framework" class="headerlink" title="Abstract argumentation framework"></a>Abstract argumentation framework</h4><p>An abstract argumentation framework is a tuple &lt;𝑆, 𝑅&gt; where 𝑆 is a set of arguments and 𝑅 ⊆ 𝑆 × 𝑆 is an attack relation.</p>
-<p>For 𝑎, 𝑏 ∈ 𝑆, (𝑎, 𝑏) ∈ 𝑅 means that argument 𝑎 attacks argument 𝑏.</p>
-<h5 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h5><p>The abstract argumentation framework 𝑆, 𝑅 where 𝑆 = {𝑎1, 𝑎2, 𝑎3} and 𝑅 = { (𝑎1, 𝑎2) , (𝑎2, 𝑎1) , (𝑎3, 𝑎2) }can be represented as:</p>
-<p><img src="https://i.postimg.cc/XvqS9WhJ/arg-ex1.png" alt=""></p>
-<h5 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h5><p>𝑆 = {𝑎1, 𝑎2, 𝑎3, 𝑎4, 𝑎5}</p>
-<p>𝑅 ={(𝑎1, 𝑎2) , (𝑎2, 𝑎5) , (𝑎2, 𝑎3), (𝑎3, 𝑎2) , (𝑎4, 𝑎3 ), (𝑎4, 𝑎4)}</p>
-<p><img src="https://i.postimg.cc/Jz79WmRq/argex2.png" alt=""></p>
-<h4 id="Conflict-free-sets"><a href="#Conflict-free-sets" class="headerlink" title="Conflict-free sets"></a>Conflict-free sets</h4><p>A set 𝑇 ⊆ 𝑆 is conflict-free <strong>if and only if</strong> there are no arguments in 𝑇 that attack each other. Formally:</p>
-<p>For all (𝑎, 𝑏) ∈ 𝑇, (𝑎, 𝑏) ∉ 𝑅.</p>
-<h5 id="As-for-Example-1"><a href="#As-for-Example-1" class="headerlink" title="As for Example 1:"></a>As for Example 1:</h5><p>The conflict-free subsets are:</p>
-<p><strong>{}</strong>,{𝑎1,},{𝑎2},{𝑎3},{𝑎1, 𝑎3}</p>
-<p>The <strong>empty set</strong> is always in the conflict-free subset.</p>
-<h5 id="As-for-Example-2"><a href="#As-for-Example-2" class="headerlink" title="As for Example 2:"></a>As for Example 2:</h5><p><strong>{}</strong>,{𝑎1,},{𝑎2},{𝑎3},{a5},{a1,a5},{a1,a3},{a3,a5}</p>
-<h4 id="Argument-defence"><a href="#Argument-defence" class="headerlink" title="Argument defence"></a>Argument defence</h4><p>A set 𝑇 ⊆ 𝑆 defends an argument 𝑥 ∈ 𝑆 if and only if for every 𝑦 ∈ 𝑆 such that 𝑦 attacks 𝑥 there is an element 𝑧 ∈ 𝑇 such that 𝑧 attacks 𝑦.</p>
-<h5 id="As-for-example-2"><a href="#As-for-example-2" class="headerlink" title="As for example 2:"></a>As for example 2:</h5><p><img src="https://i.postimg.cc/Jz79WmRq/argex2.png" alt=""></p>
-<p>{a1} defends a5</p>
-<p>{a4} defends a4</p>
-<p>{a1,a4},{a3,a4} defends a3</p>
-<p>{} defends a1</p>
-<h4 id="Admissible-可采纳的）"><a href="#Admissible-可采纳的）" class="headerlink" title="Admissible(可采纳的）"></a>Admissible(可采纳的）</h4><p>A set 𝐴 ⊆ 𝑆 is admissible if and only if 𝐴 is conflict-free and 𝐴 defends each argument that is a member of 𝐴.</p>
-<p>First it should be a subset of conflict-free.</p>
-<p>Then find the defence relationship between them.</p>
-<h5 id="As-for-Example-3"><a href="#As-for-Example-3" class="headerlink" title="As for Example 3:"></a>As for Example 3:</h5><p>{},{a1},{a3},{a1,a3}</p>
-<h5 id="As-for-Example-2-1"><a href="#As-for-Example-2-1" class="headerlink" title="As for Example 2:"></a>As for Example 2:</h5><p>{},{a1}, {a1,a5}</p>
-<h4 id="Complete-Extention-subset-of-admissible"><a href="#Complete-Extention-subset-of-admissible" class="headerlink" title="Complete Extention(subset of admissible)"></a>Complete Extention(subset of admissible)</h4><p>A complete extension is an admissible set that <u>includes all arguments it defends</u>.</p>
-<h5 id="Example-2-1"><a href="#Example-2-1" class="headerlink" title="Example 2:"></a>Example 2:</h5><p><img src="https://i.postimg.cc/vTbpHxJ4/argex3.png" alt=""></p>
-<h4 id="Maximal-and-minimal-subsets"><a href="#Maximal-and-minimal-subsets" class="headerlink" title="Maximal and minimal subsets"></a>Maximal and minimal subsets</h4><h5 id="Maximal-subsets"><a href="#Maximal-subsets" class="headerlink" title="Maximal subsets"></a>Maximal subsets</h5><p>Take 𝐶 ⊆ 2 𝑆 , a maximal subset of 𝑆 in 𝐶 is a set 𝑇 ∈ 𝐶 such that no other set in 𝐶 strictly <strong>includes</strong> 𝑇.</p>
-<p>Formally, 𝑇 is a maximal subset of 𝑆 in 𝐶 if and only if ∄𝑇′ ∈ 𝐶 such that 𝑇 ⊊ 𝑇 ′ .</p>
-<p><img src="https://i.postimg.cc/X78yJMCq/argex4.png" alt=""></p>
-<h5 id="Minimal-subsets"><a href="#Minimal-subsets" class="headerlink" title="Minimal subsets"></a>Minimal subsets</h5><p>Take 𝐶 ⊆ 2 𝑆 , a minimal subset of 𝑆 in 𝐶 is a set 𝑇 ∈ 𝐶 such that no other set in 𝐶 is <strong>strictly included in</strong> 𝑇.</p>
-<p>Formally, 𝑇 is a minimal subset of 𝑆 in 𝐶 if and only if ∄𝑇′ ∈ 𝐶 such that 𝑇 ′ ⊊ 𝑇.</p>
-<p><img src="https://i.postimg.cc/fRRSSHcK/argex5.png" alt=""></p>
-<h4 id="Grounded-extention-min"><a href="#Grounded-extention-min" class="headerlink" title="Grounded extention(min)"></a>Grounded extention(min)</h4><p>The grounded extension is the minimal complete extension with respect to set inclusion (ie, the minimal subset of the set of complete extensions).</p>
-<p><img src="https://i.postimg.cc/dQnqZJ4b/argex6.png" alt=""></p>
-<p><u><strong>The grounded extension always exists and it is unique.</strong></u></p>
-<p><strong><u>The grounded extension can be empty.</u></strong></p>
-<p><img src="https://i.postimg.cc/RVNz3K3t/argex7.png" alt=""></p>
-<h4 id="Prefered-extention-max"><a href="#Prefered-extention-max" class="headerlink" title="Prefered extention(max)"></a>Prefered extention(max)</h4><p>A preferred extension is a complete extension that is maximal with respect to set inclusion (ie, a maximal subset of the set of all complete extensions).</p>
-<h4 id="Stable-extention"><a href="#Stable-extention" class="headerlink" title="Stable extention"></a>Stable extention</h4><p>A stable extension of an argumentation framework 𝑆, 𝑅 is a <strong>preferred extension</strong> 𝐸 such that for all 𝑦 ∈ 𝑆 ∖ 𝐸 there exists 𝑥 ∈ 𝐸 such that 𝑥, 𝑦 ∈ 𝑅 (<strong>in other words, for every argument 𝑦 that isn’t part of 𝐸, there is an argument in 𝐸 that attacks 𝑦</strong>).</p>
-<h5 id="Example-1-1"><a href="#Example-1-1" class="headerlink" title="Example 1:"></a>Example 1:</h5><p><img src="https://i.postimg.cc/MGx6jXJ8/argex-8.png" alt=""></p>
-<h5 id="Example-2-2"><a href="#Example-2-2" class="headerlink" title="Example 2:"></a>Example 2:</h5><p><img src="https://i.postimg.cc/Bvgq5sJP/argex9.png" alt=""></p>
-<h5 id="Credulous-acceptance（信得过的接受）"><a href="#Credulous-acceptance（信得过的接受）" class="headerlink" title="Credulous acceptance（信得过的接受）"></a>Credulous acceptance（信得过的接受）</h5><p>An argument is credulously accepted by an argumentation framework under a particular semantics if and only if it is part of at least one of the extensions generated by those semantics.</p>
-<h5 id="Skeptical-acceptance（持有怀疑的接受）"><a href="#Skeptical-acceptance（持有怀疑的接受）" class="headerlink" title="Skeptical acceptance（持有怀疑的接受）"></a>Skeptical acceptance（持有怀疑的接受）</h5><p>An argument is skeptically accepted by an argumentation framework under a particular semantics if and only if it is part of all of the extensions generated by those semantics.</p>
-<h5 id="Example"><a href="#Example" class="headerlink" title="Example:"></a>Example:</h5><p><img src="https://i.postimg.cc/ht39MFMv/argex10.png" alt=""></p>
-<p><img src="https://i.postimg.cc/P5qWmfW0/argex11.png" alt=""></p>
-<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><h5 id="Relationships-between-those-sets"><a href="#Relationships-between-those-sets" class="headerlink" title="Relationships between those sets"></a>Relationships between those sets</h5><p><strong>Min/max subset ⊆ Complete-extention⊆ adimissible ⊆ conflict-free</strong></p>
-<p><strong>stable extention ⊆ prefered/max extention</strong></p>
+</li>
+</ul>
+<h4 id="What-is-Pattern-Recognition"><a href="#What-is-Pattern-Recognition" class="headerlink" title="What is Pattern Recognition:"></a>What is Pattern Recognition:</h4><p>Aim is to build algorithms that can recognize useful patterns in data.</p>
+<p>Ingredients required for pattern recognition:</p>
+<ul>
+<li><p>A pattern exists</p>
+</li>
+<li><p>We can not pin it down mathematically</p>
+</li>
+<li><p>Data exists</p>
+</li>
+</ul>
+<h4 id="Why-is-PR-important"><a href="#Why-is-PR-important" class="headerlink" title="Why is PR important"></a>Why is PR important</h4><ul>
+<li>Patterns are everywhere </li>
+<li>Helps make sense of the world </li>
+<li>Data is cheep, knowledge is valuable </li>
+<li>Lots of applications/opportunities</li>
+</ul>
+<h3 id="PR-system"><a href="#PR-system" class="headerlink" title="PR system"></a>PR system</h3><p><img src="https://i.postimg.cc/jjfVCmbL/PR1.png" alt=""></p>
+<ul>
+<li>Sensing:<ul>
+<li>One or more transducers (e.g. camera, microphone, etc.) extract information from the physical world.</li>
+<li>Data my also come from other sources</li>
+</ul>
+</li>
+<li>Pre-processing:<ul>
+<li>Data is preprocessed (e.g. segmentation, noise reduction).</li>
+<li>This provides the “input data”.</li>
+</ul>
+</li>
+<li>Feature Extraction<ul>
+<li>Select features of the input data that:<ul>
+<li>preserve in-class similarity</li>
+<li>discriminate between classes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Classification<ul>
+<li>Assign data to a class</li>
+</ul>
+</li>
+<li>Domain Knowledge</li>
+</ul>
+<p><img src="https://i.postimg.cc/7hWX3P1D/pr2.png" alt=""></p>
+<h4 id="Input-data"><a href="#Input-data" class="headerlink" title="Input data"></a>Input data</h4><p>Data is classified as:</p>
+<ul>
+<li>discrete (integer/symbolic valued) or continuous (real/continuous valued).</li>
+<li>univariate (containing one variable) or multivariate (containing multiple variable).</li>
+</ul>
+<h4 id="Feature-Extraction"><a href="#Feature-Extraction" class="headerlink" title="Feature Extraction"></a>Feature Extraction</h4><p>Same as ML regression</p>
+<h3 id="Design-Model"><a href="#Design-Model" class="headerlink" title="Design Model"></a>Design Model</h3><p><img src="https://i.postimg.cc/MHhsSfkF/pr3.png" alt=""></p>
+<ul>
+<li>Data collection<ul>
+<li>What data to collect</li>
+<li>How much</li>
+</ul>
+</li>
+<li>Feature choice<ul>
+<li>What features is possible to extract</li>
+<li>What are useful for classification</li>
+</ul>
+</li>
+<li>Model Choice<ul>
+<li>what sort of classifier should be used</li>
+</ul>
+</li>
+<li>Training<ul>
+<li>How to use the data to define the classifier</li>
+</ul>
+</li>
+<li>Evaluation<ul>
+<li>Measure the error-rate or cost</li>
+<li>need to avoid overfitting</li>
+</ul>
+</li>
+</ul>
 
           
         
@@ -1692,7 +1177,7 @@ u_k = \frac{1}{|\{j:z^i=k\}|} \sum_{i\in\{j:z^i = k\}}x_i</script></li>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/13/NOTE-WEEK-6-Artificial-Intelligence/">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/14/NOTE-Week-1-Distributed-System/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhejian">
@@ -1711,7 +1196,7 @@ u_k = \frac{1}{|\{j:z^i=k\}|} \sum_{i\in\{j:z^i = k\}}x_i</script></li>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/13/NOTE-WEEK-6-Artificial-Intelligence/" itemprop="url">(AI)Lec 6:Probabilistic reasoning over time</a></h1>
+                <a class="post-title-link" href="/2019/01/14/NOTE-Week-1-Distributed-System/" itemprop="url">(DS) Introduction</a></h1>
         
 
         <div class="post-meta">
@@ -1723,8 +1208,8 @@ u_k = \frac{1}{|\{j:z^i=k\}|} \sum_{i\in\{j:z^i = k\}}x_i</script></li>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-13T17:01:53+00:00">
-                2018-11-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-14T12:15:12+00:00">
+                2019-01-14
               </time>
             
 
@@ -1763,80 +1248,156 @@ u_k = \frac{1}{|\{j:z^i=k\}|} \sum_{i\in\{j:z^i = k\}}x_i</script></li>
       
         
           
-            <h2 id="Lecture-6-Probabilistic-reasoning-over-time"><a href="#Lecture-6-Probabilistic-reasoning-over-time" class="headerlink" title="Lecture 6: Probabilistic reasoning over time"></a>Lecture 6: Probabilistic reasoning over time</h2><h4 id="Dynamic-Bayesian-Network-DBN"><a href="#Dynamic-Bayesian-Network-DBN" class="headerlink" title="Dynamic Bayesian Network(DBN)"></a>Dynamic Bayesian Network(DBN)</h4><p>to handle dynamic situation</p>
-<p>Consider the world to be a series of time slices. Each slice contains some variables:</p>
+            <h2 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points"></a>Key points</h2><ul>
+<li>Basic Introduction </li>
+<li>Design characteristics for distributed systems<ul>
+<li>design considerations(10)</li>
+</ul>
+</li>
+<li>Communication problem</li>
+</ul>
+<h2 id="Design-Considerations"><a href="#Design-Considerations" class="headerlink" title="Design Considerations"></a>Design Considerations</h2><h3 id="Openness-对开发人员"><a href="#Openness-对开发人员" class="headerlink" title="Openness(对开发人员)"></a>Openness(对开发人员)</h3><p>Interfaces to the OS, network and services must be based on published specifications (such as standards)</p>
 <ul>
-<li>the set $X_t$ which we can’t observe</li>
-<li>the set $E_t$ which we can observe</li>
+<li>This makes it possible for one vendor to build systems which interact with those of another</li>
+<li>Without such openness, the user is in practice restricted to purchase from only one vendor</li>
+<li>Different users will buy from different vendors, but cannot later build a distributed system</li>
 </ul>
-<h5 id="Transition-model-过渡模型"><a href="#Transition-model-过渡模型" class="headerlink" title="Transition model(过渡模型)"></a>Transition model(过渡模型)</h5><script type="math/tex; mode=display">
-P(X_t|X_{0:t-1})</script><p>Problem: when t is large, the data and computation cost too many resource</p>
-<p>Solution: make a <strong>Markov Assumption</strong> that the value of the current state depends only on a ﬁnite ﬁxed number of previous states</p>
-<p><img src="https://i.postimg.cc/sX9QM0YX/transitionmodel.png" alt=""></p>
-<p>First-order:</p>
-<script type="math/tex; mode=display">
-P(X_t|X_{0:t-1}) = P(X_t|X_{t-1})</script><p>Second-order:</p>
-<script type="math/tex; mode=display">
-P(X_t|X_{0:t-1}) = P(X_t|X_{t-2},X_{t-1})</script><h5 id="Sensor-model"><a href="#Sensor-model" class="headerlink" title="Sensor model"></a>Sensor model</h5><p>The evidence variables $E_t$ could depend on lots of previous variables.</p>
-<p>But we will assume the state is constructed in such a way that evidence <strong>only depends on the current state</strong>.</p>
-<p>A Markov assumption for the sensor model:</p>
-<script type="math/tex; mode=display">
-P(E_t|X_{0:t-1},E_{0:t-1}) = P(E_t|X_{t})</script><p><img src="https://i.postimg.cc/kMsR9zMY/sensormodel.png" alt=""></p>
-<p>in this bayesian network, arrows run from effect to causes.</p>
-<script type="math/tex; mode=display">
-P(X_{0:t},E_{1:t}) = P(X_0)\prod_{i=1}^t [P(X_i|X_{i-1})P(E_i|X_i)]\\
-because:\quad P(x_1,x_2,...,x_n) = \prod _{i=1}^n P(x_i|parents(X_i))</script><p>and in this network, the parent of $E_t$ is $X_t$</p>
-<h4 id="Inference-tasks"><a href="#Inference-tasks" class="headerlink" title="Inference tasks"></a>Inference tasks</h4><ul>
-<li>Filtering: $P(X_t|e_{1:t})$  determine belief state— input to the decision process of a rational agent </li>
-<li>Prediction:$P(X_{t+k}|e_{1:t})$ for k &gt; 0  evaluate future states</li>
-<li>smoothing: P(X_k|e_{1:t}) for 0&lt;=k&lt;t better estimate past states</li>
-<li>Most likely explanation: $arg_max_{x_{1:t}}P(x_{1:t}|e_{1:t})$ </li>
+<p>Too many standards can be almost as bad as vendor proprietary standards, since the user must then deal with all the different standards.</p>
+<h3 id="Concurrency"><a href="#Concurrency" class="headerlink" title="Concurrency"></a>Concurrency</h3><p>Multiple clients may try to access a service.</p>
+<p>The whole system is multi-process, so issues related to multi-process programming should be considered:</p>
+<ul>
+<li>lock</li>
+<li>Synchronizing</li>
 </ul>
-<h5 id="Filtering"><a href="#Filtering" class="headerlink" title="Filtering"></a>Filtering</h5><p>determine the belief state (current state) $x_t$</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\mathcal{P}(X_t | e_{1:t}) &= \mathcal{P}(X_t | e_{1:t-1},e_{t})\\
-&=\alpha \mathcal{P}(e_{t}|X_t , e_{1:t-1})\mathcal{P}(X_t|e_{1:t-1}) \; \;Bayes \; rule\\
-&=\alpha \color{maroon}{\mathcal{P}(e_{t}|X_t)} \mathcal{P}(X_t|e_{1:t-1}) \;\;\; Markov \; assumption\\
-&=\alpha \color{maroon}{\mathcal{P}(e_{t}|X_t)} \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1},\color{red}{e_{1:t}})\mathcal{P}(X_{t-1}|e_{1:t-1}) \;\;\;\\
-&=\alpha \color{maroon}{\mathcal{P}(e_{t}|X_t)} \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1})\mathcal{P}(X_{t-1}|e_{1:t-1}) \;\;\; Markov \; assumption\\
-\end{align}</script><p>so we can make the filtering to a iteration function:</p>
-<script type="math/tex; mode=display">
-\begin{align}
-f_{1:t} &= \mathcal{P}(X_t|e_{1:t}) \\
-&=  \alpha \mathcal{P}(e_{t}|X_t) \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1})\mathcal{P}(X_{t-1}|e_{1:t-1})\\
-& = \alpha \mathcal{P}(e_{t}|X_t) \sum_{x_{t-1}}\mathcal{P}(X_t|x_{t-1}) f_{1:t-1}
-\end{align}</script><h5 id="Prediction"><a href="#Prediction" class="headerlink" title="Prediction"></a>Prediction</h5><p>Prediction is filtering without new evidence</p>
-<p>used to predict future state $x_{t+k}$</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\mathcal{P}(X_{t+1}|e_{1:t}) &= \sum_{x_t} \mathcal{P}(X_{t+1}|x_t,e_{1:t})\mathcal{P}(x_t|e_{1:t})\\
-& =  \sum_{x_t} \mathcal{P}(X_{t+1}|x_t)\mathcal{P}(x_t|e_{1:t})\\
-
-\end{align}</script><p>Above is predict one step forward</p>
-<p>K steps forward:</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\mathcal{P}(X_{t+k}|e_{1:t}) &= \sum_{x_{t+k-1}} \mathcal{P}(X_{t+k}|x_{t+k-1},e_{1:t})\mathcal{P}(x_t|e_{1:t})\\
-& =  \sum_{x_{t+k-1}} \mathcal{P}(X_{t+k}|x_{t+k-1})\mathcal{P}(x_{t+k-1}|e_{1:t})\\
-\end{align}</script><h5 id="Smoothing"><a href="#Smoothing" class="headerlink" title="Smoothing"></a>Smoothing</h5><p>1&lt; k &lt; t</p>
-<script type="math/tex; mode=display">
-\begin{align}
-\mathcal{P}(X_k|e_{1:t}) &= \mathcal{P}(X_k|e_{1:k},e_{k+1:t})\\
-&= \alpha \mathcal{P}(X_k|e_{1:k})\mathcal{P}(e_{k+1:t}|X_k,e_{1:k}) \;\;\; Bayes\; rule\\
-&= \alpha \mathcal{P}(X_k|e_{1:k})\mathcal{P}(e_{k+1:t}|X_k) \;\;\; conditional\; independence \\
-& = \alpha f_{1:k} b_{k+1:t}
-\end{align}</script><p>“f” is a forward message computed as filtering</p>
-<p>“b” is a backward message</p>
-<script type="math/tex; mode=display">
-\begin{align}
-b_{k+1:t} &= \mathcal{P}(e_{k+1:t}|X_k)\\
-&= \sum_{x_{k+1}}\mathcal{P}(e_{k+1:t}|x_{k+1},X_k) \mathcal{P}(x_{k+1}|X_k)\\
-&= \sum_{x_{k+1}}\mathcal{P}(e_{k+1:t}|x_{k+1}) \mathcal{P}(x_{k+1}|X_k) \;\;\; conditional\; independence\\
-&= \sum_{x_{k+1}}\mathcal{P}(e_{k+2:t},e_{k+1}|x_{k+1}) \mathcal{P}(x_{k+1}|X_k)\\
-&= \color{red}{P(e_{k+1}|x_{k+1})}P(e_{k+2}|x_{k+1}) \color{red}{\mathcal{P}(x_{k+1}|X_k)}\\
-\end{align}</script><p>The two red terms can get from the model. We only need to compute the second part</p>
-<h5 id="most-likely"><a href="#most-likely" class="headerlink" title="most likely"></a>most likely</h5><h4 id="Hidden-Markov-Model-HMM-隐式马尔可夫链"><a href="#Hidden-Markov-Model-HMM-隐式马尔可夫链" class="headerlink" title="Hidden Markov Model (HMM) 隐式马尔可夫链"></a>Hidden Markov Model (HMM) 隐式马尔可夫链</h4><p>Not finished yet</p>
+<h3 id="Scalability-伸缩性-and-state"><a href="#Scalability-伸缩性-and-state" class="headerlink" title="Scalability(伸缩性) and state"></a>Scalability(伸缩性) and state</h3><p>Should avoid:</p>
+<ul>
+<li>the notion of single master services</li>
+<li>short fixed names(对一些参数的命名，不能太短)</li>
+<li>performance bottlenecks</li>
+</ul>
+<p>Some resources include some sort of state information: data that alters the resources’ future response to requests, e.g.</p>
+<ul>
+<li>The state of a file server is the data held on disk </li>
+<li>Alterations to the state alter the response given to a READ request</li>
+</ul>
+<p>Duplication of state information leads to the problem of propagating changes of state to the various copies</p>
+<p>可以理解为数据的一致性consistency</p>
+<h3 id="Fault-tolerance"><a href="#Fault-tolerance" class="headerlink" title="Fault tolerance"></a>Fault tolerance</h3><ul>
+<li>Fault isolation: fault occurring in one resource does not effect operation of other resources</li>
+<li>Fault masking: take action to restore the service when a particular resource of the service fails</li>
+</ul>
+<p>SO <strong>hardware redundancy and software recovery</strong> are required</p>
+<h4 id="Measure-of-failure-rate"><a href="#Measure-of-failure-rate" class="headerlink" title="Measure of failure rate"></a>Measure of failure rate</h4><p><strong>Mean Time before Failure(MTBF)</strong></p>
+<ul>
+<li>Average period of time between failures</li>
+<li>Assume a random distribution of failures</li>
+<li>Can compute the probability of failure occurring in any period of time</li>
+</ul>
+<p><strong>T-fault tolerance</strong></p>
+<p>Must be more than t failed components before a service fails</p>
+<h4 id="Failure-modes-and-illustrations"><a href="#Failure-modes-and-illustrations" class="headerlink" title="Failure modes and illustrations"></a>Failure modes and illustrations</h4><ul>
+<li>Failstop: <ul>
+<li>a processor halts, and remain halted. The fact that the processor has halted <strong>can be detected by other processors</strong></li>
+</ul>
+</li>
+<li>Crash: <ul>
+<li>As for failstop, except <strong>not detectable</strong> by other processors</li>
+</ul>
+</li>
+<li>Crash+link:<ul>
+<li>A link fails for a period, losing some messages(信息传递通道的fail)</li>
+</ul>
+</li>
+<li>Receive omission: <ul>
+<li>Processor fail to read message sent to it</li>
+</ul>
+</li>
+<li>Send omission: <ul>
+<li>processor fail to write message required by protocols</li>
+</ul>
+</li>
+<li>General ommision: <ul>
+<li>receive or send omission</li>
+</ul>
+</li>
+<li>Byzantine failure: <ul>
+<li>the processor behaves in a manner not permitted by the protocol</li>
+</ul>
+</li>
+</ul>
+<h3 id="Transparency-对用户"><a href="#Transparency-对用户" class="headerlink" title="Transparency(对用户)"></a>Transparency(对用户)</h3><p>Transparency is about making the service provided independent from how it is provided.</p>
+<h4 id="Types-of-transparency"><a href="#Types-of-transparency" class="headerlink" title="Types of transparency:"></a>Types of transparency:</h4><ul>
+<li>Access transparency:<ul>
+<li>Methods to access a resource do not vary according to means of access, e.g. Java method call, SOAP message</li>
+</ul>
+</li>
+<li>Location Transparency: <ul>
+<li>Access to resource does not require specifying its location.</li>
+</ul>
+</li>
+<li>Concurrency Transparency: <ul>
+<li>Access to a resource is not affected by number of clients</li>
+</ul>
+</li>
+<li>Replication Transparency: <ul>
+<li>Methods to access a resource do not change according to how many <u>copies</u> of that resource are maintained</li>
+</ul>
+</li>
+<li>Failure Transparency: <ul>
+<li>A service remains available even if a resource which supplies that service fails Migration Transparency: Moving a resource between hosts does not affect access to it</li>
+</ul>
+</li>
+<li>Performance Transparency: <ul>
+<li><u>Increases or decreases in resource performance</u> do not alter <strong>methods</strong> by which the resource is accessed</li>
+</ul>
+</li>
+<li>Scaling Transparency: <ul>
+<li>Access to resources does not change according to <u>overall size of the system or number of instances of resource</u></li>
+</ul>
+</li>
+</ul>
+<h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h3><ul>
+<li><p>Preventing users doing things they should not do, according to policy decisions</p>
+</li>
+<li><p>Preventing actions which by accident prevent the correct functioning of the system</p>
+</li>
+</ul>
+<h3 id="Management"><a href="#Management" class="headerlink" title="Management"></a>Management</h3><p>Management is the <strong>supervising and controlling</strong> of the system so that it satisfies the requirements of its owners and users.</p>
+<p>Requirements:</p>
+<ul>
+<li>Remote access</li>
+<li>Programmatic interface</li>
+<li>Relevance: <ul>
+<li>only present necessary information</li>
+</ul>
+</li>
+<li>Uniformity</li>
+</ul>
+<h3 id="Performance"><a href="#Performance" class="headerlink" title="Performance"></a>Performance</h3><ul>
+<li>Responsiveness</li>
+<li>Throughput</li>
+<li>Load Balancing</li>
+</ul>
+<h3 id="Heterogeneity-异质性"><a href="#Heterogeneity-异质性" class="headerlink" title="Heterogeneity(异质性)"></a>Heterogeneity(异质性)</h3><p>??</p>
+<h3 id="Communication-Models"><a href="#Communication-Models" class="headerlink" title="Communication Models"></a>Communication Models</h3><ul>
+<li>Client-server communication</li>
+<li>Multicast communication</li>
+</ul>
+<h3 id="Reliable-agreement"><a href="#Reliable-agreement" class="headerlink" title="Reliable agreement"></a>Reliable agreement</h3><p>Many improtant functions such as data duplications, requre agreement between hosts. This is often achieved through broadcast of information among distributed processes.</p>
+<p>Communication links are not reliable. Therefore, <strong>distributed algorithms</strong> allow us to achieve reliable broadcasts</p>
+<h3 id="Data-Distributed-models"><a href="#Data-Distributed-models" class="headerlink" title="Data Distributed models"></a>Data Distributed models</h3><ul>
+<li>Fragmentation:分片<ul>
+<li>data is divided into parts and split between hosts</li>
+</ul>
+</li>
+<li>Migration:迁移<ul>
+<li>data moves from one host to another over time</li>
+</ul>
+</li>
+</ul>
+<h3 id="Distributed-Transcation-分布式事务"><a href="#Distributed-Transcation-分布式事务" class="headerlink" title="Distributed Transcation(分布式事务)"></a>Distributed Transcation(分布式事务)</h3><p>Ensuring that either all or none of a sequence of actions are performed maintains the integrity of the resources acted on.确保无论执不执行操作，都会保持资源的完整性。</p>
+<h3 id="Distributed-File-System"><a href="#Distributed-File-System" class="headerlink" title="Distributed File System"></a>Distributed File System</h3><p>Provide access to directories and files spread acorss multiple hosts as if one directory structure.</p>
+<p>Finished.</p>
 
           
         
@@ -1887,7 +1448,7 @@ b_{k+1:t} &= \mathcal{P}(e_{k+1:t}|X_k)\\
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2018/11/11/NOTE-WEEK-6-Agents-and-Multi-Agent-System/">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/10/NOTE-week-9-WI/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhejian">
@@ -1906,7 +1467,7 @@ b_{k+1:t} &= \mathcal{P}(e_{k+1:t}|X_k)\\
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/11/NOTE-WEEK-6-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 6:Negotiation(reaching agreements)</a></h1>
+                <a class="post-title-link" href="/2019/01/10/NOTE-week-9-WI/" itemprop="url">(WI) Cloud Computing</a></h1>
         
 
         <div class="post-meta">
@@ -1918,8 +1479,8 @@ b_{k+1:t} &= \mathcal{P}(e_{k+1:t}|X_k)\\
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-11T19:39:08+00:00">
-                2018-11-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-10T15:53:01+00:00">
+                2019-01-10
               </time>
             
 
@@ -1958,87 +1519,386 @@ b_{k+1:t} &= \mathcal{P}(e_{k+1:t}|X_k)\\
       
         
           
-            <h2 id="Agents-and-Multi-Agent-System"><a href="#Agents-and-Multi-Agent-System" class="headerlink" title="Agents and Multi-Agent System"></a>Agents and Multi-Agent System</h2><h2 id="智能体与多智能体系统"><a href="#智能体与多智能体系统" class="headerlink" title="智能体与多智能体系统"></a>智能体与多智能体系统</h2><h3 id="Lecture-6-Negotiation-reaching-agreements"><a href="#Lecture-6-Negotiation-reaching-agreements" class="headerlink" title="Lecture 6: Negotiation(reaching agreements)"></a>Lecture 6: Negotiation(reaching agreements)</h3><h4 id="Game-theory"><a href="#Game-theory" class="headerlink" title="Game theory"></a>Game theory</h4><p><a href="http://zhangzhejian.com/2018/11/11/NOTE-WEEK-5-Artificial-Intelligence/">Basic knowledge</a></p>
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/09/NOTE-week-6-WI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/09/NOTE-week-6-WI/" itemprop="url">NOTE-week-6-WI-</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-09T16:29:01+00:00">
+                2019-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/09/NOTE-week-5-WI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/09/NOTE-week-5-WI/" itemprop="url">(WI) Security</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-09T16:28:57+00:00">
+                2019-01-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>SQL Injection</p>
+<p>Asymmetric Cryptography (非对称加密)</p>
+<p>not used for general-purpose encryption of large amounts of data</p>
+<p>is used for:</p>
 <ul>
-<li>Dominant Strategy</li>
-<li>Nash Equilibrium</li>
-<li>Pareto optimal</li>
-<li>social welfare</li>
+<li>Small amounts of data</li>
+<li>Key distribution</li>
+<li>authentication and integrity</li>
 </ul>
-<p>Properties of agreement mechanism</p>
-<ul>
-<li><p>An agreement mechanism is <strong>individually rational</strong> if no agent will end up worse off as a result of participating (agents cannot end up with negative expected utility). Otherwise it would not be rational for agents to participate.</p>
-</li>
-<li><p>An agreement mechanism is <strong>symmetric</strong> if the rules of the game are the same for all participants.</p>
-</li>
-<li><p>An agreement mechanism is <strong>fair</strong> if participants have equal opportunity to influence the outcome.</p>
-</li>
-<li><p>An agreement mechanism is <strong>Pareto optimal</strong> if it guarantees a Pareto optimal outcome.</p>
-</li>
-<li><p>An agreement mechanism <strong>maximises social utility</strong> if it guarantees an outcome that maximises social utility.</p>
-</li>
-<li><p>An agreement mechanism is <strong>guaranteed to terminate</strong> if there is no way that participants following the protocol can continue to interact indefinitely.</p>
-</li>
-<li><p>An agreement mechanism is <strong>stable</strong> if a Nash Equilibrium exists.</p>
-</li>
-<li><p>An agreement mechanism is <strong>simple</strong> if it is easy to work out what the best strategy is.</p>
-</li>
-</ul>
-<h4 id="Negotiation"><a href="#Negotiation" class="headerlink" title="Negotiation"></a>Negotiation</h4><h5 id="Alternating-offers-protocol-交替offer协议"><a href="#Alternating-offers-protocol-交替offer协议" class="headerlink" title="Alternating offers protocol (交替offer协议)"></a>Alternating offers protocol (交替offer协议)</h5><p>This is about bargaining for resource division</p>
-<ul>
-<li><p>One-to-one protocol.</p>
-</li>
-<li><p>Negotiation takes place in series of rounds.</p>
-</li>
-<li>Not guaranteed to terminate</li>
-</ul>
-<p>If there’s no agreement, we say the result is the conflict deal !</p>
-<h4 id="Task-Oriented-Domains-TOD"><a href="#Task-Oriented-Domains-TOD" class="headerlink" title="Task Oriented Domains (TOD)"></a>Task Oriented Domains (TOD)</h4><p>Agents have tasks to achieve. Negotiation leads to task redistribution.</p>
-<p>A TOD is a triple</p>
-<p>​        <t, ag,="" c=""></t,></p>
-<p>where</p>
-<p>• T is the (finite) set of all possible tasks</p>
-<p>• Ag = {1,…,n} is the set of participating agents</p>
-<p>• $c = 2^T → ℝ+$ defines the cost of executing each subset of tasks</p>
-<p>An encounter is a collection of sets of tasks associated with each agent $<t_1 ,…,t_n=""> $</t_1></p>
-<p>where T i ⊆ T for each i ∈ Ag</p>
-<p>A deal δ = <d1, d2=""> is an allocation of the tasks T1 ∪ T2 to the agents 1 and 2</d1,></p>
-<p>The utility of deal δ to agent i is:</p>
-<script type="math/tex; mode=display">
-utility_i (δ) = c(T_i ) – cost_i (δ)</script><p>The <strong>conflict deal</strong>, Θ, is the deal $<t_1 ,="" t_2="">$ consisting of the tasks originally allocated. Note that $utility_i (Θ) = 0$ for all i ∈ Ag.</t_1></p>
-<p>Deal δ is <strong>individual rational</strong> if it weakly dominates the conflict deal, i.e., neither agent prefers the conflict deal.</p>
-<p><strong>negoation set</strong>: individual rational, and Pareto optimal.</p>
-<h5 id="Monotonic-concession-protocol-单方面让步协议"><a href="#Monotonic-concession-protocol-单方面让步协议" class="headerlink" title="Monotonic concession protocol(单方面让步协议)"></a>Monotonic concession protocol(单方面让步协议)</h5><p>Negotiation proceeds in rounds.</p>
-<p>On round 1, agents simultaneously propose a deal from the negotiation set.</p>
-<p>Agreement is reached if one agent finds that the deal proposed by the other is at least as good or better than its proposal. If each agent’s offer matches or exceeds that of the other agent, then one of the proposals is randomly selected as the agreement deal. If only one proposal exceeds of matches the other’s, then this is the agreement deal.</p>
-<p>If no agreement is reached, then negotiation proceeds to another round of simultaneous proposals.</p>
-<p>In round u + 1, no agent is allowed to make a proposal that is less preferred by the other agent than the deal it proposed at time u.</p>
-<p>If neither agent makes a concession in some round u &gt; 0, then negotiation terminates, with the conflict deal.</p>
-<h4 id="Zeuthen-strategy"><a href="#Zeuthen-strategy" class="headerlink" title="Zeuthen strategy"></a>Zeuthen strategy</h4><p>The Zeuthen strategy determines what an agent should do by answering three questions.</p>
-<ul>
-<li><p>What should an agent’s first proposal be?</p>
-<p>Its most preferred deal.</p>
-</li>
-<li><p>On any given round, who should concede?</p>
-<p>The agent least willing to risk conflict (if equal risk, flip a coin).</p>
-</li>
-<li><p>If an agent concedes, then how much should it concede?</p>
-<p>Just enough to change the balance of risk.</p>
-</li>
-</ul>
-<h5 id="Deception-in-TODs"><a href="#Deception-in-TODs" class="headerlink" title="Deception in TODs"></a>Deception in TODs</h5><ul>
-<li><p>Phantom and Decoy tasks</p>
-<ul>
-<li>Pretending that you have been allocated tasks you have not</li>
-</ul>
-</li>
-<li><p>Hidden tasks</p>
-<ul>
-<li>Pretending not to have been allocated tasks that you have been</li>
-</ul>
-</li>
-</ul>
-<p>not finished</p>
+<p>Hybrid Cryptosystems:</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/06/NOTE-WEEK-10-Agents-and-Multi-Agent-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/06/NOTE-WEEK-10-Agents-and-Multi-Agent-System/" itemprop="url">(MAS) Lec 9:Argumentation II</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-06T13:42:02+00:00">
+                2019-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Lecture-10-Argumentation-II"><a href="#Lecture-10-Argumentation-II" class="headerlink" title="Lecture 10: Argumentation II"></a>Lecture 10: Argumentation II</h2><p>Key points:</p>
+<p>Argument dialogues</p>
+<p>• An inquiry dialogue system</p>
+<p>• Strategising in dialouges</p>
+<p>• Planning for simple persuasion</p>
+<p>understand the general points illustrated by these examples</p>
+<p>Inquiry Dialogues</p>
 
           
         
@@ -2079,7 +1939,7 @@ utility_i (δ) = c(T_i ) – cost_i (δ)</script><p>The <strong>conflict deal</s
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2125,7 +1985,7 @@ utility_i (δ) = c(T_i ) – cost_i (δ)</script><p>The <strong>conflict deal</s
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
