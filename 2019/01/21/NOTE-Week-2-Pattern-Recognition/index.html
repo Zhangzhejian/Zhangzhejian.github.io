@@ -89,7 +89,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.postimg.cc/cCNfT2QH/pr-2-1.png">
 <meta property="og:image" content="https://i.postimg.cc/VvBnhgRF/pr-2-2.png">
-<meta property="og:updated_time" content="2019-01-24T23:13:48.645Z">
+<meta property="og:updated_time" content="2019-04-23T14:09:01.661Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(PR) Bayesian Decision Theory and Density Estimation">
 <meta name="twitter:description" content="Bayesian Decision Theory Bayesian Risk Density Estiamtion Parametric Maximum-Likelihood Estimation   Non-Parametric Parzen-Window Density Estimation $k_n$ Nearest-Neighbour Density Estimation     K N">
@@ -357,7 +357,7 @@ p(x) = \sum_{j=1}^n p(x|\omega_j)p(\omega_j)\;\;(全概率公式)</script><h3 id
 <h3 id="Bayes-Risk"><a href="#Bayes-Risk" class="headerlink" title="Bayes Risk"></a>Bayes Risk</h3><p>To deal with the misclassifications.</p>
 <h4 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h4><p>$\lambda(\alpha_i|\omega_j)$</p>
 <ul>
-<li>States how costly it is to take action $\alpha_i$ if the true state is $\omega_j$</li>
+<li>States how costly it is to take action $\alpha_i$ if the true state is $\omega_j    $</li>
 </ul>
 <script type="math/tex; mode=display">
 \mathcal{R}(\alpha_i|x) = \sum_{j=1}^c \lambda(\alpha_i|\omega_j)P(\omega_j|x)</script><p>For optimal performance, i.e. minimum loss</p>
@@ -450,14 +450,13 @@ k(x) = \sum_{i = 1}^N \phi(\frac{x_i-x}{h})\\
 K(x,x_i） = \frac{1}{V} \phi(\frac{x-x_i}{h})</script><p>The function $K(x,x_i)$ can be regarded as: the contribution of a single sample $x_i$ to the region (x,h). SO the density function can donate the average probability contribution to the region.</p>
 <script type="math/tex; mode=display">
 \rho(x) = \frac{1}{N} \sum_{i =1}^N K(x,x_i)</script><h4 id="Several-normal-window-functions"><a href="#Several-normal-window-functions" class="headerlink" title="Several normal window functions"></a>Several normal window functions</h4><ul>
-<li>Square window<script type="math/tex; mode=display">
+<li><p>Square window</p>
+<script type="math/tex; mode=display">
 K(x,x_i) = 
 \begin{cases} 
 \frac{1}{h^d} &\text{if $|x^j - x_i^j| \leq \frac{h}{2}$, j =1,2,3,...d}  &\text{(点在以x为中心,距离为h/2的区域内，则为1)}\\
 0 &\text{otherwise}
 \end{cases}\\</script></li>
-</ul>
-<ul>
 <li><p>Gaussian window</p>
 <p>the Same as the normal distribution</p>
 </li>

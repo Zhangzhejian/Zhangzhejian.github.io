@@ -1648,7 +1648,8 @@ X = [(\vec{x_1},\omega_1);(\vec{x_2},\omega_2);....;(\vec{x_m},\omega_m)]</scrip
 <script type="math/tex; mode=display">
 \vec{\Theta_j} = [\theta_1,\theta_2,....\theta_n]\\
 \Theta = [\vec{\Theta_1},....,\vec{\Theta_j}]</script><p>Where n is the dimension of the features, and m is the number of samples,and j is the number of classes.</p>
-<p>Such that  $g_j(x_k) &gt; g_i(x_k) \forall i \ne j \; where\; j = \omege_k for all k $, if the solution exists, dataset is linearly separable.</p>
+<p>Such that  $g_j(x_k) &gt; g_i(x_k) \forall i \ne j \; where\; j = \omega_k </p>
+<p>forall k $, if the solution exists, dataset is linearly separable.</p>
 <h3 id="Two-category-Linear-Separable-case"><a href="#Two-category-Linear-Separable-case" class="headerlink" title="Two-category Linear Separable case"></a>Two-category Linear Separable case</h3><p>a sample $x_k$ is correctly classified if:<br>    $\theta x_k &gt;0 $ and $x_k$ is labelled $\omega_1$ or </p>
 <p>​    $\theta x_k &lt;0 $ and $x_k$ is labelled $\omega_2$</p>
 <script type="math/tex; mode=display">
@@ -2204,7 +2205,7 @@ p(x) = \sum_{j=1}^n p(x|\omega_j)p(\omega_j)\;\;(全概率公式)</script><h3 id
 <h3 id="Bayes-Risk"><a href="#Bayes-Risk" class="headerlink" title="Bayes Risk"></a>Bayes Risk</h3><p>To deal with the misclassifications.</p>
 <h4 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h4><p>$\lambda(\alpha_i|\omega_j)$</p>
 <ul>
-<li>States how costly it is to take action $\alpha_i$ if the true state is $\omega_j$</li>
+<li>States how costly it is to take action $\alpha_i$ if the true state is $\omega_j    $</li>
 </ul>
 <script type="math/tex; mode=display">
 \mathcal{R}(\alpha_i|x) = \sum_{j=1}^c \lambda(\alpha_i|\omega_j)P(\omega_j|x)</script><p>For optimal performance, i.e. minimum loss</p>
@@ -2297,14 +2298,13 @@ k(x) = \sum_{i = 1}^N \phi(\frac{x_i-x}{h})\\
 K(x,x_i） = \frac{1}{V} \phi(\frac{x-x_i}{h})</script><p>The function $K(x,x_i)$ can be regarded as: the contribution of a single sample $x_i$ to the region (x,h). SO the density function can donate the average probability contribution to the region.</p>
 <script type="math/tex; mode=display">
 \rho(x) = \frac{1}{N} \sum_{i =1}^N K(x,x_i)</script><h4 id="Several-normal-window-functions"><a href="#Several-normal-window-functions" class="headerlink" title="Several normal window functions"></a>Several normal window functions</h4><ul>
-<li>Square window<script type="math/tex; mode=display">
+<li><p>Square window</p>
+<script type="math/tex; mode=display">
 K(x,x_i) = 
 \begin{cases} 
 \frac{1}{h^d} &\text{if $|x^j - x_i^j| \leq \frac{h}{2}$, j =1,2,3,...d}  &\text{(点在以x为中心,距离为h/2的区域内，则为1)}\\
 0 &\text{otherwise}
 \end{cases}\\</script></li>
-</ul>
-<ul>
 <li><p>Gaussian window</p>
 <p>the Same as the normal distribution</p>
 </li>
