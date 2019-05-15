@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="note,SE," />
 
 
 
@@ -79,14 +79,18 @@
 
 
 
+<meta name="description" content="Content:  Web applications and when to use them. Structure of a web application. Web development. Portability, usability, and accessibility. Web page design. Client-side vs. server-side processing.  W">
+<meta name="keywords" content="note,SE">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NOTE-Week-4-Software Engineering">
+<meta property="og:title" content="Web Application Specification">
 <meta property="og:url" content="https://zhangzhejian.com/2019/02/05/NOTE-Week-4-Software-Engineering/index.html">
 <meta property="og:site_name" content="Recap">
+<meta property="og:description" content="Content:  Web applications and when to use them. Structure of a web application. Web development. Portability, usability, and accessibility. Web page design. Client-side vs. server-side processing.  W">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-05T23:08:41.101Z">
+<meta property="og:updated_time" content="2019-05-11T22:21:44.243Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NOTE-Week-4-Software Engineering">
+<meta name="twitter:title" content="Web Application Specification">
+<meta name="twitter:description" content="Content:  Web applications and when to use them. Structure of a web application. Web development. Portability, usability, and accessibility. Web page design. Client-side vs. server-side processing.  W">
 
 
 
@@ -122,7 +126,7 @@
 
 
 
-  <title>NOTE-Week-4-Software Engineering | Recap</title>
+  <title>Web Application Specification | Recap</title>
   
 
 
@@ -246,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">NOTE-Week-4-Software Engineering</h1>
+          <h1 class="post-title" itemprop="name headline">Web Application Specification</h1>
         
 
         <div class="post-meta">
@@ -296,7 +300,70 @@
       
 
       
-        
+        <p>Content:</p>
+<ul>
+<li>Web applications and when to use them.</li>
+<li>Structure of a web application.</li>
+<li>Web development.</li>
+<li>Portability, usability, and accessibility.</li>
+<li>Web page design.</li>
+<li>Client-side vs. server-side processing.</li>
+</ul>
+<h3 id="When-to-use-Web-application"><a href="#When-to-use-Web-application" class="headerlink" title="When to use Web application"></a>When to use Web application</h3><ul>
+<li>Involve access to remote data</li>
+<li>do not require fine grained exchange of data<ul>
+<li>不需要细粒度的数据交换（基于web的数据交换是比较昂贵的）</li>
+</ul>
+</li>
+<li>do not require highly time critical responses<ul>
+<li>信息交互有较大延迟</li>
+</ul>
+</li>
+<li>receive and return data which can be effectively transmitted across the internet<ul>
+<li>信息可以高效的在互联网中传播</li>
+</ul>
+</li>
+</ul>
+<p>There are many <strong>rapidly-evolving technologies</strong> in web application area, which requires the web applications to be <strong>flexible</strong> and <strong>easily upgraded</strong>.And Web applications often have common structure and elements.</p>
+<h3 id="Protability-Usability-Accessibility"><a href="#Protability-Usability-Accessibility" class="headerlink" title="Protability, Usability, Accessibility"></a>Protability, Usability, Accessibility</h3><ul>
+<li>Protability(可移植性、通用性)<ul>
+<li>system can be moved to different execution environments and provide the same functionality in the new environment as in the old.</li>
+<li>UI in different browser</li>
+<li>Difference between mobile and PC</li>
+</ul>
+</li>
+<li>Usability(使用体验)<ul>
+<li>web interface does not require unreasonable effort to use, and that users can access provided functionality without excess effort</li>
+<li>UI: <ul>
+<li>Clear information</li>
+<li>feedback</li>
+<li>related functions</li>
+</ul>
+</li>
+<li>program logic design</li>
+</ul>
+</li>
+<li>Accessibility(可用性)<ul>
+<li>a web interface can be used by users of differing ability — such as visually impaired, colour-blind, deaf, or senior citizen users — as effectively as by non-disabled, technological skilled users.</li>
+<li>easy to understand</li>
+</ul>
+</li>
+</ul>
+<h3 id="Client-Server-Comparation"><a href="#Client-Server-Comparation" class="headerlink" title="Client-Server Comparation"></a>Client-Server Comparation</h3><p>Consideration:</p>
+<ol>
+<li>Computational Load</li>
+<li>Security issues</li>
+</ol>
+<h4 id="Client-side"><a href="#Client-side" class="headerlink" title="Client-side"></a>Client-side</h4><ol>
+<li>Data validation and dynamic user feedback</li>
+</ol>
+<h4 id="Server-side-processing"><a href="#Server-side-processing" class="headerlink" title="Server-side processing"></a>Server-side processing</h4><ol>
+<li>Processing data sent from the client side involving critical checks on the correctness of the data and security checks(认证，授权) 安全考虑</li>
+<li>Modifying or retrieving data in lower tiers of the server side, such as a database 安全考虑</li>
+<li>Invoking operations of lower tiers, including remote web services 安全考虑</li>
+<li>Generating content to be shown to the client 计算负载考虑</li>
+</ol>
+
       
     </div>
     
@@ -310,6 +377,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/note/" rel="tag"># note</a>
+          
+            <a href="/tags/SE/" rel="tag"># SE</a>
+          
+        </div>
       
 
       
@@ -384,8 +459,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -400,7 +484,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -436,6 +520,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#When-to-use-Web-application"><span class="nav-number">1.</span> <span class="nav-text">When to use Web application</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Protability-Usability-Accessibility"><span class="nav-number">2.</span> <span class="nav-text">Protability, Usability, Accessibility</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Client-Server-Comparation"><span class="nav-number">3.</span> <span class="nav-text">Client-Server Comparation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Client-side"><span class="nav-number">3.1.</span> <span class="nav-text">Client-side</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Server-side-processing"><span class="nav-number">3.2.</span> <span class="nav-text">Server-side processing</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

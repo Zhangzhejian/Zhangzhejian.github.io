@@ -230,6 +230,851 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/03/04/NOTE-Week-8-Pattern-Recognition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/04/NOTE-Week-8-Pattern-Recognition/" itemprop="url">(PR) Support Vector Machines</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-04T13:35:18+00:00">
+                2019-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Overview:</p>
+<ul>
+<li>Introduction</li>
+<li>Linear SVM: Linearly Separable case</li>
+<li>Linear SVM: Linearly non-Separable case</li>
+<li>Nonlinear SVMs</li>
+<li>Multi-class SVMs</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h3><ul>
+<li>similar concept of linear machines with margins</li>
+<li><strong>Clasifies two classes</strong></li>
+<li>Computes the optimal weights instead of through training</li>
+<li>Relies on preprocessing the data in a high dimension using Kernel functions</li>
+</ul>
+<p>SVM iis based on Linear Discriminant Functions</p>
+<h3 id="Two-Class-Classification-Probelm"><a href="#Two-Class-Classification-Probelm" class="headerlink" title="Two-Class Classification Probelm"></a>Two-Class Classification Probelm</h3><ul>
+<li>Labelled training samples: $S = {(x_1,y_1),(x_2,y_2), \dots ,(x_N,y_N)}$<ul>
+<li>$x_i = [x_{i1},\dots, x_(id)]$</li>
+<li>$y_i \in {-1,1}$</li>
+<li>N is the number of samples</li>
+</ul>
+</li>
+<li>Goal is to design a hyperplane which can classify correctly the training samples</li>
+<li>SVM is to optimal :<ul>
+<li>No errors</li>
+<li>Distance or margin between nearest support vectors is maximal</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.postimg.cc/0yjvWkZq/pr-8-1.png"></p>
+<h2 id="Linear-SVM"><a href="#Linear-SVM" class="headerlink" title="Linear SVM"></a>Linear SVM</h2><p>Deal with linearly separable 2-class classification problem</p>
+<ul>
+<li><p>Hyperplane:$f(\mathbf{x}) = \mathbf{w}^T \mathbf{x} + w_o$</p>
+</li>
+<li><p>Find $\mathbf{w}$ and $w_0$ such that</p>
+<ul>
+<li><p>the margin is optimal</p>
+</li>
+<li><script type="math/tex; mode=display">
+\begin{cases}
+\mathbf{w^Tx} + w_0 \geq 1, \text{ $\forall \mathbf{x} \in $ class 1 ('1')} \\
+\mathbf{w^Tx} + w_0 \leq -1, \text{ $\forall \mathbf{x} \in $ class 2 ('-1')}
+\end{cases}</script></li>
+</ul>
+</li>
+</ul>
+<h3 id="Optimal-margin"><a href="#Optimal-margin" class="headerlink" title="Optimal margin"></a>Optimal margin</h3><p>Distance of a point from a hyperplane:</p>
+<script type="math/tex; mode=display">
+distance(x) = \frac{|f(\mathbf{x})|}{||\mathbf{w}||}</script><p>So the margin is given by:</p>
+<script type="math/tex; mode=display">
+\begin{align}
+& min_{\mathbf{x_i}:y_i =-1} \frac{|f(\mathbf{x_i})|}{||\mathbf{w}||} + min_{\mathbf{x_i}:y_i =+1} \frac{|f(\mathbf{x_i})|}{||\mathbf{w}||}\\
+ &= \frac{1}{||\mathbf{w}||}(min_{\mathbf{x_i}:y_i =-1} |f(\mathbf{x_i})| + min_{\mathbf{x_i}:y_i =+1} |f(\mathbf{x_i})|)\\
+ &=\frac{2}{||\mathbf{w}||}
+ \end{align}</script><p>The problem is transformed into:</p>
+<script type="math/tex; mode=display">
+max_{\mathbf{w}} \frac{2}{||\mathbf{w}||} \iff min_{\mathbf{w}} J(\mathbf{w}) = \frac{1}{2} ||\mathbf{w}||^2</script><p>Meanwhile, the classification should be correct. So:</p>
+<script type="math/tex; mode=display">
+y_i(\mathbf{w^Tx_i}+w_0) \geq 1</script><p>The original problem can be transfered into a Quadratic Programing</p>
+<h3 id="Lagrange-multipliers-引入拉格朗日乘子"><a href="#Lagrange-multipliers-引入拉格朗日乘子" class="headerlink" title="Lagrange multipliers(引入拉格朗日乘子)"></a>Lagrange multipliers(引入拉格朗日乘子)</h3><script type="math/tex; mode=display">
+\mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda}) =
+\frac{1}{2} ||\mathbf{w}||^2 - \sum_{i=1}^N \lambda_i(y_i(\mathbf{w^Tx_i}+w_0)-1)\\
+\text{where $\lambda = [\lambda_1\; \lambda_2 \dots \lambda_N]$, $\lambda_i \geq 0 $ for all $i = 1,2,\dots,N$}\\
+\text{And let } \theta(\mathbf{w}) = \max_{\lambda} \mathcal{\scr{L}} (\mathbf{w},w_0,\mathbf{\lambda})</script><p>It is easy to prove that, </p>
+<script type="math/tex; mode=display">
+\min_{\mathbf{w},w_0} \theta(\mathbf(w)) = \min_{\mathbf{w},w_0} \max_{\lambda \geq0} 
+\mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda})</script><h3 id="Solve-the-Dual-problem"><a href="#Solve-the-Dual-problem" class="headerlink" title="Solve the Dual problem"></a>Solve the Dual problem</h3><p>Use KKT conditions</p>
+<script type="math/tex; mode=display">
+\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda})}
+{\part \mathbf{w}} = 0 \implies \;\; \mathbf{w} = \sum_{i=1} ^N \lambda_i y_i \mathbf{x}_i\\
+\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda})}
+{\part w_0} = 0 \implies \sum_{i=1}^N \lambda_i y_i = 0\\
+\lambda_i(y_i (\mathbf{w}^T \mathbf{x_i} - w_0)-1) = 0</script><p>Put them into $\mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda})$:</p>
+<script type="math/tex; mode=display">
+\mathcal{\scr{L}}(\mathbf{\lambda}) = \sum_{i=1}^N \lambda_i - \frac{1}{2}\sum_{i=1}^N \sum_{j=1}^N \lambda_i \lambda_j y_i y_j x_i^Tx_j</script><p>The dual problem is reduced to:</p>
+<script type="math/tex; mode=display">
+\max_{\lambda \geq 0} \left( \sum_{i=1}^N \lambda_i - \frac{1}{2}\sum_{i=1}^N \sum_{j=1}^N \lambda_i \lambda_j y_i y_j x_i^Tx_j \right)\\
+\text{subject ot } \begin{align} &\sum_{i=1}^N \lambda_i y_i = 0, \\
+& \lambda_i \geq 0
+\end{align}</script><h3 id="Support-Vector"><a href="#Support-Vector" class="headerlink" title="Support Vector"></a>Support Vector</h3><p>For those $\mathbf{x_i}$ with $\lambda_i \ne 0$, they are known as <strong>support vectors</strong>. As a result,</p>
+<script type="math/tex; mode=display">
+\mathbf{w} = \sum_{i=1} ^N \lambda_i y_i \mathbf{x}_i = \sum_{i=1} ^{N_s} \lambda_i y_i \mathbf{x}_i</script><ul>
+<li>Support vector $\mathbf{x_i}$: $y_i (\mathbf{w}^T \mathbf{x_i} - w_0)-1 =0$</li>
+</ul>
+<h2 id="Non-separable-Case"><a href="#Non-separable-Case" class="headerlink" title="Non-separable Case"></a>Non-separable Case</h2><p><img src="https://i.postimg.cc/VLD1WrqR/pr-8-2.png"></p>
+<p>Input:</p>
+<ul>
+<li><p>fall outside the band and are correctly classiﬁed</p>
+<ul>
+<li><script type="math/tex; mode=display">
+y_i(\mathbf{w^Tx_i}+w_0) \geq 1</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>fall inside the band and are correctly classiﬁed</p>
+<ul>
+<li><script type="math/tex; mode=display">
+0 \leq y_i(\mathbf{w^Tx_i}+w_0) < 1</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>misclassiﬁed</p>
+<ul>
+<li><script type="math/tex; mode=display">
+y_i(\mathbf{w^Tx_i}+w_0) \leq 0</script></li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+y_i(\mathbf{w^Tx_i}+w_0) \geq 1 - \xi_i\\
+\xi_i = 0; or \;\; 0<\xi \leq 1 ; \;\; or \; \xi_i >1</script><p>Max the margin and min the number of misclassified point.</p>
+<script type="math/tex; mode=display">
+\min_{\mathbf{w},w_0, \xi} J(\mathbf{w},\xi) = \frac{1}{2}||w||^2 + C \sum_{i=1}^N \xi_i\\
+subject \;\;to:
+\begin{align}
+& y_i(\mathbf{w^Tx_i}+w_0) \geq 1 - \xi_i\\
+& \xi_i \geq 0
+\end{align}</script><h3 id="Lagrange-multipliers"><a href="#Lagrange-multipliers" class="headerlink" title="Lagrange multipliers"></a>Lagrange multipliers</h3><script type="math/tex; mode=display">
+\mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda},\mu, \xi) =
+\frac{1}{2} ||\mathbf{w}||^2 + C \sum_{i=1}^N \xi_i -\sum_{i=1}^N \mu_i \xi_i - \sum_{i=1}^N \lambda_i(y_i(\mathbf{w^Tx_i}+w_0)-1+\xi_i)\\
+
+\text{where $\lambda = [\lambda_1\; \lambda_2 \dots \lambda_N]$, $\lambda_i \geq 0 $ $\mu_i \geq 0$ for all $i = 1,2,\dots,N$ , }</script><h3 id="Apply-KKT-condition"><a href="#Apply-KKT-condition" class="headerlink" title="Apply KKT condition"></a>Apply KKT condition</h3><script type="math/tex; mode=display">
+\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda},\mu, \xi)}{\part \mathbf{w}}= 0 \implies \;\; \mathbf{w} = \sum_{i=1} ^N \lambda_i y_i \mathbf{x}_i\\
+\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda} ,\mu, \xi)}
+{\part w_0} = 0 \implies \sum_{i=1}^N \lambda_i y_i = 0\\
+
+\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda} ,\mu, \xi)}
+{\part \xi_i} = 0 \implies C-\mu_i - \lambda_i = 0</script><p>We have:</p>
+<script type="math/tex; mode=display">
+\mathcal{\scr{L}}(\mathbf{\lambda},\xi) = \sum_{i=1}^N \lambda_i - \frac{1}{2}\sum_{i=1}^N \sum_{j=1}^N \lambda_i \lambda_j y_i y_j x_i^Tx_j</script><p>The dual problem is reduced to:</p>
+<script type="math/tex; mode=display">
+\max_{\lambda \geq 0} \left( \sum_{i=1}^N \lambda_i - \frac{1}{2}\sum_{i=1}^N \sum_{j=1}^N \lambda_i \lambda_j y_i y_j x_i^Tx_j \right)\\
+\text{subject ot } \begin{align} &\sum_{i=1}^N \lambda_i y_i = 0, \\
+& 0\leq \lambda_i \leq C
+\end{align}</script><h2 id="Non-linear-SVM"><a href="#Non-linear-SVM" class="headerlink" title="Non-linear SVM"></a>Non-linear SVM</h2><h2 id="Kernel-functions"><a href="#Kernel-functions" class="headerlink" title="Kernel functions"></a>Kernel functions</h2><script type="math/tex; mode=display">
+K(\mathbf{x_i},\mathbf{x}) = \Phi(\mathbf{x_i})^T\Phi(\mathbf{x})</script><h2 id="Multi-class-SVM"><a href="#Multi-class-SVM" class="headerlink" title="Multi-class SVM"></a>Multi-class SVM</h2><ul>
+<li>One against one</li>
+<li>One against all</li>
+<li>Binary decision tree</li>
+<li>Bianary Coded</li>
+</ul>
+<p>Ref:</p>
+<ol>
+<li><a href="https://blog.csdn.net/v_JULY_v/article/details/7624837" target="_blank" rel="noopener">https://blog.csdn.net/v_JULY_v/article/details/7624837</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/27/NOTE-Week-7-Software-engineering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/27/NOTE-Week-7-Software-engineering/" itemprop="url">(SE)Web Application Architecture</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-27T10:24:28+00:00">
+                2019-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Overview:</p>
+<ul>
+<li>The ﬁve-tier web application architecture</li>
+<li>Functional core of web applications</li>
+<li>Approaches to the presentation tier<ul>
+<li>Pure servlet</li>
+<li>Pure JSP</li>
+<li>Model-view-controller (MVC)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Five-tier-web-application-architecture"><a href="#Five-tier-web-application-architecture" class="headerlink" title="Five-tier web application architecture"></a>Five-tier web application architecture</h2><ul>
+<li>Client tier</li>
+<li>Presentation tier</li>
+<li>Business tier</li>
+<li>Integration tier</li>
+<li>Resource tier</li>
+</ul>
+<h3 id="Client-tier"><a href="#Client-tier" class="headerlink" title="Client tier"></a>Client tier</h3><h3 id="Presentation-tier"><a href="#Presentation-tier" class="headerlink" title="Presentation tier"></a>Presentation tier</h3><p>Consists of <strong>controller</strong> and <strong>view components</strong>, such as servlets and JSP</p>
+<h3 id="Business-tier"><a href="#Business-tier" class="headerlink" title="Business tier"></a>Business tier</h3><p>Consists of beans:</p>
+<ul>
+<li>Session Beans(<strong>temporary</strong>), represent groups of business functions</li>
+<li>Entity Beans, represent business and conceptual entities and persistent data.</li>
+</ul>
+<h3 id="Integration-tier"><a href="#Integration-tier" class="headerlink" title="Integration tier"></a>Integration tier</h3><p>contains database interfaces, interfaces to external web services</p>
+<h3 id="Resource-tier"><a href="#Resource-tier" class="headerlink" title="Resource tier"></a>Resource tier</h3><p>Actual database, web services and other resources used by the system such as static files.</p>
+<h2 id="Functional-Core-of-Web-applications"><a href="#Functional-Core-of-Web-applications" class="headerlink" title="Functional Core of Web applications"></a>Functional Core of Web applications</h2><h3 id="Typical-Functinoal-components"><a href="#Typical-Functinoal-components" class="headerlink" title="Typical Functinoal components:"></a>Typical Functinoal components:</h3><ul>
+<li>Web pages</li>
+<li>Controller/coordinator components</li>
+<li>View/presentation server-side elements</li>
+<li>Resources</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/26/NOTE-Week-7-OME/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/26/NOTE-Week-7-OME/" itemprop="url">Linear Programming</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-26T16:09:01+00:00">
+                2019-02-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Standard-definition-of-Linear-Programmes"><a href="#Standard-definition-of-Linear-Programmes" class="headerlink" title="Standard definition of Linear Programmes"></a>Standard definition of Linear Programmes</h3><p>Find values of variable $x_1,x_2, \dots ,x_n$, which</p>
+<script type="math/tex; mode=display">
+\text{maximise  }c_1x_1 + c_2x_2+ \dots + c_nx_n\\
+\text{subject to  } \begin{align}
+&a_{11}x_{11}+a_{12}x_{12}+ \dots+ a_{1n}x_{1n} \leq b_1\\
+& a_{21}x_{21}+a_{22}x_{22}+ \dots+ a_{2n}x_{2n} \leq b_2\\
+&\text{     } \;\;\;\;\;\;\;\;\;\;\;\;\;\;\vdots
+
+
+
+\end{align}</script>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/25/NOTE-Week-7-Pattern-Recognition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/25/NOTE-Week-7-Pattern-Recognition/" itemprop="url">(PR) Fuzzy Inference System(模糊推理)</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-25T13:00:46+00:00">
+                2019-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Overview:</p>
+<ul>
+<li>Fuzzy Inference System <ul>
+<li>Fuzziﬁers </li>
+<li>Knowledge Base </li>
+<li>Fuzzy Inference Engine </li>
+<li>Defuzziﬁcation </li>
+</ul>
+</li>
+<li>Three Fuzzy Inference Systems</li>
+<li>Neural Fuzzy Network</li>
+</ul>
+<h2 id="Introduction—Fuzzy-Logic"><a href="#Introduction—Fuzzy-Logic" class="headerlink" title="Introduction—Fuzzy Logic"></a>Introduction—Fuzzy Logic</h2><ul>
+<li>Human can solve a lot of complex problems using imprecision such as common sense and expert knowledge</li>
+<li>Common sense and expert knowledge can be represented by linguistic rules, say, in <strong>If-Then</strong> format.</li>
+<li>Fuzzy logic is the theory of fuzzy sets, which is used to handle fuzziness/imprecision/ambiguity/vagueness.</li>
+<li>By using fuzzy logic, “human spirit” can be computed/represented mathematically.</li>
+</ul>
+<h3 id="Linguistic-Rules"><a href="#Linguistic-Rules" class="headerlink" title="Linguistic Rules"></a>Linguistic Rules</h3><ul>
+<li><p>Rule 1: If distance is small Then speed is low</p>
+</li>
+<li><p>Rule 2: If distance is medium Then speed is steady</p>
+</li>
+<li><p>Rule 3: If distance is large Then speed is high</p>
+</li>
+</ul>
+<h3 id="FIS"><a href="#FIS" class="headerlink" title="FIS"></a>FIS</h3><p><img src="https://i.postimg.cc/VvgsfpbJ/pr-7-1.png"></p>
+<ul>
+<li>Fuzzifiers:</li>
+<li>Knowledge Base:<ul>
+<li>A database consisting of linguistic rules in <strong>If-Then</strong> format</li>
+</ul>
+</li>
+<li>Fuzzy inference Engine<ul>
+<li>Using the rules in knowledge base, it performs reasoning by producing a fuzzy output according to the fuzzy input given by the fuzziﬁer</li>
+</ul>
+</li>
+<li>Defuzziers<ul>
+<li>It converts the fuzzy output given by the fuzzy inference engine to produce a crisp (real-valued) output. This process is called defuzziﬁaction.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Fuzzifiers"><a href="#Fuzzifiers" class="headerlink" title="Fuzzifiers"></a>Fuzzifiers</h2><p>The input is turned to fuzzy sets thought membership functions.</p>
+<p>A fuzzy set is represented by a membership functions (associated with a label called fuzzy term or linguistic term).</p>
+<h3 id="Membership-functions"><a href="#Membership-functions" class="headerlink" title="Membership functions:"></a>Membership functions:</h3><p>A membership function denoted by $\mu_A(x)$ corresponding to fuzzy set A is characterised by a linear/nonlinear function of premise variable x.</p>
+<p>$ 0 \leq \mu_A(x) \leq 1$</p>
+<h3 id="Property-of-membership-functions"><a href="#Property-of-membership-functions" class="headerlink" title="Property of membership functions:"></a>Property of membership functions:</h3><ul>
+<li>Core</li>
+<li>Support</li>
+<li>Boundaries</li>
+</ul>
+<p><img src="https://i.postimg.cc/G2nkTwjc/pr-7-2.png" zoom="70%"></p>
+<ul>
+<li>Normal/subnormal fuzzy set:<ul>
+<li>if its membership function has atleaast one element of x  whose grade is 1</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.postimg.cc/q73s7Myb/pr-7-3.png"></p>
+<ul>
+<li>height of a fuzzy set $hgt(A)$<ul>
+<li>$hgt(A) = max{\mu_A}$</li>
+</ul>
+</li>
+<li>Convex/non-convex fuzzy set:<ul>
+<li>If membership function are strictly monotonically increasing/decreasing or  strictly monotonically increasing then decreasing.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.postimg.cc/C1CbjPvb/pr-7-4.png"></p>
+<h3 id="Fuzzification"><a href="#Fuzzification" class="headerlink" title="Fuzzification"></a>Fuzzification</h3><p>The process turning the crisp input to a fuzzy value</p>
+<h2 id="Knowledge-Base"><a href="#Knowledge-Base" class="headerlink" title="Knowledge Base"></a>Knowledge Base</h2><p>The knowledge base is the rule base representing the expertise knowledge dealing with a speciﬁc problem.</p>
+<p>Linguistic rule: IF premise (antecedent) THEN conclusion (consequent)</p>
+<p><img src="https://i.postimg.cc/907jykVj/pr-7-5.png"></p>
+<h2 id="Fuzzy-Inference-Engine"><a href="#Fuzzy-Inference-Engine" class="headerlink" title="Fuzzy Inference Engine"></a>Fuzzy Inference Engine</h2><p>to produce the fuzzy output according to the crisp inputs based on the knowledge (knowledge base) represented by IF-THEN rule. This is the process of reasoning</p>
+<ul>
+<li>Rule evaluation<ul>
+<li>to apply the fuzzy set operators (AND,OR,NOT) to the antecedents to determine the firing strength of each rule</li>
+</ul>
+</li>
+<li>Rule aggregation<ul>
+<li>combine the output (consequents) fuzzy sets using the ﬁring strengths obtained in the process of rule evaluation.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h3><ul>
+<li><p>OR</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\mu_{A \bigcup B}(x) = \mu_A(x) \or \mu_B(x) = max(\mu_A(x) , \mu_B(x))</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>AND</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\mu_{A \bigcap B}(x) = \mu_A(x) \and \mu_B(x) = min(\mu_A(x) , \mu_B(x))</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>NOT</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\mu_{\bar{A}}(x) = 1-\mu_A(x)</script></li>
+</ul>
+</li>
+</ul>
+<h2 id="Defuzzification"><a href="#Defuzzification" class="headerlink" title="Defuzzification"></a>Defuzzification</h2><p>a process to convert the fuzzy output (an inferred membership function) to a crisp value.</p>
+<h3 id="Methods-for-defuzzification"><a href="#Methods-for-defuzzification" class="headerlink" title="Methods for defuzzification"></a>Methods for defuzzification</h3><ul>
+<li>max membership principle</li>
+<li>centroid method</li>
+<li>Weighted average method</li>
+<li>mean max membership</li>
+<li>center of sums</li>
+<li>Center of largest area</li>
+<li>First of maxima</li>
+</ul>
+<h4 id="Max-Membership-Principle"><a href="#Max-Membership-Principle" class="headerlink" title="Max Membership Principle"></a>Max Membership Principle</h4><p>choose the peaked value as the output</p>
+<script type="math/tex; mode=display">
+\mu_C(z^*) \geq \mu_C(z) \;\forall z \in Z \text{  where $z^*$ is the defuzzified value }</script><h4 id="Centroid-method-重心"><a href="#Centroid-method-重心" class="headerlink" title="Centroid method(重心)"></a>Centroid method(重心)</h4><p>COA or COG</p>
+<ul>
+<li><p>Continuous from:</p>
+<ul>
+<li><script type="math/tex; mode=display">
+z^* = \frac{\int \mu_C(z)z \rm dz}{\int \mu_C(z) \rm dz}</script></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Discrete form</p>
+<ul>
+<li><script type="math/tex; mode=display">
+z^* = \frac{\sum_{z_i \in Z}\mu_C(z_i)z_i}{\sum_{z_i \in Z}\mu_C(z_i)}</script></li>
+</ul>
+</li>
+</ul>
+<h4 id="Weighted-Average-Method"><a href="#Weighted-Average-Method" class="headerlink" title="Weighted Average Method"></a>Weighted Average Method</h4><p>Computational efficient but symmetrical output membership functions required</p>
+<script type="math/tex; mode=display">
+z^* = \frac{\sum \mu_C(\bar{z_i})\bar{z_i}}{\sum \mu_C(\bar{z_i})}</script><p>$\bar{z}$ is the centroid of each symmetric inferred membership function </p>
+<h4 id="Mean-Max-Membership"><a href="#Mean-Max-Membership" class="headerlink" title="Mean Max Membership"></a>Mean Max Membership</h4><p>Computational efficient.</p>
+<script type="math/tex; mode=display">
+z^* = \frac{a+b}{2}</script><h4 id="Center-of-Sums"><a href="#Center-of-Sums" class="headerlink" title="Center of Sums"></a>Center of Sums</h4><ul>
+<li><p>Continuous form</p>
+<ul>
+<li><script type="math/tex; mode=display">
+z^* = \frac{\sum_{k=1}^n \bar{z}_k\int \mu_{C_k}(z) \rm dz }{\sum_{k=1}^n \int \mu_{C_k}(z) \rm dz}</script></li>
+<li><p>$\bar{z}_k$ is the centroid of the $k^{th}$ output membership function</p>
+</li>
+<li><p>$\int \mu_{C_k}(z) \rm dz$ is the area of the member function</p>
+</li>
+</ul>
+</li>
+<li><p>Discrete form</p>
+<ul>
+<li><script type="math/tex; mode=display">
+z^* =\frac{\sum_{k=1}^n \bar{z}_k \sum_{z_i\in Z} \mu_{C_k}(z)  }{\sum_{k=1}^n \sum_{z_i\in Z} \mu_{C_k}(z) }</script></li>
+</ul>
+</li>
+</ul>
+<h4 id="Center-of-Largest-Area"><a href="#Center-of-Largest-Area" class="headerlink" title="Center of Largest Area"></a>Center of Largest Area</h4><h4 id="First-or-last-of-Maxima"><a href="#First-or-last-of-Maxima" class="headerlink" title="First(or last) of Maxima"></a>First(or last) of Maxima</h4><h2 id="Three-FIS"><a href="#Three-FIS" class="headerlink" title="Three FIS"></a>Three FIS</h2><ul>
+<li>Mamdani FIS</li>
+<li>Sugeno FIS</li>
+<li>Tsukamoto FIS</li>
+</ul>
+<p>The main difference is in the consequents of the IF-THEN rules:</p>
+<ul>
+<li>Mamdani: Consequent membership functino is general membership function</li>
+<li>Sugeno: mathematical function</li>
+<li>Tsukamoto: monotonic membership function (单调函数)</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/25/NOTE-Week-7-Distributed-System/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -953,7 +1798,7 @@ Y \times W_k = t_k\\
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/13/NOTE-Week-5-SIA/" itemprop="url">(SIA)Web Application</a></h1>
+                <a class="post-title-link" href="/2019/02/13/NOTE-Week-5-SIA/" itemprop="url">(SIA)State Machine Diagram</a></h1>
         
 
         <div class="post-meta">
@@ -1007,20 +1852,40 @@ Y \times W_k = t_k\\
           
             <p>Overview:</p>
 <ul>
-<li>Web applications and when to use them.</li>
-<li>Structure of a web application.</li>
-<li>Web development.</li>
-<li>Portability, usability, and accessibility.</li>
-<li>Web page design.</li>
-<li>Client-side vs. server-side processing.</li>
+<li>State machine diagrams</li>
+<li>Harel diagram</li>
+<li>State machine diagrams for web applications development</li>
 </ul>
-<h2 id="Portability-usability-and-accessibility"><a href="#Portability-usability-and-accessibility" class="headerlink" title="Portability, usability, and accessibility"></a>Portability, usability, and accessibility</h2><ul>
-<li>Portability(通用性)</li>
-<li>Usability</li>
-<li>Accessibility</li>
+<h2 id="State-Machine-Diagrams"><a href="#State-Machine-Diagrams" class="headerlink" title="State Machine Diagrams"></a>State Machine Diagrams</h2><ul>
+<li>State machine diagram:<ul>
+<li>represent the dynamic behaviour of a system</li>
 </ul>
-<h3 id="Portability"><a href="#Portability" class="headerlink" title="Portability"></a>Portability</h3><p>System can be moved to different execution environments and provide the same functionality in the new environment as in the old.</p>
-
+</li>
+<li>Class diagram<ul>
+<li>represent static structure</li>
+</ul>
+</li>
+</ul>
+<p>State machine diagrams seek to represent:</p>
+<ul>
+<li>States<ul>
+<li>an abstraction of the attribute values of an object.</li>
+</ul>
+</li>
+<li>Events<ul>
+<li>something that happens at a point in time.</li>
+</ul>
+</li>
+<li>Actions<ul>
+<li>operation in response to an event.</li>
+</ul>
+</li>
+<li>Activity<ul>
+<li>performed as long as an object is in some state.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Harel-Diagrams"><a href="#Harel-Diagrams" class="headerlink" title="Harel Diagrams"></a>Harel Diagrams</h2>
           
         
       
@@ -1421,616 +2286,6 @@ s_i^2 = \sum_{\mathcal{X}\in \omega_i} (w(x-m_1))^2</script><figure class="highl
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/11/NOTE-Week-5-Distributed-System/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/11/NOTE-Week-5-Distributed-System/" itemprop="url">(DS) Handling failure</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T12:02:00+00:00">
-                2019-02-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Overview:</p>
-<ul>
-<li>Failover in replica management</li>
-<li>Consensus</li>
-<li>How much replication to use</li>
-</ul>
-<h2 id="Failover"><a href="#Failover" class="headerlink" title="Failover"></a>Failover</h2><p>either all failures must be failstop, or the system must be synchronous</p>
-<h3 id="Properties-of-Primary-Backup"><a href="#Properties-of-Primary-Backup" class="headerlink" title="Properties of Primary Backup"></a>Properties of Primary Backup</h3><p>Primary Backup suffers a <strong>single point of failure</strong> in the primary manager.</p>
-<ul>
-<li>At any one time there must be at most one primary replication manager</li>
-<li>Each front end maintains a reference to the manager it currently believes to be primary </li>
-<li>A backup server ignores any client requests</li>
-</ul>
-<p><strong>Failover time</strong> is the period for which there is no primary replciation manager</p>
-<p>The primary manager receiving request RAi from a client:</p>
-<ol>
-<li>Update its state</li>
-<li>Forwards the request to backup</li>
-<li>replies to client that sent RAi</li>
-</ol>
-<p>this period is called <strong>blocking time</strong></p>
-<h2 id="Consensus-达成一致"><a href="#Consensus-达成一致" class="headerlink" title="Consensus(达成一致)"></a>Consensus(达成一致)</h2><p>Acheiving consensus for Choosing a new Primary Manager</p>
-<h3 id="Consensus-Protocol-Properties"><a href="#Consensus-Protocol-Properties" class="headerlink" title="Consensus Protocol Properties"></a>Consensus Protocol Properties</h3><ul>
-<li>Termination: every correct process will decide on a value</li>
-<li>Validity: if all proposals are for v then all correct processes eventually decide v</li>
-<li>Agreement: if one correct process decides v then all correct processes eventually decide v</li>
-<li>Integrity: every correct process decides at most one v, and either v = FAIL or some process must have proposed</li>
-</ul>
-<p>RAFT:</p>
-<p>Reference:</p>
-<ol>
-<li><a href="https://www.cnblogs.com/mindwind/p/5231986.html" target="_blank" rel="noopener">https://www.cnblogs.com/mindwind/p/5231986.html</a></li>
-</ol>
-<h2 id="How-much-replica-to-use"><a href="#How-much-replica-to-use" class="headerlink" title="How much replica to use"></a>How much replica to use</h2><h3 id="Failure-Measurements"><a href="#Failure-Measurements" class="headerlink" title="Failure Measurements"></a>Failure Measurements</h3><ul>
-<li>MTBF</li>
-<li>T-Fault Tolerance</li>
-<li>failure Modes</li>
-</ul>
-<p><a href="http://zhangzhejian.com/2019/01/14/NOTE-Week-1-Distributed-System/">detailed illustration</a></p>
-<h3 id="CAP-Theorem"><a href="#CAP-Theorem" class="headerlink" title="CAP Theorem"></a>CAP Theorem</h3><p><img src="https://i.postimg.cc/T1WPkYSD/DS-5-11.png" alt=""></p>
-<p><img src="https://i.postimg.cc/pTrrFBJk/DS-5-12.png" alt=""></p>
-<p><img src="https://i.postimg.cc/qRFRXCmr/DS-5-13.png" alt=""></p>
-<p><img src="https://i.postimg.cc/PNs50nsF/DS-5-14.png" alt=""></p>
-<p>Above from 《大型网站核心技术架构》</p>
-<p>Reference:</p>
-<ol>
-<li><a href="https://yeasy.gitbooks.io/blockchain_guide/content/distribute_system/cap.html" target="_blank" rel="noopener">https://yeasy.gitbooks.io/blockchain_guide/content/distribute_system/cap.html</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/05/NOTE-Week-4-Software-Engineering/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/05/NOTE-Week-4-Software-Engineering/" itemprop="url">NOTE-Week-4-Software Engineering</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-05T23:08:41+00:00">
-                2019-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/05/NOTE-Week-3-Software-Engineering/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/05/NOTE-Week-3-Software-Engineering/" itemprop="url">Class Diagrams</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-05T23:08:25+00:00">
-                2019-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Overview:</p>
-<ul>
-<li>Objects and classes</li>
-<li>Class diagrams</li>
-<li>how to develop a class diagram</li>
-<li>Class diagram transformations</li>
-</ul>
-<h2 id="Object-Modeling"><a href="#Object-Modeling" class="headerlink" title="Object Modeling"></a>Object Modeling</h2><ul>
-<li>Class(类)<ul>
-<li>A class is a category of thing</li>
-</ul>
-</li>
-<li>Object(对象)<ul>
-<li>An object is a specific instance of a class</li>
-</ul>
-</li>
-</ul>
-<h3 id="Object-modelling"><a href="#Object-modelling" class="headerlink" title="Object modelling"></a>Object modelling</h3><p>Object models describe the system in terms of object classes and their associations</p>
-<p>An object has:</p>
-<ul>
-<li>State<ul>
-<li>Encapsulated data, consists of <strong>attributes</strong> or <strong>instance variables</strong></li>
-</ul>
-</li>
-<li>Behavior<ul>
-<li>Reacts to messages by changing its state and generate further messages</li>
-</ul>
-</li>
-<li>Identity<ul>
-<li>An object has an existence and a name</li>
-</ul>
-</li>
-</ul>
-<p>An class describes a category of objects with similar structure and behavior.</p>
-<h2 id="Class-Diagrams"><a href="#Class-Diagrams" class="headerlink" title="Class Diagrams"></a>Class Diagrams</h2><p>A class diagram describes the  kind of objects in a system and their different <strong>static relationships:</strong></p>
-<ul>
-<li>Association:<ul>
-<li>a user can watch videos</li>
-</ul>
-</li>
-<li>Subtypes<ul>
-<li>a nurse is </li>
-</ul>
-</li>
-</ul>
-<h2 id="Approaches-to-class-identiﬁcation"><a href="#Approaches-to-class-identiﬁcation" class="headerlink" title="Approaches to class identiﬁcation"></a>Approaches to class identiﬁcation</h2><ol>
-<li>Identify possible calsses</li>
-<li>Consolidate the results.Delete those whose name is:<ul>
-<li>redundant</li>
-<li>unclear</li>
-<li>an event or an operation</li>
-<li>a simple attribute</li>
-<li>outside of the system scope</li>
-</ul>
-</li>
-</ol>
-<h2 id="Class-Transformations"><a href="#Class-Transformations" class="headerlink" title="Class Transformations"></a>Class Transformations</h2><ul>
-<li><h3 id="Removing-inheritance"><a href="#Removing-inheritance" class="headerlink" title="Removing inheritance"></a>Removing inheritance</h3></li>
-<li><h3 id="Introduction-primary-keys"><a href="#Introduction-primary-keys" class="headerlink" title="Introduction primary keys"></a>Introduction primary keys</h3></li>
-<li><h3 id="Removing-many-many-associations"><a href="#Removing-many-many-associations" class="headerlink" title="Removing many-many associations"></a>Removing many-many associations</h3></li>
-</ul>
-<p>Similar to introducing a foreign keys in a relational database.</p>
-<p>Example:</p>
-<p><img src="https://i.postimg.cc/GmsjKVDV/SE-4-1.png" alt=""></p>
-<ul>
-<li><h3 id="Replacing-association-with-foreign-key"><a href="#Replacing-association-with-foreign-key" class="headerlink" title="Replacing association with foreign key"></a>Replacing association with foreign key</h3></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/05/NOTE-Week-4-Cryptocurrency/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/05/NOTE-Week-4-Cryptocurrency/" itemprop="url">(Blockchain) Creating & Breaking Smart Contracts</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-05T18:52:44+00:00">
-                2019-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Overview:</p>
-<ul>
-<li>what’s a smart contract</li>
-<li>Smart Contract Specific Features</li>
-<li>Breaking smart contracts</li>
-<li>Advanced Smart Contracts</li>
-</ul>
-<h2 id="Smart-Contract"><a href="#Smart-Contract" class="headerlink" title="Smart Contract"></a>Smart Contract</h2><p>A reactive and social Agent that:</p>
-<ul>
-<li>never modify or change the code</li>
-</ul>
-<h3 id="Interaction"><a href="#Interaction" class="headerlink" title="Interaction"></a>Interaction</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -2081,7 +2336,7 @@ s_i^2 = \sum_{\mathcal{X}\in \omega_i} (w(x-m_1))^2</script><figure class="highl
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

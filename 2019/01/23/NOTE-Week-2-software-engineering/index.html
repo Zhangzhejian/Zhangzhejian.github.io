@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Key points: Model-Driven development (MDD) Model-Driven development (MDA) Unified modelling language (UML) Usecase diagrams (A type of UML diagram)  MDDModel-Driven Development envisages(设想) developme">
+<meta name="description" content="Key points: Model-Driven development (MDD) Model-Driven Architecture (MDA) Unified modelling language (UML) Usecase diagrams (A type of UML diagram)  MDDModel-Driven Development envisages(设想) developm">
 <meta name="keywords" content="SE,ntoe">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(Software Engineering) MDD">
 <meta property="og:url" content="https://zhangzhejian.com/2019/01/23/NOTE-Week-2-software-engineering/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Key points: Model-Driven development (MDD) Model-Driven development (MDA) Unified modelling language (UML) Usecase diagrams (A type of UML diagram)  MDDModel-Driven Development envisages(设想) developme">
+<meta property="og:description" content="Key points: Model-Driven development (MDD) Model-Driven Architecture (MDA) Unified modelling language (UML) Usecase diagrams (A type of UML diagram)  MDDModel-Driven Development envisages(设想) developm">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-26T22:16:00.549Z">
+<meta property="og:updated_time" content="2019-05-11T20:24:09.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(Software Engineering) MDD">
-<meta name="twitter:description" content="Key points: Model-Driven development (MDD) Model-Driven development (MDA) Unified modelling language (UML) Usecase diagrams (A type of UML diagram)  MDDModel-Driven Development envisages(设想) developme">
+<meta name="twitter:description" content="Key points: Model-Driven development (MDD) Model-Driven Architecture (MDA) Unified modelling language (UML) Usecase diagrams (A type of UML diagram)  MDDModel-Driven Development envisages(设想) developm">
 
 
 
@@ -302,7 +302,7 @@
       
         <h2 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h2><ol>
 <li>Model-Driven development (MDD)</li>
-<li>Model-Driven development (MDA)</li>
+<li>Model-Driven Architecture (MDA)</li>
 <li>Unified modelling language (UML)</li>
 <li>Usecase diagrams (A type of UML diagram)</li>
 </ol>
@@ -333,12 +333,74 @@
 </ul>
 </li>
 </ul>
-<h3 id="PSM"><a href="#PSM" class="headerlink" title="PSM"></a>PSM</h3><p>Tailored to <strong>specific software platform and programming language</strong> and define functionalities of system in <strong>sufficient detail</strong> that they can be <strong>directly programmed</strong> from the model</p>
+<h3 id="PSM"><a href="#PSM" class="headerlink" title="PSM"></a>PSM</h3><p>Tailored to <strong>specific software platform and programming language</strong> and define functionalities of system in <strong>sufficient detail</strong> that they can be <strong>directly programmed</strong> from the model.(针对软件平台和语言的设计，定义了详细的功能细节，可以直接被实现)</p>
 <h3 id="Model-Transformations"><a href="#Model-Transformations" class="headerlink" title="Model Transformations"></a>Model Transformations</h3><p>Produce a new model from an existing model</p>
 <ul>
-<li>improve the quality</li>
+<li>improve the quality(去除冗余，分解出共同元素)</li>
 <li>Refine a PIM towards a PSM</li>
 <li>refine a PSM to an implementation</li>
+</ul>
+<p>Includes:</p>
+<ul>
+<li>introduction of design patterns,or(引入设计模式)</li>
+<li>elimination of model elements that are not supported by a particular platform(such as multiple inheritanc,or many-many association)(去除特定语言平台不支持的元素，比如多重继承，多对多关联)</li>
+</ul>
+<h3 id="Unified-Modelling-Language-UML"><a href="#Unified-Modelling-Language-UML" class="headerlink" title="Unified Modelling Language(UML)"></a>Unified Modelling Language(UML)</h3><ul>
+<li><p>Use case diagrams</p>
+<ul>
+<li><p>represent the <strong>functionality</strong> of a system from the users’</p>
+<p>point of view(从使用者的角度表示了系统的功能)</p>
+</li>
+</ul>
+</li>
+<li><p>class/object diagrams</p>
+<ul>
+<li>represent the <strong>structure</strong> of the system.(系统的结构)</li>
+</ul>
+</li>
+<li><p>State machine diagrams</p>
+<ul>
+<li>Statecharts represent the behaviour of a single object</li>
+</ul>
+</li>
+<li><p>Object constraint language(OCL)</p>
+<ul>
+<li>OCL enables developers to describe properties of classes, associations and state machines in detail, using a semi-formal language</li>
+</ul>
+</li>
+<li><p>Sequence diagrams</p>
+<ul>
+<li>represent the behaviour of a system as messages (“interactions”) between different objects</li>
+</ul>
+</li>
+<li><p>Activity diagrams</p>
+</li>
+<li><p>Development diagrams</p>
+</li>
+</ul>
+<h3 id="Use-case-Diagram"><a href="#Use-case-Diagram" class="headerlink" title="Use case Diagram"></a>Use case Diagram</h3><p>Use cases are a <u>scenario-based</u> technique in the UML, which <strong>indentify the actors</strong> in an interaction and which describe the interaction itself.(描述交互) That is, a use case is a set of scenarios tied together by a common user goal (that might succeed or fail). A set of uses cases should describe all possible interactions with the system。</p>
+<ul>
+<li>Elements</li>
+<li>Relationship</li>
+</ul>
+<h3 id="Elements"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</h3><ul>
+<li>Actors</li>
+<li>pre-condition</li>
+<li>Scenario</li>
+</ul>
+<h3 id="Relationship"><a href="#Relationship" class="headerlink" title="Relationship"></a>Relationship</h3><ul>
+<li><strong>Includes</strong><ul>
+<li>Common behaviour</li>
+</ul>
+</li>
+<li><strong>Extends</strong><ul>
+<li>Used to factor different behaviour into a single scenario</li>
+</ul>
+</li>
+<li><strong>Generalisation and Specialisation</strong><ul>
+<li>Relates two actors or uses cases to each other to factor out <strong>common but not identical behaviour</strong></li>
+</ul>
+</li>
 </ul>
 
       
@@ -461,7 +523,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -507,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-points"><span class="nav-number">1.</span> <span class="nav-text">Key points:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDD"><span class="nav-number">2.</span> <span class="nav-text">MDD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDA-Model-Driven-Architecture"><span class="nav-number">3.</span> <span class="nav-text">MDA(Model-Driven Architecture)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PIM"><span class="nav-number">3.1.</span> <span class="nav-text">PIM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PSM"><span class="nav-number">3.2.</span> <span class="nav-text">PSM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Transformations"><span class="nav-number">3.3.</span> <span class="nav-text">Model Transformations</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-points"><span class="nav-number">1.</span> <span class="nav-text">Key points:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDD"><span class="nav-number">2.</span> <span class="nav-text">MDD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDA-Model-Driven-Architecture"><span class="nav-number">3.</span> <span class="nav-text">MDA(Model-Driven Architecture)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PIM"><span class="nav-number">3.1.</span> <span class="nav-text">PIM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PSM"><span class="nav-number">3.2.</span> <span class="nav-text">PSM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Transformations"><span class="nav-number">3.3.</span> <span class="nav-text">Model Transformations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unified-Modelling-Language-UML"><span class="nav-number">3.4.</span> <span class="nav-text">Unified Modelling Language(UML)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-case-Diagram"><span class="nav-number">3.5.</span> <span class="nav-text">Use case Diagram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elements"><span class="nav-number">3.6.</span> <span class="nav-text">Elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relationship"><span class="nav-number">3.7.</span> <span class="nav-text">Relationship</span></a></li></ol></li></ol></div>
             
 
           </div>

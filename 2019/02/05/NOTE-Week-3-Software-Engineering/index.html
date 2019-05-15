@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="Overview:  Objects and classes Class diagrams how to develop a class diagram Class diagram transformations  Object Modeling Class(类) A class is a category of thing   Object(对象) An object is a specific">
+<meta name="description" content="Key points: Objects and classes Class diagrams Attributes Operations Relations Associations Generalisations Dependencies Aggregations/Compositions   Template classes Association classes Packages    Ho">
 <meta name="keywords" content="note,SE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Class Diagrams">
 <meta property="og:url" content="https://zhangzhejian.com/2019/02/05/NOTE-Week-3-Software-Engineering/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Overview:  Objects and classes Class diagrams how to develop a class diagram Class diagram transformations  Object Modeling Class(类) A class is a category of thing   Object(对象) An object is a specific">
+<meta property="og:description" content="Key points: Objects and classes Class diagrams Attributes Operations Relations Associations Generalisations Dependencies Aggregations/Compositions   Template classes Association classes Packages    Ho">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.postimg.cc/GmsjKVDV/SE-4-1.png">
-<meta property="og:updated_time" content="2019-02-06T12:00:50.730Z">
+<meta property="og:updated_time" content="2019-05-11T13:42:30.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Class Diagrams">
-<meta name="twitter:description" content="Overview:  Objects and classes Class diagrams how to develop a class diagram Class diagram transformations  Object Modeling Class(类) A class is a category of thing   Object(对象) An object is a specific">
+<meta name="twitter:description" content="Key points: Objects and classes Class diagrams Attributes Operations Relations Associations Generalisations Dependencies Aggregations/Compositions   Template classes Association classes Packages    Ho">
 <meta name="twitter:image" content="https://i.postimg.cc/GmsjKVDV/SE-4-1.png">
 
 
@@ -302,11 +302,24 @@
       
 
       
-        <p>Overview:</p>
-<ul>
+        <h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><ul>
 <li>Objects and classes</li>
-<li>Class diagrams</li>
-<li>how to develop a class diagram</li>
+<li>Class diagrams<ul>
+<li>Attributes</li>
+<li>Operations</li>
+<li>Relations<ul>
+<li>Associations</li>
+<li>Generalisations</li>
+<li>Dependencies</li>
+<li>Aggregations/Compositions</li>
+</ul>
+</li>
+<li>Template classes</li>
+<li>Association classes</li>
+<li>Packages </li>
+</ul>
+</li>
+<li>How to develop a class diagram</li>
 <li>Class diagram transformations</li>
 </ul>
 <h2 id="Object-Modeling"><a href="#Object-Modeling" class="headerlink" title="Object Modeling"></a>Object Modeling</h2><ul>
@@ -315,11 +328,12 @@
 </ul>
 </li>
 <li>Object(对象)<ul>
-<li>An object is a specific instance of a class</li>
+<li>An object is a <strong>specific instance</strong> of a class</li>
 </ul>
 </li>
 </ul>
-<h3 id="Object-modelling"><a href="#Object-modelling" class="headerlink" title="Object modelling"></a>Object modelling</h3><p>Object models describe the system in terms of object classes and their associations</p>
+<p>类和对象的区别：类是指一类事物，而对象是具体的实例化的类</p>
+<h3 id="Object-modelling"><a href="#Object-modelling" class="headerlink" title="Object modelling"></a>Object modelling</h3><p>Object models describe the system in terms of object classes and their associations(对象模型描述了类和它们之间的关联)</p>
 <p>An object has:</p>
 <ul>
 <li>State<ul>
@@ -335,19 +349,64 @@
 </ul>
 </li>
 </ul>
-<p>An class describes a category of objects with similar structure and behavior.</p>
-<h2 id="Class-Diagrams"><a href="#Class-Diagrams" class="headerlink" title="Class Diagrams"></a>Class Diagrams</h2><p>A class diagram describes the  kind of objects in a system and their different <strong>static relationships:</strong></p>
+<p>An class describes a category of objects <u>with similar structure and behavior</u>.</p>
+<h2 id="Class-Diagrams"><a href="#Class-Diagrams" class="headerlink" title="Class Diagrams"></a>Class Diagrams</h2><p>A class diagram describes the  kind of objects in a system and their different <strong>static relationships:</strong>(描述了对象之间的不同的静态关系)</p>
 <ul>
-<li>Association:<ul>
+<li>Association:()<ul>
 <li>a user can watch videos</li>
 </ul>
 </li>
-<li>Subtypes<ul>
-<li>a nurse is </li>
+<li>Subtypes:(子类)<ul>
+<li>a nurse is a type of person</li>
 </ul>
 </li>
 </ul>
-<h2 id="Approaches-to-class-identiﬁcation"><a href="#Approaches-to-class-identiﬁcation" class="headerlink" title="Approaches to class identiﬁcation"></a>Approaches to class identiﬁcation</h2><ol>
+<p>A class encapsulates <strong>Attributes(state)</strong> and <strong>Operations(methods)</strong></p>
+<h4 id="Attributes"><a href="#Attributes" class="headerlink" title="Attributes"></a>Attributes</h4><p>visibility name : type multiplicity = default {property-string}</p>
+<ul>
+<li>Visibility:<ul>
+<li>public</li>
+<li>private</li>
+<li>package</li>
+<li>protected</li>
+</ul>
+</li>
+<li>type<ul>
+<li>String</li>
+<li>int</li>
+<li>…</li>
+</ul>
+</li>
+<li>Multiplicity<ul>
+<li>an exact number: 1,2,3</li>
+<li>arbitrary number: *</li>
+<li>a range: 1…3</li>
+</ul>
+</li>
+<li>Property-string<ul>
+<li>readOnly</li>
+<li>Frozen</li>
+</ul>
+</li>
+</ul>
+<h4 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h4><p>visibility name (parameter-list) : return-type {property-string}</p>
+<h3 id="Class-Relations"><a href="#Class-Relations" class="headerlink" title="Class Relations"></a>Class Relations</h3><ul>
+<li>Association关联</li>
+<li>Generalisation泛化，继承<ul>
+<li>Implemented by <strong>inheritance</strong></li>
+</ul>
+</li>
+<li>Dependency依赖</li>
+<li>Aggregation聚合<ul>
+<li>部分离开主体还是可以单独存在的</li>
+</ul>
+</li>
+<li>Composition组合<ul>
+<li>是一种更强的聚合关系，要求整体对象控制部分对象的生命周期</li>
+</ul>
+</li>
+</ul>
+<h2 id="Approaches-to-class-identiﬁcation"><a href="#Approaches-to-class-identiﬁcation" class="headerlink" title="Approaches to class identiﬁcation"></a>Approaches to class identiﬁcation</h2><h3 id="Noun-verb-analysis"><a href="#Noun-verb-analysis" class="headerlink" title="Noun-verb analysis"></a>Noun-verb analysis</h3><ol>
 <li>Identify possible calsses</li>
 <li>Consolidate the results.Delete those whose name is:<ul>
 <li>redundant</li>
@@ -358,17 +417,30 @@
 </ul>
 </li>
 </ol>
-<h2 id="Class-Transformations"><a href="#Class-Transformations" class="headerlink" title="Class Transformations"></a>Class Transformations</h2><ul>
-<li><h3 id="Removing-inheritance"><a href="#Removing-inheritance" class="headerlink" title="Removing inheritance"></a>Removing inheritance</h3></li>
-<li><h3 id="Introduction-primary-keys"><a href="#Introduction-primary-keys" class="headerlink" title="Introduction primary keys"></a>Introduction primary keys</h3></li>
-<li><h3 id="Removing-many-many-associations"><a href="#Removing-many-many-associations" class="headerlink" title="Removing many-many associations"></a>Removing many-many associations</h3></li>
+<h4 id="Problem-of-Noun-verb-analysis"><a href="#Problem-of-Noun-verb-analysis" class="headerlink" title="Problem of Noun-verb analysis"></a>Problem of Noun-verb analysis</h4><ul>
+<li>Natural language is imprecise</li>
+<li>Many more nouns than relevant classes</li>
 </ul>
-<p>Similar to introducing a foreign keys in a relational database.</p>
+<h3 id="CRC-Class-Responsibilities-Collaborators-cards"><a href="#CRC-Class-Responsibilities-Collaborators-cards" class="headerlink" title="CRC(Class-Responsibilities-Collaborators) cards"></a>CRC(Class-Responsibilities-Collaborators) cards</h3><ul>
+<li>Class Name</li>
+<li>Responsibilities</li>
+<li>Collaborators: helpers that aid in fulﬁlling the responsibilities.</li>
+</ul>
+<h2 id="Class-Transformations"><a href="#Class-Transformations" class="headerlink" title="Class Transformations"></a>Class Transformations</h2><p>Types of Class transformations</p>
+<ul>
+<li>Removing inheritance</li>
+<li>Introduction primary keys<ul>
+<li>Essential in data model in a relational database</li>
+</ul>
+</li>
+<li><p>Removing many-many associations</p>
+</li>
+<li><p>Replacing association with foreign key</p>
+</li>
+</ul>
+<h4 id="Remove-many-many-associations"><a href="#Remove-many-many-associations" class="headerlink" title="Remove many-many associations"></a>Remove many-many associations</h4><p>Similar to introducing a foreign keys in a relational database.</p>
 <p>Example:</p>
 <p><img src="https://i.postimg.cc/GmsjKVDV/SE-4-1.png" alt=""></p>
-<ul>
-<li><h3 id="Replacing-association-with-foreign-key"><a href="#Replacing-association-with-foreign-key" class="headerlink" title="Replacing association with foreign key"></a>Replacing association with foreign key</h3></li>
-</ul>
 
       
     </div>
@@ -411,8 +483,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/05/NOTE-Week-4-Software-Engineering/" rel="prev" title="NOTE-Week-4-Software Engineering">
-                NOTE-Week-4-Software Engineering <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/05/NOTE-Week-4-Software-Engineering/" rel="prev" title="Web Application Specification">
+                Web Application Specification <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -490,7 +562,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -536,7 +608,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-Modeling"><span class="nav-number">1.</span> <span class="nav-text">Object Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-modelling"><span class="nav-number">1.1.</span> <span class="nav-text">Object modelling</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class-Diagrams"><span class="nav-number">2.</span> <span class="nav-text">Class Diagrams</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approaches-to-class-identiﬁcation"><span class="nav-number">3.</span> <span class="nav-text">Approaches to class identiﬁcation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class-Transformations"><span class="nav-number">4.</span> <span class="nav-text">Class Transformations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Removing-inheritance"><span class="nav-number">4.1.</span> <span class="nav-text">Removing inheritance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Introduction-primary-keys"><span class="nav-number">4.2.</span> <span class="nav-text">Introduction primary keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Removing-many-many-associations"><span class="nav-number">4.3.</span> <span class="nav-text">Removing many-many associations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Replacing-association-with-foreign-key"><span class="nav-number">4.4.</span> <span class="nav-text">Replacing association with foreign key</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Key-points"><span class="nav-number">1.</span> <span class="nav-text">Key points:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object-Modeling"><span class="nav-number"></span> <span class="nav-text">Object Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-modelling"><span class="nav-number">1.</span> <span class="nav-text">Object modelling</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class-Diagrams"><span class="nav-number"></span> <span class="nav-text">Class Diagrams</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Attributes"><span class="nav-number">0.1.</span> <span class="nav-text">Attributes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Operation"><span class="nav-number">0.2.</span> <span class="nav-text">Operation</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Class-Relations"><span class="nav-number">1.</span> <span class="nav-text">Class Relations</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approaches-to-class-identiﬁcation"><span class="nav-number"></span> <span class="nav-text">Approaches to class identiﬁcation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Noun-verb-analysis"><span class="nav-number">1.</span> <span class="nav-text">Noun-verb analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Problem-of-Noun-verb-analysis"><span class="nav-number">1.1.</span> <span class="nav-text">Problem of Noun-verb analysis</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CRC-Class-Responsibilities-Collaborators-cards"><span class="nav-number">2.</span> <span class="nav-text">CRC(Class-Responsibilities-Collaborators) cards</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Class-Transformations"><span class="nav-number"></span> <span class="nav-text">Class Transformations</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Remove-many-many-associations"><span class="nav-number">0.1.</span> <span class="nav-text">Remove many-many associations</span></a></li></ol></li></ol></div>
             
 
           </div>

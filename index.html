@@ -230,6 +230,755 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/05/15/NOTE-Week-9-SIA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/15/NOTE-Week-9-SIA/" itemprop="url">(SIA) EIS Implementations</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-15T00:33:11+01:00">
+                2019-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Overview:</p>
+<ul>
+<li>Enterprise Java Beans(EJBs)</li>
+<li>EJB state interfaces</li>
+<li>EJB state diagrams</li>
+<li>web service</li>
+</ul>
+<h3 id="EJB"><a href="#EJB" class="headerlink" title="EJB"></a>EJB</h3><p>Enterprise Java Beans (EJBs) are a core mechanism for <strong>carrying out business logic</strong> on the server side of a J2EE-based system.</p>
+<p>Two forms of EJB:</p>
+<ul>
+<li>Entity beans</li>
+<li>session beans </li>
+</ul>
+<h3 id="EJB-interfaces"><a href="#EJB-interfaces" class="headerlink" title="EJB interfaces"></a>EJB interfaces</h3><ul>
+<li>Remote Business interface<ul>
+<li>Business operations </li>
+<li>setPrice()</li>
+</ul>
+</li>
+<li>Local business interface</li>
+<li>Remote home interface<ul>
+<li>Create()</li>
+<li>Remove()</li>
+<li>Find()</li>
+</ul>
+</li>
+<li>Local home interface</li>
+</ul>
+<h3 id="EJB-life-cycle"><a href="#EJB-life-cycle" class="headerlink" title="EJB life cycle"></a>EJB life cycle</h3><p>CMP(container-managed persistence) is an automated synchronisation of the entity bean data and the actual stored data in the resource tier provided by J2EE.</p>
+<h3 id="Web-services"><a href="#Web-services" class="headerlink" title="Web services"></a>Web services</h3><ul>
+<li>Broker design patterns<ul>
+<li>source application needs to <strong>call multiple target</strong> services</li>
+</ul>
+</li>
+<li>Router design patterns<ul>
+<li>source application needs to <strong>call one speciﬁc (external) service</strong>, depending on various criteria/rules.</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/05/14/NOTE-Week-8-SIA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/14/NOTE-Week-8-SIA/" itemprop="url">(SIA) EIS Design Patterns</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-14T13:46:42+01:00">
+                2019-05-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Overview:</p>
+<ul>
+<li><p>Design Patterns</p>
+<ul>
+<li><p>Intercepting ﬁlter</p>
+<ul>
+<li>deﬁnes a structure of pluggable ﬁlters to add pre and post-processing of web requests/responses, e.g.: for security checking.</li>
+<li>useful when entry conditions are likely to change in the future.</li>
+</ul>
+</li>
+<li><p>Front controller</p>
+<ul>
+<li>deﬁnes a single point of access for web system services, through which all requests pass. Enables centralised handling of authentication, etc.</li>
+</ul>
+</li>
+<li><p>Composite view</p>
+<ul>
+<li>uses objects to compose a view out of parts (subviews)</li>
+</ul>
+</li>
+<li><p>Value object</p>
+<ul>
+<li>Purpose: <strong>improve the efficiency</strong> of accessing persistent data(entity beans) by grouping data and transferring data as a group of attribute values of each object</li>
+<li>去除了JAVA bean 中的get和set方法，加快读取</li>
+</ul>
+</li>
+<li><p>Session facade</p>
+<ul>
+<li>uses a session bean as facade to hide complex interactions between business objects in one workﬂow/use case.</li>
+</ul>
+</li>
+<li><p>Composite entity</p>
+<ul>
+<li>Uses entity beans to manage a set of interrelated persistent objects to improve efficiency.</li>
+</ul>
+</li>
+<li><p>Data access object(DAO)</p>
+<ul>
+<li><p>provides an abstraction of persistent data source ac-</p>
+<p>cess</p>
+</li>
+</ul>
+</li>
+<li><p>Value list handler</p>
+<ul>
+<li>This pattern provides a means to access result lists element by element</li>
+<li>It provides an iterator-style interface allowing navigation of such lists</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Design-patterns"><a href="#Design-patterns" class="headerlink" title="Design patterns"></a>Design patterns</h3><h4 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h4><p>Design patterns deﬁne <strong>microarchitecture</strong> within an EIS, to implement a <strong>particular required property/functionality</strong> of a system, or to <strong>rationalise</strong> the system structure.</p>
+<h4 id="Why-use-patterns"><a href="#Why-use-patterns" class="headerlink" title="Why use patterns"></a>Why use patterns</h4><ul>
+<li>EIS system large and complex</li>
+<li>Patterns are independent of any specific implementation technology</li>
+</ul>
+<h3 id="Intercepting-filter"><a href="#Intercepting-filter" class="headerlink" title="Intercepting filter"></a>Intercepting filter</h3><p>Ref:<a href="http://www.runoob.com/design-pattern/intercepting-filter-pattern.html" target="_blank" rel="noopener">http://www.runoob.com/design-pattern/intercepting-filter-pattern.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/05/13/NOTE-Week-7-SIA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/13/NOTE-Week-7-SIA/" itemprop="url">(SIA) Enterprise information systems</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-13T17:19:46+01:00">
+                2019-05-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Over view:</p>
+<ul>
+<li>EIS</li>
+<li>EIS business tier design<ul>
+<li>Entity v Session beans</li>
+<li>Stateless v Stateful session beans</li>
+<li>Persistence management</li>
+</ul>
+</li>
+<li>EIS design issues<ul>
+<li>Security</li>
+<li>Seperation of code</li>
+<li>Database pooling</li>
+</ul>
+</li>
+</ul>
+<h3 id="EIS-Enterprise-information-system"><a href="#EIS-Enterprise-information-system" class="headerlink" title="EIS(Enterprise information system)"></a>EIS(Enterprise information system)</h3><ul>
+<li>An <strong>enterprise information system (EIS)</strong> is a software system which <strong>holds core business data</strong> for a company or organisation and which <strong>performs operations</strong> involving this data.</li>
+<li>usually large and complex systems(Distributed)</li>
+<li>be used by different applications as a resource</li>
+</ul>
+<h3 id="EIS-architecture-and-components"><a href="#EIS-architecture-and-components" class="headerlink" title="EIS architecture and components"></a>EIS architecture and components</h3><ol>
+<li>Client tier<ul>
+<li>responsible to display information and receive information </li>
+<li>HTML</li>
+</ul>
+</li>
+<li>Presentation tier<ul>
+<li>Managing presentation of information</li>
+<li>controlling interaction sequence</li>
+<li>Relaying user requests</li>
+<li>JSP</li>
+</ul>
+</li>
+<li>Business tier<ul>
+<li>Components implementing the business rules and data</li>
+<li>Beans </li>
+</ul>
+</li>
+<li>Integration tier<ul>
+<li>Mediates between the business and resource tiers.</li>
+<li>Manages data retrieval and data conversion.</li>
+<li>Insulates higher tiers from direct knowledge of low-level data concepts.</li>
+<li>DB Interfaces</li>
+</ul>
+</li>
+<li>Resource tier<ul>
+<li>Contains persistent data storage and external services.</li>
+<li>DB</li>
+</ul>
+</li>
+</ol>
+<h2 id="EIS-Business-tier-design"><a href="#EIS-Business-tier-design" class="headerlink" title="EIS Business tier design"></a>EIS Business tier design</h2><h3 id="Entity-beans-vs-session-beans"><a href="#Entity-beans-vs-session-beans" class="headerlink" title="Entity beans vs session beans"></a>Entity beans vs session beans</h3><ul>
+<li>Session bean<ul>
+<li>Dedicated to a single client</li>
+<li>Live only for the duration of the client’s session</li>
+<li>Not persistent</li>
+<li>Used to model stateful or stateless interactions between the client and business tier components.</li>
+<li>A session bean encapsulates a group of operations, usually corresponding to the use cases of the system, which operate on one or more of the entities of the system.</li>
+<li>Each use case of the system would normally be implemented by a session bean</li>
+<li>一个对一个client，生存周期为会话的周期，非持久，用来描述client和应用层组件的交互，每个用例通常都可以用一个session bean表示。</li>
+</ul>
+</li>
+<li>Entity bean<ul>
+<li>Provides an object view of persistent data</li>
+<li>Coarse-grained</li>
+<li>Multi-user and Long-lived</li>
+<li>Entity beans act as an object-oriented facade for data of system, which may actually be stored as relational tables, or as XML datasets</li>
+<li>Normally each entity from the PIM class diagram of the system will be managed by some entity bean.</li>
+<li>持久的数据，粗粒度，多用户长生存周期。entity bean是系统数据的对象化表示，PIM类图中的每个实体都可用其表示</li>
+</ul>
+</li>
+</ul>
+<h3 id="Stateless-session-bean-vs-Stateful-session-bean"><a href="#Stateless-session-bean-vs-Stateful-session-bean" class="headerlink" title="Stateless session bean vs Stateful session bean"></a>Stateless session bean vs Stateful session bean</h3><ul>
+<li>Stateless<ul>
+<li>Provide a service by a single method call</li>
+<li>Instantaneous</li>
+<li>can be shared and reused</li>
+</ul>
+</li>
+<li>Stateful<ul>
+<li>Provide a service specific to a single client</li>
+<li>cannot be shared</li>
+<li>Involve several related operations</li>
+</ul>
+</li>
+</ul>
+<h2 id="EIS-design-issues"><a href="#EIS-design-issues" class="headerlink" title="EIS design issues"></a>EIS design issues</h2><ul>
+<li>Data security<ul>
+<li>Password encryption</li>
+<li>HTTPS</li>
+</ul>
+</li>
+<li>Separating presentation, business logic and data processing code<ul>
+<li>EIS components: session beans for business processing, entity beans for complex bbusiness data</li>
+<li>Separate tiers</li>
+</ul>
+</li>
+<li>Pooling database connections<ul>
+<li>Database connection pool</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/05/12/NOTE-Week-6-SIA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/12/NOTE-Week-6-SIA/" itemprop="url">(SIA) Web Application architecture</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-12T16:00:37+01:00">
+                2019-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>Five-tier architecture</li>
+<li>Functional core of web applications</li>
+<li>approaches to the presentation tier<ul>
+<li>pure Servlet</li>
+<li>Pure JSP</li>
+<li>MVC</li>
+</ul>
+</li>
+</ul>
+<h3 id="Five-tier-architecture"><a href="#Five-tier-architecture" class="headerlink" title="Five-tier architecture"></a>Five-tier architecture</h3><ol>
+<li>Client tier<ul>
+<li>Web pages</li>
+</ul>
+</li>
+<li>Presentation tier<ul>
+<li>controller</li>
+<li>View components</li>
+</ul>
+</li>
+<li>Business tier<ul>
+<li>session beans</li>
+<li>entity beans</li>
+</ul>
+</li>
+<li>Integration tier<ul>
+<li>Databse interfaces</li>
+<li>External Service interface</li>
+</ul>
+</li>
+<li>Resource tier<ul>
+<li>Databases</li>
+<li>Web services</li>
+<li>Other resources</li>
+</ul>
+</li>
+</ol>
+<h3 id="Functional-core-of-web-applications"><a href="#Functional-core-of-web-applications" class="headerlink" title="Functional core of web applications"></a>Functional core of web applications</h3><ul>
+<li>web pages<ul>
+<li>HTML</li>
+</ul>
+</li>
+<li>Controller/coordinator components<ul>
+<li>Servlet </li>
+</ul>
+</li>
+<li>View/presentation server-side elements<ul>
+<li>JSP</li>
+</ul>
+</li>
+<li>Resources <ul>
+<li>Database, static files</li>
+</ul>
+</li>
+</ul>
+<h3 id="Approch-to-the-presentation-tier"><a href="#Approch-to-the-presentation-tier" class="headerlink" title="Approch to the presentation tier"></a>Approch to the presentation tier</h3><p>JSE:</p>
+<ul>
+<li>Pure Servlet</li>
+<li>Pure JSP</li>
+<li>MVC(Model-view-controller)<ul>
+<li>hybrid approach</li>
+<li>Servlet(Controllers) handle requests, interact with business tier beans(Models) and create beans for use by JSPs(Views)</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/03/18/NOTE-Week-10-Pattern-Recognition/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -315,8 +1064,13 @@
 </ul>
 </li>
 </ul>
-<h3 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h3><h2 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h2><ul>
-<li>A cluster is a group of samples of similar properties.</li>
+<h3 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h3><ul>
+<li>For large data mining applications</li>
+<li>If the characteristics of the patterns can change slowly with time</li>
+<li>can be used to identify features that will then be useful for categorisation</li>
+</ul>
+<h2 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h2><ul>
+<li>A cluster is a group of samples of <strong>similar properties.</strong></li>
 <li>Clustering is to put samples into one of the K clusters. The samples from the same cluster are similar to each other but dissimilar to samples in other clusters.</li>
 </ul>
 <h2 id="K-Means-Clustering"><a href="#K-Means-Clustering" class="headerlink" title="K-Means Clustering"></a>K-Means Clustering</h2><p>refer to:<a href="http://zhangzhejian.com/2018/12/01/NOTE-WEEK-9-Artificial-Intelligence/">http://zhangzhejian.com/2018/12/01/NOTE-WEEK-9-Artificial-Intelligence/</a></p>
@@ -1086,851 +1840,6 @@ Z_k = \sum_{i=1}^n w_k(i)e^{-\alpha_ky_i \hat{h}_k(x_i)}</script><p>Ref:</p>
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/03/04/NOTE-Week-8-Pattern-Recognition/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/04/NOTE-Week-8-Pattern-Recognition/" itemprop="url">(PR) Support Vector Machines</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-03-04T13:35:18+00:00">
-                2019-03-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Overview:</p>
-<ul>
-<li>Introduction</li>
-<li>Linear SVM: Linearly Separable case</li>
-<li>Linear SVM: Linearly non-Separable case</li>
-<li>Nonlinear SVMs</li>
-<li>Multi-class SVMs</li>
-</ul>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="SVM"><a href="#SVM" class="headerlink" title="SVM"></a>SVM</h3><ul>
-<li>similar concept of linear machines with margins</li>
-<li><strong>Clasifies two classes</strong></li>
-<li>Computes the optimal weights instead of through training</li>
-<li>Relies on preprocessing the data in a high dimension using Kernel functions</li>
-</ul>
-<p>SVM iis based on Linear Discriminant Functions</p>
-<h3 id="Two-Class-Classification-Probelm"><a href="#Two-Class-Classification-Probelm" class="headerlink" title="Two-Class Classification Probelm"></a>Two-Class Classification Probelm</h3><ul>
-<li>Labelled training samples: $S = {(x_1,y_1),(x_2,y_2), \dots ,(x_N,y_N)}$<ul>
-<li>$x_i = [x_{i1},\dots, x_(id)]$</li>
-<li>$y_i \in {-1,1}$</li>
-<li>N is the number of samples</li>
-</ul>
-</li>
-<li>Goal is to design a hyperplane which can classify correctly the training samples</li>
-<li>SVM is to optimal :<ul>
-<li>No errors</li>
-<li>Distance or margin between nearest support vectors is maximal</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://i.postimg.cc/0yjvWkZq/pr-8-1.png"></p>
-<h2 id="Linear-SVM"><a href="#Linear-SVM" class="headerlink" title="Linear SVM"></a>Linear SVM</h2><p>Deal with linearly separable 2-class classification problem</p>
-<ul>
-<li><p>Hyperplane:$f(\mathbf{x}) = \mathbf{w}^T \mathbf{x} + w_o$</p>
-</li>
-<li><p>Find $\mathbf{w}$ and $w_0$ such that</p>
-<ul>
-<li><p>the margin is optimal</p>
-</li>
-<li><script type="math/tex; mode=display">
-\begin{cases}
-\mathbf{w^Tx} + w_0 \geq 1, \text{ $\forall \mathbf{x} \in $ class 1 ('1')} \\
-\mathbf{w^Tx} + w_0 \leq -1, \text{ $\forall \mathbf{x} \in $ class 2 ('-1')}
-\end{cases}</script></li>
-</ul>
-</li>
-</ul>
-<h3 id="Optimal-margin"><a href="#Optimal-margin" class="headerlink" title="Optimal margin"></a>Optimal margin</h3><p>Distance of a point from a hyperplane:</p>
-<script type="math/tex; mode=display">
-distance(x) = \frac{|f(\mathbf{x})|}{||\mathbf{w}||}</script><p>So the margin is given by:</p>
-<script type="math/tex; mode=display">
-\begin{align}
-& min_{\mathbf{x_i}:y_i =-1} \frac{|f(\mathbf{x_i})|}{||\mathbf{w}||} + min_{\mathbf{x_i}:y_i =+1} \frac{|f(\mathbf{x_i})|}{||\mathbf{w}||}\\
- &= \frac{1}{||\mathbf{w}||}(min_{\mathbf{x_i}:y_i =-1} |f(\mathbf{x_i})| + min_{\mathbf{x_i}:y_i =+1} |f(\mathbf{x_i})|)\\
- &=\frac{2}{||\mathbf{w}||}
- \end{align}</script><p>The problem is transformed into:</p>
-<script type="math/tex; mode=display">
-max_{\mathbf{w}} \frac{2}{||\mathbf{w}||} \iff min_{\mathbf{w}} J(\mathbf{w}) = \frac{1}{2} ||\mathbf{w}||^2</script><p>Meanwhile, the classification should be correct. So:</p>
-<script type="math/tex; mode=display">
-y_i(\mathbf{w^Tx_i}+w_0) \geq 1</script><p>The original problem can be transfered into a Quadratic Programing</p>
-<h3 id="Lagrange-multipliers-引入拉格朗日乘子"><a href="#Lagrange-multipliers-引入拉格朗日乘子" class="headerlink" title="Lagrange multipliers(引入拉格朗日乘子)"></a>Lagrange multipliers(引入拉格朗日乘子)</h3><script type="math/tex; mode=display">
-\mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda}) =
-\frac{1}{2} ||\mathbf{w}||^2 - \sum_{i=1}^N \lambda_i(y_i(\mathbf{w^Tx_i}+w_0)-1)\\
-\text{where $\lambda = [\lambda_1\; \lambda_2 \dots \lambda_N]$, $\lambda_i \geq 0 $ for all $i = 1,2,\dots,N$}\\
-\text{And let } \theta(\mathbf{w}) = \max_{\lambda} \mathcal{\scr{L}} (\mathbf{w},w_0,\mathbf{\lambda})</script><p>It is easy to prove that, </p>
-<script type="math/tex; mode=display">
-\min_{\mathbf{w},w_0} \theta(\mathbf(w)) = \min_{\mathbf{w},w_0} \max_{\lambda \geq0} 
-\mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda})</script><h3 id="Solve-the-Dual-problem"><a href="#Solve-the-Dual-problem" class="headerlink" title="Solve the Dual problem"></a>Solve the Dual problem</h3><p>Use KKT conditions</p>
-<script type="math/tex; mode=display">
-\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda})}
-{\part \mathbf{w}} = 0 \implies \;\; \mathbf{w} = \sum_{i=1} ^N \lambda_i y_i \mathbf{x}_i\\
-\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda})}
-{\part w_0} = 0 \implies \sum_{i=1}^N \lambda_i y_i = 0\\
-\lambda_i(y_i (\mathbf{w}^T \mathbf{x_i} - w_0)-1) = 0</script><p>Put them into $\mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda})$:</p>
-<script type="math/tex; mode=display">
-\mathcal{\scr{L}}(\mathbf{\lambda}) = \sum_{i=1}^N \lambda_i - \frac{1}{2}\sum_{i=1}^N \sum_{j=1}^N \lambda_i \lambda_j y_i y_j x_i^Tx_j</script><p>The dual problem is reduced to:</p>
-<script type="math/tex; mode=display">
-\max_{\lambda \geq 0} \left( \sum_{i=1}^N \lambda_i - \frac{1}{2}\sum_{i=1}^N \sum_{j=1}^N \lambda_i \lambda_j y_i y_j x_i^Tx_j \right)\\
-\text{subject ot } \begin{align} &\sum_{i=1}^N \lambda_i y_i = 0, \\
-& \lambda_i \geq 0
-\end{align}</script><h3 id="Support-Vector"><a href="#Support-Vector" class="headerlink" title="Support Vector"></a>Support Vector</h3><p>For those $\mathbf{x_i}$ with $\lambda_i \ne 0$, they are known as <strong>support vectors</strong>. As a result,</p>
-<script type="math/tex; mode=display">
-\mathbf{w} = \sum_{i=1} ^N \lambda_i y_i \mathbf{x}_i = \sum_{i=1} ^{N_s} \lambda_i y_i \mathbf{x}_i</script><ul>
-<li>Support vector $\mathbf{x_i}$: $y_i (\mathbf{w}^T \mathbf{x_i} - w_0)-1 =0$</li>
-</ul>
-<h2 id="Non-separable-Case"><a href="#Non-separable-Case" class="headerlink" title="Non-separable Case"></a>Non-separable Case</h2><p><img src="https://i.postimg.cc/VLD1WrqR/pr-8-2.png"></p>
-<p>Input:</p>
-<ul>
-<li><p>fall outside the band and are correctly classiﬁed</p>
-<ul>
-<li><script type="math/tex; mode=display">
-y_i(\mathbf{w^Tx_i}+w_0) \geq 1</script></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>fall inside the band and are correctly classiﬁed</p>
-<ul>
-<li><script type="math/tex; mode=display">
-0 \leq y_i(\mathbf{w^Tx_i}+w_0) < 1</script></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>misclassiﬁed</p>
-<ul>
-<li><script type="math/tex; mode=display">
-y_i(\mathbf{w^Tx_i}+w_0) \leq 0</script></li>
-</ul>
-</li>
-</ul>
-<script type="math/tex; mode=display">
-y_i(\mathbf{w^Tx_i}+w_0) \geq 1 - \xi_i\\
-\xi_i = 0; or \;\; 0<\xi \leq 1 ; \;\; or \; \xi_i >1</script><p>Max the margin and min the number of misclassified point.</p>
-<script type="math/tex; mode=display">
-\min_{\mathbf{w},w_0, \xi} J(\mathbf{w},\xi) = \frac{1}{2}||w||^2 + C \sum_{i=1}^N \xi_i\\
-subject \;\;to:
-\begin{align}
-& y_i(\mathbf{w^Tx_i}+w_0) \geq 1 - \xi_i\\
-& \xi_i \geq 0
-\end{align}</script><h3 id="Lagrange-multipliers"><a href="#Lagrange-multipliers" class="headerlink" title="Lagrange multipliers"></a>Lagrange multipliers</h3><script type="math/tex; mode=display">
-\mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda},\mu, \xi) =
-\frac{1}{2} ||\mathbf{w}||^2 + C \sum_{i=1}^N \xi_i -\sum_{i=1}^N \mu_i \xi_i - \sum_{i=1}^N \lambda_i(y_i(\mathbf{w^Tx_i}+w_0)-1+\xi_i)\\
-
-\text{where $\lambda = [\lambda_1\; \lambda_2 \dots \lambda_N]$, $\lambda_i \geq 0 $ $\mu_i \geq 0$ for all $i = 1,2,\dots,N$ , }</script><h3 id="Apply-KKT-condition"><a href="#Apply-KKT-condition" class="headerlink" title="Apply KKT condition"></a>Apply KKT condition</h3><script type="math/tex; mode=display">
-\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda},\mu, \xi)}{\part \mathbf{w}}= 0 \implies \;\; \mathbf{w} = \sum_{i=1} ^N \lambda_i y_i \mathbf{x}_i\\
-\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda} ,\mu, \xi)}
-{\part w_0} = 0 \implies \sum_{i=1}^N \lambda_i y_i = 0\\
-
-\frac{\part \mathcal{\scr{L}}(\mathbf{w},w_0,\mathbf{\lambda} ,\mu, \xi)}
-{\part \xi_i} = 0 \implies C-\mu_i - \lambda_i = 0</script><p>We have:</p>
-<script type="math/tex; mode=display">
-\mathcal{\scr{L}}(\mathbf{\lambda},\xi) = \sum_{i=1}^N \lambda_i - \frac{1}{2}\sum_{i=1}^N \sum_{j=1}^N \lambda_i \lambda_j y_i y_j x_i^Tx_j</script><p>The dual problem is reduced to:</p>
-<script type="math/tex; mode=display">
-\max_{\lambda \geq 0} \left( \sum_{i=1}^N \lambda_i - \frac{1}{2}\sum_{i=1}^N \sum_{j=1}^N \lambda_i \lambda_j y_i y_j x_i^Tx_j \right)\\
-\text{subject ot } \begin{align} &\sum_{i=1}^N \lambda_i y_i = 0, \\
-& 0\leq \lambda_i \leq C
-\end{align}</script><h2 id="Non-linear-SVM"><a href="#Non-linear-SVM" class="headerlink" title="Non-linear SVM"></a>Non-linear SVM</h2><h2 id="Kernel-functions"><a href="#Kernel-functions" class="headerlink" title="Kernel functions"></a>Kernel functions</h2><script type="math/tex; mode=display">
-K(\mathbf{x_i},\mathbf{x}) = \Phi(\mathbf{x_i})^T\Phi(\mathbf{x})</script><h2 id="Multi-class-SVM"><a href="#Multi-class-SVM" class="headerlink" title="Multi-class SVM"></a>Multi-class SVM</h2><ul>
-<li>One against one</li>
-<li>One against all</li>
-<li>Binary decision tree</li>
-<li>Bianary Coded</li>
-</ul>
-<p>Ref:</p>
-<ol>
-<li><a href="https://blog.csdn.net/v_JULY_v/article/details/7624837" target="_blank" rel="noopener">https://blog.csdn.net/v_JULY_v/article/details/7624837</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/27/NOTE-Week-7-Software-engineering/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/27/NOTE-Week-7-Software-engineering/" itemprop="url">(SE)Web Application Architecture</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-27T10:24:28+00:00">
-                2019-02-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Overview:</p>
-<ul>
-<li>The ﬁve-tier web application architecture</li>
-<li>Functional core of web applications</li>
-<li>Approaches to the presentation tier<ul>
-<li>Pure servlet</li>
-<li>Pure JSP</li>
-<li>Model-view-controller (MVC)</li>
-</ul>
-</li>
-</ul>
-<h2 id="Five-tier-web-application-architecture"><a href="#Five-tier-web-application-architecture" class="headerlink" title="Five-tier web application architecture"></a>Five-tier web application architecture</h2><ul>
-<li>Client tier</li>
-<li>Presentation tier</li>
-<li>Business tier</li>
-<li>Integration tier</li>
-<li>Resource tier</li>
-</ul>
-<h3 id="Client-tier"><a href="#Client-tier" class="headerlink" title="Client tier"></a>Client tier</h3><h3 id="Presentation-tier"><a href="#Presentation-tier" class="headerlink" title="Presentation tier"></a>Presentation tier</h3><p>Consists of <strong>controller</strong> and <strong>view components</strong>, such as servlets and JSP</p>
-<h3 id="Business-tier"><a href="#Business-tier" class="headerlink" title="Business tier"></a>Business tier</h3><p>Consists of beans:</p>
-<ul>
-<li>Session Beans(<strong>temporary</strong>), represent groups of business functions</li>
-<li>Entity Beans, represent business and conceptual entities and persistent data.</li>
-</ul>
-<h3 id="Integration-tier"><a href="#Integration-tier" class="headerlink" title="Integration tier"></a>Integration tier</h3><p>contains database interfaces, interfaces to external web services</p>
-<h3 id="Resource-tier"><a href="#Resource-tier" class="headerlink" title="Resource tier"></a>Resource tier</h3><p>Actual database, web services and other resources used by the system such as static files.</p>
-<h2 id="Functional-Core-of-Web-applications"><a href="#Functional-Core-of-Web-applications" class="headerlink" title="Functional Core of Web applications"></a>Functional Core of Web applications</h2><h3 id="Typical-Functinoal-components"><a href="#Typical-Functinoal-components" class="headerlink" title="Typical Functinoal components:"></a>Typical Functinoal components:</h3><ul>
-<li>Web pages</li>
-<li>Controller/coordinator components</li>
-<li>View/presentation server-side elements</li>
-<li>Resources</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/26/NOTE-Week-7-OME/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/26/NOTE-Week-7-OME/" itemprop="url">Linear Programming</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-26T16:09:01+00:00">
-                2019-02-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Standard-definition-of-Linear-Programmes"><a href="#Standard-definition-of-Linear-Programmes" class="headerlink" title="Standard definition of Linear Programmes"></a>Standard definition of Linear Programmes</h3><p>Find values of variable $x_1,x_2, \dots ,x_n$, which</p>
-<script type="math/tex; mode=display">
-\text{maximise  }c_1x_1 + c_2x_2+ \dots + c_nx_n\\
-\text{subject to  } \begin{align}
-&a_{11}x_{11}+a_{12}x_{12}+ \dots+ a_{1n}x_{1n} \leq b_1\\
-& a_{21}x_{21}+a_{22}x_{22}+ \dots+ a_{2n}x_{2n} \leq b_2\\
-&\text{     } \;\;\;\;\;\;\;\;\;\;\;\;\;\;\vdots
-
-
-
-\end{align}</script>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/25/NOTE-Week-7-Pattern-Recognition/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/25/NOTE-Week-7-Pattern-Recognition/" itemprop="url">(PR) Fuzzy Inference System(模糊推理)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-25T13:00:46+00:00">
-                2019-02-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Overview:</p>
-<ul>
-<li>Fuzzy Inference System <ul>
-<li>Fuzziﬁers </li>
-<li>Knowledge Base </li>
-<li>Fuzzy Inference Engine </li>
-<li>Defuzziﬁcation </li>
-</ul>
-</li>
-<li>Three Fuzzy Inference Systems</li>
-<li>Neural Fuzzy Network</li>
-</ul>
-<h2 id="Introduction—Fuzzy-Logic"><a href="#Introduction—Fuzzy-Logic" class="headerlink" title="Introduction—Fuzzy Logic"></a>Introduction—Fuzzy Logic</h2><ul>
-<li>Human can solve a lot of complex problems using imprecision such as common sense and expert knowledge</li>
-<li>Common sense and expert knowledge can be represented by linguistic rules, say, in <strong>If-Then</strong> format.</li>
-<li>Fuzzy logic is the theory of fuzzy sets, which is used to handle fuzziness/imprecision/ambiguity/vagueness.</li>
-<li>By using fuzzy logic, “human spirit” can be computed/represented mathematically.</li>
-</ul>
-<h3 id="Linguistic-Rules"><a href="#Linguistic-Rules" class="headerlink" title="Linguistic Rules"></a>Linguistic Rules</h3><ul>
-<li><p>Rule 1: If distance is small Then speed is low</p>
-</li>
-<li><p>Rule 2: If distance is medium Then speed is steady</p>
-</li>
-<li><p>Rule 3: If distance is large Then speed is high</p>
-</li>
-</ul>
-<h3 id="FIS"><a href="#FIS" class="headerlink" title="FIS"></a>FIS</h3><p><img src="https://i.postimg.cc/VvgsfpbJ/pr-7-1.png"></p>
-<ul>
-<li>Fuzzifiers:</li>
-<li>Knowledge Base:<ul>
-<li>A database consisting of linguistic rules in <strong>If-Then</strong> format</li>
-</ul>
-</li>
-<li>Fuzzy inference Engine<ul>
-<li>Using the rules in knowledge base, it performs reasoning by producing a fuzzy output according to the fuzzy input given by the fuzziﬁer</li>
-</ul>
-</li>
-<li>Defuzziers<ul>
-<li>It converts the fuzzy output given by the fuzzy inference engine to produce a crisp (real-valued) output. This process is called defuzziﬁaction.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Fuzzifiers"><a href="#Fuzzifiers" class="headerlink" title="Fuzzifiers"></a>Fuzzifiers</h2><p>The input is turned to fuzzy sets thought membership functions.</p>
-<p>A fuzzy set is represented by a membership functions (associated with a label called fuzzy term or linguistic term).</p>
-<h3 id="Membership-functions"><a href="#Membership-functions" class="headerlink" title="Membership functions:"></a>Membership functions:</h3><p>A membership function denoted by $\mu_A(x)$ corresponding to fuzzy set A is characterised by a linear/nonlinear function of premise variable x.</p>
-<p>$ 0 \leq \mu_A(x) \leq 1$</p>
-<h3 id="Property-of-membership-functions"><a href="#Property-of-membership-functions" class="headerlink" title="Property of membership functions:"></a>Property of membership functions:</h3><ul>
-<li>Core</li>
-<li>Support</li>
-<li>Boundaries</li>
-</ul>
-<p><img src="https://i.postimg.cc/G2nkTwjc/pr-7-2.png" zoom="70%"></p>
-<ul>
-<li>Normal/subnormal fuzzy set:<ul>
-<li>if its membership function has atleaast one element of x  whose grade is 1</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://i.postimg.cc/q73s7Myb/pr-7-3.png"></p>
-<ul>
-<li>height of a fuzzy set $hgt(A)$<ul>
-<li>$hgt(A) = max{\mu_A}$</li>
-</ul>
-</li>
-<li>Convex/non-convex fuzzy set:<ul>
-<li>If membership function are strictly monotonically increasing/decreasing or  strictly monotonically increasing then decreasing.</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://i.postimg.cc/C1CbjPvb/pr-7-4.png"></p>
-<h3 id="Fuzzification"><a href="#Fuzzification" class="headerlink" title="Fuzzification"></a>Fuzzification</h3><p>The process turning the crisp input to a fuzzy value</p>
-<h2 id="Knowledge-Base"><a href="#Knowledge-Base" class="headerlink" title="Knowledge Base"></a>Knowledge Base</h2><p>The knowledge base is the rule base representing the expertise knowledge dealing with a speciﬁc problem.</p>
-<p>Linguistic rule: IF premise (antecedent) THEN conclusion (consequent)</p>
-<p><img src="https://i.postimg.cc/907jykVj/pr-7-5.png"></p>
-<h2 id="Fuzzy-Inference-Engine"><a href="#Fuzzy-Inference-Engine" class="headerlink" title="Fuzzy Inference Engine"></a>Fuzzy Inference Engine</h2><p>to produce the fuzzy output according to the crisp inputs based on the knowledge (knowledge base) represented by IF-THEN rule. This is the process of reasoning</p>
-<ul>
-<li>Rule evaluation<ul>
-<li>to apply the fuzzy set operators (AND,OR,NOT) to the antecedents to determine the firing strength of each rule</li>
-</ul>
-</li>
-<li>Rule aggregation<ul>
-<li>combine the output (consequents) fuzzy sets using the ﬁring strengths obtained in the process of rule evaluation.</li>
-</ul>
-</li>
-</ul>
-<h3 id="Operators"><a href="#Operators" class="headerlink" title="Operators"></a>Operators</h3><ul>
-<li><p>OR</p>
-<ul>
-<li><script type="math/tex; mode=display">
-\mu_{A \bigcup B}(x) = \mu_A(x) \or \mu_B(x) = max(\mu_A(x) , \mu_B(x))</script></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>AND</p>
-<ul>
-<li><script type="math/tex; mode=display">
-\mu_{A \bigcap B}(x) = \mu_A(x) \and \mu_B(x) = min(\mu_A(x) , \mu_B(x))</script></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>NOT</p>
-<ul>
-<li><script type="math/tex; mode=display">
-\mu_{\bar{A}}(x) = 1-\mu_A(x)</script></li>
-</ul>
-</li>
-</ul>
-<h2 id="Defuzzification"><a href="#Defuzzification" class="headerlink" title="Defuzzification"></a>Defuzzification</h2><p>a process to convert the fuzzy output (an inferred membership function) to a crisp value.</p>
-<h3 id="Methods-for-defuzzification"><a href="#Methods-for-defuzzification" class="headerlink" title="Methods for defuzzification"></a>Methods for defuzzification</h3><ul>
-<li>max membership principle</li>
-<li>centroid method</li>
-<li>Weighted average method</li>
-<li>mean max membership</li>
-<li>center of sums</li>
-<li>Center of largest area</li>
-<li>First of maxima</li>
-</ul>
-<h4 id="Max-Membership-Principle"><a href="#Max-Membership-Principle" class="headerlink" title="Max Membership Principle"></a>Max Membership Principle</h4><p>choose the peaked value as the output</p>
-<script type="math/tex; mode=display">
-\mu_C(z^*) \geq \mu_C(z) \;\forall z \in Z \text{  where $z^*$ is the defuzzified value }</script><h4 id="Centroid-method-重心"><a href="#Centroid-method-重心" class="headerlink" title="Centroid method(重心)"></a>Centroid method(重心)</h4><p>COA or COG</p>
-<ul>
-<li><p>Continuous from:</p>
-<ul>
-<li><script type="math/tex; mode=display">
-z^* = \frac{\int \mu_C(z)z \rm dz}{\int \mu_C(z) \rm dz}</script></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>Discrete form</p>
-<ul>
-<li><script type="math/tex; mode=display">
-z^* = \frac{\sum_{z_i \in Z}\mu_C(z_i)z_i}{\sum_{z_i \in Z}\mu_C(z_i)}</script></li>
-</ul>
-</li>
-</ul>
-<h4 id="Weighted-Average-Method"><a href="#Weighted-Average-Method" class="headerlink" title="Weighted Average Method"></a>Weighted Average Method</h4><p>Computational efficient but symmetrical output membership functions required</p>
-<script type="math/tex; mode=display">
-z^* = \frac{\sum \mu_C(\bar{z_i})\bar{z_i}}{\sum \mu_C(\bar{z_i})}</script><p>$\bar{z}$ is the centroid of each symmetric inferred membership function </p>
-<h4 id="Mean-Max-Membership"><a href="#Mean-Max-Membership" class="headerlink" title="Mean Max Membership"></a>Mean Max Membership</h4><p>Computational efficient.</p>
-<script type="math/tex; mode=display">
-z^* = \frac{a+b}{2}</script><h4 id="Center-of-Sums"><a href="#Center-of-Sums" class="headerlink" title="Center of Sums"></a>Center of Sums</h4><ul>
-<li><p>Continuous form</p>
-<ul>
-<li><script type="math/tex; mode=display">
-z^* = \frac{\sum_{k=1}^n \bar{z}_k\int \mu_{C_k}(z) \rm dz }{\sum_{k=1}^n \int \mu_{C_k}(z) \rm dz}</script></li>
-<li><p>$\bar{z}_k$ is the centroid of the $k^{th}$ output membership function</p>
-</li>
-<li><p>$\int \mu_{C_k}(z) \rm dz$ is the area of the member function</p>
-</li>
-</ul>
-</li>
-<li><p>Discrete form</p>
-<ul>
-<li><script type="math/tex; mode=display">
-z^* =\frac{\sum_{k=1}^n \bar{z}_k \sum_{z_i\in Z} \mu_{C_k}(z)  }{\sum_{k=1}^n \sum_{z_i\in Z} \mu_{C_k}(z) }</script></li>
-</ul>
-</li>
-</ul>
-<h4 id="Center-of-Largest-Area"><a href="#Center-of-Largest-Area" class="headerlink" title="Center of Largest Area"></a>Center of Largest Area</h4><h4 id="First-or-last-of-Maxima"><a href="#First-or-last-of-Maxima" class="headerlink" title="First(or last) of Maxima"></a>First(or last) of Maxima</h4><h2 id="Three-FIS"><a href="#Three-FIS" class="headerlink" title="Three FIS"></a>Three FIS</h2><ul>
-<li>Mamdani FIS</li>
-<li>Sugeno FIS</li>
-<li>Tsukamoto FIS</li>
-</ul>
-<p>The main difference is in the consequents of the IF-THEN rules:</p>
-<ul>
-<li>Mamdani: Consequent membership functino is general membership function</li>
-<li>Sugeno: mathematical function</li>
-<li>Tsukamoto: monotonic membership function (单调函数)</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -1981,7 +1890,7 @@ z^* =\frac{\sum_{k=1}^n \bar{z}_k \sum_{z_i\in Z} \mu_{C_k}(z)  }{\sum_{k=1}^n \
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

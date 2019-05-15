@@ -230,6 +230,751 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/11/NOTE-Week-5-Distributed-System/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/11/NOTE-Week-5-Distributed-System/" itemprop="url">(DS) Handling failure</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-11T12:02:00+00:00">
+                2019-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Overview:</p>
+<ul>
+<li>Failover in replica management</li>
+<li>Consensus</li>
+<li>How much replication to use</li>
+</ul>
+<h2 id="Failover"><a href="#Failover" class="headerlink" title="Failover"></a>Failover</h2><p>either all failures must be failstop, or the system must be synchronous</p>
+<h3 id="Properties-of-Primary-Backup"><a href="#Properties-of-Primary-Backup" class="headerlink" title="Properties of Primary Backup"></a>Properties of Primary Backup</h3><p>Primary Backup suffers a <strong>single point of failure</strong> in the primary manager.</p>
+<ul>
+<li>At any one time there must be at most one primary replication manager</li>
+<li>Each front end maintains a reference to the manager it currently believes to be primary </li>
+<li>A backup server ignores any client requests</li>
+</ul>
+<p><strong>Failover time</strong> is the period for which there is no primary replciation manager</p>
+<p>The primary manager receiving request RAi from a client:</p>
+<ol>
+<li>Update its state</li>
+<li>Forwards the request to backup</li>
+<li>replies to client that sent RAi</li>
+</ol>
+<p>this period is called <strong>blocking time</strong></p>
+<h2 id="Consensus-达成一致"><a href="#Consensus-达成一致" class="headerlink" title="Consensus(达成一致)"></a>Consensus(达成一致)</h2><p>Acheiving consensus for Choosing a new Primary Manager</p>
+<h3 id="Consensus-Protocol-Properties"><a href="#Consensus-Protocol-Properties" class="headerlink" title="Consensus Protocol Properties"></a>Consensus Protocol Properties</h3><ul>
+<li>Termination: every correct process will decide on a value</li>
+<li>Validity: if all proposals are for v then all correct processes eventually decide v</li>
+<li>Agreement: if one correct process decides v then all correct processes eventually decide v</li>
+<li>Integrity: every correct process decides at most one v, and either v = FAIL or some process must have proposed</li>
+</ul>
+<p>RAFT:</p>
+<p>Reference:</p>
+<ol>
+<li><a href="https://www.cnblogs.com/mindwind/p/5231986.html" target="_blank" rel="noopener">https://www.cnblogs.com/mindwind/p/5231986.html</a></li>
+</ol>
+<h2 id="How-much-replica-to-use"><a href="#How-much-replica-to-use" class="headerlink" title="How much replica to use"></a>How much replica to use</h2><h3 id="Failure-Measurements"><a href="#Failure-Measurements" class="headerlink" title="Failure Measurements"></a>Failure Measurements</h3><ul>
+<li>MTBF</li>
+<li>T-Fault Tolerance</li>
+<li>failure Modes</li>
+</ul>
+<p><a href="http://zhangzhejian.com/2019/01/14/NOTE-Week-1-Distributed-System/">detailed illustration</a></p>
+<h3 id="CAP-Theorem"><a href="#CAP-Theorem" class="headerlink" title="CAP Theorem"></a>CAP Theorem</h3><p><img src="https://i.postimg.cc/T1WPkYSD/DS-5-11.png" alt=""></p>
+<p><img src="https://i.postimg.cc/pTrrFBJk/DS-5-12.png" alt=""></p>
+<p><img src="https://i.postimg.cc/qRFRXCmr/DS-5-13.png" alt=""></p>
+<p><img src="https://i.postimg.cc/PNs50nsF/DS-5-14.png" alt=""></p>
+<p>Above from 《大型网站核心技术架构》</p>
+<p>Reference:</p>
+<ol>
+<li><a href="https://yeasy.gitbooks.io/blockchain_guide/content/distribute_system/cap.html" target="_blank" rel="noopener">https://yeasy.gitbooks.io/blockchain_guide/content/distribute_system/cap.html</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/05/NOTE-Week-4-Software-Engineering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/05/NOTE-Week-4-Software-Engineering/" itemprop="url">Web Application Specification</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-05T23:08:41+00:00">
+                2019-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Content:</p>
+<ul>
+<li>Web applications and when to use them.</li>
+<li>Structure of a web application.</li>
+<li>Web development.</li>
+<li>Portability, usability, and accessibility.</li>
+<li>Web page design.</li>
+<li>Client-side vs. server-side processing.</li>
+</ul>
+<h3 id="When-to-use-Web-application"><a href="#When-to-use-Web-application" class="headerlink" title="When to use Web application"></a>When to use Web application</h3><ul>
+<li>Involve access to remote data</li>
+<li>do not require fine grained exchange of data<ul>
+<li>不需要细粒度的数据交换（基于web的数据交换是比较昂贵的）</li>
+</ul>
+</li>
+<li>do not require highly time critical responses<ul>
+<li>信息交互有较大延迟</li>
+</ul>
+</li>
+<li>receive and return data which can be effectively transmitted across the internet<ul>
+<li>信息可以高效的在互联网中传播</li>
+</ul>
+</li>
+</ul>
+<p>There are many <strong>rapidly-evolving technologies</strong> in web application area, which requires the web applications to be <strong>flexible</strong> and <strong>easily upgraded</strong>.And Web applications often have common structure and elements.</p>
+<h3 id="Protability-Usability-Accessibility"><a href="#Protability-Usability-Accessibility" class="headerlink" title="Protability, Usability, Accessibility"></a>Protability, Usability, Accessibility</h3><ul>
+<li>Protability(可移植性、通用性)<ul>
+<li>system can be moved to different execution environments and provide the same functionality in the new environment as in the old.</li>
+<li>UI in different browser</li>
+<li>Difference between mobile and PC</li>
+</ul>
+</li>
+<li>Usability(使用体验)<ul>
+<li>web interface does not require unreasonable effort to use, and that users can access provided functionality without excess effort</li>
+<li>UI: <ul>
+<li>Clear information</li>
+<li>feedback</li>
+<li>related functions</li>
+</ul>
+</li>
+<li>program logic design</li>
+</ul>
+</li>
+<li>Accessibility(可用性)<ul>
+<li>a web interface can be used by users of differing ability — such as visually impaired, colour-blind, deaf, or senior citizen users — as effectively as by non-disabled, technological skilled users.</li>
+<li>easy to understand</li>
+</ul>
+</li>
+</ul>
+<h3 id="Client-Server-Comparation"><a href="#Client-Server-Comparation" class="headerlink" title="Client-Server Comparation"></a>Client-Server Comparation</h3><p>Consideration:</p>
+<ol>
+<li>Computational Load</li>
+<li>Security issues</li>
+</ol>
+<h4 id="Client-side"><a href="#Client-side" class="headerlink" title="Client-side"></a>Client-side</h4><ol>
+<li>Data validation and dynamic user feedback</li>
+</ol>
+<h4 id="Server-side-processing"><a href="#Server-side-processing" class="headerlink" title="Server-side processing"></a>Server-side processing</h4><ol>
+<li>Processing data sent from the client side involving critical checks on the correctness of the data and security checks(认证，授权) 安全考虑</li>
+<li>Modifying or retrieving data in lower tiers of the server side, such as a database 安全考虑</li>
+<li>Invoking operations of lower tiers, including remote web services 安全考虑</li>
+<li>Generating content to be shown to the client 计算负载考虑</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/05/NOTE-Week-3-Software-Engineering/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/05/NOTE-Week-3-Software-Engineering/" itemprop="url">Class Diagrams</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-05T23:08:25+00:00">
+                2019-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h3><ul>
+<li>Objects and classes</li>
+<li>Class diagrams<ul>
+<li>Attributes</li>
+<li>Operations</li>
+<li>Relations<ul>
+<li>Associations</li>
+<li>Generalisations</li>
+<li>Dependencies</li>
+<li>Aggregations/Compositions</li>
+</ul>
+</li>
+<li>Template classes</li>
+<li>Association classes</li>
+<li>Packages </li>
+</ul>
+</li>
+<li>How to develop a class diagram</li>
+<li>Class diagram transformations</li>
+</ul>
+<h2 id="Object-Modeling"><a href="#Object-Modeling" class="headerlink" title="Object Modeling"></a>Object Modeling</h2><ul>
+<li>Class(类)<ul>
+<li>A class is a category of thing</li>
+</ul>
+</li>
+<li>Object(对象)<ul>
+<li>An object is a <strong>specific instance</strong> of a class</li>
+</ul>
+</li>
+</ul>
+<p>类和对象的区别：类是指一类事物，而对象是具体的实例化的类</p>
+<h3 id="Object-modelling"><a href="#Object-modelling" class="headerlink" title="Object modelling"></a>Object modelling</h3><p>Object models describe the system in terms of object classes and their associations(对象模型描述了类和它们之间的关联)</p>
+<p>An object has:</p>
+<ul>
+<li>State<ul>
+<li>Encapsulated data, consists of <strong>attributes</strong> or <strong>instance variables</strong></li>
+</ul>
+</li>
+<li>Behavior<ul>
+<li>Reacts to messages by changing its state and generate further messages</li>
+</ul>
+</li>
+<li>Identity<ul>
+<li>An object has an existence and a name</li>
+</ul>
+</li>
+</ul>
+<p>An class describes a category of objects <u>with similar structure and behavior</u>.</p>
+<h2 id="Class-Diagrams"><a href="#Class-Diagrams" class="headerlink" title="Class Diagrams"></a>Class Diagrams</h2><p>A class diagram describes the  kind of objects in a system and their different <strong>static relationships:</strong>(描述了对象之间的不同的静态关系)</p>
+<ul>
+<li>Association:()<ul>
+<li>a user can watch videos</li>
+</ul>
+</li>
+<li>Subtypes:(子类)<ul>
+<li>a nurse is a type of person</li>
+</ul>
+</li>
+</ul>
+<p>A class encapsulates <strong>Attributes(state)</strong> and <strong>Operations(methods)</strong></p>
+<h4 id="Attributes"><a href="#Attributes" class="headerlink" title="Attributes"></a>Attributes</h4><p>visibility name : type multiplicity = default {property-string}</p>
+<ul>
+<li>Visibility:<ul>
+<li>public</li>
+<li>private</li>
+<li>package</li>
+<li>protected</li>
+</ul>
+</li>
+<li>type<ul>
+<li>String</li>
+<li>int</li>
+<li>…</li>
+</ul>
+</li>
+<li>Multiplicity<ul>
+<li>an exact number: 1,2,3</li>
+<li>arbitrary number: *</li>
+<li>a range: 1…3</li>
+</ul>
+</li>
+<li>Property-string<ul>
+<li>readOnly</li>
+<li>Frozen</li>
+</ul>
+</li>
+</ul>
+<h4 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h4><p>visibility name (parameter-list) : return-type {property-string}</p>
+<h3 id="Class-Relations"><a href="#Class-Relations" class="headerlink" title="Class Relations"></a>Class Relations</h3><ul>
+<li>Association关联</li>
+<li>Generalisation泛化，继承<ul>
+<li>Implemented by <strong>inheritance</strong></li>
+</ul>
+</li>
+<li>Dependency依赖</li>
+<li>Aggregation聚合<ul>
+<li>部分离开主体还是可以单独存在的</li>
+</ul>
+</li>
+<li>Composition组合<ul>
+<li>是一种更强的聚合关系，要求整体对象控制部分对象的生命周期</li>
+</ul>
+</li>
+</ul>
+<h2 id="Approaches-to-class-identiﬁcation"><a href="#Approaches-to-class-identiﬁcation" class="headerlink" title="Approaches to class identiﬁcation"></a>Approaches to class identiﬁcation</h2><h3 id="Noun-verb-analysis"><a href="#Noun-verb-analysis" class="headerlink" title="Noun-verb analysis"></a>Noun-verb analysis</h3><ol>
+<li>Identify possible calsses</li>
+<li>Consolidate the results.Delete those whose name is:<ul>
+<li>redundant</li>
+<li>unclear</li>
+<li>an event or an operation</li>
+<li>a simple attribute</li>
+<li>outside of the system scope</li>
+</ul>
+</li>
+</ol>
+<h4 id="Problem-of-Noun-verb-analysis"><a href="#Problem-of-Noun-verb-analysis" class="headerlink" title="Problem of Noun-verb analysis"></a>Problem of Noun-verb analysis</h4><ul>
+<li>Natural language is imprecise</li>
+<li>Many more nouns than relevant classes</li>
+</ul>
+<h3 id="CRC-Class-Responsibilities-Collaborators-cards"><a href="#CRC-Class-Responsibilities-Collaborators-cards" class="headerlink" title="CRC(Class-Responsibilities-Collaborators) cards"></a>CRC(Class-Responsibilities-Collaborators) cards</h3><ul>
+<li>Class Name</li>
+<li>Responsibilities</li>
+<li>Collaborators: helpers that aid in fulﬁlling the responsibilities.</li>
+</ul>
+<h2 id="Class-Transformations"><a href="#Class-Transformations" class="headerlink" title="Class Transformations"></a>Class Transformations</h2><p>Types of Class transformations</p>
+<ul>
+<li>Removing inheritance</li>
+<li>Introduction primary keys<ul>
+<li>Essential in data model in a relational database</li>
+</ul>
+</li>
+<li><p>Removing many-many associations</p>
+</li>
+<li><p>Replacing association with foreign key</p>
+</li>
+</ul>
+<h4 id="Remove-many-many-associations"><a href="#Remove-many-many-associations" class="headerlink" title="Remove many-many associations"></a>Remove many-many associations</h4><p>Similar to introducing a foreign keys in a relational database.</p>
+<p>Example:</p>
+<p><img src="https://i.postimg.cc/GmsjKVDV/SE-4-1.png" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/05/NOTE-Week-4-Cryptocurrency/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhejian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Recap">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/05/NOTE-Week-4-Cryptocurrency/" itemprop="url">(Blockchain) Creating & Breaking Smart Contracts</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-05T18:52:44+00:00">
+                2019-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Overview:</p>
+<ul>
+<li>what’s a smart contract</li>
+<li>Smart Contract Specific Features</li>
+<li>Breaking smart contracts</li>
+<li>Advanced Smart Contracts</li>
+</ul>
+<h2 id="Smart-Contract"><a href="#Smart-Contract" class="headerlink" title="Smart Contract"></a>Smart Contract</h2><p>A reactive and social Agent that:</p>
+<ul>
+<li>never modify or change the code</li>
+</ul>
+<h3 id="Interaction"><a href="#Interaction" class="headerlink" title="Interaction"></a>Interaction</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+      
+    
+      
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/02/05/NOTE-Week-4-OME/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1515,857 +2260,6 @@ P_1 \to^{P_2} P_1'= \begin{pmatrix}
 
       
     
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/27/NOTE-Week-3-Pattern-Recognition/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/27/NOTE-Week-3-Pattern-Recognition/" itemprop="url">(PR) Discriminant Function</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-27T22:10:35+00:00">
-                2019-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><ol>
-<li>Discriminant Functions</li>
-<li>Equivalence to Bayesian Decision Theory </li>
-<li>Decision Regions and Decision Boundaries </li>
-<li>Dichotomizers </li>
-<li>Linear Discriminant Functions </li>
-<li>Generalised Linear Discriminant Functions </li>
-<li>Learning Decision Boundaries<ul>
-<li>perceptron learning </li>
-<li>minimum squared error (MSE) procedures</li>
-</ul>
-</li>
-</ol>
-<h2 id="Discriminant-Function-判别式函数"><a href="#Discriminant-Function-判别式函数" class="headerlink" title="Discriminant Function(判别式函数)"></a>Discriminant Function(判别式函数)</h2><p>A discriminant function is a function, g, defined over the feature vector, x:$g(x)$. We define a separate functino for each class:</p>
-<script type="math/tex; mode=display">
-g_i(x) \text{for i =1,2,...c}</script><p>Assign feature vector $x$ to class j if:</p>
-<script type="math/tex; mode=display">
-j = arg \;max_{i \in c} g_i(x)</script><p>if the discriminant function:</p>
-<script type="math/tex; mode=display">
-g_i(x) = P(\omega_i|x)</script><p>Then we say it’s equal to the <a href="http://zhangzhejian.com/2019/01/21/NOTE-Week-2-Pattern-Recognition/">Bayseian Decision Theory</a>.</p>
-<ul>
-<li>Minimum Error Rate Classifier</li>
-<li>Minimum Loss Classifier</li>
-</ul>
-<h3 id="Minimum-Error-rate"><a href="#Minimum-Error-rate" class="headerlink" title="Minimum Error rate"></a>Minimum Error rate</h3><script type="math/tex; mode=display">
-g_i(x) = p(x|\omega_i)p(\omega_i)\\
-g_i(x) = ln( p(x|\omega_i))+ln(p(\omega_i))</script><p>Assign feature vector x to class $\omega_j$ if:</p>
-<script type="math/tex; mode=display">
-\forall i \ne j, \; g_j(x) > g_i(x)</script><h3 id="Minimum-Loss-Classifier"><a href="#Minimum-Loss-Classifier" class="headerlink" title="Minimum Loss Classifier"></a>Minimum Loss Classifier</h3><script type="math/tex; mode=display">
-g_i(x) = -R(\alpha_i|x)</script><p>Assign feature vector x to class $\omega_j$ if:</p>
-<script type="math/tex; mode=display">
-\forall i \ne j, \; g_j(x) < g_i(x)</script><h3 id="Regions-and-decision-Boundaries"><a href="#Regions-and-decision-Boundaries" class="headerlink" title="Regions and decision Boundaries"></a>Regions and decision Boundaries</h3><p>Region $R_i$ in which, $\forall j \ne i, g_i(x) &gt; g_j(x)$</p>
-<h3 id="DIcchotomizers-二元-only-two-classes"><a href="#DIcchotomizers-二元-only-two-classes" class="headerlink" title="DIcchotomizers(二元) only two classes"></a>DIcchotomizers(二元) only two classes</h3><script type="math/tex; mode=display">
-g(x) = g_1(x) - g_2(x)</script><p>if $g(x) &gt;0$, assign to class 1</p>
-<h2 id="Linear-Discriminant-Function"><a href="#Linear-Discriminant-Function" class="headerlink" title="Linear Discriminant Function"></a>Linear Discriminant Function</h2><script type="math/tex; mode=display">
-g(x) = w^Tx + w_0\\
-g(x) = w_0+ \sum_{i} w_ix_i</script><p>Quadratic(平方)</p>
-<script type="math/tex; mode=display">
-g(x) =w_0+ \sum_{i} w_ix_i+ \sum_{i,j} w_{ij}x_ix_j</script><h3 id="Agumented-Vectors"><a href="#Agumented-Vectors" class="headerlink" title="Agumented Vectors"></a>Agumented Vectors</h3><script type="math/tex; mode=display">
-g(x) = a^Ty\\
-a = [w_0,w^T]\\
-y = [1, x^T]</script><p>similar to the <a href="http://zhangzhejian.com/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">Linear Regression part in ML</a></p>
-<h2 id="Learning-Linear-Discriminant-Function"><a href="#Learning-Linear-Discriminant-Function" class="headerlink" title="Learning Linear Discriminant Function"></a>Learning Linear Discriminant Function</h2><p>Give a training dataset:</p>
-<script type="math/tex; mode=display">
-X = [(\vec{x_1},\omega_1);(\vec{x_2},\omega_2);....;(\vec{x_m},\omega_m)]</script><p>Determine weights:</p>
-<script type="math/tex; mode=display">
-\vec{\Theta_j} = [\theta_1,\theta_2,....\theta_n]\\
-\Theta = [\vec{\Theta_1},....,\vec{\Theta_j}]</script><p>Where n is the dimension of the features, and m is the number of samples,and j is the number of classes.</p>
-<p>Such that  $g_j(x_k) &gt; g_i(x_k) \forall i \ne j \; where\; j = \omega_k </p>
-<p>forall k $, if the solution exists, dataset is linearly separable.</p>
-<h3 id="Two-category-Linear-Separable-case"><a href="#Two-category-Linear-Separable-case" class="headerlink" title="Two-category Linear Separable case"></a>Two-category Linear Separable case</h3><p>a sample $x_k$ is correctly classified if:<br>    $\theta x_k &gt;0 $ and $x_k$ is labelled $\omega_1$ or </p>
-<p>​    $\theta x_k &lt;0 $ and $x_k$ is labelled $\omega_2$</p>
-<script type="math/tex; mode=display">
-x \to -x \;\;\forall x \in \omega_2\\
-\theta x_k >0 \; \forall k</script><p>Gradient Descent Procedures to decrease the cost function </p>
-<p>The Learning procedure is also similar to the <a href="http://zhangzhejian.com/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">Linear Regression part</a>. Compared with the Linear Regression, the main difference between Classification and Regression can be obtained mainly from the Definition of cost Function.</p>
-<p>As for Linear Regression:</p>
-<p>The cost   function:</p>
-<script type="math/tex; mode=display">
-J(\theta) = (X \theta^T - Y)(X \theta^T - Y)^T</script><p>It calculates the <strong>Mean Square Error(MSE)</strong> of the model generated. However, in Linear Classification, the definition is a little bit different from the previous one.</p>
-<h3 id="There-are-mainly-two-types"><a href="#There-are-mainly-two-types" class="headerlink" title="There are mainly two types:"></a>There are mainly two types:</h3><ul>
-<li>Perceptron Algorithm(Sequential/Batch)<ul>
-<li>Solves linear inequalities $\theta^T x_k&gt;0 \;\; forall k$</li>
-<li>Learning driven by <strong>misclassified exemplars</strong></li>
-<li>converges only if data is linearly separable</li>
-</ul>
-</li>
-<li>Mean Squared Error Method(same as regression)<ul>
-<li>solves linear equations $\theta^T x_k = b_k \;\; \forall k$</li>
-<li>Learning depends on all exemplars</li>
-<li>uses matrix inversion to calculate </li>
-<li>Widrow-hoff(LMS, Least-Mean_Square) method</li>
-</ul>
-</li>
-</ul>
-<h3 id="Perceptron-Algorithm-Sequential-Batch-based-on-misclassified-exemplars"><a href="#Perceptron-Algorithm-Sequential-Batch-based-on-misclassified-exemplars" class="headerlink" title="Perceptron Algorithm(Sequential/Batch) (based on misclassified exemplars)"></a>Perceptron Algorithm(Sequential/Batch) (based on misclassified exemplars)</h3><p>the Cost function only depends on the <strong>misclassified exemplars</strong>.</p>
-<h4 id="Batch"><a href="#Batch" class="headerlink" title="Batch"></a>Batch</h4><script type="math/tex; mode=display">
-J(\theta) = \sum_{x\in\mathcal{X}} -\theta^T x\\
-\text{where $\mathcal{X} $ is the set of sample misclassified by $\theta$}\\
-\frac{d}{d\theta}J(\theta) = \sum_{x\in\mathcal{X}}-x\\
-\theta = \theta -\eta \frac{d}{d\theta}J(\theta)</script><p><img src="https://i.postimg.cc/7ZW3Bd20/PR-3-1.png" alt=""></p>
-<p>Converges when $\mathcal{X}$ is empty. which means the dataset is not linearly separable,if it is not convergency.</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">m=<span class="built_in">size</span>(x,<span class="number">1</span>)</span><br><span class="line">iterationTime = m;</span><br><span class="line">alpha = <span class="number">0.1</span>;</span><br><span class="line"><span class="keyword">while</span> true</span><br><span class="line">	misclassified = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:m</span><br><span class="line">		delta=<span class="number">0</span>;</span><br><span class="line">		J=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> x(<span class="built_in">i</span>,:)*theta &lt;<span class="number">0</span></span><br><span class="line">			J = J + (-x(<span class="built_in">i</span>,:)*theta)</span><br><span class="line">			delta = delta + (-x(<span class="built_in">i</span>,:))</span><br><span class="line">			misclassified = misclassified +<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">end</span></span><br><span class="line"> 		theta = theta - eta*delta</span><br><span class="line">	<span class="keyword">end</span> </span><br><span class="line">	<span class="keyword">if</span> misclassified = <span class="number">0</span></span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h4 id="Sequential"><a href="#Sequential" class="headerlink" title="Sequential"></a>Sequential</h4><p>Update based only on single sample errors.</p>
-<script type="math/tex; mode=display">
-\frac{d}{d\theta}J(\theta) = \sum_{x\in\mathcal{X}}-x_k</script><p><img src="https://i.postimg.cc/T3wjJfpT/pr-3-2.png" alt=""></p>
-<p>​    </p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">While true:</span><br><span class="line">	misclasified = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:m:</span><br><span class="line">		<span class="keyword">if</span> g(x_i)&lt;<span class="number">0</span>:</span><br><span class="line">			a = a - eta*y(<span class="built_in">i</span>,:)</span><br><span class="line">			misclassified  = misclassified+ <span class="number">1</span></span><br><span class="line">		<span class="keyword">end</span> </span><br><span class="line">	<span class="keyword">end</span> </span><br><span class="line">	<span class="keyword">if</span> misclassified ==<span class="number">0</span>:</span><br><span class="line">		<span class="keyword">break</span>;</span><br><span class="line">	<span class="keyword">end</span> </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h4 id="Multiclass-perceptron-Learning-Algorithm"><a href="#Multiclass-perceptron-Learning-Algorithm" class="headerlink" title="Multiclass perceptron Learning Algorithm"></a>Multiclass perceptron Learning Algorithm</h4><p><img src="https://i.postimg.cc/MZBzXQ5S/pr-3-3.png" alt=""></p>
-<h2 id="MSE"><a href="#MSE" class="headerlink" title="MSE"></a>MSE</h2><p>the same as <a href="http://zhangzhejian.com/2018/09/13/Machine-Learning-Notes-StrandfordCourse/">Linear Regression part</a>.</p>
-<h3 id="MSE-via-Pseudoinverse-伪逆矩阵"><a href="#MSE-via-Pseudoinverse-伪逆矩阵" class="headerlink" title="MSE via Pseudoinverse(伪逆矩阵)"></a>MSE via Pseudoinverse(伪逆矩阵)</h3><script type="math/tex; mode=display">
-Ya = b\\
-Y^TYa = Y^Tb\\
-(Y^TY)^T Y^TYa = (Y^TY)^T Y^Tb\\
-Ea = (Y^TY)^T Y^Tb\\
-a =(Y^TY)^T Y^Tb\\
-or \;\; a = Y^+ b</script><h3 id="Widrow-Hoff-or-LMS-algroithm"><a href="#Widrow-Hoff-or-LMS-algroithm" class="headerlink" title="Widrow-Hoff(or LMS) algroithm"></a>Widrow-Hoff(or LMS) algroithm</h3><ol>
-<li>Initialise $\theta $ to arbitrary solution</li>
-<li>for each sample $x_k$:<ul>
-<li>Update solution: $\theta = \theta+\eta (b_k - \theta^T x_k)x_k$</li>
-</ul>
-</li>
-<li>Iterate untill $\sum_k |(b_k - \theta^Tx_k)x_k|&lt;\Theta$</li>
-</ol>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">m=<span class="built_in">size</span>(x,<span class="number">1</span>);</span><br><span class="line">iterationTime = m;</span><br><span class="line">alpha = <span class="number">0.1</span>;</span><br><span class="line">y = X(:,<span class="number">4</span>);</span><br><span class="line">x = X(:,<span class="number">1</span>:<span class="number">3</span>)</span><br><span class="line">z = x .*y</span><br><span class="line"><span class="built_in">round</span> = <span class="built_in">fix</span>(iterationTime/m)</span><br><span class="line">r = <span class="built_in">mod</span>(iterationTime,m)</span><br><span class="line"><span class="keyword">for</span> n = <span class="number">1</span>:<span class="built_in">round</span></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:m</span><br><span class="line">    display(<span class="built_in">i</span>)</span><br><span class="line">    display(theta')</span><br><span class="line">    theta = theta - lamda* z(<span class="built_in">i</span>,:)' * (z(<span class="built_in">i</span>,:) * theta - b(<span class="built_in">i</span>,:));</span><br><span class="line">    J = (z*theta -b)'*(z*theta -b)</span><br><span class="line">    display(z(<span class="built_in">i</span>,:))</span><br><span class="line">    display(z(<span class="built_in">i</span>,:) * theta)</span><br><span class="line">    format short</span><br><span class="line">    display(theta')</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:r</span><br><span class="line">    display(<span class="built_in">i</span>)</span><br><span class="line">    display(theta')</span><br><span class="line">    theta = theta - lamda* z(<span class="built_in">i</span>,:)' * (z(<span class="built_in">i</span>,:) * theta - b(<span class="built_in">i</span>,:));</span><br><span class="line">    J = (z*theta -b)'*(z*theta -b)</span><br><span class="line">    </span><br><span class="line">    display(z(<span class="built_in">i</span>,:))</span><br><span class="line">    display(z(<span class="built_in">i</span>,:) * theta)</span><br><span class="line">    format short</span><br><span class="line">    display(theta')</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p><a href="http://ecee.colorado.edu/~ecen4831/Demuth/Ch10_pres.pdf" target="_blank" rel="noopener">Convergence analysis</a></p>
-<p>Reference:</p>
-<ol>
-<li><a href="https://blog.csdn.net/daunxx/article/details/51881956" target="_blank" rel="noopener">https://blog.csdn.net/daunxx/article/details/51881956</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/27/NOTE-Week-2-Cryptocurrencies/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/27/NOTE-Week-2-Cryptocurrencies/" itemprop="url">(Blockchain)Structure of the blockchain</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-27T09:34:32+00:00">
-                2019-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Overview:</p>
-<ul>
-<li>Cryptographic Hash Functions</li>
-<li>Digital Signatures</li>
-<li>Blockchain structured in Bitcoin/Ethereum</li>
-<li>UTXO in bitcoin</li>
-<li>Account-based model in Ethereum</li>
-</ul>
-<h2 id="Cryptography"><a href="#Cryptography" class="headerlink" title="Cryptography"></a>Cryptography</h2><p>One-way Hash Function </p>
-<p>Propety:</p>
-<ol>
-<li>Preimage Resistance(抗原像性)<ul>
-<li>Given y, it is hard to find the x that h(x) = y</li>
-<li>no clues or hints</li>
-<li>给出密文，很难获得原文</li>
-</ul>
-</li>
-<li>Second Preimage Resistance(弱抗碰撞性)<ul>
-<li>given x and h(x) = y, it is computational hard to find a x’ such that h(x’) = y</li>
-<li>很难找到两个不同的原文，使得两者拥有相同的hash密文</li>
-</ul>
-</li>
-<li>Collision-Resistance(强抗碰撞性)<ul>
-<li>it is hard to find two different messages, m1 and m2 such that h(m1)==h(m2)</li>
-</ul>
-</li>
-</ol>
-<h3 id="Bitcoin-Block-Header"><a href="#Bitcoin-Block-Header" class="headerlink" title="Bitcoin Block Header"></a>Bitcoin Block Header</h3><p><img src="https://i.postimg.cc/2jnQzKyT/BLC-2-1.png" alt=""></p>
-<h3 id="How-to-verify-a-transaction-is-in-the-blockchain"><a href="#How-to-verify-a-transaction-is-in-the-blockchain" class="headerlink" title="How to verify a transaction is in the blockchain"></a>How to verify a transaction is in the blockchain</h3><p><img src="https://i.postimg.cc/BZhq1qjv/BLC-1-1.png" alt=""></p>
-<p>Use the <strong>Merkle Root </strong> to verify</p>
-<h2 id="Digital-Signature"><a href="#Digital-Signature" class="headerlink" title="Digital Signature"></a>Digital Signature</h2><p>We often call a cryptographic hash function a “commitment” and not an “encryption”. We open the preimage of a hash, there is no concept of decrypting or private keys. It is not about the data <strong>privacy</strong>, but the Integrity and authentication.</p>
-<p>ECDSA Signature</p>
-<p>an ECDSA signature is denoted: (r,s)</p>
-<p>r is the randomness, s is the signature</p>
-<h2 id="Bitcoin’s-UTXO-Model"><a href="#Bitcoin’s-UTXO-Model" class="headerlink" title="Bitcoin’s UTXO Model"></a>Bitcoin’s UTXO Model</h2><p>Reference:</p>
-<ol>
-<li><a href="http://8btc.com/article-4381-1.html" target="_blank" rel="noopener">http://8btc.com/article-4381-1.html</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/23/NOTE-Week-2-software-engineering/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/23/NOTE-Week-2-software-engineering/" itemprop="url">(Software Engineering) MDD</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-23T10:31:54+00:00">
-                2019-01-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Key-points"><a href="#Key-points" class="headerlink" title="Key points:"></a>Key points:</h2><ol>
-<li>Model-Driven development (MDD)</li>
-<li>Model-Driven development (MDA)</li>
-<li>Unified modelling language (UML)</li>
-<li>Usecase diagrams (A type of UML diagram)</li>
-</ol>
-<h2 id="MDD"><a href="#MDD" class="headerlink" title="MDD"></a>MDD</h2><p>Model-Driven Development envisages(设想) development of software systems as a process consisting of:</p>
-<ul>
-<li>construction and transformation of <strong>models</strong></li>
-<li>Semi-automated generation of executable code from models</li>
-</ul>
-<p>Can make production more efficient:</p>
-<ul>
-<li>Free developers from complexity of <strong>implementation details</strong>(开发者不用去关注实现的细节)</li>
-<li><strong>Retaining core functionality</strong> of a system despite changes in its technology(技术的变化不会影响核心功能的模型变化)</li>
-</ul>
-<p>MDD is especially relevant for internet applications because of rapid changes in web technologies, and similar processes across many internet applications.互联网技术的变化非常快(架构，编程语言等)，并且应用之间有极大的相似之处(涉及到模型的相似)</p>
-<h2 id="MDA-Model-Driven-Architecture"><a href="#MDA-Model-Driven-Architecture" class="headerlink" title="MDA(Model-Driven Architecture)"></a>MDA(Model-Driven Architecture)</h2><p>Constains:</p>
-<ul>
-<li><p>PIM (platform-independent models)</p>
-</li>
-<li><p>PSMs (platform-specific models)</p>
-</li>
-<li>Model transformations</li>
-</ul>
-<h3 id="PIM"><a href="#PIM" class="headerlink" title="PIM"></a>PIM</h3><ul>
-<li>Implementation-indepndent constructs<ul>
-<li>Express business rules that are core definition of functionalities of system(表述核心功能的业务逻辑)</li>
-<li>Reusable across different paltforms</li>
-<li>Flexible to accommodate enhancements and other backwards-compatible changes(对于之后的优化或者向后兼容的改变很灵活)</li>
-</ul>
-</li>
-</ul>
-<h3 id="PSM"><a href="#PSM" class="headerlink" title="PSM"></a>PSM</h3><p>Tailored to <strong>specific software platform and programming language</strong> and define functionalities of system in <strong>sufficient detail</strong> that they can be <strong>directly programmed</strong> from the model</p>
-<h3 id="Model-Transformations"><a href="#Model-Transformations" class="headerlink" title="Model Transformations"></a>Model Transformations</h3><p>Produce a new model from an existing model</p>
-<ul>
-<li>improve the quality</li>
-<li>Refine a PIM towards a PSM</li>
-<li>refine a PSM to an implementation</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
-      
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://zhangzhejian.com/2019/01/21/NOTE-Week-2-Pattern-Recognition/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zhejian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Recap">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/21/NOTE-Week-2-Pattern-Recognition/" itemprop="url">(PR) Bayesian Decision Theory and Density Estimation</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-21T12:10:40+00:00">
-                2019-01-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>Bayesian Decision Theory</li>
-<li>Bayesian Risk</li>
-<li>Density Estiamtion<ul>
-<li>Parametric<ul>
-<li>Maximum-Likelihood Estimation</li>
-</ul>
-</li>
-<li>Non-Parametric<ul>
-<li>Parzen-Window Density Estimation</li>
-<li>$k_n$ Nearest-Neighbour Density Estimation</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>K Nearest-Neighbor (KNN) Classification</li>
-</ul>
-<h2 id="Bayesian-Decision-Theory"><a href="#Bayesian-Decision-Theory" class="headerlink" title="Bayesian Decision Theory"></a>Bayesian Decision Theory</h2><p>Provide a method for making statistically optimal decisions</p>
-<ul>
-<li>Evidence vector x</li>
-<li>Classes $\omega_j$</li>
-</ul>
-<script type="math/tex; mode=display">
-P(\omega_j|x) = \frac{p(x|\omega_j)P(\omega_j)}{p(x)}\\
-Posterior = \frac{Likelihood\times Prior}{Evidence}\\
-后验概率 = \frac{可能性\times 先验概率}{观测证据}\\
-p(x) = \sum_{j=1}^n p(x|\omega_j)p(\omega_j)\;\;(全概率公式)</script><h3 id="Bayes-Decision-Rule"><a href="#Bayes-Decision-Rule" class="headerlink" title="Bayes Decision Rule"></a>Bayes Decision Rule</h3><ul>
-<li>If $P(\omega_1|x) &gt;P(\omega_2|x)  $, class as $\omega_1$</li>
-<li>Otherwise class as $\omega_2$</li>
-</ul>
-<p><img src="https://i.postimg.cc/cCNfT2QH/pr-2-1.png" alt="Li"></p>
-<h4 id="Likelihood-Ratio-Test-only-two-classes"><a href="#Likelihood-Ratio-Test-only-two-classes" class="headerlink" title="Likelihood Ratio Test(only two classes)"></a>Likelihood Ratio Test(only two classes)</h4><script type="math/tex; mode=display">
-\begin{align}
-& P(\omega_1|x) >P(\omega_2|x)\\
-& \implies P(\omega_1|x)p(x) >P(\omega_2|x)p(x) \\
-&\implies  P(x|\omega_1)p(\omega_1) >P(x|\omega_2)p(\omega_2) \\
-& \implies \color{red}{\frac{P(x|\omega_1)}{P(x|\omega_2)}} > \frac{p(\omega_2)}{p(\omega_1)}
-\end{align}</script><p>The left-hand is the likelihood Ratio</p>
-<p>The right-hand is a constant</p>
-<h4 id="General-use-in-classification"><a href="#General-use-in-classification" class="headerlink" title="General use in classification"></a>General use in classification</h4><ul>
-<li>the data is multivariate<ul>
-<li>x is a d-dimensional feature vector</li>
-</ul>
-</li>
-<li>There are more than two states of nature(classes)<ul>
-<li>$\omega$ is a finite set {$\omega_1,\omega_2…\omega_c$}</li>
-<li>we choose the one with the max value of the posterior</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://i.postimg.cc/VvBnhgRF/pr-2-2.png" alt=""></p>
-<h3 id="Bayes-Risk"><a href="#Bayes-Risk" class="headerlink" title="Bayes Risk"></a>Bayes Risk</h3><p>To deal with the misclassifications.</p>
-<h4 id="Loss-function"><a href="#Loss-function" class="headerlink" title="Loss function"></a>Loss function</h4><p>$\lambda(\alpha_i|\omega_j)$</p>
-<ul>
-<li>States how costly it is to take action $\alpha_i$ if the true state is $\omega_j    $</li>
-</ul>
-<script type="math/tex; mode=display">
-\mathcal{R}(\alpha_i|x) = \sum_{j=1}^c \lambda(\alpha_i|\omega_j)P(\omega_j|x)</script><p>For optimal performance, i.e. minimum loss</p>
-<ul>
-<li>Calculater $\mathcal{R}(\alpha_i|x)$ for all possible actions, then</li>
-<li>Choose the action $\alpha_i$ for which $\mathcal{R}(\alpha_i|x)$ is minimum</li>
-</ul>
-<h2 id="Density-Estimation-估算的是概率密度"><a href="#Density-Estimation-估算的是概率密度" class="headerlink" title="Density Estimation(估算的是概率密度)"></a>Density Estimation(估算的是概率密度)</h2><p>To solve the problem in Bayesian Decision Theory that:</p>
-<ul>
-<li>$P(\omega_1)$</li>
-<li>$p(x|\omega_1)$</li>
-</ul>
-<p>with the data we have.</p>
-<p>Solution is to <u>estimate the probabilities from the data</u>, and this process is called <strong>Density Estimation</strong> </p>
-<ul>
-<li>for $p(\omega_j) = \frac{n_j}{n}$</li>
-<li>for $p(x|\omega_1)$<ul>
-<li>Parametric density Estimation</li>
-<li>Non-Parametric Density Estimation</li>
-</ul>
-</li>
-</ul>
-<h2 id="Parametric-Density-Estimation"><a href="#Parametric-Density-Estimation" class="headerlink" title="Parametric Density Estimation"></a>Parametric Density Estimation</h2><p>Assumes the probability density can be described as a mathematical function, typically the Normal Distribution(假设概率密度分部遵从某种数学分布，比如正态分布，然后求分布的参数)</p>
-<ul>
-<li>for normal distribution<ul>
-<li>Assume $p(x|\omega_i)\sim \mathcal{N}(\mu_i,\Sigma_i) $</li>
-</ul>
-</li>
-<li>Need to estimate Parameters of this function<ul>
-<li>use data to <strong>estimate $\mu_i$(the mean) and $\Sigma_i$ (the covariance协方差)</strong></li>
-</ul>
-</li>
-</ul>
-<p>Two estimation techniques:</p>
-<ul>
-<li><strong>Maximum-Likelihood(ML)</strong></li>
-<li>Bayesian Parameter Estimation </li>
-</ul>
-<h3 id="Normal-Distribution-Example"><a href="#Normal-Distribution-Example" class="headerlink" title="Normal Distribution Example"></a>Normal Distribution Example</h3><ul>
-<li><p>Univariate(1-D): $\mathcal{N}(\mu,\sigma)$</p>
-<script type="math/tex; mode=display">
-f(x) = \frac{1}{\sqrt{2\pi}\sigma}\exp(-0.5(\frac{x-\mu}{\sigma})^2)</script><ul>
-<li>$\sigma$ is the standard deviation(标准差)</li>
-</ul>
-</li>
-<li><p>Multivariate (d-D): $\mathcal{N}(\mu,\Sigma)$</p>
-<script type="math/tex; mode=display">
-f(x) = \frac{1}{\sqrt{(2\pi)^d}|\Sigma|}\exp(-0.5(x-\mu)^T\Sigma^{-1}(x-\mu))</script><ul>
-<li>x is a column vector of length d</li>
-<li>μ is a column vector of length d</li>
-<li>$\Sigma$(协方差) is a d$\times$d matrix, with determinant $|\Sigma|$ and inverse $\Sigma^{-1}$</li>
-</ul>
-</li>
-</ul>
-<h3 id="Maximum-Likelihood-Estimation"><a href="#Maximum-Likelihood-Estimation" class="headerlink" title="Maximum-Likelihood Estimation"></a>Maximum-Likelihood Estimation</h3><p>Assume data contains n samples, and drawn <u>independently</u> from a multivariate normal distribution</p>
-<ul>
-<li><p>the mean $\mu$</p>
-<script type="math/tex; mode=display">
-\hat{\mu} = \frac{1}{n} \sum_{k=1}^nx_k</script></li>
-<li><p>The covariance</p>
-<script type="math/tex; mode=display">
-\hat{\Sigma} = \frac{1}{n} \sum_{k=1}^n (x_k - \hat{\mu})(x_k - \hat{\mu})^T \; \; Biased</script><script type="math/tex; mode=display">
-\hat{\Sigma} = \frac{1}{n-1} \sum_{k=1}^n (x_k - \hat{\mu})(x_k - \hat{\mu})^T \; \; unBiased</script></li>
-</ul>
-<h3 id="Limitation"><a href="#Limitation" class="headerlink" title="Limitation"></a>Limitation</h3><p>Parametric methods are limited:</p>
-<ul>
-<li>the distribution can be parameterised by a simple, unimodal, mathematical distribution</li>
-<li>we know the mathematical function</li>
-</ul>
-<h2 id="Nonparametric-Density-Estimation"><a href="#Nonparametric-Density-Estimation" class="headerlink" title="Nonparametric Density Estimation"></a>Nonparametric Density Estimation</h2><h3 id="Parzen-window"><a href="#Parzen-window" class="headerlink" title="Parzen window"></a>Parzen window</h3><p>Reference: <a href="https://blog.csdn.net/shanglianlm/article/details/49839833" target="_blank" rel="noopener">https://blog.csdn.net/shanglianlm/article/details/49839833</a></p>
-<p>Can be used for arbitrary and unknown distributions</p>
-<ul>
-<li>Window size: h</li>
-<li>Volume of region: V</li>
-<li>number of samples in region: k</li>
-<li>Total number of samples: N</li>
-</ul>
-<p>To estimate the probability density in point x (x is a d-dimension vector):</p>
-<script type="math/tex; mode=display">
-\rho(x)= \frac{k(x)}{VN} \;\;     \text{（估算的是概率密度）}\\</script><p>$k(x)$ is the function $K: x \to number \; of \; samples \; in \; region$</p>
-<script type="math/tex; mode=display">
-Determine:\; \phi(\mu_1,\mu_2,...\mu_d) = 
-\begin{cases} 
-1 &\text{if $\mu_j \leq \frac{1}{2}$, j =1,2,3,...d}  &\text{(点在以x为中心的区域内，则为1)}\\
-0 &\text{otherwise}
-\end{cases}\\
-k(x) = \sum_{i = 1}^N \phi(\frac{x_i-x}{h})\\
-\rho(x) = \frac{1}{VN} \sum_{i = 1}^N \phi(\frac{x_i-x}{h})</script><p>From another way to see the function k, this one can be called window function:</p>
-<script type="math/tex; mode=display">
-K(x,x_i） = \frac{1}{V} \phi(\frac{x-x_i}{h})</script><p>The function $K(x,x_i)$ can be regarded as: the contribution of a single sample $x_i$ to the region (x,h). SO the density function can donate the average probability contribution to the region.</p>
-<script type="math/tex; mode=display">
-\rho(x) = \frac{1}{N} \sum_{i =1}^N K(x,x_i)</script><h4 id="Several-normal-window-functions"><a href="#Several-normal-window-functions" class="headerlink" title="Several normal window functions"></a>Several normal window functions</h4><ul>
-<li><p>Square window</p>
-<script type="math/tex; mode=display">
-K(x,x_i) = 
-\begin{cases} 
-\frac{1}{h^d} &\text{if $|x^j - x_i^j| \leq \frac{h}{2}$, j =1,2,3,...d}  &\text{(点在以x为中心,距离为h/2的区域内，则为1)}\\
-0 &\text{otherwise}
-\end{cases}\\</script></li>
-<li><p>Gaussian window</p>
-<p>the Same as the normal distribution</p>
-</li>
-</ul>
-<h4 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h4><p>Only works if we have lots of data available- an unquantifiable amount</p>
-<h3 id="k-n-Nearest-Neighbour"><a href="#k-n-Nearest-Neighbour" class="headerlink" title="$k_n$ Nearest Neighbour"></a>$k_n$ Nearest Neighbour</h3><p>Can avoid problem of unknown best window size.</p>
-<ul>
-<li>let the volume be a function of the traning data</li>
-<li>Centre a window about x and let it grow until it captures $k_n$ samples</li>
-<li>These samples captured are the $k_n$ nearest-neighbours of x</li>
-</ul>
-<script type="math/tex; mode=display">
-\rho(x) = \frac{k_n/N}{V}</script><p>Window size varies with density of data about x:</p>
-<ul>
-<li>High density<ul>
-<li>Window be small which provide good resolution(分辨率)</li>
-</ul>
-</li>
-<li>Low density<ul>
-<li>Window wil be large, but estimated probability will be small</li>
-<li>The continuity are ensured</li>
-</ul>
-</li>
-</ul>
-<p>Also requires lots of data</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-      
-    
   </section>
 
   
@@ -2416,7 +2310,7 @@ K(x,x_i) =
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
