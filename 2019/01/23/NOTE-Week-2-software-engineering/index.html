@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Key points: Model-Driven development (MDD) Model-Driven Architecture (MDA) Unified modelling language (UML) Usecase diagrams (A type of UML diagram)  MDDModel-Driven Development envisages(设想) developm">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-11T20:24:09.381Z">
+<meta property="og:updated_time" content="2019-05-15T23:19:38.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(Software Engineering) MDD">
 <meta name="twitter:description" content="Key points: Model-Driven development (MDD) Model-Driven Architecture (MDA) Unified modelling language (UML) Usecase diagrams (A type of UML diagram)  MDDModel-Driven Development envisages(设想) developm">
@@ -360,7 +360,7 @@
 </li>
 <li><p>State machine diagrams</p>
 <ul>
-<li>Statecharts represent the behaviour of a single object</li>
+<li>Statecharts represent the <strong>behaviour</strong> of a single object</li>
 </ul>
 </li>
 <li><p>Object constraint language(OCL)</p>
@@ -378,27 +378,48 @@
 <li><p>Development diagrams</p>
 </li>
 </ul>
-<h3 id="Use-case-Diagram"><a href="#Use-case-Diagram" class="headerlink" title="Use case Diagram"></a>Use case Diagram</h3><p>Use cases are a <u>scenario-based</u> technique in the UML, which <strong>indentify the actors</strong> in an interaction and which describe the interaction itself.(描述交互) That is, a use case is a set of scenarios tied together by a common user goal (that might succeed or fail). A set of uses cases should describe all possible interactions with the system。</p>
+<h3 id="Use-case-Diagram"><a href="#Use-case-Diagram" class="headerlink" title="Use case Diagram"></a>Use case Diagram</h3><p>Use cases are a <u>scenario-based</u> technique in the UML, which <strong>indentify the actors</strong> in an interaction and which describe the interaction itself.(描述交互) That is, a use case is <strong>a set of scenarios tied together</strong> by a common user goal (that might succeed or fail). A set of uses cases should describe all possible interactions with the system。</p>
 <ul>
 <li>Elements</li>
 <li>Relationship</li>
 </ul>
 <h3 id="Elements"><a href="#Elements" class="headerlink" title="Elements"></a>Elements</h3><ul>
-<li>Actors</li>
+<li>Primary Actors<ul>
+<li>External entity which communicates with the system</li>
+</ul>
+</li>
 <li>pre-condition</li>
 <li>Scenario</li>
 </ul>
 <h3 id="Relationship"><a href="#Relationship" class="headerlink" title="Relationship"></a>Relationship</h3><ul>
 <li><strong>Includes</strong><ul>
-<li>Common behaviour</li>
+<li>Common behaviour(共同的行为，有包含关系)</li>
 </ul>
 </li>
 <li><strong>Extends</strong><ul>
-<li>Used to factor different behaviour into a single scenario</li>
+<li>Used to factor different behaviour into a single scenario(延伸的行为)</li>
 </ul>
 </li>
 <li><strong>Generalisation and Specialisation</strong><ul>
-<li>Relates two actors or uses cases to each other to factor out <strong>common but not identical behaviour</strong></li>
+<li>Relates two actors or uses cases to each other to factor out <strong>common but not identical behaviour</strong>(泛化将两个参与者或用例相互关联，以分解出共同但不相同的行为)</li>
+</ul>
+</li>
+</ul>
+<h3 id="Type-of-scenario"><a href="#Type-of-scenario" class="headerlink" title="Type of scenario"></a>Type of scenario</h3><ul>
+<li>Visionary scenario<ul>
+<li>Describe future system</li>
+</ul>
+</li>
+<li>As-is<ul>
+<li>Describe current situation</li>
+</ul>
+</li>
+<li>Evaluation<ul>
+<li>be evaluated</li>
+</ul>
+</li>
+<li>Training<ul>
+<li>Guide a novice user through a system</li>
 </ul>
 </li>
 </ul>
@@ -569,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-points"><span class="nav-number">1.</span> <span class="nav-text">Key points:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDD"><span class="nav-number">2.</span> <span class="nav-text">MDD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDA-Model-Driven-Architecture"><span class="nav-number">3.</span> <span class="nav-text">MDA(Model-Driven Architecture)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PIM"><span class="nav-number">3.1.</span> <span class="nav-text">PIM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PSM"><span class="nav-number">3.2.</span> <span class="nav-text">PSM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Transformations"><span class="nav-number">3.3.</span> <span class="nav-text">Model Transformations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unified-Modelling-Language-UML"><span class="nav-number">3.4.</span> <span class="nav-text">Unified Modelling Language(UML)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-case-Diagram"><span class="nav-number">3.5.</span> <span class="nav-text">Use case Diagram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elements"><span class="nav-number">3.6.</span> <span class="nav-text">Elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relationship"><span class="nav-number">3.7.</span> <span class="nav-text">Relationship</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-points"><span class="nav-number">1.</span> <span class="nav-text">Key points:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDD"><span class="nav-number">2.</span> <span class="nav-text">MDD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MDA-Model-Driven-Architecture"><span class="nav-number">3.</span> <span class="nav-text">MDA(Model-Driven Architecture)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#PIM"><span class="nav-number">3.1.</span> <span class="nav-text">PIM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PSM"><span class="nav-number">3.2.</span> <span class="nav-text">PSM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Transformations"><span class="nav-number">3.3.</span> <span class="nav-text">Model Transformations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unified-Modelling-Language-UML"><span class="nav-number">3.4.</span> <span class="nav-text">Unified Modelling Language(UML)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-case-Diagram"><span class="nav-number">3.5.</span> <span class="nav-text">Use case Diagram</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elements"><span class="nav-number">3.6.</span> <span class="nav-text">Elements</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relationship"><span class="nav-number">3.7.</span> <span class="nav-text">Relationship</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Type-of-scenario"><span class="nav-number">3.8.</span> <span class="nav-text">Type of scenario</span></a></li></ol></li></ol></div>
             
 
           </div>
