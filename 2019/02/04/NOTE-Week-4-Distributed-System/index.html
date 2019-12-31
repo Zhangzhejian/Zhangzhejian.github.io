@@ -89,7 +89,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://i.postimg.cc/d0gwbKMK/DS-4-1.png">
 <meta property="og:image" content="https://i.postimg.cc/HLrTvkh2/DS-4-2.png">
-<meta property="og:updated_time" content="2019-02-14T14:11:36.294Z">
+<meta property="og:updated_time" content="2019-05-18T23:55:16.096Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(DS) Replica Management">
 <meta name="twitter:description" content="Overview:  Data distribution Strategies Replication architecture Consistency in Replication  Data distribution modelsDistributing a service means replicating hardware and/or distributing data  Duplica">
@@ -265,7 +265,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-04T12:04:42+00:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-04T12:04:42+08:00">
                 2019-02-04
               </time>
             
@@ -346,7 +346,7 @@
 <p>NOTE:数据库的垂直于水平分割参考《构建高性能web站点》郭欣。</p>
 <h3 id="Sharding-碎片"><a href="#Sharding-碎片" class="headerlink" title="Sharding(碎片):"></a>Sharding(碎片):</h3><p> horizontal partitioning across hosts, plus replication of related data in other <strong>small tables</strong> so that one host can resolve queries without further comms<br>通过碎片这种小规模的表来储存一些公用数据，方便做union或者查询操作。</p>
 <h4 id="Suitability-of-Sharding"><a href="#Suitability-of-Sharding" class="headerlink" title="Suitability of Sharding"></a>Suitability of Sharding</h4><ul>
-<li>Read-only transactions or <strong>temporary</strong> for a transaction</li>
+<li><strong>Read-only</strong> transactions or <strong>temporary</strong> for a transaction, as there is no need for synchronisation between the shards</li>
 </ul>
 <h3 id="Replication"><a href="#Replication" class="headerlink" title="Replication"></a>Replication</h3><p>WHY:</p>
 <ul>
@@ -404,7 +404,7 @@
 <p>Each pair of managers has its own link which fails independently of other links</p>
 <h3 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements:"></a>Requirements:</h3><p>Agreement:</p>
 <ol>
-<li>Each front end must be able to broadcast requests to all managers</li>
+<li>Each front end must be <strong>able</strong> to <strong>broadcast</strong> requests to all managers</li>
 <li>Each front end must know that the managers have received a request, Reliable Broadcasts</li>
 </ol>
 <p>Ordering:</p>
@@ -538,7 +538,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -551,7 +551,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>

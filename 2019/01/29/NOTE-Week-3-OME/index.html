@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Recap">
 <meta property="og:description" content="Overview:  Basic concepts Bellman-Fodr algorithm  最短路径问题本质上是组合优化问题 PreliminariesDefinition of G = (V,E) Weight Function $w: E \to R$ mapping edges (u,v) to real-valued weights w(u,v) The weight of a p">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-19T17:24:18.608Z">
+<meta property="og:updated_time" content="2019-05-24T21:23:30.036Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Single-source shortest-paths problem (I)">
 <meta name="twitter:description" content="Overview:  Basic concepts Bellman-Fodr algorithm  最短路径问题本质上是组合优化问题 PreliminariesDefinition of G = (V,E) Weight Function $w: E \to R$ mapping edges (u,v) to real-valued weights w(u,v) The weight of a p">
@@ -262,7 +262,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-29T16:01:35+00:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-29T16:01:35+08:00">
                 2019-01-29
               </time>
             
@@ -318,11 +318,11 @@ w(p) = \sum_{i=1}^k w(v_{i-1},v_i)</script><p>The shortest-path weight from u to
 <h3 id="Properties-of-Shortest-paths"><a href="#Properties-of-Shortest-paths" class="headerlink" title="Properties of Shortest paths"></a>Properties of Shortest paths</h3><ul>
 <li>A subpath of a shortest path is a shortest path</li>
 </ul>
-<h3 id="Cicles-in-shortest-paths-problem"><a href="#Cicles-in-shortest-paths-problem" class="headerlink" title="Cicles in shortest-paths problem"></a>Cicles in shortest-paths problem</h3><ul>
+<h3 id="Cycles-in-shortest-paths-problem"><a href="#Cycles-in-shortest-paths-problem" class="headerlink" title="Cycles in shortest-paths problem"></a>Cycles in shortest-paths problem</h3><ul>
 <li>if there is a negative cycle on a path from s to v, then, by convention, $\delte(s,v) =- \infty$</li>
 <li>Thus shortest path s cannot contain negative-weight cycles</li>
 </ul>
-<h3 id="Bellman-Ford-algorithm-can-deal-with-negative-cycle"><a href="#Bellman-Ford-algorithm-can-deal-with-negative-cycle" class="headerlink" title="Bellman-Ford algorithm(can deal with negative cycle)"></a>Bellman-Ford algorithm(can deal with negative cycle)</h3><p>The main idea of the Algorithm is to use the iteration relax action to calculate the shortest path from the source to every point till convergency. If there is a negative cycle, then after (V-1) times iterations, the grahpy will not be convergence.</p>
+<h3 id="Bellman-Ford-algorithm-can-deal-with-detect-4-negative-cycle"><a href="#Bellman-Ford-algorithm-can-deal-with-detect-4-negative-cycle" class="headerlink" title="Bellman-Ford algorithm(can deal with/detect  4 negative cycle)"></a>Bellman-Ford algorithm(can deal with/detect  4 negative cycle)</h3><p>The main idea of the Algorithm is to use the iteration relax action to calculate the shortest path from the source to every point till convergency. If there is a negative cycle, then after (V-1) times iterations, the grahpy will not be convergence.</p>
 <h3 id="Initialise-Single-Source"><a href="#Initialise-Single-Source" class="headerlink" title="Initialise Single Source"></a>Initialise Single Source</h3><p>Definition:</p>
 <p>G be a directed graphy and $s\in G.V $ the source node. For each $v\in V$, we define:</p>
 <ul>
@@ -480,7 +480,7 @@ w(p) = \sum_{i=1}^k w(v_{i-1},v_i)</script><p>The shortest-path weight from u to
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -493,7 +493,7 @@ w(p) = \sum_{i=1}^k w(v_{i-1},v_i)</script><p>The shortest-path weight from u to
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -526,7 +526,7 @@ w(p) = \sum_{i=1}^k w(v_{i-1},v_i)</script><p>The shortest-path weight from u to
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Preliminaries"><span class="nav-number">1.</span> <span class="nav-text">Preliminaries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties-of-Shortest-paths"><span class="nav-number">2.</span> <span class="nav-text">Properties of Shortest paths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cicles-in-shortest-paths-problem"><span class="nav-number">3.</span> <span class="nav-text">Cicles in shortest-paths problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bellman-Ford-algorithm-can-deal-with-negative-cycle"><span class="nav-number">4.</span> <span class="nav-text">Bellman-Ford algorithm(can deal with negative cycle)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Initialise-Single-Source"><span class="nav-number">5.</span> <span class="nav-text">Initialise Single Source</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties-Lemma"><span class="nav-number">6.</span> <span class="nav-text">Properties(Lemma):</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Preliminaries"><span class="nav-number">1.</span> <span class="nav-text">Preliminaries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties-of-Shortest-paths"><span class="nav-number">2.</span> <span class="nav-text">Properties of Shortest paths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cycles-in-shortest-paths-problem"><span class="nav-number">3.</span> <span class="nav-text">Cycles in shortest-paths problem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bellman-Ford-algorithm-can-deal-with-detect-4-negative-cycle"><span class="nav-number">4.</span> <span class="nav-text">Bellman-Ford algorithm(can deal with/detect  4 negative cycle)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Initialise-Single-Source"><span class="nav-number">5.</span> <span class="nav-text">Initialise Single Source</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties-Lemma"><span class="nav-number">6.</span> <span class="nav-text">Properties(Lemma):</span></a></li></ol></div>
             
 
           </div>

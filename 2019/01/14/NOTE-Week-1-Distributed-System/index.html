@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Key points Basic Introduction  Design characteristics for distributed systems design considerations(10)   Communication problem  Design ConsiderationsOpenness(对开发人员)Interfaces to the OS, network and s">
+<meta name="description" content="Key points Basic Introduction  Design characteristics for distributed systems design considerations(10)   Communication problem  Design ConsiderationsOpenness开放性(对开发人员)Interfaces to the OS, network an">
 <meta name="keywords" content="note,DS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(DS) Introduction">
 <meta property="og:url" content="https://zhangzhejian.com/2019/01/14/NOTE-Week-1-Distributed-System/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Key points Basic Introduction  Design characteristics for distributed systems design considerations(10)   Communication problem  Design ConsiderationsOpenness(对开发人员)Interfaces to the OS, network and s">
+<meta property="og:description" content="Key points Basic Introduction  Design characteristics for distributed systems design considerations(10)   Communication problem  Design ConsiderationsOpenness开放性(对开发人员)Interfaces to the OS, network an">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-08T12:10:17.217Z">
+<meta property="og:updated_time" content="2019-05-17T22:28:57.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(DS) Introduction">
-<meta name="twitter:description" content="Key points Basic Introduction  Design characteristics for distributed systems design considerations(10)   Communication problem  Design ConsiderationsOpenness(对开发人员)Interfaces to the OS, network and s">
+<meta name="twitter:description" content="Key points Basic Introduction  Design characteristics for distributed systems design considerations(10)   Communication problem  Design ConsiderationsOpenness开放性(对开发人员)Interfaces to the OS, network an">
 
 
 
@@ -262,7 +262,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-14T12:15:12+00:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-14T12:15:12+08:00">
                 2019-01-14
               </time>
             
@@ -308,7 +308,7 @@
 </li>
 <li>Communication problem</li>
 </ul>
-<h2 id="Design-Considerations"><a href="#Design-Considerations" class="headerlink" title="Design Considerations"></a>Design Considerations</h2><h3 id="Openness-对开发人员"><a href="#Openness-对开发人员" class="headerlink" title="Openness(对开发人员)"></a>Openness(对开发人员)</h3><p>Interfaces to the OS, network and services must be based on published specifications (such as standards)</p>
+<h2 id="Design-Considerations"><a href="#Design-Considerations" class="headerlink" title="Design Considerations"></a>Design Considerations</h2><h3 id="Openness开放性-对开发人员"><a href="#Openness开放性-对开发人员" class="headerlink" title="Openness开放性(对开发人员)"></a>Openness开放性(对开发人员)</h3><p>Interfaces to the OS, network and services must be based on published specifications (such as standards)</p>
 <ul>
 <li>This makes it possible for one vendor to build systems which interact with those of another</li>
 <li>Without such openness, the user is in practice restricted to purchase from only one vendor</li>
@@ -339,14 +339,20 @@
 <li>Fault masking: take action to restore the service when a particular resource of the service fails</li>
 </ul>
 <p>SO <strong>hardware redundancy and software recovery</strong> are required</p>
-<h4 id="Measure-of-failure-rate"><a href="#Measure-of-failure-rate" class="headerlink" title="Measure of failure rate"></a>Measure of failure rate</h4><p><strong>Mean Time before Failure(MTBF)</strong></p>
+<h4 id="Measure-of-failure-rate"><a href="#Measure-of-failure-rate" class="headerlink" title="Measure of failure rate"></a>Measure of failure rate</h4><ul>
+<li><p><strong>Mean Time before Failure(MTBF)</strong></p>
 <ul>
 <li>Average period of time between failures</li>
 <li>Assume a random distribution of failures</li>
 <li>Can compute the probability of failure occurring in any period of time</li>
 </ul>
-<p><strong>T-fault tolerance</strong></p>
-<p>Must be more than t failed components before a service fails</p>
+</li>
+<li><p><strong>T-fault tolerance</strong></p>
+<ul>
+<li>Must be more than t failed components before a service fails</li>
+</ul>
+</li>
+</ul>
 <h4 id="Failure-modes-and-illustrations"><a href="#Failure-modes-and-illustrations" class="headerlink" title="Failure modes and illustrations"></a>Failure modes and illustrations</h4><ul>
 <li>Failstop: <ul>
 <li>a processor halts, and remain halted. The fact that the processor has halted <strong>can be detected by other processors</strong></li>
@@ -396,11 +402,15 @@
 </ul>
 </li>
 <li>Failure Transparency: <ul>
-<li>A service remains available even if a resource which supplies that service fails Migration Transparency: Moving a resource between hosts does not affect access to it</li>
+<li>A service remains available even if a resource which supplies that service fails </li>
 </ul>
 </li>
 <li>Performance Transparency: <ul>
 <li><u>Increases or decreases in resource performance</u> do not alter <strong>methods</strong> by which the resource is accessed</li>
+</ul>
+</li>
+<li>Migration Transparency: <ul>
+<li>Moving a resource between hosts does not affect access to it</li>
 </ul>
 </li>
 <li>Scaling Transparency: <ul>
@@ -409,9 +419,21 @@
 </li>
 </ul>
 <h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h3><ul>
-<li><p>Preventing users doing things they should not do, according to policy decisions</p>
+<li>Preventing users doing things they should not do, according to policy decisions</li>
+<li>Preventing actions which by accident prevent the correct functioning of the system</li>
+<li>防止不该发生的行为发生</li>
+</ul>
+<h4 id="Issues"><a href="#Issues" class="headerlink" title="Issues"></a>Issues</h4><ul>
+<li>Authentication</li>
+<li>Confidentiality</li>
+<li>Integrity</li>
+<li>Access Control<ul>
+<li>Only certain authenticated clients are allowed access to a resource</li>
+</ul>
 </li>
-<li><p>Preventing actions which by accident prevent the correct functioning of the system</p>
+<li>Non-repudiation<ul>
+<li>Clients cannot deny communication took place</li>
+</ul>
 </li>
 </ul>
 <h3 id="Management"><a href="#Management" class="headerlink" title="Management"></a>Management</h3><p>Management is the <strong>supervising and controlling</strong> of the system so that it satisfies the requirements of its owners and users.</p>
@@ -430,7 +452,10 @@
 <li>Throughput</li>
 <li>Load Balancing</li>
 </ul>
-<h3 id="Heterogeneity-异质性"><a href="#Heterogeneity-异质性" class="headerlink" title="Heterogeneity(异质性)"></a>Heterogeneity(异质性)</h3><p>??</p>
+<h3 id="Heterogeneity-异质性"><a href="#Heterogeneity-异质性" class="headerlink" title="Heterogeneity(异质性)"></a>Heterogeneity(异质性)</h3><ul>
+<li>Variations in use</li>
+<li>in hosts</li>
+</ul>
 <h3 id="Communication-Models"><a href="#Communication-Models" class="headerlink" title="Communication Models"></a>Communication Models</h3><ul>
 <li>Client-server communication</li>
 <li>Multicast communication</li>
@@ -449,7 +474,7 @@
 </ul>
 <h3 id="Distributed-Transcation-分布式事务"><a href="#Distributed-Transcation-分布式事务" class="headerlink" title="Distributed Transcation(分布式事务)"></a>Distributed Transcation(分布式事务)</h3><p>Ensuring that either all or none of a sequence of actions are performed maintains the integrity of the resources acted on.确保无论执不执行操作，都会保持资源的完整性。</p>
 <h3 id="Distributed-File-System"><a href="#Distributed-File-System" class="headerlink" title="Distributed File System"></a>Distributed File System</h3><p>Provide access to directories and files spread acorss multiple hosts as if one directory structure.</p>
-<p>Finished.</p>
+<h3 id="Dynamic-Service-selection"><a href="#Dynamic-Service-selection" class="headerlink" title="Dynamic Service selection"></a>Dynamic Service selection</h3><p>Finished.</p>
 
       
     </div>
@@ -571,7 +596,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -584,7 +609,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -617,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-points"><span class="nav-number">1.</span> <span class="nav-text">Key points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Design-Considerations"><span class="nav-number">2.</span> <span class="nav-text">Design Considerations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Openness-对开发人员"><span class="nav-number">2.1.</span> <span class="nav-text">Openness(对开发人员)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Concurrency"><span class="nav-number">2.2.</span> <span class="nav-text">Concurrency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scalability-伸缩性-and-state"><span class="nav-number">2.3.</span> <span class="nav-text">Scalability(伸缩性) and state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fault-tolerance"><span class="nav-number">2.4.</span> <span class="nav-text">Fault tolerance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Measure-of-failure-rate"><span class="nav-number">2.4.1.</span> <span class="nav-text">Measure of failure rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Failure-modes-and-illustrations"><span class="nav-number">2.4.2.</span> <span class="nav-text">Failure modes and illustrations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transparency-对用户"><span class="nav-number">2.5.</span> <span class="nav-text">Transparency(对用户)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Types-of-transparency"><span class="nav-number">2.5.1.</span> <span class="nav-text">Types of transparency:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security"><span class="nav-number">2.6.</span> <span class="nav-text">Security</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Management"><span class="nav-number">2.7.</span> <span class="nav-text">Management</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance"><span class="nav-number">2.8.</span> <span class="nav-text">Performance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heterogeneity-异质性"><span class="nav-number">2.9.</span> <span class="nav-text">Heterogeneity(异质性)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Communication-Models"><span class="nav-number">2.10.</span> <span class="nav-text">Communication Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reliable-agreement"><span class="nav-number">2.11.</span> <span class="nav-text">Reliable agreement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Distributed-models"><span class="nav-number">2.12.</span> <span class="nav-text">Data Distributed models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Distributed-Transcation-分布式事务"><span class="nav-number">2.13.</span> <span class="nav-text">Distributed Transcation(分布式事务)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Distributed-File-System"><span class="nav-number">2.14.</span> <span class="nav-text">Distributed File System</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-points"><span class="nav-number">1.</span> <span class="nav-text">Key points</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Design-Considerations"><span class="nav-number">2.</span> <span class="nav-text">Design Considerations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Openness开放性-对开发人员"><span class="nav-number">2.1.</span> <span class="nav-text">Openness开放性(对开发人员)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Concurrency"><span class="nav-number">2.2.</span> <span class="nav-text">Concurrency</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Scalability-伸缩性-and-state"><span class="nav-number">2.3.</span> <span class="nav-text">Scalability(伸缩性) and state</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Fault-tolerance"><span class="nav-number">2.4.</span> <span class="nav-text">Fault tolerance</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Measure-of-failure-rate"><span class="nav-number">2.4.1.</span> <span class="nav-text">Measure of failure rate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Failure-modes-and-illustrations"><span class="nav-number">2.4.2.</span> <span class="nav-text">Failure modes and illustrations</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transparency-对用户"><span class="nav-number">2.5.</span> <span class="nav-text">Transparency(对用户)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Types-of-transparency"><span class="nav-number">2.5.1.</span> <span class="nav-text">Types of transparency:</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Security"><span class="nav-number">2.6.</span> <span class="nav-text">Security</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Issues"><span class="nav-number">2.6.1.</span> <span class="nav-text">Issues</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Management"><span class="nav-number">2.7.</span> <span class="nav-text">Management</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance"><span class="nav-number">2.8.</span> <span class="nav-text">Performance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heterogeneity-异质性"><span class="nav-number">2.9.</span> <span class="nav-text">Heterogeneity(异质性)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Communication-Models"><span class="nav-number">2.10.</span> <span class="nav-text">Communication Models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reliable-agreement"><span class="nav-number">2.11.</span> <span class="nav-text">Reliable agreement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Distributed-models"><span class="nav-number">2.12.</span> <span class="nav-text">Data Distributed models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Distributed-Transcation-分布式事务"><span class="nav-number">2.13.</span> <span class="nav-text">Distributed Transcation(分布式事务)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Distributed-File-System"><span class="nav-number">2.14.</span> <span class="nav-text">Distributed File System</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-Service-selection"><span class="nav-number">2.15.</span> <span class="nav-text">Dynamic Service selection</span></a></li></ol></li></ol></div>
             
 
           </div>

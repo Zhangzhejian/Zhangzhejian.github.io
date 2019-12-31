@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Flow network G = (V,E,c,s,t) $V$ – set of n nodes,$ E $– set of m directed edges (links); for each $(u, v) \in E, c(u, v) \geq 0$ is the capacity of edge $(u, v)$; two distinguished nodes: source $s$">
+<meta name="description" content="Network Flow Problems flow-feasibility problem(Transshipment problem) Minimum-cost flow problem mulitcommodity flow problem   Ford-Fulkerson method  Flow network G = (V,E,c,s,t) $V$ – set of n nodes,">
 <meta name="keywords" content="note,OM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(OM)Network Flow Problems and Ford-Fulkerson method">
 <meta property="og:url" content="https://zhangzhejian.com/2019/02/12/NOTE-Week-5-OME/index.html">
 <meta property="og:site_name" content="Recap">
-<meta property="og:description" content="Flow network G = (V,E,c,s,t) $V$ – set of n nodes,$ E $– set of m directed edges (links); for each $(u, v) \in E, c(u, v) \geq 0$ is the capacity of edge $(u, v)$; two distinguished nodes: source $s$">
+<meta property="og:description" content="Network Flow Problems flow-feasibility problem(Transshipment problem) Minimum-cost flow problem mulitcommodity flow problem   Ford-Fulkerson method  Flow network G = (V,E,c,s,t) $V$ – set of n nodes,">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-22T17:11:19.692Z">
+<meta property="og:updated_time" content="2019-05-26T20:17:07.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(OM)Network Flow Problems and Ford-Fulkerson method">
-<meta name="twitter:description" content="Flow network G = (V,E,c,s,t) $V$ – set of n nodes,$ E $– set of m directed edges (links); for each $(u, v) \in E, c(u, v) \geq 0$ is the capacity of edge $(u, v)$; two distinguished nodes: source $s$">
+<meta name="twitter:description" content="Network Flow Problems flow-feasibility problem(Transshipment problem) Minimum-cost flow problem mulitcommodity flow problem   Ford-Fulkerson method  Flow network G = (V,E,c,s,t) $V$ – set of n nodes,">
 
 
 
@@ -262,7 +262,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-12T16:08:31+00:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-12T16:08:31+08:00">
                 2019-02-12
               </time>
             
@@ -300,7 +300,16 @@
       
 
       
-        <h2 id="Flow-network"><a href="#Flow-network" class="headerlink" title="Flow network"></a>Flow network</h2><script type="math/tex; mode=display">
+        <ul>
+<li>Network Flow Problems<ul>
+<li>flow-feasibility problem(Transshipment problem)</li>
+<li>Minimum-cost flow problem</li>
+<li>mulitcommodity flow problem</li>
+</ul>
+</li>
+<li>Ford-Fulkerson method</li>
+</ul>
+<h2 id="Flow-network"><a href="#Flow-network" class="headerlink" title="Flow network"></a>Flow network</h2><script type="math/tex; mode=display">
 G = (V,E,c,s,t)</script><ul>
 <li>$V$ – set of n nodes,$ E $– set of m directed edges (links);</li>
 <li>for each $(u, v) \in E, c(u, v) \geq 0$ is the capacity of edge $(u, v)$;</li>
@@ -350,7 +359,8 @@ G = (V,E,c,s,t)</script><ul>
 <script type="math/tex; mode=display">
  c_f(u,v) = c(u,v) - f(u,v) \;\;\; \text{if $f(u,v) \geq 0 $ and $f(v,u) =0$;}\\
  c_f(u,v) = c(u,v) + f(u,v) \;\;\; \text{if $f(u,v) = 0$ and $f(v,u) \geq 0$;}\\</script><p>The residual network of $G$ included by flow f is the flow network $G_f = (V,E_f,c_f,s,t)$, where $c_f$ are the residual capacities and $E_f$ is the set of residual edges</p>
-<h2 id="Max-flow-Min-cut-theorem最大流最小割定理"><a href="#Max-flow-Min-cut-theorem最大流最小割定理" class="headerlink" title="Max-flow Min-cut theorem最大流最小割定理"></a>Max-flow Min-cut theorem最大流最小割定理</h2><h2 id="Ford-Fulkerson-Method"><a href="#Ford-Fulkerson-Method" class="headerlink" title="Ford-Fulkerson Method"></a>Ford-Fulkerson Method</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">f = 0</span><br><span class="line">while true:</span><br><span class="line">	1. construct the residual network</span><br><span class="line">	2. find an augmenting path p, </span><br><span class="line">		if there is no agmenting path:</span><br><span class="line">			exit</span><br><span class="line">		end </span><br><span class="line">	3. f = f + f_p</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h2 id="Max-flow-Min-cut-theorem最大流最小割定理"><a href="#Max-flow-Min-cut-theorem最大流最小割定理" class="headerlink" title="Max-flow Min-cut theorem最大流最小割定理"></a>Max-flow Min-cut theorem最大流最小割定理</h2><p>max-flow = min-cut</p>
+<h2 id="Ford-Fulkerson-Method"><a href="#Ford-Fulkerson-Method" class="headerlink" title="Ford-Fulkerson Method"></a>Ford-Fulkerson Method</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">f = 0</span><br><span class="line">while true:</span><br><span class="line">	1. construct the residual network</span><br><span class="line">	2. find an augmenting path p, </span><br><span class="line">		if there is no agmenting path:</span><br><span class="line">			exit</span><br><span class="line">		end </span><br><span class="line">	3. f = f + f_p</span><br><span class="line"></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 <p>Running time:</p>
 <script type="math/tex; mode=display">
 O(E)+O(E)+O(E)</script><h2 id="Edmonds-Karp-algorithm"><a href="#Edmonds-Karp-algorithm" class="headerlink" title="Edmonds-Karp algorithm"></a>Edmonds-Karp algorithm</h2><p>when selecting the augmenting path, it uses BFS to find a shortest augmenting path.</p>
@@ -478,7 +488,7 @@ O(VE^2)</script>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -491,7 +501,7 @@ O(VE^2)</script>
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
